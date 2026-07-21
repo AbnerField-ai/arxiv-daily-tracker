@@ -1,9 +1,198 @@
 {
   "date": "2026-07-21",
-  "generated_at": "2026-07-21T07:57:45.624954",
+  "generated_at": "2026-07-21T08:42:01.042012",
   "total_fetched": 100,
   "total_matched": 20,
   "papers": [
+    {
+      "title": "FlashRT: Agent Harness for Guiding Agents to Deploy Real-Time Multimodal Applications",
+      "abstract": "Real-time multimodal applications, including voice agents and interactive video generation, compose heterogeneous models into pipelines whose efficient deployment requires application-specific decisions about placement, streaming, and intra-model parallelism. Existing serving systems and auto-parallelism compilers commit to limited transformations and fixed workload assumptions, so achieving high performance on a new application requires hand-crafting an efficient implementation. We present FlashRT, an agent harness that guides coding agents to lift simple developer-written reference implementations into optimized multi-GPU deployments that flexibly weigh target metrics like latency and throughput. Using a new chain-of-program paradigm, FlashRT directs a generic coding agent through a multi-pass transformation process where an agent transforms the reference into an intermediate representation (IR) to capture data dependencies and persistent-state scopes, validates this IR via a sequential interpreter, and performs static analyses to identify candidate transformations. Then, the agent iteratively implements, verifies, and benchmarks each candidate under a measurement-gated optimization loop to produce effective deployments that span different hardware budgets. Across various applications, including video world models and multimodal LLMs, FlashRT converts reference implementations into highly efficient deployments, delivering up to ~70x latency reduction and 2.8x throughput improvement on NVIDIA B200 GPUs. On AMD MI355X GPUs, FlashRT matches the peak latency reduction while increasing peak throughput improvement to 3.6x, demonstrating that agent-driven optimization can be more scalable on platforms with less mature expert optimization. In fact, for Qwen3-Omni text-to-audio inference, FlashRT reduces response latency by 65% compared to the expert vLLM-Omni implementation on AMD MI355X.",
+      "url": "https://arxiv.org/abs/2607.18171v1",
+      "pdf": "https://arxiv.org/pdf/2607.18171v1",
+      "categories": [
+        "cs.LG"
+      ],
+      "authors": [
+        "Krish Agarwal",
+        "Zhuoming Chen",
+        "Yanyuan Qin",
+        "Zhenyu Gu",
+        "Atri Rudra"
+      ],
+      "all_authors": [
+        "Krish Agarwal",
+        "Zhuoming Chen",
+        "Yanyuan Qin",
+        "Zhenyu Gu",
+        "Atri Rudra",
+        "Beidi Chen"
+      ],
+      "affiliations": [
+        {
+          "name": "Krish Agarwal",
+          "affiliations": []
+        },
+        {
+          "name": "Zhuoming Chen",
+          "affiliations": []
+        },
+        {
+          "name": "Yanyuan Qin",
+          "affiliations": []
+        },
+        {
+          "name": "Zhenyu Gu",
+          "affiliations": []
+        },
+        {
+          "name": "Atri Rudra",
+          "affiliations": []
+        },
+        {
+          "name": "Beidi Chen",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-07-20",
+      "matched_topics": [
+        "世界模型",
+        "多模态",
+        "大模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "实时多模态应用（如语音代理、交互视频生成）的异构模型流水线部署需要应用特定的决策（放置、流式、模型内并行），现有系统无法高效实现自动化优化。",
+        "method": "提出FlashRT，一种agent harness，通过新的chain-of-program范式指导编码代理进行多轮变换：将参考实现转化为中间表示（IR）以捕获数据依赖和持久状态范围，通过顺序解释器验证IR，进行静态分析识别候选变换，然后在测量约束的优化循环中迭代实现、验证和基准测试每个候选，生成适应不同硬件预算的高效部署。",
+        "result": "在NVIDIA B200 GPU上实现高达~70倍延迟降低和2.8倍吞吐量提升；在AMD MI355X GPU上延迟降低相当，吞吐量提升达3.6倍；对于Qwen3-Omni文本到音频推理，与专家vLLM-Omni实现相比，响应延迟降低65%。",
+        "novelty": "首次将agent驱动的自动化优化（chain-of-program）应用于实时多模态应用的端到端部署，实现跨平台可扩展的高效部署，无需手动调优。",
+        "relevance": "为世界模型、多模态大模型等实时AI应用的系统部署提供了自动、高效的agent范式，降低了异构硬件上的优化门槛。",
+        "org": "未明确（作者信息中未标明机构）",
+        "score": 9
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [
+          "atri@buffalo.edu"
+        ],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Krish Agarwal",
+              "email": "krisha2@andrew.cmu.edu",
+              "affiliation": "Carnegie Mellon University",
+              "role": ""
+            },
+            {
+              "name": "Zhuoming Chen",
+              "email": "zhuominc@andrew.cmu.edu",
+              "affiliation": "Carnegie Mellon University",
+              "role": ""
+            },
+            {
+              "name": "Yanyuan Qin",
+              "email": "yanyuan.qin@amd.com",
+              "affiliation": "AMD",
+              "role": ""
+            },
+            {
+              "name": "Zhenyu Gu",
+              "email": "zhenyu.gu@amd.com",
+              "affiliation": "AMD",
+              "role": ""
+            },
+            {
+              "name": "Atri Rudra",
+              "email": "atri@buffalo.edu",
+              "affiliation": "University at Buffalo",
+              "role": ""
+            },
+            {
+              "name": "Beidi Chen",
+              "email": "beidic@andrew.cmu.edu",
+              "affiliation": "Carnegie Mellon University",
+              "role": ""
+            }
+          ],
+          "corresponding_author": ""
+        }
+      }
+    },
+    {
+      "title": "SAGE: Subgoal-Conditioned Action Generation for Latent World Model Planning",
+      "abstract": "Latent world models have emerged as a powerful planning paradigm by learning action-conditioned predictive dynamics and using them as internal simulators to imagine and evaluate candidate action sequences. However, as the planning horizon grows, performance becomes increasingly constrained by proposal quality: a fixed candidate budget must search an exponentially larger action space, making it difficult to expose the world model to high-quality candidate futures for evaluation. In this paper, we introduce a prior-conditioned planner that replaces random proposal initialization with structured guidance. At each planning stage, a goal-conditioned generator predicts the next reachable latent subgoal for a specified duration, which is then used to condition the generation of candidate action sequences. To capture semantic information across temporal scales, we use subgoals of varying durations as priors, balancing fine-grained local control with higher-level long-horizon progress. Then the frozen world model evaluates and refines these subgoal-conditioned proposals before execution. Experiments on PushT and OGBench Cube show that coupling latent subgoal decomposition with prior-conditioned action generation substantially improves long-horizon planning while preserving strong short-horizon performance. To be specific, when the target offset is $150$, it raises PushT success from $12.7\\%$ to $64.7\\%$ and OGBench Cube success from $26.7\\%$ to $67.3\\%$.",
+      "url": "https://arxiv.org/abs/2607.17973v1",
+      "pdf": "https://arxiv.org/pdf/2607.17973v1",
+      "categories": [
+        "cs.AI"
+      ],
+      "authors": [
+        "Letian Cheng",
+        "Qi Zhang",
+        "Yisen Wang"
+      ],
+      "all_authors": [
+        "Letian Cheng",
+        "Qi Zhang",
+        "Yisen Wang"
+      ],
+      "affiliations": [
+        {
+          "name": "Letian Cheng",
+          "affiliations": []
+        },
+        {
+          "name": "Qi Zhang",
+          "affiliations": []
+        },
+        {
+          "name": "Yisen Wang",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-07-20",
+      "matched_topics": [
+        "世界模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "潜世界模型在长程规划中因固定候选预算下搜索空间指数增长而性能受限。",
+        "method": "提出SAGE，使用目标条件生成器预测可到达的潜在子目标作为先验，生成候选动作序列；通过不同时长的子目标平衡细粒度局部控制与长程进展。",
+        "result": "在PushT和OGBench Cube上，长程规划成功率大幅提升（如PushT从12.7%到64.7%，OGBench从26.7%到67.3%）。",
+        "novelty": "将潜在子目标分解与先验条件动作生成结合，替代随机初始化规划。",
+        "relevance": "提升了潜世界模型在长程规划任务中的实用性和性能。",
+        "org": "",
+        "score": 9
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [
+          "yisen.wang@pku.edu.cn"
+        ],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Letian Cheng",
+              "email": "",
+              "affiliation": "Peking University",
+              "role": "共同第一作者"
+            },
+            {
+              "name": "Qi Zhang",
+              "email": "",
+              "affiliation": "Peking University",
+              "role": "共同第一作者"
+            },
+            {
+              "name": "Yisen Wang",
+              "email": "",
+              "affiliation": "Peking University",
+              "role": "通讯作者"
+            }
+          ],
+          "corresponding_author": "Yisen Wang"
+        }
+      }
+    },
     {
       "title": "The Many Senses of Visual Similarity: A Text-Prompted Image Perceptual Metric",
       "abstract": "Human visual similarity judgments are context-dependent. For example, two images may be similar in shape but distinct in color. Existing perceptual similarity metrics, however, collapse these nuances into a single scalar value, offering no mechanism to condition on specific aspects. To bridge this gap, we introduce a large-scale dataset of human similarity judgments over image triplets, where each triplet is annotated across multiple, free-form semantic aspects of similarity. Benchmarking a broad range of frontier vision-language models (VLMs) reveals a considerable performance gap compared to human annotators' consensus. Leveraging our data, we fine-tune a VLM to produce our Text-Prompted Image Perceptual Similarity (TPIPS) metric, capturing multiple senses of visual similarity depending on the specified text prompt. We demonstrate that TPIPS aligns more closely with human perception and generalizes reliably beyond the training distribution. Finally, we show that TPIPS unlocks new capabilities in text-guided retrieval, compositional search, and the fine-grained evaluation of generative models. Our code, data, and trained models are at https://peterwang512.github.io/TPIPS",
@@ -65,17 +254,65 @@
       ],
       "priority": 1,
       "ai_summary": {
-        "problem": "现有视觉相似性度量无法捕捉人类判断中依赖于上下文的多样性（如形状与颜色的区别），缺乏根据特定语义方面进行条件化的机制。",
-        "method": "构建大规模三元组图像数据集，标注多种自由形式的语义相似性方面；基于该数据微调视觉语言模型（VLM），提出文本提示图像感知相似性度量（TPIPS），根据文本提示输出不同维度的相似性分数。",
-        "result": "TPIPS与人类感知一致性更高，且能泛化到训练分布之外；在文本引导检索、组合搜索和生成模型细粒度评估中展现出新能力。",
-        "novelty": "首次提出文本提示驱动的多语义视觉相似性度量，通过大规模人类标注数据微调VLM实现条件化相似性判断。",
-        "relevance": "为多模态大模型在细粒度视觉理解、可控检索和生成评估中提供了关键工具，推动感知度量向上下文感知方向发展。",
-        "org": "卡内基梅隆大学（CMU）与Adobe Research",
+        "problem": "现有视觉相似性度量无法根据特定语义方面（如形状、颜色）进行条件化判断，将多维度相似性简化为单一标量。",
+        "method": "构建一个大规模三元组图像数据集，每个三元组针对多个自由形式的语义方面进行人类相似性标注；基于该数据微调视觉语言模型（VLM），得到文本提示图像感知相似性（TPIPS）度量，可根据文本提示捕捉不同语义维度的相似性。",
+        "result": "TPIPS与人类感知一致性更高，能可靠泛化到训练分布之外，并在文本引导检索、组合搜索和生成模型细粒度评估中展现新能力。",
+        "novelty": "提出一种文本提示驱动的多语义视觉相似性度量，通过大规模人类标注数据和VLM微调实现上下文相关的感知相似性判断。",
+        "relevance": "为多模态大模型在细粒度视觉理解、可解释相似性及可控图像检索任务提供新范式，推动感知度量从单标量向语义条件化发展。",
+        "org": "作者来自多个机构（包括Adobe Research等），但未明确单一归属",
         "score": 8
       },
-      "identified_orgs": [
-        "CMU"
-      ]
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Sheng-Yu Wang",
+              "email": "",
+              "affiliation": "Carnegie Mellon University",
+              "role": "第一作者"
+            },
+            {
+              "name": "Yotam Nitzan",
+              "email": "",
+              "affiliation": "Adobe Research",
+              "role": ""
+            },
+            {
+              "name": "Aaron Hertzmann",
+              "email": "",
+              "affiliation": "Adobe Research",
+              "role": ""
+            },
+            {
+              "name": "Jun-Yan Zhu",
+              "email": "",
+              "affiliation": "Carnegie Mellon University",
+              "role": ""
+            },
+            {
+              "name": "Eli Shechtman",
+              "email": "",
+              "affiliation": "Adobe Research",
+              "role": ""
+            },
+            {
+              "name": "Alexei A. Efros",
+              "email": "",
+              "affiliation": "UC Berkeley",
+              "role": ""
+            },
+            {
+              "name": "Richard Zhang",
+              "email": "",
+              "affiliation": "Adobe Research",
+              "role": ""
+            }
+          ],
+          "corresponding_author": ""
+        }
+      }
     },
     {
       "title": "Patch Policy: Efficient Embodied Control via Dense Visual Representations",
@@ -134,915 +371,63 @@
       ],
       "priority": 1,
       "ai_summary": {
-        "problem": "现有机器人策略要么将观测压缩为单个全局token，损失细粒度空间细节，要么依赖从头训练的视觉骨干，无法利用大规模视觉预训练的优势，而基于密集patch特征的大型视觉-语言-动作模型（VLA）又过于笨重和缓慢。",
-        "method": "提出Patch Policy，一种最小架构扩展，通过块因果注意力掩码（block-causal attention mask）使基于Transformer的策略直接消耗预训练的密集patch token，同时保留时间因果性并整合其他状态信息，无需完整VLM的计算开销。",
-        "result": "在四个模拟和三个真实世界环境套件中，相比使用最先进全局池化表示的策略，该方法实现了40%的相对改进；相比微调的OpenVLA-OFT，在仅使用约0.7%参数的情况下提升了18%。",
-        "novelty": "通过轻量级的块因果注意力机制，首次高效地将预训练密集视觉特征直接集成到机器人策略中，避免了全局池化的信息损失和VLA的高计算成本。",
-        "relevance": "为机器人社区提供了一条高效利用视觉表示学习进展的实用管道，在不牺牲训练效率和推理速度的前提下，提升了高频反应式控制性能。",
-        "org": "未明确指定机构，但作者包括Yann LeCun，可能来自Meta AI或相关学术机构",
+        "problem": "现有机器人策略要么将观测压缩为单个全局token，要么从头训练视觉骨干，无法有效利用预训练的密集视觉特征，而大视觉语言模型虽能处理密集patch特征但计算开销巨大。本文旨在解决如何在不引入大量参数和推理延迟的前提下，让基于Transformer的策略直接利用预训练的密集patch特征。",
+        "method": "提出Patch Policy，通过一种块因果注意力掩码（block-causal attention mask）扩展标准策略架构，使模型能在保持时间因果性的同时，对每个观测的多个patch token以及其他状态信息进行注意力计算，从而直接使用预训练的ViT密集patch特征，无需完整VLM骨干。",
+        "result": "在4个模拟和3个真实环境套件中，相比使用全局池化表示的策略，Patch Policy实现了40%的相对性能提升；并且以仅0.7%的参数超越微调后的OpenVLA-OFT 18%的绝对性能。",
+        "novelty": "设计了一种块因果注意力掩码，使得轻量级策略能高效消耗预训练的密集patch token，避免了全局池化的信息损失和完全微调VLM的高昂成本。",
+        "relevance": "为机器人社区提供了一种即插即用的轻量级管道，能够持续利用视觉表示学习的进步，同时保持高频反应式控制所需的训练和推理效率。",
+        "org": "Meta AI / New York University（基于作者Yann LeCun的隶属关系）",
         "score": 8
       },
       "identified_orgs": [
         "Meta"
-      ]
-    },
-    {
-      "title": "FM-VLA: Force-based Memory for Vision-Language-Action Models in Contact-Rich Manipulation",
-      "abstract": "Vision-language-action (VLA) models have achieved impressive generalization in robotic manipulation, and recent memory-augmented VLAs have relaxed the Markovian assumption by conditioning on past images or language summaries. Vision-based memory approaches address this by conditioning on sampled past image frames, but they are computationally expensive and fundamentally limited when temporal events are visually ambiguous, e.g., pushing a button multiple times with small movements. We propose FM-VLA, a VLA model with force-based memory, enabling temporal context reasoning for non-Markovian, contact-rich manipulation. We encode force histories into compact force memory tokens with a variational autoencoder (VAE) pretrained with force time series reconstruction. By projecting force latent representations and short state history as additional conditioning tokens to the action expert module, we enable VLAs to leverage accumulated contact event history to guide manipulation. We evaluate FM-VLA on three memory-dependent tasks, including finding a hidden block, pressing a button, and wiping a dish for a specific number of times. Our lightweight force memory achieves over 80% success rate with minimal inference overhead, significantly outperforming baseline approaches. Project page: https://qft-333.github.io/FM-VLA-Page/",
-      "url": "https://arxiv.org/abs/2607.18231v1",
-      "pdf": "https://arxiv.org/pdf/2607.18231v1",
-      "categories": [
-        "cs.RO"
       ],
-      "authors": [
-        "Ruicheng Li",
-        "Qixiu Li",
-        "Ruichun Ma",
-        "Yu Deng",
-        "Lin Luo"
-      ],
-      "all_authors": [
-        "Ruicheng Li",
-        "Qixiu Li",
-        "Ruichun Ma",
-        "Yu Deng",
-        "Lin Luo",
-        "Zhiying Du",
-        "Jianfeng Xiang",
-        "Huizhi Liang",
-        "Ruicheng Wang",
-        "Jiaolong Yang",
-        "Baining Guo"
-      ],
-      "affiliations": [
-        {
-          "name": "Ruicheng Li",
-          "affiliations": []
-        },
-        {
-          "name": "Qixiu Li",
-          "affiliations": []
-        },
-        {
-          "name": "Ruichun Ma",
-          "affiliations": []
-        },
-        {
-          "name": "Yu Deng",
-          "affiliations": []
-        },
-        {
-          "name": "Lin Luo",
-          "affiliations": []
-        },
-        {
-          "name": "Zhiying Du",
-          "affiliations": []
-        },
-        {
-          "name": "Jianfeng Xiang",
-          "affiliations": []
-        },
-        {
-          "name": "Huizhi Liang",
-          "affiliations": []
-        },
-        {
-          "name": "Ruicheng Wang",
-          "affiliations": []
-        },
-        {
-          "name": "Jiaolong Yang",
-          "affiliations": []
-        },
-        {
-          "name": "Baining Guo",
-          "affiliations": []
+      "contact_info": {
+        "emails_found": [
+          "gz2123@nyu.edu"
+        ],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Gaoyue Zhou",
+              "email": "",
+              "affiliation": "Courant Institute, New York University",
+              "role": ""
+            },
+            {
+              "name": "Zichen Jeff Cui",
+              "email": "",
+              "affiliation": "Courant Institute, New York University",
+              "role": ""
+            },
+            {
+              "name": "Ada Langford",
+              "email": "",
+              "affiliation": "Courant Institute, New York University",
+              "role": ""
+            },
+            {
+              "name": "Bowen Tan",
+              "email": "",
+              "affiliation": "Courant Institute, New York University",
+              "role": ""
+            },
+            {
+              "name": "Yann LeCun",
+              "email": "",
+              "affiliation": "Courant Institute, New York University; AMI Labs",
+              "role": ""
+            },
+            {
+              "name": "Lerrel Pinto",
+              "email": "",
+              "affiliation": "Courant Institute, New York University; Meta-FAIR",
+              "role": ""
+            }
+          ],
+          "corresponding_author": ""
         }
-      ],
-      "published": "2026-07-20",
-      "matched_topics": [
-        "多模态"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "现有记忆增强的视觉-语言-动作模型（VLA）在处理接触丰富的非马尔可夫任务时，基于视觉的记忆方法计算成本高且难以区分视觉模糊的时间事件（如多次小幅度按压按钮）。",
-        "method": "提出FM-VLA模型，通过变分自编码器（VAE）将力历史编码为紧凑的力记忆令牌，并与短状态历史一起作为额外条件令牌注入动作专家模块，使VLA能够利用累积的接触事件历史来指导操作。",
-        "result": "在三个依赖记忆的任务（隐藏块查找、按钮按压、特定次数擦拭盘子）上，轻量级力记忆方法以最小推理开销实现了超过80%的成功率，显著优于基线方法。",
-        "novelty": "首次将基于力的记忆机制引入VLA模型，通过力时间序列的压缩表示解决视觉模糊下的时间上下文推理问题。",
-        "relevance": "为接触丰富的机器人操作提供了高效的非马尔可夫推理方案，推动了VLA模型在细粒度物理交互任务中的应用。",
-        "org": "未明确识别机构（作者无隶属信息）",
-        "score": 8
-      },
-      "identified_orgs": []
-    },
-    {
-      "title": "FlowMimic: Mask-free Visual Editing and Generation with Pixel-pair Warped Flow Field for Online Video Editing Data Generation and Modality Mimicry",
-      "abstract": "In line with the prevailing direction of vision research, we explore the integration of both generation and editing capabilities for video and image modalities within a single model. Current approaches to collecting video editing data typically depend on labour-intensive, time-consuming curated procedures--involving object mask annotation, the use of error-introducing pair synthesis via I2V model and ControlNet-like guidance, and VLM-based quality filtering or refinement--and demonstrate limited task scalability. As a result, the diversity of editing tasks remains substantially narrower than that available for image editing models. We develop a pixel-pair temporal warped flow field that can directly generate corresponding video editing samples in real time from image editing samples, and we demonstrate across multiple levels of video editing tasks that a model can learn video editing using only such data. We regard the image modality as a particular form of the video modality. Accordingly, we design a modality mimic generation loss and a modality mimic editing loss to relatively align the capabilities--and thereby the output distributions--of the two modalities through mutual imitation. Moreover, language-based visual editing entails the comprehension of the editing instruction and the reference visual content, the localization of the region corresponding to that instruction within the reference visual contents, and the modification of that region alone. Existing approaches predominantly rely on external aids, such as fine-tuning an additional MLLM or explicitly supplying a mask sequence as auxiliary input during inference. In contrast, we aspire for the model to internalize this capability. To that end, we introduce sense-related tasks--for instance, referring expression segmentation--along with corresponding editing-region-aware latent-level loss and attention-level loss.",
-      "url": "https://arxiv.org/abs/2607.18227v1",
-      "pdf": "https://arxiv.org/pdf/2607.18227v1",
-      "categories": [
-        "cs.CV"
-      ],
-      "authors": [
-        "Dingyun Zhang",
-        "Lixue Gong",
-        "Wei Liu"
-      ],
-      "all_authors": [
-        "Dingyun Zhang",
-        "Lixue Gong",
-        "Wei Liu"
-      ],
-      "affiliations": [
-        {
-          "name": "Dingyun Zhang",
-          "affiliations": []
-        },
-        {
-          "name": "Lixue Gong",
-          "affiliations": []
-        },
-        {
-          "name": "Wei Liu",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-07-20",
-      "matched_topics": [
-        "多模态",
-        "大模型"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "现有视频编辑数据收集依赖人工标注、I2V模型合成和VLM过滤，耗时且任务扩展性有限，导致视频编辑任务多样性远低于图像编辑。",
-        "method": "提出像素对时间扭曲流场（Pixel-pair Temporal Warped Flow Field），直接从图像编辑样本实时生成对应视频编辑样本；设计模态模仿生成损失和编辑损失，对齐图像与视频模态的能力；引入感知相关任务（如指代分割）及编辑区域感知的潜在层和注意力层损失，使模型内化编辑区域定位能力。",
-        "result": "实验表明，仅使用该方法生成的数据即可训练模型完成多种视频编辑任务，且无需外部辅助（如额外MLLM或掩码序列）。",
-        "novelty": "首次实现无需掩码标注的在线视频编辑数据生成，并通过模态模仿损失统一图像与视频的生成和编辑能力。",
-        "relevance": "为多模态大模型在视频编辑领域的无监督数据生成和统一建模提供了新范式，降低了数据收集成本并提升了任务扩展性。",
-        "org": "未明确标注机构，作者可能来自中国研究机构（基于姓名推测）。",
-        "score": 8
-      },
-      "identified_orgs": []
-    },
-    {
-      "title": "HOMIE: Human-object Centric Video Personalization via Multimodal Intelligent Enchancement",
-      "abstract": "Human-object centric video personalization (HOCVP) is a core task within subject-driven video generation. However, existing methods suffer from two key limitations. First, most approaches focusing on inter-subject personalization still struggle to strike a balance between high subject fidelity and accurate interaction patterns between humans and diverse objects, especially when objects represent abstract concepts such as logos. Second, while intra-subject references (e.g., OCR maps, multi-view inputs) are expected to enhance subject fidelity, most existing works lack mechanisms to understand such latent correspondence. To address both challenges, we propose HOMIE, an HOCVP framework that tackles both inter- and intra-subject input settings in a unified manner. Compared to previous approaches, HOMIE proposes a better MLLM integration strategy to extract knowledge of reference-level relationships without compromising the controllability of text encoders or incurring costly re-alignment. Specifically, we introduce global multimodal guidance within self-attention to better align MLLM-derived semantic features with VAE tokens. Furthermore, we propose modality-reference embedding to differentiate tokens from MLLM features and VAE tokens and associate intra-subject reference image tokens. Extensive experiments validate that our method achieves state-of-the-art performance across various HOCVP tasks. Project Page: https://yiyangcai.github.io/homie-page.github.io/",
-      "url": "https://arxiv.org/abs/2607.18217v1",
-      "pdf": "https://arxiv.org/pdf/2607.18217v1",
-      "categories": [
-        "cs.CV"
-      ],
-      "authors": [
-        "Yiyang Cai",
-        "Nan Chen",
-        "Rongchang Xie",
-        "Junwen Pan",
-        "Chunyang Jiang"
-      ],
-      "all_authors": [
-        "Yiyang Cai",
-        "Nan Chen",
-        "Rongchang Xie",
-        "Junwen Pan",
-        "Chunyang Jiang",
-        "Cheng Chen",
-        "Wen Zhou",
-        "Zhenbang Sun",
-        "Wei Xue",
-        "Wenhan Luo",
-        "Yike Guo"
-      ],
-      "affiliations": [
-        {
-          "name": "Yiyang Cai",
-          "affiliations": []
-        },
-        {
-          "name": "Nan Chen",
-          "affiliations": []
-        },
-        {
-          "name": "Rongchang Xie",
-          "affiliations": []
-        },
-        {
-          "name": "Junwen Pan",
-          "affiliations": []
-        },
-        {
-          "name": "Chunyang Jiang",
-          "affiliations": []
-        },
-        {
-          "name": "Cheng Chen",
-          "affiliations": []
-        },
-        {
-          "name": "Wen Zhou",
-          "affiliations": []
-        },
-        {
-          "name": "Zhenbang Sun",
-          "affiliations": []
-        },
-        {
-          "name": "Wei Xue",
-          "affiliations": []
-        },
-        {
-          "name": "Wenhan Luo",
-          "affiliations": []
-        },
-        {
-          "name": "Yike Guo",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-07-20",
-      "matched_topics": [
-        "多模态",
-        "大模型"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "现有的人-物中心视频个性化方法难以平衡高主体保真度与准确的人-物交互模式，尤其在处理抽象概念（如logo）时，且缺乏理解隐式对应关系（如OCR图、多视角输入）的机制。",
-        "method": "提出HOMIE框架，通过全局多模态引导在自注意力中对齐MLLM语义特征与VAE令牌，并引入模态参考嵌入来区分MLLM特征与VAE令牌并关联主体内参考图像令牌。",
-        "result": "在多种人-物中心视频个性化任务中达到最先进性能，有效提升了主体保真度和交互准确性。",
-        "novelty": "统一处理主体间和主体内输入设置，通过改进的MLLM集成策略提取参考级关系知识而不损害文本编码器可控性或导致昂贵重对齐。",
-        "relevance": "推动了视频生成中多模态理解和个性化控制的融合，对世界模型、多模态大模型和具身智能中的交互建模有重要参考价值。",
-        "org": "未明确标注机构，可能来自学术研究团队",
-        "score": 8
-      },
-      "identified_orgs": []
-    },
-    {
-      "title": "FlashRT: Agent Harness for Guiding Agents to Deploy Real-Time Multimodal Applications",
-      "abstract": "Real-time multimodal applications, including voice agents and interactive video generation, compose heterogeneous models into pipelines whose efficient deployment requires application-specific decisions about placement, streaming, and intra-model parallelism. Existing serving systems and auto-parallelism compilers commit to limited transformations and fixed workload assumptions, so achieving high performance on a new application requires hand-crafting an efficient implementation. We present FlashRT, an agent harness that guides coding agents to lift simple developer-written reference implementations into optimized multi-GPU deployments that flexibly weigh target metrics like latency and throughput. Using a new chain-of-program paradigm, FlashRT directs a generic coding agent through a multi-pass transformation process where an agent transforms the reference into an intermediate representation (IR) to capture data dependencies and persistent-state scopes, validates this IR via a sequential interpreter, and performs static analyses to identify candidate transformations. Then, the agent iteratively implements, verifies, and benchmarks each candidate under a measurement-gated optimization loop to produce effective deployments that span different hardware budgets. Across various applications, including video world models and multimodal LLMs, FlashRT converts reference implementations into highly efficient deployments, delivering up to ~70x latency reduction and 2.8x throughput improvement on NVIDIA B200 GPUs. On AMD MI355X GPUs, FlashRT matches the peak latency reduction while increasing peak throughput improvement to 3.6x, demonstrating that agent-driven optimization can be more scalable on platforms with less mature expert optimization. In fact, for Qwen3-Omni text-to-audio inference, FlashRT reduces response latency by 65% compared to the expert vLLM-Omni implementation on AMD MI355X.",
-      "url": "https://arxiv.org/abs/2607.18171v1",
-      "pdf": "https://arxiv.org/pdf/2607.18171v1",
-      "categories": [
-        "cs.LG"
-      ],
-      "authors": [
-        "Krish Agarwal",
-        "Zhuoming Chen",
-        "Yanyuan Qin",
-        "Zhenyu Gu",
-        "Atri Rudra"
-      ],
-      "all_authors": [
-        "Krish Agarwal",
-        "Zhuoming Chen",
-        "Yanyuan Qin",
-        "Zhenyu Gu",
-        "Atri Rudra",
-        "Beidi Chen"
-      ],
-      "affiliations": [
-        {
-          "name": "Krish Agarwal",
-          "affiliations": []
-        },
-        {
-          "name": "Zhuoming Chen",
-          "affiliations": []
-        },
-        {
-          "name": "Yanyuan Qin",
-          "affiliations": []
-        },
-        {
-          "name": "Zhenyu Gu",
-          "affiliations": []
-        },
-        {
-          "name": "Atri Rudra",
-          "affiliations": []
-        },
-        {
-          "name": "Beidi Chen",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-07-20",
-      "matched_topics": [
-        "世界模型",
-        "多模态",
-        "大模型"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "实时多模态应用（如语音代理和交互式视频生成）的高效部署需要针对特定应用进行放置、流式和模型内并行等决策，但现有系统无法灵活适应新应用，导致需要手工优化。",
-        "method": "提出FlashRT，一种代理框架，通过链式编程范式引导编码代理将简单的参考实现转换为优化的多GPU部署：代理将参考代码转换为中间表示（IR）以捕获数据依赖和持久状态，通过顺序解释器验证IR，进行静态分析识别候选变换，然后在测量门控优化循环中迭代实现、验证和基准测试每个候选方案。",
-        "result": "在NVIDIA B200 GPU上实现高达70倍延迟降低和2.8倍吞吐量提升；在AMD MI355X GPU上实现3.6倍吞吐量提升，且对Qwen3-Omni文本到音频推理的响应延迟比专家vLLM-Omni实现降低65%。",
-        "novelty": "首次提出利用编码代理通过多阶段变换和测量门控优化循环自动优化实时多模态应用的部署，无需手工专家知识。",
-        "relevance": "为AI系统部署自动化提供了新范式，尤其对多模态大模型和世界模型等新兴应用的实用化具有重要推动作用。",
-        "org": "未明确机构，作者可能来自学术界或工业界（如NVIDIA相关）。",
-        "score": 8
-      },
-      "identified_orgs": [
-        "NVIDIA"
-      ]
-    },
-    {
-      "title": "Robust Multimodal Dynamic Object Segmentation",
-      "abstract": "Dynamic object segmentation plays a critical role in many visual applications such as static scene reconstruction from dynamic videos. However, existing optical flow-based methods fail to ensure consistent static/dynamic segmentation along object boundaries, while 3D reconstruction-based approaches are highly sensitive to reconstruction errors. To address these limitations, we present a dynamic object segmentation framework that can generate both precise and complete dynamic masks by integrating multimodal cues including 2D point tracks, 3D reconstruction, and semantic information. We design a network combining Transformer architectures with feature clustering aggregation modules to perform static/dynamic classification of multimodal feature trajectories. It enables the model to adaptively determine which type of feature should dominate based on the characteristics of each scene, while also mitigating the impact of feature degradation. Additionally, we introduce a novel point-query-based SAM post-processing method capable of handling multiple objects within a single mask. Extensive experiments demonstrate that our approach achieves state-of-the-art performance in both dynamic object segmentation and static scene reconstruction tasks.",
-      "url": "https://arxiv.org/abs/2607.18153v1",
-      "pdf": "https://arxiv.org/pdf/2607.18153v1",
-      "categories": [
-        "cs.CV"
-      ],
-      "authors": [
-        "Zhe Xin",
-        "Hanzhi Chang",
-        "Penghui Huang",
-        "Yinian Mao",
-        "Guoquan Huang"
-      ],
-      "all_authors": [
-        "Zhe Xin",
-        "Hanzhi Chang",
-        "Penghui Huang",
-        "Yinian Mao",
-        "Guoquan Huang"
-      ],
-      "affiliations": [
-        {
-          "name": "Zhe Xin",
-          "affiliations": []
-        },
-        {
-          "name": "Hanzhi Chang",
-          "affiliations": []
-        },
-        {
-          "name": "Penghui Huang",
-          "affiliations": []
-        },
-        {
-          "name": "Yinian Mao",
-          "affiliations": []
-        },
-        {
-          "name": "Guoquan Huang",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-07-20",
-      "matched_topics": [
-        "多模态"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "现有动态物体分割方法中，光流法在物体边界处无法保证一致的静态/动态分割，而3D重建方法对重建误差高度敏感。",
-        "method": "提出一个融合2D点轨迹、3D重建和语义信息的多模态动态物体分割框架，设计结合Transformer和特征聚类聚合模块的网络进行静态/动态分类，并引入基于点查询的SAM后处理方法处理多物体掩码。",
-        "result": "在动态物体分割和静态场景重建任务上均达到最先进性能。",
-        "novelty": "首次将多模态特征轨迹（2D点轨迹、3D重建、语义）与Transformer及特征聚类聚合相结合，实现自适应特征主导和抗退化能力。",
-        "relevance": "提升了动态场景下视觉应用的鲁棒性，对世界模型、多模态感知和具身智能中的环境理解有重要推动作用。",
-        "org": "未明确识别，作者无机构信息",
-        "score": 8
-      },
-      "identified_orgs": []
-    },
-    {
-      "title": "O-VAD: Industrial Video Anomaly Detection through Object-Centric Tracking and Reasoning",
-      "abstract": "Industrial Video Anomaly Detection (IVAD) aims to identify anomalous objects and events in an industrial process, which is crucial for modern manufacturing and quality control systems. Existing VLM-based anomaly reasoning methods are capable of detecting open-ended anomalies in general domains. However, their performance declines in industrial settings characterized by intricate object transformations, strict physics, and procedural constraints. To tackle the complexity of such interaction-intensive detection, we introduce a training-free agentic framework for anomaly detection free of domain-specific knowledge, emphasizing object state evolution like humans inspectors. It is designed to track spatial-temporal dynamics and underlying transformations of detected objects over time, and then reason over the object-wise temporal state trajectories to identify abnormal objects in grounded frames. Our method overcomes limitations of prior approaches that rely on retraining on normal clips or injecting domain knowledge as context for test-time inference. Extensive experiments on three IVAD datasets demonstrate that our method outperforms frontier VLMs, agentic frameworks, and traditional VAD methods fine-tuned on the respective datasets, while providing interpretable reports over anomaly processes and types.",
-      "url": "https://arxiv.org/abs/2607.18142v1",
-      "pdf": "https://arxiv.org/pdf/2607.18142v1",
-      "categories": [
-        "cs.CV",
-        "cs.AI",
-        "cs.CL",
-        "cs.MA"
-      ],
-      "authors": [
-        "Mei Yuan",
-        "Qi Long",
-        "Qifeng Wu",
-        "Zhenyang Li",
-        "Yizhou Zhao"
-      ],
-      "all_authors": [
-        "Mei Yuan",
-        "Qi Long",
-        "Qifeng Wu",
-        "Zhenyang Li",
-        "Yizhou Zhao",
-        "Lei Wang",
-        "Yang Liu",
-        "Min Xu"
-      ],
-      "affiliations": [
-        {
-          "name": "Mei Yuan",
-          "affiliations": []
-        },
-        {
-          "name": "Qi Long",
-          "affiliations": []
-        },
-        {
-          "name": "Qifeng Wu",
-          "affiliations": []
-        },
-        {
-          "name": "Zhenyang Li",
-          "affiliations": []
-        },
-        {
-          "name": "Yizhou Zhao",
-          "affiliations": []
-        },
-        {
-          "name": "Lei Wang",
-          "affiliations": []
-        },
-        {
-          "name": "Yang Liu",
-          "affiliations": []
-        },
-        {
-          "name": "Min Xu",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-07-20",
-      "matched_topics": [
-        "多模态",
-        "Agent"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "工业视频异常检测中，现有基于视觉语言模型的推理方法在复杂工业场景下性能下降，难以处理物体状态演变和严格的物理与流程约束。",
-        "method": "提出一种无需训练的智能体框架，通过以物体为中心的时空轨迹追踪和状态推理，模拟人类检查员的观察方式，检测异常物体和事件。",
-        "result": "在三个工业视频异常检测数据集上，该方法超越了前沿视觉语言模型、智能体框架和传统视频异常检测方法，并提供了可解释的异常报告。",
-        "novelty": "首次引入无需领域知识、无需重新训练的训练自由智能体框架，通过物体级状态演化追踪和推理实现工业异常检测。",
-        "relevance": "为工业场景下的开放集异常检测提供了高效、可解释的新范式，推动了视觉语言模型在具身智能和自动化质检中的应用。",
-        "org": "未明确机构，可能来自学术机构（作者无机构信息）",
-        "score": 8
-      },
-      "identified_orgs": []
-    },
-    {
-      "title": "Sparse Evidence Can Suffice: Agentic Evidence Seeking for Multimodal Video Misinformation Detection",
-      "abstract": "Multimodal video misinformation detection is commonly formulated as a holistic video-understanding task, where the entire video and its associated content are processed and judged in a single pass. However, real-world misinformation often exhibits a sparse and compositional evidence structure: a reliable decision may depend on only a few coupled clues, while most video content contributes limited additional information. Exhaustive multimodal reasoning may therefore introduce substantial redundancy and obscure decisive evidence. This motivates decoupling evidence acquisition from verification: first identifying sparse, decision-relevant clues and then judging veracity based on the acquired evidence. Accordingly, we propose SIEVE, a framework for Sparse Interactive Evidence Verification via Extraction in multimodal video misinformation detection. An evidence-seeking agent actively explores the available multimodal evidence and constructs a compact evidence package, which is then used by a verifier to determine veracity. The agent is trained with supervised evidence-seeking trajectories and an evidence-aware reinforcement learning objective that promotes informative evidence acquisition while discouraging unnecessary or invalid interactions. Experiments on multiple video misinformation benchmarks show that SIEVE consistently outperforms the evaluated baselines and supports reliable verification using compact evidence packages. Moreover, the resulting acquisition process provides an explicit and inspectable evidence trail, improving the transparency and groundedness of multimodal misinformation detection.",
-      "url": "https://arxiv.org/abs/2607.18080v1",
-      "pdf": "https://arxiv.org/pdf/2607.18080v1",
-      "categories": [
-        "cs.CV",
-        "cs.AI"
-      ],
-      "authors": [
-        "Haochen Zhao",
-        "Yongxiu Xu",
-        "Xinkui Lin",
-        "Dong Xie",
-        "Jiarui Lu"
-      ],
-      "all_authors": [
-        "Haochen Zhao",
-        "Yongxiu Xu",
-        "Xinkui Lin",
-        "Dong Xie",
-        "Jiarui Lu",
-        "Yuqi Qian",
-        "Yubin Wang",
-        "Hongbo Xu",
-        "Gaopeng Gou"
-      ],
-      "affiliations": [
-        {
-          "name": "Haochen Zhao",
-          "affiliations": []
-        },
-        {
-          "name": "Yongxiu Xu",
-          "affiliations": []
-        },
-        {
-          "name": "Xinkui Lin",
-          "affiliations": []
-        },
-        {
-          "name": "Dong Xie",
-          "affiliations": []
-        },
-        {
-          "name": "Jiarui Lu",
-          "affiliations": []
-        },
-        {
-          "name": "Yuqi Qian",
-          "affiliations": []
-        },
-        {
-          "name": "Yubin Wang",
-          "affiliations": []
-        },
-        {
-          "name": "Hongbo Xu",
-          "affiliations": []
-        },
-        {
-          "name": "Gaopeng Gou",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-07-20",
-      "matched_topics": [
-        "多模态",
-        "Agent"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "多模态视频虚假信息检测中，现有方法通常对整个视频进行一次性全面处理，但真实虚假信息往往只依赖少量耦合线索，导致冗余计算和关键证据被掩盖。",
-        "method": "提出SIEVE框架，将证据获取与验证解耦：一个证据搜索智能体主动探索多模态证据并构建紧凑证据包，然后由验证器判断真实性；智能体通过监督式证据搜索轨迹和证据感知强化学习目标进行训练。",
-        "result": "在多个视频虚假信息基准测试上，SIEVE持续优于基线方法，且能使用紧凑证据包支持可靠验证，同时提供可检查的证据追踪过程。",
-        "novelty": "首次将证据获取与验证解耦，通过智能体主动搜索稀疏关键证据来提升多模态虚假信息检测的效率和可解释性。",
-        "relevance": "为多模态虚假信息检测提供了一种高效、可解释的新范式，对提升AI系统在信息验证中的可信度和透明度有重要意义。",
-        "org": "未明确标注机构，作者可能来自中国高校或研究机构",
-        "score": 8
-      },
-      "identified_orgs": []
-    },
-    {
-      "title": "RoboHarness: Memory-Driven Orchestration of Heterogeneous Robot Policies for Long-Horizon Planning",
-      "abstract": "Long-horizon robotic tasks require diverse capabilities that no single policy can reliably provide. Heterogeneous policies offer complementary strengths, but orchestrating them requires reasoning over uncertain capability boundaries and cross-policy distribution mismatch, which are largely overlooked by existing planning methods built on homogeneous, predefined skills with fixed applicability. We propose RoboHarness, a unified framework that encapsulates independently developed robot control systems as reusable agentic skills. Although instantiated in this work with VLAs, RL policies, and task-and-motion planning (TAMP) systems, RoboHarness is designed as a general framework compatible with a broader range of robot policies, such as navigation policies, model predictive controllers, and world-action models. RoboHarness uses multi-modal execution memory and online evidence to characterize policy capability boundaries for capability-aware decomposition and routing. To stabilize policy handoffs, its Memory Bridge retrieves execution trajectories associated with the next policy, estimates its in-distribution state region, and guides the robot toward that region without joint policy retraining. Extensive experiments on three public benchmarks, 500 customized tasks, and 135 real-robot experiments demonstrate effective capability-aware routing and stable policy orchestration, yielding substantial improvements in zero-shot long-horizon planning and out-of-distribution robustness.",
-      "url": "https://arxiv.org/abs/2607.18060v1",
-      "pdf": "https://arxiv.org/pdf/2607.18060v1",
-      "categories": [
-        "cs.RO"
-      ],
-      "authors": [
-        "Jinbang Huang",
-        "Yuanzhao Hu",
-        "Zhiyuan Li",
-        "Ran Qi",
-        "Yixin Xiao"
-      ],
-      "all_authors": [
-        "Jinbang Huang",
-        "Yuanzhao Hu",
-        "Zhiyuan Li",
-        "Ran Qi",
-        "Yixin Xiao",
-        "Zhanguang Zhang",
-        "Mark Coates",
-        "Tongtong Cao",
-        "Yingxue Zhang"
-      ],
-      "affiliations": [
-        {
-          "name": "Jinbang Huang",
-          "affiliations": []
-        },
-        {
-          "name": "Yuanzhao Hu",
-          "affiliations": []
-        },
-        {
-          "name": "Zhiyuan Li",
-          "affiliations": []
-        },
-        {
-          "name": "Ran Qi",
-          "affiliations": []
-        },
-        {
-          "name": "Yixin Xiao",
-          "affiliations": []
-        },
-        {
-          "name": "Zhanguang Zhang",
-          "affiliations": []
-        },
-        {
-          "name": "Mark Coates",
-          "affiliations": []
-        },
-        {
-          "name": "Tongtong Cao",
-          "affiliations": []
-        },
-        {
-          "name": "Yingxue Zhang",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-07-20",
-      "matched_topics": [
-        "多模态",
-        "Agent"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "现有机器人长时域规划方法依赖同质化、预定义技能，忽略了异构策略间不确定的能力边界和分布不匹配问题，导致无法有效编排异构策略。",
-        "method": "提出RoboHarness框架，将异构策略封装为可复用智能体技能，利用多模态执行记忆和在线证据刻画策略能力边界，并通过Memory Bridge检索下一策略的执行轨迹、估计其分布内状态区域，引导机器人进入该区域以稳定策略切换。",
-        "result": "在三个公开基准、500个定制任务和135个真实机器人实验中，RoboHarness实现了有效的能力感知路由和稳定策略编排，显著提升了零样本长时域规划和分布外鲁棒性。",
-        "novelty": "首次提出基于多模态执行记忆的异构策略能力边界刻画与分布对齐方法，无需联合重训练即可实现稳定策略切换。",
-        "relevance": "为机器人长时域规划提供了一种通用、可扩展的异构策略编排范式，推动了多模态大模型、强化学习与传统规划系统的融合应用。",
-        "org": "未明确标注机构，但根据作者姓名推测可能来自中国高校或研究机构。",
-        "score": 8
-      },
-      "identified_orgs": []
-    },
-    {
-      "title": "SEE: Structure-aware Exploring \\& Exploiting for Long-horizon GUI Agent Trajectory Synthesis",
-      "abstract": "Graphical User Interface (GUI) agents powered by vision-language models hold promise for automating real-world mobile tasks. However, progress is limited by the lack of high-coverage, long-horizon interaction trajectories collected from element-rich and rapidly evolving apps. Existing pipelines often rely on costly human demonstrations or on-policy framework, which tends to over-sample common flows while missing rare transitions and complex multi-step procedures. To address this problem, we propose SEE, a two-stage data synthesis framework consisting of (i) an efficient exploration stage that builds an explicit UI transition graph over screens and elements, and (ii) a graph-based synthesis stage that composes diverse multi-step trajectories via planning and controlled sampling. This design yields reproducible and explainable data generation, while explicitly preventing spurious cycles and enabling long-horizon composition. Across multiple real-world apps, SEE produces trajectories with an average length of 14.8 steps while avoiding spurious loops, and agents fine-tuned on SEE achieve improved task success and generalization to unseen screens. We will publicly release our synthesis code and dataset.",
-      "url": "https://arxiv.org/abs/2607.18046v1",
-      "pdf": "https://arxiv.org/pdf/2607.18046v1",
-      "categories": [
-        "cs.LG"
-      ],
-      "authors": [
-        "Zhuohang Fan",
-        "Beichen Zhang",
-        "Yuanfa Li",
-        "Changqiao Wu",
-        "Wei Liu"
-      ],
-      "all_authors": [
-        "Zhuohang Fan",
-        "Beichen Zhang",
-        "Yuanfa Li",
-        "Changqiao Wu",
-        "Wei Liu",
-        "Jian Luan",
-        "Weigang Zhang"
-      ],
-      "affiliations": [
-        {
-          "name": "Zhuohang Fan",
-          "affiliations": []
-        },
-        {
-          "name": "Beichen Zhang",
-          "affiliations": []
-        },
-        {
-          "name": "Yuanfa Li",
-          "affiliations": []
-        },
-        {
-          "name": "Changqiao Wu",
-          "affiliations": []
-        },
-        {
-          "name": "Wei Liu",
-          "affiliations": []
-        },
-        {
-          "name": "Jian Luan",
-          "affiliations": []
-        },
-        {
-          "name": "Weigang Zhang",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-07-20",
-      "matched_topics": [
-        "多模态"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "现有GUI智能体数据合成方法依赖昂贵的人工演示或在线策略，导致样本覆盖不全、长程轨迹缺失，难以高效生成高质量的长程交互数据。",
-        "method": "提出SEE两阶段框架：先通过高效探索构建显式的UI转换图，再基于图进行规划与受控采样，合成多样化的多步轨迹，避免虚假循环并支持长程组合。",
-        "result": "在多个真实应用中生成平均14.8步的轨迹且无虚假循环，微调后的智能体在任务成功率和未见屏幕泛化上均有提升。",
-        "novelty": "首次将显式UI转换图引入GUI智能体数据合成，实现可复现、可解释的轨迹生成，并有效解决长程轨迹中的循环和覆盖问题。",
-        "relevance": "为GUI智能体提供低成本、高覆盖的数据合成方法，推动视觉语言模型在真实移动任务中的自动化应用。",
-        "org": "未明确识别机构",
-        "score": 8
-      },
-      "identified_orgs": []
-    },
-    {
-      "title": "Closing the Loop in Humanoid VLA: Persistent 3D Object Tokens for Verifiable Loco-Manipulation",
-      "abstract": "Vision-language-action policies are a promising foundation for general robot control, but long-horizon humanoid loco-manipulation requires the robot to treat task objects as persistent physical entities across movement, contact, occlusion, and recovery. We study this problem as object-state divergence: the object state used to condition a whole-body action can differ from the state used to decide whether the action achieved the intended physical relation. We propose \\emph{Persistent Object Tokenization} (POT), which maintains role-indexed 3D object records from RGB-D observations and converts them into object tokens for a whole-body action expert. Instantiated as \\emph{POT-VLA}, the same object records condition action generation and support geometric predicate checks, yielding a closed-loop execution system in which object state is both actionable and verifiable. On a Unitree G1, POT-VLA improves a matched direct GR00T-N1.7 baseline from 39/80 to 71/80 successes over eight real-world task families. In an external Being-0-aligned reference, POT-VLA achieves 44/50 successes on aligned service tasks, compared with the 37/50 success reported by the Being-0 paper. The largest gains occur on tasks requiring maintained 3D relations, suggesting that persistent object-centered state is a useful abstraction for verifiable humanoid VLA execution.",
-      "url": "https://arxiv.org/abs/2607.18016v1",
-      "pdf": "https://arxiv.org/pdf/2607.18016v1",
-      "categories": [
-        "cs.RO"
-      ],
-      "authors": [
-        "Peng Ren",
-        "Haoyang Ge",
-        "Jiang Zhao",
-        "Cong Huang",
-        "Yukun Shi"
-      ],
-      "all_authors": [
-        "Peng Ren",
-        "Haoyang Ge",
-        "Jiang Zhao",
-        "Cong Huang",
-        "Yukun Shi",
-        "Pei Chi",
-        "Kai Chen"
-      ],
-      "affiliations": [
-        {
-          "name": "Peng Ren",
-          "affiliations": []
-        },
-        {
-          "name": "Haoyang Ge",
-          "affiliations": []
-        },
-        {
-          "name": "Jiang Zhao",
-          "affiliations": []
-        },
-        {
-          "name": "Cong Huang",
-          "affiliations": []
-        },
-        {
-          "name": "Yukun Shi",
-          "affiliations": []
-        },
-        {
-          "name": "Pei Chi",
-          "affiliations": []
-        },
-        {
-          "name": "Kai Chen",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-07-20",
-      "matched_topics": [
-        "多模态"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "长时程人形机器人移动操作任务中，用于条件化全身动作的对象状态与用于验证动作是否达成预期物理关系的状态之间存在不一致，导致对象状态发散问题。",
-        "method": "提出持久对象标记化（POT），从RGB-D观测中维护角色索引的3D对象记录，并将其转换为对象标记供全身动作专家使用；实例化为POT-VLA系统，同一对象记录同时用于动作生成和几何谓词检查，形成闭环执行。",
-        "result": "在Unitree G1上，POT-VLA在8个真实世界任务族中将匹配的GR00T-N1.7基线从39/80提升至71/80成功率；在外部Being-0对齐参考任务上达到44/50，优于报告的37/50。",
-        "novelty": "提出以持久对象为中心的3D标记化作为可验证人形VLA执行的核心抽象，实现动作条件化与验证的统一。",
-        "relevance": "为多模态大模型在人形机器人具身智能中的闭环控制提供了可验证的状态表示范式，推动了VLA策略在长时程操作中的实用化。",
-        "org": "未明确标注机构，作者可能来自中国研究机构",
-        "score": 8
-      },
-      "identified_orgs": []
-    },
-    {
-      "title": "SAGE: Subgoal-Conditioned Action Generation for Latent World Model Planning",
-      "abstract": "Latent world models have emerged as a powerful planning paradigm by learning action-conditioned predictive dynamics and using them as internal simulators to imagine and evaluate candidate action sequences. However, as the planning horizon grows, performance becomes increasingly constrained by proposal quality: a fixed candidate budget must search an exponentially larger action space, making it difficult to expose the world model to high-quality candidate futures for evaluation. In this paper, we introduce a prior-conditioned planner that replaces random proposal initialization with structured guidance. At each planning stage, a goal-conditioned generator predicts the next reachable latent subgoal for a specified duration, which is then used to condition the generation of candidate action sequences. To capture semantic information across temporal scales, we use subgoals of varying durations as priors, balancing fine-grained local control with higher-level long-horizon progress. Then the frozen world model evaluates and refines these subgoal-conditioned proposals before execution. Experiments on PushT and OGBench Cube show that coupling latent subgoal decomposition with prior-conditioned action generation substantially improves long-horizon planning while preserving strong short-horizon performance. To be specific, when the target offset is $150$, it raises PushT success from $12.7\\%$ to $64.7\\%$ and OGBench Cube success from $26.7\\%$ to $67.3\\%$.",
-      "url": "https://arxiv.org/abs/2607.17973v1",
-      "pdf": "https://arxiv.org/pdf/2607.17973v1",
-      "categories": [
-        "cs.AI"
-      ],
-      "authors": [
-        "Letian Cheng",
-        "Qi Zhang",
-        "Yisen Wang"
-      ],
-      "all_authors": [
-        "Letian Cheng",
-        "Qi Zhang",
-        "Yisen Wang"
-      ],
-      "affiliations": [
-        {
-          "name": "Letian Cheng",
-          "affiliations": []
-        },
-        {
-          "name": "Qi Zhang",
-          "affiliations": []
-        },
-        {
-          "name": "Yisen Wang",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-07-20",
-      "matched_topics": [
-        "世界模型"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "解决潜在世界模型在长时域规划中因固定候选动作预算无法有效探索指数级增长的动作空间，导致性能受限的问题。",
-        "method": "提出一种基于子目标条件的规划器，通过目标条件生成器预测可达到的潜在子目标，并以此作为先验条件生成候选动作序列，利用不同时域长度的子目标平衡局部控制与长期进展。",
-        "result": "在PushT和OGBench Cube任务上，长时域规划成功率显著提升（如目标偏移150时，PushT从12.7%升至64.7%，OGBench Cube从26.7%升至67.3%），同时保持短时域性能。",
-        "novelty": "将潜在子目标分解与先验条件动作生成相结合，替代随机动作初始化，实现结构化规划引导。",
-        "relevance": "为潜在世界模型在长时域复杂任务中的规划提供高效方法，推动具身智能和机器人控制领域发展。",
-        "org": "未明确识别机构",
-        "score": 8
-      },
-      "identified_orgs": []
-    },
-    {
-      "title": "ST-Veto: Spatio-Temporal Token Veto for Diffusion MLLMs via Taylor Prediction and Visual Grounding",
-      "abstract": "Vision Language Models (VLMs) achieve strong reasoning with Chain-of-Thought (CoT) prompting but incur high sequential-generation cost, error accumulation, and limited self-correction. Diffusion Multimodal Large Language Models (dMLLMs) unmask tokens in an order-agnostic process, improving efficiency and enabling iterative refinement, yet their reasoning and how to enhance it remain underexplored. We propose a training-free method, Spatio-Temporal Token Veto (ST-Veto), which leverages the ability to observe all token positions at each diffusion step. Rather than relying only on current-step confidence, ST-Veto vetoes temporally unstable tokens via second-order Taylor prediction of confidence dynamics and filters weakly grounded tokens using image-attention mass, swapping them with safer candidates. Across multiple dMLLMs and multimodal reasoning benchmarks, ST-Veto consistently outperforms standard decoding policies and prior VLM reasoning methods, improving accuracy by up to 9% with no additional training or generation cost. Analyses show that ST-Veto steers generation toward higher-confidence, better-grounded paths.",
-      "url": "https://arxiv.org/abs/2607.17884v1",
-      "pdf": "https://arxiv.org/pdf/2607.17884v1",
-      "categories": [
-        "cs.AI"
-      ],
-      "authors": [
-        "Keuntae Kim",
-        "Beomseok Lee",
-        "Hyunwoo Kim",
-        "Yong Suk Choi"
-      ],
-      "all_authors": [
-        "Keuntae Kim",
-        "Beomseok Lee",
-        "Hyunwoo Kim",
-        "Yong Suk Choi"
-      ],
-      "affiliations": [
-        {
-          "name": "Keuntae Kim",
-          "affiliations": []
-        },
-        {
-          "name": "Beomseok Lee",
-          "affiliations": []
-        },
-        {
-          "name": "Hyunwoo Kim",
-          "affiliations": []
-        },
-        {
-          "name": "Yong Suk Choi",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-07-20",
-      "matched_topics": [
-        "多模态",
-        "大模型"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "扩散多模态大语言模型（dMLLMs）在推理过程中存在生成路径不稳定、置信度低以及视觉定位不准确的问题，导致推理质量受限。",
-        "method": "提出一种无需训练的方法ST-Veto，利用泰勒预测对每个扩散步骤中时间上不稳定的令牌进行否决，并通过图像注意力质量过滤弱定位令牌，将其替换为更安全的候选令牌。",
-        "result": "在多个dMLLM和多模态推理基准上，ST-Veto在无额外训练或生成成本下，将准确率提升高达9%，并引导生成走向更高置信度和更好定位的路径。",
-        "novelty": "首次在扩散MLLM中利用二阶泰勒预测和视觉定位实现令牌级时空否决，无需训练即可提升推理质量。",
-        "relevance": "为扩散多模态大语言模型提供了一种高效、即插即用的推理增强方法，推动了多模态推理和世界模型的发展。",
-        "org": "未明确识别具体机构",
-        "score": 8
-      },
-      "identified_orgs": []
-    },
-    {
-      "title": "PRiSM: Prototype Regularization for Few-Shot VLMs",
-      "abstract": "Training-free few-shot adaptation methods have gained significant attention recently in the context of Vision-language Models (VLMs). Yet, current benchmarks rely on strong assumptions about the statistics of the adaptation data, e.g., class balance. We question these simplifying assumptions and introduce a more realistic benchmark that varies both the levels of class balance and the effective number of classes in few-shot tasks via Dirichlet sampling. Surprisingly, under our setting, we observe substantial drops in the performances of state-of-the-art methods, more so when the number of labeled samples increases. To mitigate this, we introduce PRiSM, a class-prototype regularization that can be deployed as a plug and play module on top of any existing baseline method, significantly improving performances. Our method optimizes a novel multi-term loss, which includes a regularizer maximizing inter-class pairwise distances, along with additional terms promoting support-feature alignment and fidelity to the baseline prototypes. Furthermore, we introduce an effective and computationally efficient block Majorize-Minimize optimizer for our objective. More specifically, we derive a valid blockwise Lipschitz constant (i.e., a bound on the Hessian's spectral norm), which can be computed efficiently via the Gershgorin circle theorem. Extensive experiments show that PRiSM improves several training-free baselines, with large gains when dealing with severe class imbalance and high numbers of classes.",
-      "url": "https://arxiv.org/abs/2607.17820v1",
-      "pdf": "https://arxiv.org/pdf/2607.17820v1",
-      "categories": [
-        "cs.CV"
-      ],
-      "authors": [
-        "Ghassen Baklouti",
-        "Omprakash Chakraborty",
-        "Jose Dolz",
-        "Ismail Ben Ayed"
-      ],
-      "all_authors": [
-        "Ghassen Baklouti",
-        "Omprakash Chakraborty",
-        "Jose Dolz",
-        "Ismail Ben Ayed"
-      ],
-      "affiliations": [
-        {
-          "name": "Ghassen Baklouti",
-          "affiliations": []
-        },
-        {
-          "name": "Omprakash Chakraborty",
-          "affiliations": []
-        },
-        {
-          "name": "Jose Dolz",
-          "affiliations": []
-        },
-        {
-          "name": "Ismail Ben Ayed",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-07-20",
-      "matched_topics": [
-        "多模态"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "现有少样本视觉语言模型（VLM）的免训练适应方法在类不平衡和类别数量变化时性能显著下降，且现有基准测试假设过于简化。",
-        "method": "提出PRiSM，一种类原型正则化方法，通过优化包含最大化类间距离、支持特征对齐和基线原型保真度的多目标损失函数，并采用基于Gershgorin圆定理的高效块Majorize-Minimize优化器。",
-        "result": "PRiSM作为即插即用模块，在多个免训练基线上显著提升性能，尤其在严重类不平衡和高类别数场景下效果显著。",
-        "novelty": "首次针对少样本VLM的类不平衡问题提出原型正则化，并引入高效块优化器。",
-        "relevance": "提升了VLM在现实少样本场景下的鲁棒性，推动免训练适应方法向更实际的应用发展。",
-        "org": "未明确标注机构，但作者可能来自学术机构（如大学或研究所）。",
-        "score": 8
-      },
-      "identified_orgs": []
+      }
     },
     {
       "title": "Simple Domain Generalization for Strong Pixel-Level Image Tampering Detection in Modern VLMs",
@@ -1146,18 +531,996 @@
       ],
       "priority": 1,
       "ai_summary": {
-        "problem": "现代视觉语言模型（VLM）生成的图像在跨模型和分布外场景下，像素级篡改检测的鲁棒性不足。",
-        "method": "提出一个简单的域泛化训练框架，包含两个策略：平衡小批量采样方案防止优化偏差，以及后期注入策略先在基础数据上训练再暴露于少量新VLM数据以提升适应性。",
-        "result": "在多个OOD VLM（如GPT-Images-2.0、Gemini-3.1等）上，平均gIoU和cIoU相对提升26.1%和26.8%，显著超越先前最先进方法PIXAR。",
-        "novelty": "通过平衡采样和后期注入的简单组合，实现了无需复杂设计的强域泛化篡改检测。",
-        "relevance": "为VLM时代图像安全检测提供了实用且鲁棒的基线方法，推动多模态内容真实性验证。",
-        "org": "未明确标注机构，但代码托管于VILA-Lab（推测为学术实验室）",
-        "score": 7
+        "problem": "现代视觉语言模型（VLM）生成的图像篡改难以检测，尤其在跨模型和分布外场景下，现有方法鲁棒性不足。",
+        "method": "提出一个域泛化训练框架，包含平衡小批量采样策略（避免偏向伪造伪影或干净图像先验）和延迟注入策略（先在大型基础数据上训练至稳定收敛，再暴露于少量新兴VLM分布数据）。",
+        "result": "在GPT-Images-2.0、Gemini-3.1等OOD VLM上，平均gIoU和cIoU相对提升26.1%和26.8%，显著优于先前最先进方法PIXAR。",
+        "novelty": "结合平衡采样与延迟注入的简单策略，在不增加复杂性的情况下大幅提升像素级篡改检测的域泛化能力。",
+        "relevance": "为现代VLM图像篡改检测提供了实用且鲁棒的解决方案，有助于提升多模态内容安全领域中的伪造检测可靠性。",
+        "org": "未知",
+        "score": 8
       },
       "identified_orgs": [
         "Google",
         "OpenAI"
-      ]
+      ],
+      "contact_info": {
+        "emails_found": [],
+        "ai_extracted": null
+      }
+    },
+    {
+      "title": "FlowMimic: Mask-free Visual Editing and Generation with Pixel-pair Warped Flow Field for Online Video Editing Data Generation and Modality Mimicry",
+      "abstract": "In line with the prevailing direction of vision research, we explore the integration of both generation and editing capabilities for video and image modalities within a single model. Current approaches to collecting video editing data typically depend on labour-intensive, time-consuming curated procedures--involving object mask annotation, the use of error-introducing pair synthesis via I2V model and ControlNet-like guidance, and VLM-based quality filtering or refinement--and demonstrate limited task scalability. As a result, the diversity of editing tasks remains substantially narrower than that available for image editing models. We develop a pixel-pair temporal warped flow field that can directly generate corresponding video editing samples in real time from image editing samples, and we demonstrate across multiple levels of video editing tasks that a model can learn video editing using only such data. We regard the image modality as a particular form of the video modality. Accordingly, we design a modality mimic generation loss and a modality mimic editing loss to relatively align the capabilities--and thereby the output distributions--of the two modalities through mutual imitation. Moreover, language-based visual editing entails the comprehension of the editing instruction and the reference visual content, the localization of the region corresponding to that instruction within the reference visual contents, and the modification of that region alone. Existing approaches predominantly rely on external aids, such as fine-tuning an additional MLLM or explicitly supplying a mask sequence as auxiliary input during inference. In contrast, we aspire for the model to internalize this capability. To that end, we introduce sense-related tasks--for instance, referring expression segmentation--along with corresponding editing-region-aware latent-level loss and attention-level loss.",
+      "url": "https://arxiv.org/abs/2607.18227v1",
+      "pdf": "https://arxiv.org/pdf/2607.18227v1",
+      "categories": [
+        "cs.CV"
+      ],
+      "authors": [
+        "Dingyun Zhang",
+        "Lixue Gong",
+        "Wei Liu"
+      ],
+      "all_authors": [
+        "Dingyun Zhang",
+        "Lixue Gong",
+        "Wei Liu"
+      ],
+      "affiliations": [
+        {
+          "name": "Dingyun Zhang",
+          "affiliations": []
+        },
+        {
+          "name": "Lixue Gong",
+          "affiliations": []
+        },
+        {
+          "name": "Wei Liu",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-07-20",
+      "matched_topics": [
+        "多模态",
+        "大模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "当前视频编辑数据收集依赖人工掩码标注、I2V模型等复杂流程，任务多样性有限，且现有方法难以在单一模型中统一图像和视频的生成与编辑能力。",
+        "method": "提出一种像素对时间扭曲流场，可直接从图像编辑样本实时生成对应的视频编辑样本；设计模态模仿生成损失和编辑损失，通过相互模仿对齐两模态的能力分布；引入感知相关任务和编辑区域感知的潜在层与注意力层损失，使模型内化定位与编辑能力。",
+        "result": "实验表明，仅使用该数据训练，模型即可学习多级别视频编辑任务，性能达到或超越依赖外部掩码或MLLM的方法。",
+        "novelty": "无需掩码标注，通过像素对扭曲流场在线生成视频编辑数据，并通过模态模仿损失统一图像与视频的编辑能力。",
+        "relevance": "为视频编辑数据收集提供高效无掩码方案，推动多模态统一模型的发展，降低对人工标注的依赖。",
+        "org": "未识别",
+        "score": 8
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Dingyun Zhang",
+              "email": "",
+              "affiliation": "ByteDance",
+              "role": "通讯作者"
+            },
+            {
+              "name": "Lixue Gong",
+              "email": "",
+              "affiliation": "ByteDance",
+              "role": ""
+            },
+            {
+              "name": "Wei Liu",
+              "email": "",
+              "affiliation": "ByteDance",
+              "role": "项目负责人, 通讯作者"
+            }
+          ],
+          "corresponding_author": "Dingyun Zhang, Wei Liu"
+        }
+      }
+    },
+    {
+      "title": "HOMIE: Human-object Centric Video Personalization via Multimodal Intelligent Enchancement",
+      "abstract": "Human-object centric video personalization (HOCVP) is a core task within subject-driven video generation. However, existing methods suffer from two key limitations. First, most approaches focusing on inter-subject personalization still struggle to strike a balance between high subject fidelity and accurate interaction patterns between humans and diverse objects, especially when objects represent abstract concepts such as logos. Second, while intra-subject references (e.g., OCR maps, multi-view inputs) are expected to enhance subject fidelity, most existing works lack mechanisms to understand such latent correspondence. To address both challenges, we propose HOMIE, an HOCVP framework that tackles both inter- and intra-subject input settings in a unified manner. Compared to previous approaches, HOMIE proposes a better MLLM integration strategy to extract knowledge of reference-level relationships without compromising the controllability of text encoders or incurring costly re-alignment. Specifically, we introduce global multimodal guidance within self-attention to better align MLLM-derived semantic features with VAE tokens. Furthermore, we propose modality-reference embedding to differentiate tokens from MLLM features and VAE tokens and associate intra-subject reference image tokens. Extensive experiments validate that our method achieves state-of-the-art performance across various HOCVP tasks. Project Page: https://yiyangcai.github.io/homie-page.github.io/",
+      "url": "https://arxiv.org/abs/2607.18217v1",
+      "pdf": "https://arxiv.org/pdf/2607.18217v1",
+      "categories": [
+        "cs.CV"
+      ],
+      "authors": [
+        "Yiyang Cai",
+        "Nan Chen",
+        "Rongchang Xie",
+        "Junwen Pan",
+        "Chunyang Jiang"
+      ],
+      "all_authors": [
+        "Yiyang Cai",
+        "Nan Chen",
+        "Rongchang Xie",
+        "Junwen Pan",
+        "Chunyang Jiang",
+        "Cheng Chen",
+        "Wen Zhou",
+        "Zhenbang Sun",
+        "Wei Xue",
+        "Wenhan Luo",
+        "Yike Guo"
+      ],
+      "affiliations": [
+        {
+          "name": "Yiyang Cai",
+          "affiliations": []
+        },
+        {
+          "name": "Nan Chen",
+          "affiliations": []
+        },
+        {
+          "name": "Rongchang Xie",
+          "affiliations": []
+        },
+        {
+          "name": "Junwen Pan",
+          "affiliations": []
+        },
+        {
+          "name": "Chunyang Jiang",
+          "affiliations": []
+        },
+        {
+          "name": "Cheng Chen",
+          "affiliations": []
+        },
+        {
+          "name": "Wen Zhou",
+          "affiliations": []
+        },
+        {
+          "name": "Zhenbang Sun",
+          "affiliations": []
+        },
+        {
+          "name": "Wei Xue",
+          "affiliations": []
+        },
+        {
+          "name": "Wenhan Luo",
+          "affiliations": []
+        },
+        {
+          "name": "Yike Guo",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-07-20",
+      "matched_topics": [
+        "多模态",
+        "大模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "现有基于主题驱动的视频生成方法在人类与多样物体（如抽象概念logo）的交互中难以平衡主体保真度和精确交互模式，且缺乏理解潜在对应关系的机制。",
+        "method": "提出HOMIE框架，统一处理主题间和主题内输入设置：通过全局多模态引导对齐MLLM语义特征与VAE token，并引入模态参考嵌入区分MLLM特征和VAE token，关联主题内参考图像token。",
+        "result": "在多种人类-物体中心视频个性化任务上达到最先进性能，验证了方法的有效性。",
+        "novelty": "提出一种更好的MLLM集成策略，在不损害文本编码器可控性或导致昂贵重对齐的前提下提取参考级关系知识。",
+        "relevance": "推动视频生成中人类-物体交互的精准个性化，为多模态大模型在视频合成领域的应用提供新思路。",
+        "org": "未明确",
+        "score": 8
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Yiyang Cai",
+              "email": "",
+              "affiliation": "Hong Kong University of Science and Technology",
+              "role": "共同第一作者"
+            },
+            {
+              "name": "Nan Chen",
+              "email": "",
+              "affiliation": "Hong Kong University of Science and Technology",
+              "role": "共同第一作者"
+            },
+            {
+              "name": "Rongchang Xie",
+              "email": "",
+              "affiliation": "Hong Kong University of Science and Technology",
+              "role": ""
+            },
+            {
+              "name": "Junwen Pan",
+              "email": "",
+              "affiliation": "Hong Kong University of Science and Technology",
+              "role": ""
+            },
+            {
+              "name": "Chunyang Jiang",
+              "email": "",
+              "affiliation": "Hong Kong University of Science and Technology",
+              "role": ""
+            },
+            {
+              "name": "Cheng Chen",
+              "email": "",
+              "affiliation": "Hong Kong University of Science and Technology",
+              "role": ""
+            },
+            {
+              "name": "Wen Zhou",
+              "email": "",
+              "affiliation": "Hong Kong University of Science and Technology",
+              "role": ""
+            },
+            {
+              "name": "Zhenbang Sun",
+              "email": "",
+              "affiliation": "Hong Kong University of Science and Technology",
+              "role": ""
+            },
+            {
+              "name": "Wei Xue",
+              "email": "",
+              "affiliation": "Hong Kong University of Science and Technology",
+              "role": ""
+            },
+            {
+              "name": "Wenhan Luo",
+              "email": "",
+              "affiliation": "Hong Kong University of Science and Technology",
+              "role": ""
+            },
+            {
+              "name": "Yike Guo",
+              "email": "",
+              "affiliation": "Hong Kong University of Science and Technology",
+              "role": ""
+            }
+          ],
+          "corresponding_author": ""
+        }
+      }
+    },
+    {
+      "title": "Robust Multimodal Dynamic Object Segmentation",
+      "abstract": "Dynamic object segmentation plays a critical role in many visual applications such as static scene reconstruction from dynamic videos. However, existing optical flow-based methods fail to ensure consistent static/dynamic segmentation along object boundaries, while 3D reconstruction-based approaches are highly sensitive to reconstruction errors. To address these limitations, we present a dynamic object segmentation framework that can generate both precise and complete dynamic masks by integrating multimodal cues including 2D point tracks, 3D reconstruction, and semantic information. We design a network combining Transformer architectures with feature clustering aggregation modules to perform static/dynamic classification of multimodal feature trajectories. It enables the model to adaptively determine which type of feature should dominate based on the characteristics of each scene, while also mitigating the impact of feature degradation. Additionally, we introduce a novel point-query-based SAM post-processing method capable of handling multiple objects within a single mask. Extensive experiments demonstrate that our approach achieves state-of-the-art performance in both dynamic object segmentation and static scene reconstruction tasks.",
+      "url": "https://arxiv.org/abs/2607.18153v1",
+      "pdf": "https://arxiv.org/pdf/2607.18153v1",
+      "categories": [
+        "cs.CV"
+      ],
+      "authors": [
+        "Zhe Xin",
+        "Hanzhi Chang",
+        "Penghui Huang",
+        "Yinian Mao",
+        "Guoquan Huang"
+      ],
+      "all_authors": [
+        "Zhe Xin",
+        "Hanzhi Chang",
+        "Penghui Huang",
+        "Yinian Mao",
+        "Guoquan Huang"
+      ],
+      "affiliations": [
+        {
+          "name": "Zhe Xin",
+          "affiliations": []
+        },
+        {
+          "name": "Hanzhi Chang",
+          "affiliations": []
+        },
+        {
+          "name": "Penghui Huang",
+          "affiliations": []
+        },
+        {
+          "name": "Yinian Mao",
+          "affiliations": []
+        },
+        {
+          "name": "Guoquan Huang",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-07-20",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "现有动态物体分割方法在边界一致性和对重建误差的鲁棒性上存在不足。",
+        "method": "提出一个多模态动态物体分割框架，集成2D点轨迹、3D重建和语义信息，利用结合Transformer和特征聚类聚合模块的网络对多模态特征轨迹进行静态/动态分类，并引入基于点查询的SAM后处理方法处理多物体掩膜。",
+        "result": "在动态物体分割和静态场景重建任务上达到了最先进的性能。",
+        "novelty": "通过多模态特征轨迹的自适应分类和点查询SAM后处理，实现了精确且完整的动态掩膜生成。",
+        "relevance": "提升了动态场景理解与静态重建的鲁棒性，对视觉SLAM、自动驾驶等应用具有重要意义。",
+        "org": "未知",
+        "score": 8
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [
+          "ghuang@udel.edu"
+        ],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Zhe Xin",
+              "email": "",
+              "affiliation": "",
+              "role": ""
+            },
+            {
+              "name": "Hanzhi Chang",
+              "email": "",
+              "affiliation": "",
+              "role": ""
+            },
+            {
+              "name": "Penghui Huang",
+              "email": "",
+              "affiliation": "",
+              "role": ""
+            },
+            {
+              "name": "Yinian Mao",
+              "email": "",
+              "affiliation": "",
+              "role": ""
+            },
+            {
+              "name": "Guoquan Huang",
+              "email": "",
+              "affiliation": "",
+              "role": ""
+            }
+          ],
+          "corresponding_author": ""
+        }
+      }
+    },
+    {
+      "title": "O-VAD: Industrial Video Anomaly Detection through Object-Centric Tracking and Reasoning",
+      "abstract": "Industrial Video Anomaly Detection (IVAD) aims to identify anomalous objects and events in an industrial process, which is crucial for modern manufacturing and quality control systems. Existing VLM-based anomaly reasoning methods are capable of detecting open-ended anomalies in general domains. However, their performance declines in industrial settings characterized by intricate object transformations, strict physics, and procedural constraints. To tackle the complexity of such interaction-intensive detection, we introduce a training-free agentic framework for anomaly detection free of domain-specific knowledge, emphasizing object state evolution like humans inspectors. It is designed to track spatial-temporal dynamics and underlying transformations of detected objects over time, and then reason over the object-wise temporal state trajectories to identify abnormal objects in grounded frames. Our method overcomes limitations of prior approaches that rely on retraining on normal clips or injecting domain knowledge as context for test-time inference. Extensive experiments on three IVAD datasets demonstrate that our method outperforms frontier VLMs, agentic frameworks, and traditional VAD methods fine-tuned on the respective datasets, while providing interpretable reports over anomaly processes and types.",
+      "url": "https://arxiv.org/abs/2607.18142v1",
+      "pdf": "https://arxiv.org/pdf/2607.18142v1",
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.CL",
+        "cs.MA"
+      ],
+      "authors": [
+        "Mei Yuan",
+        "Qi Long",
+        "Qifeng Wu",
+        "Zhenyang Li",
+        "Yizhou Zhao"
+      ],
+      "all_authors": [
+        "Mei Yuan",
+        "Qi Long",
+        "Qifeng Wu",
+        "Zhenyang Li",
+        "Yizhou Zhao",
+        "Lei Wang",
+        "Yang Liu",
+        "Min Xu"
+      ],
+      "affiliations": [
+        {
+          "name": "Mei Yuan",
+          "affiliations": []
+        },
+        {
+          "name": "Qi Long",
+          "affiliations": []
+        },
+        {
+          "name": "Qifeng Wu",
+          "affiliations": []
+        },
+        {
+          "name": "Zhenyang Li",
+          "affiliations": []
+        },
+        {
+          "name": "Yizhou Zhao",
+          "affiliations": []
+        },
+        {
+          "name": "Lei Wang",
+          "affiliations": []
+        },
+        {
+          "name": "Yang Liu",
+          "affiliations": []
+        },
+        {
+          "name": "Min Xu",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-07-20",
+      "matched_topics": [
+        "多模态",
+        "Agent"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "工业视频异常检测中，现有基于VLM的方法在处理复杂物体变换和严格物理约束时性能下降，需要一种无需领域知识或重训练的通用方法。",
+        "method": "提出一种无需训练的代理框架，通过以目标为中心的时空跟踪和推理，模拟人类检查员跟踪物体状态演化，对检测到的物体进行时序状态轨迹推理以识别异常。",
+        "result": "在三个IVAD数据集上，该方法优于前沿的VLM、代理框架和传统VAD方法，并提供可解释的异常过程和类型报告。",
+        "novelty": "首次提出无需领域知识或重训练、以目标为中心的跟踪与推理代理框架，适用于交互密集的工业异常检测。",
+        "relevance": "为工业视频异常检测提供了一种通用、可解释且高效的解决方案，推动了AI在智能制造和质检中的应用。",
+        "org": "未知",
+        "score": 8
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [
+          "mxu1@cs.cmu.edu",
+          "meiyuan@andrew.cmu.edu"
+        ],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Mei Yuan",
+              "email": "meiyuan@andrew.cmu.edu",
+              "affiliation": "Carnegie Mellon University",
+              "role": ""
+            },
+            {
+              "name": "Qi Long",
+              "email": "",
+              "affiliation": "Carnegie Mellon University",
+              "role": ""
+            },
+            {
+              "name": "Qifeng Wu",
+              "email": "",
+              "affiliation": "Carnegie Mellon University",
+              "role": ""
+            },
+            {
+              "name": "Zhenyang Li",
+              "email": "",
+              "affiliation": "University of Alabama at Birmingham",
+              "role": ""
+            },
+            {
+              "name": "Yizhou Zhao",
+              "email": "",
+              "affiliation": "Carnegie Mellon University",
+              "role": ""
+            },
+            {
+              "name": "Lei Wang",
+              "email": "",
+              "affiliation": "Griffith University",
+              "role": ""
+            },
+            {
+              "name": "Yang Liu",
+              "email": "",
+              "affiliation": "Carnegie Mellon University",
+              "role": ""
+            },
+            {
+              "name": "Min Xu",
+              "email": "mxu1@cs.cmu.edu",
+              "affiliation": "Carnegie Mellon University",
+              "role": "通讯作者"
+            }
+          ],
+          "corresponding_author": "Min Xu"
+        }
+      }
+    },
+    {
+      "title": "Sparse Evidence Can Suffice: Agentic Evidence Seeking for Multimodal Video Misinformation Detection",
+      "abstract": "Multimodal video misinformation detection is commonly formulated as a holistic video-understanding task, where the entire video and its associated content are processed and judged in a single pass. However, real-world misinformation often exhibits a sparse and compositional evidence structure: a reliable decision may depend on only a few coupled clues, while most video content contributes limited additional information. Exhaustive multimodal reasoning may therefore introduce substantial redundancy and obscure decisive evidence. This motivates decoupling evidence acquisition from verification: first identifying sparse, decision-relevant clues and then judging veracity based on the acquired evidence. Accordingly, we propose SIEVE, a framework for Sparse Interactive Evidence Verification via Extraction in multimodal video misinformation detection. An evidence-seeking agent actively explores the available multimodal evidence and constructs a compact evidence package, which is then used by a verifier to determine veracity. The agent is trained with supervised evidence-seeking trajectories and an evidence-aware reinforcement learning objective that promotes informative evidence acquisition while discouraging unnecessary or invalid interactions. Experiments on multiple video misinformation benchmarks show that SIEVE consistently outperforms the evaluated baselines and supports reliable verification using compact evidence packages. Moreover, the resulting acquisition process provides an explicit and inspectable evidence trail, improving the transparency and groundedness of multimodal misinformation detection.",
+      "url": "https://arxiv.org/abs/2607.18080v1",
+      "pdf": "https://arxiv.org/pdf/2607.18080v1",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "authors": [
+        "Haochen Zhao",
+        "Yongxiu Xu",
+        "Xinkui Lin",
+        "Dong Xie",
+        "Jiarui Lu"
+      ],
+      "all_authors": [
+        "Haochen Zhao",
+        "Yongxiu Xu",
+        "Xinkui Lin",
+        "Dong Xie",
+        "Jiarui Lu",
+        "Yuqi Qian",
+        "Yubin Wang",
+        "Hongbo Xu",
+        "Gaopeng Gou"
+      ],
+      "affiliations": [
+        {
+          "name": "Haochen Zhao",
+          "affiliations": []
+        },
+        {
+          "name": "Yongxiu Xu",
+          "affiliations": []
+        },
+        {
+          "name": "Xinkui Lin",
+          "affiliations": []
+        },
+        {
+          "name": "Dong Xie",
+          "affiliations": []
+        },
+        {
+          "name": "Jiarui Lu",
+          "affiliations": []
+        },
+        {
+          "name": "Yuqi Qian",
+          "affiliations": []
+        },
+        {
+          "name": "Yubin Wang",
+          "affiliations": []
+        },
+        {
+          "name": "Hongbo Xu",
+          "affiliations": []
+        },
+        {
+          "name": "Gaopeng Gou",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-07-20",
+      "matched_topics": [
+        "多模态",
+        "Agent"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "多模态视频虚假信息检测通常作为整体视频理解任务处理，但真实世界虚假信息往往具有稀疏和组合的证据结构，导致冗余和误导性决策。",
+        "method": "提出SIEVE框架，解耦证据获取与验证：一个证据寻求智能体主动探索多模态证据并构建紧凑证据包，再由验证者判断真实性；智能体通过监督式证据寻求轨迹和证据感知的强化学习目标训练。",
+        "result": "在多个视频虚假信息基准上，SIEVE持续优于基线，使用紧凑证据包即可支持可靠验证，并提供了清晰可检查的证据追踪过程。",
+        "novelty": "将证据获取与验证解耦，通过智能体主动寻找稀疏但关键的证据线索，而非处理整个视频，提高了效率和透明度。",
+        "relevance": "为多模态虚假信息检测提供了一种更高效、可解释的范式，推动了世界模型和Agent在可信AI中的应用。",
+        "org": "未知",
+        "score": 8
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [
+          "zhaohaochen@iie.ac.cn"
+        ],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Haochen Zhao",
+              "email": "zhaohaochen@iie.ac.cn",
+              "affiliation": "Institute of Information Engineering, Chinese Academy of Sciences; School of Cyber Security, University of Chinese Academy of Sciences",
+              "role": "第一作者"
+            },
+            {
+              "name": "Yongxiu Xu",
+              "email": "",
+              "affiliation": "Institute of Information Engineering, Chinese Academy of Sciences; School of Cyber Security, University of Chinese Academy of Sciences",
+              "role": "通讯作者"
+            },
+            {
+              "name": "Xinkui Lin",
+              "email": "",
+              "affiliation": "Institute of Information Engineering, Chinese Academy of Sciences; School of Cyber Security, University of Chinese Academy of Sciences",
+              "role": ""
+            },
+            {
+              "name": "Dong Xie",
+              "email": "",
+              "affiliation": "Baidu",
+              "role": ""
+            },
+            {
+              "name": "Jiarui Lu",
+              "email": "",
+              "affiliation": "Institute of Information Engineering, Chinese Academy of Sciences; School of Cyber Security, University of Chinese Academy of Sciences",
+              "role": ""
+            },
+            {
+              "name": "Yuqi Qian",
+              "email": "",
+              "affiliation": "Institute of Information Engineering, Chinese Academy of Sciences; School of Cyber Security, University of Chinese Academy of Sciences",
+              "role": ""
+            },
+            {
+              "name": "Yubin Wang",
+              "email": "",
+              "affiliation": "Institute of Information Engineering, Chinese Academy of Sciences; School of Cyber Security, University of Chinese Academy of Sciences",
+              "role": ""
+            },
+            {
+              "name": "Hongbo Xu",
+              "email": "",
+              "affiliation": "Institute of Information Engineering, Chinese Academy of Sciences",
+              "role": ""
+            },
+            {
+              "name": "Gaopeng Gou",
+              "email": "",
+              "affiliation": "Institute of Information Engineering, Chinese Academy of Sciences",
+              "role": ""
+            }
+          ],
+          "corresponding_author": "Yongxiu Xu"
+        }
+      }
+    },
+    {
+      "title": "RoboHarness: Memory-Driven Orchestration of Heterogeneous Robot Policies for Long-Horizon Planning",
+      "abstract": "Long-horizon robotic tasks require diverse capabilities that no single policy can reliably provide. Heterogeneous policies offer complementary strengths, but orchestrating them requires reasoning over uncertain capability boundaries and cross-policy distribution mismatch, which are largely overlooked by existing planning methods built on homogeneous, predefined skills with fixed applicability. We propose RoboHarness, a unified framework that encapsulates independently developed robot control systems as reusable agentic skills. Although instantiated in this work with VLAs, RL policies, and task-and-motion planning (TAMP) systems, RoboHarness is designed as a general framework compatible with a broader range of robot policies, such as navigation policies, model predictive controllers, and world-action models. RoboHarness uses multi-modal execution memory and online evidence to characterize policy capability boundaries for capability-aware decomposition and routing. To stabilize policy handoffs, its Memory Bridge retrieves execution trajectories associated with the next policy, estimates its in-distribution state region, and guides the robot toward that region without joint policy retraining. Extensive experiments on three public benchmarks, 500 customized tasks, and 135 real-robot experiments demonstrate effective capability-aware routing and stable policy orchestration, yielding substantial improvements in zero-shot long-horizon planning and out-of-distribution robustness.",
+      "url": "https://arxiv.org/abs/2607.18060v1",
+      "pdf": "https://arxiv.org/pdf/2607.18060v1",
+      "categories": [
+        "cs.RO"
+      ],
+      "authors": [
+        "Jinbang Huang",
+        "Yuanzhao Hu",
+        "Zhiyuan Li",
+        "Ran Qi",
+        "Yixin Xiao"
+      ],
+      "all_authors": [
+        "Jinbang Huang",
+        "Yuanzhao Hu",
+        "Zhiyuan Li",
+        "Ran Qi",
+        "Yixin Xiao",
+        "Zhanguang Zhang",
+        "Mark Coates",
+        "Tongtong Cao",
+        "Yingxue Zhang"
+      ],
+      "affiliations": [
+        {
+          "name": "Jinbang Huang",
+          "affiliations": []
+        },
+        {
+          "name": "Yuanzhao Hu",
+          "affiliations": []
+        },
+        {
+          "name": "Zhiyuan Li",
+          "affiliations": []
+        },
+        {
+          "name": "Ran Qi",
+          "affiliations": []
+        },
+        {
+          "name": "Yixin Xiao",
+          "affiliations": []
+        },
+        {
+          "name": "Zhanguang Zhang",
+          "affiliations": []
+        },
+        {
+          "name": "Mark Coates",
+          "affiliations": []
+        },
+        {
+          "name": "Tongtong Cao",
+          "affiliations": []
+        },
+        {
+          "name": "Yingxue Zhang",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-07-20",
+      "matched_topics": [
+        "多模态",
+        "Agent"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "解决异构机器人策略在长时域任务中因能力边界不确定性和跨策略分布不匹配而难以协调的问题。",
+        "method": "提出RoboHarness框架，利用多模态执行记忆和在线证据表征策略能力边界，实现能力感知的任务分解与路由；通过Memory Bridge检索下一策略的执行轨迹，估计其分布内状态区域，并引导机器人进入该区域，实现稳定策略交接。",
+        "result": "在三个公开基准、500个定制任务和135个真实机器人实验上，实现了有效的路由和稳定协调，显著提升了零样本长时域规划和分布外鲁棒性。",
+        "novelty": "将异构策略封装为可重用智能体技能，并通过记忆驱动的能力边界感知与分布匹配实现无联合重训练的稳定编排。",
+        "relevance": "为异构机器人策略的统一编排提供了新的通用范式，有望提升机器人系统在复杂长时域任务中的灵活性和鲁棒性。",
+        "org": "未知",
+        "score": 8
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "Closing the Loop in Humanoid VLA: Persistent 3D Object Tokens for Verifiable Loco-Manipulation",
+      "abstract": "Vision-language-action policies are a promising foundation for general robot control, but long-horizon humanoid loco-manipulation requires the robot to treat task objects as persistent physical entities across movement, contact, occlusion, and recovery. We study this problem as object-state divergence: the object state used to condition a whole-body action can differ from the state used to decide whether the action achieved the intended physical relation. We propose \\emph{Persistent Object Tokenization} (POT), which maintains role-indexed 3D object records from RGB-D observations and converts them into object tokens for a whole-body action expert. Instantiated as \\emph{POT-VLA}, the same object records condition action generation and support geometric predicate checks, yielding a closed-loop execution system in which object state is both actionable and verifiable. On a Unitree G1, POT-VLA improves a matched direct GR00T-N1.7 baseline from 39/80 to 71/80 successes over eight real-world task families. In an external Being-0-aligned reference, POT-VLA achieves 44/50 successes on aligned service tasks, compared with the 37/50 success reported by the Being-0 paper. The largest gains occur on tasks requiring maintained 3D relations, suggesting that persistent object-centered state is a useful abstraction for verifiable humanoid VLA execution.",
+      "url": "https://arxiv.org/abs/2607.18016v1",
+      "pdf": "https://arxiv.org/pdf/2607.18016v1",
+      "categories": [
+        "cs.RO"
+      ],
+      "authors": [
+        "Peng Ren",
+        "Haoyang Ge",
+        "Jiang Zhao",
+        "Cong Huang",
+        "Yukun Shi"
+      ],
+      "all_authors": [
+        "Peng Ren",
+        "Haoyang Ge",
+        "Jiang Zhao",
+        "Cong Huang",
+        "Yukun Shi",
+        "Pei Chi",
+        "Kai Chen"
+      ],
+      "affiliations": [
+        {
+          "name": "Peng Ren",
+          "affiliations": []
+        },
+        {
+          "name": "Haoyang Ge",
+          "affiliations": []
+        },
+        {
+          "name": "Jiang Zhao",
+          "affiliations": []
+        },
+        {
+          "name": "Cong Huang",
+          "affiliations": []
+        },
+        {
+          "name": "Yukun Shi",
+          "affiliations": []
+        },
+        {
+          "name": "Pei Chi",
+          "affiliations": []
+        },
+        {
+          "name": "Kai Chen",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-07-20",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "针对人形机器人在长时间移动操作中，动作条件依赖的对象状态与验证动作是否达到预期物理关系的状态之间存在分歧（对象状态发散）的问题。",
+        "method": "提出持久对象标记化（POT），从RGB-D观测中维护角色索引的3D对象记录并转换为对象标记，用于全身动作专家；同时利用同一对象记录执行几何谓词检查，形成可动作且可验证的闭环执行系统（POT-VLA）。",
+        "result": "在Unitree G1上，POT-VLA将匹配的直接GR00T-N1.7基线成功率从39/80提升至71/80；在外部Being-0对齐参考任务上达到44/50，优于报告的37/50。最大提升出现在需要维持3D关系的任务上。",
+        "novelty": "首次提出将持久对象中心化状态同时用于动作条件生成和可验证性检查的闭环人形VLA框架。",
+        "relevance": "为可验证的人形机器人VLA执行提供了一种新的有效抽象，推动了具身智能中长程操作的可信性与鲁棒性。",
+        "org": "",
+        "score": 8
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "ST-Veto: Spatio-Temporal Token Veto for Diffusion MLLMs via Taylor Prediction and Visual Grounding",
+      "abstract": "Vision Language Models (VLMs) achieve strong reasoning with Chain-of-Thought (CoT) prompting but incur high sequential-generation cost, error accumulation, and limited self-correction. Diffusion Multimodal Large Language Models (dMLLMs) unmask tokens in an order-agnostic process, improving efficiency and enabling iterative refinement, yet their reasoning and how to enhance it remain underexplored. We propose a training-free method, Spatio-Temporal Token Veto (ST-Veto), which leverages the ability to observe all token positions at each diffusion step. Rather than relying only on current-step confidence, ST-Veto vetoes temporally unstable tokens via second-order Taylor prediction of confidence dynamics and filters weakly grounded tokens using image-attention mass, swapping them with safer candidates. Across multiple dMLLMs and multimodal reasoning benchmarks, ST-Veto consistently outperforms standard decoding policies and prior VLM reasoning methods, improving accuracy by up to 9% with no additional training or generation cost. Analyses show that ST-Veto steers generation toward higher-confidence, better-grounded paths.",
+      "url": "https://arxiv.org/abs/2607.17884v1",
+      "pdf": "https://arxiv.org/pdf/2607.17884v1",
+      "categories": [
+        "cs.AI"
+      ],
+      "authors": [
+        "Keuntae Kim",
+        "Beomseok Lee",
+        "Hyunwoo Kim",
+        "Yong Suk Choi"
+      ],
+      "all_authors": [
+        "Keuntae Kim",
+        "Beomseok Lee",
+        "Hyunwoo Kim",
+        "Yong Suk Choi"
+      ],
+      "affiliations": [
+        {
+          "name": "Keuntae Kim",
+          "affiliations": []
+        },
+        {
+          "name": "Beomseok Lee",
+          "affiliations": []
+        },
+        {
+          "name": "Hyunwoo Kim",
+          "affiliations": []
+        },
+        {
+          "name": "Yong Suk Choi",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-07-20",
+      "matched_topics": [
+        "多模态",
+        "大模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "扩散多模态大语言模型（dMLLMs）的推理能力尚未充分探索，现有方法存在自回归生成的高成本、错误累积和缺乏自纠正等问题。",
+        "method": "提出无需训练的时空令牌否决（ST-Veto）方法，利用扩散步骤中观察所有令牌位置的能力，通过二阶泰勒预测令牌置信度动态来否决时间不稳定的令牌，并利用图像注意力质量过滤弱视觉定位的令牌，替换为更安全的候选令牌。",
+        "result": "在多个dMLLM和多模态推理基准上，ST-Veto一致优于标准解码策略和先前的VLM推理方法，准确率提升高达9%，且无额外训练或生成成本。",
+        "novelty": "首次将二阶泰勒预测应用于扩散MLLM的令牌级置信度动态分析，并结合视觉定位实现空间维度上的令牌筛选，无需训练即可提升推理质量。",
+        "relevance": "为扩散多模态大模型提供了一种高效、无需额外训练的推理增强范式，推动了世界模型和多模态Agent中生成式推理的实用化。",
+        "org": "未明确",
+        "score": 8
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "PRiSM: Prototype Regularization for Few-Shot VLMs",
+      "abstract": "Training-free few-shot adaptation methods have gained significant attention recently in the context of Vision-language Models (VLMs). Yet, current benchmarks rely on strong assumptions about the statistics of the adaptation data, e.g., class balance. We question these simplifying assumptions and introduce a more realistic benchmark that varies both the levels of class balance and the effective number of classes in few-shot tasks via Dirichlet sampling. Surprisingly, under our setting, we observe substantial drops in the performances of state-of-the-art methods, more so when the number of labeled samples increases. To mitigate this, we introduce PRiSM, a class-prototype regularization that can be deployed as a plug and play module on top of any existing baseline method, significantly improving performances. Our method optimizes a novel multi-term loss, which includes a regularizer maximizing inter-class pairwise distances, along with additional terms promoting support-feature alignment and fidelity to the baseline prototypes. Furthermore, we introduce an effective and computationally efficient block Majorize-Minimize optimizer for our objective. More specifically, we derive a valid blockwise Lipschitz constant (i.e., a bound on the Hessian's spectral norm), which can be computed efficiently via the Gershgorin circle theorem. Extensive experiments show that PRiSM improves several training-free baselines, with large gains when dealing with severe class imbalance and high numbers of classes.",
+      "url": "https://arxiv.org/abs/2607.17820v1",
+      "pdf": "https://arxiv.org/pdf/2607.17820v1",
+      "categories": [
+        "cs.CV"
+      ],
+      "authors": [
+        "Ghassen Baklouti",
+        "Omprakash Chakraborty",
+        "Jose Dolz",
+        "Ismail Ben Ayed"
+      ],
+      "all_authors": [
+        "Ghassen Baklouti",
+        "Omprakash Chakraborty",
+        "Jose Dolz",
+        "Ismail Ben Ayed"
+      ],
+      "affiliations": [
+        {
+          "name": "Ghassen Baklouti",
+          "affiliations": []
+        },
+        {
+          "name": "Omprakash Chakraborty",
+          "affiliations": []
+        },
+        {
+          "name": "Jose Dolz",
+          "affiliations": []
+        },
+        {
+          "name": "Ismail Ben Ayed",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-07-20",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "现有训练无关的少样本VLM适应方法假设适应数据统计特性（如类别平衡），但在更现实的类别不平衡和高类别数场景下性能显著下降。",
+        "method": "提出PRiSM类原型正则化，作为即插即用模块优化多目标损失（最大类间距离、支持-特征对齐、基线原型保真度），并设计基于Gershgorin圆定理的高效块Majorize-Minimize优化器。",
+        "result": "PRiSM显著提升多种训练无关基线性能，尤其在严重类别不平衡和高类别数时，且随标注样本增多效果更明显。",
+        "novelty": "首次针对少样本VLM引入类原型正则化与块Lipschitz优化，系统性地解决类别不平衡问题。",
+        "relevance": "为VLM在真实不平衡少样本场景下的实际部署提供了有效且即插即用的解决方案。",
+        "org": "不明",
+        "score": 8
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "FM-VLA: Force-based Memory for Vision-Language-Action Models in Contact-Rich Manipulation",
+      "abstract": "Vision-language-action (VLA) models have achieved impressive generalization in robotic manipulation, and recent memory-augmented VLAs have relaxed the Markovian assumption by conditioning on past images or language summaries. Vision-based memory approaches address this by conditioning on sampled past image frames, but they are computationally expensive and fundamentally limited when temporal events are visually ambiguous, e.g., pushing a button multiple times with small movements. We propose FM-VLA, a VLA model with force-based memory, enabling temporal context reasoning for non-Markovian, contact-rich manipulation. We encode force histories into compact force memory tokens with a variational autoencoder (VAE) pretrained with force time series reconstruction. By projecting force latent representations and short state history as additional conditioning tokens to the action expert module, we enable VLAs to leverage accumulated contact event history to guide manipulation. We evaluate FM-VLA on three memory-dependent tasks, including finding a hidden block, pressing a button, and wiping a dish for a specific number of times. Our lightweight force memory achieves over 80% success rate with minimal inference overhead, significantly outperforming baseline approaches. Project page: https://qft-333.github.io/FM-VLA-Page/",
+      "url": "https://arxiv.org/abs/2607.18231v1",
+      "pdf": "https://arxiv.org/pdf/2607.18231v1",
+      "categories": [
+        "cs.RO"
+      ],
+      "authors": [
+        "Ruicheng Li",
+        "Qixiu Li",
+        "Ruichun Ma",
+        "Yu Deng",
+        "Lin Luo"
+      ],
+      "all_authors": [
+        "Ruicheng Li",
+        "Qixiu Li",
+        "Ruichun Ma",
+        "Yu Deng",
+        "Lin Luo",
+        "Zhiying Du",
+        "Jianfeng Xiang",
+        "Huizhi Liang",
+        "Ruicheng Wang",
+        "Jiaolong Yang",
+        "Baining Guo"
+      ],
+      "affiliations": [
+        {
+          "name": "Ruicheng Li",
+          "affiliations": []
+        },
+        {
+          "name": "Qixiu Li",
+          "affiliations": []
+        },
+        {
+          "name": "Ruichun Ma",
+          "affiliations": []
+        },
+        {
+          "name": "Yu Deng",
+          "affiliations": []
+        },
+        {
+          "name": "Lin Luo",
+          "affiliations": []
+        },
+        {
+          "name": "Zhiying Du",
+          "affiliations": []
+        },
+        {
+          "name": "Jianfeng Xiang",
+          "affiliations": []
+        },
+        {
+          "name": "Huizhi Liang",
+          "affiliations": []
+        },
+        {
+          "name": "Ruicheng Wang",
+          "affiliations": []
+        },
+        {
+          "name": "Jiaolong Yang",
+          "affiliations": []
+        },
+        {
+          "name": "Baining Guo",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-07-20",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "现有的记忆增强视觉-语言-动作（VLA）模型主要依赖视觉记忆，但在视觉模糊的时序任务（如多次小幅度按按钮）中表现不佳，且计算开销大。本文要解决在接触丰富的非马尔可夫操作任务中，如何利用力触觉历史信息进行有效时序推理的问题。",
+        "method": "提出FM-VLA，引入基于力的记忆（force-based memory）：使用变分自编码器（VAE）对力时间序列进行预训练，将力历史编码为紧凑的力记忆token，并与短状态历史一起作为附加条件注入到VLA的动作专家模块中，使得模型能够利用累积的接触事件历史来指导操作。",
+        "result": "在三个记忆依赖的任务（隐藏方块、按按钮、擦盘子指定次数）上，轻量级力记忆方法取得了超过80%的成功率，推理开销极小，显著优于基线方法。",
+        "novelty": "首次将力触觉历史通过VAE压缩为记忆token并集成到VLA模型中，以解决视觉模糊下的时序推理问题。",
+        "relevance": "为多模态大模型在机器人接触丰富操作中的时序记忆和推理提供了新范式，推动了具身智能中力觉与视觉的深度融合。",
+        "org": "未知（作者未明确标注机构）",
+        "score": 7
+      },
+      "identified_orgs": []
     },
     {
       "title": "SpEmoC: A Balanced Speaker-Segment Multimodal Emotion Benchmark",
@@ -1209,12 +1572,82 @@
       ],
       "priority": 1,
       "ai_summary": {
-        "problem": "现有对话情感数据集在规模、情感分布、模态对齐和数据划分策略上存在差异，影响跨数据集泛化和少数情感建模的可靠性。",
-        "method": "构建了SpEmoC数据集，包含从3100部英语影视作品中提取的306,544个原始片段，并精选出30,000个高质量、类别平衡的片段，通过预训练模型与人工验证结合的混合管道标注七种情感，采用严格的影视级划分防止内容重叠。",
-        "result": "实验表明，平衡的数据和严格划分能提升模型在跨数据集评估时的情感性能稳定性，验证了数据集设计对鲁棒和可迁移多模态情感识别的重要性。",
-        "novelty": "提出了一个大规模、类别平衡且严格划分的多模态情感基准数据集，专门关注少数情感（如恐惧和厌恶）的建模。",
-        "relevance": "为多模态情感识别提供了高质量基准，推动情感AI在跨数据集泛化和少数情感学习方面的研究。",
-        "org": "未明确识别机构",
+        "problem": "现有情感计算数据集在规模、情感分布、模态对齐和数据划分策略上存在不足，影响跨数据集泛化和少数情感建模。",
+        "method": "从3100部英语电影和电视剧中提取306,544个原始片段，通过混合管道（预训练模型与人工验证）筛选出30,000个高质量、类别平衡的片段，同步视觉、音频和文本模态，并对7种情感进行标注，同时采用严格的电影/剧集级划分以避免数据泄露。",
+        "result": "实验表明，平衡的数据分布和严格的数据划分使模型在跨数据集评估时情感表现更稳定，验证了数据集设计对鲁棒和可迁移的多模态情感识别的重要性。",
+        "novelty": "构建了一个大规模、类别平衡、模态对齐且分割严格的多模态情感基准数据集SpEmoC，特别关注恐惧和厌恶等少数情感。",
+        "relevance": "为多模态情感识别和类不平衡学习提供了一个更可靠的数据基准，有助于推动情感AI的泛化能力研究。",
+        "org": "未明确标注机构信息",
+        "score": 7
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "SEE: Structure-aware Exploring \\& Exploiting for Long-horizon GUI Agent Trajectory Synthesis",
+      "abstract": "Graphical User Interface (GUI) agents powered by vision-language models hold promise for automating real-world mobile tasks. However, progress is limited by the lack of high-coverage, long-horizon interaction trajectories collected from element-rich and rapidly evolving apps. Existing pipelines often rely on costly human demonstrations or on-policy framework, which tends to over-sample common flows while missing rare transitions and complex multi-step procedures. To address this problem, we propose SEE, a two-stage data synthesis framework consisting of (i) an efficient exploration stage that builds an explicit UI transition graph over screens and elements, and (ii) a graph-based synthesis stage that composes diverse multi-step trajectories via planning and controlled sampling. This design yields reproducible and explainable data generation, while explicitly preventing spurious cycles and enabling long-horizon composition. Across multiple real-world apps, SEE produces trajectories with an average length of 14.8 steps while avoiding spurious loops, and agents fine-tuned on SEE achieve improved task success and generalization to unseen screens. We will publicly release our synthesis code and dataset.",
+      "url": "https://arxiv.org/abs/2607.18046v1",
+      "pdf": "https://arxiv.org/pdf/2607.18046v1",
+      "categories": [
+        "cs.LG"
+      ],
+      "authors": [
+        "Zhuohang Fan",
+        "Beichen Zhang",
+        "Yuanfa Li",
+        "Changqiao Wu",
+        "Wei Liu"
+      ],
+      "all_authors": [
+        "Zhuohang Fan",
+        "Beichen Zhang",
+        "Yuanfa Li",
+        "Changqiao Wu",
+        "Wei Liu",
+        "Jian Luan",
+        "Weigang Zhang"
+      ],
+      "affiliations": [
+        {
+          "name": "Zhuohang Fan",
+          "affiliations": []
+        },
+        {
+          "name": "Beichen Zhang",
+          "affiliations": []
+        },
+        {
+          "name": "Yuanfa Li",
+          "affiliations": []
+        },
+        {
+          "name": "Changqiao Wu",
+          "affiliations": []
+        },
+        {
+          "name": "Wei Liu",
+          "affiliations": []
+        },
+        {
+          "name": "Jian Luan",
+          "affiliations": []
+        },
+        {
+          "name": "Weigang Zhang",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-07-20",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "当前GUI代理缺乏高质量的、长程、高覆盖的交互轨迹数据，现有方法成本高或偏向常见流程而忽略罕见转换和复杂多步骤过程。",
+        "method": "提出SEE框架，包含两个阶段：一是高效探索阶段构建显式UI转移图（覆盖屏幕和元素），二是基于图的合成阶段通过规划和受控采样组合多样性多步轨迹，避免假循环并支持长程组合。",
+        "result": "在多个真实应用中生成平均14.8步的无循环轨迹，微调后的代理在任务成功率和未见屏幕泛化上均得到提升。",
+        "novelty": "利用显式UI转移图进行结构化感知的探索和利用，实现可复现、可解释的轨迹合成，并显式防止假循环。",
+        "relevance": "为GUI代理提供了低成本、高质量的训练数据自动合成方法，推动具身智能和移动自动化的发展。",
+        "org": "未明确注明，从作者姓名推断可能为中国研究机构",
         "score": 7
       },
       "identified_orgs": []
@@ -1270,12 +1703,12 @@
       ],
       "priority": 1,
       "ai_summary": {
-        "problem": "在视觉-语言导航（VLN）中，标准的行为克隆仅监督下一步动作，未显式训练策略状态预测未来视觉结果，导致导航性能受限。",
-        "method": "提出未来状态条件化VLN（FSC-VLN），通过添加未来查询令牌，在训练时将其隐藏状态对齐到冻结的未来视觉嵌入（Δ步后），并在推理时移除该分支，从而在不访问未来图像的情况下利用未来信息。",
-        "result": "在R2R val-unseen上，FSC-VLN在两种训练数据设置下均提升了SR/OSR/SPL指标，尤其在长距离任务中增益更大，消融实验支持了双查询设计（分离未来和动作查询）。",
-        "novelty": "创新性地通过训练时对齐未来视觉潜变量，使策略隐式学习未来预测能力，而推理时不增加额外输入。",
-        "relevance": "为VLN和具身智能提供了一种高效利用未来信息的方法，可推广至其他需要预测性策略的AI任务。",
-        "org": "未明确标注机构，但根据作者名推测可能来自学术界或工业界研究团队。",
+        "problem": "标准行为克隆只监督下一步动作，未利用未来视觉信息，导致VLN策略预测能力有限。本文旨在通过未来状态条件提升当前动作选择。",
+        "method": "提出FSC-VLN，在训练时引入未来查询token，将其隐藏状态与未来Δ步的冻结视觉嵌入对齐，并在训练后移除未来分支；同时采用双查询设计分离未来与动作查询。",
+        "result": "在R2R val-unseen上，FSC-VLN在两个数据规模下均提升SR/OSR/SPL，尤其在长程场景中优势显著，消融实验验证了双查询设计的有效性。",
+        "novelty": "首次在VLN中通过训练时对齐未来视觉潜在表示来隐式利用未来信息，无需推理时访问未来图像。",
+        "relevance": "为VLN中的动作预测提供了一种利用时间上下文的新范式，可推广至其他需要长期决策的具身导航任务。",
+        "org": "未明确标注机构",
         "score": 7
       },
       "identified_orgs": []
@@ -1314,12 +1747,12 @@
       ],
       "priority": 1,
       "ai_summary": {
-        "problem": "现有视频摘要方法依赖离散关键帧和片段描述，忽视了帧的全局重要性，导致理解不连贯和信息丢失。",
-        "method": "提出HAS方法，首先计算视频全局连续帧级高亮分布，然后将该分布作为注意力引导向量注入多模态大语言模型，使模型在推理时更关注高亮帧，同时通过减少注意力而非遗忘来保留低高亮帧的信息。",
-        "result": "在多个基准测试上取得了令人信服的视频摘要性能。",
-        "novelty": "首次将帧级高亮分布作为注意力引导向量，实现连续视频输入下的全局重要性感知摘要。",
-        "relevance": "为多模态大语言模型在视频理解中高效利用全局帧重要性提供了新范式，推动视频摘要和生成领域发展。",
-        "org": "未明确识别机构",
+        "problem": "现有视频摘要方法仅关注离散关键帧和片段字幕，忽视了帧的全局重要性，导致理解不连贯和信息丢失。",
+        "method": "提出HAS方法，首先全局计算连续帧级高亮分布，然后将该分布作为注意力引导向量输入多模态大语言模型，使其在推理时对高亮帧投入更多注意力，同时对低亮帧降低关注而非遗忘。",
+        "result": "在多个基准上评估，HAS在视频摘要任务中取得了令人信服的表现。",
+        "novelty": "首次将帧级全局高亮分布作为注意力引导信号来增强多模态大语言模型对视频的理解。",
+        "relevance": "提升了多模态大语言模型在视频理解中的连贯性和信息完整性，对视频摘要和视频理解领域具有重要价值。",
+        "org": "",
         "score": 7
       },
       "identified_orgs": []
@@ -1363,32 +1796,18 @@
       ],
       "priority": 1,
       "ai_summary": {
-        "problem": "内窥镜视觉问答（VQA）中，模型在回答复杂问题时可能正确，但在相关的原子问题上却失败，导致答案不一致，本文旨在衡量并改善这种不一致性。",
-        "method": "提出了EndoCA基准，包含两个套件（EndoCA-Core和EndoCA-Diagnostic）来评估复杂-原子答案一致性；并引入Atomic-Support Reconciliation (ASR)机制，利用模型生成的原子答案作为上下文前提进行答案修订和一致性引导的选择性回答。",
-        "result": "评估了11个VLM，发现许多模型在复杂答案准确率上较高，但原子答案准确率和一致性显著较低；ASR-Revise在轻微改变复杂答案准确率的情况下提高了配对一致性，ASR-Selective通过允许模型放弃不可靠案例提升了回答准确率。",
-        "novelty": "首次提出针对内窥镜VQA的复杂-原子答案一致性基准（EndoCA）及无需训练的ASR机制。",
-        "relevance": "为多模态VQA领域提供了评估和提升答案一致性的新方法，有助于提升AI在医疗等关键领域的可靠性。",
-        "org": "未明确标注机构，作者Yuhao Liu、Cheng Zhao、Guanghui Yue可能来自中国高校或研究机构。",
+        "problem": "内窥镜视觉问答(VQA)中，模型在面对复杂问题时，即使给出看似正确的复杂答案，也可能与同一图像对应的原子问题答案不一致，缺乏对复杂-原子答案一致性的度量与改进方法。",
+        "method": "提出EndoCA基准，包含EndoCA-Core和EndoCA-Diagnostic两个套件，用于评估复杂-原子答案一致性；并引入Atomic-Support Reconciliation (ASR)无训练机制，通过模型自身的原子答案作为上下文前提进行答案修订（ASR-Revise）和一致性引导的选择性回答（ASR-Selective）。",
+        "result": "在11个VLM上的评估显示，尽管部分模型复杂答案准确率较高，但原子答案准确率和复杂-原子一致性显著较低；ASR-Revise在适度改变复杂答案准确率的同时提高了成对复杂-原子正确率，ASR-Selective通过允许模型放弃不可靠案例提升了已回答案例的准确率。",
+        "novelty": "首次系统性地定义并度量内窥镜VQA中复杂-原子答案一致性，并提出了无需训练的答案修订与选择性回答机制。",
+        "relevance": "为医疗VQA领域提供了一致性感知的评估基准和实用改进方法，有助于提升多模态模型在临床场景中的可靠性和鲁棒性。",
+        "org": "未知",
         "score": 7
       },
       "identified_orgs": []
     }
   ],
   "org_analysis": [
-    {
-      "org": "CMU",
-      "count": 1,
-      "topics": {
-        "多模态": 1
-      },
-      "papers": [
-        {
-          "title": "The Many Senses of Visual Similarity: A Text-Prompted Image Perceptual Metric",
-          "url": "https://arxiv.org/abs/2607.18237v1",
-          "score": 8
-        }
-      ]
-    },
     {
       "org": "Meta",
       "count": 1,
@@ -1405,22 +1824,6 @@
       ]
     },
     {
-      "org": "NVIDIA",
-      "count": 1,
-      "topics": {
-        "世界模型": 1,
-        "多模态": 1,
-        "大模型": 1
-      },
-      "papers": [
-        {
-          "title": "FlashRT: Agent Harness for Guiding Agents to Deploy Real-Time Multimodal Applications",
-          "url": "https://arxiv.org/abs/2607.18171v1",
-          "score": 8
-        }
-      ]
-    },
-    {
       "org": "Google",
       "count": 1,
       "topics": {
@@ -1431,7 +1834,7 @@
         {
           "title": "Simple Domain Generalization for Strong Pixel-Level Image Tampering Detection in Modern VLMs",
           "url": "https://arxiv.org/abs/2607.18230v1",
-          "score": 7
+          "score": 8
         }
       ]
     },
@@ -1446,9 +1849,514 @@
         {
           "title": "Simple Domain Generalization for Strong Pixel-Level Image Tampering Detection in Modern VLMs",
           "url": "https://arxiv.org/abs/2607.18230v1",
-          "score": 7
+          "score": 8
         }
       ]
+    }
+  ],
+  "contacts": [
+    {
+      "paper_title": "FlashRT: Agent Harness for Guiding Agents to Deploy Real-Time Multimodal Applications",
+      "paper_url": "https://arxiv.org/abs/2607.18171v1",
+      "paper_score": 9,
+      "topics": [
+        "世界模型",
+        "多模态",
+        "大模型"
+      ],
+      "orgs": [],
+      "emails": [
+        "atri@buffalo.edu"
+      ],
+      "contacts": [
+        {
+          "name": "Krish Agarwal",
+          "email": "krisha2@andrew.cmu.edu",
+          "affiliation": "Carnegie Mellon University",
+          "role": ""
+        },
+        {
+          "name": "Zhuoming Chen",
+          "email": "zhuominc@andrew.cmu.edu",
+          "affiliation": "Carnegie Mellon University",
+          "role": ""
+        },
+        {
+          "name": "Yanyuan Qin",
+          "email": "yanyuan.qin@amd.com",
+          "affiliation": "AMD",
+          "role": ""
+        },
+        {
+          "name": "Zhenyu Gu",
+          "email": "zhenyu.gu@amd.com",
+          "affiliation": "AMD",
+          "role": ""
+        },
+        {
+          "name": "Atri Rudra",
+          "email": "atri@buffalo.edu",
+          "affiliation": "University at Buffalo",
+          "role": ""
+        },
+        {
+          "name": "Beidi Chen",
+          "email": "beidic@andrew.cmu.edu",
+          "affiliation": "Carnegie Mellon University",
+          "role": ""
+        }
+      ],
+      "corresponding_author": ""
+    },
+    {
+      "paper_title": "SAGE: Subgoal-Conditioned Action Generation for Latent World Model Planning",
+      "paper_url": "https://arxiv.org/abs/2607.17973v1",
+      "paper_score": 9,
+      "topics": [
+        "世界模型"
+      ],
+      "orgs": [],
+      "emails": [
+        "yisen.wang@pku.edu.cn"
+      ],
+      "contacts": [
+        {
+          "name": "Letian Cheng",
+          "email": "",
+          "affiliation": "Peking University",
+          "role": "共同第一作者"
+        },
+        {
+          "name": "Qi Zhang",
+          "email": "",
+          "affiliation": "Peking University",
+          "role": "共同第一作者"
+        },
+        {
+          "name": "Yisen Wang",
+          "email": "",
+          "affiliation": "Peking University",
+          "role": "通讯作者"
+        }
+      ],
+      "corresponding_author": "Yisen Wang"
+    },
+    {
+      "paper_title": "The Many Senses of Visual Similarity: A Text-Prompted Image Perceptual Metric",
+      "paper_url": "https://arxiv.org/abs/2607.18237v1",
+      "paper_score": 8,
+      "topics": [
+        "多模态"
+      ],
+      "orgs": [],
+      "emails": [],
+      "contacts": [
+        {
+          "name": "Sheng-Yu Wang",
+          "email": "",
+          "affiliation": "Carnegie Mellon University",
+          "role": "第一作者"
+        },
+        {
+          "name": "Yotam Nitzan",
+          "email": "",
+          "affiliation": "Adobe Research",
+          "role": ""
+        },
+        {
+          "name": "Aaron Hertzmann",
+          "email": "",
+          "affiliation": "Adobe Research",
+          "role": ""
+        },
+        {
+          "name": "Jun-Yan Zhu",
+          "email": "",
+          "affiliation": "Carnegie Mellon University",
+          "role": ""
+        },
+        {
+          "name": "Eli Shechtman",
+          "email": "",
+          "affiliation": "Adobe Research",
+          "role": ""
+        },
+        {
+          "name": "Alexei A. Efros",
+          "email": "",
+          "affiliation": "UC Berkeley",
+          "role": ""
+        },
+        {
+          "name": "Richard Zhang",
+          "email": "",
+          "affiliation": "Adobe Research",
+          "role": ""
+        }
+      ],
+      "corresponding_author": ""
+    },
+    {
+      "paper_title": "Patch Policy: Efficient Embodied Control via Dense Visual Representations",
+      "paper_url": "https://arxiv.org/abs/2607.18236v1",
+      "paper_score": 8,
+      "topics": [
+        "多模态",
+        "具身智能"
+      ],
+      "orgs": [
+        "Meta"
+      ],
+      "emails": [
+        "gz2123@nyu.edu"
+      ],
+      "contacts": [
+        {
+          "name": "Gaoyue Zhou",
+          "email": "",
+          "affiliation": "Courant Institute, New York University",
+          "role": ""
+        },
+        {
+          "name": "Zichen Jeff Cui",
+          "email": "",
+          "affiliation": "Courant Institute, New York University",
+          "role": ""
+        },
+        {
+          "name": "Ada Langford",
+          "email": "",
+          "affiliation": "Courant Institute, New York University",
+          "role": ""
+        },
+        {
+          "name": "Bowen Tan",
+          "email": "",
+          "affiliation": "Courant Institute, New York University",
+          "role": ""
+        },
+        {
+          "name": "Yann LeCun",
+          "email": "",
+          "affiliation": "Courant Institute, New York University; AMI Labs",
+          "role": ""
+        },
+        {
+          "name": "Lerrel Pinto",
+          "email": "",
+          "affiliation": "Courant Institute, New York University; Meta-FAIR",
+          "role": ""
+        }
+      ],
+      "corresponding_author": ""
+    },
+    {
+      "paper_title": "Simple Domain Generalization for Strong Pixel-Level Image Tampering Detection in Modern VLMs",
+      "paper_url": "https://arxiv.org/abs/2607.18230v1",
+      "paper_score": 8,
+      "topics": [
+        "多模态",
+        "大模型"
+      ],
+      "orgs": [
+        "Google",
+        "OpenAI"
+      ],
+      "emails": [],
+      "contacts": [],
+      "corresponding_author": ""
+    },
+    {
+      "paper_title": "FlowMimic: Mask-free Visual Editing and Generation with Pixel-pair Warped Flow Field for Online Video Editing Data Generation and Modality Mimicry",
+      "paper_url": "https://arxiv.org/abs/2607.18227v1",
+      "paper_score": 8,
+      "topics": [
+        "多模态",
+        "大模型"
+      ],
+      "orgs": [],
+      "emails": [],
+      "contacts": [
+        {
+          "name": "Dingyun Zhang",
+          "email": "",
+          "affiliation": "ByteDance",
+          "role": "通讯作者"
+        },
+        {
+          "name": "Lixue Gong",
+          "email": "",
+          "affiliation": "ByteDance",
+          "role": ""
+        },
+        {
+          "name": "Wei Liu",
+          "email": "",
+          "affiliation": "ByteDance",
+          "role": "项目负责人, 通讯作者"
+        }
+      ],
+      "corresponding_author": "Dingyun Zhang, Wei Liu"
+    },
+    {
+      "paper_title": "HOMIE: Human-object Centric Video Personalization via Multimodal Intelligent Enchancement",
+      "paper_url": "https://arxiv.org/abs/2607.18217v1",
+      "paper_score": 8,
+      "topics": [
+        "多模态",
+        "大模型"
+      ],
+      "orgs": [],
+      "emails": [],
+      "contacts": [
+        {
+          "name": "Yiyang Cai",
+          "email": "",
+          "affiliation": "Hong Kong University of Science and Technology",
+          "role": "共同第一作者"
+        },
+        {
+          "name": "Nan Chen",
+          "email": "",
+          "affiliation": "Hong Kong University of Science and Technology",
+          "role": "共同第一作者"
+        },
+        {
+          "name": "Rongchang Xie",
+          "email": "",
+          "affiliation": "Hong Kong University of Science and Technology",
+          "role": ""
+        },
+        {
+          "name": "Junwen Pan",
+          "email": "",
+          "affiliation": "Hong Kong University of Science and Technology",
+          "role": ""
+        },
+        {
+          "name": "Chunyang Jiang",
+          "email": "",
+          "affiliation": "Hong Kong University of Science and Technology",
+          "role": ""
+        },
+        {
+          "name": "Cheng Chen",
+          "email": "",
+          "affiliation": "Hong Kong University of Science and Technology",
+          "role": ""
+        },
+        {
+          "name": "Wen Zhou",
+          "email": "",
+          "affiliation": "Hong Kong University of Science and Technology",
+          "role": ""
+        },
+        {
+          "name": "Zhenbang Sun",
+          "email": "",
+          "affiliation": "Hong Kong University of Science and Technology",
+          "role": ""
+        },
+        {
+          "name": "Wei Xue",
+          "email": "",
+          "affiliation": "Hong Kong University of Science and Technology",
+          "role": ""
+        },
+        {
+          "name": "Wenhan Luo",
+          "email": "",
+          "affiliation": "Hong Kong University of Science and Technology",
+          "role": ""
+        },
+        {
+          "name": "Yike Guo",
+          "email": "",
+          "affiliation": "Hong Kong University of Science and Technology",
+          "role": ""
+        }
+      ],
+      "corresponding_author": ""
+    },
+    {
+      "paper_title": "Robust Multimodal Dynamic Object Segmentation",
+      "paper_url": "https://arxiv.org/abs/2607.18153v1",
+      "paper_score": 8,
+      "topics": [
+        "多模态"
+      ],
+      "orgs": [],
+      "emails": [
+        "ghuang@udel.edu"
+      ],
+      "contacts": [
+        {
+          "name": "Zhe Xin",
+          "email": "",
+          "affiliation": "",
+          "role": ""
+        },
+        {
+          "name": "Hanzhi Chang",
+          "email": "",
+          "affiliation": "",
+          "role": ""
+        },
+        {
+          "name": "Penghui Huang",
+          "email": "",
+          "affiliation": "",
+          "role": ""
+        },
+        {
+          "name": "Yinian Mao",
+          "email": "",
+          "affiliation": "",
+          "role": ""
+        },
+        {
+          "name": "Guoquan Huang",
+          "email": "",
+          "affiliation": "",
+          "role": ""
+        }
+      ],
+      "corresponding_author": ""
+    },
+    {
+      "paper_title": "O-VAD: Industrial Video Anomaly Detection through Object-Centric Tracking and Reasoning",
+      "paper_url": "https://arxiv.org/abs/2607.18142v1",
+      "paper_score": 8,
+      "topics": [
+        "多模态",
+        "Agent"
+      ],
+      "orgs": [],
+      "emails": [
+        "mxu1@cs.cmu.edu",
+        "meiyuan@andrew.cmu.edu"
+      ],
+      "contacts": [
+        {
+          "name": "Mei Yuan",
+          "email": "meiyuan@andrew.cmu.edu",
+          "affiliation": "Carnegie Mellon University",
+          "role": ""
+        },
+        {
+          "name": "Qi Long",
+          "email": "",
+          "affiliation": "Carnegie Mellon University",
+          "role": ""
+        },
+        {
+          "name": "Qifeng Wu",
+          "email": "",
+          "affiliation": "Carnegie Mellon University",
+          "role": ""
+        },
+        {
+          "name": "Zhenyang Li",
+          "email": "",
+          "affiliation": "University of Alabama at Birmingham",
+          "role": ""
+        },
+        {
+          "name": "Yizhou Zhao",
+          "email": "",
+          "affiliation": "Carnegie Mellon University",
+          "role": ""
+        },
+        {
+          "name": "Lei Wang",
+          "email": "",
+          "affiliation": "Griffith University",
+          "role": ""
+        },
+        {
+          "name": "Yang Liu",
+          "email": "",
+          "affiliation": "Carnegie Mellon University",
+          "role": ""
+        },
+        {
+          "name": "Min Xu",
+          "email": "mxu1@cs.cmu.edu",
+          "affiliation": "Carnegie Mellon University",
+          "role": "通讯作者"
+        }
+      ],
+      "corresponding_author": "Min Xu"
+    },
+    {
+      "paper_title": "Sparse Evidence Can Suffice: Agentic Evidence Seeking for Multimodal Video Misinformation Detection",
+      "paper_url": "https://arxiv.org/abs/2607.18080v1",
+      "paper_score": 8,
+      "topics": [
+        "多模态",
+        "Agent"
+      ],
+      "orgs": [],
+      "emails": [
+        "zhaohaochen@iie.ac.cn"
+      ],
+      "contacts": [
+        {
+          "name": "Haochen Zhao",
+          "email": "zhaohaochen@iie.ac.cn",
+          "affiliation": "Institute of Information Engineering, Chinese Academy of Sciences; School of Cyber Security, University of Chinese Academy of Sciences",
+          "role": "第一作者"
+        },
+        {
+          "name": "Yongxiu Xu",
+          "email": "",
+          "affiliation": "Institute of Information Engineering, Chinese Academy of Sciences; School of Cyber Security, University of Chinese Academy of Sciences",
+          "role": "通讯作者"
+        },
+        {
+          "name": "Xinkui Lin",
+          "email": "",
+          "affiliation": "Institute of Information Engineering, Chinese Academy of Sciences; School of Cyber Security, University of Chinese Academy of Sciences",
+          "role": ""
+        },
+        {
+          "name": "Dong Xie",
+          "email": "",
+          "affiliation": "Baidu",
+          "role": ""
+        },
+        {
+          "name": "Jiarui Lu",
+          "email": "",
+          "affiliation": "Institute of Information Engineering, Chinese Academy of Sciences; School of Cyber Security, University of Chinese Academy of Sciences",
+          "role": ""
+        },
+        {
+          "name": "Yuqi Qian",
+          "email": "",
+          "affiliation": "Institute of Information Engineering, Chinese Academy of Sciences; School of Cyber Security, University of Chinese Academy of Sciences",
+          "role": ""
+        },
+        {
+          "name": "Yubin Wang",
+          "email": "",
+          "affiliation": "Institute of Information Engineering, Chinese Academy of Sciences; School of Cyber Security, University of Chinese Academy of Sciences",
+          "role": ""
+        },
+        {
+          "name": "Hongbo Xu",
+          "email": "",
+          "affiliation": "Institute of Information Engineering, Chinese Academy of Sciences",
+          "role": ""
+        },
+        {
+          "name": "Gaopeng Gou",
+          "email": "",
+          "affiliation": "Institute of Information Engineering, Chinese Academy of Sciences",
+          "role": ""
+        }
+      ],
+      "corresponding_author": "Yongxiu Xu"
     }
   ]
 }
