@@ -11,11 +11,13 @@ arXiv 每日论文抓取 + DeepSeek AI 筛选摘要
 import os
 import json
 import time
+import re
 import urllib.request
 import urllib.parse
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta
 from pathlib import Path
+from collections import defaultdict
 
 # ============ 配置区域（你可以修改这里） ============
 
@@ -52,6 +54,37 @@ MAX_PAPERS_TO_SUMMARIZE = 20
 # DeepSeek API 配置
 DEEPSEEK_API_URL = "https://api.deepseek.com/chat/completions"
 DEEPSEEK_MODEL = "deepseek-chat"  # 可改为 deepseek-reasoner 等
+
+# 已知机构关键词（用于从作者署名中识别机构）
+KNOWN_ORGS = {
+    # 国际大厂
+    "Google": ["google", "deepmind", "google deepmind", "google research"],
+    "Meta": ["meta", "fair", "meta ai", "facebook"],
+    "OpenAI": ["openai"],
+    "Microsoft": ["microsoft", "microsoft research", "msra"],
+    "Apple": ["apple"],
+    "NVIDIA": ["nvidia"],
+    "Amazon": ["amazon", "aws", "alexa"],
+    "Tesla": ["tesla"],
+    # 中国公司
+    "字节跳动": ["bytedance", "douyin", "tiktok"],
+    "腾讯": ["tencent"],
+    "阿里巴巴": ["alibaba", "damo academy", "aliyun", "tongyi"],
+    "百度": ["baidu"],
+    "华为": ["huawei"],
+    "商汤": ["sensetime"],
+    "智谱AI": ["zhipu", "glm", "thudm"],
+    "DeepSeek": ["deepseek"],
+    "月之暗面": ["moonshot", "kimi"],
+    # 顶尖高校
+    "MIT": ["mit", "massachusetts institute of technology"],
+    "Stanford": ["stanford"],
+    "CMU": ["cmu", "carnegie mellon"],
+    "UC Berkeley": ["berkeley", "ucb"],
+    "清华": ["tsinghua"],
+    "北大": ["peking university", "pku"],
+    "上海交大": ["shanghai jiao tong"],
+}
 
 # ============ 配置结束 ============
 
@@ -118,6 +151,13 @@ def fetch_arxiv_papers(days_back=1):
         # 获取作者
         authors = [author.find("atom:name", ns).text for author in entry.findall("atom:author", ns)]
 
+        # 获取作者机构信息
+        affiliations = []
+        for author in entry.findall("atom:author", ns):
+            name = author.find("atom:name", ns).text
+            affs = [aff.text for aff in author.findall("arxiv:affiliation", ns) if aff.text]
+            affiliations.append({"name": name, "affiliations": affs})
+
         # 获取发布日期
         published = entry.find("atom:published", ns).text[:10]
 
@@ -128,6 +168,8 @@ def fetch_arxiv_papers(days_back=1):
             "pdf": pdf_link,
             "categories": categories,
             "authors": authors[:5],  # 只保留前5位作者
+            "all_authors": authors,  # 保留全部作者用于机构分析
+            "affiliations": affiliations,
             "published": published,
         })
 
@@ -208,6 +250,7 @@ def generate_summary(paper):
 
 标题：{paper['title']}
 摘要：{paper['abstract']}
+作者及机构：{json.dumps(paper.get('affiliations', [])[:5], ensure_ascii=False)}
 
 请严格按照以下 JSON 格式输出（不要添加任何其他内容）：
 {{
@@ -216,6 +259,7 @@ def generate_summary(paper):
     "result": "主要结论/效果（1-2句话）",
     "novelty": "创新点在哪（1句话）",
     "relevance": "对AI领域的意义（1句话）",
+    "org": "作者主要来自哪个机构/公司（如能识别）",
     "score": 一个1-10的整数分数，表示这篇论文的重要性和创新性
 }}"""
 
@@ -239,6 +283,78 @@ def generate_summary(paper):
             print(f"[警告] JSON 解析失败，原始输出: {result[:100]}")
             return {"problem": result, "method": "", "result": "", "novelty": "", "relevance": "", "score": 5}
     return None
+
+
+def identify_org(paper):
+    """从论文的机构信息和AI摘要中识别所属机构"""
+    identified = set()
+
+    # 方式1：从 arXiv affiliation 字段匹配
+    for author_info in paper.get("affiliations", []):
+        for aff in author_info.get("affiliations", []):
+            aff_lower = aff.lower()
+            for org_name, keywords in KNOWN_ORGS.items():
+                for kw in keywords:
+                    if kw in aff_lower:
+                        identified.add(org_name)
+                        break
+
+    # 方式2：从 AI 摘要中提取（DeepSeek 有时能识别出机构）
+    ai_org = paper.get("ai_summary", {}).get("org", "")
+    if ai_org:
+        ai_org_lower = ai_org.lower()
+        for org_name, keywords in KNOWN_ORGS.items():
+            for kw in keywords:
+                if kw in ai_org_lower:
+                    identified.add(org_name)
+                    break
+
+    # 方式3：从摘要和标题中寻找线索（有些论文会提到公司产品名）
+    text = (paper.get("title", "") + " " + paper.get("abstract", "")).lower()
+    product_hints = {
+        "OpenAI": ["chatgpt", "gpt-4", "gpt-5", "dall-e", "sora"],
+        "Google": ["gemini", "bard", "palm"],
+        "Meta": ["llama"],
+        "Anthropic": ["claude"],
+        "DeepSeek": ["deepseek"],
+    }
+    for org_name, products in product_hints.items():
+        for prod in products:
+            if prod in text:
+                identified.add(org_name)
+
+    return list(identified)
+
+
+def analyze_organizations(papers):
+    """分析论文的机构分布"""
+    org_papers = defaultdict(lambda: {"count": 0, "topics": defaultdict(int), "papers": []})
+
+    for paper in papers:
+        orgs = identify_org(paper)
+        paper["identified_orgs"] = orgs  # 写回到论文数据中
+
+        for org in orgs:
+            org_papers[org]["count"] += 1
+            for topic in paper.get("matched_topics", []):
+                org_papers[org]["topics"][topic] += 1
+            org_papers[org]["papers"].append({
+                "title": paper["title"],
+                "url": paper.get("url", ""),
+                "score": paper.get("ai_summary", {}).get("score", 5),
+            })
+
+    # 转换为可序列化的格式，按论文数量排序
+    result = []
+    for org_name, data in sorted(org_papers.items(), key=lambda x: x[1]["count"], reverse=True):
+        result.append({
+            "org": org_name,
+            "count": data["count"],
+            "topics": dict(data["topics"]),
+            "papers": data["papers"],
+        })
+
+    return result
 
 
 def main():
@@ -282,7 +398,11 @@ def main():
     # 4. 按 AI 评分重新排序
     results.sort(key=lambda x: x["ai_summary"].get("score", 5), reverse=True)
 
-    # 5. 输出 JSON
+    # 5. 机构分析
+    org_stats = analyze_organizations(results)
+    print(f"\n[机构] 识别到 {len(org_stats)} 个机构的论文分布")
+
+    # 6. 输出 JSON
     output_dir = Path(__file__).parent.parent / "data"
     output_dir.mkdir(exist_ok=True)
 
@@ -293,6 +413,7 @@ def main():
         "total_fetched": len(papers),
         "total_matched": len(results),
         "papers": results,
+        "org_analysis": org_stats,
     }
 
     # 写入当天数据
