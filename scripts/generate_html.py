@@ -19,6 +19,7 @@ def generate_html(data_file, output_file):
     total_fetched = data.get("total_fetched", 0)
     total_matched = data.get("total_matched", 0)
     org_analysis = data.get("org_analysis", [])
+    contacts = data.get("contacts", [])
 
     # 生成机构分析板块
     org_html = ""
@@ -46,6 +47,50 @@ def generate_html(data_file, output_file):
                 org_html += f'                <a href="{p.get("url", "#")}" target="_blank" class="org-paper-link">[{score}分] {p["title"][:60]}{"..." if len(p["title"]) > 60 else ""}</a>\n'
             org_html += "            </div>\n        </div>\n"
         org_html += "</div>\n"
+
+    # 生成联系人/关键人物板块
+    contacts_html = ""
+    if contacts:
+        contacts_html += '<div class="contacts-section">\n'
+        contacts_html += '<h2 class="topic-header">关键人物 <span class="count">(今日高分论文作者)</span></h2>\n'
+        for entry in contacts:
+            paper_title = entry.get("paper_title", "")[:50]
+            paper_url = entry.get("paper_url", "#")
+            paper_score = entry.get("paper_score", 0)
+            orgs = entry.get("orgs", [])
+            emails = entry.get("emails", [])
+            ai_contacts = entry.get("contacts", [])
+            corresponding = entry.get("corresponding_author", "")
+
+            contacts_html += f"""
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="{paper_url}" target="_blank">[{paper_score}分] {paper_title}{"..." if len(entry.get("paper_title", "")) > 50 else ""}</a>
+                {f'<span class="contact-org">{" / ".join(orgs)}</span>' if orgs else ''}
+            </div>
+"""
+            if ai_contacts:
+                contacts_html += '            <div class="contact-list">\n'
+                for c in ai_contacts[:5]:
+                    name = c.get("name", "")
+                    email = c.get("email", "")
+                    aff = c.get("affiliation", "")
+                    role = c.get("role", "")
+                    role_badge = f'<span class="role-badge">{role}</span>' if role else ""
+                    email_link = f'<a href="mailto:{email}" class="email-link">{email}</a>' if email else ""
+                    contacts_html += f'                <div class="contact-person">{role_badge}<strong>{name}</strong> {f"— {aff}" if aff else ""} {email_link}</div>\n'
+                contacts_html += '            </div>\n'
+            elif emails:
+                contacts_html += '            <div class="contact-list">\n'
+                for email in emails[:5]:
+                    contacts_html += f'                <div class="contact-person"><a href="mailto:{email}" class="email-link">{email}</a></div>\n'
+                contacts_html += '            </div>\n'
+
+            if corresponding:
+                contacts_html += f'            <div class="corresponding">通讯作者: {corresponding}</div>\n'
+
+            contacts_html += "        </div>\n"
+        contacts_html += "</div>\n"
 
     # 按方向分组
     topic_groups = {}
@@ -310,6 +355,64 @@ def generate_html(data_file, output_file):
             padding: 2px 0;
         }}
         .org-paper-link:hover {{ text-decoration: underline; }}
+        .contacts-section {{
+            margin: 30px 0;
+            padding: 20px;
+            background: #fff8f0;
+            border-radius: 12px;
+        }}
+        .contact-card {{
+            background: white;
+            border-radius: 10px;
+            padding: 14px;
+            margin-bottom: 10px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }}
+        .contact-paper {{
+            margin-bottom: 8px;
+        }}
+        .contact-paper a {{
+            color: #1a1a2e;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9em;
+        }}
+        .contact-paper a:hover {{ color: #4a6cf7; text-decoration: underline; }}
+        .contact-org {{
+            color: #888;
+            font-size: 0.8em;
+            margin-left: 8px;
+        }}
+        .contact-list {{
+            padding-left: 12px;
+            border-left: 3px solid #ffe0b2;
+        }}
+        .contact-person {{
+            font-size: 0.85em;
+            margin-bottom: 4px;
+            color: #333;
+        }}
+        .email-link {{
+            color: #e67e22;
+            text-decoration: none;
+            font-size: 0.85em;
+        }}
+        .email-link:hover {{ text-decoration: underline; }}
+        .role-badge {{
+            display: inline-block;
+            background: #ffe0b2;
+            color: #e65100;
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-size: 0.75em;
+            margin-right: 4px;
+        }}
+        .corresponding {{
+            font-size: 0.8em;
+            color: #888;
+            margin-top: 6px;
+            font-style: italic;
+        }}
         @media (max-width: 600px) {{
             body {{ padding: 12px; }}
             .header h1 {{ font-size: 1.4em; }}
@@ -329,6 +432,8 @@ def generate_html(data_file, output_file):
     </div>
 
     {org_html}
+
+    {contacts_html}
 
     {"<div class='empty-state'><p>今天没有匹配到相关论文</p></div>" if not papers else cards_html}
 
