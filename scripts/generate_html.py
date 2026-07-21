@@ -18,6 +18,34 @@ def generate_html(data_file, output_file):
     date = data.get("date", datetime.now().strftime("%Y-%m-%d"))
     total_fetched = data.get("total_fetched", 0)
     total_matched = data.get("total_matched", 0)
+    org_analysis = data.get("org_analysis", [])
+
+    # 生成机构分析板块
+    org_html = ""
+    if org_analysis:
+        org_html += '<div class="org-section">\n'
+        org_html += '<h2 class="topic-header">机构布局 <span class="count">(今日活跃)</span></h2>\n'
+        for org_data in org_analysis:
+            org_name = org_data["org"]
+            count = org_data["count"]
+            topics = org_data.get("topics", {})
+            topic_tags = " / ".join([f"{t}({n})" for t, n in topics.items()])
+            paper_titles = org_data.get("papers", [])
+
+            org_html += f"""
+        <div class="org-card">
+            <div class="org-header">
+                <span class="org-name">{org_name}</span>
+                <span class="org-count">{count} 篇</span>
+            </div>
+            <div class="org-topics">{topic_tags}</div>
+            <div class="org-papers">
+"""
+            for p in paper_titles[:3]:
+                score = p.get("score", 5)
+                org_html += f'                <a href="{p.get("url", "#")}" target="_blank" class="org-paper-link">[{score}分] {p["title"][:60]}{"..." if len(p["title"]) > 60 else ""}</a>\n'
+            org_html += "            </div>\n        </div>\n"
+        org_html += "</div>\n"
 
     # 按方向分组
     topic_groups = {}
@@ -234,6 +262,54 @@ def generate_html(data_file, output_file):
             padding: 60px 20px;
             color: #888;
         }}
+        .org-section {{
+            margin: 30px 0;
+            padding: 20px;
+            background: #f0f4ff;
+            border-radius: 12px;
+        }}
+        .org-card {{
+            background: white;
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }}
+        .org-header {{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }}
+        .org-name {{
+            font-weight: bold;
+            font-size: 1.05em;
+            color: #1a1a2e;
+        }}
+        .org-count {{
+            background: #4a6cf7;
+            color: white;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 0.8em;
+        }}
+        .org-topics {{
+            color: #666;
+            font-size: 0.85em;
+            margin-bottom: 8px;
+        }}
+        .org-papers {{
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }}
+        .org-paper-link {{
+            color: #4a6cf7;
+            text-decoration: none;
+            font-size: 0.82em;
+            padding: 2px 0;
+        }}
+        .org-paper-link:hover {{ text-decoration: underline; }}
         @media (max-width: 600px) {{
             body {{ padding: 12px; }}
             .header h1 {{ font-size: 1.4em; }}
@@ -251,6 +327,8 @@ def generate_html(data_file, output_file):
             <span class="stat">评分 ≥ 6 推荐精读</span>
         </div>
     </div>
+
+    {org_html}
 
     {"<div class='empty-state'><p>今天没有匹配到相关论文</p></div>" if not papers else cards_html}
 
