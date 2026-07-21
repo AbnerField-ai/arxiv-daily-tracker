@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 论文日报 - 2026-07-21</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
+            background: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid #e9ecef;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 1.8em;
+            color: #1a1a2e;
+            margin-bottom: 8px;
+        }
+        .header .meta {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .stats {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        .stat {
+            background: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .topic-header {
+            font-size: 1.3em;
+            color: #1a1a2e;
+            margin: 30px 0 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .topic-header .count {
+            font-size: 0.7em;
+            color: #888;
+            font-weight: normal;
+        }
+        .paper-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: box-shadow 0.2s;
+        }
+        .paper-card:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .score {
+            font-weight: bold;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.85em;
+        }
+        .score.high { background: #d4edda; color: #155724; }
+        .score.medium { background: #fff3cd; color: #856404; }
+        .score.low { background: #f8f9fa; color: #666; }
+        .date { color: #888; font-size: 0.85em; }
+        .paper-title {
+            font-size: 1.05em;
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+        .paper-title a {
+            color: #1a1a2e;
+            text-decoration: none;
+        }
+        .paper-title a:hover {
+            color: #4a6cf7;
+            text-decoration: underline;
+        }
+        .authors {
+            color: #666;
+            font-size: 0.85em;
+            margin-bottom: 12px;
+        }
+        .summary {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 14px;
+            margin-bottom: 12px;
+        }
+        .summary-item {
+            margin-bottom: 6px;
+            font-size: 0.9em;
+        }
+        .summary-item:last-child { margin-bottom: 0; }
+        .summary-item strong {
+            color: #495057;
+        }
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topics {
+            color: #888;
+            font-size: 0.8em;
+        }
+        .pdf-link {
+            color: #4a6cf7;
+            text-decoration: none;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+        .pdf-link:hover { text-decoration: underline; }
+        .archive {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #e9ecef;
+        }
+        .archive h2 { font-size: 1.1em; margin-bottom: 10px; color: #666; }
+        .archive-link {
+            display: inline-block;
+            margin: 4px 8px 4px 0;
+            padding: 4px 12px;
+            background: white;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #4a6cf7;
+            font-size: 0.85em;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #888;
+        }
+        @media (max-width: 600px) {
+            body { padding: 12px; }
+            .header h1 { font-size: 1.4em; }
+            .stats { flex-direction: column; align-items: center; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>AI 论文日报</h1>
+        <p class="meta">2026-07-21 | 关注方向：世界模型 / 多模态 / 大模型 / Agent / 具身智能</p>
+        <div class="stats">
+            <span class="stat">arXiv 抓取 100 篇</span>
+            <span class="stat">AI 筛选 20 篇</span>
+            <span class="stat">评分 ≥ 6 推荐精读</span>
+        </div>
+    </div>
+
+    <h2 class="topic-header">世界模型 <span class="count">(2 篇)</span></h2>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                <span class="date">2026-07-20</span>
+            </div>
+            <h3 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.18171v1" target="_blank">FlashRT: Agent Harness for Guiding Agents to Deploy Real-Time Multimodal Applications</a>
+            </h3>
+            <p class="authors">Krish Agarwal, Zhuoming Chen, Yanyuan Qin et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>实时多模态应用（如语音代理和交互式视频生成）需要将异构模型组合成流水线，但现有服务系统和自动并行编译器仅支持有限的转换和固定工作负载假设，导致新应用的高效部署需要手动实现。</div>
+                <div class="summary-item"><strong>方法：</strong>提出FlashRT，一个代理框架，通过链式程序范式指导编码代理将开发者编写的参考实现转换为优化的多GPU部署；该过程包括将参考实现转换为中间表示（IR）以捕获数据依赖和持久状态范围，通过顺序解释器验证IR，进行静态分析识别候选转换，然后在测量门控优化循环中迭代实现、验证和基准测试每个候选方案。</div>
+                <div class="summary-item"><strong>结论：</strong>在NVIDIA B200 GPU上，FlashRT实现了高达~70倍的延迟降低和2.8倍的吞吐量提升；在AMD MI355X GPU上，延迟降低峰值匹配，吞吐量提升峰值达到3.6倍，且对于Qwen3-Omni文本到音频推理，相比专家vLLM-Omni实现，响应延迟降低65%。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将编码代理与链式程序范式结合，通过多遍转换和测量门控优化循环自动生成高效的多GPU部署，无需手动调优。</div>
+                <div class="summary-item"><strong>意义：</strong>为多模态大模型和世界模型等复杂AI应用的自动化、跨平台高效部署提供了新范式，降低了专家优化门槛。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">世界模型 / 多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2607.18171v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                <span class="date">2026-07-20</span>
+            </div>
+            <h3 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.17973v1" target="_blank">SAGE: Subgoal-Conditioned Action Generation for Latent World Model Planning</a>
+            </h3>
+            <p class="authors">Letian Cheng, Qi Zhang, Yisen Wang</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>潜世界模型在长时域规划中，由于固定候选动作预算需要搜索指数级增长的动作空间，导致性能受限。</div>
+                <div class="summary-item"><strong>方法：</strong>提出一种先验条件规划器SAGE，通过目标条件生成器预测可到达的潜在子目标，并以此条件生成候选动作序列，利用不同时域的子目标作为先验平衡局部与全局规划。</div>
+                <div class="summary-item"><strong>结论：</strong>在PushT和OGBench Cube任务上，长时域规划成功率大幅提升（如目标偏移150时，PushT从12.7%升至64.7%，OGBench Cube从26.7%升至67.3%），同时保持短时域性能。</div>
+                <div class="summary-item"><strong>创新点：</strong>将潜在子目标分解与先验条件动作生成结合，替代随机动作初始化，实现结构化规划。</div>
+                <div class="summary-item"><strong>意义：</strong>为潜世界模型在长时域规划中的实际应用提供了有效方法，推动具身智能和机器人控制的发展。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">世界模型</span>
+                <a href="https://arxiv.org/pdf/2607.17973v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+<h2 class="topic-header">多模态 <span class="count">(19 篇)</span></h2>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                <span class="date">2026-07-20</span>
+            </div>
+            <h3 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.18237v1" target="_blank">The Many Senses of Visual Similarity: A Text-Prompted Image Perceptual Metric</a>
+            </h3>
+            <p class="authors">Sheng-Yu Wang, Yotam Nitzan, Aaron Hertzmann et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有视觉相似性度量方法无法捕捉人类判断中依赖于上下文的多维度相似性（如形状、颜色等），缺乏按特定语义方面进行条件化的机制。</div>
+                <div class="summary-item"><strong>方法：</strong>构建了一个大规模图像三元组数据集，每个三元组标注了多个自由形式的语义相似性方面；基于该数据集微调视觉语言模型（VLM），提出文本提示图像感知相似性度量（TPIPS），根据指定文本提示输出不同维度的相似性分数。</div>
+                <div class="summary-item"><strong>结论：</strong>TPIPS与人类感知一致性更高，且能泛化到训练分布之外；在文本引导检索、组合搜索和生成模型细粒度评估中展现出新能力。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次通过文本提示实现多语义维度的视觉相似性度量，并配套大规模多语义标注数据集。</div>
+                <div class="summary-item"><strong>意义：</strong>为多模态大模型在感知相似性任务中提供了更灵活、更符合人类认知的评估工具，推动生成模型评估和检索应用的发展。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2607.18237v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                <span class="date">2026-07-20</span>
+            </div>
+            <h3 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.18236v1" target="_blank">Patch Policy: Efficient Embodied Control via Dense Visual Representations</a>
+            </h3>
+            <p class="authors">Gaoyue Zhou, Zichen Jeff Cui, Ada Langford et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有机器人策略要么将观测压缩为单个全局token，损失空间细节，要么从头训练视觉骨干，无法利用大规模预训练视觉特征，而直接使用密集补丁特征的大型视觉-语言-动作模型（VLA）又过于笨重和缓慢。</div>
+                <div class="summary-item"><strong>方法：</strong>提出Patch Policy，通过一个块因果注意力掩码（block-causal attention mask）作为最小架构扩展，使基于Transformer的策略能够直接消耗预训练的密集补丁token，同时保留时间因果性并整合其他状态信息，无需完整VLM的计算开销。</div>
+                <div class="summary-item"><strong>结论：</strong>在4个模拟和3个真实世界环境套件中，相比使用最先进全局池化表示的策略，Patch Policy实现了40%的相对改进；相比微调后的OpenVLA-OFT，性能提升18%，而参数量仅为其0.7%。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次通过轻量级注意力掩码设计，让机器人策略高效利用预训练密集视觉特征，避免全局池化或全VLM的权衡。</div>
+                <div class="summary-item"><strong>意义：</strong>为机器人社区提供了一条即插即用的管道，能够直接利用视觉表示学习的持续进展，同时保持高频反应控制所需的训练和推理效率。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 具身智能</span>
+                <a href="https://arxiv.org/pdf/2607.18236v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                <span class="date">2026-07-20</span>
+            </div>
+            <h3 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.18231v1" target="_blank">FM-VLA: Force-based Memory for Vision-Language-Action Models in Contact-Rich Manipulation</a>
+            </h3>
+            <p class="authors">Ruicheng Li, Qixiu Li, Ruichun Ma et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有基于视觉记忆的VLA模型在处理接触丰富的非马尔可夫任务时，因视觉模糊性（如多次微小按压按钮）而表现不佳，且计算开销大。</div>
+                <div class="summary-item"><strong>方法：</strong>提出FM-VLA，通过变分自编码器（VAE）预训练将力历史编码为紧凑的力记忆令牌，并将其与短状态历史作为额外条件令牌注入动作专家模块，使VLA能利用累积接触事件历史指导操作。</div>
+                <div class="summary-item"><strong>结论：</strong>在三个记忆依赖任务（隐藏块寻找、按钮按压、指定次数擦盘）上，轻量级力记忆方法以最小推理开销实现超过80%的成功率，显著优于基线方法。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将力信号作为记忆模态引入VLA模型，通过力时间序列重建预训练实现高效、紧凑的接触事件历史编码。</div>
+                <div class="summary-item"><strong>意义：</strong>为具身智能中接触丰富的非马尔可夫操作任务提供了新的记忆范式，拓展了多模态大模型在机器人领域的应用边界。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2607.18231v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                <span class="date">2026-07-20</span>
+            </div>
+            <h3 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.18230v1" target="_blank">Simple Domain Generalization for Strong Pixel-Level Image Tampering Detection in Modern VLMs</a>
+            </h3>
+            <p class="authors">Yi Tang, Xinyi Shang, Jiacheng Cui et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现代视觉语言模型（VLM）生成的图像编辑内容日益逼真，导致像素级图像篡改检测在跨模型和分布外场景下变得困难。</div>
+                <div class="summary-item"><strong>方法：</strong>提出一个简单的域泛化训练框架，包含两个策略：一是平衡小批量采样，在每批中均衡采样篡改和真实图像，防止优化偏差；二是晚期注入策略，先在大规模基础数据上训练检测器至稳定收敛，再引入少量新VLM分布的支持数据以提升适应性。</div>
+                <div class="summary-item"><strong>结论：</strong>在GPT-Images-2.0、Gemini-3.1等OOD VLM上，平均gIoU和cIoU相对提升26.1%和26.8%，显著超越先前最优方法PIXAR。</div>
+                <div class="summary-item"><strong>创新点：</strong>通过平衡采样和晚期注入的简单组合，实现了对VLM生成篡改图像的强鲁棒检测，无需复杂架构。</div>
+                <div class="summary-item"><strong>意义：</strong>为多模态内容安全提供了实用的域泛化方案，有助于提升AI生成内容检测的可靠性。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2607.18230v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                <span class="date">2026-07-20</span>
+            </div>
+            <h3 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.18227v1" target="_blank">FlowMimic: Mask-free Visual Editing and Generation with Pixel-pair Warped Flow Field for Online Video Editing Data Generation and Modality Mimicry</a>
+            </h3>
+            <p class="authors">Dingyun Zhang, Lixue Gong, Wei Liu</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有视频编辑数据收集方法依赖人工标注、易出错且任务扩展性差，导致视频编辑任务多样性远低于图像编辑。</div>
+                <div class="summary-item"><strong>方法：</strong>提出像素对时间扭曲流场，从图像编辑样本实时生成视频编辑样本；设计模态模仿生成损失和编辑损失，对齐图像与视频模态的能力；引入感知相关任务及编辑区域感知的潜在层和注意力层损失，使模型内化区域定位能力。</div>
+                <div class="summary-item"><strong>结论：</strong>模型仅使用该方法生成的数据即可学习多种视频编辑任务，并实现图像与视频模态能力的相对对齐。</div>
+                <div class="summary-item"><strong>创新点：</strong>通过像素对扭曲流场实现无掩码的在线视频编辑数据生成，并利用模态模仿损失统一图像和视频编辑能力。</div>
+                <div class="summary-item"><strong>意义：</strong>为视频编辑数据生成提供高效自动化方案，推动多模态生成与编辑模型的统一。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2607.18227v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                <span class="date">2026-07-20</span>
+            </div>
+            <h3 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.18217v1" target="_blank">HOMIE: Human-object Centric Video Personalization via Multimodal Intelligent Enchancement</a>
+            </h3>
+            <p class="authors">Yiyang Cai, Nan Chen, Rongchang Xie et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有的人-物中心视频个性化方法难以在保持主体高保真度和准确的人-物交互模式（尤其是抽象概念如logo）之间取得平衡，且缺乏理解主体内参考（如OCR图、多视角输入）潜在对应关系的机制。</div>
+                <div class="summary-item"><strong>方法：</strong>提出HOMIE框架，通过全局多模态引导在自注意力中更好对齐MLLM语义特征与VAE令牌，并引入模态参考嵌入来区分MLLM特征和VAE令牌并关联主体内参考图像令牌，统一处理主体间和主体内输入设置。</div>
+                <div class="summary-item"><strong>结论：</strong>实验表明，该方法在各种人-物中心视频个性化任务上达到了最先进性能。</div>
+                <div class="summary-item"><strong>创新点：</strong>提出一种更好的MLLM集成策略，在不损害文本编码器可控性或引发昂贵重对齐的情况下提取参考级关系知识。</div>
+                <div class="summary-item"><strong>意义：</strong>推动了视频生成中主体驱动个性化的发展，特别是处理复杂人-物交互和抽象概念的能力。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2607.18217v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                <span class="date">2026-07-20</span>
+            </div>
+            <h3 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.18171v1" target="_blank">FlashRT: Agent Harness for Guiding Agents to Deploy Real-Time Multimodal Applications</a>
+            </h3>
+            <p class="authors">Krish Agarwal, Zhuoming Chen, Yanyuan Qin et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>实时多模态应用（如语音代理和交互式视频生成）需要将异构模型组合成流水线，但现有服务系统和自动并行编译器仅支持有限的转换和固定工作负载假设，导致新应用的高效部署需要手动实现。</div>
+                <div class="summary-item"><strong>方法：</strong>提出FlashRT，一个代理框架，通过链式程序范式指导编码代理将开发者编写的参考实现转换为优化的多GPU部署；该过程包括将参考实现转换为中间表示（IR）以捕获数据依赖和持久状态范围，通过顺序解释器验证IR，进行静态分析识别候选转换，然后在测量门控优化循环中迭代实现、验证和基准测试每个候选方案。</div>
+                <div class="summary-item"><strong>结论：</strong>在NVIDIA B200 GPU上，FlashRT实现了高达~70倍的延迟降低和2.8倍的吞吐量提升；在AMD MI355X GPU上，延迟降低峰值匹配，吞吐量提升峰值达到3.6倍，且对于Qwen3-Omni文本到音频推理，相比专家vLLM-Omni实现，响应延迟降低65%。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将编码代理与链式程序范式结合，通过多遍转换和测量门控优化循环自动生成高效的多GPU部署，无需手动调优。</div>
+                <div class="summary-item"><strong>意义：</strong>为多模态大模型和世界模型等复杂AI应用的自动化、跨平台高效部署提供了新范式，降低了专家优化门槛。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">世界模型 / 多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2607.18171v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                <span class="date">2026-07-20</span>
+            </div>
+            <h3 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.18153v1" target="_blank">Robust Multimodal Dynamic Object Segmentation</a>
+            </h3>
+            <p class="authors">Zhe Xin, Hanzhi Chang, Penghui Huang et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有动态物体分割方法在边界一致性或对重建误差的鲁棒性上存在不足。</div>
+                <div class="summary-item"><strong>方法：</strong>提出一个融合2D点轨迹、3D重建和语义信息的多模态框架，结合Transformer与特征聚类聚合模块进行静态/动态分类，并引入基于点查询的SAM后处理方法处理多物体。</div>
+                <div class="summary-item"><strong>结论：</strong>在动态物体分割和静态场景重建任务上均达到最先进性能。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将多模态特征轨迹与Transformer聚类聚合结合，并设计点查询SAM后处理实现多物体精细分割。</div>
+                <div class="summary-item"><strong>意义：</strong>提升了动态场景理解与静态重建的鲁棒性，对自动驾驶、机器人等具身智能应用有重要价值。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2607.18153v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                <span class="date">2026-07-20</span>
+            </div>
+            <h3 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.18142v1" target="_blank">O-VAD: Industrial Video Anomaly Detection through Object-Centric Tracking and Reasoning</a>
+            </h3>
+            <p class="authors">Mei Yuan, Qi Long, Qifeng Wu et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有基于视觉语言模型的异常推理方法在工业场景中表现不佳，难以处理复杂的物体变换和严格的物理约束。</div>
+                <div class="summary-item"><strong>方法：</strong>提出一种无需训练和领域知识的智能体框架，通过以物体为中心的时空轨迹跟踪和推理，模拟人类检查员对物体状态演变的观察，识别异常物体和事件。</div>
+                <div class="summary-item"><strong>结论：</strong>在三个工业视频异常检测数据集上，该方法超越了前沿视觉语言模型、智能体框架和传统视频异常检测方法，并生成可解释的异常报告。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将无需训练的物体中心时空轨迹推理应用于工业视频异常检测，摆脱了对正常片段重训练或领域知识注入的依赖。</div>
+                <div class="summary-item"><strong>意义：</strong>为工业场景下的开放集异常检测提供了高效、可解释的解决方案，推动了视觉语言模型在具身智能和自动化质检中的应用。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / Agent</span>
+                <a href="https://arxiv.org/pdf/2607.18142v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                <span class="date">2026-07-20</span>
+            </div>
+            <h3 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.18109v1" target="_blank">SpEmoC: A Balanced Speaker-Segment Multimodal Emotion Benchmark</a>
+            </h3>
+            <p class="authors">Sania Bano, Shahzad Ahmad, Santosh Kumar Vipparthi et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有情感计算数据集在规模、情感分布、模态对齐和数据划分策略上存在差异，影响跨数据集泛化和少数情感建模的可靠性。</div>
+                <div class="summary-item"><strong>方法：</strong>构建了SpEmoC数据集，包含从3100部英语影视作品中提取的306,544个原始片段，并从中精选30,000个高质量、类别平衡的片段，通过结合预训练模型和人工验证的混合管道为视觉、音频和文本模态标注七种情感，并采用严格的影视级划分防止内容重叠。</div>
+                <div class="summary-item"><strong>结论：</strong>实验表明，平衡的数据和谨慎的划分策略使模型在跨数据集评估时情感表现更稳定，强调了数据集设计对鲁棒和可迁移多模态情感识别的重要性。</div>
+                <div class="summary-item"><strong>创新点：</strong>提出了一个大规模、类别平衡且严格划分的多模态情感基准数据集，特别关注少数情感（如恐惧和厌恶）的建模。</div>
+                <div class="summary-item"><strong>意义：</strong>为多模态情感识别提供了更可靠的数据基准，有助于推动具身智能和人机交互中情感理解的研究。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2607.18109v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                <span class="date">2026-07-20</span>
+            </div>
+            <h3 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.18080v1" target="_blank">Sparse Evidence Can Suffice: Agentic Evidence Seeking for Multimodal Video Misinformation Detection</a>
+            </h3>
+            <p class="authors">Haochen Zhao, Yongxiu Xu, Xinkui Lin et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>多模态视频虚假信息检测通常将整个视频作为整体处理，但真实世界中的虚假信息往往具有稀疏且组合的证据结构，导致全面多模态推理引入冗余并掩盖关键证据。</div>
+                <div class="summary-item"><strong>方法：</strong>提出SIEVE框架，将证据获取与验证解耦：一个证据搜索智能体主动探索多模态证据并构建紧凑的证据包，然后由验证器判断真实性；智能体通过监督式证据搜索轨迹和证据感知的强化学习目标进行训练。</div>
+                <div class="summary-item"><strong>结论：</strong>在多个视频虚假信息基准上，SIEVE持续优于基线方法，并支持使用紧凑证据包进行可靠验证，同时提供可检查的证据轨迹，提高了透明度。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将证据获取与验证解耦，通过智能体主动搜索稀疏关键证据进行多模态视频虚假信息检测。</div>
+                <div class="summary-item"><strong>意义：</strong>为多模态虚假信息检测提供了更高效、可解释的范式，推动了AI在事实核查和可信度评估领域的应用。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / Agent</span>
+                <a href="https://arxiv.org/pdf/2607.18080v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                <span class="date">2026-07-20</span>
+            </div>
+            <h3 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.18060v1" target="_blank">RoboHarness: Memory-Driven Orchestration of Heterogeneous Robot Policies for Long-Horizon Planning</a>
+            </h3>
+            <p class="authors">Jinbang Huang, Yuanzhao Hu, Zhiyuan Li et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>长时域机器人任务需要多种能力，但现有规划方法基于同质化、固定适用性的预定义技能，忽略了异构策略间不确定的能力边界和分布不匹配问题。</div>
+                <div class="summary-item"><strong>方法：</strong>提出RoboHarness统一框架，将异构策略封装为可复用智能体技能，利用多模态执行记忆和在线证据刻画能力边界进行感知分解与路由，并通过Memory Bridge检索下一策略的执行轨迹估计其分布内状态区域，引导机器人进入该区域以实现稳定交接。</div>
+                <div class="summary-item"><strong>结论：</strong>在三个公开基准、500个定制任务和135个真实机器人实验中，RoboHarness实现了有效的能力感知路由和稳定策略编排，显著提升了零样本长时域规划和分布外鲁棒性。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次提出基于多模态记忆在线证据的异构策略能力边界刻画与分布匹配引导的交接机制，无需联合重训练。</div>
+                <div class="summary-item"><strong>意义：</strong>为异构机器人策略的统一编排提供了通用框架，推动了长时域自主规划和具身智能的实用化。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / Agent</span>
+                <a href="https://arxiv.org/pdf/2607.18060v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                <span class="date">2026-07-20</span>
+            </div>
+            <h3 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.18046v1" target="_blank">SEE: Structure-aware Exploring \& Exploiting for Long-horizon GUI Agent Trajectory Synthesis</a>
+            </h3>
+            <p class="authors">Zhuohang Fan, Beichen Zhang, Yuanfa Li et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>GUI智能体缺乏高质量、长程的交互轨迹数据，现有方法依赖昂贵的人工演示或易过采样常见流程，难以覆盖稀有转换和复杂多步操作。</div>
+                <div class="summary-item"><strong>方法：</strong>提出SEE两阶段数据合成框架：先通过高效探索构建显式的UI状态转移图，再基于该图通过规划和受控采样合成多样化的多步轨迹。</div>
+                <div class="summary-item"><strong>结论：</strong>在多个真实应用中生成平均14.8步的轨迹且避免循环，微调后的智能体在任务成功率和未见过屏幕的泛化性上均有提升。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将显式UI结构图与图规划结合，实现可复现、可解释的长程轨迹合成，并主动防止虚假循环。</div>
+                <div class="summary-item"><strong>意义：</strong>为GUI智能体提供低成本、高质量的训练数据生成方法，推动移动端自动化任务的实用化。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2607.18046v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                <span class="date">2026-07-20</span>
+            </div>
+            <h3 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.18042v1" target="_blank">Anticipate Before Acting: Future-State-Conditioned Vision-Language Navigation</a>
+            </h3>
+            <p class="authors">Lingfeng Zhang, Zhanguang Zhang, Liheng Ma et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>在端到端视觉语言导航中，标准行为克隆仅监督下一步动作，未显式训练策略状态预测未来视觉结果，导致导航性能受限。</div>
+                <div class="summary-item"><strong>方法：</strong>提出未来状态条件化视觉语言导航（FSC-VLN），通过添加未来查询令牌，在训练时将其隐藏状态对齐到冻结的视觉嵌入（未来Δ步），并在推理时移除该分支，从而在不访问未来图像的情况下利用未来信息。</div>
+                <div class="summary-item"><strong>结论：</strong>在R2R val-unseen上，FSC-VLN在两种训练数据设置下均提升了SR/OSR/SPL指标，尤其在长程任务中增益更大；消融实验支持未来与动作查询分离的双查询设计。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将未来视觉潜在状态作为训练监督信号，通过训练时对齐和推理时移除的方式，实现无需未来图像即可受益于未来信息。</div>
+                <div class="summary-item"><strong>意义：</strong>为视觉语言导航提供了一种利用未来信息的新范式，可推广至其他需要长期规划的具身智能任务。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2607.18042v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                <span class="date">2026-07-20</span>
+            </div>
+            <h3 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.18016v1" target="_blank">Closing the Loop in Humanoid VLA: Persistent 3D Object Tokens for Verifiable Loco-Manipulation</a>
+            </h3>
+            <p class="authors">Peng Ren, Haoyang Ge, Jiang Zhao et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>解决人形机器人在长时间操作任务中，由于物体状态在移动、接触、遮挡和恢复过程中发生发散，导致动作生成与验证不一致的问题。</div>
+                <div class="summary-item"><strong>方法：</strong>提出持久化物体标记化方法，通过RGB-D观测维护角色索引的3D物体记录，并将其转化为物体标记，用于全身动作专家生成动作，同时支持几何谓词检查，形成闭环执行系统。</div>
+                <div class="summary-item"><strong>结论：</strong>在Unitree G1机器人上，POT-VLA在8个真实任务族中将成功率从39/80提升至71/80；在外部基准测试中，以44/50的成绩超越Being-0报告的37/50。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将持久化的3D物体标记同时用于动作条件生成和可验证的几何谓词检查，实现人形VLA的闭环执行。</div>
+                <div class="summary-item"><strong>意义：</strong>为具身智能中的人形机器人提供了可验证的物体状态抽象，推动了视觉-语言-动作策略在复杂操作任务中的实用化。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2607.18016v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                <span class="date">2026-07-20</span>
+            </div>
+            <h3 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.17994v1" target="_blank">HAS: Highlight-guided Attention Steering for Multimodal LLM Video Summarization</a>
+            </h3>
+            <p class="authors">Rui Chu, Yingjie Lao</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有视频摘要方法依赖离散关键帧和片段描述，忽略了帧的全局重要性，导致理解不连贯和信息丢失。</div>
+                <div class="summary-item"><strong>方法：</strong>提出HAS方法，首先全局计算连续帧级高亮分布，然后将其作为注意力引导向量注入多模态大语言模型，使模型在推理时更关注高亮帧，同时保留低高亮帧的部分信息。</div>
+                <div class="summary-item"><strong>结论：</strong>在多个基准测试上，HAS在视频摘要任务中取得了令人信服的性能提升。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将帧级高亮分布作为注意力引导向量，实现全局重要性感知的连续视频摘要。</div>
+                <div class="summary-item"><strong>意义：</strong>为多模态大语言模型在视频理解中提供了一种高效、连贯的注意力调控范式，推动视频摘要和具身智能等应用发展。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2607.17994v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                <span class="date">2026-07-20</span>
+            </div>
+            <h3 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.17884v1" target="_blank">ST-Veto: Spatio-Temporal Token Veto for Diffusion MLLMs via Taylor Prediction and Visual Grounding</a>
+            </h3>
+            <p class="authors">Keuntae Kim, Beomseok Lee, Hyunwoo Kim et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>扩散多模态大语言模型（dMLLMs）的推理能力不足，且现有方法存在高顺序生成成本、错误累积和缺乏自我修正的问题。</div>
+                <div class="summary-item"><strong>方法：</strong>提出一种无需训练的方法ST-Veto，通过二阶泰勒预测评估令牌的时间稳定性来否决不稳定令牌，并利用图像注意力质量过滤弱定位令牌，替换为更安全的候选令牌。</div>
+                <div class="summary-item"><strong>结论：</strong>在多个dMLLMs和多模态推理基准上，ST-Veto相比标准解码策略和先前VLM推理方法，准确率提升高达9%，且无额外训练或生成成本。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次利用扩散步骤中所有令牌位置的可观测性，结合时间稳定性和视觉定位进行令牌级否决，实现无训练推理增强。</div>
+                <div class="summary-item"><strong>意义：</strong>为扩散多模态大语言模型提供了一种高效、无需训练的推理优化方法，推动了多模态推理和世界模型的发展。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2607.17884v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                <span class="date">2026-07-20</span>
+            </div>
+            <h3 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.17820v1" target="_blank">PRiSM: Prototype Regularization for Few-Shot VLMs</a>
+            </h3>
+            <p class="authors">Ghassen Baklouti, Omprakash Chakraborty, Jose Dolz et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有少样本视觉语言模型（VLM）的零训练适应方法在类不平衡和高类别数场景下性能显著下降，且当前基准测试假设过于简化。</div>
+                <div class="summary-item"><strong>方法：</strong>提出PRiSM，一种类原型正则化方法，通过优化包含最大化类间距离、支持特征对齐和原型保真度的多损失项，并利用基于Gershgorin圆定理的高效块Majorize-Minimize优化器求解。</div>
+                <div class="summary-item"><strong>结论：</strong>PRiSM作为即插即用模块显著提升多种零训练基线方法性能，尤其在严重类不平衡和高类别数情况下表现突出。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次针对少样本VLM适应中的类不平衡问题提出原型正则化框架，并引入高效块优化器。</div>
+                <div class="summary-item"><strong>意义：</strong>推动少样本VLM适应方法在更真实、复杂场景下的鲁棒性，对多模态学习和具身智能中的少样本泛化有重要参考价值。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2607.17820v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                <span class="date">2026-07-20</span>
+            </div>
+            <h3 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.17834v1" target="_blank">Measuring and Improving Complex-Atomic Answer Consistency in Endoscopic VQA</a>
+            </h3>
+            <p class="authors">Yuhao Liu, Cheng Zhao, Guanghui Yue</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>内窥镜视觉问答（VQA）中，模型在回答复杂问题时可能正确，但在相关的原子问题上失败，导致答案不一致。</div>
+                <div class="summary-item"><strong>方法：</strong>提出EndoCA基准，包含两个套件（EndoCA-Core和EndoCA-Diagnostic）来评估复杂-原子答案一致性；并引入Atomic-Support Reconciliation (ASR)机制，利用模型生成的原子答案作为上下文前提进行答案修订和一致性引导的选择性回答。</div>
+                <div class="summary-item"><strong>结论：</strong>11个VLM在EndoCA上评估显示，尽管复杂答案准确率高，但原子答案准确率和一致性较低；ASR-Revise提高了配对复杂-原子正确性，ASR-Selective通过允许模型放弃不可靠案例提高了已回答案例的准确率。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次提出内窥镜VQA中的复杂-原子答案一致性基准和无需训练的答案协调机制。</div>
+                <div class="summary-item"><strong>意义：</strong>为多模态VQA领域提供了评估和提升答案一致性的新方法，有助于提高医疗AI的可靠性和可解释性。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2607.17834v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+<h2 class="topic-header">大模型 <span class="count">(6 篇)</span></h2>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                <span class="date">2026-07-20</span>
+            </div>
+            <h3 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.18230v1" target="_blank">Simple Domain Generalization for Strong Pixel-Level Image Tampering Detection in Modern VLMs</a>
+            </h3>
+            <p class="authors">Yi Tang, Xinyi Shang, Jiacheng Cui et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现代视觉语言模型（VLM）生成的图像编辑内容日益逼真，导致像素级图像篡改检测在跨模型和分布外场景下变得困难。</div>
+                <div class="summary-item"><strong>方法：</strong>提出一个简单的域泛化训练框架，包含两个策略：一是平衡小批量采样，在每批中均衡采样篡改和真实图像，防止优化偏差；二是晚期注入策略，先在大规模基础数据上训练检测器至稳定收敛，再引入少量新VLM分布的支持数据以提升适应性。</div>
+                <div class="summary-item"><strong>结论：</strong>在GPT-Images-2.0、Gemini-3.1等OOD VLM上，平均gIoU和cIoU相对提升26.1%和26.8%，显著超越先前最优方法PIXAR。</div>
+                <div class="summary-item"><strong>创新点：</strong>通过平衡采样和晚期注入的简单组合，实现了对VLM生成篡改图像的强鲁棒检测，无需复杂架构。</div>
+                <div class="summary-item"><strong>意义：</strong>为多模态内容安全提供了实用的域泛化方案，有助于提升AI生成内容检测的可靠性。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2607.18230v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                <span class="date">2026-07-20</span>
+            </div>
+            <h3 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.18227v1" target="_blank">FlowMimic: Mask-free Visual Editing and Generation with Pixel-pair Warped Flow Field for Online Video Editing Data Generation and Modality Mimicry</a>
+            </h3>
+            <p class="authors">Dingyun Zhang, Lixue Gong, Wei Liu</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有视频编辑数据收集方法依赖人工标注、易出错且任务扩展性差，导致视频编辑任务多样性远低于图像编辑。</div>
+                <div class="summary-item"><strong>方法：</strong>提出像素对时间扭曲流场，从图像编辑样本实时生成视频编辑样本；设计模态模仿生成损失和编辑损失，对齐图像与视频模态的能力；引入感知相关任务及编辑区域感知的潜在层和注意力层损失，使模型内化区域定位能力。</div>
+                <div class="summary-item"><strong>结论：</strong>模型仅使用该方法生成的数据即可学习多种视频编辑任务，并实现图像与视频模态能力的相对对齐。</div>
+                <div class="summary-item"><strong>创新点：</strong>通过像素对扭曲流场实现无掩码的在线视频编辑数据生成，并利用模态模仿损失统一图像和视频编辑能力。</div>
+                <div class="summary-item"><strong>意义：</strong>为视频编辑数据生成提供高效自动化方案，推动多模态生成与编辑模型的统一。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2607.18227v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                <span class="date">2026-07-20</span>
+            </div>
+            <h3 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.18217v1" target="_blank">HOMIE: Human-object Centric Video Personalization via Multimodal Intelligent Enchancement</a>
+            </h3>
+            <p class="authors">Yiyang Cai, Nan Chen, Rongchang Xie et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有的人-物中心视频个性化方法难以在保持主体高保真度和准确的人-物交互模式（尤其是抽象概念如logo）之间取得平衡，且缺乏理解主体内参考（如OCR图、多视角输入）潜在对应关系的机制。</div>
+                <div class="summary-item"><strong>方法：</strong>提出HOMIE框架，通过全局多模态引导在自注意力中更好对齐MLLM语义特征与VAE令牌，并引入模态参考嵌入来区分MLLM特征和VAE令牌并关联主体内参考图像令牌，统一处理主体间和主体内输入设置。</div>
+                <div class="summary-item"><strong>结论：</strong>实验表明，该方法在各种人-物中心视频个性化任务上达到了最先进性能。</div>
+                <div class="summary-item"><strong>创新点：</strong>提出一种更好的MLLM集成策略，在不损害文本编码器可控性或引发昂贵重对齐的情况下提取参考级关系知识。</div>
+                <div class="summary-item"><strong>意义：</strong>推动了视频生成中主体驱动个性化的发展，特别是处理复杂人-物交互和抽象概念的能力。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2607.18217v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                <span class="date">2026-07-20</span>
+            </div>
+            <h3 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.18171v1" target="_blank">FlashRT: Agent Harness for Guiding Agents to Deploy Real-Time Multimodal Applications</a>
+            </h3>
+            <p class="authors">Krish Agarwal, Zhuoming Chen, Yanyuan Qin et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>实时多模态应用（如语音代理和交互式视频生成）需要将异构模型组合成流水线，但现有服务系统和自动并行编译器仅支持有限的转换和固定工作负载假设，导致新应用的高效部署需要手动实现。</div>
+                <div class="summary-item"><strong>方法：</strong>提出FlashRT，一个代理框架，通过链式程序范式指导编码代理将开发者编写的参考实现转换为优化的多GPU部署；该过程包括将参考实现转换为中间表示（IR）以捕获数据依赖和持久状态范围，通过顺序解释器验证IR，进行静态分析识别候选转换，然后在测量门控优化循环中迭代实现、验证和基准测试每个候选方案。</div>
+                <div class="summary-item"><strong>结论：</strong>在NVIDIA B200 GPU上，FlashRT实现了高达~70倍的延迟降低和2.8倍的吞吐量提升；在AMD MI355X GPU上，延迟降低峰值匹配，吞吐量提升峰值达到3.6倍，且对于Qwen3-Omni文本到音频推理，相比专家vLLM-Omni实现，响应延迟降低65%。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将编码代理与链式程序范式结合，通过多遍转换和测量门控优化循环自动生成高效的多GPU部署，无需手动调优。</div>
+                <div class="summary-item"><strong>意义：</strong>为多模态大模型和世界模型等复杂AI应用的自动化、跨平台高效部署提供了新范式，降低了专家优化门槛。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">世界模型 / 多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2607.18171v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                <span class="date">2026-07-20</span>
+            </div>
+            <h3 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.17994v1" target="_blank">HAS: Highlight-guided Attention Steering for Multimodal LLM Video Summarization</a>
+            </h3>
+            <p class="authors">Rui Chu, Yingjie Lao</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有视频摘要方法依赖离散关键帧和片段描述，忽略了帧的全局重要性，导致理解不连贯和信息丢失。</div>
+                <div class="summary-item"><strong>方法：</strong>提出HAS方法，首先全局计算连续帧级高亮分布，然后将其作为注意力引导向量注入多模态大语言模型，使模型在推理时更关注高亮帧，同时保留低高亮帧的部分信息。</div>
+                <div class="summary-item"><strong>结论：</strong>在多个基准测试上，HAS在视频摘要任务中取得了令人信服的性能提升。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将帧级高亮分布作为注意力引导向量，实现全局重要性感知的连续视频摘要。</div>
+                <div class="summary-item"><strong>意义：</strong>为多模态大语言模型在视频理解中提供了一种高效、连贯的注意力调控范式，推动视频摘要和具身智能等应用发展。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2607.17994v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                <span class="date">2026-07-20</span>
+            </div>
+            <h3 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.17884v1" target="_blank">ST-Veto: Spatio-Temporal Token Veto for Diffusion MLLMs via Taylor Prediction and Visual Grounding</a>
+            </h3>
+            <p class="authors">Keuntae Kim, Beomseok Lee, Hyunwoo Kim et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>扩散多模态大语言模型（dMLLMs）的推理能力不足，且现有方法存在高顺序生成成本、错误累积和缺乏自我修正的问题。</div>
+                <div class="summary-item"><strong>方法：</strong>提出一种无需训练的方法ST-Veto，通过二阶泰勒预测评估令牌的时间稳定性来否决不稳定令牌，并利用图像注意力质量过滤弱定位令牌，替换为更安全的候选令牌。</div>
+                <div class="summary-item"><strong>结论：</strong>在多个dMLLMs和多模态推理基准上，ST-Veto相比标准解码策略和先前VLM推理方法，准确率提升高达9%，且无额外训练或生成成本。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次利用扩散步骤中所有令牌位置的可观测性，结合时间稳定性和视觉定位进行令牌级否决，实现无训练推理增强。</div>
+                <div class="summary-item"><strong>意义：</strong>为扩散多模态大语言模型提供了一种高效、无需训练的推理优化方法，推动了多模态推理和世界模型的发展。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2607.17884v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+<h2 class="topic-header">Agent <span class="count">(3 篇)</span></h2>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                <span class="date">2026-07-20</span>
+            </div>
+            <h3 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.18142v1" target="_blank">O-VAD: Industrial Video Anomaly Detection through Object-Centric Tracking and Reasoning</a>
+            </h3>
+            <p class="authors">Mei Yuan, Qi Long, Qifeng Wu et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有基于视觉语言模型的异常推理方法在工业场景中表现不佳，难以处理复杂的物体变换和严格的物理约束。</div>
+                <div class="summary-item"><strong>方法：</strong>提出一种无需训练和领域知识的智能体框架，通过以物体为中心的时空轨迹跟踪和推理，模拟人类检查员对物体状态演变的观察，识别异常物体和事件。</div>
+                <div class="summary-item"><strong>结论：</strong>在三个工业视频异常检测数据集上，该方法超越了前沿视觉语言模型、智能体框架和传统视频异常检测方法，并生成可解释的异常报告。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将无需训练的物体中心时空轨迹推理应用于工业视频异常检测，摆脱了对正常片段重训练或领域知识注入的依赖。</div>
+                <div class="summary-item"><strong>意义：</strong>为工业场景下的开放集异常检测提供了高效、可解释的解决方案，推动了视觉语言模型在具身智能和自动化质检中的应用。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / Agent</span>
+                <a href="https://arxiv.org/pdf/2607.18142v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                <span class="date">2026-07-20</span>
+            </div>
+            <h3 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.18080v1" target="_blank">Sparse Evidence Can Suffice: Agentic Evidence Seeking for Multimodal Video Misinformation Detection</a>
+            </h3>
+            <p class="authors">Haochen Zhao, Yongxiu Xu, Xinkui Lin et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>多模态视频虚假信息检测通常将整个视频作为整体处理，但真实世界中的虚假信息往往具有稀疏且组合的证据结构，导致全面多模态推理引入冗余并掩盖关键证据。</div>
+                <div class="summary-item"><strong>方法：</strong>提出SIEVE框架，将证据获取与验证解耦：一个证据搜索智能体主动探索多模态证据并构建紧凑的证据包，然后由验证器判断真实性；智能体通过监督式证据搜索轨迹和证据感知的强化学习目标进行训练。</div>
+                <div class="summary-item"><strong>结论：</strong>在多个视频虚假信息基准上，SIEVE持续优于基线方法，并支持使用紧凑证据包进行可靠验证，同时提供可检查的证据轨迹，提高了透明度。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将证据获取与验证解耦，通过智能体主动搜索稀疏关键证据进行多模态视频虚假信息检测。</div>
+                <div class="summary-item"><strong>意义：</strong>为多模态虚假信息检测提供了更高效、可解释的范式，推动了AI在事实核查和可信度评估领域的应用。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / Agent</span>
+                <a href="https://arxiv.org/pdf/2607.18080v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                <span class="date">2026-07-20</span>
+            </div>
+            <h3 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.18060v1" target="_blank">RoboHarness: Memory-Driven Orchestration of Heterogeneous Robot Policies for Long-Horizon Planning</a>
+            </h3>
+            <p class="authors">Jinbang Huang, Yuanzhao Hu, Zhiyuan Li et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>长时域机器人任务需要多种能力，但现有规划方法基于同质化、固定适用性的预定义技能，忽略了异构策略间不确定的能力边界和分布不匹配问题。</div>
+                <div class="summary-item"><strong>方法：</strong>提出RoboHarness统一框架，将异构策略封装为可复用智能体技能，利用多模态执行记忆和在线证据刻画能力边界进行感知分解与路由，并通过Memory Bridge检索下一策略的执行轨迹估计其分布内状态区域，引导机器人进入该区域以实现稳定交接。</div>
+                <div class="summary-item"><strong>结论：</strong>在三个公开基准、500个定制任务和135个真实机器人实验中，RoboHarness实现了有效的能力感知路由和稳定策略编排，显著提升了零样本长时域规划和分布外鲁棒性。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次提出基于多模态记忆在线证据的异构策略能力边界刻画与分布匹配引导的交接机制，无需联合重训练。</div>
+                <div class="summary-item"><strong>意义：</strong>为异构机器人策略的统一编排提供了通用框架，推动了长时域自主规划和具身智能的实用化。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / Agent</span>
+                <a href="https://arxiv.org/pdf/2607.18060v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+<h2 class="topic-header">具身智能 <span class="count">(1 篇)</span></h2>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                <span class="date">2026-07-20</span>
+            </div>
+            <h3 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.18236v1" target="_blank">Patch Policy: Efficient Embodied Control via Dense Visual Representations</a>
+            </h3>
+            <p class="authors">Gaoyue Zhou, Zichen Jeff Cui, Ada Langford et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有机器人策略要么将观测压缩为单个全局token，损失空间细节，要么从头训练视觉骨干，无法利用大规模预训练视觉特征，而直接使用密集补丁特征的大型视觉-语言-动作模型（VLA）又过于笨重和缓慢。</div>
+                <div class="summary-item"><strong>方法：</strong>提出Patch Policy，通过一个块因果注意力掩码（block-causal attention mask）作为最小架构扩展，使基于Transformer的策略能够直接消耗预训练的密集补丁token，同时保留时间因果性并整合其他状态信息，无需完整VLM的计算开销。</div>
+                <div class="summary-item"><strong>结论：</strong>在4个模拟和3个真实世界环境套件中，相比使用最先进全局池化表示的策略，Patch Policy实现了40%的相对改进；相比微调后的OpenVLA-OFT，性能提升18%，而参数量仅为其0.7%。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次通过轻量级注意力掩码设计，让机器人策略高效利用预训练密集视觉特征，避免全局池化或全VLM的权衡。</div>
+                <div class="summary-item"><strong>意义：</strong>为机器人社区提供了一条即插即用的管道，能够直接利用视觉表示学习的持续进展，同时保持高频反应控制所需的训练和推理效率。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 具身智能</span>
+                <a href="https://arxiv.org/pdf/2607.18236v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+
+    <div class="archive">
+        <h2>历史归档</h2>
+        <a href="2026-07-21.html" class="archive-link">2026-07-21</a>
+
+    </div>
+</body>
+</html>
