@@ -1,17 +1,19 @@
 """
-arXiv 每日论文抓取 + DeepSeek AI 筛选摘要
-==========================================
+arXiv 每日论文抓取 + DeepSeek AI 筛选摘要 + 机构分析 + 邮箱提取
+================================================================
 功能：
 1. 从 arXiv API 抓取指定领域的最新论文
-2. 调用 DeepSeek API 对论文进行相关性筛选
-3. 为筛选出的论文生成结构化摘要（问题、方法、结论、创新点）
-4. 输出 JSON 数据供网页渲染
+2. 调用 DeepSeek API 对论文进行相关性筛选和结构化摘要
+3. 分析各机构在不同方向的论文布局
+4. 下载高分论文 PDF，提取作者邮箱和联系方式
+5. 输出 JSON 数据供网页渲染
 """
 
 import os
 import json
 import time
 import re
+import tempfile
 import urllib.request
 import urllib.parse
 import xml.etree.ElementTree as ET
@@ -51,9 +53,15 @@ ARXIV_CATEGORIES = ["cs.AI", "cs.CL", "cs.CV", "cs.LG", "cs.RO", "cs.MA"]
 # 每天最多处理的论文数（控制 API 调用成本）
 MAX_PAPERS_TO_SUMMARIZE = 20
 
+# 提取邮箱的论文数量（只对高分论文做 PDF 下载，控制耗时）
+MAX_PAPERS_TO_EXTRACT_EMAIL = 10
+
+# 邮箱提取的最低分数门槛（只有评分 >= 此值的论文才下载 PDF 提取邮箱）
+EMAIL_EXTRACT_MIN_SCORE = 6
+
 # DeepSeek API 配置
 DEEPSEEK_API_URL = "https://api.deepseek.com/chat/completions"
-DEEPSEEK_MODEL = "deepseek-chat"  # 可改为 deepseek-reasoner 等
+DEEPSEEK_MODEL = "deepseek-v4-flash"  # 2026-07-24 后 deepseek-chat 弃用
 
 # 已知机构关键词（用于从作者署名中识别机构）
 KNOWN_ORGS = {
@@ -66,6 +74,7 @@ KNOWN_ORGS = {
     "NVIDIA": ["nvidia"],
     "Amazon": ["amazon", "aws", "alexa"],
     "Tesla": ["tesla"],
+    "Anthropic": ["anthropic"],
     # 中国公司
     "字节跳动": ["bytedance", "douyin", "tiktok"],
     "腾讯": ["tencent"],
@@ -101,10 +110,6 @@ def fetch_arxiv_papers(days_back=1):
     keyword_query = " OR ".join([f'all:"{kw}"' for kw in all_keywords])
     cat_query = " OR ".join([f"cat:{cat}" for cat in ARXIV_CATEGORIES])
     query = f"({keyword_query}) AND ({cat_query})"
-
-    # 计算日期范围
-    end_date = datetime.now()
-    start_date = end_date - timedelta(days=days_back + 1)  # 多取一天确保不遗漏
 
     # arXiv API 参数
     params = {
@@ -167,8 +172,8 @@ def fetch_arxiv_papers(days_back=1):
             "url": paper_id,
             "pdf": pdf_link,
             "categories": categories,
-            "authors": authors[:5],  # 只保留前5位作者
-            "all_authors": authors,  # 保留全部作者用于机构分析
+            "authors": authors[:5],
+            "all_authors": authors,
             "affiliations": affiliations,
             "published": published,
         })
@@ -237,7 +242,6 @@ def filter_and_rank(papers):
             paper["priority"] = priority
             scored_papers.append(paper)
 
-    # 按优先级排序（数字小的排前面）
     scored_papers.sort(key=lambda x: x["priority"])
 
     print(f"[筛选] 从 {len(papers)} 篇中匹配到 {len(scored_papers)} 篇相关论文")
@@ -270,9 +274,7 @@ def generate_summary(paper):
 
     result = call_deepseek(prompt, system_prompt)
     if result:
-        # 尝试解析 JSON
         try:
-            # 清理可能的 markdown 代码块标记
             cleaned = result.strip()
             if cleaned.startswith("```"):
                 cleaned = cleaned.split("\n", 1)[1]
@@ -281,9 +283,147 @@ def generate_summary(paper):
             return summary
         except json.JSONDecodeError:
             print(f"[警告] JSON 解析失败，原始输出: {result[:100]}")
-            return {"problem": result, "method": "", "result": "", "novelty": "", "relevance": "", "score": 5}
+            return {"problem": result, "method": "", "result": "", "novelty": "", "relevance": "", "org": "", "score": 5}
     return None
 
+
+# ============ PDF 邮箱提取 ============
+
+def download_pdf(pdf_url, timeout=30):
+    """下载 PDF 文件到临时目录，返回文件路径"""
+    if not pdf_url:
+        return None
+    try:
+        req = urllib.request.Request(pdf_url, headers={"User-Agent": "ArxivDailyTracker/1.0"})
+        with urllib.request.urlopen(req, timeout=timeout) as response:
+            tmp = tempfile.NamedTemporaryFile(suffix=".pdf", delete=False)
+            tmp.write(response.read())
+            tmp.close()
+            return tmp.name
+    except Exception as e:
+        print(f"    [PDF] 下载失败: {e}")
+        return None
+
+
+def extract_emails_from_pdf(pdf_path):
+    """从 PDF 首页提取邮箱地址"""
+    try:
+        import fitz  # PyMuPDF
+    except ImportError:
+        print("[警告] PyMuPDF 未安装，跳过邮箱提取")
+        return []
+
+    try:
+        doc = fitz.open(pdf_path)
+        # 只读取前两页（邮箱通常在首页或第二页）
+        text = ""
+        for page_num in range(min(2, len(doc))):
+            text += doc[page_num].get_text()
+        doc.close()
+
+        # 用正则提取邮箱
+        email_pattern = r'[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}'
+        emails = list(set(re.findall(email_pattern, text)))
+
+        # 过滤掉明显不是个人邮箱的（如 noreply, example 等）
+        filtered = [
+            e for e in emails
+            if not any(x in e.lower() for x in ["noreply", "example", "arxiv", "github", "placeholder"])
+        ]
+
+        return filtered
+    except Exception as e:
+        print(f"    [PDF] 解析失败: {e}")
+        return []
+
+
+def extract_contact_info_with_ai(paper, pdf_text_snippet):
+    """用 AI 从 PDF 文本片段中提取结构化的联系人信息"""
+    prompt = f"""从以下论文信息中提取作者的联系方式。
+
+论文标题：{paper['title']}
+作者列表：{', '.join(paper.get('all_authors', [])[:10])}
+PDF首页文本片段：
+{pdf_text_snippet[:2000]}
+
+请提取所有能找到的作者联系信息，严格按以下 JSON 格式输出：
+{{
+    "contacts": [
+        {{
+            "name": "作者姓名",
+            "email": "邮箱地址（如有）",
+            "affiliation": "所属机构/公司",
+            "role": "角色（如：通讯作者、第一作者等，如能判断）"
+        }}
+    ],
+    "corresponding_author": "通讯作者姓名（如能识别）"
+}}
+
+如果某些信息找不到，对应字段留空字符串。只输出 JSON，不要其他文字。"""
+
+    system_prompt = "你是一个信息提取专家，擅长从学术论文中准确提取作者联系信息。只输出合法 JSON。"
+
+    result = call_deepseek(prompt, system_prompt)
+    if result:
+        try:
+            cleaned = result.strip()
+            if cleaned.startswith("```"):
+                cleaned = cleaned.split("\n", 1)[1]
+                cleaned = cleaned.rsplit("```", 1)[0]
+            return json.loads(cleaned)
+        except json.JSONDecodeError:
+            return None
+    return None
+
+
+def extract_contacts_for_paper(paper):
+    """对单篇论文进行完整的联系方式提取流程"""
+    pdf_url = paper.get("pdf", "")
+    if not pdf_url:
+        return None
+
+    # 1. 下载 PDF
+    pdf_path = download_pdf(pdf_url)
+    if not pdf_path:
+        return None
+
+    try:
+        # 2. 提取邮箱（正则方式，快速）
+        emails = extract_emails_from_pdf(pdf_path)
+
+        # 3. 提取 PDF 首页文本用于 AI 分析
+        pdf_text = ""
+        try:
+            import fitz
+            doc = fitz.open(pdf_path)
+            for page_num in range(min(2, len(doc))):
+                pdf_text += doc[page_num].get_text()
+            doc.close()
+        except Exception:
+            pass
+
+        # 4. 用 AI 提取结构化联系人信息
+        contact_info = None
+        if pdf_text:
+            contact_info = extract_contact_info_with_ai(paper, pdf_text)
+
+        # 5. 合并结果
+        result = {
+            "emails_found": emails,
+            "ai_extracted": contact_info,
+        }
+
+        return result
+
+    finally:
+        # 清理临时文件
+        try:
+            os.unlink(pdf_path)
+        except Exception:
+            pass
+
+
+# ============ 机构分析 ============
 
 def identify_org(paper):
     """从论文的机构信息和AI摘要中识别所属机构"""
@@ -299,7 +439,7 @@ def identify_org(paper):
                         identified.add(org_name)
                         break
 
-    # 方式2：从 AI 摘要中提取（DeepSeek 有时能识别出机构）
+    # 方式2：从 AI 摘要中提取
     ai_org = paper.get("ai_summary", {}).get("org", "")
     if ai_org:
         ai_org_lower = ai_org.lower()
@@ -309,7 +449,7 @@ def identify_org(paper):
                     identified.add(org_name)
                     break
 
-    # 方式3：从摘要和标题中寻找线索（有些论文会提到公司产品名）
+    # 方式3：从摘要和标题中寻找产品名线索
     text = (paper.get("title", "") + " " + paper.get("abstract", "")).lower()
     product_hints = {
         "OpenAI": ["chatgpt", "gpt-4", "gpt-5", "dall-e", "sora"],
@@ -332,7 +472,7 @@ def analyze_organizations(papers):
 
     for paper in papers:
         orgs = identify_org(paper)
-        paper["identified_orgs"] = orgs  # 写回到论文数据中
+        paper["identified_orgs"] = orgs
 
         for org in orgs:
             org_papers[org]["count"] += 1
@@ -344,7 +484,6 @@ def analyze_organizations(papers):
                 "score": paper.get("ai_summary", {}).get("score", 5),
             })
 
-    # 转换为可序列化的格式，按论文数量排序
     result = []
     for org_name, data in sorted(org_papers.items(), key=lambda x: x[1]["count"], reverse=True):
         result.append({
@@ -356,6 +495,8 @@ def analyze_organizations(papers):
 
     return result
 
+
+# ============ 主流程 ============
 
 def main():
     """主流程"""
@@ -386,14 +527,11 @@ def main():
         else:
             paper["ai_summary"] = {
                 "problem": "（摘要生成失败，请查看原文）",
-                "method": "",
-                "result": "",
-                "novelty": "",
-                "relevance": "",
-                "score": 5,
+                "method": "", "result": "", "novelty": "",
+                "relevance": "", "org": "", "score": 5,
             }
         results.append(paper)
-        time.sleep(1)  # 避免 API 限流
+        time.sleep(1)
 
     # 4. 按 AI 评分重新排序
     results.sort(key=lambda x: x["ai_summary"].get("score", 5), reverse=True)
@@ -402,7 +540,41 @@ def main():
     org_stats = analyze_organizations(results)
     print(f"\n[机构] 识别到 {len(org_stats)} 个机构的论文分布")
 
-    # 6. 输出 JSON
+    # 6. PDF 邮箱提取（只对高分论文）
+    print(f"\n[邮箱] 开始对高分论文提取联系方式...")
+    contacts_db = []
+    extract_count = 0
+    for paper in results:
+        score = paper.get("ai_summary", {}).get("score", 0)
+        if score >= EMAIL_EXTRACT_MIN_SCORE and extract_count < MAX_PAPERS_TO_EXTRACT_EMAIL:
+            extract_count += 1
+            print(f"  [{extract_count}/{MAX_PAPERS_TO_EXTRACT_EMAIL}] 提取: {paper['title'][:40]}...")
+            contact_result = extract_contacts_for_paper(paper)
+            if contact_result:
+                paper["contact_info"] = contact_result
+                # 构建联系人条目
+                entry = {
+                    "paper_title": paper["title"],
+                    "paper_url": paper.get("url", ""),
+                    "paper_score": score,
+                    "topics": paper.get("matched_topics", []),
+                    "orgs": paper.get("identified_orgs", []),
+                    "emails": contact_result.get("emails_found", []),
+                }
+                # 合并 AI 提取的联系人
+                ai_data = contact_result.get("ai_extracted")
+                if ai_data:
+                    entry["contacts"] = ai_data.get("contacts", [])
+                    entry["corresponding_author"] = ai_data.get("corresponding_author", "")
+                else:
+                    entry["contacts"] = []
+                    entry["corresponding_author"] = ""
+                contacts_db.append(entry)
+            time.sleep(1)
+
+    print(f"[邮箱] 提取完成，获得 {len(contacts_db)} 条联系人记录")
+
+    # 7. 输出 JSON
     output_dir = Path(__file__).parent.parent / "data"
     output_dir.mkdir(exist_ok=True)
 
@@ -414,6 +586,7 @@ def main():
         "total_matched": len(results),
         "papers": results,
         "org_analysis": org_stats,
+        "contacts": contacts_db,
     }
 
     # 写入当天数据
@@ -427,6 +600,7 @@ def main():
         json.dump(output, f, ensure_ascii=False, indent=2)
 
     print(f"\n[完成] 已保存 {len(results)} 篇论文摘要到 {output_file}")
+    print(f"[完成] 联系人信息: {len(contacts_db)} 条")
     print(f"[完成] 最新数据已更新到 {latest_file}")
 
 
