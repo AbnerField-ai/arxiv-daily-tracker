@@ -1,6 +1,6 @@
 {
   "date": "2026-07-21",
-  "generated_at": "2026-07-21T06:50:28.601157",
+  "generated_at": "2026-07-21T07:57:45.624954",
   "total_fetched": 100,
   "total_matched": 20,
   "papers": [
@@ -20,19 +20,62 @@
         "Jun-Yan Zhu",
         "Eli Shechtman"
       ],
+      "all_authors": [
+        "Sheng-Yu Wang",
+        "Yotam Nitzan",
+        "Aaron Hertzmann",
+        "Jun-Yan Zhu",
+        "Eli Shechtman",
+        "Alexei A. Efros",
+        "Richard Zhang"
+      ],
+      "affiliations": [
+        {
+          "name": "Sheng-Yu Wang",
+          "affiliations": []
+        },
+        {
+          "name": "Yotam Nitzan",
+          "affiliations": []
+        },
+        {
+          "name": "Aaron Hertzmann",
+          "affiliations": []
+        },
+        {
+          "name": "Jun-Yan Zhu",
+          "affiliations": []
+        },
+        {
+          "name": "Eli Shechtman",
+          "affiliations": []
+        },
+        {
+          "name": "Alexei A. Efros",
+          "affiliations": []
+        },
+        {
+          "name": "Richard Zhang",
+          "affiliations": []
+        }
+      ],
       "published": "2026-07-20",
       "matched_topics": [
         "多模态"
       ],
       "priority": 1,
       "ai_summary": {
-        "problem": "现有视觉相似性度量方法无法捕捉人类判断中依赖于上下文的多维度相似性（如形状、颜色等），缺乏按特定语义方面进行条件化的机制。",
-        "method": "构建了一个大规模图像三元组数据集，每个三元组标注了多个自由形式的语义相似性方面；基于该数据集微调视觉语言模型（VLM），提出文本提示图像感知相似性度量（TPIPS），根据指定文本提示输出不同维度的相似性分数。",
+        "problem": "现有视觉相似性度量无法捕捉人类判断中依赖于上下文的多样性（如形状与颜色的区别），缺乏根据特定语义方面进行条件化的机制。",
+        "method": "构建大规模三元组图像数据集，标注多种自由形式的语义相似性方面；基于该数据微调视觉语言模型（VLM），提出文本提示图像感知相似性度量（TPIPS），根据文本提示输出不同维度的相似性分数。",
         "result": "TPIPS与人类感知一致性更高，且能泛化到训练分布之外；在文本引导检索、组合搜索和生成模型细粒度评估中展现出新能力。",
-        "novelty": "首次通过文本提示实现多语义维度的视觉相似性度量，并配套大规模多语义标注数据集。",
-        "relevance": "为多模态大模型在感知相似性任务中提供了更灵活、更符合人类认知的评估工具，推动生成模型评估和检索应用的发展。",
+        "novelty": "首次提出文本提示驱动的多语义视觉相似性度量，通过大规模人类标注数据微调VLM实现条件化相似性判断。",
+        "relevance": "为多模态大模型在细粒度视觉理解、可控检索和生成评估中提供了关键工具，推动感知度量向上下文感知方向发展。",
+        "org": "卡内基梅隆大学（CMU）与Adobe Research",
         "score": 8
-      }
+      },
+      "identified_orgs": [
+        "CMU"
+      ]
     },
     {
       "title": "Patch Policy: Efficient Embodied Control via Dense Visual Representations",
@@ -50,6 +93,40 @@
         "Bowen Tan",
         "Yann LeCun"
       ],
+      "all_authors": [
+        "Gaoyue Zhou",
+        "Zichen Jeff Cui",
+        "Ada Langford",
+        "Bowen Tan",
+        "Yann LeCun",
+        "Lerrel Pinto"
+      ],
+      "affiliations": [
+        {
+          "name": "Gaoyue Zhou",
+          "affiliations": []
+        },
+        {
+          "name": "Zichen Jeff Cui",
+          "affiliations": []
+        },
+        {
+          "name": "Ada Langford",
+          "affiliations": []
+        },
+        {
+          "name": "Bowen Tan",
+          "affiliations": []
+        },
+        {
+          "name": "Yann LeCun",
+          "affiliations": []
+        },
+        {
+          "name": "Lerrel Pinto",
+          "affiliations": []
+        }
+      ],
       "published": "2026-07-20",
       "matched_topics": [
         "多模态",
@@ -57,13 +134,17 @@
       ],
       "priority": 1,
       "ai_summary": {
-        "problem": "现有机器人策略要么将观测压缩为单个全局token，损失空间细节，要么从头训练视觉骨干，无法利用大规模预训练视觉特征，而直接使用密集补丁特征的大型视觉-语言-动作模型（VLA）又过于笨重和缓慢。",
-        "method": "提出Patch Policy，通过一个块因果注意力掩码（block-causal attention mask）作为最小架构扩展，使基于Transformer的策略能够直接消耗预训练的密集补丁token，同时保留时间因果性并整合其他状态信息，无需完整VLM的计算开销。",
-        "result": "在4个模拟和3个真实世界环境套件中，相比使用最先进全局池化表示的策略，Patch Policy实现了40%的相对改进；相比微调后的OpenVLA-OFT，性能提升18%，而参数量仅为其0.7%。",
-        "novelty": "首次通过轻量级注意力掩码设计，让机器人策略高效利用预训练密集视觉特征，避免全局池化或全VLM的权衡。",
-        "relevance": "为机器人社区提供了一条即插即用的管道，能够直接利用视觉表示学习的持续进展，同时保持高频反应控制所需的训练和推理效率。",
+        "problem": "现有机器人策略要么将观测压缩为单个全局token，损失细粒度空间细节，要么依赖从头训练的视觉骨干，无法利用大规模视觉预训练的优势，而基于密集patch特征的大型视觉-语言-动作模型（VLA）又过于笨重和缓慢。",
+        "method": "提出Patch Policy，一种最小架构扩展，通过块因果注意力掩码（block-causal attention mask）使基于Transformer的策略直接消耗预训练的密集patch token，同时保留时间因果性并整合其他状态信息，无需完整VLM的计算开销。",
+        "result": "在四个模拟和三个真实世界环境套件中，相比使用最先进全局池化表示的策略，该方法实现了40%的相对改进；相比微调的OpenVLA-OFT，在仅使用约0.7%参数的情况下提升了18%。",
+        "novelty": "通过轻量级的块因果注意力机制，首次高效地将预训练密集视觉特征直接集成到机器人策略中，避免了全局池化的信息损失和VLA的高计算成本。",
+        "relevance": "为机器人社区提供了一条高效利用视觉表示学习进展的实用管道，在不牺牲训练效率和推理速度的前提下，提升了高频反应式控制性能。",
+        "org": "未明确指定机构，但作者包括Yann LeCun，可能来自Meta AI或相关学术机构",
         "score": 8
-      }
+      },
+      "identified_orgs": [
+        "Meta"
+      ]
     },
     {
       "title": "FM-VLA: Force-based Memory for Vision-Language-Action Models in Contact-Rich Manipulation",
@@ -80,50 +161,80 @@
         "Yu Deng",
         "Lin Luo"
       ],
+      "all_authors": [
+        "Ruicheng Li",
+        "Qixiu Li",
+        "Ruichun Ma",
+        "Yu Deng",
+        "Lin Luo",
+        "Zhiying Du",
+        "Jianfeng Xiang",
+        "Huizhi Liang",
+        "Ruicheng Wang",
+        "Jiaolong Yang",
+        "Baining Guo"
+      ],
+      "affiliations": [
+        {
+          "name": "Ruicheng Li",
+          "affiliations": []
+        },
+        {
+          "name": "Qixiu Li",
+          "affiliations": []
+        },
+        {
+          "name": "Ruichun Ma",
+          "affiliations": []
+        },
+        {
+          "name": "Yu Deng",
+          "affiliations": []
+        },
+        {
+          "name": "Lin Luo",
+          "affiliations": []
+        },
+        {
+          "name": "Zhiying Du",
+          "affiliations": []
+        },
+        {
+          "name": "Jianfeng Xiang",
+          "affiliations": []
+        },
+        {
+          "name": "Huizhi Liang",
+          "affiliations": []
+        },
+        {
+          "name": "Ruicheng Wang",
+          "affiliations": []
+        },
+        {
+          "name": "Jiaolong Yang",
+          "affiliations": []
+        },
+        {
+          "name": "Baining Guo",
+          "affiliations": []
+        }
+      ],
       "published": "2026-07-20",
       "matched_topics": [
         "多模态"
       ],
       "priority": 1,
       "ai_summary": {
-        "problem": "现有基于视觉记忆的VLA模型在处理接触丰富的非马尔可夫任务时，因视觉模糊性（如多次微小按压按钮）而表现不佳，且计算开销大。",
-        "method": "提出FM-VLA，通过变分自编码器（VAE）预训练将力历史编码为紧凑的力记忆令牌，并将其与短状态历史作为额外条件令牌注入动作专家模块，使VLA能利用累积接触事件历史指导操作。",
-        "result": "在三个记忆依赖任务（隐藏块寻找、按钮按压、指定次数擦盘）上，轻量级力记忆方法以最小推理开销实现超过80%的成功率，显著优于基线方法。",
-        "novelty": "首次将力信号作为记忆模态引入VLA模型，通过力时间序列重建预训练实现高效、紧凑的接触事件历史编码。",
-        "relevance": "为具身智能中接触丰富的非马尔可夫操作任务提供了新的记忆范式，拓展了多模态大模型在机器人领域的应用边界。",
+        "problem": "现有记忆增强的视觉-语言-动作模型（VLA）在处理接触丰富的非马尔可夫任务时，基于视觉的记忆方法计算成本高且难以区分视觉模糊的时间事件（如多次小幅度按压按钮）。",
+        "method": "提出FM-VLA模型，通过变分自编码器（VAE）将力历史编码为紧凑的力记忆令牌，并与短状态历史一起作为额外条件令牌注入动作专家模块，使VLA能够利用累积的接触事件历史来指导操作。",
+        "result": "在三个依赖记忆的任务（隐藏块查找、按钮按压、特定次数擦拭盘子）上，轻量级力记忆方法以最小推理开销实现了超过80%的成功率，显著优于基线方法。",
+        "novelty": "首次将基于力的记忆机制引入VLA模型，通过力时间序列的压缩表示解决视觉模糊下的时间上下文推理问题。",
+        "relevance": "为接触丰富的机器人操作提供了高效的非马尔可夫推理方案，推动了VLA模型在细粒度物理交互任务中的应用。",
+        "org": "未明确识别机构（作者无隶属信息）",
         "score": 8
-      }
-    },
-    {
-      "title": "Simple Domain Generalization for Strong Pixel-Level Image Tampering Detection in Modern VLMs",
-      "abstract": "Modern vision-language models (VLMs) have significantly improved image generation and editing capabilities, making pixel-level image tampering detection increasingly important yet challenging under cross-model and out-of-distribution shifts. This work studies domain generalization for pixel-level image tampering detection in modern VLMs like ChatGPT, Gemini, Qwen-Image, etc., aiming to learn tampering localization models that remain robust across diverse VLM-generated manipulation distributions. We propose a simple yet effective domain-generalized training framework built on two practical strategies. First, we introduce a balanced minibatch sampling scheme that strategically samples tampered and real images in each minibatch, preventing biased optimization toward either manipulated artifacts or clean-image priors and avoiding training collapse, ensuring that each optimization step receives proper sampled gradient signals. Second, we adopt a simple late-injection strategy, where the detector is first trained on large-scale base data until stable convergence, and then exposed to a small amount of newly selected supporting data from emerging VLM distributions, improving adaptability without overfitting to limited new domains. Together, these components provide a simple yet strong recipe for improving pixel-level tampering localization and OOD robustness across modern VLMs. Despite the conceptual simplicity, our framework outperforms the prior state-of-the-art PIXAR by a large margin of 26.1% and 26.8% relative improvement in average gIoU and cIoU, respectively, across OOD VLMs of GPT-Images-2.0, Gemini-3.1, FLUX.2, and Seedream 4.5. Our code is available at https://github.com/VILA-Lab/PIXAR-DG",
-      "url": "https://arxiv.org/abs/2607.18230v1",
-      "pdf": "https://arxiv.org/pdf/2607.18230v1",
-      "categories": [
-        "cs.CV",
-        "cs.AI"
-      ],
-      "authors": [
-        "Yi Tang",
-        "Xinyi Shang",
-        "Jiacheng Cui",
-        "Sondos Mahmoud Bsharat",
-        "Jiacheng Liu"
-      ],
-      "published": "2026-07-20",
-      "matched_topics": [
-        "多模态",
-        "大模型"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "现代视觉语言模型（VLM）生成的图像编辑内容日益逼真，导致像素级图像篡改检测在跨模型和分布外场景下变得困难。",
-        "method": "提出一个简单的域泛化训练框架，包含两个策略：一是平衡小批量采样，在每批中均衡采样篡改和真实图像，防止优化偏差；二是晚期注入策略，先在大规模基础数据上训练检测器至稳定收敛，再引入少量新VLM分布的支持数据以提升适应性。",
-        "result": "在GPT-Images-2.0、Gemini-3.1等OOD VLM上，平均gIoU和cIoU相对提升26.1%和26.8%，显著超越先前最优方法PIXAR。",
-        "novelty": "通过平衡采样和晚期注入的简单组合，实现了对VLM生成篡改图像的强鲁棒检测，无需复杂架构。",
-        "relevance": "为多模态内容安全提供了实用的域泛化方案，有助于提升AI生成内容检测的可靠性。",
-        "score": 8
-      }
+      },
+      "identified_orgs": []
     },
     {
       "title": "FlowMimic: Mask-free Visual Editing and Generation with Pixel-pair Warped Flow Field for Online Video Editing Data Generation and Modality Mimicry",
@@ -138,6 +249,25 @@
         "Lixue Gong",
         "Wei Liu"
       ],
+      "all_authors": [
+        "Dingyun Zhang",
+        "Lixue Gong",
+        "Wei Liu"
+      ],
+      "affiliations": [
+        {
+          "name": "Dingyun Zhang",
+          "affiliations": []
+        },
+        {
+          "name": "Lixue Gong",
+          "affiliations": []
+        },
+        {
+          "name": "Wei Liu",
+          "affiliations": []
+        }
+      ],
       "published": "2026-07-20",
       "matched_topics": [
         "多模态",
@@ -145,13 +275,15 @@
       ],
       "priority": 1,
       "ai_summary": {
-        "problem": "现有视频编辑数据收集方法依赖人工标注、易出错且任务扩展性差，导致视频编辑任务多样性远低于图像编辑。",
-        "method": "提出像素对时间扭曲流场，从图像编辑样本实时生成视频编辑样本；设计模态模仿生成损失和编辑损失，对齐图像与视频模态的能力；引入感知相关任务及编辑区域感知的潜在层和注意力层损失，使模型内化区域定位能力。",
-        "result": "模型仅使用该方法生成的数据即可学习多种视频编辑任务，并实现图像与视频模态能力的相对对齐。",
-        "novelty": "通过像素对扭曲流场实现无掩码的在线视频编辑数据生成，并利用模态模仿损失统一图像和视频编辑能力。",
-        "relevance": "为视频编辑数据生成提供高效自动化方案，推动多模态生成与编辑模型的统一。",
+        "problem": "现有视频编辑数据收集依赖人工标注、I2V模型合成和VLM过滤，耗时且任务扩展性有限，导致视频编辑任务多样性远低于图像编辑。",
+        "method": "提出像素对时间扭曲流场（Pixel-pair Temporal Warped Flow Field），直接从图像编辑样本实时生成对应视频编辑样本；设计模态模仿生成损失和编辑损失，对齐图像与视频模态的能力；引入感知相关任务（如指代分割）及编辑区域感知的潜在层和注意力层损失，使模型内化编辑区域定位能力。",
+        "result": "实验表明，仅使用该方法生成的数据即可训练模型完成多种视频编辑任务，且无需外部辅助（如额外MLLM或掩码序列）。",
+        "novelty": "首次实现无需掩码标注的在线视频编辑数据生成，并通过模态模仿损失统一图像与视频的生成和编辑能力。",
+        "relevance": "为多模态大模型在视频编辑领域的无监督数据生成和统一建模提供了新范式，降低了数据收集成本并提升了任务扩展性。",
+        "org": "未明确标注机构，作者可能来自中国研究机构（基于姓名推测）。",
         "score": 8
-      }
+      },
+      "identified_orgs": []
     },
     {
       "title": "HOMIE: Human-object Centric Video Personalization via Multimodal Intelligent Enchancement",
@@ -168,6 +300,65 @@
         "Junwen Pan",
         "Chunyang Jiang"
       ],
+      "all_authors": [
+        "Yiyang Cai",
+        "Nan Chen",
+        "Rongchang Xie",
+        "Junwen Pan",
+        "Chunyang Jiang",
+        "Cheng Chen",
+        "Wen Zhou",
+        "Zhenbang Sun",
+        "Wei Xue",
+        "Wenhan Luo",
+        "Yike Guo"
+      ],
+      "affiliations": [
+        {
+          "name": "Yiyang Cai",
+          "affiliations": []
+        },
+        {
+          "name": "Nan Chen",
+          "affiliations": []
+        },
+        {
+          "name": "Rongchang Xie",
+          "affiliations": []
+        },
+        {
+          "name": "Junwen Pan",
+          "affiliations": []
+        },
+        {
+          "name": "Chunyang Jiang",
+          "affiliations": []
+        },
+        {
+          "name": "Cheng Chen",
+          "affiliations": []
+        },
+        {
+          "name": "Wen Zhou",
+          "affiliations": []
+        },
+        {
+          "name": "Zhenbang Sun",
+          "affiliations": []
+        },
+        {
+          "name": "Wei Xue",
+          "affiliations": []
+        },
+        {
+          "name": "Wenhan Luo",
+          "affiliations": []
+        },
+        {
+          "name": "Yike Guo",
+          "affiliations": []
+        }
+      ],
       "published": "2026-07-20",
       "matched_topics": [
         "多模态",
@@ -175,13 +366,15 @@
       ],
       "priority": 1,
       "ai_summary": {
-        "problem": "现有的人-物中心视频个性化方法难以在保持主体高保真度和准确的人-物交互模式（尤其是抽象概念如logo）之间取得平衡，且缺乏理解主体内参考（如OCR图、多视角输入）潜在对应关系的机制。",
-        "method": "提出HOMIE框架，通过全局多模态引导在自注意力中更好对齐MLLM语义特征与VAE令牌，并引入模态参考嵌入来区分MLLM特征和VAE令牌并关联主体内参考图像令牌，统一处理主体间和主体内输入设置。",
-        "result": "实验表明，该方法在各种人-物中心视频个性化任务上达到了最先进性能。",
-        "novelty": "提出一种更好的MLLM集成策略，在不损害文本编码器可控性或引发昂贵重对齐的情况下提取参考级关系知识。",
-        "relevance": "推动了视频生成中主体驱动个性化的发展，特别是处理复杂人-物交互和抽象概念的能力。",
+        "problem": "现有的人-物中心视频个性化方法难以平衡高主体保真度与准确的人-物交互模式，尤其在处理抽象概念（如logo）时，且缺乏理解隐式对应关系（如OCR图、多视角输入）的机制。",
+        "method": "提出HOMIE框架，通过全局多模态引导在自注意力中对齐MLLM语义特征与VAE令牌，并引入模态参考嵌入来区分MLLM特征与VAE令牌并关联主体内参考图像令牌。",
+        "result": "在多种人-物中心视频个性化任务中达到最先进性能，有效提升了主体保真度和交互准确性。",
+        "novelty": "统一处理主体间和主体内输入设置，通过改进的MLLM集成策略提取参考级关系知识而不损害文本编码器可控性或导致昂贵重对齐。",
+        "relevance": "推动了视频生成中多模态理解和个性化控制的融合，对世界模型、多模态大模型和具身智能中的交互建模有重要参考价值。",
+        "org": "未明确标注机构，可能来自学术研究团队",
         "score": 8
-      }
+      },
+      "identified_orgs": []
     },
     {
       "title": "FlashRT: Agent Harness for Guiding Agents to Deploy Real-Time Multimodal Applications",
@@ -198,6 +391,40 @@
         "Zhenyu Gu",
         "Atri Rudra"
       ],
+      "all_authors": [
+        "Krish Agarwal",
+        "Zhuoming Chen",
+        "Yanyuan Qin",
+        "Zhenyu Gu",
+        "Atri Rudra",
+        "Beidi Chen"
+      ],
+      "affiliations": [
+        {
+          "name": "Krish Agarwal",
+          "affiliations": []
+        },
+        {
+          "name": "Zhuoming Chen",
+          "affiliations": []
+        },
+        {
+          "name": "Yanyuan Qin",
+          "affiliations": []
+        },
+        {
+          "name": "Zhenyu Gu",
+          "affiliations": []
+        },
+        {
+          "name": "Atri Rudra",
+          "affiliations": []
+        },
+        {
+          "name": "Beidi Chen",
+          "affiliations": []
+        }
+      ],
       "published": "2026-07-20",
       "matched_topics": [
         "世界模型",
@@ -206,13 +433,17 @@
       ],
       "priority": 1,
       "ai_summary": {
-        "problem": "实时多模态应用（如语音代理和交互式视频生成）需要将异构模型组合成流水线，但现有服务系统和自动并行编译器仅支持有限的转换和固定工作负载假设，导致新应用的高效部署需要手动实现。",
-        "method": "提出FlashRT，一个代理框架，通过链式程序范式指导编码代理将开发者编写的参考实现转换为优化的多GPU部署；该过程包括将参考实现转换为中间表示（IR）以捕获数据依赖和持久状态范围，通过顺序解释器验证IR，进行静态分析识别候选转换，然后在测量门控优化循环中迭代实现、验证和基准测试每个候选方案。",
-        "result": "在NVIDIA B200 GPU上，FlashRT实现了高达~70倍的延迟降低和2.8倍的吞吐量提升；在AMD MI355X GPU上，延迟降低峰值匹配，吞吐量提升峰值达到3.6倍，且对于Qwen3-Omni文本到音频推理，相比专家vLLM-Omni实现，响应延迟降低65%。",
-        "novelty": "首次将编码代理与链式程序范式结合，通过多遍转换和测量门控优化循环自动生成高效的多GPU部署，无需手动调优。",
-        "relevance": "为多模态大模型和世界模型等复杂AI应用的自动化、跨平台高效部署提供了新范式，降低了专家优化门槛。",
+        "problem": "实时多模态应用（如语音代理和交互式视频生成）的高效部署需要针对特定应用进行放置、流式和模型内并行等决策，但现有系统无法灵活适应新应用，导致需要手工优化。",
+        "method": "提出FlashRT，一种代理框架，通过链式编程范式引导编码代理将简单的参考实现转换为优化的多GPU部署：代理将参考代码转换为中间表示（IR）以捕获数据依赖和持久状态，通过顺序解释器验证IR，进行静态分析识别候选变换，然后在测量门控优化循环中迭代实现、验证和基准测试每个候选方案。",
+        "result": "在NVIDIA B200 GPU上实现高达70倍延迟降低和2.8倍吞吐量提升；在AMD MI355X GPU上实现3.6倍吞吐量提升，且对Qwen3-Omni文本到音频推理的响应延迟比专家vLLM-Omni实现降低65%。",
+        "novelty": "首次提出利用编码代理通过多阶段变换和测量门控优化循环自动优化实时多模态应用的部署，无需手工专家知识。",
+        "relevance": "为AI系统部署自动化提供了新范式，尤其对多模态大模型和世界模型等新兴应用的实用化具有重要推动作用。",
+        "org": "未明确机构，作者可能来自学术界或工业界（如NVIDIA相关）。",
         "score": 8
-      }
+      },
+      "identified_orgs": [
+        "NVIDIA"
+      ]
     },
     {
       "title": "Robust Multimodal Dynamic Object Segmentation",
@@ -229,19 +460,50 @@
         "Yinian Mao",
         "Guoquan Huang"
       ],
+      "all_authors": [
+        "Zhe Xin",
+        "Hanzhi Chang",
+        "Penghui Huang",
+        "Yinian Mao",
+        "Guoquan Huang"
+      ],
+      "affiliations": [
+        {
+          "name": "Zhe Xin",
+          "affiliations": []
+        },
+        {
+          "name": "Hanzhi Chang",
+          "affiliations": []
+        },
+        {
+          "name": "Penghui Huang",
+          "affiliations": []
+        },
+        {
+          "name": "Yinian Mao",
+          "affiliations": []
+        },
+        {
+          "name": "Guoquan Huang",
+          "affiliations": []
+        }
+      ],
       "published": "2026-07-20",
       "matched_topics": [
         "多模态"
       ],
       "priority": 1,
       "ai_summary": {
-        "problem": "现有动态物体分割方法在边界一致性或对重建误差的鲁棒性上存在不足。",
-        "method": "提出一个融合2D点轨迹、3D重建和语义信息的多模态框架，结合Transformer与特征聚类聚合模块进行静态/动态分类，并引入基于点查询的SAM后处理方法处理多物体。",
+        "problem": "现有动态物体分割方法中，光流法在物体边界处无法保证一致的静态/动态分割，而3D重建方法对重建误差高度敏感。",
+        "method": "提出一个融合2D点轨迹、3D重建和语义信息的多模态动态物体分割框架，设计结合Transformer和特征聚类聚合模块的网络进行静态/动态分类，并引入基于点查询的SAM后处理方法处理多物体掩码。",
         "result": "在动态物体分割和静态场景重建任务上均达到最先进性能。",
-        "novelty": "首次将多模态特征轨迹与Transformer聚类聚合结合，并设计点查询SAM后处理实现多物体精细分割。",
-        "relevance": "提升了动态场景理解与静态重建的鲁棒性，对自动驾驶、机器人等具身智能应用有重要价值。",
+        "novelty": "首次将多模态特征轨迹（2D点轨迹、3D重建、语义）与Transformer及特征聚类聚合相结合，实现自适应特征主导和抗退化能力。",
+        "relevance": "提升了动态场景下视觉应用的鲁棒性，对世界模型、多模态感知和具身智能中的环境理解有重要推动作用。",
+        "org": "未明确识别，作者无机构信息",
         "score": 8
-      }
+      },
+      "identified_orgs": []
     },
     {
       "title": "O-VAD: Industrial Video Anomaly Detection through Object-Centric Tracking and Reasoning",
@@ -261,6 +523,50 @@
         "Zhenyang Li",
         "Yizhou Zhao"
       ],
+      "all_authors": [
+        "Mei Yuan",
+        "Qi Long",
+        "Qifeng Wu",
+        "Zhenyang Li",
+        "Yizhou Zhao",
+        "Lei Wang",
+        "Yang Liu",
+        "Min Xu"
+      ],
+      "affiliations": [
+        {
+          "name": "Mei Yuan",
+          "affiliations": []
+        },
+        {
+          "name": "Qi Long",
+          "affiliations": []
+        },
+        {
+          "name": "Qifeng Wu",
+          "affiliations": []
+        },
+        {
+          "name": "Zhenyang Li",
+          "affiliations": []
+        },
+        {
+          "name": "Yizhou Zhao",
+          "affiliations": []
+        },
+        {
+          "name": "Lei Wang",
+          "affiliations": []
+        },
+        {
+          "name": "Yang Liu",
+          "affiliations": []
+        },
+        {
+          "name": "Min Xu",
+          "affiliations": []
+        }
+      ],
       "published": "2026-07-20",
       "matched_topics": [
         "多模态",
@@ -268,42 +574,15 @@
       ],
       "priority": 1,
       "ai_summary": {
-        "problem": "现有基于视觉语言模型的异常推理方法在工业场景中表现不佳，难以处理复杂的物体变换和严格的物理约束。",
-        "method": "提出一种无需训练和领域知识的智能体框架，通过以物体为中心的时空轨迹跟踪和推理，模拟人类检查员对物体状态演变的观察，识别异常物体和事件。",
-        "result": "在三个工业视频异常检测数据集上，该方法超越了前沿视觉语言模型、智能体框架和传统视频异常检测方法，并生成可解释的异常报告。",
-        "novelty": "首次将无需训练的物体中心时空轨迹推理应用于工业视频异常检测，摆脱了对正常片段重训练或领域知识注入的依赖。",
-        "relevance": "为工业场景下的开放集异常检测提供了高效、可解释的解决方案，推动了视觉语言模型在具身智能和自动化质检中的应用。",
+        "problem": "工业视频异常检测中，现有基于视觉语言模型的推理方法在复杂工业场景下性能下降，难以处理物体状态演变和严格的物理与流程约束。",
+        "method": "提出一种无需训练的智能体框架，通过以物体为中心的时空轨迹追踪和状态推理，模拟人类检查员的观察方式，检测异常物体和事件。",
+        "result": "在三个工业视频异常检测数据集上，该方法超越了前沿视觉语言模型、智能体框架和传统视频异常检测方法，并提供了可解释的异常报告。",
+        "novelty": "首次引入无需领域知识、无需重新训练的训练自由智能体框架，通过物体级状态演化追踪和推理实现工业异常检测。",
+        "relevance": "为工业场景下的开放集异常检测提供了高效、可解释的新范式，推动了视觉语言模型在具身智能和自动化质检中的应用。",
+        "org": "未明确机构，可能来自学术机构（作者无机构信息）",
         "score": 8
-      }
-    },
-    {
-      "title": "SpEmoC: A Balanced Speaker-Segment Multimodal Emotion Benchmark",
-      "abstract": "Understanding human emotions in spoken conversations is a key challenge in affective computing, with applications in empathetic AI, human computer interaction, and mental health monitoring. However, existing datasets vary in scale, emotion distribution, modality alignment, and data partitioning strategies, which can influence reliable cross-dataset generalization and minority-emotion modeling. We introduce SpEmoC a Speaking segment Emotion for Conversations comprising 306,544 raw clips from 3,100 English language movies and TV series. From these, 30,000 high quality, class balanced clips are curated, featuring synchronized visual, audio, and textual modalities annotated for seven emotions through a hybrid pipeline that integrates pretrained models with human validation. SpEmoC uses strict movie- and series-level splits to prevent content overlap between split sets, allowing more reliable evaluation of model generalization. The dataset also maintains a near-balanced distribution across seven emotions, including minority classes such as Fear and Disgust, which supports more balanced learning across categories. Extensive experiments, including in-domain benchmarking, cross-dataset transfer, low-data training, class-imbalance analysis, and modality transfer show that balanced data and careful splitting lead to more stable performance across emotions when models are evaluated on other datasets. These results highlight the importance of dataset design for robust and transferable multimodal emotion recognition.",
-      "url": "https://arxiv.org/abs/2607.18109v1",
-      "pdf": "https://arxiv.org/pdf/2607.18109v1",
-      "categories": [
-        "cs.CV"
-      ],
-      "authors": [
-        "Sania Bano",
-        "Shahzad Ahmad",
-        "Santosh Kumar Vipparthi",
-        "Sukalpa Chanda",
-        "Subrahmanyam Murala"
-      ],
-      "published": "2026-07-20",
-      "matched_topics": [
-        "多模态"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "现有情感计算数据集在规模、情感分布、模态对齐和数据划分策略上存在差异，影响跨数据集泛化和少数情感建模的可靠性。",
-        "method": "构建了SpEmoC数据集，包含从3100部英语影视作品中提取的306,544个原始片段，并从中精选30,000个高质量、类别平衡的片段，通过结合预训练模型和人工验证的混合管道为视觉、音频和文本模态标注七种情感，并采用严格的影视级划分防止内容重叠。",
-        "result": "实验表明，平衡的数据和谨慎的划分策略使模型在跨数据集评估时情感表现更稳定，强调了数据集设计对鲁棒和可迁移多模态情感识别的重要性。",
-        "novelty": "提出了一个大规模、类别平衡且严格划分的多模态情感基准数据集，特别关注少数情感（如恐惧和厌恶）的建模。",
-        "relevance": "为多模态情感识别提供了更可靠的数据基准，有助于推动具身智能和人机交互中情感理解的研究。",
-        "score": 8
-      }
+      },
+      "identified_orgs": []
     },
     {
       "title": "Sparse Evidence Can Suffice: Agentic Evidence Seeking for Multimodal Video Misinformation Detection",
@@ -321,6 +600,55 @@
         "Dong Xie",
         "Jiarui Lu"
       ],
+      "all_authors": [
+        "Haochen Zhao",
+        "Yongxiu Xu",
+        "Xinkui Lin",
+        "Dong Xie",
+        "Jiarui Lu",
+        "Yuqi Qian",
+        "Yubin Wang",
+        "Hongbo Xu",
+        "Gaopeng Gou"
+      ],
+      "affiliations": [
+        {
+          "name": "Haochen Zhao",
+          "affiliations": []
+        },
+        {
+          "name": "Yongxiu Xu",
+          "affiliations": []
+        },
+        {
+          "name": "Xinkui Lin",
+          "affiliations": []
+        },
+        {
+          "name": "Dong Xie",
+          "affiliations": []
+        },
+        {
+          "name": "Jiarui Lu",
+          "affiliations": []
+        },
+        {
+          "name": "Yuqi Qian",
+          "affiliations": []
+        },
+        {
+          "name": "Yubin Wang",
+          "affiliations": []
+        },
+        {
+          "name": "Hongbo Xu",
+          "affiliations": []
+        },
+        {
+          "name": "Gaopeng Gou",
+          "affiliations": []
+        }
+      ],
       "published": "2026-07-20",
       "matched_topics": [
         "多模态",
@@ -328,13 +656,15 @@
       ],
       "priority": 1,
       "ai_summary": {
-        "problem": "多模态视频虚假信息检测通常将整个视频作为整体处理，但真实世界中的虚假信息往往具有稀疏且组合的证据结构，导致全面多模态推理引入冗余并掩盖关键证据。",
-        "method": "提出SIEVE框架，将证据获取与验证解耦：一个证据搜索智能体主动探索多模态证据并构建紧凑的证据包，然后由验证器判断真实性；智能体通过监督式证据搜索轨迹和证据感知的强化学习目标进行训练。",
-        "result": "在多个视频虚假信息基准上，SIEVE持续优于基线方法，并支持使用紧凑证据包进行可靠验证，同时提供可检查的证据轨迹，提高了透明度。",
-        "novelty": "首次将证据获取与验证解耦，通过智能体主动搜索稀疏关键证据进行多模态视频虚假信息检测。",
-        "relevance": "为多模态虚假信息检测提供了更高效、可解释的范式，推动了AI在事实核查和可信度评估领域的应用。",
+        "problem": "多模态视频虚假信息检测中，现有方法通常对整个视频进行一次性全面处理，但真实虚假信息往往只依赖少量耦合线索，导致冗余计算和关键证据被掩盖。",
+        "method": "提出SIEVE框架，将证据获取与验证解耦：一个证据搜索智能体主动探索多模态证据并构建紧凑证据包，然后由验证器判断真实性；智能体通过监督式证据搜索轨迹和证据感知强化学习目标进行训练。",
+        "result": "在多个视频虚假信息基准测试上，SIEVE持续优于基线方法，且能使用紧凑证据包支持可靠验证，同时提供可检查的证据追踪过程。",
+        "novelty": "首次将证据获取与验证解耦，通过智能体主动搜索稀疏关键证据来提升多模态虚假信息检测的效率和可解释性。",
+        "relevance": "为多模态虚假信息检测提供了一种高效、可解释的新范式，对提升AI系统在信息验证中的可信度和透明度有重要意义。",
+        "org": "未明确标注机构，作者可能来自中国高校或研究机构",
         "score": 8
-      }
+      },
+      "identified_orgs": []
     },
     {
       "title": "RoboHarness: Memory-Driven Orchestration of Heterogeneous Robot Policies for Long-Horizon Planning",
@@ -351,6 +681,55 @@
         "Ran Qi",
         "Yixin Xiao"
       ],
+      "all_authors": [
+        "Jinbang Huang",
+        "Yuanzhao Hu",
+        "Zhiyuan Li",
+        "Ran Qi",
+        "Yixin Xiao",
+        "Zhanguang Zhang",
+        "Mark Coates",
+        "Tongtong Cao",
+        "Yingxue Zhang"
+      ],
+      "affiliations": [
+        {
+          "name": "Jinbang Huang",
+          "affiliations": []
+        },
+        {
+          "name": "Yuanzhao Hu",
+          "affiliations": []
+        },
+        {
+          "name": "Zhiyuan Li",
+          "affiliations": []
+        },
+        {
+          "name": "Ran Qi",
+          "affiliations": []
+        },
+        {
+          "name": "Yixin Xiao",
+          "affiliations": []
+        },
+        {
+          "name": "Zhanguang Zhang",
+          "affiliations": []
+        },
+        {
+          "name": "Mark Coates",
+          "affiliations": []
+        },
+        {
+          "name": "Tongtong Cao",
+          "affiliations": []
+        },
+        {
+          "name": "Yingxue Zhang",
+          "affiliations": []
+        }
+      ],
       "published": "2026-07-20",
       "matched_topics": [
         "多模态",
@@ -358,13 +737,15 @@
       ],
       "priority": 1,
       "ai_summary": {
-        "problem": "长时域机器人任务需要多种能力，但现有规划方法基于同质化、固定适用性的预定义技能，忽略了异构策略间不确定的能力边界和分布不匹配问题。",
-        "method": "提出RoboHarness统一框架，将异构策略封装为可复用智能体技能，利用多模态执行记忆和在线证据刻画能力边界进行感知分解与路由，并通过Memory Bridge检索下一策略的执行轨迹估计其分布内状态区域，引导机器人进入该区域以实现稳定交接。",
+        "problem": "现有机器人长时域规划方法依赖同质化、预定义技能，忽略了异构策略间不确定的能力边界和分布不匹配问题，导致无法有效编排异构策略。",
+        "method": "提出RoboHarness框架，将异构策略封装为可复用智能体技能，利用多模态执行记忆和在线证据刻画策略能力边界，并通过Memory Bridge检索下一策略的执行轨迹、估计其分布内状态区域，引导机器人进入该区域以稳定策略切换。",
         "result": "在三个公开基准、500个定制任务和135个真实机器人实验中，RoboHarness实现了有效的能力感知路由和稳定策略编排，显著提升了零样本长时域规划和分布外鲁棒性。",
-        "novelty": "首次提出基于多模态记忆在线证据的异构策略能力边界刻画与分布匹配引导的交接机制，无需联合重训练。",
-        "relevance": "为异构机器人策略的统一编排提供了通用框架，推动了长时域自主规划和具身智能的实用化。",
+        "novelty": "首次提出基于多模态执行记忆的异构策略能力边界刻画与分布对齐方法，无需联合重训练即可实现稳定策略切换。",
+        "relevance": "为机器人长时域规划提供了一种通用、可扩展的异构策略编排范式，推动了多模态大模型、强化学习与传统规划系统的融合应用。",
+        "org": "未明确标注机构，但根据作者姓名推测可能来自中国高校或研究机构。",
         "score": 8
-      }
+      },
+      "identified_orgs": []
     },
     {
       "title": "SEE: Structure-aware Exploring \\& Exploiting for Long-horizon GUI Agent Trajectory Synthesis",
@@ -381,19 +762,462 @@
         "Changqiao Wu",
         "Wei Liu"
       ],
+      "all_authors": [
+        "Zhuohang Fan",
+        "Beichen Zhang",
+        "Yuanfa Li",
+        "Changqiao Wu",
+        "Wei Liu",
+        "Jian Luan",
+        "Weigang Zhang"
+      ],
+      "affiliations": [
+        {
+          "name": "Zhuohang Fan",
+          "affiliations": []
+        },
+        {
+          "name": "Beichen Zhang",
+          "affiliations": []
+        },
+        {
+          "name": "Yuanfa Li",
+          "affiliations": []
+        },
+        {
+          "name": "Changqiao Wu",
+          "affiliations": []
+        },
+        {
+          "name": "Wei Liu",
+          "affiliations": []
+        },
+        {
+          "name": "Jian Luan",
+          "affiliations": []
+        },
+        {
+          "name": "Weigang Zhang",
+          "affiliations": []
+        }
+      ],
       "published": "2026-07-20",
       "matched_topics": [
         "多模态"
       ],
       "priority": 1,
       "ai_summary": {
-        "problem": "GUI智能体缺乏高质量、长程的交互轨迹数据，现有方法依赖昂贵的人工演示或易过采样常见流程，难以覆盖稀有转换和复杂多步操作。",
-        "method": "提出SEE两阶段数据合成框架：先通过高效探索构建显式的UI状态转移图，再基于该图通过规划和受控采样合成多样化的多步轨迹。",
-        "result": "在多个真实应用中生成平均14.8步的轨迹且避免循环，微调后的智能体在任务成功率和未见过屏幕的泛化性上均有提升。",
-        "novelty": "首次将显式UI结构图与图规划结合，实现可复现、可解释的长程轨迹合成，并主动防止虚假循环。",
-        "relevance": "为GUI智能体提供低成本、高质量的训练数据生成方法，推动移动端自动化任务的实用化。",
+        "problem": "现有GUI智能体数据合成方法依赖昂贵的人工演示或在线策略，导致样本覆盖不全、长程轨迹缺失，难以高效生成高质量的长程交互数据。",
+        "method": "提出SEE两阶段框架：先通过高效探索构建显式的UI转换图，再基于图进行规划与受控采样，合成多样化的多步轨迹，避免虚假循环并支持长程组合。",
+        "result": "在多个真实应用中生成平均14.8步的轨迹且无虚假循环，微调后的智能体在任务成功率和未见屏幕泛化上均有提升。",
+        "novelty": "首次将显式UI转换图引入GUI智能体数据合成，实现可复现、可解释的轨迹生成，并有效解决长程轨迹中的循环和覆盖问题。",
+        "relevance": "为GUI智能体提供低成本、高覆盖的数据合成方法，推动视觉语言模型在真实移动任务中的自动化应用。",
+        "org": "未明确识别机构",
         "score": 8
-      }
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "Closing the Loop in Humanoid VLA: Persistent 3D Object Tokens for Verifiable Loco-Manipulation",
+      "abstract": "Vision-language-action policies are a promising foundation for general robot control, but long-horizon humanoid loco-manipulation requires the robot to treat task objects as persistent physical entities across movement, contact, occlusion, and recovery. We study this problem as object-state divergence: the object state used to condition a whole-body action can differ from the state used to decide whether the action achieved the intended physical relation. We propose \\emph{Persistent Object Tokenization} (POT), which maintains role-indexed 3D object records from RGB-D observations and converts them into object tokens for a whole-body action expert. Instantiated as \\emph{POT-VLA}, the same object records condition action generation and support geometric predicate checks, yielding a closed-loop execution system in which object state is both actionable and verifiable. On a Unitree G1, POT-VLA improves a matched direct GR00T-N1.7 baseline from 39/80 to 71/80 successes over eight real-world task families. In an external Being-0-aligned reference, POT-VLA achieves 44/50 successes on aligned service tasks, compared with the 37/50 success reported by the Being-0 paper. The largest gains occur on tasks requiring maintained 3D relations, suggesting that persistent object-centered state is a useful abstraction for verifiable humanoid VLA execution.",
+      "url": "https://arxiv.org/abs/2607.18016v1",
+      "pdf": "https://arxiv.org/pdf/2607.18016v1",
+      "categories": [
+        "cs.RO"
+      ],
+      "authors": [
+        "Peng Ren",
+        "Haoyang Ge",
+        "Jiang Zhao",
+        "Cong Huang",
+        "Yukun Shi"
+      ],
+      "all_authors": [
+        "Peng Ren",
+        "Haoyang Ge",
+        "Jiang Zhao",
+        "Cong Huang",
+        "Yukun Shi",
+        "Pei Chi",
+        "Kai Chen"
+      ],
+      "affiliations": [
+        {
+          "name": "Peng Ren",
+          "affiliations": []
+        },
+        {
+          "name": "Haoyang Ge",
+          "affiliations": []
+        },
+        {
+          "name": "Jiang Zhao",
+          "affiliations": []
+        },
+        {
+          "name": "Cong Huang",
+          "affiliations": []
+        },
+        {
+          "name": "Yukun Shi",
+          "affiliations": []
+        },
+        {
+          "name": "Pei Chi",
+          "affiliations": []
+        },
+        {
+          "name": "Kai Chen",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-07-20",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "长时程人形机器人移动操作任务中，用于条件化全身动作的对象状态与用于验证动作是否达成预期物理关系的状态之间存在不一致，导致对象状态发散问题。",
+        "method": "提出持久对象标记化（POT），从RGB-D观测中维护角色索引的3D对象记录，并将其转换为对象标记供全身动作专家使用；实例化为POT-VLA系统，同一对象记录同时用于动作生成和几何谓词检查，形成闭环执行。",
+        "result": "在Unitree G1上，POT-VLA在8个真实世界任务族中将匹配的GR00T-N1.7基线从39/80提升至71/80成功率；在外部Being-0对齐参考任务上达到44/50，优于报告的37/50。",
+        "novelty": "提出以持久对象为中心的3D标记化作为可验证人形VLA执行的核心抽象，实现动作条件化与验证的统一。",
+        "relevance": "为多模态大模型在人形机器人具身智能中的闭环控制提供了可验证的状态表示范式，推动了VLA策略在长时程操作中的实用化。",
+        "org": "未明确标注机构，作者可能来自中国研究机构",
+        "score": 8
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "SAGE: Subgoal-Conditioned Action Generation for Latent World Model Planning",
+      "abstract": "Latent world models have emerged as a powerful planning paradigm by learning action-conditioned predictive dynamics and using them as internal simulators to imagine and evaluate candidate action sequences. However, as the planning horizon grows, performance becomes increasingly constrained by proposal quality: a fixed candidate budget must search an exponentially larger action space, making it difficult to expose the world model to high-quality candidate futures for evaluation. In this paper, we introduce a prior-conditioned planner that replaces random proposal initialization with structured guidance. At each planning stage, a goal-conditioned generator predicts the next reachable latent subgoal for a specified duration, which is then used to condition the generation of candidate action sequences. To capture semantic information across temporal scales, we use subgoals of varying durations as priors, balancing fine-grained local control with higher-level long-horizon progress. Then the frozen world model evaluates and refines these subgoal-conditioned proposals before execution. Experiments on PushT and OGBench Cube show that coupling latent subgoal decomposition with prior-conditioned action generation substantially improves long-horizon planning while preserving strong short-horizon performance. To be specific, when the target offset is $150$, it raises PushT success from $12.7\\%$ to $64.7\\%$ and OGBench Cube success from $26.7\\%$ to $67.3\\%$.",
+      "url": "https://arxiv.org/abs/2607.17973v1",
+      "pdf": "https://arxiv.org/pdf/2607.17973v1",
+      "categories": [
+        "cs.AI"
+      ],
+      "authors": [
+        "Letian Cheng",
+        "Qi Zhang",
+        "Yisen Wang"
+      ],
+      "all_authors": [
+        "Letian Cheng",
+        "Qi Zhang",
+        "Yisen Wang"
+      ],
+      "affiliations": [
+        {
+          "name": "Letian Cheng",
+          "affiliations": []
+        },
+        {
+          "name": "Qi Zhang",
+          "affiliations": []
+        },
+        {
+          "name": "Yisen Wang",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-07-20",
+      "matched_topics": [
+        "世界模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "解决潜在世界模型在长时域规划中因固定候选动作预算无法有效探索指数级增长的动作空间，导致性能受限的问题。",
+        "method": "提出一种基于子目标条件的规划器，通过目标条件生成器预测可达到的潜在子目标，并以此作为先验条件生成候选动作序列，利用不同时域长度的子目标平衡局部控制与长期进展。",
+        "result": "在PushT和OGBench Cube任务上，长时域规划成功率显著提升（如目标偏移150时，PushT从12.7%升至64.7%，OGBench Cube从26.7%升至67.3%），同时保持短时域性能。",
+        "novelty": "将潜在子目标分解与先验条件动作生成相结合，替代随机动作初始化，实现结构化规划引导。",
+        "relevance": "为潜在世界模型在长时域复杂任务中的规划提供高效方法，推动具身智能和机器人控制领域发展。",
+        "org": "未明确识别机构",
+        "score": 8
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "ST-Veto: Spatio-Temporal Token Veto for Diffusion MLLMs via Taylor Prediction and Visual Grounding",
+      "abstract": "Vision Language Models (VLMs) achieve strong reasoning with Chain-of-Thought (CoT) prompting but incur high sequential-generation cost, error accumulation, and limited self-correction. Diffusion Multimodal Large Language Models (dMLLMs) unmask tokens in an order-agnostic process, improving efficiency and enabling iterative refinement, yet their reasoning and how to enhance it remain underexplored. We propose a training-free method, Spatio-Temporal Token Veto (ST-Veto), which leverages the ability to observe all token positions at each diffusion step. Rather than relying only on current-step confidence, ST-Veto vetoes temporally unstable tokens via second-order Taylor prediction of confidence dynamics and filters weakly grounded tokens using image-attention mass, swapping them with safer candidates. Across multiple dMLLMs and multimodal reasoning benchmarks, ST-Veto consistently outperforms standard decoding policies and prior VLM reasoning methods, improving accuracy by up to 9% with no additional training or generation cost. Analyses show that ST-Veto steers generation toward higher-confidence, better-grounded paths.",
+      "url": "https://arxiv.org/abs/2607.17884v1",
+      "pdf": "https://arxiv.org/pdf/2607.17884v1",
+      "categories": [
+        "cs.AI"
+      ],
+      "authors": [
+        "Keuntae Kim",
+        "Beomseok Lee",
+        "Hyunwoo Kim",
+        "Yong Suk Choi"
+      ],
+      "all_authors": [
+        "Keuntae Kim",
+        "Beomseok Lee",
+        "Hyunwoo Kim",
+        "Yong Suk Choi"
+      ],
+      "affiliations": [
+        {
+          "name": "Keuntae Kim",
+          "affiliations": []
+        },
+        {
+          "name": "Beomseok Lee",
+          "affiliations": []
+        },
+        {
+          "name": "Hyunwoo Kim",
+          "affiliations": []
+        },
+        {
+          "name": "Yong Suk Choi",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-07-20",
+      "matched_topics": [
+        "多模态",
+        "大模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "扩散多模态大语言模型（dMLLMs）在推理过程中存在生成路径不稳定、置信度低以及视觉定位不准确的问题，导致推理质量受限。",
+        "method": "提出一种无需训练的方法ST-Veto，利用泰勒预测对每个扩散步骤中时间上不稳定的令牌进行否决，并通过图像注意力质量过滤弱定位令牌，将其替换为更安全的候选令牌。",
+        "result": "在多个dMLLM和多模态推理基准上，ST-Veto在无额外训练或生成成本下，将准确率提升高达9%，并引导生成走向更高置信度和更好定位的路径。",
+        "novelty": "首次在扩散MLLM中利用二阶泰勒预测和视觉定位实现令牌级时空否决，无需训练即可提升推理质量。",
+        "relevance": "为扩散多模态大语言模型提供了一种高效、即插即用的推理增强方法，推动了多模态推理和世界模型的发展。",
+        "org": "未明确识别具体机构",
+        "score": 8
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "PRiSM: Prototype Regularization for Few-Shot VLMs",
+      "abstract": "Training-free few-shot adaptation methods have gained significant attention recently in the context of Vision-language Models (VLMs). Yet, current benchmarks rely on strong assumptions about the statistics of the adaptation data, e.g., class balance. We question these simplifying assumptions and introduce a more realistic benchmark that varies both the levels of class balance and the effective number of classes in few-shot tasks via Dirichlet sampling. Surprisingly, under our setting, we observe substantial drops in the performances of state-of-the-art methods, more so when the number of labeled samples increases. To mitigate this, we introduce PRiSM, a class-prototype regularization that can be deployed as a plug and play module on top of any existing baseline method, significantly improving performances. Our method optimizes a novel multi-term loss, which includes a regularizer maximizing inter-class pairwise distances, along with additional terms promoting support-feature alignment and fidelity to the baseline prototypes. Furthermore, we introduce an effective and computationally efficient block Majorize-Minimize optimizer for our objective. More specifically, we derive a valid blockwise Lipschitz constant (i.e., a bound on the Hessian's spectral norm), which can be computed efficiently via the Gershgorin circle theorem. Extensive experiments show that PRiSM improves several training-free baselines, with large gains when dealing with severe class imbalance and high numbers of classes.",
+      "url": "https://arxiv.org/abs/2607.17820v1",
+      "pdf": "https://arxiv.org/pdf/2607.17820v1",
+      "categories": [
+        "cs.CV"
+      ],
+      "authors": [
+        "Ghassen Baklouti",
+        "Omprakash Chakraborty",
+        "Jose Dolz",
+        "Ismail Ben Ayed"
+      ],
+      "all_authors": [
+        "Ghassen Baklouti",
+        "Omprakash Chakraborty",
+        "Jose Dolz",
+        "Ismail Ben Ayed"
+      ],
+      "affiliations": [
+        {
+          "name": "Ghassen Baklouti",
+          "affiliations": []
+        },
+        {
+          "name": "Omprakash Chakraborty",
+          "affiliations": []
+        },
+        {
+          "name": "Jose Dolz",
+          "affiliations": []
+        },
+        {
+          "name": "Ismail Ben Ayed",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-07-20",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "现有少样本视觉语言模型（VLM）的免训练适应方法在类不平衡和类别数量变化时性能显著下降，且现有基准测试假设过于简化。",
+        "method": "提出PRiSM，一种类原型正则化方法，通过优化包含最大化类间距离、支持特征对齐和基线原型保真度的多目标损失函数，并采用基于Gershgorin圆定理的高效块Majorize-Minimize优化器。",
+        "result": "PRiSM作为即插即用模块，在多个免训练基线上显著提升性能，尤其在严重类不平衡和高类别数场景下效果显著。",
+        "novelty": "首次针对少样本VLM的类不平衡问题提出原型正则化，并引入高效块优化器。",
+        "relevance": "提升了VLM在现实少样本场景下的鲁棒性，推动免训练适应方法向更实际的应用发展。",
+        "org": "未明确标注机构，但作者可能来自学术机构（如大学或研究所）。",
+        "score": 8
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "Simple Domain Generalization for Strong Pixel-Level Image Tampering Detection in Modern VLMs",
+      "abstract": "Modern vision-language models (VLMs) have significantly improved image generation and editing capabilities, making pixel-level image tampering detection increasingly important yet challenging under cross-model and out-of-distribution shifts. This work studies domain generalization for pixel-level image tampering detection in modern VLMs like ChatGPT, Gemini, Qwen-Image, etc., aiming to learn tampering localization models that remain robust across diverse VLM-generated manipulation distributions. We propose a simple yet effective domain-generalized training framework built on two practical strategies. First, we introduce a balanced minibatch sampling scheme that strategically samples tampered and real images in each minibatch, preventing biased optimization toward either manipulated artifacts or clean-image priors and avoiding training collapse, ensuring that each optimization step receives proper sampled gradient signals. Second, we adopt a simple late-injection strategy, where the detector is first trained on large-scale base data until stable convergence, and then exposed to a small amount of newly selected supporting data from emerging VLM distributions, improving adaptability without overfitting to limited new domains. Together, these components provide a simple yet strong recipe for improving pixel-level tampering localization and OOD robustness across modern VLMs. Despite the conceptual simplicity, our framework outperforms the prior state-of-the-art PIXAR by a large margin of 26.1% and 26.8% relative improvement in average gIoU and cIoU, respectively, across OOD VLMs of GPT-Images-2.0, Gemini-3.1, FLUX.2, and Seedream 4.5. Our code is available at https://github.com/VILA-Lab/PIXAR-DG",
+      "url": "https://arxiv.org/abs/2607.18230v1",
+      "pdf": "https://arxiv.org/pdf/2607.18230v1",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "authors": [
+        "Yi Tang",
+        "Xinyi Shang",
+        "Jiacheng Cui",
+        "Sondos Mahmoud Bsharat",
+        "Jiacheng Liu"
+      ],
+      "all_authors": [
+        "Yi Tang",
+        "Xinyi Shang",
+        "Jiacheng Cui",
+        "Sondos Mahmoud Bsharat",
+        "Jiacheng Liu",
+        "Xiaohan Zhao",
+        "Tran Dinh Tien",
+        "Ahmed Elhagry",
+        "Salwa K. Al Khatib",
+        "Tianjun Yao",
+        "Yonina C. Eldar",
+        "Jing-Hao Xue",
+        "Hao Li",
+        "Salman Khan",
+        "Zhiqiang Shen"
+      ],
+      "affiliations": [
+        {
+          "name": "Yi Tang",
+          "affiliations": []
+        },
+        {
+          "name": "Xinyi Shang",
+          "affiliations": []
+        },
+        {
+          "name": "Jiacheng Cui",
+          "affiliations": []
+        },
+        {
+          "name": "Sondos Mahmoud Bsharat",
+          "affiliations": []
+        },
+        {
+          "name": "Jiacheng Liu",
+          "affiliations": []
+        },
+        {
+          "name": "Xiaohan Zhao",
+          "affiliations": []
+        },
+        {
+          "name": "Tran Dinh Tien",
+          "affiliations": []
+        },
+        {
+          "name": "Ahmed Elhagry",
+          "affiliations": []
+        },
+        {
+          "name": "Salwa K. Al Khatib",
+          "affiliations": []
+        },
+        {
+          "name": "Tianjun Yao",
+          "affiliations": []
+        },
+        {
+          "name": "Yonina C. Eldar",
+          "affiliations": []
+        },
+        {
+          "name": "Jing-Hao Xue",
+          "affiliations": []
+        },
+        {
+          "name": "Hao Li",
+          "affiliations": []
+        },
+        {
+          "name": "Salman Khan",
+          "affiliations": []
+        },
+        {
+          "name": "Zhiqiang Shen",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-07-20",
+      "matched_topics": [
+        "多模态",
+        "大模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "现代视觉语言模型（VLM）生成的图像在跨模型和分布外场景下，像素级篡改检测的鲁棒性不足。",
+        "method": "提出一个简单的域泛化训练框架，包含两个策略：平衡小批量采样方案防止优化偏差，以及后期注入策略先在基础数据上训练再暴露于少量新VLM数据以提升适应性。",
+        "result": "在多个OOD VLM（如GPT-Images-2.0、Gemini-3.1等）上，平均gIoU和cIoU相对提升26.1%和26.8%，显著超越先前最先进方法PIXAR。",
+        "novelty": "通过平衡采样和后期注入的简单组合，实现了无需复杂设计的强域泛化篡改检测。",
+        "relevance": "为VLM时代图像安全检测提供了实用且鲁棒的基线方法，推动多模态内容真实性验证。",
+        "org": "未明确标注机构，但代码托管于VILA-Lab（推测为学术实验室）",
+        "score": 7
+      },
+      "identified_orgs": [
+        "Google",
+        "OpenAI"
+      ]
+    },
+    {
+      "title": "SpEmoC: A Balanced Speaker-Segment Multimodal Emotion Benchmark",
+      "abstract": "Understanding human emotions in spoken conversations is a key challenge in affective computing, with applications in empathetic AI, human computer interaction, and mental health monitoring. However, existing datasets vary in scale, emotion distribution, modality alignment, and data partitioning strategies, which can influence reliable cross-dataset generalization and minority-emotion modeling. We introduce SpEmoC a Speaking segment Emotion for Conversations comprising 306,544 raw clips from 3,100 English language movies and TV series. From these, 30,000 high quality, class balanced clips are curated, featuring synchronized visual, audio, and textual modalities annotated for seven emotions through a hybrid pipeline that integrates pretrained models with human validation. SpEmoC uses strict movie- and series-level splits to prevent content overlap between split sets, allowing more reliable evaluation of model generalization. The dataset also maintains a near-balanced distribution across seven emotions, including minority classes such as Fear and Disgust, which supports more balanced learning across categories. Extensive experiments, including in-domain benchmarking, cross-dataset transfer, low-data training, class-imbalance analysis, and modality transfer show that balanced data and careful splitting lead to more stable performance across emotions when models are evaluated on other datasets. These results highlight the importance of dataset design for robust and transferable multimodal emotion recognition.",
+      "url": "https://arxiv.org/abs/2607.18109v1",
+      "pdf": "https://arxiv.org/pdf/2607.18109v1",
+      "categories": [
+        "cs.CV"
+      ],
+      "authors": [
+        "Sania Bano",
+        "Shahzad Ahmad",
+        "Santosh Kumar Vipparthi",
+        "Sukalpa Chanda",
+        "Subrahmanyam Murala"
+      ],
+      "all_authors": [
+        "Sania Bano",
+        "Shahzad Ahmad",
+        "Santosh Kumar Vipparthi",
+        "Sukalpa Chanda",
+        "Subrahmanyam Murala"
+      ],
+      "affiliations": [
+        {
+          "name": "Sania Bano",
+          "affiliations": []
+        },
+        {
+          "name": "Shahzad Ahmad",
+          "affiliations": []
+        },
+        {
+          "name": "Santosh Kumar Vipparthi",
+          "affiliations": []
+        },
+        {
+          "name": "Sukalpa Chanda",
+          "affiliations": []
+        },
+        {
+          "name": "Subrahmanyam Murala",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-07-20",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "现有对话情感数据集在规模、情感分布、模态对齐和数据划分策略上存在差异，影响跨数据集泛化和少数情感建模的可靠性。",
+        "method": "构建了SpEmoC数据集，包含从3100部英语影视作品中提取的306,544个原始片段，并精选出30,000个高质量、类别平衡的片段，通过预训练模型与人工验证结合的混合管道标注七种情感，采用严格的影视级划分防止内容重叠。",
+        "result": "实验表明，平衡的数据和严格划分能提升模型在跨数据集评估时的情感性能稳定性，验证了数据集设计对鲁棒和可迁移多模态情感识别的重要性。",
+        "novelty": "提出了一个大规模、类别平衡且严格划分的多模态情感基准数据集，专门关注少数情感（如恐惧和厌恶）的建模。",
+        "relevance": "为多模态情感识别提供了高质量基准，推动情感AI在跨数据集泛化和少数情感学习方面的研究。",
+        "org": "未明确识别机构",
+        "score": 7
+      },
+      "identified_orgs": []
     },
     {
       "title": "Anticipate Before Acting: Future-State-Conditioned Vision-Language Navigation",
@@ -411,48 +1235,50 @@
         "Tongtong Cao",
         "Yingxue Zhang"
       ],
+      "all_authors": [
+        "Lingfeng Zhang",
+        "Zhanguang Zhang",
+        "Liheng Ma",
+        "Tongtong Cao",
+        "Yingxue Zhang"
+      ],
+      "affiliations": [
+        {
+          "name": "Lingfeng Zhang",
+          "affiliations": []
+        },
+        {
+          "name": "Zhanguang Zhang",
+          "affiliations": []
+        },
+        {
+          "name": "Liheng Ma",
+          "affiliations": []
+        },
+        {
+          "name": "Tongtong Cao",
+          "affiliations": []
+        },
+        {
+          "name": "Yingxue Zhang",
+          "affiliations": []
+        }
+      ],
       "published": "2026-07-20",
       "matched_topics": [
         "多模态"
       ],
       "priority": 1,
       "ai_summary": {
-        "problem": "在端到端视觉语言导航中，标准行为克隆仅监督下一步动作，未显式训练策略状态预测未来视觉结果，导致导航性能受限。",
-        "method": "提出未来状态条件化视觉语言导航（FSC-VLN），通过添加未来查询令牌，在训练时将其隐藏状态对齐到冻结的视觉嵌入（未来Δ步），并在推理时移除该分支，从而在不访问未来图像的情况下利用未来信息。",
-        "result": "在R2R val-unseen上，FSC-VLN在两种训练数据设置下均提升了SR/OSR/SPL指标，尤其在长程任务中增益更大；消融实验支持未来与动作查询分离的双查询设计。",
-        "novelty": "首次将未来视觉潜在状态作为训练监督信号，通过训练时对齐和推理时移除的方式，实现无需未来图像即可受益于未来信息。",
-        "relevance": "为视觉语言导航提供了一种利用未来信息的新范式，可推广至其他需要长期规划的具身智能任务。",
-        "score": 8
-      }
-    },
-    {
-      "title": "Closing the Loop in Humanoid VLA: Persistent 3D Object Tokens for Verifiable Loco-Manipulation",
-      "abstract": "Vision-language-action policies are a promising foundation for general robot control, but long-horizon humanoid loco-manipulation requires the robot to treat task objects as persistent physical entities across movement, contact, occlusion, and recovery. We study this problem as object-state divergence: the object state used to condition a whole-body action can differ from the state used to decide whether the action achieved the intended physical relation. We propose \\emph{Persistent Object Tokenization} (POT), which maintains role-indexed 3D object records from RGB-D observations and converts them into object tokens for a whole-body action expert. Instantiated as \\emph{POT-VLA}, the same object records condition action generation and support geometric predicate checks, yielding a closed-loop execution system in which object state is both actionable and verifiable. On a Unitree G1, POT-VLA improves a matched direct GR00T-N1.7 baseline from 39/80 to 71/80 successes over eight real-world task families. In an external Being-0-aligned reference, POT-VLA achieves 44/50 successes on aligned service tasks, compared with the 37/50 success reported by the Being-0 paper. The largest gains occur on tasks requiring maintained 3D relations, suggesting that persistent object-centered state is a useful abstraction for verifiable humanoid VLA execution.",
-      "url": "https://arxiv.org/abs/2607.18016v1",
-      "pdf": "https://arxiv.org/pdf/2607.18016v1",
-      "categories": [
-        "cs.RO"
-      ],
-      "authors": [
-        "Peng Ren",
-        "Haoyang Ge",
-        "Jiang Zhao",
-        "Cong Huang",
-        "Yukun Shi"
-      ],
-      "published": "2026-07-20",
-      "matched_topics": [
-        "多模态"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "解决人形机器人在长时间操作任务中，由于物体状态在移动、接触、遮挡和恢复过程中发生发散，导致动作生成与验证不一致的问题。",
-        "method": "提出持久化物体标记化方法，通过RGB-D观测维护角色索引的3D物体记录，并将其转化为物体标记，用于全身动作专家生成动作，同时支持几何谓词检查，形成闭环执行系统。",
-        "result": "在Unitree G1机器人上，POT-VLA在8个真实任务族中将成功率从39/80提升至71/80；在外部基准测试中，以44/50的成绩超越Being-0报告的37/50。",
-        "novelty": "首次将持久化的3D物体标记同时用于动作条件生成和可验证的几何谓词检查，实现人形VLA的闭环执行。",
-        "relevance": "为具身智能中的人形机器人提供了可验证的物体状态抽象，推动了视觉-语言-动作策略在复杂操作任务中的实用化。",
-        "score": 8
-      }
+        "problem": "在视觉-语言导航（VLN）中，标准的行为克隆仅监督下一步动作，未显式训练策略状态预测未来视觉结果，导致导航性能受限。",
+        "method": "提出未来状态条件化VLN（FSC-VLN），通过添加未来查询令牌，在训练时将其隐藏状态对齐到冻结的未来视觉嵌入（Δ步后），并在推理时移除该分支，从而在不访问未来图像的情况下利用未来信息。",
+        "result": "在R2R val-unseen上，FSC-VLN在两种训练数据设置下均提升了SR/OSR/SPL指标，尤其在长距离任务中增益更大，消融实验支持了双查询设计（分离未来和动作查询）。",
+        "novelty": "创新性地通过训练时对齐未来视觉潜变量，使策略隐式学习未来预测能力，而推理时不增加额外输入。",
+        "relevance": "为VLN和具身智能提供了一种高效利用未来信息的方法，可推广至其他需要预测性策略的AI任务。",
+        "org": "未明确标注机构，但根据作者名推测可能来自学术界或工业界研究团队。",
+        "score": 7
+      },
+      "identified_orgs": []
     },
     {
       "title": "HAS: Highlight-guided Attention Steering for Multimodal LLM Video Summarization",
@@ -467,61 +1293,19 @@
         "Rui Chu",
         "Yingjie Lao"
       ],
-      "published": "2026-07-20",
-      "matched_topics": [
-        "多模态",
-        "大模型"
+      "all_authors": [
+        "Rui Chu",
+        "Yingjie Lao"
       ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "现有视频摘要方法依赖离散关键帧和片段描述，忽略了帧的全局重要性，导致理解不连贯和信息丢失。",
-        "method": "提出HAS方法，首先全局计算连续帧级高亮分布，然后将其作为注意力引导向量注入多模态大语言模型，使模型在推理时更关注高亮帧，同时保留低高亮帧的部分信息。",
-        "result": "在多个基准测试上，HAS在视频摘要任务中取得了令人信服的性能提升。",
-        "novelty": "首次将帧级高亮分布作为注意力引导向量，实现全局重要性感知的连续视频摘要。",
-        "relevance": "为多模态大语言模型在视频理解中提供了一种高效、连贯的注意力调控范式，推动视频摘要和具身智能等应用发展。",
-        "score": 8
-      }
-    },
-    {
-      "title": "SAGE: Subgoal-Conditioned Action Generation for Latent World Model Planning",
-      "abstract": "Latent world models have emerged as a powerful planning paradigm by learning action-conditioned predictive dynamics and using them as internal simulators to imagine and evaluate candidate action sequences. However, as the planning horizon grows, performance becomes increasingly constrained by proposal quality: a fixed candidate budget must search an exponentially larger action space, making it difficult to expose the world model to high-quality candidate futures for evaluation. In this paper, we introduce a prior-conditioned planner that replaces random proposal initialization with structured guidance. At each planning stage, a goal-conditioned generator predicts the next reachable latent subgoal for a specified duration, which is then used to condition the generation of candidate action sequences. To capture semantic information across temporal scales, we use subgoals of varying durations as priors, balancing fine-grained local control with higher-level long-horizon progress. Then the frozen world model evaluates and refines these subgoal-conditioned proposals before execution. Experiments on PushT and OGBench Cube show that coupling latent subgoal decomposition with prior-conditioned action generation substantially improves long-horizon planning while preserving strong short-horizon performance. To be specific, when the target offset is $150$, it raises PushT success from $12.7\\%$ to $64.7\\%$ and OGBench Cube success from $26.7\\%$ to $67.3\\%$.",
-      "url": "https://arxiv.org/abs/2607.17973v1",
-      "pdf": "https://arxiv.org/pdf/2607.17973v1",
-      "categories": [
-        "cs.AI"
-      ],
-      "authors": [
-        "Letian Cheng",
-        "Qi Zhang",
-        "Yisen Wang"
-      ],
-      "published": "2026-07-20",
-      "matched_topics": [
-        "世界模型"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "潜世界模型在长时域规划中，由于固定候选动作预算需要搜索指数级增长的动作空间，导致性能受限。",
-        "method": "提出一种先验条件规划器SAGE，通过目标条件生成器预测可到达的潜在子目标，并以此条件生成候选动作序列，利用不同时域的子目标作为先验平衡局部与全局规划。",
-        "result": "在PushT和OGBench Cube任务上，长时域规划成功率大幅提升（如目标偏移150时，PushT从12.7%升至64.7%，OGBench Cube从26.7%升至67.3%），同时保持短时域性能。",
-        "novelty": "将潜在子目标分解与先验条件动作生成结合，替代随机动作初始化，实现结构化规划。",
-        "relevance": "为潜世界模型在长时域规划中的实际应用提供了有效方法，推动具身智能和机器人控制的发展。",
-        "score": 8
-      }
-    },
-    {
-      "title": "ST-Veto: Spatio-Temporal Token Veto for Diffusion MLLMs via Taylor Prediction and Visual Grounding",
-      "abstract": "Vision Language Models (VLMs) achieve strong reasoning with Chain-of-Thought (CoT) prompting but incur high sequential-generation cost, error accumulation, and limited self-correction. Diffusion Multimodal Large Language Models (dMLLMs) unmask tokens in an order-agnostic process, improving efficiency and enabling iterative refinement, yet their reasoning and how to enhance it remain underexplored. We propose a training-free method, Spatio-Temporal Token Veto (ST-Veto), which leverages the ability to observe all token positions at each diffusion step. Rather than relying only on current-step confidence, ST-Veto vetoes temporally unstable tokens via second-order Taylor prediction of confidence dynamics and filters weakly grounded tokens using image-attention mass, swapping them with safer candidates. Across multiple dMLLMs and multimodal reasoning benchmarks, ST-Veto consistently outperforms standard decoding policies and prior VLM reasoning methods, improving accuracy by up to 9% with no additional training or generation cost. Analyses show that ST-Veto steers generation toward higher-confidence, better-grounded paths.",
-      "url": "https://arxiv.org/abs/2607.17884v1",
-      "pdf": "https://arxiv.org/pdf/2607.17884v1",
-      "categories": [
-        "cs.AI"
-      ],
-      "authors": [
-        "Keuntae Kim",
-        "Beomseok Lee",
-        "Hyunwoo Kim",
-        "Yong Suk Choi"
+      "affiliations": [
+        {
+          "name": "Rui Chu",
+          "affiliations": []
+        },
+        {
+          "name": "Yingjie Lao",
+          "affiliations": []
+        }
       ],
       "published": "2026-07-20",
       "matched_topics": [
@@ -530,41 +1314,15 @@
       ],
       "priority": 1,
       "ai_summary": {
-        "problem": "扩散多模态大语言模型（dMLLMs）的推理能力不足，且现有方法存在高顺序生成成本、错误累积和缺乏自我修正的问题。",
-        "method": "提出一种无需训练的方法ST-Veto，通过二阶泰勒预测评估令牌的时间稳定性来否决不稳定令牌，并利用图像注意力质量过滤弱定位令牌，替换为更安全的候选令牌。",
-        "result": "在多个dMLLMs和多模态推理基准上，ST-Veto相比标准解码策略和先前VLM推理方法，准确率提升高达9%，且无额外训练或生成成本。",
-        "novelty": "首次利用扩散步骤中所有令牌位置的可观测性，结合时间稳定性和视觉定位进行令牌级否决，实现无训练推理增强。",
-        "relevance": "为扩散多模态大语言模型提供了一种高效、无需训练的推理优化方法，推动了多模态推理和世界模型的发展。",
-        "score": 8
-      }
-    },
-    {
-      "title": "PRiSM: Prototype Regularization for Few-Shot VLMs",
-      "abstract": "Training-free few-shot adaptation methods have gained significant attention recently in the context of Vision-language Models (VLMs). Yet, current benchmarks rely on strong assumptions about the statistics of the adaptation data, e.g., class balance. We question these simplifying assumptions and introduce a more realistic benchmark that varies both the levels of class balance and the effective number of classes in few-shot tasks via Dirichlet sampling. Surprisingly, under our setting, we observe substantial drops in the performances of state-of-the-art methods, more so when the number of labeled samples increases. To mitigate this, we introduce PRiSM, a class-prototype regularization that can be deployed as a plug and play module on top of any existing baseline method, significantly improving performances. Our method optimizes a novel multi-term loss, which includes a regularizer maximizing inter-class pairwise distances, along with additional terms promoting support-feature alignment and fidelity to the baseline prototypes. Furthermore, we introduce an effective and computationally efficient block Majorize-Minimize optimizer for our objective. More specifically, we derive a valid blockwise Lipschitz constant (i.e., a bound on the Hessian's spectral norm), which can be computed efficiently via the Gershgorin circle theorem. Extensive experiments show that PRiSM improves several training-free baselines, with large gains when dealing with severe class imbalance and high numbers of classes.",
-      "url": "https://arxiv.org/abs/2607.17820v1",
-      "pdf": "https://arxiv.org/pdf/2607.17820v1",
-      "categories": [
-        "cs.CV"
-      ],
-      "authors": [
-        "Ghassen Baklouti",
-        "Omprakash Chakraborty",
-        "Jose Dolz",
-        "Ismail Ben Ayed"
-      ],
-      "published": "2026-07-20",
-      "matched_topics": [
-        "多模态"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "现有少样本视觉语言模型（VLM）的零训练适应方法在类不平衡和高类别数场景下性能显著下降，且当前基准测试假设过于简化。",
-        "method": "提出PRiSM，一种类原型正则化方法，通过优化包含最大化类间距离、支持特征对齐和原型保真度的多损失项，并利用基于Gershgorin圆定理的高效块Majorize-Minimize优化器求解。",
-        "result": "PRiSM作为即插即用模块显著提升多种零训练基线方法性能，尤其在严重类不平衡和高类别数情况下表现突出。",
-        "novelty": "首次针对少样本VLM适应中的类不平衡问题提出原型正则化框架，并引入高效块优化器。",
-        "relevance": "推动少样本VLM适应方法在更真实、复杂场景下的鲁棒性，对多模态学习和具身智能中的少样本泛化有重要参考价值。",
-        "score": 8
-      }
+        "problem": "现有视频摘要方法依赖离散关键帧和片段描述，忽视了帧的全局重要性，导致理解不连贯和信息丢失。",
+        "method": "提出HAS方法，首先计算视频全局连续帧级高亮分布，然后将该分布作为注意力引导向量注入多模态大语言模型，使模型在推理时更关注高亮帧，同时通过减少注意力而非遗忘来保留低高亮帧的信息。",
+        "result": "在多个基准测试上取得了令人信服的视频摘要性能。",
+        "novelty": "首次将帧级高亮分布作为注意力引导向量，实现连续视频输入下的全局重要性感知摘要。",
+        "relevance": "为多模态大语言模型在视频理解中高效利用全局帧重要性提供了新范式，推动视频摘要和生成领域发展。",
+        "org": "未明确识别机构",
+        "score": 7
+      },
+      "identified_orgs": []
     },
     {
       "title": "Measuring and Improving Complex-Atomic Answer Consistency in Endoscopic VQA",
@@ -580,19 +1338,117 @@
         "Cheng Zhao",
         "Guanghui Yue"
       ],
+      "all_authors": [
+        "Yuhao Liu",
+        "Cheng Zhao",
+        "Guanghui Yue"
+      ],
+      "affiliations": [
+        {
+          "name": "Yuhao Liu",
+          "affiliations": []
+        },
+        {
+          "name": "Cheng Zhao",
+          "affiliations": []
+        },
+        {
+          "name": "Guanghui Yue",
+          "affiliations": []
+        }
+      ],
       "published": "2026-07-20",
       "matched_topics": [
         "多模态"
       ],
       "priority": 1,
       "ai_summary": {
-        "problem": "内窥镜视觉问答（VQA）中，模型在回答复杂问题时可能正确，但在相关的原子问题上失败，导致答案不一致。",
-        "method": "提出EndoCA基准，包含两个套件（EndoCA-Core和EndoCA-Diagnostic）来评估复杂-原子答案一致性；并引入Atomic-Support Reconciliation (ASR)机制，利用模型生成的原子答案作为上下文前提进行答案修订和一致性引导的选择性回答。",
-        "result": "11个VLM在EndoCA上评估显示，尽管复杂答案准确率高，但原子答案准确率和一致性较低；ASR-Revise提高了配对复杂-原子正确性，ASR-Selective通过允许模型放弃不可靠案例提高了已回答案例的准确率。",
-        "novelty": "首次提出内窥镜VQA中的复杂-原子答案一致性基准和无需训练的答案协调机制。",
-        "relevance": "为多模态VQA领域提供了评估和提升答案一致性的新方法，有助于提高医疗AI的可靠性和可解释性。",
+        "problem": "内窥镜视觉问答（VQA）中，模型在回答复杂问题时可能正确，但在相关的原子问题上却失败，导致答案不一致，本文旨在衡量并改善这种不一致性。",
+        "method": "提出了EndoCA基准，包含两个套件（EndoCA-Core和EndoCA-Diagnostic）来评估复杂-原子答案一致性；并引入Atomic-Support Reconciliation (ASR)机制，利用模型生成的原子答案作为上下文前提进行答案修订和一致性引导的选择性回答。",
+        "result": "评估了11个VLM，发现许多模型在复杂答案准确率上较高，但原子答案准确率和一致性显著较低；ASR-Revise在轻微改变复杂答案准确率的情况下提高了配对一致性，ASR-Selective通过允许模型放弃不可靠案例提升了回答准确率。",
+        "novelty": "首次提出针对内窥镜VQA的复杂-原子答案一致性基准（EndoCA）及无需训练的ASR机制。",
+        "relevance": "为多模态VQA领域提供了评估和提升答案一致性的新方法，有助于提升AI在医疗等关键领域的可靠性。",
+        "org": "未明确标注机构，作者Yuhao Liu、Cheng Zhao、Guanghui Yue可能来自中国高校或研究机构。",
         "score": 7
-      }
+      },
+      "identified_orgs": []
+    }
+  ],
+  "org_analysis": [
+    {
+      "org": "CMU",
+      "count": 1,
+      "topics": {
+        "多模态": 1
+      },
+      "papers": [
+        {
+          "title": "The Many Senses of Visual Similarity: A Text-Prompted Image Perceptual Metric",
+          "url": "https://arxiv.org/abs/2607.18237v1",
+          "score": 8
+        }
+      ]
+    },
+    {
+      "org": "Meta",
+      "count": 1,
+      "topics": {
+        "多模态": 1,
+        "具身智能": 1
+      },
+      "papers": [
+        {
+          "title": "Patch Policy: Efficient Embodied Control via Dense Visual Representations",
+          "url": "https://arxiv.org/abs/2607.18236v1",
+          "score": 8
+        }
+      ]
+    },
+    {
+      "org": "NVIDIA",
+      "count": 1,
+      "topics": {
+        "世界模型": 1,
+        "多模态": 1,
+        "大模型": 1
+      },
+      "papers": [
+        {
+          "title": "FlashRT: Agent Harness for Guiding Agents to Deploy Real-Time Multimodal Applications",
+          "url": "https://arxiv.org/abs/2607.18171v1",
+          "score": 8
+        }
+      ]
+    },
+    {
+      "org": "Google",
+      "count": 1,
+      "topics": {
+        "多模态": 1,
+        "大模型": 1
+      },
+      "papers": [
+        {
+          "title": "Simple Domain Generalization for Strong Pixel-Level Image Tampering Detection in Modern VLMs",
+          "url": "https://arxiv.org/abs/2607.18230v1",
+          "score": 7
+        }
+      ]
+    },
+    {
+      "org": "OpenAI",
+      "count": 1,
+      "topics": {
+        "多模态": 1,
+        "大模型": 1
+      },
+      "papers": [
+        {
+          "title": "Simple Domain Generalization for Strong Pixel-Level Image Tampering Detection in Modern VLMs",
+          "url": "https://arxiv.org/abs/2607.18230v1",
+          "score": 7
+        }
+      ]
     }
   ]
 }
