@@ -16,6 +16,7 @@ import re
 import tempfile
 import urllib.request
 import urllib.parse
+import urllib.error
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -124,12 +125,28 @@ def fetch_arxiv_papers(days_back=1):
     print(f"[抓取] 正在从 arXiv 获取论文...")
     print(f"[抓取] URL: {url[:100]}...")
 
-    try:
-        req = urllib.request.Request(url, headers={"User-Agent": "ArxivDailyTracker/1.0"})
-        with urllib.request.urlopen(req, timeout=30) as response:
-            data = response.read().decode("utf-8")
-    except Exception as e:
-        print(f"[错误] arXiv API 请求失败: {e}")
+    # 带重试的请求（应对 429 限流）
+    data = None
+    for attempt in range(3):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "ArxivDailyTracker/1.0"})
+            with urllib.request.urlopen(req, timeout=30) as response:
+                data = response.read().decode("utf-8")
+            break
+        except urllib.error.HTTPError as e:
+            if e.code == 429:
+                wait = 10 * (attempt + 1)
+                print(f"[限流] arXiv 返回 429，等待 {wait} 秒后重试 ({attempt+1}/3)...")
+                time.sleep(wait)
+            else:
+                print(f"[错误] arXiv API 请求失败: {e}")
+                return []
+        except Exception as e:
+            print(f"[错误] arXiv API 请求失败: {e}")
+            return []
+
+    if data is None:
+        print("[错误] 多次重试后仍无法访问 arXiv API")
         return []
 
     # 解析 XML
