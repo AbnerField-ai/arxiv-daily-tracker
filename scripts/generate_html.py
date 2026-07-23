@@ -291,6 +291,18 @@ def generate_html(data_file, output_file):
             border-top: 2px solid #e9ecef;
         }}
         .archive h2 {{ font-size: 1.1em; margin-bottom: 10px; color: #666; }}
+        .back-latest {{
+            display: inline-block;
+            margin-bottom: 12px;
+            padding: 6px 16px;
+            background: #4a6cf7;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 500;
+        }}
+        .back-latest:hover {{ background: #3a5ce5; }}
         .archive-link {{
             display: inline-block;
             margin: 4px 8px 4px 0;
@@ -438,6 +450,7 @@ def generate_html(data_file, output_file):
     {"<div class='empty-state'><p>今天没有匹配到相关论文</p></div>" if not papers else cards_html}
 
     <div class="archive">
+        <a href="index.html" class="back-latest">← 返回最新日报</a>
         <h2>历史归档</h2>
         {archive_links if archive_links else '<p style="color:#888;font-size:0.85em;">暂无历史数据</p>'}
     </div>
