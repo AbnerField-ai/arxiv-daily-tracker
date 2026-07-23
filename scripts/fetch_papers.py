@@ -125,12 +125,12 @@ def fetch_arxiv_papers(days_back=1):
     print(f"[抓取] 正在从 arXiv 获取论文...")
     print(f"[抓取] URL: {url[:100]}...")
 
-    # 带重试的请求（应对 429 限流）
+    # 带重试的请求（应对 429 限流和超时）
     data = None
     for attempt in range(5):
         try:
             req = urllib.request.Request(url, headers={"User-Agent": "ArxivDailyTracker/1.0"})
-            with urllib.request.urlopen(req, timeout=30) as response:
+            with urllib.request.urlopen(req, timeout=60) as response:
                 data = response.read().decode("utf-8")
             break
         except urllib.error.HTTPError as e:
@@ -139,10 +139,25 @@ def fetch_arxiv_papers(days_back=1):
                 print(f"[限流] arXiv 返回 429，等待 {wait} 秒后重试 ({attempt+1}/5)...")
                 time.sleep(wait)
             else:
-                print(f"[错误] arXiv API 请求失败: {e}")
+                print(f"[错误] arXiv API HTTP错误: {e.code} - {e}")
+                if attempt < 4:
+                    wait = 30 * (attempt + 1)
+                    print(f"[重试] 等待 {wait} 秒后重试 ({attempt+1}/5)...")
+                    time.sleep(wait)
+                else:
+                    return []
+        except (urllib.error.URLError, TimeoutError, OSError) as e:
+            # 超时、DNS失败、连接重置等网络错误，都重试
+            print(f"[网络] arXiv 请求失败: {e}")
+            if attempt < 4:
+                wait = 30 * (attempt + 1)  # 30s, 60s, 90s, 120s
+                print(f"[重试] 等待 {wait} 秒后重试 ({attempt+1}/5)...")
+                time.sleep(wait)
+            else:
+                print("[错误] 多次重试后仍无法连接 arXiv")
                 return []
         except Exception as e:
-            print(f"[错误] arXiv API 请求失败: {e}")
+            print(f"[错误] 未知异常: {e}")
             return []
 
     if data is None:
@@ -524,8 +539,9 @@ def main():
     # 1. 抓取论文
     papers = fetch_arxiv_papers(days_back=2)
     if not papers:
-        print("[结束] 未获取到论文，退出")
-        return
+        print("[错误] 未获取到论文，终止流程")
+        import sys
+        sys.exit(1)  # 非零退出码，让 GitHub Actions 标记为失败并中止后续步骤
 
     # 2. 关键词匹配 + 排序
     filtered = filter_and_rank(papers)
