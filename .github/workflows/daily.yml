@@ -2,8 +2,9 @@ name: 每日论文追踪
 
 on:
   schedule:
-    # 每天北京时间早上 8:00 自动运行（UTC 0:00）
-    - cron: '0 0 * * *'
+    # 每天北京时间凌晨 3:00 自动运行（UTC 19:00 前一天）
+    # 选择凌晨是因为此时 arXiv 服务器负载低，抓取成功率高
+    - cron: '0 19 * * *'
   workflow_dispatch:  # 允许手动触发（测试用）
 
 permissions:
