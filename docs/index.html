@@ -508,16 +508,16 @@
         <div class="insight-body">
             <div class="insight-item">
                 <div class="insight-label">研究热点</div>
-                <div class="insight-content">今日研究热点高度集中在多模态大模型（MLLMs）领域，涵盖效率优化（如联合token-计算自适应）、测试时适应（模态顺序一致性）、领域应用（遥感、医疗、机器人）以及生成式方法（如立体匹配、人脸翻译）。同时，多模态与具身智能、生物医药、农业等交叉方向也涌现出多项创新工作。</div>
+                <div class="insight-content">今日研究热点集中在多模态大模型（MLLM）及其在垂直领域的深度应用，包括推理效率优化（如联合token与计算深度自适应）、医学影像分析、遥感图像理解、机器人抓取与跟踪、时尚检索、电子戏剧生成等。此外，多模态与扩散模型、世界模型、流匹配等底层技术的结合也较为活跃。</div>
             </div>
             <div class="insight-item highlight">
                 <div class="insight-label">大厂方向重合</div>
-                <div class="insight-content">由于今日论文列表未标注具体大厂，且大厂论文分布为空，无法分析大厂方向重合。各论文来自不同学术机构或团队，研究方向分散，未观察到明显的大厂竞争或互补关系。</div>
+                <div class="insight-content">无大厂论文重合，今日所有论文均来自学术机构或未标注大厂背景。各团队研究方向分散，未出现直接竞争或互补关系。</div>
                 
             </div>
             <div class="insight-item">
                 <div class="insight-label">值得关注</div>
-                <div class="insight-content">今日无特殊信号</div>
+                <div class="insight-content">多模态大模型研究持续占据主导，且呈现向专业化、细粒度场景下沉的趋势（如手术交互、纳米孔信号分类、甜椒产量预测）。方法层面，多种新范式涌现：联合token-计算自适应推理、流匹配+扩散、共识推理+Tsetlin Machine等，显示出技术路线的多元化探索。</div>
             </div>
         </div>
     </div>
@@ -544,11 +544,11 @@
             </h4>
             <p class="authors">Jiajun Cheng, Subarna Tripathi, Sainan Liu et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>这篇论文要解决预训练视觉语言模型（VLM）和视觉编码器在适应细粒度手术交互识别时，冻结编码器导致噪声和弱空间定位，以及全微调可能无法确保编码器在正确动作区域学习有意义特征的问题。</div>
-                <div class="summary-item"><strong>方法：</strong>提出LAViFiT框架，包括逆动力学模型捕获动作引起的视觉变化、前向世界模型驱动编码器关注动作相关区域，以及补丁级SIG正则化防止局部特征坍缩，实现端到端的潜在动作引导视觉语言微调。</div>
-                <div class="summary-item"><strong>结论：</strong>在多个编码器和数据集上，该方法提升了手术交互识别和图像-文本对齐性能，表示分析显示更强的器械-组织交互区域定位和更空间一致的特征。</div>
-                <div class="summary-item"><strong>创新点：</strong>创新点在于利用潜在动作（通过逆动力学和前向世界模型）显式引导视觉编码器学习动作相关区域，并结合补丁级正则化改善特征质量。</div>
-                <div class="summary-item"><strong>意义：</strong>对AI领域的意义在于为细粒度交互理解（尤其是手术AI和具身智能）提供了一种有效微调视觉语言模型的框架。</div>
+                <div class="summary-item"><strong>问题：</strong>预训练视觉语言模型在适应细粒度手术交互识别时，冻结视觉编码器会保留噪声和弱空间定位，全微调虽改善全局语义对齐但无法确保编码器在正确的动作区域学习有意义特征。</div>
+                <div class="summary-item"><strong>方法：</strong>提出LAVIFT端到端潜在动作引导视觉语言微调框架：利用逆动力学模型捕获动作引起的视觉变化，前向世界模型驱动编码器表示动作相关区域，补丁级SIG正则化防止局部特征坍塌，无需额外监督如边界框或伪标签。</div>
+                <div class="summary-item"><strong>结论：</strong>在多个编码器和数据集上显著提升手术交互识别和图像-文本对齐性能；表示分析表明模型对完整器械-组织交互区域具有更强的定位能力和更空间连贯的特征。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次在手术交互识别中引入潜在动作引导的视觉微调，结合逆动力学、世界模型和局部特征正则化，无需额外标注即可实现细粒度对齐。</div>
+                <div class="summary-item"><strong>意义：</strong>为手术AI和自主机器人手术提供更精准的交互理解方法，展示了如何利用世界模型指导视觉编码器微调，推动细粒度视觉语言对齐在具身智能中的应用。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">世界模型 / 多模态</span>
@@ -568,11 +568,11 @@
             </h4>
             <p class="authors">Pengcheng Wang, Zhiquan Wang, Jayoung Lee et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>多模态大模型推理成本高（视觉token数量多且LLM计算量大），现有方法独立优化各维度而忽略了计算资源需根据输入内容跨维度动态分配的问题。</div>
-                <div class="summary-item"><strong>方法：</strong>提出SmartVL统一自适应推理框架，通过视觉端token控制器动态选择关键视觉token，LLM端计算控制器自适应调整LLM计算量；两个控制器通过共享预算编码和可微分延迟估计器进行端到端联合训练，实现跨阶段协同调度。</div>
-                <div class="summary-item"><strong>结论：</strong>在多个多模态基准上，SmartVL的联合调度方案持续优于先前的自适应方法，构建了更优的精度-效率帕累托前沿。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次提出联合控制视觉token数量与LLM计算能力的统一自适应框架，实现跨维度动态资源分配。</div>
-                <div class="summary-item"><strong>意义：</strong>显著提升多模态大模型推理效率，为实际部署中根据输入复杂度自适应分配计算资源提供了有效方案。</div>
+                <div class="summary-item"><strong>问题：</strong>多模态大语言模型（MLLM）推理成本高，现有方法单独优化视觉token或LLM计算维度，忽略了它们之间的耦合，无法根据输入内容动态分配计算资源。</div>
+                <div class="summary-item"><strong>方法：</strong>提出SmartVL统一框架，包含视觉侧token控制器（动态选择信息性视觉token）和LLM侧计算控制器（自适应调整LLM计算），两者通过共享预算编码和可微分延迟估计器进行端到端联合训练，实现跨阶段资源分配策略。</div>
+                <div class="summary-item"><strong>结论：</strong>在多个MLLM基准上，SmartVL的联合调度一致优于先前自适应方法，达到更优的准确率-效率帕累托前沿。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次提出联合控制视觉token数量与LLM计算深度的自适应推理框架，并通过共享预算编码和可微分延迟估计器实现端到端协调训练。</div>
+                <div class="summary-item"><strong>意义：</strong>显著降低多模态大模型的推理成本，推动其在实际部署中的高效应用。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态 / 大模型</span>
@@ -587,19 +587,19 @@
                 <span class="date">2026-07-22</span>
             </div>
             <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2607.20351v1" target="_blank">Test-Time Training for Modality Order Consistency in Vision-Language Models</a>
+                <a href="https://arxiv.org/abs/2607.20323v1" target="_blank">Multi-modal transformer for signal classification in nanopore blockade experiments</a>
             </h4>
-            <p class="authors">Aditi Gupta, Yossi Gandelsman</p>
+            <p class="authors">Sandro Kuppel, Julian Hoßbach, Samuel Tovey et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>视觉语言模型对图像和问题输入顺序敏感，导致性能差异，需要解决这种模态顺序不一致性问题。</div>
-                <div class="summary-item"><strong>方法：</strong>提出一种测试时训练方法，利用模态顺序差距设计一致性训练，通过激活补丁定位并修复网络中间层的表示发散，从而增强两个顺序分支的相互一致性。</div>
-                <div class="summary-item"><strong>结论：</strong>该方法显著缩小了模态顺序差距，并在所有评估设置中提升基线图像优先分支的性能，修复了电路级故障。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次发现并定位VLMs中模态顺序敏感性的电路级失败，并利用简单的非对称测试时适应有效缓解。</div>
-                <div class="summary-item"><strong>意义：</strong>揭示了视觉语言模型一个被忽视的排序敏感性缺陷，并提供了实用的修复方法，有助于提升多模态模型的鲁棒性和通用性。</div>
+                <div class="summary-item"><strong>问题：</strong>纳米孔信号高度复杂，难以可靠地将信号分配给特定分子。</div>
+                <div class="summary-item"><strong>方法：</strong>提出一种多模态深度学习架构，联合处理原始时间序列、基于小波的图像和静态特征向量，通过注意力机制融合互补信息。</div>
+                <div class="summary-item"><strong>结论：</strong>在42肽基准上超越现有方法10个百分点以上，在20氨基酸数据集上达到近乎完美的准确率。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将多模态Transformer应用于纳米孔信号分类，并证明不同信号表征强调同一事件的不同特征。</div>
+                <div class="summary-item"><strong>意义：</strong>为纳米孔传感器中的分子识别提供了通用且高精度的AI解决方案，推动便携式诊断发展。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态</span>
-                <a href="https://arxiv.org/pdf/2607.20351v1" target="_blank" class="pdf-link">PDF 原文</a>
+                <a href="https://arxiv.org/pdf/2607.20323v1" target="_blank" class="pdf-link">PDF 原文</a>
             </div>
         </div>
 
@@ -610,88 +610,19 @@
                 <span class="date">2026-07-22</span>
             </div>
             <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2607.20291v1" target="_blank">Diverse-Intent Multi-Turn Fashion Image Retrieval</a>
+                <a href="https://arxiv.org/abs/2607.20092v1" target="_blank">ENTRAP-VL: A Taxonomic Probe for Dual Contextual Entrainment in Vision-Language Models</a>
             </h4>
-            <p class="authors">Mingqiang Tang, Haokun Wen, Meng Liu et al.</p>
+            <p class="authors">Karan Goyal, Afreen Hossain, Debojyoti Das et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有多轮时尚图像检索方法假设每次交互遵循相同的属性编辑范式，未探索异质意图转换，且依赖文本化导致细粒度视觉线索丢失。</div>
-                <div class="summary-item"><strong>方法：</strong>构建DIM-Fashion基准（含26K多轮会话，来自13个时尚检索数据集和7个任务），提出FashionAM框架，通过MLLM-VLP直接对齐多模态会话查询与时尚图库嵌入空间，避免中间文本化。</div>
-                <div class="summary-item"><strong>结论：</strong>实验表明FashionAM在多个任务上优于现有方法，验证了直接对齐策略的有效性。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次系统研究多轮时尚检索中的异质意图转换，并设计无需文本化的多模态对齐框架。</div>
-                <div class="summary-item"><strong>意义：</strong>推动了多模态交互检索领域的发展，为构建更鲁棒、自然的视觉对话系统提供了基准和方法。</div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">多模态 / 大模型</span>
-                <a href="https://arxiv.org/pdf/2607.20291v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-
-        <div class="paper-card" data-score="8">
-            <div class="card-header">
-                <span class="score high">8/10</span>
-                
-                <span class="date">2026-07-22</span>
-            </div>
-            <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2607.20284v1" target="_blank">Multimodal Large Language Models for Remote Sensing Image Understanding: Domain-Specific or General-Purpose?</a>
-            </h4>
-            <p class="authors">Qiwei Ma, Chunping Qiu, Xinjun Cheng et al.</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>遥感图像理解中，现有多模态大模型（MLLMs）的能力边界、跨任务泛化能力以及特定任务局限尚缺乏系统性理解。</div>
-                <div class="summary-item"><strong>方法：</strong>通过系统调查和诊断评估方法，回顾遥感MLLMs的技术演进，并跨任务、跨基准比较遥感专用MLLMs与通用计算机视觉MLLMs的性能差异。</div>
-                <div class="summary-item"><strong>结论：</strong>遥感专用MLLMs在领域特定任务（如遥感视觉定位和高分辨率VQA）上有竞争力，但通用MLLMs无需微调即可匹配甚至超越它们；当前MLLMs在空间推理、精细视觉理解、指令多样性和任务泛化方面存在局限。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次系统比较遥感专用与通用MLLMs的能力边界，揭示通用模型具有强迁移性且遥感专用模型未持续领先。</div>
-                <div class="summary-item"><strong>意义：</strong>为开发鲁棒、可泛化且实用的遥感图像理解多模态大模型提供了系统参考。</div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">多模态 / 大模型</span>
-                <a href="https://arxiv.org/pdf/2607.20284v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-
-        <div class="paper-card" data-score="8">
-            <div class="card-header">
-                <span class="score high">8/10</span>
-                
-                <span class="date">2026-07-22</span>
-            </div>
-            <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2607.20207v1" target="_blank">SeededGrasp: Language-Guided Grasping in Complex Scenes with Multiple Embodiments</a>
-            </h4>
-            <p class="authors">Yang Xu, Gurpreet Singh Mukker, Raymond Wang et al.</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>如何在复杂场景中实现语言引导的机器人抓取，并支持多种机械臂形态（多实体），同时避免昂贵的端到端训练。</div>
-                <div class="summary-item"><strong>方法：</strong>提出SeededGrasp框架，利用视觉语言模型（VLM）预测一个种子点（seed point），作为条件输入给后续轻量级的抓取生成模型，从而将高层语义推理与低层几何执行解耦，支持多实体且无需端到端训练。</div>
-                <div class="summary-item"><strong>结论：</strong>在仿真环境中达到72%的成功率，在真实世界抓取实验中达到78%的成功率，优于现有基线方法。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次提出数据高效的解耦架构，利用VLM预测种子点来引导抓取，并发布了首个多实体桌面抓取数据集（包含超过250万次抓取）。</div>
-                <div class="summary-item"><strong>意义：</strong>为语言引导的机器人抓取提供了一种实用且可扩展到多实体的新范式，推动了具身智能在真实复杂场景中的应用。</div>
+                <div class="summary-item"><strong>问题：</strong>视觉-语言模型（VLM）中是否存在上下文牵引（contextual entrainment）现象，以及如何系统性地测量它？</div>
+                <div class="summary-item"><strong>方法：</strong>构建了一个分类学结构化的双模态探测工具ENTRAP-VL，包含1500个手工筛选项目、八类文本上下文条件和三类视觉上下文条件，按上下文与项目关联性及真实性两个轴组织；分别在文本流和视觉流中设置牵引条件。</div>
+                <div class="summary-item"><strong>结论：</strong>提出了一个用于研究VLM中上下文牵引现象的标准化数据集和评估协议，但本文不测量具体模型的表现。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将上下文牵引研究从单模态语言模型扩展至双模态视觉-语言模型，并引入了基于场景真实性的区分（世界可能真实但图像不真实的上下文），该区分在之前的世界知识单模态工作中没有对应。</div>
+                <div class="summary-item"><strong>意义：</strong>为社区提供了严格研究VLM中多模态上下文牵引现象的方法论和工具，有助于深入理解VLM的行为鲁棒性和偏差。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态</span>
-                <a href="https://arxiv.org/pdf/2607.20207v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-
-        <div class="paper-card" data-score="8">
-            <div class="card-header">
-                <span class="score high">8/10</span>
-                
-                <span class="date">2026-07-22</span>
-            </div>
-            <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2607.20159v1" target="_blank">SHFormer: Dynamic Spectral Filtering Convolutional Neural Network and High-pass Kernel Generation Transformer for Adaptive MRI Reconstruction</a>
-            </h4>
-            <p class="authors">Sriprabha Ramanarayanan, Rahul G. S., Mohammad Al Fahim et al.</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有基于注意力机制的MRI重建模型难以有效捕捉高频信息且跨模态泛化能力差，需要为多模态MRI数据重新训练。</div>
-                <div class="summary-item"><strong>方法：</strong>提出SHFormer，包含一个频谱滤波CNN提取模态特定可迁移特征，以及一个动态高通核生成Transformer专注于高频细节，通过神经调节的判别性多频谱注意力实现自适应重建。</div>
-                <div class="summary-item"><strong>结论：</strong>在监督/自监督学习及扩散模型训练下，该方法在未见场景下PSNR提升约1dB、SSIM提升约0.01，实现了可扩展的高质量重建。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次将频谱滤波CNN与动态高通核生成Transformer相结合，实现跨域可迁移的高频细节捕捉。</div>
-                <div class="summary-item"><strong>意义：</strong>为多模态医学图像重建提供了可泛化的高频细节捕获范式，对AI在医疗成像领域的应用具有重要意义。</div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">多模态</span>
-                <a href="https://arxiv.org/pdf/2607.20159v1" target="_blank" class="pdf-link">PDF 原文</a>
+                <a href="https://arxiv.org/pdf/2607.20092v1" target="_blank" class="pdf-link">PDF 原文</a>
             </div>
         </div>
 
@@ -706,11 +637,11 @@
             </h4>
             <p class="authors">Sina Amirrajab, Volker Vehof, Michael Bietenbeck et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>针对传统心血管磁共振（CMR）影像诊断依赖大量经验且人工智能模型受限于数据处理效率低、性能欠佳及落地路径不清晰的问题，开发一种自动化、可靠且具有临床意义的人工智能工具。</div>
-                <div class="summary-item"><strong>方法：</strong>构建自动化数据筛选管线，集成开源本地大语言模型（LLMs）从文本报告中提取诊断标签并预处理多模态CMR影像（包括cine和LGE序列）；微调三种视觉基础模型（DINO、VST、UMedPT），采用两阶段训练策略，并融合多模型与多模态形成集成策略提升诊断准确性与鲁棒性。</div>
-                <div class="summary-item"><strong>结论：</strong>在1067例独立测试集上，集成模型对肥厚型心肌病（HCM）和心脏淀粉样变（CA）的AUC分别达0.959和0.966，整体诊断性能优于单一模型，且代码与模型权重已公开。</div>
-                <div class="summary-item"><strong>创新点：</strong>将开源本地LLM用于自动化提取CMR报告标签，结合多模态视觉基础模型的集成策略，实现了高精度、可重复的心脏疾病诊断。</div>
-                <div class="summary-item"><strong>意义：</strong>展示了LLM与视觉基础模型在医疗影像自动诊断中的协同潜力，为AI在临床决策支持系统的落地提供了可复现的技术范式。</div>
+                <div class="summary-item"><strong>问题：</strong>开发一个自动化、可靠且有临床意义的AI工具，用于从常规心血管磁共振（CMR）图像诊断心脏病，解决当前AI模型依赖大量人工数据整理、性能欠佳且实施路径不明确的问题。</div>
+                <div class="summary-item"><strong>方法：</strong>提出了自动化数据整理流程，集成开源大语言模型（LLMs）从叙事性CMR报告中提取诊断标签并预处理多模态成像数据（cine和LGE序列）；在三种视觉基础模型（DINO、VST、UMedPT）上采用两阶段微调，并通过集成策略结合多模型和多模态提升诊断鲁棒性。</div>
+                <div class="summary-item"><strong>结论：</strong>在独立测试集（1067名患者）上，微调模型对肥厚型心肌病（HCM）和心脏淀粉样变性（CA）的AUC分别达到0.937和0.945；集成策略进一步将HCM和CA的AUC提升至0.959和0.966，其他疾病AUC均超过0.84。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将开源的本地大语言模型用于自动化CMR报告标签提取，并与多模态视觉基础模型微调相结合，形成一个端到端、可重复的医学图像诊断框架。</div>
+                <div class="summary-item"><strong>意义：</strong>展示了将LLM用于医疗数据自动标注和基础模型在细粒度疾病诊断中的价值，为AI在临床心血管影像中的可靠应用提供了可行路径。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态 / 大模型</span>
@@ -729,11 +660,11 @@
             </h4>
             <p class="authors">Hanjing Ye, Tianle Zeng, Jiazhao Zhang et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>具身视觉跟踪（EVT）中，当前视觉-语言-动作（VLA）策略在抽象空间进行链式推理，难以监督且与图像空间检测对齐弱。</div>
-                <div class="summary-item"><strong>方法：</strong>提出 ReferTrack，采用“先指后跟”范式：先从索引边界框集合中选择目标，再基于该图像锚定决策解码跟踪路点；通过滑动窗口队列维护历史边界框，并引入时间-视角-边界框指示（TVBI）令牌注入几何特征到视觉历史中，同时联合训练自定义 Refer-QA 数据集增强目标识别。</div>
-                <div class="summary-item"><strong>结论：</strong>在 EVT-Bench 上，单目标、干扰和模糊跟踪分割分别达到 89.4%、73.3% 和 74.1% 的成功率，超越多相机基线；在四足和人形机器人上验证了鲁棒的 sim-to-real 迁移能力。</div>
-                <div class="summary-item"><strong>创新点：</strong>将具身视觉跟踪分解为明确的先指后跟过程，用图像级检测锚定推理，避免了抽象空间难以监督的问题。</div>
-                <div class="summary-item"><strong>意义：</strong>为具身智能中的 VLA 策略提供了一种更可解释、更鲁棒的范式，有望推动真实世界机器人跟踪任务的实用化。</div>
+                <div class="summary-item"><strong>问题：</strong>具身视觉跟踪（EVT）要求移动智能体仅通过机载视觉持续跟踪自然语言描述的目标，但现有方法在抽象空间中进行链式推理，难以监督且与显式图像空间检测弱对齐。</div>
+                <div class="summary-item"><strong>方法：</strong>提出ReferTrack范式，先从索引的边界框集合中选出目标，再基于图像决策解码跟踪路径点；通过滑动窗口队列维护历史选定边界框，并用TVBI令牌注入几何特征到视觉历史中，同时使用Refer-QA数据集协同训练增强目标识别。</div>
+                <div class="summary-item"><strong>结论：</strong>在EVT-Bench上，单目标、干扰和模糊跟踪成功率分别达89.4%、73.3%和74.1%，超越多个多摄像头基线；在四足和类人机器人上的真实部署验证了鲁棒的仿真到现实迁移能力。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将自然语言目标识别与显式图像空间跟踪解耦为“引用-跟踪”两阶段范式，并通过滑动窗口和TVBI令牌有效利用时域目标运动线索。</div>
+                <div class="summary-item"><strong>意义：</strong>为具身智能中的视觉跟踪任务提供了可解释且性能更优的解决方案，推动VLA策略与显式图像检测的融合。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态</span>
@@ -748,38 +679,15 @@
                 <span class="date">2026-07-22</span>
             </div>
             <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2607.20057v1" target="_blank">Antigen-specific Antibody Multi-modal Foundation Model for Functional Antibody Design</a>
-            </h4>
-            <p class="authors">Xiaoliang Shi, Zichen Wang, Runze Ma et al.</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有蛋白质语言模型在抗原特异性抗体设计上效果不佳，缺乏对抗体-抗原配对关系（尤其是表位水平）的有效建模。</div>
-                <div class="summary-item"><strong>方法：</strong>提出AAMFM多模态基础模型，通过跨模态适配器融合抗原几何接口与表位注释，在共享潜在空间中联合建模抗体-抗原相互作用，并采用基于校准直接偏好优化（Cal-DPO）的方法利用结构先验进行功能性微调。</div>
-                <div class="summary-item"><strong>结论：</strong>实验表明AAMFM在功能性抗体设计任务上达到最先进性能，展示了其用于抗原特异性抗体工程的潜力。</div>
-                <div class="summary-item"><strong>创新点：</strong>首个将抗原特异性多模态信息（序列、结构、表位）与偏好优化相结合，用于功能性抗体设计的统一基础模型。</div>
-                <div class="summary-item"><strong>意义：</strong>为AI驱动的蛋白质工程提供了新范式，拓展了多模态基础模型在生物分子设计和药物研发中的应用。</div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">多模态 / 大模型</span>
-                <a href="https://arxiv.org/pdf/2607.20057v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-
-        <div class="paper-card" data-score="8">
-            <div class="card-header">
-                <span class="score high">8/10</span>
-                
-                <span class="date">2026-07-22</span>
-            </div>
-            <h4 class="paper-title">
                 <a href="https://arxiv.org/abs/2607.19986v1" target="_blank">STEREOFLOW: Progressive Stereo Matching with StereoDiT and Transition Flow Matching</a>
             </h4>
             <p class="authors">Hao Wang, Haoran Geng, Xiaotong Yang et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有立体匹配方法通常将问题建模为确定性回归，导致在模糊区域产生回归到均值的偏差，无法建模多模态分布。</div>
-                <div class="summary-item"><strong>方法：</strong>提出一种先验引导的生成框架，整合确定性匹配回归和生成式分布建模；包含三部分：渐进级联匹配网络生成多分辨率立体条件、频率解耦的像素扩散变压器（StereoDiT）建模对应关系模糊性、以及用于高效优化的少步流匹配目标（Transition Flow Matching）。</div>
-                <div class="summary-item"><strong>结论：</strong>在Scene Flow、KITTI、ETH3D和Middlebury等多个基准上取得多项最先进结果，在病态、不连续区域以及零样本泛化下表现出强几何一致性和丰富细节。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次将流匹配生成范式引入立体匹配，并通过频率解耦的扩散变压器和渐进级联架构有效处理模糊区域。</div>
-                <div class="summary-item"><strong>意义：</strong>推动立体匹配从确定性回归向生成式建模的转变，为3D重建和具身智能中的感知不确定性处理提供了新思路。</div>
+                <div class="summary-item"><strong>问题：</strong>传统立体匹配方法作为确定性回归，在多模态分布建模上存在回归到均值的偏差，难以处理模糊区域。</div>
+                <div class="summary-item"><strong>方法：</strong>提出一个先验引导的生成框架，融合确定性回归与生成式分布建模，包含三个关键组件：两阶段渐进级联匹配网络逐步产生多分辨率立体条件；频率解耦的像素扩散变压器(StereoDiT)建模对应歧义；少步流匹配目标(Transition Flow Matching)实现高效优化。</div>
+                <div class="summary-item"><strong>结论：</strong>在Scene Flow、KITTI、ETH3D和Middlebury等多个基准上取得多项最优结果，在病态、不连续区域和零样本泛化下表现出强几何一致性和丰富细节。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将流匹配与扩散变压器结合用于立体匹配，通过渐进式生成框架统一确定性回归与生成式建模。</div>
+                <div class="summary-item"><strong>意义：</strong>提升了立体匹配在模糊区域的鲁棒性和精度，为3D重建和多模态分布建模提供了新范式。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态</span>
@@ -798,11 +706,11 @@
             </h4>
             <p class="authors">Mengtian Li, Xinru Guo, Xiaoru Lin et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有文本到图像方法难以处理多页异构视觉资产的电子节目单设计，无法理解长上下文叙事并保持多页视觉一致性。</div>
-                <div class="summary-item"><strong>方法：</strong>提出ETPDesigner多智能体框架，通过全局风格锚点机制从核心海报提取视觉先验，协调语义分析、海报合成、背景生成和角色分层组合等专用智能体，并集成肖像动画、语音合成和人格化大语言模型实现交互。</div>
-                <div class="summary-item"><strong>结论：</strong>在自建基准ETP-Pro上，该方法在语义保真度、美学一致性和交互性方面显著优于现有方法。</div>
-                <div class="summary-item"><strong>创新点：</strong>将全局风格锚点机制与多智能体编排结合，从脚本直接生成一致且交互的多模态电子节目单。</div>
-                <div class="summary-item"><strong>意义：</strong>展示了世界模型/大模型在多模态内容生成与具身智能交互中的协同应用潜力。</div>
+                <div class="summary-item"><strong>问题：</strong>现有文本到图像方法在处理多页电子戏剧节目单（ETP）设计时，无法理解长文叙事并保持跨页视觉一致性。</div>
+                <div class="summary-item"><strong>方法：</strong>提出ETPDesigner多智能体协作框架，通过语义分析、核心海报合成、功能背景生成和角色资产分层组合等专门智能体协同工作，并采用全局风格锚机制从核心海报提取视觉先验保证美学一致性，同时集成肖像动画、语音合成和基于角色的大语言模型实现实时语音交互。</div>
+                <div class="summary-item"><strong>结论：</strong>在自建基准ETP-Pro上的大量评估表明，该方法在生成语义忠实、美学一致且高度交互的节目单方面优于现有方法。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将多智能体协作与全局风格锚机制结合，实现从原始剧本直接合成多页视觉一致的交互式电子戏剧节目单。</div>
+                <div class="summary-item"><strong>意义：</strong>推动了多模态生成、多智能体协作和交互式虚拟角色技术在艺术设计领域的应用。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态 / 大模型</span>
@@ -821,11 +729,11 @@
             </h4>
             <p class="authors">Zhiyuan Xia, Haojie Li, Jingyu Lin et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>解决热成像到可见光人脸翻译中的几何不连续、语义属性不匹配和身份退化问题。</div>
-                <div class="summary-item"><strong>方法：</strong>提出MTVDiff多模态潜在扩散框架，通过双分支交叉注意力融合模块（DBCAF）提取和融合多尺度热-深度特征，利用门控文本到视觉特征对齐机制实现语义引导生成，并引入空间特征变换（SFT）实现自适应多模态先验集成。</div>
+                <div class="summary-item"><strong>问题：</strong>热成像到可见光人脸翻译中存在的几何不连续、语义属性不匹配和身份退化问题。</div>
+                <div class="summary-item"><strong>方法：</strong>提出MTVDiff多模态潜扩散框架，通过双分支交叉注意力融合模块提取多尺度热-深度特征、门控文本到视觉特征对齐机制实现语义引导生成，以及空间特征变换自适应整合多模态先验信息。</div>
                 <div class="summary-item"><strong>结论：</strong>在MCXFace和SpeakingFaces数据集上，该方法显著优于现有GAN和扩散方法，FID降低48.3%，Rank-1准确率提升8.9%。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次将深度和文本信息作为多模态条件与潜在扩散框架结合，用于热成像到可见光人脸翻译并保持身份特征。</div>
-                <div class="summary-item"><strong>意义：</strong>为不光照条件下的人脸识别系统提供鲁棒解决方案，推进跨光谱人脸图像翻译的技术水平。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将深度和文本信息协同集成到扩散框架中用于热成像到可见光人脸翻译。</div>
+                <div class="summary-item"><strong>意义：</strong>为跨光谱人脸翻译提供了鲁棒的多模态融合解决方案，推动了世界模型和多模态技术在视觉生成领域的应用。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态</span>
@@ -840,15 +748,38 @@
                 <span class="date">2026-07-22</span>
             </div>
             <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.20351v1" target="_blank">Test-Time Training for Modality Order Consistency in Vision-Language Models</a>
+            </h4>
+            <p class="authors">Aditi Gupta, Yossi Gandelsman</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>视觉语言模型对图像和问题呈现顺序敏感，图像优先提示总优于问题优先提示，存在模态顺序失败的问题。</div>
+                <div class="summary-item"><strong>方法：</strong>提出一种顺序一致的测试时训练方法，通过在测试时对模型进行适应，缩小两种顺序的性能差距，并提升图像优先分支的基准性能。</div>
+                <div class="summary-item"><strong>结论：</strong>该方法显著缩小了所有评估设置下的模态顺序差距，并一致提升了图像优先分支的性能，同时通过激活修补定位失败区域并修复层间错位。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将模态顺序敏感性识别为视觉语言模型中的电路级失败，并展示简单的非对称测试时适应即可有效缓解并提升性能。</div>
+                <div class="summary-item"><strong>意义：</strong>揭示了视觉语言模型的一个常见鲁棒性问题，并提供了一种低成本、高效的适应方法，对多模态推理的可靠性有重要意义。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2607.20351v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-07-22</span>
+            </div>
+            <h4 class="paper-title">
                 <a href="https://arxiv.org/abs/2607.20345v1" target="_blank">Closing the Lab-to-Store Gap: A Data-Efficient Post-Training and Experience-Driven Learning VLA Framework for Retail Humanoids</a>
             </h4>
             <p class="authors">Roger Sala Sisó, Tiago Silvério, Jakob Sand et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>这篇论文要解决视觉-语言-动作（VLA）人形机器人从实验室基准性能到可靠真实世界部署之间的差距问题。</div>
-                <div class="summary-item"><strong>方法：</strong>提出了DEED框架，包括三个关键组件：(1) 数据高效的后训练流程，包含控制频率对齐、数据整理、任务相关视觉高亮和降低VLA依赖；(2) 基于经验驱动的在线细化方法，通过文本优势前缀和视觉语言价值函数适配RECAP；(3) 潜在空间分析工具用于研究分布内外行为。</div>
-                <div class="summary-item"><strong>结论：</strong>通过超市芯片补货任务验证，结合Unitree G1-Edu机器人及GR00T N1.6基础模型，在仅使用单个GPU的情况下，将原本在朴素微调下失败的政策转化为可靠的现实世界系统，表明弥合实验室到商店的差距主要是系统集成挑战而非架构问题。</div>
-                <div class="summary-item"><strong>创新点：</strong>提出了一种数据高效的系统级后训练和经验驱动学习框架，以极低的计算资源实现了VLA人形机器人从实验室到真实场景的有效迁移。</div>
-                <div class="summary-item"><strong>意义：</strong>为VLA人形机器人在真实零售等环境中的实际部署提供了可行的数据高效方案，推动了具身智能从基准测试向实际应用的转变。</div>
+                <div class="summary-item"><strong>问题：</strong>解决视觉-语言-动作（VLA）人形机器人在从实验室基准性能到可靠现实部署中面临的执行错误、分布偏移和环境变化等挑战。</div>
+                <div class="summary-item"><strong>方法：</strong>提出DEED框架，包括三部分：(1)数据高效后训练流程（控制频率对齐、数据筛选、任务相关视觉高亮、减少VLA依赖）；(2)基于文本优势前缀和视觉-语言价值函数的经验驱动细化方法（源自RECAP）；(3)潜在空间分析工具用于研究分布内外行为。</div>
+                <div class="summary-item"><strong>结论：</strong>通过超市芯片补货任务验证，表明弥合实验室到商店的差距主要是系统集成挑战而非架构创新，使用单GPU即可将朴素微调下失败的策略转化为可靠的现实系统。</div>
+                <div class="summary-item"><strong>创新点：</strong>提出一种数据高效后训练与经验驱动学习的系统级VLA框架，强调通过精心数据设计和后处理而非架构变化来提升现实世界表现。</div>
+                <div class="summary-item"><strong>意义：</strong>为VLA人形机器人在零售等实际场景中的可靠部署提供了系统性解决方案，推动具身智能从实验室走向应用。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态 / 大模型</span>
@@ -863,19 +794,19 @@
                 <span class="date">2026-07-22</span>
             </div>
             <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2607.20323v1" target="_blank">Multi-modal transformer for signal classification in nanopore blockade experiments</a>
+                <a href="https://arxiv.org/abs/2607.20291v1" target="_blank">Diverse-Intent Multi-Turn Fashion Image Retrieval</a>
             </h4>
-            <p class="authors">Sandro Kuppel, Julian Hoßbach, Samuel Tovey et al.</p>
+            <p class="authors">Mingqiang Tang, Haokun Wen, Meng Liu et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>纳米孔实验中离子电流信号高度复杂，难以可靠地将信号分配到特定分子。</div>
-                <div class="summary-item"><strong>方法：</strong>提出一种多模态深度学习架构，联合处理原始时间序列、基于小波的图像和静态特征向量，通过注意力机制整合互补信息。</div>
-                <div class="summary-item"><strong>结论：</strong>在42肽基准上准确率超过现有方法10个百分点以上，在20氨基酸数据集上达到接近完美的准确率。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次将多模态Transformer架构应用于纳米孔信号分类，融合时间序列、小波图像和静态特征三种不同表示。</div>
-                <div class="summary-item"><strong>意义：</strong>展示了多模态深度学习在单分子传感中的潜力，为AI在生物分子识别领域提供了新思路。</div>
+                <div class="summary-item"><strong>问题：</strong>现有多轮时尚图像检索方法假设每次交互都遵循相同的属性编辑范式，忽略了异质意图转换；且依赖文本化桥接多模态查询和视觉检索，丢失细粒度视觉线索。</div>
+                <div class="summary-item"><strong>方法：</strong>构建DIM-Fashion基准数据集（包含26K多轮会话，覆盖13个数据集、7个任务，具有多样意图转换和回滚行为），并提出FashionAM框架，利用MLLM-VLP直接对齐多模态对话查询与时尚图库嵌入空间，避免中间文本化。</div>
+                <div class="summary-item"><strong>结论：</strong>实验表明FashionAM在多个任务上优于现有方法，有效处理异质意图转换并保留细粒度视觉信息。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次系统探索多轮时尚检索中的异质意图转换，并设计无需文本化的多模态对话-视觉直接对齐框架。</div>
+                <div class="summary-item"><strong>意义：</strong>推动了多轮多模态检索和时尚AI领域的发展，提供了新的基准和方法论。</div>
             </div>
             <div class="card-footer">
-                <span class="topics">多模态</span>
-                <a href="https://arxiv.org/pdf/2607.20323v1" target="_blank" class="pdf-link">PDF 原文</a>
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2607.20291v1" target="_blank" class="pdf-link">PDF 原文</a>
             </div>
         </div>
 
@@ -886,19 +817,111 @@
                 <span class="date">2026-07-22</span>
             </div>
             <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2607.20092v1" target="_blank">ENTRAP-VL: A Taxonomic Probe for Dual Contextual Entrainment in Vision-Language Models</a>
+                <a href="https://arxiv.org/abs/2607.20284v1" target="_blank">Multimodal Large Language Models for Remote Sensing Image Understanding: Domain-Specific or General-Purpose?</a>
             </h4>
-            <p class="authors">Karan Goyal, Afreen Hossain, Debojyoti Das et al.</p>
+            <p class="authors">Qiwei Ma, Chunping Qiu, Xinjun Cheng et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>视觉语言模型（VLM）中上下文牵制现象缺乏专门的评估工具，现有文本基准无法直接迁移到多模态场景。</div>
-                <div class="summary-item"><strong>方法：</strong>提出ENTRAP-VL数据集，包含1500个手动筛选条目，按上下文与项目的关联性及真实性双轴分类，分为文本牵制流（8种条件）和视觉牵制流（3种条件）。</div>
-                <div class="summary-item"><strong>结论：</strong>提供了系统化的评估工具和分类框架，但未对具体模型进行测量，代码和数据集将公开。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次针对VLM设计双模态上下文牵制评估工具，区分了文本和视觉独立驱动的牵制，并引入了真实性维度。</div>
-                <div class="summary-item"><strong>意义：</strong>为VLM的鲁棒性和偏见研究提供了标准化评估方法，有助于理解上下文如何影响多模态模型输出。</div>
+                <div class="summary-item"><strong>问题：</strong>这篇论文旨在系统性地评估和比较专用遥感MLLM与通用视觉MLLM在遥感图像场景理解任务中的能力边界、跨任务泛化性和任务特定限制。</div>
+                <div class="summary-item"><strong>方法：</strong>通过综述遥感MLLM的技术演进（模型设计、多模态学习、训练数据、下游能力），并在多个RSISU任务和基准上对比遥感MLLM与通用视觉MLLM的性能。</div>
+                <div class="summary-item"><strong>结论：</strong>遥感MLLM在领域特定任务（如遥感视觉定位和高分辨率VQA）上保持竞争力，但通用视觉MLLM无需遥感微调即可在多项任务上匹敌甚至超越它们；当前MLLM在空间推理、细粒度视觉理解、指令多样性和跨任务泛化上仍存在局限。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次对遥感MLLM与通用视觉MLLM进行系统性跨任务诊断对比，揭示通用模型的可迁移性及专用模型的相对优势与不足。</div>
+                <div class="summary-item"><strong>意义：</strong>为开发鲁棒、可泛化的遥感多模态大模型提供了实证基准和未来方向，对遥感领域与AI基础模型融合具有指导意义。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2607.20284v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-07-22</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.20207v1" target="_blank">SeededGrasp: Language-Guided Grasping in Complex Scenes with Multiple Embodiments</a>
+            </h4>
+            <p class="authors">Yang Xu, Gurpreet Singh Mukker, Raymond Wang et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>在复杂场景中实现兼具3D空间推理和任务语义对齐的机器人抓取。</div>
+                <div class="summary-item"><strong>方法：</strong>提出SeededGrasp框架：利用VLM预测抓取种子点作为条件，输入轻量级抓取生成模型，将高层语义推理与低层几何执行解耦，仅需少量数据即可支持多具身形态。</div>
+                <div class="summary-item"><strong>结论：</strong>仿真抓取成功率72%，真实环境抓取成功率78%，优于现有基线。</div>
+                <div class="summary-item"><strong>创新点：</strong>通过VLM预测种子点+轻量级生成模型实现语义引导抓取，避免端到端训练的高成本并支持多具身形态。</div>
+                <div class="summary-item"><strong>意义：</strong>为语言引导的机器人抓取提供了一种数据高效、可扩展至多机器人的实用范式。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态</span>
-                <a href="https://arxiv.org/pdf/2607.20092v1" target="_blank" class="pdf-link">PDF 原文</a>
+                <a href="https://arxiv.org/pdf/2607.20207v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-07-22</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.20159v1" target="_blank">SHFormer: Dynamic Spectral Filtering Convolutional Neural Network and High-pass Kernel Generation Transformer for Adaptive MRI Reconstruction</a>
+            </h4>
+            <p class="authors">Sriprabha Ramanarayanan, Rahul G. S., Mohammad Al Fahim et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有注意力机制模型在MRI重建中难以捕捉高频细节，且需要针对不同模态数据重新训练，缺乏跨域泛化能力。</div>
+                <div class="summary-item"><strong>方法：</strong>提出一种基于神经调制的判别性多谱注意力机制，结合频谱滤波CNN提取模态特定可迁移特征，以及动态高通核生成Transformer聚焦高频细节。</div>
+                <div class="summary-item"><strong>结论：</strong>在监督/自监督学习、扩散模型训练、闭集/开集泛化等场景下，PSNR提升约1 dB，SSIM提升约0.01，实现了高质量且可扩展的重建。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将神经调制与多谱注意力结合，通过动态生成高通核来增强模型对高频信息的感知和跨域特征复用。</div>
+                <div class="summary-item"><strong>意义：</strong>提出的动态频谱滤波架构为多模态、跨域泛化任务提供了新思路，可推广至其他依赖频域信息的图像重建或生成任务。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2607.20159v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-07-22</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.20124v1" target="_blank">Autonomous Collaborative Learning Among an Ensemble of Tsetlin Machines with Consensus-Based Inference</a>
+            </h4>
+            <p class="authors">Yehuda Rudin, Osnat Keren, Michal Yemini et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>这篇论文要解决Tsetlin Machine在分布式和去中心化场景下的协作学习问题，特别是垂直特征划分下的多智能体协同推理。</div>
+                <div class="summary-item"><strong>方法：</strong>提出一种基于共识推理的去中心化协作学习范式，每个智能体维护私有Tsetlin Machine模型，不交换原始数据，通过整合各智能体预测结果达成全局共识。</div>
+                <div class="summary-item"><strong>结论：</strong>在二维网格和连通图网络拓扑上的实验表明，该方法的分类准确率与集中式模型相当。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将共识推理引入Tsetlin Machine的分布式协作学习，支持异质智能体在多模态感知环境中的信息融合。</div>
+                <div class="summary-item"><strong>意义：</strong>为规则基机器学习算法的去中心化部署提供了新范式，有助于在隐私保护下实现多模态数据的协同推理。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2607.20124v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-07-22</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.20057v1" target="_blank">Antigen-specific Antibody Multi-modal Foundation Model for Functional Antibody Design</a>
+            </h4>
+            <p class="authors">Xiaoliang Shi, Zichen Wang, Runze Ma et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有蛋白质语言模型在抗原特异性抗体设计中缺乏对抗体-抗原联合建模的能力，特别是表位水平的配对建模不足。</div>
+                <div class="summary-item"><strong>方法：</strong>提出AAMFM多模态基础模型，通过交叉模态适配器整合抗原几何界面和表位注释，在共享隐空间中联合建模抗体-抗原相互作用，并使用Calibrated Direct Preference Optimization进行微调以对齐结合特异性目标。</div>
+                <div class="summary-item"><strong>结论：</strong>在功能性抗体设计任务上达到最先进性能，展示了抗原特异性抗体工程的潜力。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将抗原特异性多模态信息（序列、结构、表位）与直接偏好优化结合用于功能性抗体设计。</div>
+                <div class="summary-item"><strong>意义：</strong>为AI在抗体药物发现和多模态大模型在生物序列上的应用提供了新的范式。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2607.20057v1" target="_blank" class="pdf-link">PDF 原文</a>
             </div>
         </div>
 
@@ -913,11 +936,11 @@
             </h4>
             <p class="authors">Enrico Pallotta, Mohamed Farag, Esra Guclu et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>精准农业中个体植物层面的产量预测缺乏包含视觉生长动态和每株测量标签的公共数据集，本文旨在解决甜椒个体植物收获期果实数量预测问题。</div>
-                <div class="summary-item"><strong>方法：</strong>提出一个多模态深度学习框架，使用DinoV3编码器提取高维图像特征，与数值计数测量融合，通过LSTM网络建模时间依赖并处理不规则采样间隔；采用Deep Ensembles和高斯负对数似然提供校准的不确定性估计。</div>
-                <div class="summary-item"><strong>结论：</strong>该多模态方法相比持久性基线在2022和2023年分别降低RMSE 33%和38%，比仅测量模型平均提升1.2%；不确定性校准误差（UCE）在0.39-0.89之间。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次引入包含691株甜椒个体植物的多模态图像时间序列数据集，并融合视觉和数值数据进行产量预测。</div>
-                <div class="summary-item"><strong>意义：</strong>展示了多模态时间序列融合和不确定性量化在农业预测中的有效性，为数据驱动的精准农业研究提供可复现基准。</div>
+                <div class="summary-item"><strong>问题：</strong>针对个体甜椒植株级别的产量预测缺乏同时记录视觉生长动态和每株测量标签的公开数据集的问题。</div>
+                <div class="summary-item"><strong>方法：</strong>提出一个多模态深度学习框架，使用DinoV3编码器提取高维图像特征，结合数值计数测量数据，通过LSTM网络建模时间依赖关系并处理温室监测中常见的不规则采样间隔；同时采用Deep Ensembles和高斯负对数似然（NLL）提供校准的不确定性估计。</div>
+                <div class="summary-item"><strong>结论：</strong>该方法在2022和2023季节相比持久性基线分别将RMSE降低33%和38%，比仅使用测量数据的模型平均提升1.2%，不确定性校准误差（UCE）在0.39至0.89之间。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次引入一个包含691株甜椒植物4837张图像的标注时序数据集，并提出融合图像与数值计数并带有不确定性估计的多模态预测框架。</div>
+                <div class="summary-item"><strong>意义：</strong>为精准农业中的时序预测和不确定性校准提供了可复现的数据集和方法，推动了数据驱动的园艺作物产量预测。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态</span>
@@ -936,11 +959,11 @@
             </h4>
             <p class="authors">Yechan Kim, JongHyun Park, Dongho Yoon et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有真实世界航空目标检测数据集构建存在视角控制有限、RGB-T不完全对齐和标注成本高等问题。</div>
-                <div class="summary-item"><strong>方法：</strong>提出G-MAD开源框架，利用Arma3游戏引擎生成同步的多视角RGB-T航空目标检测数据，支持结构化场景规范、可控多视角相机放置、同时可见光/热成像捕获，并利用引擎级几何元数据自动生成边界框标注。</div>
-                <div class="summary-item"><strong>结论：</strong>构建并发布了AMOD大规模多视角航空RGB-T目标检测基准数据集，代码和数据集已开源。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次利用游戏引擎为航空目标检测生成低成本、高质量、自动标注的多视角RGB-T合成数据。</div>
-                <div class="summary-item"><strong>意义：</strong>为航空目标检测中的视角变化、多模态融合和合成到真实迁移研究提供了可控的实验平台和数据基础。</div>
+                <div class="summary-item"><strong>问题：</strong>该论文旨在解决真实航空目标检测数据集构建中视角控制有限、RGB-T对齐不完美以及标注成本高的问题。</div>
+                <div class="summary-item"><strong>方法：</strong>提出G-MAD框架，利用Arma3游戏引擎生成同步的多视角RGB-T数据，支持结构化场景规范、可控多视角相机放置、可见光/热成像同步捕获以及基于引擎几何元数据的自动边界框标注。</div>
+                <div class="summary-item"><strong>结论：</strong>基于G-MAD构建并发布了AMOD基准数据集，验证了该框架在视角变化、多模态融合和合成到真实迁移研究中的有效性。</div>
+                <div class="summary-item"><strong>创新点：</strong>创新点在于首次提出一个基于游戏引擎的、开源的多视角RGB-T航空目标检测数据生成框架，能够自动生成高精度对齐的合成数据。</div>
+                <div class="summary-item"><strong>意义：</strong>该框架为航空目标检测领域提供了一种低成本、可控的数据生成方案，有助于推动多模态融合和合成到真实迁移的研究。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态</span>
@@ -959,11 +982,11 @@
             </h4>
             <p class="authors">Yue Zhao, Hongxu Liu, Feiyu Wang et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有评估主要关注单图表生成，忽略了需要联合推理数据语义、视图协调和交互逻辑的协调多视图界面构建。</div>
-                <div class="summary-item"><strong>方法：</strong>提出MV-Bench基准，使用Tableau工作簿文件作为ground truth，开发多阶段管道将规范转换为可执行web界面，包含92个基础界面和1048个验证实例。</div>
-                <div class="summary-item"><strong>结论：</strong>最强模型在视觉布局复现上达75.45%准确率，但数据绑定仅21.71%，交互完整度仅11.68%，表明模型能再现视觉外观但在数据语义和交互逻辑生成上受限。</div>
-                <div class="summary-item"><strong>创新点：</strong>首个专门评估多模态大模型在协调多视图界面构建能力的基准。</div>
-                <div class="summary-item"><strong>意义：</strong>揭示了当前多模态大模型在复杂可视化生成任务中的能力边界，推动自动化可视化开发研究。</div>
+                <div class="summary-item"><strong>问题：</strong>这篇论文要解决当前缺乏针对多模态大语言模型（MLLM）在协调多视图界面构建能力上的系统性评估基准的问题。</div>
+                <div class="summary-item"><strong>方法：</strong>利用Tableau工作簿文件作为ground truth，开发多阶段流水线将其转换为可执行的Web界面，构建包含92个基础界面和1048个实例的MV-Bench基准，并从视觉保真度、数据绑定正确性和交互完整性三个维度评估了五个最先进的MLLM。</div>
+                <div class="summary-item"><strong>结论：</strong>最优模型在视觉布局复现上达到75.45%的准确率，但在数据绑定和交互完整性上分别仅为21.71%和11.68%，表明当前MLLM能复现视觉外观但难以生成协调多视图界面所需的数据语义和交互逻辑。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次提出专门针对协调多视图界面构建的MLLM评估基准，并利用结构化中间表示将真实可视化规范转化为可执行代码。</div>
+                <div class="summary-item"><strong>意义：</strong>揭示了MLLM在复杂可视化任务（尤其是数据绑定和交互生成）中的严重不足，为未来研究指明了改进方向。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态 / 大模型</span>
@@ -982,38 +1005,15 @@
             </h4>
             <p class="authors">Jiajun Cheng, Subarna Tripathi, Sainan Liu et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>这篇论文要解决预训练视觉语言模型（VLM）和视觉编码器在适应细粒度手术交互识别时，冻结编码器导致噪声和弱空间定位，以及全微调可能无法确保编码器在正确动作区域学习有意义特征的问题。</div>
-                <div class="summary-item"><strong>方法：</strong>提出LAViFiT框架，包括逆动力学模型捕获动作引起的视觉变化、前向世界模型驱动编码器关注动作相关区域，以及补丁级SIG正则化防止局部特征坍缩，实现端到端的潜在动作引导视觉语言微调。</div>
-                <div class="summary-item"><strong>结论：</strong>在多个编码器和数据集上，该方法提升了手术交互识别和图像-文本对齐性能，表示分析显示更强的器械-组织交互区域定位和更空间一致的特征。</div>
-                <div class="summary-item"><strong>创新点：</strong>创新点在于利用潜在动作（通过逆动力学和前向世界模型）显式引导视觉编码器学习动作相关区域，并结合补丁级正则化改善特征质量。</div>
-                <div class="summary-item"><strong>意义：</strong>对AI领域的意义在于为细粒度交互理解（尤其是手术AI和具身智能）提供了一种有效微调视觉语言模型的框架。</div>
+                <div class="summary-item"><strong>问题：</strong>预训练视觉语言模型在适应细粒度手术交互识别时，冻结视觉编码器会保留噪声和弱空间定位，全微调虽改善全局语义对齐但无法确保编码器在正确的动作区域学习有意义特征。</div>
+                <div class="summary-item"><strong>方法：</strong>提出LAVIFT端到端潜在动作引导视觉语言微调框架：利用逆动力学模型捕获动作引起的视觉变化，前向世界模型驱动编码器表示动作相关区域，补丁级SIG正则化防止局部特征坍塌，无需额外监督如边界框或伪标签。</div>
+                <div class="summary-item"><strong>结论：</strong>在多个编码器和数据集上显著提升手术交互识别和图像-文本对齐性能；表示分析表明模型对完整器械-组织交互区域具有更强的定位能力和更空间连贯的特征。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次在手术交互识别中引入潜在动作引导的视觉微调，结合逆动力学、世界模型和局部特征正则化，无需额外标注即可实现细粒度对齐。</div>
+                <div class="summary-item"><strong>意义：</strong>为手术AI和自主机器人手术提供更精准的交互理解方法，展示了如何利用世界模型指导视觉编码器微调，推动细粒度视觉语言对齐在具身智能中的应用。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">世界模型 / 多模态</span>
                 <a href="https://arxiv.org/pdf/2607.19889v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-
-        <div class="paper-card" data-score="6">
-            <div class="card-header">
-                <span class="score medium">6/10</span>
-                
-                <span class="date">2026-07-22</span>
-            </div>
-            <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2607.20124v1" target="_blank">Autonomous Collaborative Learning Among an Ensemble of Tsetlin Machines with Consensus-Based Inference</a>
-            </h4>
-            <p class="authors">Yehuda Rudin, Osnat Keren, Michal Yemini et al.</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>这篇论文要解决在垂直特征分割设置下，Tsetlin Machine集成体之间缺乏分布式和去中心化协作学习研究的问题。</div>
-                <div class="summary-item"><strong>方法：</strong>提出一种基于共识推理的去中心化协作学习范式，每个智能体维护私有TM模型，不交换原始数据，通过共识推理融合个体模型预测，支持异构智能体。</div>
-                <div class="summary-item"><strong>结论：</strong>在二维网格和连接图网络拓扑上的实验表明，分类精度与集中式模型相当。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次提出基于共识推理的Tsetlin Machine集成体自主协作学习框架，支持垂直特征分割和异构智能体。</div>
-                <div class="summary-item"><strong>意义：</strong>为多模态感知环境中的分布式信息融合和协作学习提供了新范式，扩展了Tsetlin Machine在分布式场景中的应用。</div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">多模态</span>
-                <a href="https://arxiv.org/pdf/2607.20124v1" target="_blank" class="pdf-link">PDF 原文</a>
             </div>
         </div>
 <h3 class="topic-header">大模型 <span class="count">(8 篇)</span></h3>
@@ -1029,11 +1029,11 @@
             </h4>
             <p class="authors">Pengcheng Wang, Zhiquan Wang, Jayoung Lee et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>多模态大模型推理成本高（视觉token数量多且LLM计算量大），现有方法独立优化各维度而忽略了计算资源需根据输入内容跨维度动态分配的问题。</div>
-                <div class="summary-item"><strong>方法：</strong>提出SmartVL统一自适应推理框架，通过视觉端token控制器动态选择关键视觉token，LLM端计算控制器自适应调整LLM计算量；两个控制器通过共享预算编码和可微分延迟估计器进行端到端联合训练，实现跨阶段协同调度。</div>
-                <div class="summary-item"><strong>结论：</strong>在多个多模态基准上，SmartVL的联合调度方案持续优于先前的自适应方法，构建了更优的精度-效率帕累托前沿。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次提出联合控制视觉token数量与LLM计算能力的统一自适应框架，实现跨维度动态资源分配。</div>
-                <div class="summary-item"><strong>意义：</strong>显著提升多模态大模型推理效率，为实际部署中根据输入复杂度自适应分配计算资源提供了有效方案。</div>
+                <div class="summary-item"><strong>问题：</strong>多模态大语言模型（MLLM）推理成本高，现有方法单独优化视觉token或LLM计算维度，忽略了它们之间的耦合，无法根据输入内容动态分配计算资源。</div>
+                <div class="summary-item"><strong>方法：</strong>提出SmartVL统一框架，包含视觉侧token控制器（动态选择信息性视觉token）和LLM侧计算控制器（自适应调整LLM计算），两者通过共享预算编码和可微分延迟估计器进行端到端联合训练，实现跨阶段资源分配策略。</div>
+                <div class="summary-item"><strong>结论：</strong>在多个MLLM基准上，SmartVL的联合调度一致优于先前自适应方法，达到更优的准确率-效率帕累托前沿。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次提出联合控制视觉token数量与LLM计算深度的自适应推理框架，并通过共享预算编码和可微分延迟估计器实现端到端协调训练。</div>
+                <div class="summary-item"><strong>意义：</strong>显著降低多模态大模型的推理成本，推动其在实际部署中的高效应用。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态 / 大模型</span>
@@ -1048,61 +1048,15 @@
                 <span class="date">2026-07-22</span>
             </div>
             <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2607.20291v1" target="_blank">Diverse-Intent Multi-Turn Fashion Image Retrieval</a>
-            </h4>
-            <p class="authors">Mingqiang Tang, Haokun Wen, Meng Liu et al.</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有多轮时尚图像检索方法假设每次交互遵循相同的属性编辑范式，未探索异质意图转换，且依赖文本化导致细粒度视觉线索丢失。</div>
-                <div class="summary-item"><strong>方法：</strong>构建DIM-Fashion基准（含26K多轮会话，来自13个时尚检索数据集和7个任务），提出FashionAM框架，通过MLLM-VLP直接对齐多模态会话查询与时尚图库嵌入空间，避免中间文本化。</div>
-                <div class="summary-item"><strong>结论：</strong>实验表明FashionAM在多个任务上优于现有方法，验证了直接对齐策略的有效性。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次系统研究多轮时尚检索中的异质意图转换，并设计无需文本化的多模态对齐框架。</div>
-                <div class="summary-item"><strong>意义：</strong>推动了多模态交互检索领域的发展，为构建更鲁棒、自然的视觉对话系统提供了基准和方法。</div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">多模态 / 大模型</span>
-                <a href="https://arxiv.org/pdf/2607.20291v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-
-        <div class="paper-card" data-score="8">
-            <div class="card-header">
-                <span class="score high">8/10</span>
-                
-                <span class="date">2026-07-22</span>
-            </div>
-            <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2607.20284v1" target="_blank">Multimodal Large Language Models for Remote Sensing Image Understanding: Domain-Specific or General-Purpose?</a>
-            </h4>
-            <p class="authors">Qiwei Ma, Chunping Qiu, Xinjun Cheng et al.</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>遥感图像理解中，现有多模态大模型（MLLMs）的能力边界、跨任务泛化能力以及特定任务局限尚缺乏系统性理解。</div>
-                <div class="summary-item"><strong>方法：</strong>通过系统调查和诊断评估方法，回顾遥感MLLMs的技术演进，并跨任务、跨基准比较遥感专用MLLMs与通用计算机视觉MLLMs的性能差异。</div>
-                <div class="summary-item"><strong>结论：</strong>遥感专用MLLMs在领域特定任务（如遥感视觉定位和高分辨率VQA）上有竞争力，但通用MLLMs无需微调即可匹配甚至超越它们；当前MLLMs在空间推理、精细视觉理解、指令多样性和任务泛化方面存在局限。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次系统比较遥感专用与通用MLLMs的能力边界，揭示通用模型具有强迁移性且遥感专用模型未持续领先。</div>
-                <div class="summary-item"><strong>意义：</strong>为开发鲁棒、可泛化且实用的遥感图像理解多模态大模型提供了系统参考。</div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">多模态 / 大模型</span>
-                <a href="https://arxiv.org/pdf/2607.20284v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-
-        <div class="paper-card" data-score="8">
-            <div class="card-header">
-                <span class="score high">8/10</span>
-                
-                <span class="date">2026-07-22</span>
-            </div>
-            <h4 class="paper-title">
                 <a href="https://arxiv.org/abs/2607.20087v1" target="_blank">Development of an automated, reliable, and clinically meaningful artificial intelligence (AI) tool for diagnosing cardiac disease from conventional cardiovascular magnetic resonance (CMR) images</a>
             </h4>
             <p class="authors">Sina Amirrajab, Volker Vehof, Michael Bietenbeck et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>针对传统心血管磁共振（CMR）影像诊断依赖大量经验且人工智能模型受限于数据处理效率低、性能欠佳及落地路径不清晰的问题，开发一种自动化、可靠且具有临床意义的人工智能工具。</div>
-                <div class="summary-item"><strong>方法：</strong>构建自动化数据筛选管线，集成开源本地大语言模型（LLMs）从文本报告中提取诊断标签并预处理多模态CMR影像（包括cine和LGE序列）；微调三种视觉基础模型（DINO、VST、UMedPT），采用两阶段训练策略，并融合多模型与多模态形成集成策略提升诊断准确性与鲁棒性。</div>
-                <div class="summary-item"><strong>结论：</strong>在1067例独立测试集上，集成模型对肥厚型心肌病（HCM）和心脏淀粉样变（CA）的AUC分别达0.959和0.966，整体诊断性能优于单一模型，且代码与模型权重已公开。</div>
-                <div class="summary-item"><strong>创新点：</strong>将开源本地LLM用于自动化提取CMR报告标签，结合多模态视觉基础模型的集成策略，实现了高精度、可重复的心脏疾病诊断。</div>
-                <div class="summary-item"><strong>意义：</strong>展示了LLM与视觉基础模型在医疗影像自动诊断中的协同潜力，为AI在临床决策支持系统的落地提供了可复现的技术范式。</div>
+                <div class="summary-item"><strong>问题：</strong>开发一个自动化、可靠且有临床意义的AI工具，用于从常规心血管磁共振（CMR）图像诊断心脏病，解决当前AI模型依赖大量人工数据整理、性能欠佳且实施路径不明确的问题。</div>
+                <div class="summary-item"><strong>方法：</strong>提出了自动化数据整理流程，集成开源大语言模型（LLMs）从叙事性CMR报告中提取诊断标签并预处理多模态成像数据（cine和LGE序列）；在三种视觉基础模型（DINO、VST、UMedPT）上采用两阶段微调，并通过集成策略结合多模型和多模态提升诊断鲁棒性。</div>
+                <div class="summary-item"><strong>结论：</strong>在独立测试集（1067名患者）上，微调模型对肥厚型心肌病（HCM）和心脏淀粉样变性（CA）的AUC分别达到0.937和0.945；集成策略进一步将HCM和CA的AUC提升至0.959和0.966，其他疾病AUC均超过0.84。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将开源的本地大语言模型用于自动化CMR报告标签提取，并与多模态视觉基础模型微调相结合，形成一个端到端、可重复的医学图像诊断框架。</div>
+                <div class="summary-item"><strong>意义：</strong>展示了将LLM用于医疗数据自动标注和基础模型在细粒度疾病诊断中的价值，为AI在临床心血管影像中的可靠应用提供了可行路径。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态 / 大模型</span>
@@ -1117,38 +1071,15 @@
                 <span class="date">2026-07-22</span>
             </div>
             <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2607.20057v1" target="_blank">Antigen-specific Antibody Multi-modal Foundation Model for Functional Antibody Design</a>
-            </h4>
-            <p class="authors">Xiaoliang Shi, Zichen Wang, Runze Ma et al.</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有蛋白质语言模型在抗原特异性抗体设计上效果不佳，缺乏对抗体-抗原配对关系（尤其是表位水平）的有效建模。</div>
-                <div class="summary-item"><strong>方法：</strong>提出AAMFM多模态基础模型，通过跨模态适配器融合抗原几何接口与表位注释，在共享潜在空间中联合建模抗体-抗原相互作用，并采用基于校准直接偏好优化（Cal-DPO）的方法利用结构先验进行功能性微调。</div>
-                <div class="summary-item"><strong>结论：</strong>实验表明AAMFM在功能性抗体设计任务上达到最先进性能，展示了其用于抗原特异性抗体工程的潜力。</div>
-                <div class="summary-item"><strong>创新点：</strong>首个将抗原特异性多模态信息（序列、结构、表位）与偏好优化相结合，用于功能性抗体设计的统一基础模型。</div>
-                <div class="summary-item"><strong>意义：</strong>为AI驱动的蛋白质工程提供了新范式，拓展了多模态基础模型在生物分子设计和药物研发中的应用。</div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">多模态 / 大模型</span>
-                <a href="https://arxiv.org/pdf/2607.20057v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-
-        <div class="paper-card" data-score="8">
-            <div class="card-header">
-                <span class="score high">8/10</span>
-                
-                <span class="date">2026-07-22</span>
-            </div>
-            <h4 class="paper-title">
                 <a href="https://arxiv.org/abs/2607.19947v1" target="_blank">ETPDesigner: Multi-Agent Orchestration for Interactive Multimodal Electronic Theater Program</a>
             </h4>
             <p class="authors">Mengtian Li, Xinru Guo, Xiaoru Lin et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有文本到图像方法难以处理多页异构视觉资产的电子节目单设计，无法理解长上下文叙事并保持多页视觉一致性。</div>
-                <div class="summary-item"><strong>方法：</strong>提出ETPDesigner多智能体框架，通过全局风格锚点机制从核心海报提取视觉先验，协调语义分析、海报合成、背景生成和角色分层组合等专用智能体，并集成肖像动画、语音合成和人格化大语言模型实现交互。</div>
-                <div class="summary-item"><strong>结论：</strong>在自建基准ETP-Pro上，该方法在语义保真度、美学一致性和交互性方面显著优于现有方法。</div>
-                <div class="summary-item"><strong>创新点：</strong>将全局风格锚点机制与多智能体编排结合，从脚本直接生成一致且交互的多模态电子节目单。</div>
-                <div class="summary-item"><strong>意义：</strong>展示了世界模型/大模型在多模态内容生成与具身智能交互中的协同应用潜力。</div>
+                <div class="summary-item"><strong>问题：</strong>现有文本到图像方法在处理多页电子戏剧节目单（ETP）设计时，无法理解长文叙事并保持跨页视觉一致性。</div>
+                <div class="summary-item"><strong>方法：</strong>提出ETPDesigner多智能体协作框架，通过语义分析、核心海报合成、功能背景生成和角色资产分层组合等专门智能体协同工作，并采用全局风格锚机制从核心海报提取视觉先验保证美学一致性，同时集成肖像动画、语音合成和基于角色的大语言模型实现实时语音交互。</div>
+                <div class="summary-item"><strong>结论：</strong>在自建基准ETP-Pro上的大量评估表明，该方法在生成语义忠实、美学一致且高度交互的节目单方面优于现有方法。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将多智能体协作与全局风格锚机制结合，实现从原始剧本直接合成多页视觉一致的交互式电子戏剧节目单。</div>
+                <div class="summary-item"><strong>意义：</strong>推动了多模态生成、多智能体协作和交互式虚拟角色技术在艺术设计领域的应用。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态 / 大模型</span>
@@ -1167,11 +1098,11 @@
             </h4>
             <p class="authors">Roger Sala Sisó, Tiago Silvério, Jakob Sand et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>这篇论文要解决视觉-语言-动作（VLA）人形机器人从实验室基准性能到可靠真实世界部署之间的差距问题。</div>
-                <div class="summary-item"><strong>方法：</strong>提出了DEED框架，包括三个关键组件：(1) 数据高效的后训练流程，包含控制频率对齐、数据整理、任务相关视觉高亮和降低VLA依赖；(2) 基于经验驱动的在线细化方法，通过文本优势前缀和视觉语言价值函数适配RECAP；(3) 潜在空间分析工具用于研究分布内外行为。</div>
-                <div class="summary-item"><strong>结论：</strong>通过超市芯片补货任务验证，结合Unitree G1-Edu机器人及GR00T N1.6基础模型，在仅使用单个GPU的情况下，将原本在朴素微调下失败的政策转化为可靠的现实世界系统，表明弥合实验室到商店的差距主要是系统集成挑战而非架构问题。</div>
-                <div class="summary-item"><strong>创新点：</strong>提出了一种数据高效的系统级后训练和经验驱动学习框架，以极低的计算资源实现了VLA人形机器人从实验室到真实场景的有效迁移。</div>
-                <div class="summary-item"><strong>意义：</strong>为VLA人形机器人在真实零售等环境中的实际部署提供了可行的数据高效方案，推动了具身智能从基准测试向实际应用的转变。</div>
+                <div class="summary-item"><strong>问题：</strong>解决视觉-语言-动作（VLA）人形机器人在从实验室基准性能到可靠现实部署中面临的执行错误、分布偏移和环境变化等挑战。</div>
+                <div class="summary-item"><strong>方法：</strong>提出DEED框架，包括三部分：(1)数据高效后训练流程（控制频率对齐、数据筛选、任务相关视觉高亮、减少VLA依赖）；(2)基于文本优势前缀和视觉-语言价值函数的经验驱动细化方法（源自RECAP）；(3)潜在空间分析工具用于研究分布内外行为。</div>
+                <div class="summary-item"><strong>结论：</strong>通过超市芯片补货任务验证，表明弥合实验室到商店的差距主要是系统集成挑战而非架构创新，使用单GPU即可将朴素微调下失败的策略转化为可靠的现实系统。</div>
+                <div class="summary-item"><strong>创新点：</strong>提出一种数据高效后训练与经验驱动学习的系统级VLA框架，强调通过精心数据设计和后处理而非架构变化来提升现实世界表现。</div>
+                <div class="summary-item"><strong>意义：</strong>为VLA人形机器人在零售等实际场景中的可靠部署提供了系统性解决方案，推动具身智能从实验室走向应用。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态 / 大模型</span>
@@ -1186,15 +1117,84 @@
                 <span class="date">2026-07-22</span>
             </div>
             <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.20291v1" target="_blank">Diverse-Intent Multi-Turn Fashion Image Retrieval</a>
+            </h4>
+            <p class="authors">Mingqiang Tang, Haokun Wen, Meng Liu et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有多轮时尚图像检索方法假设每次交互都遵循相同的属性编辑范式，忽略了异质意图转换；且依赖文本化桥接多模态查询和视觉检索，丢失细粒度视觉线索。</div>
+                <div class="summary-item"><strong>方法：</strong>构建DIM-Fashion基准数据集（包含26K多轮会话，覆盖13个数据集、7个任务，具有多样意图转换和回滚行为），并提出FashionAM框架，利用MLLM-VLP直接对齐多模态对话查询与时尚图库嵌入空间，避免中间文本化。</div>
+                <div class="summary-item"><strong>结论：</strong>实验表明FashionAM在多个任务上优于现有方法，有效处理异质意图转换并保留细粒度视觉信息。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次系统探索多轮时尚检索中的异质意图转换，并设计无需文本化的多模态对话-视觉直接对齐框架。</div>
+                <div class="summary-item"><strong>意义：</strong>推动了多轮多模态检索和时尚AI领域的发展，提供了新的基准和方法论。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2607.20291v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-07-22</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.20284v1" target="_blank">Multimodal Large Language Models for Remote Sensing Image Understanding: Domain-Specific or General-Purpose?</a>
+            </h4>
+            <p class="authors">Qiwei Ma, Chunping Qiu, Xinjun Cheng et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>这篇论文旨在系统性地评估和比较专用遥感MLLM与通用视觉MLLM在遥感图像场景理解任务中的能力边界、跨任务泛化性和任务特定限制。</div>
+                <div class="summary-item"><strong>方法：</strong>通过综述遥感MLLM的技术演进（模型设计、多模态学习、训练数据、下游能力），并在多个RSISU任务和基准上对比遥感MLLM与通用视觉MLLM的性能。</div>
+                <div class="summary-item"><strong>结论：</strong>遥感MLLM在领域特定任务（如遥感视觉定位和高分辨率VQA）上保持竞争力，但通用视觉MLLM无需遥感微调即可在多项任务上匹敌甚至超越它们；当前MLLM在空间推理、细粒度视觉理解、指令多样性和跨任务泛化上仍存在局限。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次对遥感MLLM与通用视觉MLLM进行系统性跨任务诊断对比，揭示通用模型的可迁移性及专用模型的相对优势与不足。</div>
+                <div class="summary-item"><strong>意义：</strong>为开发鲁棒、可泛化的遥感多模态大模型提供了实证基准和未来方向，对遥感领域与AI基础模型融合具有指导意义。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2607.20284v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-07-22</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.20057v1" target="_blank">Antigen-specific Antibody Multi-modal Foundation Model for Functional Antibody Design</a>
+            </h4>
+            <p class="authors">Xiaoliang Shi, Zichen Wang, Runze Ma et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有蛋白质语言模型在抗原特异性抗体设计中缺乏对抗体-抗原联合建模的能力，特别是表位水平的配对建模不足。</div>
+                <div class="summary-item"><strong>方法：</strong>提出AAMFM多模态基础模型，通过交叉模态适配器整合抗原几何界面和表位注释，在共享隐空间中联合建模抗体-抗原相互作用，并使用Calibrated Direct Preference Optimization进行微调以对齐结合特异性目标。</div>
+                <div class="summary-item"><strong>结论：</strong>在功能性抗体设计任务上达到最先进性能，展示了抗原特异性抗体工程的潜力。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将抗原特异性多模态信息（序列、结构、表位）与直接偏好优化结合用于功能性抗体设计。</div>
+                <div class="summary-item"><strong>意义：</strong>为AI在抗体药物发现和多模态大模型在生物序列上的应用提供了新的范式。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2607.20057v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-07-22</span>
+            </div>
+            <h4 class="paper-title">
                 <a href="https://arxiv.org/abs/2607.19910v1" target="_blank">MV-Bench: Benchmarking Multimodal Large Language Models for Coordinated Multi-View Interface Construction</a>
             </h4>
             <p class="authors">Yue Zhao, Hongxu Liu, Feiyu Wang et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有评估主要关注单图表生成，忽略了需要联合推理数据语义、视图协调和交互逻辑的协调多视图界面构建。</div>
-                <div class="summary-item"><strong>方法：</strong>提出MV-Bench基准，使用Tableau工作簿文件作为ground truth，开发多阶段管道将规范转换为可执行web界面，包含92个基础界面和1048个验证实例。</div>
-                <div class="summary-item"><strong>结论：</strong>最强模型在视觉布局复现上达75.45%准确率，但数据绑定仅21.71%，交互完整度仅11.68%，表明模型能再现视觉外观但在数据语义和交互逻辑生成上受限。</div>
-                <div class="summary-item"><strong>创新点：</strong>首个专门评估多模态大模型在协调多视图界面构建能力的基准。</div>
-                <div class="summary-item"><strong>意义：</strong>揭示了当前多模态大模型在复杂可视化生成任务中的能力边界，推动自动化可视化开发研究。</div>
+                <div class="summary-item"><strong>问题：</strong>这篇论文要解决当前缺乏针对多模态大语言模型（MLLM）在协调多视图界面构建能力上的系统性评估基准的问题。</div>
+                <div class="summary-item"><strong>方法：</strong>利用Tableau工作簿文件作为ground truth，开发多阶段流水线将其转换为可执行的Web界面，构建包含92个基础界面和1048个实例的MV-Bench基准，并从视觉保真度、数据绑定正确性和交互完整性三个维度评估了五个最先进的MLLM。</div>
+                <div class="summary-item"><strong>结论：</strong>最优模型在视觉布局复现上达到75.45%的准确率，但在数据绑定和交互完整性上分别仅为21.71%和11.68%，表明当前MLLM能复现视觉外观但难以生成协调多视图界面所需的数据语义和交互逻辑。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次提出专门针对协调多视图界面构建的MLLM评估基准，并利用结构化中间表示将真实可视化规范转化为可执行代码。</div>
+                <div class="summary-item"><strong>意义：</strong>揭示了MLLM在复杂可视化任务（尤其是数据绑定和交互生成）中的严重不足，为未来研究指明了改进方向。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态 / 大模型</span>
@@ -1216,7 +1216,7 @@
                 
             </div>
             <div class="contact-list">
-                <div class="contact-person"><strong>Pengcheng Wang</strong> — Purdue University </div>
+                <div class="contact-person"><span class="role-badge">first author</span><strong>Pengcheng Wang</strong> — Purdue University </div>
                 <div class="contact-person"><strong>Zhiquan Wang</strong> — Purdue University </div>
                 <div class="contact-person"><strong>Jayoung Lee</strong> — Purdue University </div>
                 <div class="contact-person"><strong>Zhuoyan Xu</strong> — University of Wisconsin–Madison </div>
@@ -1226,63 +1226,29 @@
 
         <div class="contact-card">
             <div class="contact-paper">
-                <a href="https://arxiv.org/abs/2607.20351v1" target="_blank">[8分] Test-Time Training for Modality Order Consistency in Vision-...</a>
+                <a href="https://arxiv.org/abs/2607.20323v1" target="_blank">[8分] Multi-modal transformer for signal classification in nanopor...</a>
                 
             </div>
+            <div class="contact-list">
+                <div class="contact-person"><span class="role-badge">第一作者</span><strong>Sandro Kuppel</strong> — Institute for Computational Physics, University of Stuttgart <a href="mailto:skuppel@icp.uni-stuttgart.de" class="email-link">skuppel@icp.uni-stuttgart.de</a></div>
+                <div class="contact-person"><span class="role-badge">第一作者</span><strong>Julian Hoßbach</strong> — Institute for Computational Physics, University of Stuttgart <a href="mailto:jhossbach@icp.uni-stuttgart.de" class="email-link">jhossbach@icp.uni-stuttgart.de</a></div>
+                <div class="contact-person"><strong>Samuel Tovey</strong> — Institute for Computational Physics, University of Stuttgart <a href="mailto:stovey@icp.uni-stuttgart.de" class="email-link">stovey@icp.uni-stuttgart.de</a></div>
+                <div class="contact-person"><span class="role-badge">通讯作者</span><strong>Christian Holm</strong> — Institute for Computational Physics, University of Stuttgart <a href="mailto:holm@icp.uni-stuttgart.de" class="email-link">holm@icp.uni-stuttgart.de</a></div>
+            </div>
+            <div class="corresponding">通讯作者: Christian Holm</div>
         </div>
 
         <div class="contact-card">
             <div class="contact-paper">
-                <a href="https://arxiv.org/abs/2607.20291v1" target="_blank">[8分] Diverse-Intent Multi-Turn Fashion Image Retrieval</a>
+                <a href="https://arxiv.org/abs/2607.20092v1" target="_blank">[8分] ENTRAP-VL: A Taxonomic Probe for Dual Contextual Entrainment...</a>
                 
             </div>
             <div class="contact-list">
-                <div class="contact-person"><strong>Mingqiang Tang</strong> — Southern University of Science and Technology, Shenzhen, China <a href="mailto:tangmq2023@mail.sustech.edu.cn" class="email-link">tangmq2023@mail.sustech.edu.cn</a></div>
-                <div class="contact-person"><strong>Haokun Wen</strong> — Harbin Institute of Technology (Shenzhen), Shenzhen, China <a href="mailto:haokunwen@outlook.com" class="email-link">haokunwen@outlook.com</a></div>
-                <div class="contact-person"><strong>Meng Liu</strong> — Shandong University, Jinan, China <a href="mailto:mengliu.sdu@gmail.com" class="email-link">mengliu.sdu@gmail.com</a></div>
-                <div class="contact-person"><strong>Yupeng Hu</strong> — Shandong University, Jinan, China <a href="mailto:huyupeng@sdu.edu.cn" class="email-link">huyupeng@sdu.edu.cn</a></div>
-                <div class="contact-person"><strong>Weili Guan</strong> — Harbin Institute of Technology (Shenzhen), Shenzhen, China; Shenzhen Loop Area Institute, Shenzhen, China <a href="mailto:honeyguan@gmail.com" class="email-link">honeyguan@gmail.com</a></div>
+                <div class="contact-person"><strong>Karan Goyal</strong> — IIIT Delhi, India <a href="mailto:karang@iiitd.ac.in" class="email-link">karang@iiitd.ac.in</a></div>
+                <div class="contact-person"><strong>Afreen Hossain</strong> — Dr. Ambedkar Institute of Technology, India <a href="mailto:1da24cs013@drait.edu.in" class="email-link">1da24cs013@drait.edu.in</a></div>
+                <div class="contact-person"><strong>Debojyoti Das</strong> — Heritage Institute of Technology, India <a href="mailto:debojyoti.das.ece28@heritageit.edu.in" class="email-link">debojyoti.das.ece28@heritageit.edu.in</a></div>
+                <div class="contact-person"><strong>Vishal Bhutani</strong> — PwC, India <a href="mailto:vishal.bhutani@pwc.com" class="email-link">vishal.bhutani@pwc.com</a></div>
             </div>
-        </div>
-
-        <div class="contact-card">
-            <div class="contact-paper">
-                <a href="https://arxiv.org/abs/2607.20284v1" target="_blank">[8分] Multimodal Large Language Models for Remote Sensing Image Un...</a>
-                
-            </div>
-            <div class="contact-list">
-                <div class="contact-person"><a href="mailto:maqiwei@hnu.edu.cn" class="email-link">maqiwei@hnu.edu.cn</a></div>
-                <div class="contact-person"><a href="mailto:yangke13@nudt.edu.cn" class="email-link">yangke13@nudt.edu.cn</a></div>
-            </div>
-        </div>
-
-        <div class="contact-card">
-            <div class="contact-paper">
-                <a href="https://arxiv.org/abs/2607.20207v1" target="_blank">[8分] SeededGrasp: Language-Guided Grasping in Complex Scenes with...</a>
-                
-            </div>
-            <div class="contact-list">
-                <div class="contact-person"><span class="role-badge">共同第一作者</span><strong>Yang Xu</strong> — University of Toronto, Vector Institute </div>
-                <div class="contact-person"><span class="role-badge">共同第一作者</span><strong>Gurpreet Singh Mukker</strong> — University of Toronto, Vector Institute </div>
-                <div class="contact-person"><span class="role-badge">共同第一作者</span><strong>Raymond Wang</strong> — University of British Columbia </div>
-                <div class="contact-person"><strong>Jasper Gerigk</strong> — University of Toronto, Vector Institute </div>
-                <div class="contact-person"><strong>Maria Attarian</strong> — University of Toronto, Vector Institute, Google Deepmind </div>
-            </div>
-        </div>
-
-        <div class="contact-card">
-            <div class="contact-paper">
-                <a href="https://arxiv.org/abs/2607.20159v1" target="_blank">[8分] SHFormer: Dynamic Spectral Filtering Convolutional Neural Ne...</a>
-                
-            </div>
-            <div class="contact-list">
-                <div class="contact-person"><span class="role-badge">通讯作者</span><strong>Sriprabha Ramanarayanan</strong> — Department of Electrical Engineering, Indian Institute of Technology Madras (IITM), India; Healthcare Technology Innovation Centre, IITM, India </div>
-                <div class="contact-person"><strong>Rahul G. S.</strong> — Department of Electrical Engineering, Indian Institute of Technology Madras (IITM), India </div>
-                <div class="contact-person"><strong>Mohammad Al Fahim</strong> — Department of Electrical Engineering, Indian Institute of Technology Madras (IITM), India; Healthcare Technology Innovation Centre, IITM, India </div>
-                <div class="contact-person"><strong>Keerthi Ram</strong> — Healthcare Technology Innovation Centre, IITM, India </div>
-                <div class="contact-person"><strong>Ramesh Venkatesan</strong> — GE John F Welch Technology Center, GE Healthcare, India </div>
-            </div>
-            <div class="corresponding">通讯作者: Sriprabha Ramanarayanan</div>
         </div>
 
         <div class="contact-card">
@@ -1290,14 +1256,6 @@
                 <a href="https://arxiv.org/abs/2607.20087v1" target="_blank">[8分] Development of an automated, reliable, and clinically meanin...</a>
                 
             </div>
-            <div class="contact-list">
-                <div class="contact-person"><strong>Sina Amirrajab</strong> — Maastricht University, Maastricht, the Netherlands </div>
-                <div class="contact-person"><strong>Volker Vehof</strong> — University Hospital Münster, Münster, Germany </div>
-                <div class="contact-person"><strong>Michael Bietenbeck</strong> — University Hospital Münster, Münster, Germany </div>
-                <div class="contact-person"><strong>Nuriye Akyol</strong> — University Hospital Münster, Münster, Germany </div>
-                <div class="contact-person"><strong>Redouane Bouras</strong> — University Hospital Münster, Münster, Germany </div>
-            </div>
-            <div class="corresponding">通讯作者: Ali Yilmaz</div>
         </div>
 
         <div class="contact-card">
@@ -1306,28 +1264,9 @@
                 
             </div>
             <div class="contact-list">
-                <div class="contact-person"><span class="role-badge">第一作者</span><strong>Hanjing Ye</strong> — RCV Laboratory, SUSTech; Tencent Robotics X </div>
-                <div class="contact-person"><strong>Tianle Zeng</strong> — RCV Laboratory, SUSTech </div>
-                <div class="contact-person"><strong>Jiazhao Zhang</strong> — Peking University </div>
-                <div class="contact-person"><strong>Shaoan Wang</strong> — Peking University </div>
-                <div class="contact-person"><strong>Zibo Zhang</strong> — Futian Laboratory </div>
+                <div class="contact-person"><a href="mailto:hzhang@sustech.edu.cn" class="email-link">hzhang@sustech.edu.cn</a></div>
+                <div class="contact-person"><a href="mailto:rolandling@tencent.com" class="email-link">rolandling@tencent.com</a></div>
             </div>
-            <div class="corresponding">通讯作者: Yonggen Ling, Hong Zhang</div>
-        </div>
-
-        <div class="contact-card">
-            <div class="contact-paper">
-                <a href="https://arxiv.org/abs/2607.20057v1" target="_blank">[8分] Antigen-specific Antibody Multi-modal Foundation Model for F...</a>
-                
-            </div>
-            <div class="contact-list">
-                <div class="contact-person"><strong>Xiaoliang Shi</strong> — Shanghai Jiao Tong University </div>
-                <div class="contact-person"><strong>Zichen Wang</strong> — Shanghai Jiao Tong University </div>
-                <div class="contact-person"><strong>Runze Ma</strong> — Shanghai Jiao Tong University </div>
-                <div class="contact-person"><strong>Zhongyue Zhang</strong> — Shanghai Jiao Tong University </div>
-                <div class="contact-person"><span class="role-badge">通讯作者</span><strong>Shuangjia Zheng</strong> — Shanghai Jiao Tong University <a href="mailto:shuangjia.zheng@sjtu.edu.cn" class="email-link">shuangjia.zheng@sjtu.edu.cn</a></div>
-            </div>
-            <div class="corresponding">通讯作者: Shuangjia Zheng</div>
         </div>
 
         <div class="contact-card">
@@ -1343,6 +1282,58 @@
                 <div class="contact-person"><strong>Songlin Wei</strong>  </div>
             </div>
             <div class="corresponding">通讯作者: Zhaoxin Fan, Biao Leng</div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2607.19947v1" target="_blank">[8分] ETPDesigner: Multi-Agent Orchestration for Interactive Multi...</a>
+                
+            </div>
+            <div class="contact-list">
+                <div class="contact-person"><a href="mailto:permissions@acm.org" class="email-link">permissions@acm.org</a></div>
+                <div class="contact-person"><a href="mailto:mtli@shu.edu.cn" class="email-link">mtli@shu.edu.cn</a></div>
+                <div class="contact-person"><a href="mailto:chaofengchen@whu.edu.cn" class="email-link">chaofengchen@whu.edu.cn</a></div>
+                <div class="contact-person"><a href="mailto:simyeoguo@shu.edu.cn" class="email-link">simyeoguo@shu.edu.cn</a></div>
+                <div class="contact-person"><a href="mailto:rxqqt777@shu.edu.cn" class="email-link">rxqqt777@shu.edu.cn</a></div>
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2607.19886v1" target="_blank">[8分] MTVDiff: Multimodal Conditional Latent Diffusion for Enhance...</a>
+                
+            </div>
+            <div class="contact-list">
+                <div class="contact-person"><a href="mailto:yqiao@seu.edu.cn" class="email-link">yqiao@seu.edu.cn</a></div>
+                <div class="contact-person"><a href="mailto:jingyu.lin@monash.edu" class="email-link">jingyu.lin@monash.edu</a></div>
+                <div class="contact-person"><a href="mailto:cunjian.chen@monash.edu" class="email-link">cunjian.chen@monash.edu</a></div>
+                <div class="contact-person"><a href="mailto:220234779@seu.edu.cn" class="email-link">220234779@seu.edu.cn</a></div>
+                <div class="contact-person"><a href="mailto:ext-haojieli@monash.edu" class="email-link">ext-haojieli@monash.edu</a></div>
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2607.20351v1" target="_blank">[7分] Test-Time Training for Modality Order Consistency in Vision-...</a>
+                
+            </div>
+            <div class="contact-list">
+                <div class="contact-person"><strong>Aditi Gupta</strong> — University of Chicago </div>
+                <div class="contact-person"><strong>Yossi Gandelsman</strong> — Reve </div>
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2607.20345v1" target="_blank">[7分] Closing the Lab-to-Store Gap: A Data-Efficient Post-Training...</a>
+                
+            </div>
+            <div class="contact-list">
+                <div class="contact-person"><span class="role-badge">Equal Contribution</span><strong>Roger Sala Sisó</strong> — 1 HIVE Robots, Denmark; 2 Department of Engineering Technology, Technical University of Technology, Denmark </div>
+                <div class="contact-person"><span class="role-badge">Equal Contribution</span><strong>Tiago Silvério</strong> — 1 HIVE Robots, Denmark </div>
+                <div class="contact-person"><strong>Jakob Sand</strong> — 1 HIVE Robots, Denmark </div>
+                <div class="contact-person"><strong>Tran Nguyen Le</strong> — 2 Department of Engineering Technology, Technical University of Technology, Denmark </div>
+            </div>
         </div>
 </div>
 
