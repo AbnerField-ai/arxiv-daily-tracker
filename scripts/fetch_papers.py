@@ -127,7 +127,7 @@ def fetch_arxiv_papers(days_back=1):
 
     # 带重试的请求（应对 429 限流）
     data = None
-    for attempt in range(3):
+    for attempt in range(5):
         try:
             req = urllib.request.Request(url, headers={"User-Agent": "ArxivDailyTracker/1.0"})
             with urllib.request.urlopen(req, timeout=30) as response:
@@ -135,8 +135,8 @@ def fetch_arxiv_papers(days_back=1):
             break
         except urllib.error.HTTPError as e:
             if e.code == 429:
-                wait = 10 * (attempt + 1)
-                print(f"[限流] arXiv 返回 429，等待 {wait} 秒后重试 ({attempt+1}/3)...")
+                wait = 60 * (attempt + 1)  # 60s, 120s, 180s, 240s, 300s
+                print(f"[限流] arXiv 返回 429，等待 {wait} 秒后重试 ({attempt+1}/5)...")
                 time.sleep(wait)
             else:
                 print(f"[错误] arXiv API 请求失败: {e}")
