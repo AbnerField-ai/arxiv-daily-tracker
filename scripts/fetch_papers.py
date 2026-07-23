@@ -77,9 +77,9 @@ KNOWN_ORGS = {
     "Tesla": ["tesla"],
     "Anthropic": ["anthropic"],
     # 中国公司
-    "字节跳动": ["bytedance", "douyin", "tiktok"],
+    "字节跳动": ["bytedance", "douyin", "tiktok", "seed"],
     "腾讯": ["tencent"],
-    "阿里巴巴": ["alibaba", "damo academy", "aliyun", "tongyi"],
+    "阿里巴巴": ["alibaba", "damo academy", "aliyun", "tongyi", "qwen"],
     "百度": ["baidu"],
     "华为": ["huawei"],
     "商汤": ["sensetime"],
@@ -95,6 +95,12 @@ KNOWN_ORGS = {
     "北大": ["peking university", "pku"],
     "上海交大": ["shanghai jiao tong"],
 }
+
+# 重点关注的大厂（板块3单独展示）
+KEY_LABS = [
+    "Google", "Meta", "OpenAI", "Microsoft", "NVIDIA", "Anthropic",
+    "字节跳动", "腾讯", "阿里巴巴", "百度", "华为", "DeepSeek",
+]
 
 # ============ 配置结束 ============
 
@@ -528,6 +534,69 @@ def analyze_organizations(papers):
     return result
 
 
+# ============ 趋势分析 ============
+
+def generate_daily_insight(papers, org_stats):
+    """用 AI 对当天论文做整体趋势分析"""
+    # 准备论文概要供 AI 分析
+    paper_briefs = []
+    for p in papers[:20]:
+        summary = p.get("ai_summary", {})
+        orgs = p.get("identified_orgs", [])
+        paper_briefs.append({
+            "title": p["title"][:80],
+            "topics": p.get("matched_topics", []),
+            "score": summary.get("score", 5),
+            "orgs": orgs,
+            "novelty": summary.get("novelty", ""),
+        })
+
+    # 准备大厂数据
+    key_lab_data = [o for o in org_stats if o["org"] in KEY_LABS]
+
+    prompt = f"""请基于今天的 AI 论文数据，生成一份简洁的趋势分析报告。
+
+今日论文概要（共 {len(papers)} 篇筛选后论文）：
+{json.dumps(paper_briefs, ensure_ascii=False, indent=1)}
+
+大厂论文分布：
+{json.dumps(key_lab_data, ensure_ascii=False, indent=1)}
+
+请严格按以下 JSON 格式输出：
+{{
+    "hot_topics": "今日研究热点（2-3句话，概括今天论文的主要方向和趋势）",
+    "lab_overlap": "大厂方向重合分析（指出哪些大厂在相同方向有论文，方法是否类似，有何竞争/互补关系。如果没有重合就说明各自方向）",
+    "signals": "值得关注的信号（某方向论文量异常、新玩家进入、技术路线转变等，如果没有特别的就写'今日无特殊信号'）",
+    "overlap_labs": ["有方向重合的大厂名1", "大厂名2"],
+    "overlap_topic": "重合的研究方向（如有）"
+}}
+
+只输出合法 JSON，不要输出其他文字。"""
+
+    system_prompt = """你是一位资深的AI行业分析师，擅长从每天的学术论文中提炼出行业趋势和竞争情报。
+你的分析应该简洁、有洞察力，帮助读者在30秒内了解今天AI领域发生了什么。
+请只输出合法的 JSON。"""
+
+    result = call_deepseek(prompt, system_prompt)
+    if result:
+        try:
+            cleaned = result.strip()
+            if cleaned.startswith("```"):
+                cleaned = cleaned.split("\n", 1)[1]
+                cleaned = cleaned.rsplit("```", 1)[0]
+            return json.loads(cleaned)
+        except json.JSONDecodeError:
+            print(f"[警告] 趋势分析 JSON 解析失败")
+            return {
+                "hot_topics": "（分析生成失败，请查看各论文摘要）",
+                "lab_overlap": "",
+                "signals": "",
+                "overlap_labs": [],
+                "overlap_topic": "",
+            }
+    return None
+
+
 # ============ 主流程 ============
 
 def main():
@@ -573,7 +642,21 @@ def main():
     org_stats = analyze_organizations(results)
     print(f"\n[机构] 识别到 {len(org_stats)} 个机构的论文分布")
 
-    # 6. PDF 邮箱提取（只对高分论文）
+    # 6. 今日趋势分析（板块4）
+    print(f"\n[趋势] 正在生成今日趋势分析...")
+    daily_insight = generate_daily_insight(results, org_stats)
+    if daily_insight:
+        print(f"[趋势] 分析完成")
+    else:
+        daily_insight = {
+            "hot_topics": "（今日趋势分析未能生成）",
+            "lab_overlap": "",
+            "signals": "",
+            "overlap_labs": [],
+            "overlap_topic": "",
+        }
+
+    # 7. PDF 邮箱提取（只对高分论文）
     print(f"\n[邮箱] 开始对高分论文提取联系方式...")
     contacts_db = []
     extract_count = 0
@@ -592,6 +675,7 @@ def main():
                     "paper_score": score,
                     "topics": paper.get("matched_topics", []),
                     "orgs": paper.get("identified_orgs", []),
+                    "is_key_lab": any(org in KEY_LABS for org in paper.get("identified_orgs", [])),
                     "emails": contact_result.get("emails_found", []),
                 }
                 # 合并 AI 提取的联系人
@@ -607,19 +691,26 @@ def main():
 
     print(f"[邮箱] 提取完成，获得 {len(contacts_db)} 条联系人记录")
 
-    # 7. 输出 JSON
+    # 8. 输出 JSON
     output_dir = Path(__file__).parent.parent / "data"
     output_dir.mkdir(exist_ok=True)
 
     today = datetime.now().strftime("%Y-%m-%d")
+
+    # 区分大厂论文（板块3用）
+    key_lab_papers = [p for p in results if any(org in KEY_LABS for org in p.get("identified_orgs", []))]
+
     output = {
         "date": today,
         "generated_at": datetime.now().isoformat(),
         "total_fetched": len(papers),
         "total_matched": len(results),
         "papers": results,
+        "key_lab_papers": key_lab_papers,
         "org_analysis": org_stats,
         "contacts": contacts_db,
+        "daily_insight": daily_insight,
+        "key_labs_list": KEY_LABS,
     }
 
     # 写入当天数据
