@@ -508,16 +508,16 @@
         <div class="insight-body">
             <div class="insight-item">
                 <div class="insight-label">研究热点</div>
-                <div class="insight-content">今日研究热点集中多模态融合与大模型应用，特别是3D几何注入、医学叙事游戏化、多智能体世界模型等方向。同时，Agent训练框架和机器人操作数据引擎也受到关注，显示出AI向具身智能和自主推理发展的趋势。</div>
+                <div class="insight-content">今日研究高度集中于多模态领域，涵盖3D几何表示、机器人操作数据引擎、多模态推理优化、4D世界生成、联邦提示调优、记忆系统互操作性、EEG预训练、基因表达生成、遗忘公平性等。同时，Agent训练（OpenForgeRL）和世界模型（流式多智能体扩散模型）也是重要方向。</div>
             </div>
             <div class="insight-item highlight">
                 <div class="insight-label">大厂方向重合</div>
-                <div class="insight-content">Anthropic发布了OpenForgeRL，专注于基于框架的智能体强化学习训练；OpenAI发布了CRAG-MM-Diagnostics，专注于知识密集型VQA的故障诊断。两者在论文方向（多模态/大模型）上无直接重合，Anthropic偏向Agent训练框架，OpenAI偏向视觉问答诊断，形成互补关系。</div>
+                <div class="insight-content">Anthropic和OpenAI各自发表了1篇论文，方向不同：Anthropic聚焦于通用强化学习训练框架（多模态+Agent），OpenAI聚焦于知识密集型VQA的诊断基准（多模态+大模型），没有直接重叠。</div>
                 
             </div>
             <div class="insight-item">
                 <div class="insight-label">值得关注</div>
-                <div class="insight-content">多模态方向论文数量异常突出（20篇中近90%涉及），且大厂如Anthropic、OpenAI均涉足该领域，但侧重不同。此外，首次出现将LLM用于医学教育叙事游戏化、将Mamba架构用于EEG预训练等新应用，值得关注。</div>
+                <div class="insight-content">今日无特殊信号</div>
             </div>
         </div>
     </div>
@@ -536,15 +536,15 @@
 
             <div class="lab-paper">
                 <div class="lab-paper-header">
-                    <span class="score high">8/10</span>
+                    <span class="score medium">7/10</span>
                     <span class="lab-paper-topics">多模态 / 大模型</span>
                 </div>
                 <h4 class="lab-paper-title">
                     <a href="https://arxiv.org/abs/2607.21155v1" target="_blank">CRAG-MM-Diagnostics: Enabling Stage-Wise Analysis of Knowledge-Intensive VQA</a>
                 </h4>
                 <div class="lab-paper-summary">
-                    <span><strong>方法：</strong>提出了CRAG-MM-Diagnostics诊断基准，通过阶段式数据标注隔离语言视觉定位、目标识别和知识检索/推理三个子问题；评估了全参数和检索增强型VLM，并使用目标ROI、实体名称和视觉复杂度评分等元数据进行细粒度分析；基于发现提出了一个带视觉定位模块的接地双模态RAG管道。</span>
-                    <span><strong>创新：</strong>提供了一个细粒度的阶段式诊断基准，系统性地隔离和分析KI-VQA流水线中各子问题的失败，并基于此提出改进方案。</span>
+                    <span><strong>方法：</strong>提出CRAG-MM-Diagnostics诊断基准，包含阶段级数据标注，隔离三个关键子任务；评估全参数化和检索增强VLM，并使用新收集的元数据（目标ROI、实体名称、视觉复杂度分数）进行细粒度分析；基于发现提出一个融合视觉定位模块的双模态RAG管道。</span>
+                    <span><strong>创新：</strong>首次提出阶段级诊断基准，实现KI-VQA管道的细粒度子任务分析，并基于分析提出有效的改进方法。</span>
                 </div>
                 <a href="https://arxiv.org/pdf/2607.21155v1" target="_blank" class="lab-pdf-link">PDF 原文</a>
             </div>
@@ -565,8 +565,8 @@
                     <a href="https://arxiv.org/abs/2607.21557v1" target="_blank">OpenForgeRL: Train Harness-native Agents in Any Environment</a>
                 </h4>
                 <div class="lab-paper-summary">
-                    <span><strong>方法：</strong>提出OpenForgeRL，一个开源框架，通过轻量代理记录框架的模型调用并作为训练数据供标准RL代码库使用，同时利用Kubernetes编排器在独立远程容器中执行每个rollout，从而在任意环境中对任意框架进行可扩展的端到端训练。</span>
-                    <span><strong>创新：</strong>提出一种将训练与推理解耦的通用框架，首次支持在真实部署环境和任意推理框架中对基于框架的智能体进行端到端强化学习训练。</span>
+                    <span><strong>方法：</strong>提出OpenForgeRL开源框架，通过轻量代理记录推理框架的模型调用作为训练数据，并利用Kubernetes协调器在远程容器中执行每个rollout，实现训练与推理解耦，从而在任何环境中端到端训练任意推理框架的agent。</span>
+                    <span><strong>创新：</strong>首次提出通过代理和容器化协调器实现任意推理框架与标准RL训练栈的通用解耦训练，无需修改框架本身。</span>
                 </div>
                 <a href="https://arxiv.org/pdf/2607.21557v1" target="_blank" class="lab-pdf-link">PDF 原文</a>
             </div>
@@ -580,9 +580,9 @@
         <h2 class="papers-title">全部精选论文</h2>
         <h3 class="topic-header">世界模型 <span class="count">(1 篇)</span></h3>
 
-        <div class="paper-card" data-score="8">
+        <div class="paper-card" data-score="7">
             <div class="card-header">
-                <span class="score high">8/10</span>
+                <span class="score medium">7/10</span>
                 
                 <span class="date">2026-07-23</span>
             </div>
@@ -591,11 +591,11 @@
             </h4>
             <p class="authors">Sicheng Mo, Yuheng Li, Ziyang Leng et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>多代理交互世界模型需要维护跨代理和跨视角的一致世界状态，但现有自回归视频扩散模型仅依赖于观测历史作为条件，难以在多个代理和视角之间维持共享状态。</div>
-                <div class="summary-item"><strong>方法：</strong>提出WorldWeaver (W^2)，一种流式多代理视频扩散模型，通过引入可学习的跨代理世界状态寄存器存储共享世界信息并跟踪个体代理状态，采用混合Transformer设计分别处理世界状态建模和视觉帧建模，并利用个体代理状态、全局视图（如俯视图）和场景文本等监督信号接地这些寄存器。</div>
-                <div class="summary-item"><strong>结论：</strong>在双代理Minecraft视频生成实验中，显式世界状态建模显著提升了逻辑一致性和生成质量。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次将可学习的动态更新世界状态寄存器引入多代理自回归视频扩散模型，并采用混合Transformer架构分离世界状态与视觉帧建模。</div>
-                <div class="summary-item"><strong>意义：</strong>为多代理交互环境中的世界模型和视频生成提供了有效维护共享状态的新范式，推动具身智能和Agent领域的发展。</div>
+                <div class="summary-item"><strong>问题：</strong>多智能体交互世界模型需要生成一致的观察并维护跨智能体和视角演化的世界状态，但现有自回归视频扩散模型难以共享和更新状态。</div>
+                <div class="summary-item"><strong>方法：</strong>提出WorldWeaver流式多智能体视频扩散模型，引入跨智能体世界状态寄存器（可学习token）存储共享信息、追踪个体状态并动态更新，同时采用Mixture-of-Transformers架构分离世界状态和视觉帧建模。</div>
+                <div class="summary-item"><strong>结论：</strong>在双智能体Minecraft视频生成实验中，显式世界状态建模显著提升了逻辑一致性和生成质量。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将可学习的世界状态寄存器集成到流式多智能体视频扩散模型中，实现跨智能体的动态状态维护。</div>
+                <div class="summary-item"><strong>意义：</strong>为多智能体世界模型和具身智能提供了可扩展的状态共享范式，有助于提升长期交互视频生成的连贯性。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">世界模型</span>
@@ -615,11 +615,11 @@
             </h4>
             <p class="authors">Wenhao Li, Xueying Jiang, Quanhao Qian et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有基于2D视觉输入的视觉语言模型（VLM）在处理需要细粒度空间理解的3D任务时表现不佳。</div>
-                <div class="summary-item"><strong>方法：</strong>提出VLM-IE3D框架，通过从RGB视频中学习隐式几何令牌（IGTs）和显式几何令牌（EGTs），分别捕获高层几何先验和详细几何结构，并利用3D感知适配器融合这两类几何表示与2D视觉线索。</div>
-                <div class="summary-item"><strong>结论：</strong>在3D视频检测、3D视觉定位、3D密集字幕和空间推理等多项3D任务上取得一致优越性能。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次在VLM中同时结合隐式和显式3D几何表示，仅从RGB视频注入3D归纳偏置以增强细粒度空间理解。</div>
-                <div class="summary-item"><strong>意义：</strong>为提升VLM的3D空间感知能力提供了统一框架，推动多模态模型在3D理解和推理任务中的应用。</div>
+                <div class="summary-item"><strong>问题：</strong>现有基于2D视觉输入的大语言模型在处理需要细粒度空间理解与推理的3D任务时表现不佳。</div>
+                <div class="summary-item"><strong>方法：</strong>提出VLM-IE3D框架，通过从RGB视频中学习隐式几何令牌（IGTs）和显式几何令牌（EGTs），并利用3D感知适配器将两者与2D视觉特征融合，以增强VLMs的3D空间感知能力。</div>
+                <div class="summary-item"><strong>结论：</strong>在3D视频检测、3D视觉定位、3D密集字幕和空间推理等多个3D任务上持续取得优越性能。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次统一隐式和显式3D几何表示，通过RGB视频学习（无需额外3D输入）注入强3D归纳偏置。</div>
+                <div class="summary-item"><strong>意义：</strong>显著提升大语言模型在细粒度3D空间理解与推理任务上的能力，推动多模态模型向真实3D世界感知迈进。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态</span>
@@ -634,19 +634,19 @@
                 <span class="date">2026-07-23</span>
             </div>
             <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2607.21570v1" target="_blank">MedGame: Storytelling Gamification Empowered by Large Language Models for Medical Education</a>
+                <a href="https://arxiv.org/abs/2607.21588v1" target="_blank">AXIS: A Growable Community-Driven Data Engine for Scalable Robot Manipulation</a>
             </h4>
-            <p class="authors">Qian Wu, Xinrong Zhou, Zizhan Ma et al.</p>
+            <p class="authors">Mengfei Zhao, Dihong Huang, Yikai Tang et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有医学教育中基于LLM的系统主要聚焦于问答或单轮反馈等局部交互，缺乏将整个临床案例组织成以决策为中心的学习轨迹的能力。</div>
-                <div class="summary-item"><strong>方法：</strong>提出MedGame框架，采用双引擎设计：Medical Narrative Designer生成基于案例的临床故事线并包含状态和决策节点，Story Director将其转换为依赖感知的多模态编排计划，并由交互平台渲染；同时构建了包含5000个案例的MedGame Bench基准和评估协议。</div>
-                <div class="summary-item"><strong>结论：</strong>任务特定的微调显著提升了开源LLM在MedGame Bench上的性能，缩小了与商业模型的差距；学生试点研究表明，学习者认为MedGame比纯文本方案更具吸引力和实用性。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次将LLM应用于将静态临床案例转化为结构化、可执行的故事化游戏，实现端到端的医学教育叙事生成与方向编排。</div>
-                <div class="summary-item"><strong>意义：</strong>展示了LLM在医学教育游戏化中的潜力，为构建沉浸式、决策驱动的学习系统提供了新范式。</div>
+                <div class="summary-item"><strong>问题：</strong>现有机器人操作数据管线难以扩展，依赖专用硬件、集中化操作或固定任务集，缺乏可增长的社区驱动数据引擎。</div>
+                <div class="summary-item"><strong>方法：</strong>提出AXIS，一个可增长的社区驱动数据引擎，支持浏览器远程操作收集大规模演示，自动生成和验证新任务，并通过自动成功检查、质量过滤、轨迹平滑及视觉和物理增强将社区收集的演示转化为训练就绪的数据。</div>
+                <div class="summary-item"><strong>结论：</strong>AXIS数据集包含207个多样化任务和5万+轨迹；在VLA策略上持续预训练使π0.5整体成功率提升5.8%，优于RoboCasa365预训练模型37.3%，并随数据量增加表现一致扩展。</div>
+                <div class="summary-item"><strong>创新点：</strong>构建了社区驱动、自动生长且包含完整数据处理流水线的可扩展机器人操作数据引擎和基准。</div>
+                <div class="summary-item"><strong>意义：</strong>为机器人操作学习提供开源、可扩展的数据基础设施，推动VLA策略的可重复评估和规模化研究。</div>
             </div>
             <div class="card-footer">
-                <span class="topics">多模态 / 大模型</span>
-                <a href="https://arxiv.org/pdf/2607.21570v1" target="_blank" class="pdf-link">PDF 原文</a>
+                <span class="topics">多模态 / 具身智能</span>
+                <a href="https://arxiv.org/pdf/2607.21588v1" target="_blank" class="pdf-link">PDF 原文</a>
             </div>
         </div>
 
@@ -661,11 +661,11 @@
             </h4>
             <p class="authors">Xiao Yu, Baolin Peng, Ruize Xu et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现代AI智能体依赖复杂的推理框架（如Claude Code、Codex、OpenClaw），但这些框架难以在开源基础设施上进行端到端训练，因为现有SFT/RL栈无法原生表达有状态、多进程的框架推理。</div>
-                <div class="summary-item"><strong>方法：</strong>提出OpenForgeRL，一个开源框架，通过轻量代理记录框架的模型调用并作为训练数据供标准RL代码库使用，同时利用Kubernetes编排器在独立远程容器中执行每个rollout，从而在任意环境中对任意框架进行可扩展的端到端训练。</div>
-                <div class="summary-item"><strong>结论：</strong>在ClawEval、QwenClawBench、OSWorld-Verified、Online-Mind2Web、WebVoyager等基准上，OpenForgeRL训练出的智能体显著超越同等规模的开源基线，并在GUI设置中匹配或超越数倍规模更大的模型；分析发现不同框架的学习难度差异大，RL提升了自我验证、工具覆盖和多步规划等可靠性，但错误恢复等关键能力仍薄弱。</div>
-                <div class="summary-item"><strong>创新点：</strong>提出一种将训练与推理解耦的通用框架，首次支持在真实部署环境和任意推理框架中对基于框架的智能体进行端到端强化学习训练。</div>
-                <div class="summary-item"><strong>意义：</strong>为开源社区提供了可扩展的智能体训练基础设施，推动了领域内从复杂推理框架到可训练智能体的实用化进程。</div>
+                <div class="summary-item"><strong>问题：</strong>现代AI agent依赖复杂的推理框架（如Claude Code、Codex、OpenClaw），但现有开放SFT/RL训练栈无法原生支持这些有状态、多进程的框架推理，导致端到端训练困难。</div>
+                <div class="summary-item"><strong>方法：</strong>提出OpenForgeRL开源框架，通过轻量代理记录推理框架的模型调用作为训练数据，并利用Kubernetes协调器在远程容器中执行每个rollout，实现训练与推理解耦，从而在任何环境中端到端训练任意推理框架的agent。</div>
+                <div class="summary-item"><strong>结论：</strong>在ClawEval上达到31.7 pass^3和55.9 pass@3，在OSWorld-Verified上达到37.7，超越类似规模的开源基线，部分基准匹配或超越数倍大的模型。RL训练提升了agent的自我验证、工具覆盖和多步计划完成能力，但错误恢复仍弱。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次提出通过代理和容器化协调器实现任意推理框架与标准RL训练栈的通用解耦训练，无需修改框架本身。</div>
+                <div class="summary-item"><strong>意义：</strong>为在真实部署环境中训练和优化基于复杂推理框架的agent提供了可扩展的开源工具，推动开放基础设施下的agent强化学习研究。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态 / Agent</span>
@@ -684,11 +684,11 @@
             </h4>
             <p class="authors">Wen Ye, Yuxiao Qu, Aviral Kumar et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>视觉语言模型在几何推理任务中表现不一致，不同视图（文本、图像、图文结合）会引发不同行为，标准多模态后训练未能充分利用这些视图的互补推理路径。</div>
-                <div class="summary-item"><strong>方法：</strong>构建高质量配对多模态几何数据集ODA-Data，并提出MIRROR框架，通过强化学习对所有视图进行评估，选择表现最好的视图作为教师，使用反向KL散度优化其他视图，实现自监督的模态感知互惠推理。</div>
-                <div class="summary-item"><strong>结论：</strong>在几何推理基准上，MIRROR相比标准强化学习方法提升了推理准确性和跨模态行为一致性。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次提出利用不同视图间的表现差异作为自监督信号，通过互惠推理优化多模态模型，使各视图向最佳视图对齐。</div>
-                <div class="summary-item"><strong>意义：</strong>提升了多模态推理的鲁棒性和一致性，为视觉语言模型在需要多模态理解的复杂推理任务（如几何、图表分析）提供了新的训练范式。</div>
+                <div class="summary-item"><strong>问题：</strong>视觉语言模型在多模态推理中不同视图（文本、图像、图文结合）行为不一致，标准后训练无法充分利用互补推理路径。</div>
+                <div class="summary-item"><strong>方法：</strong>构建高质量配对多模态几何数据集ODA-Data；提出Modality-Informed Reciprocal Reasoning Optimization (MIRROR)，对每个问题评估所有视图，选择最佳视图作为教师，用逆KL散度训练其他视图。</div>
+                <div class="summary-item"><strong>结论：</strong>在几何推理基准上，MIRROR优于标准强化学习，产生更准确且跨模态一致的行为。</div>
+                <div class="summary-item"><strong>创新点：</strong>利用多视图推理不一致性，通过自我监督的强化学习进行模态告知的互惠推理优化。</div>
+                <div class="summary-item"><strong>意义：</strong>提升了视觉语言模型在多模态推理中的一致性和准确性，为多模态AI的鲁棒性训练提供新范式。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态 / 大模型</span>
@@ -703,38 +703,15 @@
                 <span class="date">2026-07-23</span>
             </div>
             <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2607.21546v1" target="_blank">UnDA: Unpaired Domain Alignment for Cross-Modal Knowledge Transfer in Medical Imaging</a>
-            </h4>
-            <p class="authors">Rafsan Jany, Shadab Tanjeed Ahmad, Ahsan Bulbul et al.</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>针对多模态医学图像中难以获取配对数据的问题，本文旨在实现无配对条件下的跨模态知识迁移。</div>
-                <div class="summary-item"><strong>方法：</strong>提出UnDA框架，包含与骨干网络无关的Alignment模块，通过注意力池化提取语义结构类令牌；采用不确定性加权最优传输（UCT-OT）动态调整特征级别对齐权重以抑制噪声；并引入逐类ProtoNCE目标维护原型记忆以增强全局区分性。</div>
-                <div class="summary-item"><strong>结论：</strong>在严格无配对设置下的分割任务中，UnDA在目标模态的准确性和边界精度上取得一致提升，证明无需配对数据即可实现异构数据源间的结构知识迁移。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次将不确定性加权最优传输与动态特征对齐相结合，并引入类原型对比学习以解决无配对跨模态蒸馏中的模态鸿沟和噪声传播问题。</div>
-                <div class="summary-item"><strong>意义：</strong>为医学影像及更广泛的跨模态学习提供了无需配对数据的实用方案，推动了多模态融合在现实场景中的应用。</div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">多模态</span>
-                <a href="https://arxiv.org/pdf/2607.21546v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-
-        <div class="paper-card" data-score="8">
-            <div class="card-header">
-                <span class="score high">8/10</span>
-                
-                <span class="date">2026-07-23</span>
-            </div>
-            <h4 class="paper-title">
                 <a href="https://arxiv.org/abs/2607.21522v1" target="_blank">GS-Agent: Creating 4D Physical Worlds With Generative Simulation</a>
             </h4>
             <p class="authors">Hongxin Zhang, Chunru Lin, Junyan Li et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>从自然语言描述创建动态物理真实的4D世界面临挑战，传统方法依赖大量人工，现有生成方法缺乏物理合理性和可控性。</div>
-                <div class="summary-item"><strong>方法：</strong>提出GS-Agent，一个端到端多智能体框架，集成物理引擎，将任务分解为实体管理（3D资产、材质、位置、运动）和渲染配置（相机、灯光），多个专业智能体通过代码与物理引擎交互并寻求多模态反馈，协作迭代构建与描述一致的4D世界。</div>
-                <div class="summary-item"><strong>结论：</strong>GS-Agent能有效将自然语言转换为多样且物理合理的4D世界，展示液体、可变形物体和刚体之间的丰富交互，并实现电影级相机和灯光控制。</div>
-                <div class="summary-item"><strong>创新点：</strong>利用基础模型构建多智能体系统，模拟人类创建4D世界的过程并自动化，集成物理引擎确保物理合理性和可控性。</div>
-                <div class="summary-item"><strong>意义：</strong>为4D世界生成提出新范式，赋能创意内容生成和物理AI。</div>
+                <div class="summary-item"><strong>问题：</strong>如何从自然语言描述自动生成动态且物理逼真的4D世界，同时保证物理合理性和可控性。</div>
+                <div class="summary-item"><strong>方法：</strong>提出一个端到端的多智能体框架GS-Agent，通过多个具备不同专长的智能体协作，自动执行传统上需要人工完成的4D世界构建步骤（包括3D资产策展、材质调整、放置、运动控制以及渲染配置如相机和灯光），并与物理引擎通过代码交互，利用多模态反馈迭代优化。</div>
+                <div class="summary-item"><strong>结论：</strong>实验表明GS-Agent能有效将自然语言转换为多样且物理合理的4D世界，展示液体、可变形物体和刚体之间的丰富交互，同时实现电影级的相机和灯光控制。</div>
+                <div class="summary-item"><strong>创新点：</strong>利用基础模型构建智能体系统，模拟人类创建4D世界的流程并自动化整个流程，将物理引擎集成到生成循环中。</div>
+                <div class="summary-item"><strong>意义：</strong>为4D世界生成提供了新范式，有望赋能创意内容生成和物理AI。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态 / 大模型 / Agent</span>
@@ -749,38 +726,15 @@
                 <span class="date">2026-07-23</span>
             </div>
             <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2607.21496v1" target="_blank">Toward Generalizable Cognitive Impairment Detection with Speech-Based Multimodal Large Language Models</a>
-            </h4>
-            <p class="authors">Yingchao Huang, Xin Wang, Yuhan Su et al.</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>如何利用开源多模态大语言模型实现泛化、非侵入性的认知障碍检测，同时保护患者隐私。</div>
-                <div class="summary-item"><strong>方法：</strong>提出一个基于开源LLM的多模态框架，提取语音音频的声学嵌入和自动生成的转录文本嵌入，将两者拼接为联合特征后进行下游分类，无需访问原始敏感数据。</div>
-                <div class="summary-item"><strong>结论：</strong>在ADReSS20和ADReSSo21基准上达到92.4%的CI分类准确率，优于单模态基线，并展现出卓越的跨数据集泛化能力，创下新SOTA。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次将开源多模态大语言模型应用于语音认知障碍检测，通过融合声学和语言特征在隐私保护下实现高泛化性能。</div>
-                <div class="summary-item"><strong>意义：</strong>展示了多模态大语言模型在医疗非侵入性筛查中的巨大潜力，为AI驱动的高鲁棒、可扩展诊断系统提供了新范式。</div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">多模态 / 大模型</span>
-                <a href="https://arxiv.org/pdf/2607.21496v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-
-        <div class="paper-card" data-score="8">
-            <div class="card-header">
-                <span class="score high">8/10</span>
-                
-                <span class="date">2026-07-23</span>
-            </div>
-            <h4 class="paper-title">
                 <a href="https://arxiv.org/abs/2607.21417v1" target="_blank">Towards Privacy-Preserving Federated Prompt Tuning under Data Heterogeneity: A Subspace-Decomposed Expert Approach</a>
             </h4>
             <p class="authors">Yuhua Wang, Xiaodong Li, Yihao Guo et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>联邦提示调优中，现有方法使用单个共享提示无法平衡个性化与泛化，而多专家提示虽能捕获多样性但增大了通信开销和差分隐私噪声，导致鲁棒的专家组合困难。</div>
-                <div class="summary-item"><strong>方法：</strong>提出FedSEPT，通过子空间分解专家建模（SEM）将多专家提示参数化为共享低秩因子、固定公共基和私有残差，将通信和差分隐私限制在紧凑因子空间；并设计实例感知专家融合（IEF），利用设备端路由和缓存的专家特定文本特征进行自适应logit级融合。</div>
-                <div class="summary-item"><strong>结论：</strong>在11个异构基准上，相同隐私约束下FedSEPT比强基线实现了更好的本地适应与全局泛化之间的权衡。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次将子空间分解引入联邦提示多专家调优，实现了紧凑的隐私保护通信与实例感知的自适应专家融合。</div>
-                <div class="summary-item"><strong>意义：</strong>为联邦学习中视觉-语言模型在数据异构场景下的隐私保护微调提供了高效且平衡个性化和泛化的新范式。</div>
+                <div class="summary-item"><strong>问题：</strong>在联邦提示调优中，现有方法使用单一共享prompt会导致过平滑而削弱个性化与泛化的平衡，而多专家prompt则增大通信开销和差分隐私噪声，如何实现隐私保护下高效处理数据异构性？</div>
+                <div class="summary-item"><strong>方法：</strong>提出FedSEPT框架，采用子空间分解专家建模（SEM）将多个提示专家参数化为共享低秩因子、固定公共基和私有残差，从而将通信和DP扰动限制在紧凑的因子空间；同时设计实例感知专家融合（IEF），通过设备端路由自适应组合语义互补专家，并利用缓存的专家文本特征进行高效的logit级融合。</div>
+                <div class="summary-item"><strong>结论：</strong>在11个异构基准上，在相同隐私约束下，FedSEPT比强基线更好地平衡了本地适应与全局泛化。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将子空间分解技术引入联邦提示调优中的多专家提示建模，同时解决了通信效率、隐私保护和数据异构性适应问题。</div>
+                <div class="summary-item"><strong>意义：</strong>为联邦学习下视觉-语言模型的高效、隐私保护微调提供了新范式，尤其适用于数据异构的实际场景。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态</span>
@@ -799,11 +753,11 @@
             </h4>
             <p class="authors">Chengfeng Zhao, Jinhui Chen, Sirui Liang et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>代理记忆架构存在严重的碎片化问题，现有实现耦合了记忆生命周期的不同阶段，评估逻辑与特定数据集纠缠，且对异构记忆类型管理支持有限。</div>
-                <div class="summary-item"><strong>方法：</strong>提出MemTools可互操作研究框架，通过声明式数据契约标准化记忆生命周期，正交分离基准数据集与执行协议，并提供统一计算接口协调符号、神经和多模态记忆表示。</div>
-                <div class="summary-item"><strong>结论：</strong>实验验证了跨系统组件集成、评估协议重配置和异构记忆协调的有效性，表明MemTools能够系统隔离和分析记忆设计变量。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次提出解耦代理记忆系统组件与部署环境的可互操作框架，支持跨系统组件互换组装和标准化评估。</div>
-                <div class="summary-item"><strong>意义：</strong>为代理记忆的标准化研究提供了实用且可扩展的基础设施，推动AI智能体系统在记忆设计方面的系统性研究。</div>
+                <div class="summary-item"><strong>问题：</strong>现有智能体记忆系统架构碎片化，导致不同系统的记忆组件耦合紧密、评估逻辑与特定数据集绑定、异构记忆类型管理困难，阻碍了系统研究。</div>
+                <div class="summary-item"><strong>方法：</strong>提出MemTools框架，通过声明式数据契约标准化记忆生命周期，实现组件跨系统可互换装配；正交分离基准数据集与执行协议，支持可控评估；提供统一计算接口协调符号、神经和多模态记忆表示。</div>
+                <div class="summary-item"><strong>结论：</strong>跨系统组件集成、评估协议重构和异构记忆协调的实验表明，MemTools能够系统地隔离和分析记忆设计变量。</div>
+                <div class="summary-item"><strong>创新点：</strong>首个实现记忆系统组件与部署环境解耦的互操作性研究框架，并标准化了记忆生命周期和评估流程。</div>
+                <div class="summary-item"><strong>意义：</strong>为智能体记忆的系统性、可复现研究提供了实用且可扩展的基础设施，有助于推动多模态、大模型和具身智能领域Agent记忆的融合与进步。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态</span>
@@ -818,19 +772,19 @@
                 <span class="date">2026-07-23</span>
             </div>
             <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2607.21401v1" target="_blank">When Are Reasoning-Based Guardrails Not Efficient? ResponseGuard: A Fast Vision-Language Guard for Real-Time Moderation</a>
+                <a href="https://arxiv.org/abs/2607.21384v1" target="_blank">Multimodal Pretraining for Generalizable EEG Representation Learning</a>
             </h4>
-            <p class="authors">Dongbin Na</p>
+            <p class="authors">Targol Bakhtiarvand, Jugal Kalita, Adham Atyabi</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有基于推理链的视觉语言安全护栏速度慢，无法跟上实时流式响应，导致有害回复可能在审核完成前已被用户看到。</div>
-                <div class="summary-item"><strong>方法：</strong>提出ResponseGuard，不采用推理链，通过单次前向传递从请求、响应和图像的单一池化表示中直接判断有害性，实现句子级别实时筛查。</div>
-                <div class="summary-item"><strong>结论：</strong>2B参数的ResponseGuard在响应有害性检测上超越3B推理护栏，速度提升约150倍；请求有害性检测上推理护栏仍领先，差距可能源于冻结视觉编码器而非缺失推理链。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次证明无需推理链的视觉语言安全护栏可以通过单次前向传递实现高效且有效的实时审核，大幅降低时延。</div>
-                <div class="summary-item"><strong>意义：</strong>为多模态大模型的安全部署提供了低延迟的流式审核方案，推动实时内容安全监控的实用化。</div>
+                <div class="summary-item"><strong>问题：</strong>现有EEG模型局限于特定数据集和任务，缺乏跨数据集和场景的泛化能力；本文旨在构建一个通用的多模态EEG基础模型以支持多种EEG相关任务。</div>
+                <div class="summary-item"><strong>方法：</strong>提出多模态EEG基础模型，包含Mamba架构的原始信号编码器、ViT风格的时间-频率编码器和轻量文本编码器，在共享嵌入空间中通过掩码建模、跨视图对比对齐和时间一致性损失进行无监督预训练，再微调用于癫痫检测。</div>
+                <div class="summary-item"><strong>结论：</strong>在CHB-MIT基准上单模型AUROC达0.874，集成模型达0.878，达到SOTA；LOSO协议下平均平衡准确率0.558，展示了患者无关检测的挑战性。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将Mamba架构用于EEG原始信号编码，并结合文本、时频图等多模态信息进行对比学习和掩码预训练，实现无需标签的通用表征学习。</div>
+                <div class="summary-item"><strong>意义：</strong>为脑电信号分析领域提供了可泛化的基础模型范式，推动EEG从特定任务模型向通用多模态基础模型发展，具有潜在临床价值。</div>
             </div>
             <div class="card-footer">
-                <span class="topics">多模态</span>
-                <a href="https://arxiv.org/pdf/2607.21401v1" target="_blank" class="pdf-link">PDF 原文</a>
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2607.21384v1" target="_blank" class="pdf-link">PDF 原文</a>
             </div>
         </div>
 
@@ -841,19 +795,19 @@
                 <span class="date">2026-07-23</span>
             </div>
             <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2607.21347v1" target="_blank">Quality-Aware Multimodal Fusion Reveals Implicit Identity in Valence-Arousal Features</a>
+                <a href="https://arxiv.org/abs/2607.21343v1" target="_blank">M$^3$-Gen: Interpretable Multimodal Generation of Gene Expression Profiles Using Clinical and Imaging Data</a>
             </h4>
-            <p class="authors">Jisu Kim, Benjamin S. Riggan</p>
+            <p class="authors">Francesca Pia Panaccione, Carlo Sgaravatti, Marco Venere</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>传统人脸识别依赖静态外观，在非约束环境下（表情变化、遮挡、光照差）易退化，论文旨在利用视听表情动态（valence-arousal特征）作为软生物特征来补充静态外观。</div>
-                <div class="summary-item"><strong>方法：</strong>提出质量感知自适应融合（QAAF），通过估计每个样本每个模态的可靠性，使用学习到的软门控和质量依赖的dropout来调整模态贡献，以多模态VA估计作为预文本任务学习鲁棒表示。</div>
-                <div class="summary-item"><strong>结论：</strong>QAAF在Aff-wild2上达到0.472 CCC，优于基线（0.415）；VA特征无需身份训练即可编码身份信息，与ArcFace融合后EER降低（AFEW-VA: 0.022→0.021，YTF: 0.106→0.104），纠正68.2%的ArcFace误接受。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次证明多模态VA估计可作为与常规人脸识别互补的软生物特征模态，且质量感知融合提升了在缺失模态下的鲁棒性。</div>
-                <div class="summary-item"><strong>意义：</strong>为鲁棒的人脸识别提供新思路，利用情感动态作为身份线索，在非约束场景下增强识别可靠性。</div>
+                <div class="summary-item"><strong>问题：</strong>解决基因表达数据获取成本高和隐私限制问题，以实现多模态生物医学数据的整合利用。</div>
+                <div class="summary-item"><strong>方法：</strong>提出M$^3$-Gen框架，利用对比学习从临床元数据和病理图像中学习统一潜在表示，并基于GAN生成生物学一致的基因表达谱，通过注意力机制实现可解释性。</div>
+                <div class="summary-item"><strong>结论：</strong>在TCGA数据集上生成逼真且功能有意义的基因表达数据，并能识别影响特定基因表达谱的关键图像区域。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次设计可解释的多模态生成框架，整合临床和影像数据生成基因表达谱，并自动揭示模态间关联。</div>
+                <div class="summary-item"><strong>意义：</strong>为AI驱动的精准医学提供低成本、高隐私的基因表达数据生成方法，拓展多模态生成模型在生物医学领域的应用。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态</span>
-                <a href="https://arxiv.org/pdf/2607.21347v1" target="_blank" class="pdf-link">PDF 原文</a>
+                <a href="https://arxiv.org/pdf/2607.21343v1" target="_blank" class="pdf-link">PDF 原文</a>
             </div>
         </div>
 
@@ -868,61 +822,15 @@
             </h4>
             <p class="authors">Lorenzo Orsingher, Thomas De Min, Massimiliano Mancini et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有多模态大模型遗忘研究忽略了现实场景中不同人群请求遗忘频率不均衡导致的模型偏见问题。</div>
-                <div class="summary-item"><strong>方法：</strong>提出FAIRGET基准，模拟从不均衡到挑战性的多种遗忘请求场景；并设计FAUN算法，利用偏见感知的激活导向机制在遗忘数据时保持模型公平性。</div>
-                <div class="summary-item"><strong>结论：</strong>在FAIRGET和FIUBench上，FAUN在遗忘质量和公平性方面均优于现有方法。</div>
-                <div class="summary-item"><strong>创新点：</strong>首个评估多模态大模型在不均衡遗忘请求下公平性的基准及相应的公平遗忘算法。</div>
-                <div class="summary-item"><strong>意义：</strong>为多模态大模型在隐私合规中纳入公平性考虑提供了关键评估方法和算法，避免了因遗忘请求不均衡导致的歧视风险。</div>
+                <div class="summary-item"><strong>问题：</strong>在多模态大模型（MLLM）的机器遗忘中，现有基准假设遗忘请求均匀分布，但现实场景中不同人口群体的遗忘请求频率可能不均衡，导致模型产生偏见行为。论文旨在解决不均衡遗忘请求下的公平性评估和算法问题。</div>
+                <div class="summary-item"><strong>方法：</strong>提出了FAIRGET基准，模拟多种现实场景中的不均衡遗忘请求；并提出了FAUN算法，利用偏见感知的激活引导机制在遗忘数据的同时保持模型公平性。</div>
+                <div class="summary-item"><strong>结论：</strong>在FAIRGET和已有FIUBench基准上，FAUN在遗忘质量和公平性方面均优于现有方法。</div>
+                <div class="summary-item"><strong>创新点：</strong>首个评估多模态大模型在不均衡遗忘请求下公平性的基准（FAIRGET）和首个兼顾遗忘与公平性的多模态遗忘算法（FAUN）。</div>
+                <div class="summary-item"><strong>意义：</strong>为AI合规（如数据删除权）提供了公平性视角，推动多模态大模型在实际部署中兼顾隐私与伦理。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态 / 大模型</span>
                 <a href="https://arxiv.org/pdf/2607.21300v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-
-        <div class="paper-card" data-score="8">
-            <div class="card-header">
-                <span class="score high">8/10</span>
-                <span class="org-tag">OpenAI</span>
-                <span class="date">2026-07-23</span>
-            </div>
-            <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2607.21155v1" target="_blank">CRAG-MM-Diagnostics: Enabling Stage-Wise Analysis of Knowledge-Intensive VQA</a>
-            </h4>
-            <p class="authors">Hanseok Oh, Parishad BehnamGhader, Benno Krojer et al.</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>知识密集型视觉问答（KI-VQA）基准通常只报告最终准确率，隐藏了各个子问题（如指代理解、视觉定位、目标识别、知识检索和推理）中的失败来源。</div>
-                <div class="summary-item"><strong>方法：</strong>提出了CRAG-MM-Diagnostics诊断基准，通过阶段式数据标注隔离语言视觉定位、目标识别和知识检索/推理三个子问题；评估了全参数和检索增强型VLM，并使用目标ROI、实体名称和视觉复杂度评分等元数据进行细粒度分析；基于发现提出了一个带视觉定位模块的接地双模态RAG管道。</div>
-                <div class="summary-item"><strong>结论：</strong>知识检索和推理是主要瓶颈，但VLM在目标对象识别上也存在困难，图像检索器难以整合文本线索；所提出的接地双模态RAG管道在GPT-5和Qwen上分别提升了13.3和8.5个百分点的准确率。</div>
-                <div class="summary-item"><strong>创新点：</strong>提供了一个细粒度的阶段式诊断基准，系统性地隔离和分析KI-VQA流水线中各子问题的失败，并基于此提出改进方案。</div>
-                <div class="summary-item"><strong>意义：</strong>揭示了当前KI-VQA系统的根本局限性，促进了阶段感知评估和更有效的多模态知识助手开发。</div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">多模态 / 大模型</span>
-                <a href="https://arxiv.org/pdf/2607.21155v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-
-        <div class="paper-card" data-score="8">
-            <div class="card-header">
-                <span class="score high">8/10</span>
-                
-                <span class="date">2026-07-23</span>
-            </div>
-            <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2607.21113v1" target="_blank">RL-MACRO: A Cybernetic Closed-Loop Intelligence Framework for Multimodal Adaptive Robotic Craniotomy</a>
-            </h4>
-            <p class="authors">Xiao Zhang, Jiaxuan Li, Renzhen Le et al.</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>自主机器人颅骨切开术中，由于组织特性未知、时变且切削温度不可直接测量（部分可观测），难以同时保证安全与效率。</div>
-                <div class="summary-item"><strong>方法：</strong>提出RL-MACRO框架，使用CNN-LSTM观测器融合力和声音反馈重建隐藏温度状态；基于重建温度与多传感器特征构成信念状态，采用离线隐式Q学习（IQL）策略，由双头Actor动态调节进给率、主轴速度和切割深度；通过在线轨迹重规划和速度伺服将决策转化为空间运动。</div>
-                <div class="summary-item"><strong>结论：</strong>在牛肋骨和六块离体山羊颅骨上验证：温度重建R²=0.939，MAE=1.717°C；系统能鲁棒感知、自适应恢复力/温度超限，并在不规则表面平滑执行。</div>
-                <div class="summary-item"><strong>创新点：</strong>提出了一种数据驱动的控制论闭环智能框架，通过多模态感知与离线强化学习实现部分可观测条件下安全高效的自主骨切割。</div>
-                <div class="summary-item"><strong>意义：</strong>展示了世界模型/具身智能在医疗机器人中的具体应用，即通过观测器重构隐藏状态进行离线策略学习，为自主物理交互提供了新范式。</div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">多模态</span>
-                <a href="https://arxiv.org/pdf/2607.21113v1" target="_blank" class="pdf-link">PDF 原文</a>
             </div>
         </div>
 
@@ -933,19 +841,65 @@
                 <span class="date">2026-07-23</span>
             </div>
             <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2607.21588v1" target="_blank">AXIS: A Growable Community-Driven Data Engine for Scalable Robot Manipulation</a>
+                <a href="https://arxiv.org/abs/2607.21570v1" target="_blank">MedGame: Storytelling Gamification Empowered by Large Language Models for Medical Education</a>
             </h4>
-            <p class="authors">Mengfei Zhao, Dihong Huang, Yikai Tang et al.</p>
+            <p class="authors">Qian Wu, Xinrong Zhou, Zizhan Ma et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有机器人操作策略学习依赖多样化高质量数据，但现有数据管道因依赖专用硬件、集中式操作或固定任务集而难以扩展。</div>
-                <div class="summary-item"><strong>方法：</strong>提出AXIS，一个可增长的社区驱动数据引擎和基准，通过浏览器远程操作收集大规模演示，自动生成并验证新任务，并利用自动成功检查、质量过滤、轨迹平滑以及视觉和物理增强将社区收集的演示转化为训练就绪数据。</div>
-                <div class="summary-item"><strong>结论：</strong>AXIS数据集包含207个多样化任务和5万+轨迹，在统一评估套件下，持续预训练使π0.5模型总体成功率提升5.8%，超过RoboCasa365预训练模型37.3%，且数据量增加时性能持续提升。</div>
-                <div class="summary-item"><strong>创新点：</strong>创新在于构建了一个可增长的、社区驱动的数据引擎，结合自动化任务生成与验证、全流程数据处理及统一评估协议，实现了大规模机器人操作数据的规模化收集与利用。</div>
-                <div class="summary-item"><strong>意义：</strong>为机器人学习提供了可扩展的数据基础设施和基准，推动社区协作和通用操作策略的发展。</div>
+                <div class="summary-item"><strong>问题：</strong>现有医学教育系统多聚焦于局部问答，缺乏将完整临床案例组织成以决策为中心的学习轨迹的方法。</div>
+                <div class="summary-item"><strong>方法：</strong>提出MedGame框架，采用双引擎设计：Medical Narrative Designer将静态案例转化为带有状态和决策节点的故事线，Story Director将其转换为依赖感知的多模态编排计划，并由交互平台渲染执行。</div>
+                <div class="summary-item"><strong>结论：</strong>构建了包含5000个案例的基准MedGame Bench，实验表明任务特定微调显著提升开源LLM性能并缩小与商业模型的差距；学生研究显示学习者认为MedGame比纯文本方案更具参与感和实用性。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将LLM驱动的故事化游戏化方法系统性地应用于医学教育，实现从静态案例到动态决策轨迹的转换。</div>
+                <div class="summary-item"><strong>意义：</strong>展示了LLM在复杂教育场景（如构建交互式、多模态学习经验）中的创新应用潜力，推动了AI辅助教学范式的发展。</div>
             </div>
             <div class="card-footer">
-                <span class="topics">多模态 / 具身智能</span>
-                <a href="https://arxiv.org/pdf/2607.21588v1" target="_blank" class="pdf-link">PDF 原文</a>
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2607.21570v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-07-23</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.21546v1" target="_blank">UnDA: Unpaired Domain Alignment for Cross-Modal Knowledge Transfer in Medical Imaging</a>
+            </h4>
+            <p class="authors">Rafsan Jany, Shadab Tanjeed Ahmad, Ahsan Bulbul et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有跨模态知识蒸馏方法难以处理大模态差距和不确定源域预测的噪声传播，尤其是在医疗影像中缺乏配对数据的情况下。</div>
+                <div class="summary-item"><strong>方法：</strong>提出UnDA框架，采用锚点引导的无配对跨模态蒸馏，包括基于注意力池化的对齐模块提取语义结构类令牌，以及不确定性加权最优传输（UCT-OT）动态加权特征对齐，并引入每类ProtoNCE目标维护稳定原型记忆以增强全局判别性。</div>
+                <div class="summary-item"><strong>结论：</strong>在严格无配对设置下的医学图像分割任务中，目标模态的准确性和边界精度持续提升，验证了无需配对数据集即可实现跨模态结构知识迁移。</div>
+                <div class="summary-item"><strong>创新点：</strong>创新点在于结合不确定性加权最优传输和原型对比学习，实现了对噪声源域预测的鲁棒抑制和全局判别性的保持。</div>
+                <div class="summary-item"><strong>意义：</strong>对AI领域的意义在于解决了多模态学习中配对数据稀缺的瓶颈，为医疗影像及其他领域的无监督跨模态知识迁移提供了新范式。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2607.21546v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-07-23</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.21496v1" target="_blank">Toward Generalizable Cognitive Impairment Detection with Speech-Based Multimodal Large Language Models</a>
+            </h4>
+            <p class="authors">Yingchao Huang, Xin Wang, Yuhan Su et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>如何利用基于语音的多模态大语言模型实现通用且准确的认知障碍检测，同时保护患者隐私？</div>
+                <div class="summary-item"><strong>方法：</strong>提出一个基于开源大语言模型的多模态检测框架，从语音中提取声学嵌入，从自动转录文本中获取文本嵌入，拼接多模态特征后用于下游分类，无需访问原始患者数据。</div>
+                <div class="summary-item"><strong>结论：</strong>在ADReSS20和ADReSSo21基准数据集上达到92.4%的分类准确率，持续优于单模态基线，并展现出跨数据集泛化的新最优性能。</div>
+                <div class="summary-item"><strong>创新点：</strong>将开源大语言模型与多模态（声学+文本）融合用于认知障碍检测，且在隐私保护下实现跨场景泛化。</div>
+                <div class="summary-item"><strong>意义：</strong>展示了多模态大语言模型在非侵入式医疗筛查中的潜力，推动语音评估的可扩展性和鲁棒性。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2607.21496v1" target="_blank" class="pdf-link">PDF 原文</a>
             </div>
         </div>
 
@@ -960,11 +914,11 @@
             </h4>
             <p class="authors">Liang-Yuan Wu, Sripathi Sridhar, Mark Cartwright et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有自动音频描述（AAC）评估指标只关注平面文本，无法有效评估结构化音频描述中融合的多模态属性。</div>
-                <div class="summary-item"><strong>方法：</strong>提出一个多轴评估框架，基于AudioCards数据集，在标签集、描述、逻辑推理、数值测量和频谱轮廓五个正交轴上，结合大语言模型（LLM）裁判和确定性计算指标进行评估，并通过注入类型化分级错误的受控扰动测试协议验证框架可靠性。</div>
-                <div class="summary-item"><strong>结论：</strong>该框架能成功区分意义保持的释义与真正的语义和声学破坏，证明了评估的有效性和鲁棒性。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次为结构化音频描述设计了多轴评估框架，并结合受控扰动测试进行系统性验证。</div>
-                <div class="summary-item"><strong>意义：</strong>填补了结构化音频描述评估的空白，推动多模态AI和音视频理解领域的评测方法论发展。</div>
+                <div class="summary-item"><strong>问题：</strong>结构化音频字幕（如AudioCards）的评估面临挑战，现有指标仅适用于平面文本，无法可靠评估多模态属性。</div>
+                <div class="summary-item"><strong>方法：</strong>提出一个多轴评估框架，基于AudioCards数据集，在标签集、描述、逻辑推理、数值测量和频谱轮廓五个正交轴上评估输出，结合LLM评审捕捉语义细节和确定性计算指标精确测量声学偏差，并通过受控扰动测试注入类型化和分级错误来验证框架可靠性。</div>
+                <div class="summary-item"><strong>结论：</strong>该框架能有效区分意义保留的改写与真正的语义/声学损坏，验证了其评估能力的有效性。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次为结构化音频描述设计多轴评估框架，并引入受控扰动测试协议以严谨验证评估可靠性。</div>
+                <div class="summary-item"><strong>意义：</strong>改进多模态音频字幕的评估标准，有助于推动世界模型和具身智能中音频理解的进展。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态 / 大模型</span>
@@ -979,19 +933,19 @@
                 <span class="date">2026-07-23</span>
             </div>
             <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2607.21384v1" target="_blank">Multimodal Pretraining for Generalizable EEG Representation Learning</a>
+                <a href="https://arxiv.org/abs/2607.21401v1" target="_blank">When Are Reasoning-Based Guardrails Not Efficient? ResponseGuard: A Fast Vision-Language Guard for Real-Time Moderation</a>
             </h4>
-            <p class="authors">Targol Bakhtiarvand, Jugal Kalita, Adham Atyabi</p>
+            <p class="authors">Dongbin Na</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有脑电图（EEG）模型通常在特定数据集和任务上表现良好，缺乏跨数据集或不同场景的泛化能力，难以应用于癫痫检测等任务。</div>
-                <div class="summary-item"><strong>方法：</strong>提出了一个多模态EEG基础模型，包括基于Mamba架构的原始信号编码器、用于时频数据的Vision Transformer（ViT）风格编码器以及文本的轻量编码器，并通过掩码建模、跨视图对比对齐和时间一致性损失等技术进行预训练。</div>
-                <div class="summary-item"><strong>结论：</strong>在CHB-MIT癫痫检测基准上，最佳单模型AUROC达到0.874，集成模型达到0.878，创下最新性能；在留一受试者（LOSO）协议下平均平衡准确率为0.558，展示了较强的泛化能力。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次将Mamba架构与ViT结合用于EEG多模态预训练，并通过无监督方式学习丰富的癫痫相关表示。</div>
-                <div class="summary-item"><strong>意义：</strong>为EEG领域提供了可泛化的基础模型，推动了智能医疗中多模态、自监督学习的发展，有助于实现患者独立的癫痫检测。</div>
+                <div class="summary-item"><strong>问题：</strong>当前基于推理的视觉语言安全护栏（如链式思考）虽然更安全但速度慢，无法满足流式响应的实时审核需求，论文要解决如何在不降低安全性的前提下大幅提升护栏速度的问题。</div>
+                <div class="summary-item"><strong>方法：</strong>提出ResponseGuard，一种无推理链的视觉语言护栏，通过单次前向传播从请求、响应和图像的联合池化表示中直接读取有害判定（单遍分类），无需生成任何额外token。</div>
+                <div class="summary-item"><strong>结论：</strong>在标准多模态护栏基准上，2B参数的ResponseGuard在响应有害性检测上超越3B的推理护栏，速度快约150倍；在请求有害性上推理护栏仍领先，但差距主要源于冻结的视觉编码器而非推理链。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次论证了单次分类（无推理链）可以替代链式推理用于视觉语言护栏的响应审核，并发现推理护栏几乎不关注图像信息，表明推理并非必要。</div>
+                <div class="summary-item"><strong>意义：</strong>为多模态AI助手的实时安全审核提供了轻量级、高效的解决方案，推动护栏技术从推理密集型向计算高效型转变。</div>
             </div>
             <div class="card-footer">
-                <span class="topics">多模态 / 大模型</span>
-                <a href="https://arxiv.org/pdf/2607.21384v1" target="_blank" class="pdf-link">PDF 原文</a>
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2607.21401v1" target="_blank" class="pdf-link">PDF 原文</a>
             </div>
         </div>
 
@@ -1002,19 +956,19 @@
                 <span class="date">2026-07-23</span>
             </div>
             <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2607.21343v1" target="_blank">M$^3$-Gen: Interpretable Multimodal Generation of Gene Expression Profiles Using Clinical and Imaging Data</a>
+                <a href="https://arxiv.org/abs/2607.21347v1" target="_blank">Quality-Aware Multimodal Fusion Reveals Implicit Identity in Valence-Arousal Features</a>
             </h4>
-            <p class="authors">Francesca Pia Panaccione, Carlo Sgaravatti, Marco Venere</p>
+            <p class="authors">Jisu Kim, Benjamin S. Riggan</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>基因表达数据获取成本高且涉及隐私问题，限制了其在多模态研究和AI驱动应用中的使用。</div>
-                <div class="summary-item"><strong>方法：</strong>提出M$^3$-Gen框架，利用对抗网络（GAN）以组织病理图像和临床元数据为条件生成基因表达谱，通过对比学习学习统一潜在表示，并采用注意力机制实现多模态融合和可解释性。</div>
-                <div class="summary-item"><strong>结论：</strong>在TCGA数据集上验证，M$^3$-Gen能够生成真实且功能有意义的基因表达数据，并能识别影响特定基因表达生成的组织病理图像区域。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次实现基于组织病理图像和临床元数据的可解释多模态基因表达生成，并结合注意力机制提供模型内在解释性。</div>
-                <div class="summary-item"><strong>意义：</strong>展示了多模态生成模型在生物医学数据合成中的潜力，推动了可解释AI在精准医疗中的应用。</div>
+                <div class="summary-item"><strong>问题：</strong>在非约束环境下，传统基于静态外观的人脸识别性能下降，本文旨在利用视听表情动态中的隐含身份信息，通过多模态情感（效价-唤醒度）估计来提取身份判别特征。</div>
+                <div class="summary-item"><strong>方法：</strong>提出质量感知自适应融合（QAAF）方法，通过软门控和质量相关dropout根据每个样本、每个模态的可靠性动态调整模态贡献，并以多模态效价-唤醒度（VA）估计作为预训练任务，从视听数据中学习身份相关信息。</div>
+                <div class="summary-item"><strong>结论：</strong>QAAF在Aff-wild2数据集上平均CCC达到0.472，优于基线；VA训练的特征在软生物特征方法中排名第一，与ArcFace融合后降低EER，纠正了68.2%的误接受。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将多模态VA估计作为软生物特征，揭示其隐含的身份区分能力，并引入质量感知的自适应融合机制增强鲁棒性。</div>
+                <div class="summary-item"><strong>意义：</strong>建立了多模态情感估计与身份识别之间的新桥梁，为传统人脸识别提供互补的软生物特征，提升非约束场景下的识别鲁棒性。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态</span>
-                <a href="https://arxiv.org/pdf/2607.21343v1" target="_blank" class="pdf-link">PDF 原文</a>
+                <a href="https://arxiv.org/pdf/2607.21347v1" target="_blank" class="pdf-link">PDF 原文</a>
             </div>
         </div>
 
@@ -1029,41 +983,64 @@
             </h4>
             <p class="authors">Jonas Peché, Aliaksei Tsishurou, Alexander Zap et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>研究多任务学习在基于视频游戏状态数据的异构预测任务中是否比单任务模型能提升泛化能力并降低训练和推理成本。</div>
-                <div class="summary-item"><strong>方法：</strong>采用一种多模态架构，将栅格化视觉输入、全局比赛上下文和每单位状态信息通过图像编码器和基于注意力的交互建模相结合，并在大型专有数据集上比较单任务与多任务训练，评估混合损失和冲突梯度的加权策略，以及在有限目标数据下进行预训练/微调。</div>
-                <div class="summary-item"><strong>结论：</strong>多任务学习在团队竞技游戏中能提升泛化能力并降低开销，且通过预训练/微调在数据稀缺场景下有效；同时研究了地图间迁移下的结构化环境偏移。</div>
-                <div class="summary-item"><strong>创新点：</strong>将针对端点的多模态架构扩展到通用多任务学习设置，并系统研究了游戏遥测数据中异构预测的迁移学习策略。</div>
-                <div class="summary-item"><strong>意义：</strong>展示了多任务学习在多模态游戏状态数据上的有效性，为AI领域（如世界模型、多模态）在复杂交互环境中的迁移和泛化提供了实践参考。</div>
+                <div class="summary-item"><strong>问题：</strong>研究在多人在线团队游戏中，多任务学习（MTL）是否能比单任务模型提升泛化能力，同时降低训练和推理成本。</div>
+                <div class="summary-item"><strong>方法：</strong>采用多模态架构，结合光栅化视觉输入、全局比赛上下文和逐单元状态信息，通过图像编码器和基于注意力的交互建模，在《坦克世界》数据集上对比单任务和多任务训练，并评估混合损失加权策略、冲突梯度处理以及有限目标数据下的预训练/微调效果。</div>
+                <div class="summary-item"><strong>结论：</strong>多任务训练相比单任务模型表现出更好的泛化性能，且在不同游戏地图间的迁移学习下仍保持有效性。</div>
+                <div class="summary-item"><strong>创新点：</strong>将原本用于端点预测的多模态架构推广到通用的多任务设置，并系统性地研究了多任务训练中的损失加权和梯度冲突问题以及游戏内地图迁移。</div>
+                <div class="summary-item"><strong>意义：</strong>为游戏数据驱动的预测任务提供了高效的多任务学习范式，对游戏AI、多模态表征学习及迁移学习具有参考价值。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态</span>
                 <a href="https://arxiv.org/pdf/2607.21290v1" target="_blank" class="pdf-link">PDF 原文</a>
             </div>
         </div>
-<h3 class="topic-header">大模型 <span class="count">(8 篇)</span></h3>
 
-        <div class="paper-card" data-score="8">
+        <div class="paper-card" data-score="7">
             <div class="card-header">
-                <span class="score high">8/10</span>
+                <span class="score medium">7/10</span>
+                <span class="org-tag">OpenAI</span>
+                <span class="date">2026-07-23</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.21155v1" target="_blank">CRAG-MM-Diagnostics: Enabling Stage-Wise Analysis of Knowledge-Intensive VQA</a>
+            </h4>
+            <p class="authors">Hanseok Oh, Parishad BehnamGhader, Benno Krojer et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有KI-VQA基准仅报告最终准确率，无法揭示模型在多阶段子任务（视觉定位、物体识别、知识检索与推理）中的具体失败原因。</div>
+                <div class="summary-item"><strong>方法：</strong>提出CRAG-MM-Diagnostics诊断基准，包含阶段级数据标注，隔离三个关键子任务；评估全参数化和检索增强VLM，并使用新收集的元数据（目标ROI、实体名称、视觉复杂度分数）进行细粒度分析；基于发现提出一个融合视觉定位模块的双模态RAG管道。</div>
+                <div class="summary-item"><strong>结论：</strong>知识检索与推理是主要瓶颈，但也发现VLM在目标识别和图像检索器整合文本线索方面存在问题；提出的接地双模态RAG管道在GPT-5和Qwen上分别提升13.3和8.5个百分点。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次提出阶段级诊断基准，实现KI-VQA管道的细粒度子任务分析，并基于分析提出有效的改进方法。</div>
+                <div class="summary-item"><strong>意义：</strong>揭示了当前多模态知识助手的根本局限，推动阶段感知评估，为设计更鲁棒的KI-VQA系统提供指引。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2607.21155v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
                 
                 <span class="date">2026-07-23</span>
             </div>
             <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2607.21570v1" target="_blank">MedGame: Storytelling Gamification Empowered by Large Language Models for Medical Education</a>
+                <a href="https://arxiv.org/abs/2607.21113v1" target="_blank">RL-MACRO: A Cybernetic Closed-Loop Intelligence Framework for Multimodal Adaptive Robotic Craniotomy</a>
             </h4>
-            <p class="authors">Qian Wu, Xinrong Zhou, Zizhan Ma et al.</p>
+            <p class="authors">Xiao Zhang, Jiaxuan Li, Renzhen Le et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有医学教育中基于LLM的系统主要聚焦于问答或单轮反馈等局部交互，缺乏将整个临床案例组织成以决策为中心的学习轨迹的能力。</div>
-                <div class="summary-item"><strong>方法：</strong>提出MedGame框架，采用双引擎设计：Medical Narrative Designer生成基于案例的临床故事线并包含状态和决策节点，Story Director将其转换为依赖感知的多模态编排计划，并由交互平台渲染；同时构建了包含5000个案例的MedGame Bench基准和评估协议。</div>
-                <div class="summary-item"><strong>结论：</strong>任务特定的微调显著提升了开源LLM在MedGame Bench上的性能，缩小了与商业模型的差距；学生试点研究表明，学习者认为MedGame比纯文本方案更具吸引力和实用性。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次将LLM应用于将静态临床案例转化为结构化、可执行的故事化游戏，实现端到端的医学教育叙事生成与方向编排。</div>
-                <div class="summary-item"><strong>意义：</strong>展示了LLM在医学教育游戏化中的潜力，为构建沉浸式、决策驱动的学习系统提供了新范式。</div>
+                <div class="summary-item"><strong>问题：</strong>在自主机器人开颅手术中，由于组织特性未知且切割温度无法直接测量，导致工具-组织交互控制面临部分可观测和不确定性的问题。</div>
+                <div class="summary-item"><strong>方法：</strong>提出RL-MACRO框架，采用CNN-LSTM观测器融合力和声音反馈重构隐藏温度状态，结合离线隐式Q学习（IQL）策略和双头Actor动态调整进给速度、主轴转速和切割深度，并通过在线轨迹重规划与速度伺服执行。</div>
+                <div class="summary-item"><strong>结论：</strong>在牛肋骨和离体山羊颅骨上验证，温度重构误差R²=0.939，MAE=1.717°C，系统能稳健感知、自适应恢复力/温度偏离并平滑执行不规则表面切割。</div>
+                <div class="summary-item"><strong>创新点：</strong>将控制论闭环智能与离线强化学习（IQL）融合，通过多模态感知动态重构隐藏状态，实现安全高效的自主骨切割。</div>
+                <div class="summary-item"><strong>意义：</strong>展示了强化学习与多模态感知在手术机器人中的实际应用，为部分可观测环境下的具身智能决策提供了数据驱动范式。</div>
             </div>
             <div class="card-footer">
-                <span class="topics">多模态 / 大模型</span>
-                <a href="https://arxiv.org/pdf/2607.21570v1" target="_blank" class="pdf-link">PDF 原文</a>
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2607.21113v1" target="_blank" class="pdf-link">PDF 原文</a>
             </div>
         </div>
+<h3 class="topic-header">大模型 <span class="count">(8 篇)</span></h3>
 
         <div class="paper-card" data-score="8">
             <div class="card-header">
@@ -1076,11 +1053,11 @@
             </h4>
             <p class="authors">Wen Ye, Yuxiao Qu, Aviral Kumar et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>视觉语言模型在几何推理任务中表现不一致，不同视图（文本、图像、图文结合）会引发不同行为，标准多模态后训练未能充分利用这些视图的互补推理路径。</div>
-                <div class="summary-item"><strong>方法：</strong>构建高质量配对多模态几何数据集ODA-Data，并提出MIRROR框架，通过强化学习对所有视图进行评估，选择表现最好的视图作为教师，使用反向KL散度优化其他视图，实现自监督的模态感知互惠推理。</div>
-                <div class="summary-item"><strong>结论：</strong>在几何推理基准上，MIRROR相比标准强化学习方法提升了推理准确性和跨模态行为一致性。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次提出利用不同视图间的表现差异作为自监督信号，通过互惠推理优化多模态模型，使各视图向最佳视图对齐。</div>
-                <div class="summary-item"><strong>意义：</strong>提升了多模态推理的鲁棒性和一致性，为视觉语言模型在需要多模态理解的复杂推理任务（如几何、图表分析）提供了新的训练范式。</div>
+                <div class="summary-item"><strong>问题：</strong>视觉语言模型在多模态推理中不同视图（文本、图像、图文结合）行为不一致，标准后训练无法充分利用互补推理路径。</div>
+                <div class="summary-item"><strong>方法：</strong>构建高质量配对多模态几何数据集ODA-Data；提出Modality-Informed Reciprocal Reasoning Optimization (MIRROR)，对每个问题评估所有视图，选择最佳视图作为教师，用逆KL散度训练其他视图。</div>
+                <div class="summary-item"><strong>结论：</strong>在几何推理基准上，MIRROR优于标准强化学习，产生更准确且跨模态一致的行为。</div>
+                <div class="summary-item"><strong>创新点：</strong>利用多视图推理不一致性，通过自我监督的强化学习进行模态告知的互惠推理优化。</div>
+                <div class="summary-item"><strong>意义：</strong>提升了视觉语言模型在多模态推理中的一致性和准确性，为多模态AI的鲁棒性训练提供新范式。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态 / 大模型</span>
@@ -1099,11 +1076,11 @@
             </h4>
             <p class="authors">Hongxin Zhang, Chunru Lin, Junyan Li et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>从自然语言描述创建动态物理真实的4D世界面临挑战，传统方法依赖大量人工，现有生成方法缺乏物理合理性和可控性。</div>
-                <div class="summary-item"><strong>方法：</strong>提出GS-Agent，一个端到端多智能体框架，集成物理引擎，将任务分解为实体管理（3D资产、材质、位置、运动）和渲染配置（相机、灯光），多个专业智能体通过代码与物理引擎交互并寻求多模态反馈，协作迭代构建与描述一致的4D世界。</div>
-                <div class="summary-item"><strong>结论：</strong>GS-Agent能有效将自然语言转换为多样且物理合理的4D世界，展示液体、可变形物体和刚体之间的丰富交互，并实现电影级相机和灯光控制。</div>
-                <div class="summary-item"><strong>创新点：</strong>利用基础模型构建多智能体系统，模拟人类创建4D世界的过程并自动化，集成物理引擎确保物理合理性和可控性。</div>
-                <div class="summary-item"><strong>意义：</strong>为4D世界生成提出新范式，赋能创意内容生成和物理AI。</div>
+                <div class="summary-item"><strong>问题：</strong>如何从自然语言描述自动生成动态且物理逼真的4D世界，同时保证物理合理性和可控性。</div>
+                <div class="summary-item"><strong>方法：</strong>提出一个端到端的多智能体框架GS-Agent，通过多个具备不同专长的智能体协作，自动执行传统上需要人工完成的4D世界构建步骤（包括3D资产策展、材质调整、放置、运动控制以及渲染配置如相机和灯光），并与物理引擎通过代码交互，利用多模态反馈迭代优化。</div>
+                <div class="summary-item"><strong>结论：</strong>实验表明GS-Agent能有效将自然语言转换为多样且物理合理的4D世界，展示液体、可变形物体和刚体之间的丰富交互，同时实现电影级的相机和灯光控制。</div>
+                <div class="summary-item"><strong>创新点：</strong>利用基础模型构建智能体系统，模拟人类创建4D世界的流程并自动化整个流程，将物理引擎集成到生成循环中。</div>
+                <div class="summary-item"><strong>意义：</strong>为4D世界生成提供了新范式，有望赋能创意内容生成和物理AI。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态 / 大模型 / Agent</span>
@@ -1118,19 +1095,19 @@
                 <span class="date">2026-07-23</span>
             </div>
             <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2607.21496v1" target="_blank">Toward Generalizable Cognitive Impairment Detection with Speech-Based Multimodal Large Language Models</a>
+                <a href="https://arxiv.org/abs/2607.21384v1" target="_blank">Multimodal Pretraining for Generalizable EEG Representation Learning</a>
             </h4>
-            <p class="authors">Yingchao Huang, Xin Wang, Yuhan Su et al.</p>
+            <p class="authors">Targol Bakhtiarvand, Jugal Kalita, Adham Atyabi</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>如何利用开源多模态大语言模型实现泛化、非侵入性的认知障碍检测，同时保护患者隐私。</div>
-                <div class="summary-item"><strong>方法：</strong>提出一个基于开源LLM的多模态框架，提取语音音频的声学嵌入和自动生成的转录文本嵌入，将两者拼接为联合特征后进行下游分类，无需访问原始敏感数据。</div>
-                <div class="summary-item"><strong>结论：</strong>在ADReSS20和ADReSSo21基准上达到92.4%的CI分类准确率，优于单模态基线，并展现出卓越的跨数据集泛化能力，创下新SOTA。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次将开源多模态大语言模型应用于语音认知障碍检测，通过融合声学和语言特征在隐私保护下实现高泛化性能。</div>
-                <div class="summary-item"><strong>意义：</strong>展示了多模态大语言模型在医疗非侵入性筛查中的巨大潜力，为AI驱动的高鲁棒、可扩展诊断系统提供了新范式。</div>
+                <div class="summary-item"><strong>问题：</strong>现有EEG模型局限于特定数据集和任务，缺乏跨数据集和场景的泛化能力；本文旨在构建一个通用的多模态EEG基础模型以支持多种EEG相关任务。</div>
+                <div class="summary-item"><strong>方法：</strong>提出多模态EEG基础模型，包含Mamba架构的原始信号编码器、ViT风格的时间-频率编码器和轻量文本编码器，在共享嵌入空间中通过掩码建模、跨视图对比对齐和时间一致性损失进行无监督预训练，再微调用于癫痫检测。</div>
+                <div class="summary-item"><strong>结论：</strong>在CHB-MIT基准上单模型AUROC达0.874，集成模型达0.878，达到SOTA；LOSO协议下平均平衡准确率0.558，展示了患者无关检测的挑战性。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将Mamba架构用于EEG原始信号编码，并结合文本、时频图等多模态信息进行对比学习和掩码预训练，实现无需标签的通用表征学习。</div>
+                <div class="summary-item"><strong>意义：</strong>为脑电信号分析领域提供了可泛化的基础模型范式，推动EEG从特定任务模型向通用多模态基础模型发展，具有潜在临床价值。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态 / 大模型</span>
-                <a href="https://arxiv.org/pdf/2607.21496v1" target="_blank" class="pdf-link">PDF 原文</a>
+                <a href="https://arxiv.org/pdf/2607.21384v1" target="_blank" class="pdf-link">PDF 原文</a>
             </div>
         </div>
 
@@ -1145,11 +1122,11 @@
             </h4>
             <p class="authors">Lorenzo Orsingher, Thomas De Min, Massimiliano Mancini et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有多模态大模型遗忘研究忽略了现实场景中不同人群请求遗忘频率不均衡导致的模型偏见问题。</div>
-                <div class="summary-item"><strong>方法：</strong>提出FAIRGET基准，模拟从不均衡到挑战性的多种遗忘请求场景；并设计FAUN算法，利用偏见感知的激活导向机制在遗忘数据时保持模型公平性。</div>
-                <div class="summary-item"><strong>结论：</strong>在FAIRGET和FIUBench上，FAUN在遗忘质量和公平性方面均优于现有方法。</div>
-                <div class="summary-item"><strong>创新点：</strong>首个评估多模态大模型在不均衡遗忘请求下公平性的基准及相应的公平遗忘算法。</div>
-                <div class="summary-item"><strong>意义：</strong>为多模态大模型在隐私合规中纳入公平性考虑提供了关键评估方法和算法，避免了因遗忘请求不均衡导致的歧视风险。</div>
+                <div class="summary-item"><strong>问题：</strong>在多模态大模型（MLLM）的机器遗忘中，现有基准假设遗忘请求均匀分布，但现实场景中不同人口群体的遗忘请求频率可能不均衡，导致模型产生偏见行为。论文旨在解决不均衡遗忘请求下的公平性评估和算法问题。</div>
+                <div class="summary-item"><strong>方法：</strong>提出了FAIRGET基准，模拟多种现实场景中的不均衡遗忘请求；并提出了FAUN算法，利用偏见感知的激活引导机制在遗忘数据的同时保持模型公平性。</div>
+                <div class="summary-item"><strong>结论：</strong>在FAIRGET和已有FIUBench基准上，FAUN在遗忘质量和公平性方面均优于现有方法。</div>
+                <div class="summary-item"><strong>创新点：</strong>首个评估多模态大模型在不均衡遗忘请求下公平性的基准（FAIRGET）和首个兼顾遗忘与公平性的多模态遗忘算法（FAUN）。</div>
+                <div class="summary-item"><strong>意义：</strong>为AI合规（如数据删除权）提供了公平性视角，推动多模态大模型在实际部署中兼顾隐私与伦理。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态 / 大模型</span>
@@ -1157,26 +1134,49 @@
             </div>
         </div>
 
-        <div class="paper-card" data-score="8">
+        <div class="paper-card" data-score="7">
             <div class="card-header">
-                <span class="score high">8/10</span>
-                <span class="org-tag">OpenAI</span>
+                <span class="score medium">7/10</span>
+                
                 <span class="date">2026-07-23</span>
             </div>
             <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2607.21155v1" target="_blank">CRAG-MM-Diagnostics: Enabling Stage-Wise Analysis of Knowledge-Intensive VQA</a>
+                <a href="https://arxiv.org/abs/2607.21570v1" target="_blank">MedGame: Storytelling Gamification Empowered by Large Language Models for Medical Education</a>
             </h4>
-            <p class="authors">Hanseok Oh, Parishad BehnamGhader, Benno Krojer et al.</p>
+            <p class="authors">Qian Wu, Xinrong Zhou, Zizhan Ma et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>知识密集型视觉问答（KI-VQA）基准通常只报告最终准确率，隐藏了各个子问题（如指代理解、视觉定位、目标识别、知识检索和推理）中的失败来源。</div>
-                <div class="summary-item"><strong>方法：</strong>提出了CRAG-MM-Diagnostics诊断基准，通过阶段式数据标注隔离语言视觉定位、目标识别和知识检索/推理三个子问题；评估了全参数和检索增强型VLM，并使用目标ROI、实体名称和视觉复杂度评分等元数据进行细粒度分析；基于发现提出了一个带视觉定位模块的接地双模态RAG管道。</div>
-                <div class="summary-item"><strong>结论：</strong>知识检索和推理是主要瓶颈，但VLM在目标对象识别上也存在困难，图像检索器难以整合文本线索；所提出的接地双模态RAG管道在GPT-5和Qwen上分别提升了13.3和8.5个百分点的准确率。</div>
-                <div class="summary-item"><strong>创新点：</strong>提供了一个细粒度的阶段式诊断基准，系统性地隔离和分析KI-VQA流水线中各子问题的失败，并基于此提出改进方案。</div>
-                <div class="summary-item"><strong>意义：</strong>揭示了当前KI-VQA系统的根本局限性，促进了阶段感知评估和更有效的多模态知识助手开发。</div>
+                <div class="summary-item"><strong>问题：</strong>现有医学教育系统多聚焦于局部问答，缺乏将完整临床案例组织成以决策为中心的学习轨迹的方法。</div>
+                <div class="summary-item"><strong>方法：</strong>提出MedGame框架，采用双引擎设计：Medical Narrative Designer将静态案例转化为带有状态和决策节点的故事线，Story Director将其转换为依赖感知的多模态编排计划，并由交互平台渲染执行。</div>
+                <div class="summary-item"><strong>结论：</strong>构建了包含5000个案例的基准MedGame Bench，实验表明任务特定微调显著提升开源LLM性能并缩小与商业模型的差距；学生研究显示学习者认为MedGame比纯文本方案更具参与感和实用性。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将LLM驱动的故事化游戏化方法系统性地应用于医学教育，实现从静态案例到动态决策轨迹的转换。</div>
+                <div class="summary-item"><strong>意义：</strong>展示了LLM在复杂教育场景（如构建交互式、多模态学习经验）中的创新应用潜力，推动了AI辅助教学范式的发展。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态 / 大模型</span>
-                <a href="https://arxiv.org/pdf/2607.21155v1" target="_blank" class="pdf-link">PDF 原文</a>
+                <a href="https://arxiv.org/pdf/2607.21570v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-07-23</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2607.21496v1" target="_blank">Toward Generalizable Cognitive Impairment Detection with Speech-Based Multimodal Large Language Models</a>
+            </h4>
+            <p class="authors">Yingchao Huang, Xin Wang, Yuhan Su et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>如何利用基于语音的多模态大语言模型实现通用且准确的认知障碍检测，同时保护患者隐私？</div>
+                <div class="summary-item"><strong>方法：</strong>提出一个基于开源大语言模型的多模态检测框架，从语音中提取声学嵌入，从自动转录文本中获取文本嵌入，拼接多模态特征后用于下游分类，无需访问原始患者数据。</div>
+                <div class="summary-item"><strong>结论：</strong>在ADReSS20和ADReSSo21基准数据集上达到92.4%的分类准确率，持续优于单模态基线，并展现出跨数据集泛化的新最优性能。</div>
+                <div class="summary-item"><strong>创新点：</strong>将开源大语言模型与多模态（声学+文本）融合用于认知障碍检测，且在隐私保护下实现跨场景泛化。</div>
+                <div class="summary-item"><strong>意义：</strong>展示了多模态大语言模型在非侵入式医疗筛查中的潜力，推动语音评估的可扩展性和鲁棒性。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2607.21496v1" target="_blank" class="pdf-link">PDF 原文</a>
             </div>
         </div>
 
@@ -1191,11 +1191,11 @@
             </h4>
             <p class="authors">Liang-Yuan Wu, Sripathi Sridhar, Mark Cartwright et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有自动音频描述（AAC）评估指标只关注平面文本，无法有效评估结构化音频描述中融合的多模态属性。</div>
-                <div class="summary-item"><strong>方法：</strong>提出一个多轴评估框架，基于AudioCards数据集，在标签集、描述、逻辑推理、数值测量和频谱轮廓五个正交轴上，结合大语言模型（LLM）裁判和确定性计算指标进行评估，并通过注入类型化分级错误的受控扰动测试协议验证框架可靠性。</div>
-                <div class="summary-item"><strong>结论：</strong>该框架能成功区分意义保持的释义与真正的语义和声学破坏，证明了评估的有效性和鲁棒性。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次为结构化音频描述设计了多轴评估框架，并结合受控扰动测试进行系统性验证。</div>
-                <div class="summary-item"><strong>意义：</strong>填补了结构化音频描述评估的空白，推动多模态AI和音视频理解领域的评测方法论发展。</div>
+                <div class="summary-item"><strong>问题：</strong>结构化音频字幕（如AudioCards）的评估面临挑战，现有指标仅适用于平面文本，无法可靠评估多模态属性。</div>
+                <div class="summary-item"><strong>方法：</strong>提出一个多轴评估框架，基于AudioCards数据集，在标签集、描述、逻辑推理、数值测量和频谱轮廓五个正交轴上评估输出，结合LLM评审捕捉语义细节和确定性计算指标精确测量声学偏差，并通过受控扰动测试注入类型化和分级错误来验证框架可靠性。</div>
+                <div class="summary-item"><strong>结论：</strong>该框架能有效区分意义保留的改写与真正的语义/声学损坏，验证了其评估能力的有效性。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次为结构化音频描述设计多轴评估框架，并引入受控扰动测试协议以严谨验证评估可靠性。</div>
+                <div class="summary-item"><strong>意义：</strong>改进多模态音频字幕的评估标准，有助于推动世界模型和具身智能中音频理解的进展。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态 / 大模型</span>
@@ -1206,23 +1206,23 @@
         <div class="paper-card" data-score="7">
             <div class="card-header">
                 <span class="score medium">7/10</span>
-                
+                <span class="org-tag">OpenAI</span>
                 <span class="date">2026-07-23</span>
             </div>
             <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2607.21384v1" target="_blank">Multimodal Pretraining for Generalizable EEG Representation Learning</a>
+                <a href="https://arxiv.org/abs/2607.21155v1" target="_blank">CRAG-MM-Diagnostics: Enabling Stage-Wise Analysis of Knowledge-Intensive VQA</a>
             </h4>
-            <p class="authors">Targol Bakhtiarvand, Jugal Kalita, Adham Atyabi</p>
+            <p class="authors">Hanseok Oh, Parishad BehnamGhader, Benno Krojer et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有脑电图（EEG）模型通常在特定数据集和任务上表现良好，缺乏跨数据集或不同场景的泛化能力，难以应用于癫痫检测等任务。</div>
-                <div class="summary-item"><strong>方法：</strong>提出了一个多模态EEG基础模型，包括基于Mamba架构的原始信号编码器、用于时频数据的Vision Transformer（ViT）风格编码器以及文本的轻量编码器，并通过掩码建模、跨视图对比对齐和时间一致性损失等技术进行预训练。</div>
-                <div class="summary-item"><strong>结论：</strong>在CHB-MIT癫痫检测基准上，最佳单模型AUROC达到0.874，集成模型达到0.878，创下最新性能；在留一受试者（LOSO）协议下平均平衡准确率为0.558，展示了较强的泛化能力。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次将Mamba架构与ViT结合用于EEG多模态预训练，并通过无监督方式学习丰富的癫痫相关表示。</div>
-                <div class="summary-item"><strong>意义：</strong>为EEG领域提供了可泛化的基础模型，推动了智能医疗中多模态、自监督学习的发展，有助于实现患者独立的癫痫检测。</div>
+                <div class="summary-item"><strong>问题：</strong>现有KI-VQA基准仅报告最终准确率，无法揭示模型在多阶段子任务（视觉定位、物体识别、知识检索与推理）中的具体失败原因。</div>
+                <div class="summary-item"><strong>方法：</strong>提出CRAG-MM-Diagnostics诊断基准，包含阶段级数据标注，隔离三个关键子任务；评估全参数化和检索增强VLM，并使用新收集的元数据（目标ROI、实体名称、视觉复杂度分数）进行细粒度分析；基于发现提出一个融合视觉定位模块的双模态RAG管道。</div>
+                <div class="summary-item"><strong>结论：</strong>知识检索与推理是主要瓶颈，但也发现VLM在目标识别和图像检索器整合文本线索方面存在问题；提出的接地双模态RAG管道在GPT-5和Qwen上分别提升13.3和8.5个百分点。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次提出阶段级诊断基准，实现KI-VQA管道的细粒度子任务分析，并基于分析提出有效的改进方法。</div>
+                <div class="summary-item"><strong>意义：</strong>揭示了当前多模态知识助手的根本局限，推动阶段感知评估，为设计更鲁棒的KI-VQA系统提供指引。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态 / 大模型</span>
-                <a href="https://arxiv.org/pdf/2607.21384v1" target="_blank" class="pdf-link">PDF 原文</a>
+                <a href="https://arxiv.org/pdf/2607.21155v1" target="_blank" class="pdf-link">PDF 原文</a>
             </div>
         </div>
 <h3 class="topic-header">Agent <span class="count">(2 篇)</span></h3>
@@ -1238,11 +1238,11 @@
             </h4>
             <p class="authors">Xiao Yu, Baolin Peng, Ruize Xu et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现代AI智能体依赖复杂的推理框架（如Claude Code、Codex、OpenClaw），但这些框架难以在开源基础设施上进行端到端训练，因为现有SFT/RL栈无法原生表达有状态、多进程的框架推理。</div>
-                <div class="summary-item"><strong>方法：</strong>提出OpenForgeRL，一个开源框架，通过轻量代理记录框架的模型调用并作为训练数据供标准RL代码库使用，同时利用Kubernetes编排器在独立远程容器中执行每个rollout，从而在任意环境中对任意框架进行可扩展的端到端训练。</div>
-                <div class="summary-item"><strong>结论：</strong>在ClawEval、QwenClawBench、OSWorld-Verified、Online-Mind2Web、WebVoyager等基准上，OpenForgeRL训练出的智能体显著超越同等规模的开源基线，并在GUI设置中匹配或超越数倍规模更大的模型；分析发现不同框架的学习难度差异大，RL提升了自我验证、工具覆盖和多步规划等可靠性，但错误恢复等关键能力仍薄弱。</div>
-                <div class="summary-item"><strong>创新点：</strong>提出一种将训练与推理解耦的通用框架，首次支持在真实部署环境和任意推理框架中对基于框架的智能体进行端到端强化学习训练。</div>
-                <div class="summary-item"><strong>意义：</strong>为开源社区提供了可扩展的智能体训练基础设施，推动了领域内从复杂推理框架到可训练智能体的实用化进程。</div>
+                <div class="summary-item"><strong>问题：</strong>现代AI agent依赖复杂的推理框架（如Claude Code、Codex、OpenClaw），但现有开放SFT/RL训练栈无法原生支持这些有状态、多进程的框架推理，导致端到端训练困难。</div>
+                <div class="summary-item"><strong>方法：</strong>提出OpenForgeRL开源框架，通过轻量代理记录推理框架的模型调用作为训练数据，并利用Kubernetes协调器在远程容器中执行每个rollout，实现训练与推理解耦，从而在任何环境中端到端训练任意推理框架的agent。</div>
+                <div class="summary-item"><strong>结论：</strong>在ClawEval上达到31.7 pass^3和55.9 pass@3，在OSWorld-Verified上达到37.7，超越类似规模的开源基线，部分基准匹配或超越数倍大的模型。RL训练提升了agent的自我验证、工具覆盖和多步计划完成能力，但错误恢复仍弱。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次提出通过代理和容器化协调器实现任意推理框架与标准RL训练栈的通用解耦训练，无需修改框架本身。</div>
+                <div class="summary-item"><strong>意义：</strong>为在真实部署环境中训练和优化基于复杂推理框架的agent提供了可扩展的开源工具，推动开放基础设施下的agent强化学习研究。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态 / Agent</span>
@@ -1261,11 +1261,11 @@
             </h4>
             <p class="authors">Hongxin Zhang, Chunru Lin, Junyan Li et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>从自然语言描述创建动态物理真实的4D世界面临挑战，传统方法依赖大量人工，现有生成方法缺乏物理合理性和可控性。</div>
-                <div class="summary-item"><strong>方法：</strong>提出GS-Agent，一个端到端多智能体框架，集成物理引擎，将任务分解为实体管理（3D资产、材质、位置、运动）和渲染配置（相机、灯光），多个专业智能体通过代码与物理引擎交互并寻求多模态反馈，协作迭代构建与描述一致的4D世界。</div>
-                <div class="summary-item"><strong>结论：</strong>GS-Agent能有效将自然语言转换为多样且物理合理的4D世界，展示液体、可变形物体和刚体之间的丰富交互，并实现电影级相机和灯光控制。</div>
-                <div class="summary-item"><strong>创新点：</strong>利用基础模型构建多智能体系统，模拟人类创建4D世界的过程并自动化，集成物理引擎确保物理合理性和可控性。</div>
-                <div class="summary-item"><strong>意义：</strong>为4D世界生成提出新范式，赋能创意内容生成和物理AI。</div>
+                <div class="summary-item"><strong>问题：</strong>如何从自然语言描述自动生成动态且物理逼真的4D世界，同时保证物理合理性和可控性。</div>
+                <div class="summary-item"><strong>方法：</strong>提出一个端到端的多智能体框架GS-Agent，通过多个具备不同专长的智能体协作，自动执行传统上需要人工完成的4D世界构建步骤（包括3D资产策展、材质调整、放置、运动控制以及渲染配置如相机和灯光），并与物理引擎通过代码交互，利用多模态反馈迭代优化。</div>
+                <div class="summary-item"><strong>结论：</strong>实验表明GS-Agent能有效将自然语言转换为多样且物理合理的4D世界，展示液体、可变形物体和刚体之间的丰富交互，同时实现电影级的相机和灯光控制。</div>
+                <div class="summary-item"><strong>创新点：</strong>利用基础模型构建智能体系统，模拟人类创建4D世界的流程并自动化整个流程，将物理引擎集成到生成循环中。</div>
+                <div class="summary-item"><strong>意义：</strong>为4D世界生成提供了新范式，有望赋能创意内容生成和物理AI。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态 / 大模型 / Agent</span>
@@ -1274,9 +1274,9 @@
         </div>
 <h3 class="topic-header">具身智能 <span class="count">(1 篇)</span></h3>
 
-        <div class="paper-card" data-score="7">
+        <div class="paper-card" data-score="8">
             <div class="card-header">
-                <span class="score medium">7/10</span>
+                <span class="score high">8/10</span>
                 
                 <span class="date">2026-07-23</span>
             </div>
@@ -1285,11 +1285,11 @@
             </h4>
             <p class="authors">Mengfei Zhao, Dihong Huang, Yikai Tang et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有机器人操作策略学习依赖多样化高质量数据，但现有数据管道因依赖专用硬件、集中式操作或固定任务集而难以扩展。</div>
-                <div class="summary-item"><strong>方法：</strong>提出AXIS，一个可增长的社区驱动数据引擎和基准，通过浏览器远程操作收集大规模演示，自动生成并验证新任务，并利用自动成功检查、质量过滤、轨迹平滑以及视觉和物理增强将社区收集的演示转化为训练就绪数据。</div>
-                <div class="summary-item"><strong>结论：</strong>AXIS数据集包含207个多样化任务和5万+轨迹，在统一评估套件下，持续预训练使π0.5模型总体成功率提升5.8%，超过RoboCasa365预训练模型37.3%，且数据量增加时性能持续提升。</div>
-                <div class="summary-item"><strong>创新点：</strong>创新在于构建了一个可增长的、社区驱动的数据引擎，结合自动化任务生成与验证、全流程数据处理及统一评估协议，实现了大规模机器人操作数据的规模化收集与利用。</div>
-                <div class="summary-item"><strong>意义：</strong>为机器人学习提供了可扩展的数据基础设施和基准，推动社区协作和通用操作策略的发展。</div>
+                <div class="summary-item"><strong>问题：</strong>现有机器人操作数据管线难以扩展，依赖专用硬件、集中化操作或固定任务集，缺乏可增长的社区驱动数据引擎。</div>
+                <div class="summary-item"><strong>方法：</strong>提出AXIS，一个可增长的社区驱动数据引擎，支持浏览器远程操作收集大规模演示，自动生成和验证新任务，并通过自动成功检查、质量过滤、轨迹平滑及视觉和物理增强将社区收集的演示转化为训练就绪的数据。</div>
+                <div class="summary-item"><strong>结论：</strong>AXIS数据集包含207个多样化任务和5万+轨迹；在VLA策略上持续预训练使π0.5整体成功率提升5.8%，优于RoboCasa365预训练模型37.3%，并随数据量增加表现一致扩展。</div>
+                <div class="summary-item"><strong>创新点：</strong>构建了社区驱动、自动生长且包含完整数据处理流水线的可扩展机器人操作数据引擎和基准。</div>
+                <div class="summary-item"><strong>意义：</strong>为机器人操作学习提供开源、可扩展的数据基础设施，推动VLA策略的可重复评估和规模化研究。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态 / 具身智能</span>
@@ -1311,13 +1311,9 @@
                 <span class="contact-org-badge">Anthropic</span>
             </div>
             <div class="contact-list">
-                <div class="contact-person"><span class="role-badge">第一作者</span><strong>Xiao Yu</strong> — Columbia University <a href="mailto:xy2437@columbia.edu" class="email-link">xy2437@columbia.edu</a></div>
-                <div class="contact-person"><span class="role-badge">共同第一作者</span><strong>Baolin Peng</strong> — Microsoft Research <a href="mailto:baolinpeng@microsoft.com" class="email-link">baolinpeng@microsoft.com</a></div>
-                <div class="contact-person"><strong>Ruize Xu</strong> — Dartmouth College </div>
-                <div class="contact-person"><strong>Hao Zou</strong> — Columbia University </div>
-                <div class="contact-person"><strong>Qianhui Wu</strong> — Microsoft Research </div>
+                <div class="contact-person"><a href="mailto:baolinpeng@microsoft.com" class="email-link">baolinpeng@microsoft.com</a></div>
+                <div class="contact-person"><a href="mailto:xy2437@columbia.edu" class="email-link">xy2437@columbia.edu</a></div>
             </div>
-            <div class="corresponding">通讯作者: Zhou Yu, Jianfeng Gao</div>
         </div>
     <h3 class="contacts-subtitle">其他作者</h3>
 
@@ -1338,29 +1334,13 @@
 
         <div class="contact-card">
             <div class="contact-paper">
-                <a href="https://arxiv.org/abs/2607.21594v1" target="_blank">[8分] Streaming Multi-Agent Autoregressive Diffusion Model with Wo...</a>
+                <a href="https://arxiv.org/abs/2607.21588v1" target="_blank">[8分] AXIS: A Growable Community-Driven Data Engine for Scalable R...</a>
                 
             </div>
             <div class="contact-list">
-                <div class="contact-person"><span class="role-badge">第一作者</span><strong>Sicheng Mo</strong> — University of California, Los Angeles </div>
-                <div class="contact-person"><span class="role-badge">第一作者</span><strong>Yuheng Li</strong> — University of California, Los Angeles </div>
-                <div class="contact-person"><strong>Ziyang Leng</strong> — University of California, Los Angeles </div>
-                <div class="contact-person"><strong>Krishna Kumar Singh</strong> — Adobe Research </div>
-                <div class="contact-person"><strong>Bolei Zhou</strong> — University of California, Los Angeles </div>
-            </div>
-        </div>
-
-        <div class="contact-card">
-            <div class="contact-paper">
-                <a href="https://arxiv.org/abs/2607.21570v1" target="_blank">[8分] MedGame: Storytelling Gamification Empowered by Large Langua...</a>
-                
-            </div>
-            <div class="contact-list">
-                <div class="contact-person"><strong>Qian Wu</strong> — CUHK </div>
-                <div class="contact-person"><strong>Xinrong Zhou</strong> — CUHK </div>
-                <div class="contact-person"><strong>Zizhan Ma</strong> — CUHK </div>
-                <div class="contact-person"><strong>Kai Chen</strong> — CUHK </div>
-                <div class="contact-person"><strong>Zheyao Gao</strong> — CUHK </div>
+                <div class="contact-person"><a href="mailto:zhaomengfei248@gmail.com" class="email-link">zhaomengfei248@gmail.com</a></div>
+                <div class="contact-person"><a href="mailto:jianfei.yang@ntu.edu.sg" class="email-link">jianfei.yang@ntu.edu.sg</a></div>
+                <div class="contact-person"><a href="mailto:li@gatech.edu" class="email-link">li@gatech.edu</a></div>
             </div>
         </div>
 
@@ -1370,20 +1350,10 @@
                 
             </div>
             <div class="contact-list">
-                <div class="contact-person"><span class="role-badge">第一作者</span><strong>Wen Ye</strong> — University of Southern California </div>
-                <div class="contact-person"><span class="role-badge">第一作者</span><strong>Yuxiao Qu</strong> — Carnegie Mellon University </div>
+                <div class="contact-person"><strong>Wen Ye</strong> — University of Southern California </div>
+                <div class="contact-person"><strong>Yuxiao Qu</strong> — Carnegie Mellon University </div>
                 <div class="contact-person"><strong>Aviral Kumar</strong> — Carnegie Mellon University </div>
                 <div class="contact-person"><strong>Xuezhe Ma</strong> — University of Southern California </div>
-            </div>
-        </div>
-
-        <div class="contact-card">
-            <div class="contact-paper">
-                <a href="https://arxiv.org/abs/2607.21546v1" target="_blank">[8分] UnDA: Unpaired Domain Alignment for Cross-Modal Knowledge Tr...</a>
-                
-            </div>
-            <div class="contact-list">
-                <div class="contact-person"><a href="mailto:rafsan@kiom.re.kr" class="email-link">rafsan@kiom.re.kr</a></div>
             </div>
         </div>
 
@@ -1392,20 +1362,14 @@
                 <a href="https://arxiv.org/abs/2607.21522v1" target="_blank">[8分] GS-Agent: Creating 4D Physical Worlds With Generative Simula...</a>
                 
             </div>
-        </div>
-
-        <div class="contact-card">
-            <div class="contact-paper">
-                <a href="https://arxiv.org/abs/2607.21496v1" target="_blank">[8分] Toward Generalizable Cognitive Impairment Detection with Spe...</a>
-                
-            </div>
             <div class="contact-list">
-                <div class="contact-person"><span class="role-badge">第一作者,通讯作者</span><strong>Yingchao Huang</strong> — Faculty of Digital Innovation, Arts & Sciences, Saskatchewan Polytechnic, Regina SK S4S 5X1, Canada </div>
-                <div class="contact-person"><strong>Xin Wang</strong> — Faculty of Digital Innovation, Arts & Sciences, Saskatchewan Polytechnic, Regina SK S4S 5X1, Canada </div>
-                <div class="contact-person"><strong>Yuhan Su</strong> — School of Basic Medical Sciences, Hebei University, Baoding 071000, China </div>
-                <div class="contact-person"><strong>Shanshan Yao</strong> — Department of Civil & Environmental Engineering and School of Mining & Petroleum Engineering, University of Alberta, Edmonton AB T6G 2H5, Canada </div>
+                <div class="contact-person"><span class="role-badge">第一作者</span><strong>Hongxin Zhang</strong> — University of Massachusetts Amherst <a href="mailto:hongxinzhang@umass.edu" class="email-link">hongxinzhang@umass.edu</a></div>
+                <div class="contact-person"><strong>Chunru Lin</strong> — University of Massachusetts Amherst <a href="mailto:chunrulin@umass.edu" class="email-link">chunrulin@umass.edu</a></div>
+                <div class="contact-person"><strong>Junyan Li</strong> — University of Massachusetts Amherst <a href="mailto:junyanli@umass.edu" class="email-link">junyanli@umass.edu</a></div>
+                <div class="contact-person"><strong>Zhou Xian</strong> — Genesis AI <a href="mailto:zhouxian@genesis-ai.company" class="email-link">zhouxian@genesis-ai.company</a></div>
+                <div class="contact-person"><strong>Tsun-Hsuan Wang</strong> — Genesis AI <a href="mailto:johnson@genesis-ai.company" class="email-link">johnson@genesis-ai.company</a></div>
             </div>
-            <div class="corresponding">通讯作者: Yingchao Huang</div>
+            <div class="corresponding">通讯作者: Chuang Gan</div>
         </div>
 
         <div class="contact-card">
@@ -1414,13 +1378,9 @@
                 
             </div>
             <div class="contact-list">
-                <div class="contact-person"><span class="role-badge">第一作者</span><strong>Yuhua Wang</strong> — School of Artificial Intelligence, Beihang University, Beijing, China <a href="mailto:yuhuawang@buaa.edu.cn" class="email-link">yuhuawang@buaa.edu.cn</a></div>
-                <div class="contact-person"><strong>Xiaodong Li</strong> — Center for the Applied Statistics, School of Statistics, Renmin University of China, Beijing, China </div>
-                <div class="contact-person"><strong>Yihao Guo</strong> — School of Computer Science & Technology, Beijing Jiaotong University, Beijing, China </div>
-                <div class="contact-person"><strong>Yuxiang Jia</strong> — School of Software, Beihang University, Beijing, China </div>
-                <div class="contact-person"><span class="role-badge">通讯作者</span><strong>Qinnan Zhang</strong> — School of Artificial Intelligence, Beihang University, Beijing, China </div>
+                <div class="contact-person"><a href="mailto:yuhuawang@buaa.edu.cn" class="email-link">yuhuawang@buaa.edu.cn</a></div>
+                <div class="contact-person"><a href="mailto:permissions@acm.org" class="email-link">permissions@acm.org</a></div>
             </div>
-            <div class="corresponding">通讯作者: Qinnan Zhang, Yifan Sun</div>
         </div>
 
         <div class="contact-card">
@@ -1429,13 +1389,45 @@
                 
             </div>
             <div class="contact-list">
-                <div class="contact-person"><span class="role-badge">第一作者</span><strong>Chengfeng Zhao</strong> — Institute of Automation, CAS; University of Chinese Academy of Sciences <a href="mailto:zhaochengfeng2024@ia.ac.cn" class="email-link">zhaochengfeng2024@ia.ac.cn</a></div>
-                <div class="contact-person"><strong>Jinhui Chen</strong> — Institute of Automation, CAS; University of Chinese Academy of Sciences <a href="mailto:chenjinhui2025@ia.ac.cn" class="email-link">chenjinhui2025@ia.ac.cn</a></div>
-                <div class="contact-person"><strong>Sirui Liang</strong> — Institute of Automation, CAS; University of Chinese Academy of Sciences; Zhongguancun Institute of Artificial Intelligence <a href="mailto:liangsirui2024@ia.ac.cn" class="email-link">liangsirui2024@ia.ac.cn</a></div>
-                <div class="contact-person"><strong>Shizhu He</strong> — Institute of Automation, CAS; University of Chinese Academy of Sciences <a href="mailto:shizhu.he@nlpr.ia.ac.cn" class="email-link">shizhu.he@nlpr.ia.ac.cn</a></div>
-                <div class="contact-person"><strong>Yequan Wang</strong> — Beijing Academy of Artificial Intelligence <a href="mailto:tshwangyequan@gmail.com" class="email-link">tshwangyequan@gmail.com</a></div>
+                <div class="contact-person"><a href="mailto:tshwangyequan@gmail.com" class="email-link">tshwangyequan@gmail.com</a></div>
             </div>
-            <div class="corresponding">通讯作者: Kang Liu</div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2607.21384v1" target="_blank">[8分] Multimodal Pretraining for Generalizable EEG Representation ...</a>
+                
+            </div>
+            <div class="contact-list">
+                <div class="contact-person"><strong>Targol Bakhtiarvand</strong>  </div>
+                <div class="contact-person"><strong>Jugal Kalita</strong>  </div>
+                <div class="contact-person"><strong>Adham Atyabi</strong>  </div>
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2607.21343v1" target="_blank">[8分] M$^3$-Gen: Interpretable Multimodal Generation of Gene Expre...</a>
+                
+            </div>
+            <div class="contact-list">
+                <div class="contact-person"><strong>Francesca Pia Panaccione</strong> — DEIB - Dipartimento Elettronica, Informazione e Bioingegneria, Politecnico di Milano, Milan, 20133, Italy <a href="mailto:francescapia.panaccione@polimi.it" class="email-link">francescapia.panaccione@polimi.it</a></div>
+                <div class="contact-person"><strong>Carlo Sgaravatti</strong> — DEIB - Dipartimento Elettronica, Informazione e Bioingegneria, Politecnico di Milano, Milan, 20133, Italy <a href="mailto:carlo.sgaravatti@polimi.it" class="email-link">carlo.sgaravatti@polimi.it</a></div>
+                <div class="contact-person"><strong>Marco Venere</strong> — DEIB - Dipartimento Elettronica, Informazione e Bioingegneria, Politecnico di Milano, Milan, 20133, Italy <a href="mailto:marco.venere@polimi.it" class="email-link">marco.venere@polimi.it</a></div>
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2607.21300v1" target="_blank">[8分] Unlearning Under Imbalance: Benchmarking Fairness in Multimo...</a>
+                
+            </div>
+            <div class="contact-list">
+                <div class="contact-person"><strong>Thomas De Min</strong> — University of Trento, Trento, Italy <a href="mailto:thomas.demin@unitn.it" class="email-link">thomas.demin@unitn.it</a></div>
+                <div class="contact-person"><strong>Massimiliano Mancini</strong> — University of Trento, Trento, Italy <a href="mailto:massimiliano.mancini@unitn.it" class="email-link">massimiliano.mancini@unitn.it</a></div>
+                <div class="contact-person"><strong>Elisa Ricci</strong> — University of Trento, Trento, Italy <a href="mailto:e.ricci@unitn.it" class="email-link">e.ricci@unitn.it</a></div>
+                <div class="contact-person"><strong>Davide Talon</strong> — Fondazione Bruno Kessler, Trento, Italy <a href="mailto:dtalon@fbk.eu" class="email-link">dtalon@fbk.eu</a></div>
+            </div>
         </div>
 </div>
 
