@@ -19,4 +19,4 @@
 
 ## 查看方式
 
-部署成功后，访问：`https://你的用户名.github.io/arxiv-daily-tracker/`
+部署成功后，访问：`https://AbnerField-ai.github.io/arxiv-daily-tracker/`
