@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 论文日报 - 2026-10-15</title>
+    <title>AI 论文日报 - 2026-10-16</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -482,7 +482,7 @@
 <body>
     <div class="page-header">
         <h1>AI 论文日报</h1>
-        <p class="meta">2026-10-15 | 世界模型 / 多模态 / 大模型 / Agent / 具身智能</p>
+        <p class="meta">2026-10-16 | 世界模型 / 多模态 / 大模型 / Agent / 具身智能</p>
         <div class="stats">
             <span class="stat">arXiv 抓取 100 篇</span>
             <span class="stat">AI 筛选 20 篇</span>
@@ -503,21 +503,21 @@
     <div class="section-insight">
         <div class="insight-header">
             <h2>今日趋势总结</h2>
-            <span class="insight-date">2026-10-15</span>
+            <span class="insight-date">2026-10-16</span>
         </div>
         <div class="insight-body">
             <div class="insight-item">
                 <div class="insight-label">研究热点</div>
-                <div class="insight-content">（分析生成失败，请查看各论文摘要）</div>
+                <div class="insight-content">今日论文高度集中在「世界模型 + 机器人操作」与「多模态空间智能」两条主线，前者围绕环境潜变量、几何状态、空间记忆和MPC/自博弈闭环展开，后者则聚焦VLA动作策略、3D空间推理与视觉token压缩。另一明显趋势是把验证器、实时交互评测和分级打分机制引入生成式世界模型与GUI智能体，说明研究重心正从「能生成/能执行」转向「可验证、可实时、可高效部署」。</div>
             </div>
             <div class="insight-item highlight">
                 <div class="insight-label">大厂方向重合</div>
-                <div class="insight-content"></div>
+                <div class="insight-content">今日筛选出的20篇论文中未检测到明确的大厂（工业界）署名机构，仅UC Berkeley等高校出现，因此不存在大厂之间的方向重合。从技术路线看，学界当前在两条潜在竞争路线上并行：一是以世界模型/几何状态/空间记忆为核心的「表示与预测」路线，二是以VLA、流匹配策略、专家蒸馏为核心的「动作与策略」路线，二者都试图解决机器人泛化与数据效率问题，未来若大厂进入，最可能在这两个交叉点形成直接竞争。</div>
                 
             </div>
             <div class="insight-item">
                 <div class="insight-label">值得关注</div>
-                <div class="insight-content"></div>
+                <div class="insight-content">世界模型相关论文单日出现6篇（Dexterity from Supervised Play、T2-z、GeoState、Velox、OmniVerifier-C1、Perceive-Predict-Plan），为今日最密集方向，且普遍强调测试时自适应、空间记忆稀疏化和可分解验证，显示该方向正从「建模」转向「效率与可靠性」。此外，Realtime-Bench首次系统评测严格时间约束下的实时交互能力，FastVLA、LAMP等训练无关/免训练方法集中出现，暗示部署效率与实时性正成为新的评测维度。</div>
             </div>
         </div>
     </div>
@@ -531,98 +531,28 @@
     <div id="papers">
     <div class="section-papers">
         <h2 class="papers-title">全部精选论文</h2>
-        <h3 class="topic-header">世界模型 <span class="count">(3 篇)</span></h3>
+        <h3 class="topic-header">世界模型 <span class="count">(5 篇)</span></h3>
 
-        <div class="paper-card" data-score="7">
+        <div class="paper-card" data-score="9">
             <div class="card-header">
-                <span class="score medium">7/10</span>
-                
-                <span class="date">2026-10-14</span>
+                <span class="score high">9/10</span>
+                <span class="org-tag">UC Berkeley</span>
+                <span class="date">2026-10-15</span>
             </div>
             <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2610.20609v1" target="_blank">SafeDriveVLA: Navigation-Conditioned World Model Dreaming for Conflict-Aware End-to-End Autonomous Driving</a>
+                <a href="https://arxiv.org/abs/2610.22340v1" target="_blank">Dexterity from Supervised Play</a>
             </h4>
-            <p class="authors">Shaoyuan Xie, Zihan Zhang, Jingxuan Wang et al.</p>
+            <p class="authors">Botao He, Yiming Dou, Yiannis Aloimonos et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有端到端自动驾驶VLA模型在开放自然语言导航接口下，面对不安全或恶意冲突指令时缺乏安全性与鲁棒性，且缺少同时评估导航跟随、冲突感知和对抗鲁棒性的基准。</div>
-                <div class="summary-item"><strong>方法：</strong>论文提出首个联合评估导航跟随、冲突感知与对抗鲁棒性的基准套件，并提出SafeDriveVLA：显式预测三级导航遵从模式，将冲突推理与动作生成解耦，并利用导航条件世界模型“ dreaming”来推断何时跟随导航信号是安全的。</div>
-                <div class="summary-item"><strong>结论：</strong>SafeDriveVLA在Bench2Drive上达到88.16 Driving Score和68.64% Success Rate，闭环语言跟随能力比最佳SimLingo变体提升49.3%，并将不安全指令下的碰撞数从60降至38。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次将导航跟随、冲突感知与对抗鲁棒性统一评测，并首次在驾驶VLA中引入显式导航遵从模式与导航条件世界模型 dreaming 来提升冲突场景安全性。</div>
-                <div class="summary-item"><strong>意义：</strong>推动语言条件端到端自动驾驶向更安全、更鲁棒的VLA/Agent方向发展，对开放指令下的具身智能安全具有参考意义。</div>
+                <div class="summary-item"><strong>问题：</strong>如何让机器人自主收集接触丰富的交互经验，从而学习灵巧操作，并避免依赖任务特定演示和仿真到现实的迁移。</div>
+                <div class="summary-item"><strong>方法：</strong>提出DSP框架：机器人通过行为克隆从数分钟人类玩耍中学习玩耍策略，自主部署收集数小时交互数据训练世界模型；推理时该策略为MPC提出候选动作序列，并由世界模型评估；还通过在世界模型中进行自博弈，蒸馏出闭环、目标条件策略以加速推理。</div>
+                <div class="summary-item"><strong>结论：</strong>在仿真和真实世界的欠驱动推动与多指手任意到任意手内姿态重定向任务上，真实世界成功率比hindsight行为克隆高69.6%，并以少490倍的交互数据达到与强化学习相当的成功率。</div>
+                <div class="summary-item"><strong>创新点：</strong>用“监督式玩耍”自主采集数据，并让同一玩耍策略同时引导基于世界模型的MPC和自博弈策略蒸馏，无需任务特定演示或sim-to-real迁移。</div>
+                <div class="summary-item"><strong>意义：</strong>为具身智能中基于世界模型的灵巧操作与自主数据采集提供了一条可扩展、少演示的新路径。</div>
             </div>
             <div class="card-footer">
-                <span class="topics">世界模型 / 多模态 / 大模型</span>
-                <a href="https://arxiv.org/pdf/2610.20609v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-
-        <div class="paper-card" data-score="7">
-            <div class="card-header">
-                <span class="score medium">7/10</span>
-                
-                <span class="date">2026-10-14</span>
-            </div>
-            <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2610.20442v1" target="_blank">Towards Agentic Robots: Model, Data, Environment, and Harness</a>
-            </h4>
-            <p class="authors">Chonghan Qin, Dongming Wu, Kaituo Feng et al.</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>当前 agentic robots 领域发展迅速但研究较为分散，缺乏统一视角来理解如何将不同 agentic 功能整合为完整的机器人系统。</div>
-                <div class="summary-item"><strong>方法：</strong>该论文对现有研究进行统一综述：先梳理从机器人策略到 agentic 系统的发展，涵盖视觉-语言-动作模型、世界模型和世界-动作模型；随后界定 agentic robots 的定义与范围，并按 Model、Data、Environment、Harness 四大功能域、十七个类别组织文献。</div>
-                <div class="summary-item"><strong>结论：</strong>论文提供了一个统一的分类与综述框架，说明 agent 如何影响模型学习与机器人决策、采集与整理机器人数据、构建学习与评估所需的世界/任务/测试，以及组织机器人能力使用，并讨论了开放挑战与未来方向。</div>
-                <div class="summary-item"><strong>创新点：</strong>系统性提出面向 agentic robots 的跨模型、数据、环境与执行框架四大维度的统一分类与综述框架。</div>
-                <div class="summary-item"><strong>意义：</strong>有助于连接分散的具身智能与机器人 Agent 研究，为构建更强大、可靠和自适应的机器人系统提供路线图。</div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">世界模型 / 多模态 / 大模型 / Agent</span>
-                <a href="https://arxiv.org/pdf/2610.20442v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-
-        <div class="paper-card" data-score="7">
-            <div class="card-header">
-                <span class="score medium">7/10</span>
-                
-                <span class="date">2026-10-14</span>
-            </div>
-            <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2610.20384v1" target="_blank">Look Before You Restore: Learning to Predict Before Acting for Agentic Image Restoration</a>
-            </h4>
-            <p class="authors">Xu Zhang, Jun Wan, Lefei Zhang et al.</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>混合退化图像恢复的智能体通常需要先执行工具才知道其效果，导致失败调用浪费计算，且有害输出不能及时被发现。</div>
-                <div class="summary-item"><strong>方法：</strong>提出 PreActIR，在工具执行前用工具条件世界模型预测残余退化、图像质量、保真度变化，以及危害风险和预测不确定性；选择最优候选执行后，由独立验证器决定提交或回滚，智能体再从观测状态重规划。</div>
-                <div class="summary-item"><strong>结论：</strong>在固定候选池、验证器和预算的受控评测中，PreActIR 相比反应式“先执行再评估”试错，真实工具调用减少 42.5%，被拒调用减少 63.4%，Y-PSNR 提升 0.92 dB。</div>
-                <div class="summary-item"><strong>创新点：</strong>将工具条件世界模型引入智能体图像恢复，实现“先预测后果、再执行与验证回滚”的闭环决策。</div>
-                <div class="summary-item"><strong>意义：</strong>展示了预测式世界模型在工具型智能体中的效率与可靠性价值，对多模态智能体和具身智能体具有借鉴意义。</div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">世界模型 / Agent</span>
-                <a href="https://arxiv.org/pdf/2610.20384v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-<h3 class="topic-header">多模态 <span class="count">(19 篇)</span></h3>
-
-        <div class="paper-card" data-score="8">
-            <div class="card-header">
-                <span class="score high">8/10</span>
-                
-                <span class="date">2026-10-14</span>
-            </div>
-            <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2610.20598v1" target="_blank">DynThinker: Unifying Static 3D and Dynamic 4D Spatial Reasoning</a>
-            </h4>
-            <p class="authors">Qihang Cao, Haoyuan Li, Zihan Guo et al.</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有模型难以同时擅长静态3D与动态4D空间推理：3D后训练可能削弱动态理解，而4D专用模型往往缺乏强静态3D推理能力。</div>
-                <div class="summary-item"><strong>方法：</strong>提出DynThinker统一框架。方法包括D-EMA，对干扰敏感的参数组做可配置分组指数滑动平均以约束漂移；以及SDF，在语义引导下将动态几何编码器中的空间与时间先验选择性融合进VLM中间表示。</div>
-                <div class="summary-item"><strong>结论：</strong>在覆盖静态3D与动态4D的九个基准、十个指标上取得最高平均分；ReVSI 56.0、DSR-Bench 67.2、DSI-Bench sample-wise 51.2与group-wise 40.1，均在统一模型下刷新开源模型SOTA。</div>
-                <div class="summary-item"><strong>创新点：</strong>发现空间-动态干扰在参数组间高度非均匀，并据此提出解耦EMA与空间-动态融合机制来统一增强静态3D和动态4D推理。</div>
-                <div class="summary-item"><strong>意义：</strong>推动多模态大模型/VLM向统一静态3D与动态4D空间智能发展，对具身智能、世界模型和空间推理Agent有重要意义。</div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">多模态</span>
-                <a href="https://arxiv.org/pdf/2610.20598v1" target="_blank" class="pdf-link">PDF 原文</a>
+                <span class="topics">世界模型</span>
+                <a href="https://arxiv.org/pdf/2610.22340v1" target="_blank" class="pdf-link">PDF 原文</a>
             </div>
         </div>
 
@@ -630,22 +560,22 @@
             <div class="card-header">
                 <span class="score high">8/10</span>
                 
-                <span class="date">2026-10-14</span>
+                <span class="date">2026-10-15</span>
             </div>
             <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2610.20538v1" target="_blank">PrismaCoder: Pushing the Boundaries of Open Multimodal Code Intelligence through Decomposed Rubric Synthesis</a>
+                <a href="https://arxiv.org/abs/2610.22364v1" target="_blank">T2-z: Test-Time Optimization of Environment Latents for Robotic World Models</a>
             </h4>
-            <p class="authors">Qiushi Sun, Jingyang Gong, Yang Liu et al.</p>
+            <p class="authors">Chenyuan Zhou, Yining Hong, Huang Huang et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>多模态代码智能要求模型生成图表、网页、动画等可执行且视觉正确的产物，但开放模型受限于数据数量与质量，且缺乏同时覆盖程序正确性、构建质量和渲染视觉正确性的统一评价信号。</div>
-                <div class="summary-item"><strong>方法：</strong>提出 PrismaForge 分层数据流水线，合成可分解的 rubric，将代码正确性、构建质量和视觉正确性拆解为可检查标准，并同时用作数据过滤器和强化学习奖励。基于该流水线构建 PrismaCoder-2M 数据集，训练并开源 PrismaCoder-9B 与 PrismaCoder-35B。</div>
-                <div class="summary-item"><strong>结论：</strong>构建了目前最多样且最大的开放多模态代码智能数据集，开源的 PrismaCoder-9B/35B 大幅领先开源 SOTA，并可媲美领先闭源系统；分析表明基于 rubric 的流水线能跨模型骨干提升多模态编码性能。</div>
-                <div class="summary-item"><strong>创新点：</strong>用分解式 rubric 同时作为数据筛选器和强化学习奖励，统一评价程序正确性、构建质量与视觉正确性，从而推动开放多模态代码智能。</div>
-                <div class="summary-item"><strong>意义：</strong>为开放多模态代码智能提供了大规模数据、训练方法和开源模型，有助于缩小与闭源系统差距并推动可复现研究。</div>
+                <div class="summary-item"><strong>问题：</strong>机器人世界模型在做动作条件预测时，无法建模摩擦力、质量、人类设定的环境规则等既不可直接观测、也未被显式指定的环境因素，导致在未见环境配置下预测与执行效果差。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 T2-Z：为世界模型引入一个可学习的紧凑「环境潜变量」来条件化预测，训练时交替进行两阶段——固定潜变量训练通用动作条件动力学、冻结世界模型仅优化潜变量，使潜结构纯粹由世界预测任务自发涌现；测试时冻结世界模型，用一条或多条交互轨迹在线优化新初始化的环境潜变量以适配新环境。</div>
+                <div class="summary-item"><strong>结论：</strong>在 7 个仿真设置和 4 个真实机器人任务上，物体预测误差指标从 15.20 降至 7.00，动作成功率从 33.73% 提升到 72.96%；消融显示仅需单条测试时交互轨迹即可推断出有效的环境潜变量。</div>
+                <div class="summary-item"><strong>创新点：</strong>无需任何环境因素的监督标签，通过训练时交替优化与测试时在线优化环境潜变量，让环境表征从世界预测中自监督地涌现并对未见环境实时适配。</div>
+                <div class="summary-item"><strong>意义：</strong>为机器人世界模型的测试时自适应提供了通用且轻量的范式，表明不可观测环境因素可被压缩为可在线推断的潜变量，对具身智能与世界模型的实际部署具有重要意义。</div>
             </div>
             <div class="card-footer">
-                <span class="topics">多模态</span>
-                <a href="https://arxiv.org/pdf/2610.20538v1" target="_blank" class="pdf-link">PDF 原文</a>
+                <span class="topics">世界模型</span>
+                <a href="https://arxiv.org/pdf/2610.22364v1" target="_blank" class="pdf-link">PDF 原文</a>
             </div>
         </div>
 
@@ -653,22 +583,92 @@
             <div class="card-header">
                 <span class="score high">8/10</span>
                 
-                <span class="date">2026-10-14</span>
+                <span class="date">2026-10-15</span>
             </div>
             <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2610.20504v1" target="_blank">Graph-Reweighted Behavior Cloning with Human Interventions for Precise Robotic Manipulation</a>
+                <a href="https://arxiv.org/abs/2610.22343v1" target="_blank">GeoState: Learning View-Decoupled Geometry States for 3D World Modeling</a>
             </h4>
-            <p class="authors">Xiaoman Li, Zhiqiang Yang, Jiayu Hu et al.</p>
+            <p class="authors">Hongchang Liu, Jian Liu, Yujuan Ding et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>长时程精细操作中用于VLA后训练的数据质量混杂，成功演示和人类干预轨迹中常含绕路、犹豫、失败尝试与不完美恢复，核心难点是识别哪些动作块真正推进任务，而非统一克隆或丢弃不完美轨迹。</div>
-                <div class="summary-item"><strong>方法：</strong>提出Graph-Reweighted Behavior Cloning (GR-BC)，一种离线迭代后训练框架。它在演示与迭代采集的rollout（含成功、失败和人类干预）上构建任务条件的目标可达图，通过反向图搜索计算到任务成功的最小剩余步数，并依据动作块执行后减少的“剩余步数势能”进行加权。新rollout只需追加到图并重跑搜索，无需奖励模型、动作条件critic或进度预测器。</div>
-                <div class="summary-item"><strong>结论：</strong>在四个精细操作任务和三个VLA主干上，GR-BC改进了单轮监督微调，并在少量离线迭代后达到91%成功率，且不需要轨迹比较或进度标签。</div>
-                <div class="summary-item"><strong>创新点：</strong>利用任务条件目标可达图的反向搜索构造基于后果的动作块重加权，从失败和干预轨迹中复用可恢复片段并降权局部倒退片段，无需额外奖励或进度模型。</div>
-                <div class="summary-item"><strong>意义：</strong>为VLA/机器人操作的后训练提供了一种无需显式奖励或进度标注的数据重加权方法，可提升混合质量数据与人类干预数据的利用效率。</div>
+                <div class="summary-item"><strong>问题：</strong>现有3D世界模型使用几何基础模型特征作为预测性世界状态，但这些特征具有视角依赖性，会把场景动态与相机引起的观测变化纠缠在一起，导致状态演化难以预测。</div>
+                <div class="summary-item"><strong>方法：</strong>提出GeoState，将场景状态演化与相机相关观测解耦：场景tokenizer将多视角GFM特征聚合为视角解耦的场景状态，几何解码器通过相机射线查询该状态；自回归世界模型预测未来场景状态，相机运动单独建模。</div>
+                <div class="summary-item"><strong>结论：</strong>在Waymo上优于已有3D世界模型，支持几何一致的跨视角查询，并能零样本泛化到KITTI和nuScenes。</div>
+                <div class="summary-item"><strong>创新点：</strong>用视角解耦的几何状态作为世界模型表示，将场景演化与相机观测分离，并支持预测或指定相机下的解码。</div>
+                <div class="summary-item"><strong>意义：</strong>推动可视角控制、几何一致的3D世界模型，对多模态与具身智能中的预测和规划有潜在价值。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">世界模型 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2610.22343v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-10-15</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.22355v1" target="_blank">OmniVerifier-C1: Decomposed Graded Verifier for Rule-Governed Generative World Modeling</a>
+            </h4>
+            <p class="authors">Bowei Liu, Xinchen Zhang, Xuhuan Li et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>传统视觉验证器只能输出二值化的 True/False 判断，难以应对涉及组合式要求的复杂多模态场景，缺乏连续且信息量丰富的批评信号。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 OmniVerifier-C1，可自动将复杂提示或环境规则分解为细粒度子组件并给出逐点连续评分；采用解耦式强化学习训练策略，联合优化子问题级二值判断与全局对齐评分；理论上还证明在有真值图像时成对（pairwise）验证范式比逐点范式更准确。</div>
+                <div class="summary-item"><strong>结论：</strong>逐点分级验证器在传统文生图场景中显著优于二值验证器，并在 Maze、Sudoku 等结构化世界建模任务上验证了有效性，表明成对分级验证器是从生成模型迈向结构化世界建模智能体的关键。</div>
+                <div class="summary-item"><strong>创新点：</strong>将二值验证器升级为可分解、可打分的分级验证器，并通过解耦式强化学习训练，同时提出并验证成对验证范式的理论优势。</div>
+                <div class="summary-item"><strong>意义：</strong>为多模态验证与世界模型/世界推理提供了更细粒度、可解释的反馈信号，推动生成模型向规则约束下的结构化世界建模智能体演进。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">世界模型 / 多模态</span>
+                <a href="https://arxiv.org/pdf/2610.22355v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-10-15</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.22311v1" target="_blank">Velox: Spatial Memory Makes World Models Efficient</a>
+            </h4>
+            <p class="authors">Qiuhong Shen, Shizun Wang, Xinchao Wang</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>分块视频扩散世界模型需要保留已生成内容的历史上下文，但KV缓存随 rollout 增长导致后续分块生成越来越慢，难以满足交互式仿真的实时响应需求。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 Velox——一种免训练的注意力路由器，利用流式几何中的相机视锥切片（frustum slab）对应关系做区域级上下文选择：将历史块表示为带深度区间的视锥切片，通过最近优先的 multiwarp 获取当前块深度；对覆盖良好的区域用切片重叠度软调制各层的模型派生块重要性，未覆盖区域则保持原始路由。固定 token-block 粒度适配 FlashAttention 式分块执行，且视锥切片构建与去噪在同一 H200 上异步并行。</div>
+                <div class="summary-item"><strong>结论：</strong>在 chunk 48 时注意力加速 4.36 倍、去噪加速 2.43 倍；在完整 158 例 WBench 导航划分上，与稠密 LingBot-Fast-Cam 的平均分差在 0.15 以内，几乎无质量损失。</div>
+                <div class="summary-item"><strong>创新点：</strong>将流式几何的视锥切片对应关系作为免训练的空间记忆路由机制，在块粒度上稀疏化注意力并保持生成一致性。</div>
+                <div class="summary-item"><strong>意义：</strong>为长时程视频世界模型的高效交互式生成提供了通用加速思路，有望推动实时可交互世界模型与具身智能仿真应用。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">世界模型</span>
+                <a href="https://arxiv.org/pdf/2610.22311v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+<h3 class="topic-header">多模态 <span class="count">(16 篇)</span></h3>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                
+                <span class="date">2026-10-15</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.22362v1" target="_blank">CoDA: Co-Evolution of Data Engines and Action Policies</a>
+            </h4>
+            <p class="authors">Tianjiao Yu, Zhilin Ou, Yifan Shen et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>生成式仿真虽能自动构建机器人环境，但物理有效的环境未必对策略训练有用；核心挑战是识别能暴露策略失败的环境，并生成帮助策略克服这些失败的监督信号。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 CoDA 框架，让仿真数据引擎与动作策略通过共享异构记忆协同进化，记忆包含环境构建、策略失败和学习进展。系统将视觉语言批评器给出的诊断编译为生成程序与训练程序，并进一步提出 Text2potential，将诊断转化为用于动作块价值学习的分阶段势函数，从而提供稠密监督且保持任务最优策略。</div>
+                <div class="summary-item"><strong>结论：</strong>在四类操作任务中，CoDA 将分布外成功率从监督微调后的 5.3% 提升至 27.6%，超过最强闭环基线 9.5 个百分点；在 LIBERO-Pro 上，15 轮生成与训练将位置扰动下成功率从 25% 提升至 84%，指令扰动下从 1% 提升至 76%。</div>
+                <div class="summary-item"><strong>创新点：</strong>通过共享异构记忆实现数据引擎与动作策略的闭环协同进化，并把视觉语言诊断转化为保持最优策略的分阶段势函数监督，用于动作块价值学习。</div>
+                <div class="summary-item"><strong>意义：</strong>为具身智能和机器人学习中自动生成训练环境、诊断策略失败并持续改进策略提供了新范式。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态</span>
-                <a href="https://arxiv.org/pdf/2610.20504v1" target="_blank" class="pdf-link">PDF 原文</a>
+                <a href="https://arxiv.org/pdf/2610.22362v1" target="_blank" class="pdf-link">PDF 原文</a>
             </div>
         </div>
 
@@ -676,229 +676,91 @@
             <div class="card-header">
                 <span class="score high">8/10</span>
                 
-                <span class="date">2026-10-14</span>
+                <span class="date">2026-10-15</span>
             </div>
             <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2610.20399v1" target="_blank">Cortex: Consolidating Context into Parametric Memory</a>
+                <a href="https://arxiv.org/abs/2610.22360v1" target="_blank">Grounding Generative Verification in 3D Content</a>
             </h4>
-            <p class="authors">Jintian Zhang, Feng He, Xinnian Liang et al.</p>
+            <p class="authors">Shuanglin Li, Jiaying Lin, Shuquan Ye</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>上下文能提升大语言模型性能，但移除上下文后这些增益可能消失。论文要解决的是如何将上下文带来的增益内化到模型参数中，同时保留非目标能力。</div>
-                <div class="summary-item"><strong>方法：</strong>论文将记忆巩固形式化为统一目标，连接上下文指定的知识编辑、技能学习和行为引导。提出 Cortex，通过生成前瞻性查询预测上下文的可能用途，并将上下文条件输出蒸馏为可合并的低秩或结构化前馈网络更新；同时构建五类任务测试台评估单次、批量和顺序更新下的巩固与保持。</div>
-                <div class="summary-item"><strong>结论：</strong>在 4B--120B 稠密和 MoE、纯文本及多模态骨干模型上，Cortex 在多数设置中位于巩固--保持的帕累托前沿。14B 模型经过 50 次顺序事实编辑后，Cortex-Structural 恢复 88.9% 的上下文诱导增益，同时保留 99.8% 的原始非目标性能。</div>
-                <div class="summary-item"><strong>创新点：</strong>提出将上下文内化为可合并参数更新（低秩或结构化 FFN）的通用记忆巩固框架，并配套单次、批量、顺序更新的多任务评测基准。</div>
-                <div class="summary-item"><strong>意义：</strong>为 LLM 持续学习、知识编辑和上下文能力持久化提供了新路径，有望减少对长上下文或检索的依赖并缓解灾难性遗忘。</div>
+                <div class="summary-item"><strong>问题：</strong>多模态大模型和3D生成虽在视觉保真度上进步显著，但缺乏基于3D证据的任务正确性验证能力——即无法判断生成结果是否真正满足规格要求、并解释违规原因。</div>
+                <div class="summary-item"><strong>方法：</strong>提出3DVerifierBench基准，覆盖10项任务，评测模型的判定、拒绝解释以及对规格与候选受控变化的响应；同时构建可扩展流水线，结合多视角事实抽取、受控3D编辑与原生标注，产出14,126条带矛盾解释和关联反事实的训练样本；并探索验证反馈用于候选选择与递归细化。</div>
+                <div class="summary-item"><strong>结论：</strong>人类与最强模型GPT-6 Astra在验证判定上存在21.6个百分点的差距，且拒绝可靠性存在明显缺陷；在16候选池中Oracle选择将完整事实成功率从26.7%提升至90.0%，而在8输入实验中人在回路递归细化可让每个输入满足全部7项要求（并行Oracle@8仅3项）。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将3D内容生成与理解的可靠性问题形式化为「基于多视角证据的生成验证」任务，并配套基准、细粒度错误分析与大规模带解释训练数据管线。</div>
+                <div class="summary-item"><strong>意义：</strong>为世界模型、3D生成与具身智能体提供了可自我反思与迭代修正的验证闭环范式，推动3D系统从视觉逼真走向任务正确。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态 / 大模型</span>
-                <a href="https://arxiv.org/pdf/2610.20399v1" target="_blank" class="pdf-link">PDF 原文</a>
+                <a href="https://arxiv.org/pdf/2610.22360v1" target="_blank" class="pdf-link">PDF 原文</a>
             </div>
         </div>
 
-        <div class="paper-card" data-score="7">
+        <div class="paper-card" data-score="8">
             <div class="card-header">
-                <span class="score medium">7/10</span>
+                <span class="score high">8/10</span>
                 
-                <span class="date">2026-10-14</span>
+                <span class="date">2026-10-15</span>
             </div>
             <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2610.20610v1" target="_blank">Can Learning to Answer Spatial Questions Improve Novel-View Generation?</a>
+                <a href="https://arxiv.org/abs/2610.22234v1" target="_blank">OS-Helix: Unifying GUI Interaction and Code Execution in Native Computer-Using Agents</a>
             </h4>
-            <p class="authors">Jahyeok Koo, Hyeonseo Yu, Seungho Jang et al.</p>
+            <p class="authors">Bowen Yang, Kaiming Jin, Zichen Ding et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>从有限观测生成新视角需要在保持外观的同时维持场景空间结构，但现有方法未显式建模物体身份、属性和物体间关系等高层语义与空间属性。本文探究3D语言理解能否为新视角生成提供互补监督。</div>
-                <div class="summary-item"><strong>方法：</strong>提出Ask4NV，基于预训练的统一多模态模型和Mixture-of-Transformers架构。模型将相机几何融入VAE和ViT表示，并通过联合自注意力与模态感知注意力掩码，在生成过程中利用理解特征。</div>
-                <div class="summary-item"><strong>结论：</strong>实验表明该方法在新视角生成中具有较强图像质量和几何一致性，同时保持有竞争力的3D语言理解能力；联合训练还提升了VAE表示的跨视角对应性和3D感知特征空间中的相似性。</div>
-                <div class="summary-item"><strong>创新点：</strong>将3D空间问答与新颖视角生成统一在MoT架构中联合训练，并利用理解特征作为生成任务的互补监督。</div>
-                <div class="summary-item"><strong>意义：</strong>表明3D语言理解与视觉生成可相互促进，对统一空间多模态模型、世界模型和具身智能有参考意义。</div>
+                <div class="summary-item"><strong>问题：</strong>真实桌面自动化既需要理解图形界面，又需要高效操作文件、脚本与系统状态，但简单地在提示层面叠加代码工具反而会削弱GUI Agent的性能，因此GUI与代码的协调能力必须通过训练内化到模型内部。</div>
+                <div class="summary-item"><strong>方法：</strong>提出OS-Helix，一个端到端训练的多模态Computer-Using Agent，将GUI动作与代码执行统一到同一动作空间中。数据侧通过application-artifact composition（将桌面应用与真实文件产物配对，构建可执行的Ubuntu状态）和解耦的指令/评估器生成流水线，产出可验证的环境任务；训练侧先用过滤后的混合数据做SFT冷启动，再在真实桌面环境中进行在线RL，并提出Step-balanced GSPO，按动作步而非原始token聚合重要性权重，避免长代码动作主导异构动作优化。</div>
+                <div class="summary-item"><strong>结论：</strong>在OSWorld-Verified上，OS-Helix-27B与OS-Helix-35B-A3B相较对应的Qwen3.5混合基线分别取得35.0%和33.7%的相对提升，OS-Helix-27B-RL进一步提升42.9%，成功率达66.44%；消融实验支持GUI/代码协调学习、可扩展可验证监督与动作步平衡优化的贡献，并在WindowsAgentArena上展示了跨平台迁移能力。</div>
+                <div class="summary-item"><strong>创新点：</strong>将GUI交互与代码执行融合进单一动作空间端到端训练，并配套可验证混合数据构造与按动作步加权的Step-balanced GSPO强化学习优化。</div>
+                <div class="summary-item"><strong>意义：</strong>为构建原生桌面级通用Computer-Using Agent提供了可训练、可验证、可扩展的范式，推动Agent从纯视觉操作走向视觉与编程能力协同的真实系统自动化。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态</span>
-                <a href="https://arxiv.org/pdf/2610.20610v1" target="_blank" class="pdf-link">PDF 原文</a>
+                <a href="https://arxiv.org/pdf/2610.22234v1" target="_blank" class="pdf-link">PDF 原文</a>
             </div>
         </div>
 
-        <div class="paper-card" data-score="7">
+        <div class="paper-card" data-score="8">
             <div class="card-header">
-                <span class="score medium">7/10</span>
+                <span class="score high">8/10</span>
                 
-                <span class="date">2026-10-14</span>
+                <span class="date">2026-10-15</span>
             </div>
             <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2610.20609v1" target="_blank">SafeDriveVLA: Navigation-Conditioned World Model Dreaming for Conflict-Aware End-to-End Autonomous Driving</a>
+                <a href="https://arxiv.org/abs/2610.22193v1" target="_blank">MOSS: Mode-Oriented Source Shaping for Robot Flow Matching Policies</a>
             </h4>
-            <p class="authors">Shaoyuan Xie, Zihan Zhang, Jingxuan Wang et al.</p>
+            <p class="authors">Zirun Ma, Jindou Jia, Tuo An et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有端到端自动驾驶VLA模型在开放自然语言导航接口下，面对不安全或恶意冲突指令时缺乏安全性与鲁棒性，且缺少同时评估导航跟随、冲突感知和对抗鲁棒性的基准。</div>
-                <div class="summary-item"><strong>方法：</strong>论文提出首个联合评估导航跟随、冲突感知与对抗鲁棒性的基准套件，并提出SafeDriveVLA：显式预测三级导航遵从模式，将冲突推理与动作生成解耦，并利用导航条件世界模型“ dreaming”来推断何时跟随导航信号是安全的。</div>
-                <div class="summary-item"><strong>结论：</strong>SafeDriveVLA在Bench2Drive上达到88.16 Driving Score和68.64% Success Rate，闭环语言跟随能力比最佳SimLingo变体提升49.3%，并将不安全指令下的碰撞数从60降至38。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次将导航跟随、冲突感知与对抗鲁棒性统一评测，并首次在驾驶VLA中引入显式导航遵从模式与导航条件世界模型 dreaming 来提升冲突场景安全性。</div>
-                <div class="summary-item"><strong>意义：</strong>推动语言条件端到端自动驾驶向更安全、更鲁棒的VLA/Agent方向发展，对开放指令下的具身智能安全具有参考意义。</div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">世界模型 / 多模态 / 大模型</span>
-                <a href="https://arxiv.org/pdf/2610.20609v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-
-        <div class="paper-card" data-score="7">
-            <div class="card-header">
-                <span class="score medium">7/10</span>
-                
-                <span class="date">2026-10-14</span>
-            </div>
-            <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2610.20603v1" target="_blank">CommerceGen-Studio: An End-to-End Framework for Commercial-Grade Main-Image Generation</a>
-            </h4>
-            <p class="authors">Xiaoli Xu, Zhengtao Wu, Zhengze Xu et al.</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>电商SKU主图生成需要同时保证商品主体保真、商标完整、文字准确、卖点表达和排版合理，现有方法难以在商业规模下端到端满足这些约束。</div>
-                <div class="summary-item"><strong>方法：</strong>提出 CommerceGen-Studio 三阶段框架：PERL-Agent 用 VLM/LLM 闭环从SKU元数据提取卖点；LTO 通过交替领域策略优化对齐改写与图像质量；SKU-DiT 在RDR渐进训练下联合以白底产品图、商标裁剪和结构化布局为条件生成主图。</div>
-                <div class="summary-item"><strong>结论：</strong>框架每天可生成百万级主图、单图延迟数秒；在 CommerceGen-Bench 上取得开源基线最高总分，匹配更大闭源模型，并在 Instruction Following 和 Product Integration 上超过部分闭源模型。</div>
-                <div class="summary-item"><strong>创新点：</strong>将卖点提取、语义改写、布局优化和多条件扩散生成统一为可商业规模部署的端到端主图生成框架，并发布来自真实流量的难例基准。</div>
-                <div class="summary-item"><strong>意义：</strong>展示了可控多模态生成在电商内容生产中的工业级落地路径，对多条件图像生成、Agent闭环优化和商业AIGC系统有参考意义。</div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">多模态 / 大模型</span>
-                <a href="https://arxiv.org/pdf/2610.20603v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-
-        <div class="paper-card" data-score="7">
-            <div class="card-header">
-                <span class="score medium">7/10</span>
-                
-                <span class="date">2026-10-14</span>
-            </div>
-            <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2610.20592v1" target="_blank">GeoThinker-$F$: Endogenous Predictive World Representations for Fast Spatial Intelligence</a>
-            </h4>
-            <p class="authors">Haoyuan Li, Qihang Cao, Huanyuan Zhou et al.</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有几何感知的多模态大模型（MLLM）依赖外部3D编码器提供结构先验，导致推理时额外的延迟和计算开销。</div>
-                <div class="summary-item"><strong>方法：</strong>提出 GeoThinker-$F$，将 MLLM 的因果隐状态转化为可预测的潜在世界表征，从而内化时空感知。采用解耦的两阶段训练：第一阶段冻结 MLLM 主干，用轻量级 Latent Frame Prediction (LFP) 头从离线3D几何专家和下一帧语义目标中学习；第二阶段移除外部专家，通过 Spatial-Grounded Temporal (SGT) Fusion 模块联合优化自预测先验的生成与选择性融合。</div>
-                <div class="summary-item"><strong>结论：</strong>在无需运行时依赖外部3D几何编码器的前提下，在多个空间智能基准上保持有竞争力的性能，推理最高加速 $3.6\times$，延迟从 $1.45\,\mathrm{s}$ 降至 $0.40\,\mathrm{s}$。</div>
-                <div class="summary-item"><strong>创新点：</strong>用 MLLM 自身隐状态预测出的潜在世界表征来替代外部3D编码器先验，实现端到端内生的几何与未来语义预测。</div>
-                <div class="summary-item"><strong>意义：</strong>为多模态大模型的高效空间智能与内生世界模型提供了新范式，对具身智能和实时空间推理有直接价值。</div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">多模态 / 大模型</span>
-                <a href="https://arxiv.org/pdf/2610.20592v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-
-        <div class="paper-card" data-score="7">
-            <div class="card-header">
-                <span class="score medium">7/10</span>
-                
-                <span class="date">2026-10-14</span>
-            </div>
-            <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2610.20560v1" target="_blank">PhySGA: A Physics-Space Grounded Agentic Framework for Generalizable and Interactive 3D Composition</a>
-            </h4>
-            <p class="authors">Weichen Lyu, Chong Xia, Mingyu Dong et al.</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有3D物体组合方法依赖数字空间中的静态先验，难以处理悬挂、重力沉降、隐藏容纳等需要交互构建和物理仿真的复杂组合任务。</div>
-                <div class="summary-item"><strong>方法：</strong>提出PhySGA，一个在物理空间中基于智能体探索与物理仿真的3D组合框架。其包含协作式前馈-反馈架构：Assembly Agent负责几何与运动学推理和全局规划，Critic Agent基于接触动力学进行状态诊断与闭环微调，并通过Action Routers映射物理原语、Self-Evolving Skill Library积累可复用经验。</div>
-                <div class="summary-item"><strong>结论：</strong>在Isaac Sim中的大量实验表明，PhySGA在关系保真度、物理合理性和视觉质量上显著优于现有方法。</div>
-                <div class="summary-item"><strong>创新点：</strong>将LLM/VLM智能体与物理仿真闭环结合，并引入自进化技能库，实现可泛化、可交互的刚体/铰接体/可变形体3D组合。</div>
-                <div class="summary-item"><strong>意义：</strong>推动了具身智能、世界模型和基础模型在物理空间中进行交互式构建与真实物理理解的研究。</div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">多模态 / 大模型 / Agent</span>
-                <a href="https://arxiv.org/pdf/2610.20560v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-
-        <div class="paper-card" data-score="7">
-            <div class="card-header">
-                <span class="score medium">7/10</span>
-                
-                <span class="date">2026-10-14</span>
-            </div>
-            <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2610.20461v1" target="_blank">Equal CER, Unequal Damage: Severity-Weighted Character Error Rate for OCR</a>
-            </h4>
-            <p class="authors">Nguyen Nguyen, Yongyi Zang</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>OCR和视觉语言模型常用的CER指标把所有字符错误同等对待，导致一个拼写小错和关键人名错误得分相同，无法反映错误的实际严重程度。</div>
-                <div class="summary-item"><strong>方法：</strong>提出semCER，在保留CER对齐方式和分母的前提下，用LLM judge为每个字素编辑赋予严重性权重，且无需分词；同时保留归一化CER作为整体转录评分，并可将semCER分解为带名称的编辑项。</div>
-                <div class="summary-item"><strong>结论：</strong>semCER的严重性评分在英语、越南语和中文中逐编辑项追踪读者评分，并能将读者认为最严重的编辑排在前面；在CER与semCER不一致的样本上，英语和中文读者更常支持semCER，越南语中两者持平。跨16种语言显示严重性判断差异，且通用VLM的错误字母显著高于随机水平，而经典流水线接近随机。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次将LLM judge引入CER框架，实现保留原始对齐与分母、可分解且语言无关的严重性加权字符错误率。</div>
-                <div class="summary-item"><strong>意义：</strong>为OCR和VLM提供更贴近人类感知严重性的评估指标，有助于更公平地比较模型错误类型与实际危害。</div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">多模态 / 大模型</span>
-                <a href="https://arxiv.org/pdf/2610.20461v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-
-        <div class="paper-card" data-score="7">
-            <div class="card-header">
-                <span class="score medium">7/10</span>
-                
-                <span class="date">2026-10-14</span>
-            </div>
-            <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2610.20442v1" target="_blank">Towards Agentic Robots: Model, Data, Environment, and Harness</a>
-            </h4>
-            <p class="authors">Chonghan Qin, Dongming Wu, Kaituo Feng et al.</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>当前 agentic robots 领域发展迅速但研究较为分散，缺乏统一视角来理解如何将不同 agentic 功能整合为完整的机器人系统。</div>
-                <div class="summary-item"><strong>方法：</strong>该论文对现有研究进行统一综述：先梳理从机器人策略到 agentic 系统的发展，涵盖视觉-语言-动作模型、世界模型和世界-动作模型；随后界定 agentic robots 的定义与范围，并按 Model、Data、Environment、Harness 四大功能域、十七个类别组织文献。</div>
-                <div class="summary-item"><strong>结论：</strong>论文提供了一个统一的分类与综述框架，说明 agent 如何影响模型学习与机器人决策、采集与整理机器人数据、构建学习与评估所需的世界/任务/测试，以及组织机器人能力使用，并讨论了开放挑战与未来方向。</div>
-                <div class="summary-item"><strong>创新点：</strong>系统性提出面向 agentic robots 的跨模型、数据、环境与执行框架四大维度的统一分类与综述框架。</div>
-                <div class="summary-item"><strong>意义：</strong>有助于连接分散的具身智能与机器人 Agent 研究，为构建更强大、可靠和自适应的机器人系统提供路线图。</div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">世界模型 / 多模态 / 大模型 / Agent</span>
-                <a href="https://arxiv.org/pdf/2610.20442v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-
-        <div class="paper-card" data-score="7">
-            <div class="card-header">
-                <span class="score medium">7/10</span>
-                
-                <span class="date">2026-10-14</span>
-            </div>
-            <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2610.20352v1" target="_blank">ReferFlow: Beyond Final-Target Localization for Complex Referring Expressions</a>
-            </h4>
-            <p class="authors">Tianyi Gao, Han Fang, Xin Wei et al.</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有指代表达理解（REC）评测多只关注最终目标定位，忽略了复杂查询中具有依赖关系的中间视觉引用，导致模型多步定位过程未被检验。</div>
-                <div class="summary-item"><strong>方法：</strong>论文提出轨迹级REC设定及ReferFlow-Bench，用Refinement、Shift、Reset、Mixture四类轨迹刻画结构化区域转移；并提出ReferFlow，将文本-潜变量轨迹生成与坐标解码解耦，采用状态化区域潜推理、轨迹感知并行解码和Grounding-Aware GRPO提升多步一致定位。</div>
-                <div class="summary-item"><strong>结论：</strong>实验显示当前模型难以稳定定位连续步骤中的中间视觉引用，而ReferFlow在通用REC基准和ReferFlow-Bench上均取得领先性能。</div>
-                <div class="summary-item"><strong>创新点：</strong>将REC从最终目标定位推进到轨迹级多步视觉引用定位，并设计解耦式潜状态推理与并行坐标解码框架。</div>
-                <div class="summary-item"><strong>意义：</strong>有助于推动多模态大模型在复杂指代、多步视觉推理和可解释定位能力上的评测与方法发展。</div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">多模态 / 大模型</span>
-                <a href="https://arxiv.org/pdf/2610.20352v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-
-        <div class="paper-card" data-score="7">
-            <div class="card-header">
-                <span class="score medium">7/10</span>
-                
-                <span class="date">2026-10-14</span>
-            </div>
-            <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2610.20351v1" target="_blank">Human Demonstrations as Post-Training Data for Any Robot Body: Retargeting the Object, Not the Hand</a>
-            </h4>
-            <p class="authors">Nagasrikanth Kallakuri</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>人类演示目前多用于预训练视觉-语言-动作模型，难以作为目标机器人身体或任务导向的后训练数据，限制了机器人在工业和通用环境中的可扩展部署。</div>
-                <div class="summary-item"><strong>方法：</strong>论文不重定向手部运动，而是重定向物体：从手机等简单设备捕获无身体记录，包括物体随时间位姿、接触区间和重建的3D物体；给定机器人URDF和简短描述后，在仿真中求解该记录，并以演示的物体运动为真值进行评分。每个（机器人，片段）对得到一个结果：通过、带失败模式的失败或在运动前的拒绝及原因。</div>
-                <div class="summary-item"><strong>结论：</strong>系统在42个捕获、8个机器人、157个配对样本上运行：31.2%通过，52.2%失败，14.0%被拒绝，2.5%不可审计。拒绝结果可靠：所有在存储证据上被拒绝却仍运行的配对均失败（13/13）；但描述文件无法有效筛选机器人，结果接近随机猜测。尚未在该记录上训练任何策略。</div>
-                <div class="summary-item"><strong>创新点：</strong>核心创新是以物体为中心而非手部动作进行重定向，使人类演示可作为任意机器人身体的后训练数据并进行仿真可行性评估。</div>
-                <div class="summary-item"><strong>意义：</strong>为跨具身机器人学习、VLA后训练和可扩展机器人部署提供了一种数据筛选与仿真验证框架。</div>
+                <div class="summary-item"><strong>问题：</strong>在机器人操作中，同一观测往往对应多种可行动作，扩散/流匹配等生成式策略虽能建模多模态行为，但具体执行哪个模式由随机采样决定，无法主动控制。</div>
+                <div class="summary-item"><strong>方法：</strong>作者提出 Mode-Oriented Source Shaping (MOSS)，将模式选择转化为显式选择生成起点。方法揭示确定性流传输会在源空间诱导出模式相关结构，并构建语义对齐的模式特定高斯源，将模式身份编码进初始噪声；同时用模态强度估计器预测局部多模态程度，自适应控制这些源的几何形状：相似行为处收缩向共享高斯，行为分支点处分离。推理时只需从对应分量采样即可选择目标行为。</div>
+                <div class="summary-item"><strong>结论：</strong>在6个仿真和3个真实机器人操作任务中，MOSS 能以最高100%的比例引导到目标模式并保持高任务成功率；在10:90不平衡数据集下以超过90%的引导率恢复少数模式；在真实机器人上比模式条件流策略的引导率高出43.3个百分点。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次通过源空间塑造把流匹配策略的模式选择显式编码到初始噪声中，实现可控的多模态机器人行为生成。</div>
+                <div class="summary-item"><strong>意义：</strong>提升了生成式机器人策略的可控性与多模态行为选择能力，对具身智能和机器人操作中的意图可控生成有重要意义。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态</span>
-                <a href="https://arxiv.org/pdf/2610.20351v1" target="_blank" class="pdf-link">PDF 原文</a>
+                <a href="https://arxiv.org/pdf/2610.22193v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                
+                <span class="date">2026-10-15</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.22178v1" target="_blank">REKI: Registering Knowledge in VLAs</a>
+            </h4>
+            <p class="authors">Juliette Marrie, Paul Pacaud, Adrien Ramanana Rahary et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>如何用公开数据训练高性能且参数高效的视觉-语言-动作模型，并让策略以极低开销利用近期历史信息。</div>
+                <div class="summary-item"><strong>方法：</strong>REKI 是一个 2.4B VLA，由 VLM 加 flow-matching 动作专家组成，在公开机器人、第一人称人类和视觉语言数据混合上预训练；动作专家中用少量 register tokens 总结每帧 VLM 输出并保留在 cache 中，形成低成本记忆。</div>
+                <div class="summary-item"><strong>结论：</strong>在 LIBERO-Plus、RoboTwin Clean2Rand、RoboCasa365 上仅被约两倍规模模型超越，达到性能-规模新 Pareto 前沿；记忆提升仿真和真机成功率，并使姿态振荡约减少四倍。</div>
+                <div class="summary-item"><strong>创新点：</strong>将 register token 记忆机制引入 VLA 动作专家，以极低开销持久化近期视觉语言表征。</div>
+                <div class="summary-item"><strong>意义：</strong>为公开数据、高效训练推理的机器人基础模型和 VLA 记忆机制提供了可复现的新基线。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2610.22178v1" target="_blank" class="pdf-link">PDF 原文</a>
             </div>
         </div>
 
@@ -906,22 +768,229 @@
             <div class="card-header">
                 <span class="score medium">7/10</span>
                 
-                <span class="date">2026-10-14</span>
+                <span class="date">2026-10-15</span>
             </div>
             <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2610.20335v1" target="_blank">Read, Parse, Describe: Unified Document Parsing with Visual Element Description Generation</a>
+                <a href="https://arxiv.org/abs/2610.22363v1" target="_blank">Perceive, Predict, and Plan: a Unified World Action Model for Egocentric Dexterous Manipulation</a>
             </h4>
-            <p class="authors">Yuheng Chen, Yufan Chen, Zhuojun Cai et al.</p>
+            <p class="authors">Zirui Wu, Chen Guo, Tianjian Jiang et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有文档理解系统通常将版面分析、光学文字识别、阅读顺序预测和图像描述分开评估，导致科学图表、题注和视觉语义关联薄弱，也无法衡量模型能否生成结构忠实且语义可访问的页面级统一解析结果。</div>
-                <div class="summary-item"><strong>方法：</strong>论文提出统一数据集 Read-Parse-Describe（RPD），要求模型对页面图像输出包含边界框、语义标签、阅读顺序索引、识别文本以及视觉元素替代文本描述的有序版面元素列表；同时提出即插即用的空间感知增强器，复用多层视觉特征并向视觉-语言 token 注入网格感知空间引导，以支持布局感知生成。</div>
-                <div class="summary-item"><strong>结论：</strong>实验表明，现有端到端 VLM 和流水线解析器仍难以同时恢复阅读顺序与视觉语义，而所提增强模型在联合任务上取得较强性能，说明文档解析需要从孤立模块走向统一模型。</div>
-                <div class="summary-item"><strong>创新点：</strong>构建了面向“读取-解析-描述”统一文档解析任务的大规模基准数据集，并提出可增强视觉-语言模型布局感知能力的空间感知增强模块。</div>
-                <div class="summary-item"><strong>意义：</strong>推动文档理解从分离模块评估转向统一页面级解析与视觉语义生成，为多模态大模型在复杂文档场景中的结构化理解提供新基准和方法。</div>
+                <div class="summary-item"><strong>问题：</strong>如何让具身智能体从第一视角视频中同时学会3D手部感知、动作条件化的视觉未来预测以及目标导向的操作规划，而现有方法通常将这三项能力割裂为独立模型分别训练。</div>
+                <div class="summary-item"><strong>方法：</strong>提出统一的 world action model  P³-WAM，将紧凑结构化的3D动作表示通过 mixture-of-transformers 架构注入预训练视频扩散 Transformer，共享基础权重并配备模态特定适配与双向视觉-动作注意力；通过随机化模态可见性，让视频与3D动作在 Perceive、Predict、Plan 三种模式中互为条件输入或预测目标，实现统一训练。</div>
+                <div class="summary-item"><strong>结论：</strong>统一训练在三个能力上均优于单模式训练，在四个数据集上的3D手部重建与动作条件视频预测超过专用基线，规划质量在VLM评测中提升，生成的操作视频在指令遵循和动作进展上优于视频生成基线。</div>
+                <div class="summary-item"><strong>创新点：</strong>用共享权重的混合Transformer与随机模态可见性机制，把3D感知、动作条件预测和目标导向规划统一进一个视频扩散世界动作模型中。</div>
+                <div class="summary-item"><strong>意义：</strong>为世界模型与具身智能提供了感知-预测-规划一体化的建模范式，说明多能力联合训练可相互增益，对第一视角灵巧操作与通用具身Agent研究具有参考价值。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态</span>
-                <a href="https://arxiv.org/pdf/2610.20335v1" target="_blank" class="pdf-link">PDF 原文</a>
+                <a href="https://arxiv.org/pdf/2610.22363v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-10-15</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.22356v1" target="_blank">DK-VLM: Geometry as Position for Spatial Reasoning in Vision-Language Models</a>
+            </h4>
+            <p class="authors">Han Su, Meng Tian, Tianyu Huang et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>视觉语言模型在多视角下理解3D空间关系，并随观察者移动更新空间判断方面仍存在困难。</div>
+                <div class="summary-item"><strong>方法：</strong>提出DK-VLM与双核注意力机制，将视觉令牌的输入位置和场景中的几何位置分别通过语义核与几何核计算注意力，再通过学习门控融合；同时引入参考帧组合（RC）监督，让模型在多步空间判断中更新参考帧。</div>
+                <div class="summary-item"><strong>结论：</strong>DK-VLM-8B在六个空间基准上取得最高平均分，并在VSI-Bench（74.33）和ReVSI-32（58.28）上取得最高总分；RC监督进一步提升了多步空间推理能力，同时保留通用视频理解能力。</div>
+                <div class="summary-item"><strong>创新点：</strong>将几何信息以“位置”而非融合重建特征的方式直接注入注意力机制，并通过RC监督训练模型跨连续判断更新参考帧。</div>
+                <div class="summary-item"><strong>意义：</strong>为提升视觉语言模型的空间推理与具身/多视角场景理解提供了一种新的注意力建模范式。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2610.22356v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-10-15</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.22355v1" target="_blank">OmniVerifier-C1: Decomposed Graded Verifier for Rule-Governed Generative World Modeling</a>
+            </h4>
+            <p class="authors">Bowei Liu, Xinchen Zhang, Xuhuan Li et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>传统视觉验证器只能输出二值化的 True/False 判断，难以应对涉及组合式要求的复杂多模态场景，缺乏连续且信息量丰富的批评信号。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 OmniVerifier-C1，可自动将复杂提示或环境规则分解为细粒度子组件并给出逐点连续评分；采用解耦式强化学习训练策略，联合优化子问题级二值判断与全局对齐评分；理论上还证明在有真值图像时成对（pairwise）验证范式比逐点范式更准确。</div>
+                <div class="summary-item"><strong>结论：</strong>逐点分级验证器在传统文生图场景中显著优于二值验证器，并在 Maze、Sudoku 等结构化世界建模任务上验证了有效性，表明成对分级验证器是从生成模型迈向结构化世界建模智能体的关键。</div>
+                <div class="summary-item"><strong>创新点：</strong>将二值验证器升级为可分解、可打分的分级验证器，并通过解耦式强化学习训练，同时提出并验证成对验证范式的理论优势。</div>
+                <div class="summary-item"><strong>意义：</strong>为多模态验证与世界模型/世界推理提供了更细粒度、可解释的反馈信号，推动生成模型向规则约束下的结构化世界建模智能体演进。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">世界模型 / 多模态</span>
+                <a href="https://arxiv.org/pdf/2610.22355v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-10-15</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.22295v1" target="_blank">Grounded Human-Attributed Description and Activity Recognition in Videos</a>
+            </h4>
+            <p class="authors">Jay N. Paranjape, Jurijs Nazarovs, Rohan Sarkar et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有视频活动识别数据集多简化为群体活动、单人活动或闭集识别，难以泛化到真实复杂多人场景；论文提出需要根据给定的人体位置，描述视频中每个人的特征和活动。</div>
+                <div class="summary-item"><strong>方法：</strong>提出GHADAR任务，并基于AVA-Actions构建带开放集人物描述与活动描述的新数据集；进一步提出在VLM训练中利用grounding信息约束cross-attention mask的方法，以提升该任务性能。</div>
+                <div class="summary-item"><strong>结论：</strong>实验表明所提方法在该任务上优于现有SOTA VLM；同时指出现有评估指标过度依赖人工标注和精确文本匹配，并提出基于VLM的整体评估方案，直接在视频与生成预测之间比较概念。</div>
+                <div class="summary-item"><strong>创新点：</strong>构建了GHADAR的完整框架，包括新任务、新数据集、新训练方法和新评估范式，实现开放集、多人、带grounding的人物属性与活动识别。</div>
+                <div class="summary-item"><strong>意义：</strong>推动多人物视频理解、视觉语言模型grounding能力及更贴近真实应用的视频评估方法发展。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2610.22295v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-10-15</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.22276v1" target="_blank">MJev-Spatial: System One Spatial Intelligence via Native Attention Matching</a>
+            </h4>
+            <p class="authors">Luozheng Qin, Yuhan Zhu, Changhai Zhou et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有视觉语言模型（VLM）在空间理解任务（空间关系选择、距离估计、2D点位预测）上依赖自回归文本生成，尽管答案空间很小，却仍需付出解码与答案解析的代价，推理慢、延迟高。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 MJev-Spatial，将三类空间理解任务统一为分类框架：把每个候选（选项、数值分箱、图像区域）视为一个类别，直接复用主干网络预训练的 query/key 投影做注意力匹配打分，不增加任何参数；数值与坐标任务通过由粗到细的多阶段分类逐步细化；训练时用 teacher forcing 在单次前向中联合监督各阶段，并结合长度感知的全局分批与跨 GPU 负载均衡提升吞吐。</div>
+                <div class="summary-item"><strong>结论：</strong>基于 Qwen3.5-4B、在 12.3M 空间问答对上训练后，整体得分 65.64%，在 8 个对比模型中最高，12 个基准中 7 项第一，且在全部 12 个基准上超过未修改的自回归基座模型；推理速度是最快自回归基线的 2.5 倍、基座模型的 5.6 倍，训练吞吐比原始分批策略提升 30.8%。</div>
+                <div class="summary-item"><strong>创新点：</strong>用主干网络原生注意力（query-key 匹配）做无参数的分类式打分取代自回归解码，并通过由粗到细分类统一处理选项、标量与坐标三类空间输出。</div>
+                <div class="summary-item"><strong>意义：</strong>为空间智能与具身智能体提供了一条低延迟、无额外参数的 'System 1' 决策范式，说明许多紧凑输出空间的空间判断可直接转化为高效分类问题，而非文本生成。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2610.22276v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-10-15</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.22240v1" target="_blank">MMSearch-OPD: Easy Made Hard, Hard Made Learnable for Long-Horizon Multimodal Search Agents</a>
+            </h4>
+            <p class="authors">Huanyao Zhang, Jiepeng Zhou, Jiaye Lin et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>多模态深度搜索正从短查询走向需要持续获取证据的长程调查，但训练这类智能体受限于高难度训练问题不足和过程反馈不充分。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 MMSearch-OPD，将可控数据精炼与强化学习（RL）和同策略蒸馏（OPD）联合训练相结合。Refine 流程对现有简单多模态问题衍生出的推理链进行定向扩展，通过参数化变换控制搜索深度和跨模态证据需求，并复用已有图文问答对；训练中答案奖励与轻量行为惩罚引导 RL，奖励差距调节 token 级教师指导，蒸馏系数指数衰减以降低对教师的依赖。</div>
+                <div class="summary-item"><strong>结论：</strong>实验表明数据精炼带来性能提升，SFT 后的联合训练进一步提升，最终获得更强的长程多模态深度搜索能力。</div>
+                <div class="summary-item"><strong>创新点：</strong>通过可控数据精炼构造长程多模态搜索训练数据，并用奖励差距调制的 OPD 与 RL 联合训练，兼顾过程反馈和教师指导。</div>
+                <div class="summary-item"><strong>意义：</strong>为多模态搜索 Agent 的长程推理与训练数据构造提供了新思路，有助于推动更复杂的多模态智能体研究。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2610.22240v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-10-15</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.22217v1" target="_blank">Skill-Decoupled On-Policy Expert Distillation for Unified Vision-Language Models</a>
+            </h4>
+            <p class="authors">Yuqi Xiong, Chunyi Peng, Zhipeng Xu et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>在视觉语言模型中，强化学习虽能激发专门视觉能力，但联合优化多种异构目标会引发跨能力梯度冲突；独立训练专家虽可缓解干扰，但直接奖励优化可能使专业知识与奖励黑客偏差纠缠。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 SCOPED，先训练能力特定的专家模型，并通过奖励引导反思提取显式技能；随后进行在线策略蒸馏，用这些技能指导专家监督，但统一学生模型在推理时不可见这些技能，从而迫使其内化过程性知识。</div>
+                <div class="summary-item"><strong>结论：</strong>在八个多模态基准上，SCOPED 持续优于骨干模型和混合能力强化学习；分析表明技能增强能促进更一致的专家轨迹、更关注任务相关视觉证据，并在统一学生中更好保留专门能力。</div>
+                <div class="summary-item"><strong>创新点：</strong>将技能解耦、在线策略专家蒸馏与奖励引导反思相结合，并刻意不向学生暴露显式技能，以实现无推理时技能依赖的能力整合。</div>
+                <div class="summary-item"><strong>意义：</strong>为统一视觉语言模型整合独立获取的多种能力、缓解梯度冲突与奖励黑客问题提供了新思路。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2610.22217v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-10-15</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.22215v1" target="_blank">FutureLift: Lifting Trajectory Proposals into Bidirectional Future Graphs for Motion Forecasting</a>
+            </h4>
+            <p class="authors">Daniel Grimm, J. Marius Zöllner</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>运动预测中，即使强预测器给出的多模态未来提案仍存在残差误差；现有精修器压缩完整提案或顺序更新片段，无法将完整未来作为显式关系上下文进行校正。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 FutureLift，一种与骨干无关的精修器：将每个多模态未来提案表示为异质未来图，时间节点与智能体历史、地图元素、其他模态以及其他智能体未来相连；双向时间边使后段证据可在单次前向中修正前段，并由更新节点预测坐标与置信度残差。</div>
+                <div class="summary-item"><strong>结论：</strong>在 Argoverse2 和 WOMD 上，FutureLift 持续提升冻结提案，并在边际与联合预测中优于原生及专用精修器；在 WOMD 排行榜标准输入方法中取得 minADE 0.5049m、minFDE 0.9942m 第一，Soft mAP 0.4874，且无需 LiDAR 或集成。</div>
+                <div class="summary-item"><strong>创新点：</strong>将完整多模态轨迹提案提升为双向异质未来图，并通过图节点残差修正统一精修不同预测骨干。</div>
+                <div class="summary-item"><strong>意义：</strong>为自动驾驶运动预测提供了一种通用后处理精修框架，有助于提升多模态与联合预测的准确性和安全性。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2610.22215v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-10-15</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.22155v1" target="_blank">Realtime-Bench: Can Frontier Models Solve Real-time Interactive Problems?</a>
+            </h4>
+            <p class="authors">Jingyu Tang, Xu Yang, Zhehao Zhang et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有实时流式模型评估主要关注对话质量和流式感知，尚未测试智能体在严格时间约束下能否有效行动。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 Realtime-Bench，一套精心设计的动态任务基准，其中延迟行动会直接影响任务成功；对比 Wall Clock、Paused Clock 和 Token Clock 三种时钟，以分离服务延迟、理想化无延迟参考和模型自身时间意识。</div>
+                <div class="summary-item"><strong>结论：</strong>在 Wall Clock 下最佳成功率仅 44%，最佳 Pass^3 仅 36%；时间成本会限制动态环境中的成功，且高推理努力在时间压力下效果不一，体现决策质量与及时执行的权衡。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次系统评测前沿模型在严格时间约束下的实时交互行动能力，并通过多时钟设计分解延迟与实时流式能力。</div>
+                <div class="summary-item"><strong>意义：</strong>为改进实时多模态智能体提供了方向，包括具备时间意识的自适应推理以及持续感知与行动。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2610.22155v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-10-15</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.22146v1" target="_blank">FastVLA: Task-Conditioned and Temporally Adaptive Visual Token Compression for Efficient Vision-Language-Action Models</a>
+            </h4>
+            <p class="authors">Jiuyi Xu, Chengyuan Qian, Zhengzhong Tu et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>VLA模型在闭环机器人操作中推理效率受限，每一步高分辨率、多视角图像会产生大量视觉token，主导Transformer计算和延迟；现有基于注意力的token压缩难以适配VLA，因为关键token由任务决定且token预算随步骤变化。</div>
+                <div class="summary-item"><strong>方法：</strong>提出FastVLA，一种无需训练、任务感知且时间自适应的视觉token压缩框架。它利用任务到视觉的注意力为token打分，并根据重要性分布均匀度（用逆Simpson指标和在线滑动窗口校准）自适应设置压缩率。</div>
+                <div class="summary-item"><strong>结论：</strong>在OpenVLA、OpenVLA-OFT、CogACT及LIBERO、SIMPLER和真实Franka Research 3机器人上，FastVLA在保持任务成功率的同时，减少LLM骨干FLOPs 35-59%、动作延迟9-32%（1.09-1.46倍加速），真实机器人端到端延迟降低20%（1.25倍加速）。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次面向VLA提出训练无关、任务条件化且时间自适应的视觉token压缩方法，用任务到视觉注意力和在线校准的逆Simpson均匀度动态决定每步压缩率。</div>
+                <div class="summary-item"><strong>意义：</strong>有助于推动VLA模型在真实机器人闭环控制中的实时部署，在不重新训练的前提下降低推理成本并保持操作性能。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2610.22146v1" target="_blank" class="pdf-link">PDF 原文</a>
             </div>
         </div>
 
@@ -929,172 +998,69 @@
             <div class="card-header">
                 <span class="score medium">6/10</span>
                 
-                <span class="date">2026-10-14</span>
+                <span class="date">2026-10-15</span>
             </div>
             <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2610.20390v1" target="_blank">STP-GUI: Spatially-Aware Token Pruning for Efficient Web-GUI Agents</a>
+                <a href="https://arxiv.org/abs/2610.22182v1" target="_blank">LAMP: Layerwise Adaptive Mixing of Predictors for Training-Free Few-Shot Vision-Language Adaptation</a>
             </h4>
-            <p class="authors">Shuo Wang, Sifan Zhou, Xiaobo Wang et al.</p>
+            <p class="authors">Zhipeng Ye, Feng Jiang, Qiufeng Wang et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>Web-GUI 智能体使用高分辨率截图和多轮历史时会产生大量视觉 token，导致推理开销巨大；现有 token 剪枝方法多面向自然图像，独立选 token 会破坏识别按钮、图标、超链接等小型 GUI 元素所需的局部视觉结构。</div>
-                <div class="summary-item"><strong>方法：</strong>提出 STP-GUI，一种查询引导的空间感知 token 剪枝框架：保留细粒度、由指令条件驱动的 token 打分，同时在激进 token 压缩下进行空间连贯的窗口级选择。通过策略学习优化轻量选择器，并保持 VLM 主干冻结。</div>
-                <div class="summary-item"><strong>结论：</strong>在 Online-Mind2Web 上，21% token 保留率下仍保持全 token 性能的 77.7%，推理延迟降低 31%，FLOPs 降低 57%；在 Android in the Wild 上的结果进一步表明方法可迁移到移动 GUI 环境。</div>
-                <div class="summary-item"><strong>创新点：</strong>核心创新是针对 GUI 元素识别需求，将 token 剪枝从独立 token 选择改为查询引导且空间连贯的窗口级选择。</div>
-                <div class="summary-item"><strong>意义：</strong>该方法提升了 VLM 驱动 GUI 智能体的推理效率，有助于推动高分辨率界面理解智能体的实际部署。</div>
+                <div class="summary-item"><strong>问题：</strong>少样本视觉-语言适配通常只利用编码器的最终全局表示，忽略了中间层中可能互补的信息；而融合多层特征又面临维度不一致、不同任务下有用性不同等挑战。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 LAMP，一种无需训练的层级自适应预测器混合框架：每次前向传播同时获得全局与区域描述子，分别用全局预测器和支持集校准的区域核预测器拟合相同标签残差，并在类别分数空间用带标签验证数据选择混合权重，无需学习投影即可保留原始特征维度；LAMP-F 进一步适配文本锚定类别原型，并用缓存响应精确更新固定核残差预测。</div>
+                <div class="summary-item"><strong>结论：</strong>在11个数据集及ViT、ResNet骨干上验证，LAMP在4/8/16-shot下取得所比较的免训练ResNet-50方法中最优平均精度，16-shot达78.73%；相比仅用全局特征的基线，在ViT-B/16和ResNet-50上平均提升1.14和1.59个百分点，LAMP-F将提升提高到1.96和2.54个百分点，16-shot精度分别达83.57%和79.10%。</div>
+                <div class="summary-item"><strong>创新点：</strong>核心创新在于无需训练、无需学习投影，通过层级自适应混合多个预测器来融合冻结编码器的全局与区域信息，并可用验证标签在类别分数空间选择混合。</div>
+                <div class="summary-item"><strong>意义：</strong>表明充分利用冻结编码器中间层互补特征即可显著提升少样本分类与视觉-语言适配性能，对免训练高效适配方向有参考价值。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态</span>
-                <a href="https://arxiv.org/pdf/2610.20390v1" target="_blank" class="pdf-link">PDF 原文</a>
+                <a href="https://arxiv.org/pdf/2610.22182v1" target="_blank" class="pdf-link">PDF 原文</a>
             </div>
         </div>
-
-        <div class="paper-card" data-score="5">
-            <div class="card-header">
-                <span class="score low">5/10</span>
-                
-                <span class="date">2026-10-14</span>
-            </div>
-            <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2610.20543v1" target="_blank">Reliability-Aware Multimodal Sentiment Prediction Under Local Modality Missingness</a>
-            </h4>
-            <p class="authors">Minghao Kong, Deng Yao, Xi Zhang et al.</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>{
-    "problem": "多模态情感模型通常假设完整话语，但真实流数据常出现文本、音频或视频的连续片段局部缺失。论文研究这种局部缺失下，如何在CMU-MOSEI对齐特征上实现可靠的多模态情感预测。",
-    "method": "提出RM-Net：保留原始时间位置，用可学习token表示未观测位置，输出受观测质量门控的有界每模态强度贡献，并用连续片段双视角掩码训练。推理时融合五个RM-Net种子与LoRA适配的BERT文本专家，融合权重仅依赖可见内容token比例；还使用精确Shapley归因和位置级遮挡进行解释。",
-    "result": "融合模型在held-out split上干净输入macro-F1为0.655，40%混合缺失下为0.634；双视角平均比辅助头基线高0.024，</div>
-                <div class="summary-item"><strong>方法：</strong></div>
-                <div class="summary-item"><strong>结论：</strong></div>
-                <div class="summary-item"><strong>创新点：</strong></div>
-                <div class="summary-item"><strong>意义：</strong></div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">多模态</span>
-                <a href="https://arxiv.org/pdf/2610.20543v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-
-        <div class="paper-card" data-score="5">
-            <div class="card-header">
-                <span class="score low">5/10</span>
-                
-                <span class="date">2026-10-14</span>
-            </div>
-            <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2610.20532v1" target="_blank">ActiveEvidence: Decision-Focused Evidence Graphs with Verifiable Acquisition Gaps</a>
-            </h4>
-            <p class="authors">Miaobo Hu, Shuhao Hu, Xiaobo Guo et al.</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>{
-    "problem": "这篇论文研究多模态Agent在自由元数据/付费观测边界和随机向量成本下，如何决定是否获取视觉证据、选择哪个候选或分辨率查询，以及何时停止交互，并保证决策可认证。",
-    "method": "提出反事实证据交互图CEIG，表示一元证据价值、带符号二阶交互和有向条件伤害，并维护未解交互的分数包络；使用决策加权包络目标收紧可能改变动作的界，配合间隙导向细化只</div>
-                <div class="summary-item"><strong>方法：</strong></div>
-                <div class="summary-item"><strong>结论：</strong></div>
-                <div class="summary-item"><strong>创新点：</strong></div>
-                <div class="summary-item"><strong>意义：</strong></div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">多模态</span>
-                <a href="https://arxiv.org/pdf/2610.20532v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-
-        <div class="paper-card" data-score="5">
-            <div class="card-header">
-                <span class="score low">5/10</span>
-                
-                <span class="date">2026-10-14</span>
-            </div>
-            <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2610.20474v1" target="_blank">AdaRSI: On-Demand Recursive Self-Improvement for Embodied Agents</a>
-            </h4>
-            <p class="authors">Peidong Wang, Ying Chang, Zhiming Ma et al.</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>{
-    "problem": "预训练视觉-语言-动作模型（VLA）在未见过的长时程任务中常中途失败；具身递归自我改进难以判断失败源于执行器的调用框架还是执行器自身能力。",
-    "method": "提出AdaRSI按需递归自我改进框架：编码智能体先提升技能与harness，再从保存状态重试失败子步骤进行失败归因，仅对仍不可靠的子步骤用自采集演示和跨任务经验进行微调。",
-    "result": "在RoboCasa365全部50个目标任务上，以GR00T N1.5为执行器且无人类演示，AdaRSI在三个套件上均提升VLA，未见复合任务成功率从4.6%升至13.8%；相比微调所有子步骤，成功率略高且仅用28% GPU时间和22%自采集演示；无harness微调训练更多但收益远低。",
-    "novelty": "按需决定是否更新执行器权重，并通过重试失败子步骤来归因失败，区分harness问题与执行器能力缺失。",
-    "relevance": "为具身智能体与VLA在长时程任务中的高效自我改进提供了可归因、按需微调的新范式。",
-    "org": "东北</div>
-                <div class="summary-item"><strong>方法：</strong></div>
-                <div class="summary-item"><strong>结论：</strong></div>
-                <div class="summary-item"><strong>创新点：</strong></div>
-                <div class="summary-item"><strong>意义：</strong></div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">多模态 / 具身智能</span>
-                <a href="https://arxiv.org/pdf/2610.20474v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-
-        <div class="paper-card" data-score="5">
-            <div class="card-header">
-                <span class="score low">5/10</span>
-                
-                <span class="date">2026-10-14</span>
-            </div>
-            <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2610.20367v1" target="_blank">Cascaded Retrieval with Cross-Modal Query Refinement for Efficient Visual Document Search</a>
-            </h4>
-            <p class="authors">Diana Turmakhan, Aseem Srivastava, Vivek Gupta et al.</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>（摘要生成失败，请查看原文）</div>
-                <div class="summary-item"><strong>方法：</strong></div>
-                <div class="summary-item"><strong>结论：</strong></div>
-                <div class="summary-item"><strong>创新点：</strong></div>
-                <div class="summary-item"><strong>意义：</strong></div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">多模态</span>
-                <a href="https://arxiv.org/pdf/2610.20367v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-<h3 class="topic-header">大模型 <span class="count">(8 篇)</span></h3>
+<h3 class="topic-header">大模型 <span class="count">(3 篇)</span></h3>
 
         <div class="paper-card" data-score="8">
             <div class="card-header">
                 <span class="score high">8/10</span>
                 
-                <span class="date">2026-10-14</span>
+                <span class="date">2026-10-15</span>
             </div>
             <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2610.20399v1" target="_blank">Cortex: Consolidating Context into Parametric Memory</a>
+                <a href="https://arxiv.org/abs/2610.22360v1" target="_blank">Grounding Generative Verification in 3D Content</a>
             </h4>
-            <p class="authors">Jintian Zhang, Feng He, Xinnian Liang et al.</p>
+            <p class="authors">Shuanglin Li, Jiaying Lin, Shuquan Ye</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>上下文能提升大语言模型性能，但移除上下文后这些增益可能消失。论文要解决的是如何将上下文带来的增益内化到模型参数中，同时保留非目标能力。</div>
-                <div class="summary-item"><strong>方法：</strong>论文将记忆巩固形式化为统一目标，连接上下文指定的知识编辑、技能学习和行为引导。提出 Cortex，通过生成前瞻性查询预测上下文的可能用途，并将上下文条件输出蒸馏为可合并的低秩或结构化前馈网络更新；同时构建五类任务测试台评估单次、批量和顺序更新下的巩固与保持。</div>
-                <div class="summary-item"><strong>结论：</strong>在 4B--120B 稠密和 MoE、纯文本及多模态骨干模型上，Cortex 在多数设置中位于巩固--保持的帕累托前沿。14B 模型经过 50 次顺序事实编辑后，Cortex-Structural 恢复 88.9% 的上下文诱导增益，同时保留 99.8% 的原始非目标性能。</div>
-                <div class="summary-item"><strong>创新点：</strong>提出将上下文内化为可合并参数更新（低秩或结构化 FFN）的通用记忆巩固框架，并配套单次、批量、顺序更新的多任务评测基准。</div>
-                <div class="summary-item"><strong>意义：</strong>为 LLM 持续学习、知识编辑和上下文能力持久化提供了新路径，有望减少对长上下文或检索的依赖并缓解灾难性遗忘。</div>
+                <div class="summary-item"><strong>问题：</strong>多模态大模型和3D生成虽在视觉保真度上进步显著，但缺乏基于3D证据的任务正确性验证能力——即无法判断生成结果是否真正满足规格要求、并解释违规原因。</div>
+                <div class="summary-item"><strong>方法：</strong>提出3DVerifierBench基准，覆盖10项任务，评测模型的判定、拒绝解释以及对规格与候选受控变化的响应；同时构建可扩展流水线，结合多视角事实抽取、受控3D编辑与原生标注，产出14,126条带矛盾解释和关联反事实的训练样本；并探索验证反馈用于候选选择与递归细化。</div>
+                <div class="summary-item"><strong>结论：</strong>人类与最强模型GPT-6 Astra在验证判定上存在21.6个百分点的差距，且拒绝可靠性存在明显缺陷；在16候选池中Oracle选择将完整事实成功率从26.7%提升至90.0%，而在8输入实验中人在回路递归细化可让每个输入满足全部7项要求（并行Oracle@8仅3项）。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将3D内容生成与理解的可靠性问题形式化为「基于多视角证据的生成验证」任务，并配套基准、细粒度错误分析与大规模带解释训练数据管线。</div>
+                <div class="summary-item"><strong>意义：</strong>为世界模型、3D生成与具身智能体提供了可自我反思与迭代修正的验证闭环范式，推动3D系统从视觉逼真走向任务正确。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态 / 大模型</span>
-                <a href="https://arxiv.org/pdf/2610.20399v1" target="_blank" class="pdf-link">PDF 原文</a>
+                <a href="https://arxiv.org/pdf/2610.22360v1" target="_blank" class="pdf-link">PDF 原文</a>
             </div>
         </div>
 
-        <div class="paper-card" data-score="7">
+        <div class="paper-card" data-score="8">
             <div class="card-header">
-                <span class="score medium">7/10</span>
+                <span class="score high">8/10</span>
                 
-                <span class="date">2026-10-14</span>
+                <span class="date">2026-10-15</span>
             </div>
             <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2610.20609v1" target="_blank">SafeDriveVLA: Navigation-Conditioned World Model Dreaming for Conflict-Aware End-to-End Autonomous Driving</a>
+                <a href="https://arxiv.org/abs/2610.22343v1" target="_blank">GeoState: Learning View-Decoupled Geometry States for 3D World Modeling</a>
             </h4>
-            <p class="authors">Shaoyuan Xie, Zihan Zhang, Jingxuan Wang et al.</p>
+            <p class="authors">Hongchang Liu, Jian Liu, Yujuan Ding et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有端到端自动驾驶VLA模型在开放自然语言导航接口下，面对不安全或恶意冲突指令时缺乏安全性与鲁棒性，且缺少同时评估导航跟随、冲突感知和对抗鲁棒性的基准。</div>
-                <div class="summary-item"><strong>方法：</strong>论文提出首个联合评估导航跟随、冲突感知与对抗鲁棒性的基准套件，并提出SafeDriveVLA：显式预测三级导航遵从模式，将冲突推理与动作生成解耦，并利用导航条件世界模型“ dreaming”来推断何时跟随导航信号是安全的。</div>
-                <div class="summary-item"><strong>结论：</strong>SafeDriveVLA在Bench2Drive上达到88.16 Driving Score和68.64% Success Rate，闭环语言跟随能力比最佳SimLingo变体提升49.3%，并将不安全指令下的碰撞数从60降至38。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次将导航跟随、冲突感知与对抗鲁棒性统一评测，并首次在驾驶VLA中引入显式导航遵从模式与导航条件世界模型 dreaming 来提升冲突场景安全性。</div>
-                <div class="summary-item"><strong>意义：</strong>推动语言条件端到端自动驾驶向更安全、更鲁棒的VLA/Agent方向发展，对开放指令下的具身智能安全具有参考意义。</div>
+                <div class="summary-item"><strong>问题：</strong>现有3D世界模型使用几何基础模型特征作为预测性世界状态，但这些特征具有视角依赖性，会把场景动态与相机引起的观测变化纠缠在一起，导致状态演化难以预测。</div>
+                <div class="summary-item"><strong>方法：</strong>提出GeoState，将场景状态演化与相机相关观测解耦：场景tokenizer将多视角GFM特征聚合为视角解耦的场景状态，几何解码器通过相机射线查询该状态；自回归世界模型预测未来场景状态，相机运动单独建模。</div>
+                <div class="summary-item"><strong>结论：</strong>在Waymo上优于已有3D世界模型，支持几何一致的跨视角查询，并能零样本泛化到KITTI和nuScenes。</div>
+                <div class="summary-item"><strong>创新点：</strong>用视角解耦的几何状态作为世界模型表示，将场景演化与相机观测分离，并支持预测或指定相机下的解码。</div>
+                <div class="summary-item"><strong>意义：</strong>推动可视角控制、几何一致的3D世界模型，对多模态与具身智能中的预测和规划有潜在价值。</div>
             </div>
             <div class="card-footer">
-                <span class="topics">世界模型 / 多模态 / 大模型</span>
-                <a href="https://arxiv.org/pdf/2610.20609v1" target="_blank" class="pdf-link">PDF 原文</a>
+                <span class="topics">世界模型 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2610.22343v1" target="_blank" class="pdf-link">PDF 原文</a>
             </div>
         </div>
 
@@ -1102,237 +1068,22 @@
             <div class="card-header">
                 <span class="score medium">7/10</span>
                 
-                <span class="date">2026-10-14</span>
+                <span class="date">2026-10-15</span>
             </div>
             <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2610.20603v1" target="_blank">CommerceGen-Studio: An End-to-End Framework for Commercial-Grade Main-Image Generation</a>
+                <a href="https://arxiv.org/abs/2610.22146v1" target="_blank">FastVLA: Task-Conditioned and Temporally Adaptive Visual Token Compression for Efficient Vision-Language-Action Models</a>
             </h4>
-            <p class="authors">Xiaoli Xu, Zhengtao Wu, Zhengze Xu et al.</p>
+            <p class="authors">Jiuyi Xu, Chengyuan Qian, Zhengzhong Tu et al.</p>
             <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>电商SKU主图生成需要同时保证商品主体保真、商标完整、文字准确、卖点表达和排版合理，现有方法难以在商业规模下端到端满足这些约束。</div>
-                <div class="summary-item"><strong>方法：</strong>提出 CommerceGen-Studio 三阶段框架：PERL-Agent 用 VLM/LLM 闭环从SKU元数据提取卖点；LTO 通过交替领域策略优化对齐改写与图像质量；SKU-DiT 在RDR渐进训练下联合以白底产品图、商标裁剪和结构化布局为条件生成主图。</div>
-                <div class="summary-item"><strong>结论：</strong>框架每天可生成百万级主图、单图延迟数秒；在 CommerceGen-Bench 上取得开源基线最高总分，匹配更大闭源模型，并在 Instruction Following 和 Product Integration 上超过部分闭源模型。</div>
-                <div class="summary-item"><strong>创新点：</strong>将卖点提取、语义改写、布局优化和多条件扩散生成统一为可商业规模部署的端到端主图生成框架，并发布来自真实流量的难例基准。</div>
-                <div class="summary-item"><strong>意义：</strong>展示了可控多模态生成在电商内容生产中的工业级落地路径，对多条件图像生成、Agent闭环优化和商业AIGC系统有参考意义。</div>
+                <div class="summary-item"><strong>问题：</strong>VLA模型在闭环机器人操作中推理效率受限，每一步高分辨率、多视角图像会产生大量视觉token，主导Transformer计算和延迟；现有基于注意力的token压缩难以适配VLA，因为关键token由任务决定且token预算随步骤变化。</div>
+                <div class="summary-item"><strong>方法：</strong>提出FastVLA，一种无需训练、任务感知且时间自适应的视觉token压缩框架。它利用任务到视觉的注意力为token打分，并根据重要性分布均匀度（用逆Simpson指标和在线滑动窗口校准）自适应设置压缩率。</div>
+                <div class="summary-item"><strong>结论：</strong>在OpenVLA、OpenVLA-OFT、CogACT及LIBERO、SIMPLER和真实Franka Research 3机器人上，FastVLA在保持任务成功率的同时，减少LLM骨干FLOPs 35-59%、动作延迟9-32%（1.09-1.46倍加速），真实机器人端到端延迟降低20%（1.25倍加速）。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次面向VLA提出训练无关、任务条件化且时间自适应的视觉token压缩方法，用任务到视觉注意力和在线校准的逆Simpson均匀度动态决定每步压缩率。</div>
+                <div class="summary-item"><strong>意义：</strong>有助于推动VLA模型在真实机器人闭环控制中的实时部署，在不重新训练的前提下降低推理成本并保持操作性能。</div>
             </div>
             <div class="card-footer">
                 <span class="topics">多模态 / 大模型</span>
-                <a href="https://arxiv.org/pdf/2610.20603v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-
-        <div class="paper-card" data-score="7">
-            <div class="card-header">
-                <span class="score medium">7/10</span>
-                
-                <span class="date">2026-10-14</span>
-            </div>
-            <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2610.20592v1" target="_blank">GeoThinker-$F$: Endogenous Predictive World Representations for Fast Spatial Intelligence</a>
-            </h4>
-            <p class="authors">Haoyuan Li, Qihang Cao, Huanyuan Zhou et al.</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有几何感知的多模态大模型（MLLM）依赖外部3D编码器提供结构先验，导致推理时额外的延迟和计算开销。</div>
-                <div class="summary-item"><strong>方法：</strong>提出 GeoThinker-$F$，将 MLLM 的因果隐状态转化为可预测的潜在世界表征，从而内化时空感知。采用解耦的两阶段训练：第一阶段冻结 MLLM 主干，用轻量级 Latent Frame Prediction (LFP) 头从离线3D几何专家和下一帧语义目标中学习；第二阶段移除外部专家，通过 Spatial-Grounded Temporal (SGT) Fusion 模块联合优化自预测先验的生成与选择性融合。</div>
-                <div class="summary-item"><strong>结论：</strong>在无需运行时依赖外部3D几何编码器的前提下，在多个空间智能基准上保持有竞争力的性能，推理最高加速 $3.6\times$，延迟从 $1.45\,\mathrm{s}$ 降至 $0.40\,\mathrm{s}$。</div>
-                <div class="summary-item"><strong>创新点：</strong>用 MLLM 自身隐状态预测出的潜在世界表征来替代外部3D编码器先验，实现端到端内生的几何与未来语义预测。</div>
-                <div class="summary-item"><strong>意义：</strong>为多模态大模型的高效空间智能与内生世界模型提供了新范式，对具身智能和实时空间推理有直接价值。</div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">多模态 / 大模型</span>
-                <a href="https://arxiv.org/pdf/2610.20592v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-
-        <div class="paper-card" data-score="7">
-            <div class="card-header">
-                <span class="score medium">7/10</span>
-                
-                <span class="date">2026-10-14</span>
-            </div>
-            <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2610.20560v1" target="_blank">PhySGA: A Physics-Space Grounded Agentic Framework for Generalizable and Interactive 3D Composition</a>
-            </h4>
-            <p class="authors">Weichen Lyu, Chong Xia, Mingyu Dong et al.</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有3D物体组合方法依赖数字空间中的静态先验，难以处理悬挂、重力沉降、隐藏容纳等需要交互构建和物理仿真的复杂组合任务。</div>
-                <div class="summary-item"><strong>方法：</strong>提出PhySGA，一个在物理空间中基于智能体探索与物理仿真的3D组合框架。其包含协作式前馈-反馈架构：Assembly Agent负责几何与运动学推理和全局规划，Critic Agent基于接触动力学进行状态诊断与闭环微调，并通过Action Routers映射物理原语、Self-Evolving Skill Library积累可复用经验。</div>
-                <div class="summary-item"><strong>结论：</strong>在Isaac Sim中的大量实验表明，PhySGA在关系保真度、物理合理性和视觉质量上显著优于现有方法。</div>
-                <div class="summary-item"><strong>创新点：</strong>将LLM/VLM智能体与物理仿真闭环结合，并引入自进化技能库，实现可泛化、可交互的刚体/铰接体/可变形体3D组合。</div>
-                <div class="summary-item"><strong>意义：</strong>推动了具身智能、世界模型和基础模型在物理空间中进行交互式构建与真实物理理解的研究。</div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">多模态 / 大模型 / Agent</span>
-                <a href="https://arxiv.org/pdf/2610.20560v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-
-        <div class="paper-card" data-score="7">
-            <div class="card-header">
-                <span class="score medium">7/10</span>
-                
-                <span class="date">2026-10-14</span>
-            </div>
-            <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2610.20461v1" target="_blank">Equal CER, Unequal Damage: Severity-Weighted Character Error Rate for OCR</a>
-            </h4>
-            <p class="authors">Nguyen Nguyen, Yongyi Zang</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>OCR和视觉语言模型常用的CER指标把所有字符错误同等对待，导致一个拼写小错和关键人名错误得分相同，无法反映错误的实际严重程度。</div>
-                <div class="summary-item"><strong>方法：</strong>提出semCER，在保留CER对齐方式和分母的前提下，用LLM judge为每个字素编辑赋予严重性权重，且无需分词；同时保留归一化CER作为整体转录评分，并可将semCER分解为带名称的编辑项。</div>
-                <div class="summary-item"><strong>结论：</strong>semCER的严重性评分在英语、越南语和中文中逐编辑项追踪读者评分，并能将读者认为最严重的编辑排在前面；在CER与semCER不一致的样本上，英语和中文读者更常支持semCER，越南语中两者持平。跨16种语言显示严重性判断差异，且通用VLM的错误字母显著高于随机水平，而经典流水线接近随机。</div>
-                <div class="summary-item"><strong>创新点：</strong>首次将LLM judge引入CER框架，实现保留原始对齐与分母、可分解且语言无关的严重性加权字符错误率。</div>
-                <div class="summary-item"><strong>意义：</strong>为OCR和VLM提供更贴近人类感知严重性的评估指标，有助于更公平地比较模型错误类型与实际危害。</div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">多模态 / 大模型</span>
-                <a href="https://arxiv.org/pdf/2610.20461v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-
-        <div class="paper-card" data-score="7">
-            <div class="card-header">
-                <span class="score medium">7/10</span>
-                
-                <span class="date">2026-10-14</span>
-            </div>
-            <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2610.20442v1" target="_blank">Towards Agentic Robots: Model, Data, Environment, and Harness</a>
-            </h4>
-            <p class="authors">Chonghan Qin, Dongming Wu, Kaituo Feng et al.</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>当前 agentic robots 领域发展迅速但研究较为分散，缺乏统一视角来理解如何将不同 agentic 功能整合为完整的机器人系统。</div>
-                <div class="summary-item"><strong>方法：</strong>该论文对现有研究进行统一综述：先梳理从机器人策略到 agentic 系统的发展，涵盖视觉-语言-动作模型、世界模型和世界-动作模型；随后界定 agentic robots 的定义与范围，并按 Model、Data、Environment、Harness 四大功能域、十七个类别组织文献。</div>
-                <div class="summary-item"><strong>结论：</strong>论文提供了一个统一的分类与综述框架，说明 agent 如何影响模型学习与机器人决策、采集与整理机器人数据、构建学习与评估所需的世界/任务/测试，以及组织机器人能力使用，并讨论了开放挑战与未来方向。</div>
-                <div class="summary-item"><strong>创新点：</strong>系统性提出面向 agentic robots 的跨模型、数据、环境与执行框架四大维度的统一分类与综述框架。</div>
-                <div class="summary-item"><strong>意义：</strong>有助于连接分散的具身智能与机器人 Agent 研究，为构建更强大、可靠和自适应的机器人系统提供路线图。</div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">世界模型 / 多模态 / 大模型 / Agent</span>
-                <a href="https://arxiv.org/pdf/2610.20442v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-
-        <div class="paper-card" data-score="7">
-            <div class="card-header">
-                <span class="score medium">7/10</span>
-                
-                <span class="date">2026-10-14</span>
-            </div>
-            <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2610.20352v1" target="_blank">ReferFlow: Beyond Final-Target Localization for Complex Referring Expressions</a>
-            </h4>
-            <p class="authors">Tianyi Gao, Han Fang, Xin Wei et al.</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有指代表达理解（REC）评测多只关注最终目标定位，忽略了复杂查询中具有依赖关系的中间视觉引用，导致模型多步定位过程未被检验。</div>
-                <div class="summary-item"><strong>方法：</strong>论文提出轨迹级REC设定及ReferFlow-Bench，用Refinement、Shift、Reset、Mixture四类轨迹刻画结构化区域转移；并提出ReferFlow，将文本-潜变量轨迹生成与坐标解码解耦，采用状态化区域潜推理、轨迹感知并行解码和Grounding-Aware GRPO提升多步一致定位。</div>
-                <div class="summary-item"><strong>结论：</strong>实验显示当前模型难以稳定定位连续步骤中的中间视觉引用，而ReferFlow在通用REC基准和ReferFlow-Bench上均取得领先性能。</div>
-                <div class="summary-item"><strong>创新点：</strong>将REC从最终目标定位推进到轨迹级多步视觉引用定位，并设计解耦式潜状态推理与并行坐标解码框架。</div>
-                <div class="summary-item"><strong>意义：</strong>有助于推动多模态大模型在复杂指代、多步视觉推理和可解释定位能力上的评测与方法发展。</div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">多模态 / 大模型</span>
-                <a href="https://arxiv.org/pdf/2610.20352v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-<h3 class="topic-header">Agent <span class="count">(3 篇)</span></h3>
-
-        <div class="paper-card" data-score="7">
-            <div class="card-header">
-                <span class="score medium">7/10</span>
-                
-                <span class="date">2026-10-14</span>
-            </div>
-            <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2610.20560v1" target="_blank">PhySGA: A Physics-Space Grounded Agentic Framework for Generalizable and Interactive 3D Composition</a>
-            </h4>
-            <p class="authors">Weichen Lyu, Chong Xia, Mingyu Dong et al.</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>现有3D物体组合方法依赖数字空间中的静态先验，难以处理悬挂、重力沉降、隐藏容纳等需要交互构建和物理仿真的复杂组合任务。</div>
-                <div class="summary-item"><strong>方法：</strong>提出PhySGA，一个在物理空间中基于智能体探索与物理仿真的3D组合框架。其包含协作式前馈-反馈架构：Assembly Agent负责几何与运动学推理和全局规划，Critic Agent基于接触动力学进行状态诊断与闭环微调，并通过Action Routers映射物理原语、Self-Evolving Skill Library积累可复用经验。</div>
-                <div class="summary-item"><strong>结论：</strong>在Isaac Sim中的大量实验表明，PhySGA在关系保真度、物理合理性和视觉质量上显著优于现有方法。</div>
-                <div class="summary-item"><strong>创新点：</strong>将LLM/VLM智能体与物理仿真闭环结合，并引入自进化技能库，实现可泛化、可交互的刚体/铰接体/可变形体3D组合。</div>
-                <div class="summary-item"><strong>意义：</strong>推动了具身智能、世界模型和基础模型在物理空间中进行交互式构建与真实物理理解的研究。</div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">多模态 / 大模型 / Agent</span>
-                <a href="https://arxiv.org/pdf/2610.20560v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-
-        <div class="paper-card" data-score="7">
-            <div class="card-header">
-                <span class="score medium">7/10</span>
-                
-                <span class="date">2026-10-14</span>
-            </div>
-            <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2610.20442v1" target="_blank">Towards Agentic Robots: Model, Data, Environment, and Harness</a>
-            </h4>
-            <p class="authors">Chonghan Qin, Dongming Wu, Kaituo Feng et al.</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>当前 agentic robots 领域发展迅速但研究较为分散，缺乏统一视角来理解如何将不同 agentic 功能整合为完整的机器人系统。</div>
-                <div class="summary-item"><strong>方法：</strong>该论文对现有研究进行统一综述：先梳理从机器人策略到 agentic 系统的发展，涵盖视觉-语言-动作模型、世界模型和世界-动作模型；随后界定 agentic robots 的定义与范围，并按 Model、Data、Environment、Harness 四大功能域、十七个类别组织文献。</div>
-                <div class="summary-item"><strong>结论：</strong>论文提供了一个统一的分类与综述框架，说明 agent 如何影响模型学习与机器人决策、采集与整理机器人数据、构建学习与评估所需的世界/任务/测试，以及组织机器人能力使用，并讨论了开放挑战与未来方向。</div>
-                <div class="summary-item"><strong>创新点：</strong>系统性提出面向 agentic robots 的跨模型、数据、环境与执行框架四大维度的统一分类与综述框架。</div>
-                <div class="summary-item"><strong>意义：</strong>有助于连接分散的具身智能与机器人 Agent 研究，为构建更强大、可靠和自适应的机器人系统提供路线图。</div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">世界模型 / 多模态 / 大模型 / Agent</span>
-                <a href="https://arxiv.org/pdf/2610.20442v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-
-        <div class="paper-card" data-score="7">
-            <div class="card-header">
-                <span class="score medium">7/10</span>
-                
-                <span class="date">2026-10-14</span>
-            </div>
-            <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2610.20384v1" target="_blank">Look Before You Restore: Learning to Predict Before Acting for Agentic Image Restoration</a>
-            </h4>
-            <p class="authors">Xu Zhang, Jun Wan, Lefei Zhang et al.</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>混合退化图像恢复的智能体通常需要先执行工具才知道其效果，导致失败调用浪费计算，且有害输出不能及时被发现。</div>
-                <div class="summary-item"><strong>方法：</strong>提出 PreActIR，在工具执行前用工具条件世界模型预测残余退化、图像质量、保真度变化，以及危害风险和预测不确定性；选择最优候选执行后，由独立验证器决定提交或回滚，智能体再从观测状态重规划。</div>
-                <div class="summary-item"><strong>结论：</strong>在固定候选池、验证器和预算的受控评测中，PreActIR 相比反应式“先执行再评估”试错，真实工具调用减少 42.5%，被拒调用减少 63.4%，Y-PSNR 提升 0.92 dB。</div>
-                <div class="summary-item"><strong>创新点：</strong>将工具条件世界模型引入智能体图像恢复，实现“先预测后果、再执行与验证回滚”的闭环决策。</div>
-                <div class="summary-item"><strong>意义：</strong>展示了预测式世界模型在工具型智能体中的效率与可靠性价值，对多模态智能体和具身智能体具有借鉴意义。</div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">世界模型 / Agent</span>
-                <a href="https://arxiv.org/pdf/2610.20384v1" target="_blank" class="pdf-link">PDF 原文</a>
-            </div>
-        </div>
-<h3 class="topic-header">具身智能 <span class="count">(1 篇)</span></h3>
-
-        <div class="paper-card" data-score="5">
-            <div class="card-header">
-                <span class="score low">5/10</span>
-                
-                <span class="date">2026-10-14</span>
-            </div>
-            <h4 class="paper-title">
-                <a href="https://arxiv.org/abs/2610.20474v1" target="_blank">AdaRSI: On-Demand Recursive Self-Improvement for Embodied Agents</a>
-            </h4>
-            <p class="authors">Peidong Wang, Ying Chang, Zhiming Ma et al.</p>
-            <div class="summary">
-                <div class="summary-item"><strong>问题：</strong>{
-    "problem": "预训练视觉-语言-动作模型（VLA）在未见过的长时程任务中常中途失败；具身递归自我改进难以判断失败源于执行器的调用框架还是执行器自身能力。",
-    "method": "提出AdaRSI按需递归自我改进框架：编码智能体先提升技能与harness，再从保存状态重试失败子步骤进行失败归因，仅对仍不可靠的子步骤用自采集演示和跨任务经验进行微调。",
-    "result": "在RoboCasa365全部50个目标任务上，以GR00T N1.5为执行器且无人类演示，AdaRSI在三个套件上均提升VLA，未见复合任务成功率从4.6%升至13.8%；相比微调所有子步骤，成功率略高且仅用28% GPU时间和22%自采集演示；无harness微调训练更多但收益远低。",
-    "novelty": "按需决定是否更新执行器权重，并通过重试失败子步骤来归因失败，区分harness问题与执行器能力缺失。",
-    "relevance": "为具身智能体与VLA在长时程任务中的高效自我改进提供了可归因、按需微调的新范式。",
-    "org": "东北</div>
-                <div class="summary-item"><strong>方法：</strong></div>
-                <div class="summary-item"><strong>结论：</strong></div>
-                <div class="summary-item"><strong>创新点：</strong></div>
-                <div class="summary-item"><strong>意义：</strong></div>
-            </div>
-            <div class="card-footer">
-                <span class="topics">多模态 / 具身智能</span>
-                <a href="https://arxiv.org/pdf/2610.20474v1" target="_blank" class="pdf-link">PDF 原文</a>
+                <a href="https://arxiv.org/pdf/2610.22146v1" target="_blank" class="pdf-link">PDF 原文</a>
             </div>
         </div>
 
@@ -1346,114 +1097,94 @@
 
         <div class="contact-card">
             <div class="contact-paper">
-                <a href="https://arxiv.org/abs/2610.20598v1" target="_blank">[8分] DynThinker: Unifying Static 3D and Dynamic 4D Spatial Reason...</a>
+                <a href="https://arxiv.org/abs/2610.22340v1" target="_blank">[9分] Dexterity from Supervised Play</a>
+                <span class="contact-org-badge normal">UC Berkeley</span>
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2610.22364v1" target="_blank">[8分] T2-z: Test-Time Optimization of Environment Latents for Robo...</a>
                 
             </div>
         </div>
 
         <div class="contact-card">
             <div class="contact-paper">
-                <a href="https://arxiv.org/abs/2610.20538v1" target="_blank">[8分] PrismaCoder: Pushing the Boundaries of Open Multimodal Code ...</a>
+                <a href="https://arxiv.org/abs/2610.22362v1" target="_blank">[8分] CoDA: Co-Evolution of Data Engines and Action Policies</a>
                 
             </div>
             <div class="contact-list">
-                <div class="contact-person"><a href="mailto:jingyang.gong@connect.hku.hk" class="email-link">jingyang.gong@connect.hku.hk</a></div>
-                <div class="contact-person"><a href="mailto:ggaojiahui@gmail.com" class="email-link">ggaojiahui@gmail.com</a></div>
-                <div class="contact-person"><a href="mailto:qiushisun@connect.hku.hk" class="email-link">qiushisun@connect.hku.hk</a></div>
+                <div class="contact-person"><a href="mailto:ty41@illinois.edu" class="email-link">ty41@illinois.edu</a></div>
+                <div class="contact-person"><a href="mailto:lourent2@illinois.edu" class="email-link">lourent2@illinois.edu</a></div>
             </div>
         </div>
 
         <div class="contact-card">
             <div class="contact-paper">
-                <a href="https://arxiv.org/abs/2610.20504v1" target="_blank">[8分] Graph-Reweighted Behavior Cloning with Human Interventions f...</a>
-                
-            </div>
-        </div>
-
-        <div class="contact-card">
-            <div class="contact-paper">
-                <a href="https://arxiv.org/abs/2610.20399v1" target="_blank">[8分] Cortex: Consolidating Context into Parametric Memory</a>
+                <a href="https://arxiv.org/abs/2610.22360v1" target="_blank">[8分] Grounding Generative Verification in 3D Content</a>
                 
             </div>
             <div class="contact-list">
-                <div class="contact-person"><a href="mailto:mikedean.2367@bytedance.com" class="email-link">mikedean.2367@bytedance.com</a></div>
-                <div class="contact-person"><a href="mailto:zhangningyu@zju.edu.cn" class="email-link">zhangningyu@zju.edu.cn</a></div>
+                <div class="contact-person"><span class="role-badge">第一作者</span><strong>Shuanglin Li</strong> — Southeast University; Shenzhen Loop Area Institute </div>
+                <div class="contact-person"><strong>Jiaying Lin</strong> — The Hong Kong University of Science and Technology </div>
+                <div class="contact-person"><strong>Shuquan Ye</strong> — Shenzhen Loop Area Institute </div>
             </div>
         </div>
 
         <div class="contact-card">
             <div class="contact-paper">
-                <a href="https://arxiv.org/abs/2610.20610v1" target="_blank">[7分] Can Learning to Answer Spatial Questions Improve Novel-View ...</a>
+                <a href="https://arxiv.org/abs/2610.22343v1" target="_blank">[8分] GeoState: Learning View-Decoupled Geometry States for 3D Wor...</a>
                 
             </div>
             <div class="contact-list">
-                <div class="contact-person"><span class="role-badge">第一作者</span><strong>Jahyeok Koo</strong> — KAIST AI </div>
-                <div class="contact-person"><strong>Hyeonseo Yu</strong> — KAIST AI </div>
-                <div class="contact-person"><strong>Seungho Jang</strong> — KAIST AI </div>
-                <div class="contact-person"><strong>Jaewoo Jung</strong> — KAIST AI </div>
-                <div class="contact-person"><strong>Jiwon Kang</strong> — KAIST AI </div>
+                <div class="contact-person"><a href="mailto:yi.bin@hotmail.com" class="email-link">yi.bin@hotmail.com</a></div>
+                <div class="contact-person"><a href="mailto:Hongchang_Liu@outlook.com" class="email-link">Hongchang_Liu@outlook.com</a></div>
             </div>
-            <div class="corresponding">通讯作者: Seungryong Kim</div>
         </div>
 
         <div class="contact-card">
             <div class="contact-paper">
-                <a href="https://arxiv.org/abs/2610.20609v1" target="_blank">[7分] SafeDriveVLA: Navigation-Conditioned World Model Dreaming fo...</a>
+                <a href="https://arxiv.org/abs/2610.22234v1" target="_blank">[8分] OS-Helix: Unifying GUI Interaction and Code Execution in Nat...</a>
+                
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2610.22193v1" target="_blank">[8分] MOSS: Mode-Oriented Source Shaping for Robot Flow Matching P...</a>
                 
             </div>
             <div class="contact-list">
-                <div class="contact-person"><span class="role-badge">第一作者（共同第一作者，Equal contribution）</span><strong>Shaoyuan Xie</strong> — UC Irvine </div>
-                <div class="contact-person"><span class="role-badge">共同第一作者（Equal contribution）</span><strong>Zihan Zhang</strong> — UC San Diego </div>
-                <div class="contact-person"><span class="role-badge">作者</span><strong>Jingxuan Wang</strong> — UC Irvine </div>
-                <div class="contact-person"><span class="role-badge">作者</span><strong>Jiashu Qu</strong> — University of Cincinnati </div>
-                <div class="contact-person"><span class="role-badge">作者</span><strong>Xiaoqing Liang</strong> — UC Irvine </div>
+                <div class="contact-person"><a href="mailto:jianfei.yang@ntu.edu.sg" class="email-link">jianfei.yang@ntu.edu.sg</a></div>
             </div>
         </div>
 
         <div class="contact-card">
             <div class="contact-paper">
-                <a href="https://arxiv.org/abs/2610.20603v1" target="_blank">[7分] CommerceGen-Studio: An End-to-End Framework for Commercial-G...</a>
+                <a href="https://arxiv.org/abs/2610.22178v1" target="_blank">[8分] REKI: Registering Knowledge in VLAs</a>
                 
             </div>
             <div class="contact-list">
-                <div class="contact-person"><strong>Xiaoli Xu</strong> — Alibaba Group </div>
-                <div class="contact-person"><strong>Zhengtao Wu</strong> — Alibaba Group </div>
-                <div class="contact-person"><strong>Zhengze Xu</strong> — Alibaba Group </div>
-                <div class="contact-person"><strong>Tao Liu</strong> — Alibaba Group </div>
-                <div class="contact-person"><strong>Yongchao Du</strong> — Alibaba Group </div>
+                <div class="contact-person"><span class="role-badge">第一作者</span><strong>Juliette Marrie</strong> — Kyutai </div>
+                <div class="contact-person"><strong>Paul Pacaud</strong> — Inria </div>
+                <div class="contact-person"><strong>Adrien Ramanana Rahary</strong> — École nationale des ponts et chaussées </div>
+                <div class="contact-person"><strong>Shizhe Chen</strong> — Inria </div>
+                <div class="contact-person"><strong>Moritz Böhle</strong> — Kyutai </div>
             </div>
         </div>
 
         <div class="contact-card">
             <div class="contact-paper">
-                <a href="https://arxiv.org/abs/2610.20592v1" target="_blank">[7分] GeoThinker-$F$: Endogenous Predictive World Representations ...</a>
+                <a href="https://arxiv.org/abs/2610.22363v1" target="_blank">[7分] Perceive, Predict, and Plan: a Unified World Action Model fo...</a>
                 
             </div>
         </div>
 
         <div class="contact-card">
             <div class="contact-paper">
-                <a href="https://arxiv.org/abs/2610.20560v1" target="_blank">[7分] PhySGA: A Physics-Space Grounded Agentic Framework for Gener...</a>
+                <a href="https://arxiv.org/abs/2610.22356v1" target="_blank">[7分] DK-VLM: Geometry as Position for Spatial Reasoning in Vision...</a>
                 
-            </div>
-            <div class="contact-list">
-                <div class="contact-person"><span class="role-badge">共同第一作者</span><strong>Weichen Lyu</strong> — Tsinghua University </div>
-                <div class="contact-person"><span class="role-badge">共同第一作者</span><strong>Chong Xia</strong> — Tsinghua University </div>
-                <div class="contact-person"><strong>Mingyu Dong</strong> — Tsinghua University </div>
-                <div class="contact-person"><strong>Long Xu</strong> — Zhejiang University </div>
-                <div class="contact-person"><strong>Shengjun Zhang</strong> — Tsinghua University </div>
-            </div>
-            <div class="corresponding">通讯作者: Yueqi Duan</div>
-        </div>
-
-        <div class="contact-card">
-            <div class="contact-paper">
-                <a href="https://arxiv.org/abs/2610.20461v1" target="_blank">[7分] Equal CER, Unequal Damage: Severity-Weighted Character Error...</a>
-                
-            </div>
-            <div class="contact-list">
-                <div class="contact-person"><span class="role-badge">第一作者</span><strong>Nguyen Nguyen</strong> — University of Rochester <a href="mailto:n.nguyen@rochester.edu" class="email-link">n.nguyen@rochester.edu</a></div>
-                <div class="contact-person"><span class="role-badge">第二作者</span><strong>Yongyi Zang</strong> — Independent <a href="mailto:zyy0116@gmail.com" class="email-link">zyy0116@gmail.com</a></div>
             </div>
         </div>
 </div>
@@ -1464,7 +1195,8 @@
         <div class="archive">
             <a href="index.html" class="back-latest">← 返回最新日报</a>
             <h2>历史归档</h2>
-            <a href="2026-10-15.html" class="archive-link">2026-10-15</a>
+            <a href="2026-10-16.html" class="archive-link">2026-10-16</a>
+<a href="2026-10-15.html" class="archive-link">2026-10-15</a>
 <a href="2026-10-14.html" class="archive-link">2026-10-14</a>
 <a href="2026-10-13.html" class="archive-link">2026-10-13</a>
 <a href="2026-10-11.html" class="archive-link">2026-10-11</a>
@@ -1493,7 +1225,6 @@
 <a href="2026-09-04.html" class="archive-link">2026-09-04</a>
 <a href="2026-09-03.html" class="archive-link">2026-09-03</a>
 <a href="2026-09-02.html" class="archive-link">2026-09-02</a>
-<a href="2026-09-01.html" class="archive-link">2026-09-01</a>
 
         </div>
     </div>
