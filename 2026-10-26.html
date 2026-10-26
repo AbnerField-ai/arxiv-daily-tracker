@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 论文日报 - 2026-10-26</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
+            background: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* ====== 页头 ====== */
+        .page-header {
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .page-header h1 {
+            font-size: 1.8em;
+            color: #1a1a2e;
+            margin-bottom: 6px;
+        }
+        .page-header .meta {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .stats {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+        .stat {
+            background: #f8f9fa;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.82em;
+            color: #555;
+        }
+
+        /* ====== 导航 ====== */
+        .nav-bar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 10px 20px;
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .nav-bar a {
+            text-decoration: none;
+            font-size: 0.85em;
+            padding: 5px 14px;
+            border-radius: 16px;
+            color: #555;
+            background: #f3f4f6;
+            transition: all 0.2s;
+        }
+        .nav-bar a:hover { background: #4a6cf7; color: white; }
+        .nav-bar a.nav-labs { background: #1e293b; color: #94a3b8; }
+        .nav-bar a.nav-labs:hover { background: #334155; color: white; }
+
+        /* ====== 板块4: 趋势总结 ====== */
+        .section-insight {
+            max-width: 900px;
+            margin: 24px auto;
+            padding: 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            color: white;
+        }
+        .insight-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .insight-header h2 {
+            font-size: 1.3em;
+        }
+        .insight-date {
+            opacity: 0.8;
+            font-size: 0.85em;
+        }
+        .insight-body {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .insight-item {
+            background: rgba(255,255,255,0.12);
+            border-radius: 10px;
+            padding: 14px 16px;
+        }
+        .insight-item.highlight {
+            background: rgba(255,255,255,0.22);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        .insight-label {
+            font-size: 0.78em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.8;
+            margin-bottom: 4px;
+        }
+        .insight-content {
+            font-size: 0.92em;
+            line-height: 1.5;
+        }
+        .overlap-tags {
+            margin-top: 8px;
+        }
+        .overlap-badge {
+            display: inline-block;
+            background: #fbbf24;
+            color: #1a1a2e;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 0.78em;
+            font-weight: 600;
+            margin-right: 6px;
+        }
+        .overlap-topic {
+            font-size: 0.82em;
+            opacity: 0.9;
+        }
+
+        /* ====== 板块3: 大厂动态 ====== */
+        .section-labs {
+            max-width: 900px;
+            margin: 24px auto;
+            padding: 24px;
+            background: #1e293b;
+            border-radius: 16px;
+            color: #e2e8f0;
+        }
+        .labs-title {
+            font-size: 1.3em;
+            color: white;
+            margin-bottom: 20px;
+        }
+        .labs-count {
+            font-size: 0.6em;
+            font-weight: normal;
+            color: #94a3b8;
+        }
+        .lab-group {
+            margin-bottom: 20px;
+        }
+        .lab-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #334155;
+        }
+        .lab-name {
+            font-size: 1.05em;
+            font-weight: 600;
+            color: #f1f5f9;
+        }
+        .lab-badge {
+            background: #3b82f6;
+            color: white;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 0.75em;
+        }
+        .lab-paper {
+            background: #293548;
+            border-radius: 10px;
+            padding: 14px 16px;
+            margin-bottom: 10px;
+        }
+        .lab-paper-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+        .lab-paper-topics {
+            font-size: 0.8em;
+            color: #94a3b8;
+        }
+        .lab-paper-title {
+            font-size: 0.95em;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        .lab-paper-title a {
+            color: #e2e8f0;
+            text-decoration: none;
+        }
+        .lab-paper-title a:hover {
+            color: #60a5fa;
+            text-decoration: underline;
+        }
+        .lab-paper-summary {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-size: 0.85em;
+            color: #94a3b8;
+            margin-bottom: 8px;
+        }
+        .lab-paper-summary strong {
+            color: #cbd5e1;
+        }
+        .lab-pdf-link {
+            color: #60a5fa;
+            text-decoration: none;
+            font-size: 0.82em;
+        }
+        .lab-pdf-link:hover { text-decoration: underline; }
+
+        /* ====== 板块1: 全部论文 ====== */
+        .section-papers {
+            max-width: 900px;
+            margin: 24px auto;
+            padding: 24px;
+            background: white;
+            border-radius: 16px;
+        }
+        .papers-title {
+            font-size: 1.3em;
+            color: #1a1a2e;
+            margin-bottom: 20px;
+        }
+        .topic-header {
+            font-size: 1.15em;
+            color: #1a1a2e;
+            margin: 24px 0 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .topic-header .count {
+            font-size: 0.7em;
+            color: #888;
+            font-weight: normal;
+        }
+        .paper-card {
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 14px;
+            border: 1px solid #e5e7eb;
+            transition: box-shadow 0.2s;
+        }
+        .paper-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+        .score {
+            font-weight: bold;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 0.82em;
+        }
+        .score.high { background: #d1fae5; color: #065f46; }
+        .score.medium { background: #fef3c7; color: #92400e; }
+        .score.low { background: #f3f4f6; color: #6b7280; }
+        .org-tag {
+            background: #ede9fe;
+            color: #6d28d9;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.75em;
+        }
+        .date { color: #9ca3af; font-size: 0.82em; margin-left: auto; }
+        .paper-title {
+            font-size: 0.98em;
+            margin-bottom: 4px;
+            line-height: 1.4;
+        }
+        .paper-title a {
+            color: #1e293b;
+            text-decoration: none;
+        }
+        .paper-title a:hover {
+            color: #4a6cf7;
+            text-decoration: underline;
+        }
+        .authors {
+            color: #6b7280;
+            font-size: 0.82em;
+            margin-bottom: 10px;
+        }
+        .summary {
+            background: white;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 1px solid #f1f5f9;
+        }
+        .summary-item {
+            margin-bottom: 4px;
+            font-size: 0.85em;
+            color: #4b5563;
+        }
+        .summary-item:last-child { margin-bottom: 0; }
+        .summary-item strong { color: #374151; }
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topics { color: #9ca3af; font-size: 0.78em; }
+        .pdf-link {
+            color: #4a6cf7;
+            text-decoration: none;
+            font-size: 0.82em;
+            font-weight: 500;
+        }
+        .pdf-link:hover { text-decoration: underline; }
+
+        /* ====== 板块2: 联系人库 ====== */
+        .section-contacts {
+            max-width: 900px;
+            margin: 24px auto;
+            padding: 24px;
+            background: white;
+            border-radius: 16px;
+        }
+        .contacts-title {
+            font-size: 1.3em;
+            color: #1a1a2e;
+            margin-bottom: 16px;
+        }
+        .contacts-count {
+            font-size: 0.6em;
+            font-weight: normal;
+            color: #888;
+        }
+        .contacts-subtitle {
+            font-size: 1em;
+            color: #555;
+            margin: 16px 0 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .key-lab-subtitle {
+            color: #ea580c;
+        }
+        .contact-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 12px 14px;
+            margin-bottom: 10px;
+            border: 1px solid #e5e7eb;
+        }
+        .contact-card.key-lab {
+            background: #fff7ed;
+            border-color: #fed7aa;
+        }
+        .contact-paper {
+            margin-bottom: 6px;
+        }
+        .contact-paper a {
+            color: #1e293b;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.88em;
+        }
+        .contact-paper a:hover { color: #4a6cf7; text-decoration: underline; }
+        .contact-org-badge {
+            display: inline-block;
+            background: #ea580c;
+            color: white;
+            padding: 1px 8px;
+            border-radius: 4px;
+            font-size: 0.72em;
+            margin-left: 6px;
+        }
+        .contact-org-badge.normal {
+            background: #6b7280;
+        }
+        .contact-list {
+            padding-left: 10px;
+            border-left: 3px solid #fed7aa;
+        }
+        .contact-card:not(.key-lab) .contact-list {
+            border-left-color: #e5e7eb;
+        }
+        .contact-person {
+            font-size: 0.84em;
+            margin-bottom: 3px;
+            color: #374151;
+        }
+        .email-link {
+            color: #ea580c;
+            text-decoration: none;
+            font-size: 0.84em;
+        }
+        .contact-card:not(.key-lab) .email-link {
+            color: #4a6cf7;
+        }
+        .email-link:hover { text-decoration: underline; }
+        .role-badge {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-size: 0.72em;
+            margin-right: 4px;
+        }
+        .corresponding {
+            font-size: 0.78em;
+            color: #9ca3af;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        /* ====== 底部归档 ====== */
+        .section-archive {
+            max-width: 900px;
+            margin: 24px auto;
+            padding: 20px 24px;
+            background: white;
+            border-radius: 16px;
+        }
+        .archive h2 { font-size: 1em; margin-bottom: 10px; color: #666; }
+        .back-latest {
+            display: inline-block;
+            margin-bottom: 12px;
+            padding: 6px 16px;
+            background: #4a6cf7;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.88em;
+            font-weight: 500;
+        }
+        .back-latest:hover { background: #3a5ce5; }
+        .archive-link {
+            display: inline-block;
+            margin: 4px 8px 4px 0;
+            padding: 4px 12px;
+            background: #f3f4f6;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #4a6cf7;
+            font-size: 0.82em;
+        }
+        .archive-link:hover { background: #e5e7eb; }
+
+        .empty-state {
+            text-align: center;
+            padding: 50px 20px;
+            color: #9ca3af;
+        }
+
+        @media (max-width: 640px) {
+            .section-insight, .section-labs, .section-papers, .section-contacts, .section-archive {
+                margin: 12px 8px;
+                padding: 16px;
+                border-radius: 12px;
+            }
+            .page-header h1 { font-size: 1.4em; }
+            .stats { gap: 8px; }
+            .nav-bar { gap: 6px; padding: 8px 12px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-header">
+        <h1>AI 论文日报</h1>
+        <p class="meta">2026-10-26 | 世界模型 / 多模态 / 大模型 / Agent / 具身智能</p>
+        <div class="stats">
+            <span class="stat">arXiv 抓取 100 篇</span>
+            <span class="stat">AI 筛选 20 篇</span>
+            <span class="stat">大厂论文 0 篇</span>
+            <span class="stat">联系人 10 位</span>
+        </div>
+    </div>
+
+    <nav class="nav-bar">
+        <a href="#insight">趋势总结</a>
+        <a href="#labs" class="nav-labs">大厂动态</a>
+        <a href="#papers">全部论文</a>
+        <a href="#contacts">联系人库</a>
+    </nav>
+
+    <div id="insight">
+    
+    <div class="section-insight">
+        <div class="insight-header">
+            <h2>今日趋势总结</h2>
+            <span class="insight-date">2026-10-26</span>
+        </div>
+        <div class="insight-body">
+            <div class="insight-item">
+                <div class="insight-label">研究热点</div>
+                <div class="insight-content">今日20篇论文中多模态方向占压倒性多数（13篇），且重心明显从“感知”转向“具身行动”：统一动作条件化的世界模型（UniAction）、统一具身大脑（RynnUnify）、冻结VLA的失败回溯恢复，构成一条“世界模型+VLA”主线。另一条主线是跨模态表征的几何与效率问题，包括模态间隙的单纯形约束、位置编码谱坍缩分析、流式视频记忆压缩，以及MLLM作答前的自适应缩放定位。整体呈现“从语言理解走向视觉-动作决策、从堆数据走向表征结构与推理时计算”的迁移趋势。</div>
+            </div>
+            <div class="insight-item highlight">
+                <div class="insight-label">大厂方向重合</div>
+                <div class="insight-content">今日论文数据中未包含任何大厂（如Google、Meta、OpenAI、阿里、字节等）的论文条目，机构字段基本为空，因此不存在可识别的大厂方向重合，也就无从比较方法异同与竞争互补关系。从选题看，这批工作更多来自高校与实验室的具身智能、多模态基础研究，与工业界当前聚焦的统一具身基座模型、流式视频理解两条产品化路线高度相关，属于学术侧先行探索。</div>
+                
+            </div>
+            <div class="insight-item">
+                <div class="insight-label">值得关注</div>
+                <div class="insight-content">值得关注的有三点：一是多模态论文占比异常高（13/20），纯LLM工作仅1篇，研究资源明显向视觉-语言-动作迁移；二是世界模型与VLA结合密集出现（UniAction、AWARE、DT-JEPA、Lightweight Recovery），其中“冻结VLA+轻量失败预测与动作回溯”代表低成本落地思路，可能成为不重训策略的实用范式；三是表征几何层面的理论工作集中冒头（单纯形约束消除模态间隙、位置编码谱坍缩、视觉编码器离流形失效、稀疏画布探测），这类“诊断+几何先验”研究往往是下一波对齐方法的前置信号。此外，医疗多模态（超声心动图、医学数值连续性）形成小型集群，提示垂直领域生成式AI正在补足定量输出能力。</div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <div id="labs">
+    <div class="section-labs"><p style="color:#94a3b8">今日暂无大厂论文</p></div>
+    </div>
+
+    <div id="papers">
+    <div class="section-papers">
+        <h2 class="papers-title">全部精选论文</h2>
+        <h3 class="topic-header">世界模型 <span class="count">(3 篇)</span></h3>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                
+                <span class="date">2026-10-23</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.32977v1" target="_blank">UniAction: Unified Action Conditioning for World Models</a>
+            </h4>
+            <p class="authors">Bowen Xue, Zizhang Li, Hong-Xing Yu et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有动作条件世界模型通常只针对单一动作类型构建，导致有限的动作标注数据被分散到不同模型中，难以统一利用异构动作数据。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 UniAction 统一动作条件框架，将任意动作表示为稀疏动作元素集合，每个元素包含离散语义身份和连续时空定位坐标；通过将坐标映射到预训练视频模型的原生位置空间，使异构动作在统一时空结构下条件化共享世界模型，并引入基数校准注意力缓解不同动作表示粒度带来的偏差。</div>
+                <div class="summary-item"><strong>结论：</strong>在力、相机控制、手部姿态和机器人姿态四类动作形式上，UniAction 的动作跟随效果优于其他条件化方案；单个联合训练模型超过各动作专用专家模型，表明异构动作数据可从统一模型和联合训练中受益。</div>
+                <div class="summary-item"><strong>创新点：</strong>核心创新是用稀疏动作元素及其时空坐标将异构动作统一映射到视频模型原生位置空间，实现跨动作类型的统一条件化世界模型。</div>
+                <div class="summary-item"><strong>意义：</strong>为世界模型统一利用多源异构动作数据提供了新范式，有助于推动多模态动作条件视频生成与具身智能中的通用世界建模。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">世界模型</span>
+                <a href="https://arxiv.org/pdf/2610.32977v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-10-23</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.32742v1" target="_blank">Adaptive World-Models for Anomaly Recognition (AWARE): A Framework for Robot Dynamics Prediction and Introspection</a>
+            </h4>
+            <p class="authors">Luke Beddow, George Mavroghenis, Rodrigo Chacon Quesada et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>在无法访问机器人内部传感器（如编码器）或受安全协议限制的场景下，如何仅依靠外部摄像头监控来检测机器人系统异常并定位故障源。</div>
+                <div class="summary-item"><strong>方法：</strong>AWARE 构建世界模型，通过外部摄像头估计系统动力学并预测状态，从而识别异常；同时将推断出的动力学参数解码，用于判断故障来源。</div>
+                <div class="summary-item"><strong>结论：</strong>在240条真实机器人起重机轨迹（含负载碰撞和电机退化）上，AWARE 在噪声摄像头状态估计下异常分类比最强基线提升26%，并能以88%准确率定位退化电机。</div>
+                <div class="summary-item"><strong>创新点：</strong>提出仅依赖外部摄像头的世界模型框架，将动力学估计、状态预测与故障源内省定位统一起来，无需访问机器人内部传感器。</div>
+                <div class="summary-item"><strong>意义：</strong>展示了世界模型在机器人动力学预测、无传感器异常监控和可解释故障诊断中的应用潜力。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">世界模型</span>
+                <a href="https://arxiv.org/pdf/2610.32742v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-10-23</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.32657v1" target="_blank">DT-JEPA: Learning to Predict Future Representations for Decision-Making</a>
+            </h4>
+            <p class="authors">Changxu Ni, Yiyang Ni, Jun Li et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>Decision Transformer 以期望未来回报作为条件，无法完整刻画未来动态，且依赖任务特定奖励函数和奖励标注数据，限制了跨任务泛化。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 DT-JEPA：基于 JEPA 的离线预训练与在线微调框架，从无奖励离线轨迹中学习未来潜表示；设计概率预测器建模未来表示的条件分布，以同时捕捉预测信息与不确定性，并进行未来条件策略学习。</div>
+                <div class="summary-item"><strong>结论：</strong>在 D4RL 基准上实现高效适配并优于传统 DT 及其他离线 RL 方法；理论上证明了 JEPA 目标最大化历史表示与未来轨迹互信息的变分下界，并给出未来条件策略学习的有限样本性能界。</div>
+                <div class="summary-item"><strong>创新点：</strong>将 JEPA 世界模型与概率未来表示预测结合，用于无奖励离线预训练和未来条件决策，替代传统回报条件。</div>
+                <div class="summary-item"><strong>意义：</strong>推动了自监督世界模型、离线强化学习与决策 Transformer 的结合，为无奖励预训练和跨任务泛化提供新思路。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">世界模型</span>
+                <a href="https://arxiv.org/pdf/2610.32657v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+<h3 class="topic-header">多模态 <span class="count">(17 篇)</span></h3>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                
+                <span class="date">2026-10-23</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.32965v1" target="_blank">RynnUnify: Towards Unified Embodied Brain</a>
+            </h4>
+            <p class="authors">Minghao Zhu, Bohan Hou, Kun Xiang et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>该论文旨在构建一个统一的具身智能基础模型，同时具备物理世界理解、长程视觉规划与机器人控制能力，解决理解、预测与行动割裂的问题。</div>
+                <div class="summary-item"><strong>方法：</strong>提出16B统一具身模型RynnUnify，通过交错的视频-语言推理整合空间推理、物理预测与 grounding；并用强化学习构建 agentic 扩展以选择性使用视频预测，同时扩展出 world-action 模块用于机器人控制。</div>
+                <div class="summary-item"><strong>结论：</strong>RynnUnify在评测的统一多模态模型中取得最高平均具身理解分数，Rynn-VP总分比Cosmos 3 Nano高9.75分；agentic扩展使Rynn-GEU平均提升6.0分，world-action扩展在RoboCasa365复合任务上达到51.5%成功率，三个真实机器人任务平均成功率为46.7%。</div>
+                <div class="summary-item"><strong>创新点：</strong>将具身理解、长程视频预测、agentic推理与机器人动作控制统一到一个16B模型中，并配套提出长程视觉规划与预见性推理评测基准。</div>
+                <div class="summary-item"><strong>意义：</strong>为世界模型、多模态推理与具身智能的融合提供了统一基础模型范式，并展示了从理解预测到真实机器人控制的可行路径。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / Agent</span>
+                <a href="https://arxiv.org/pdf/2610.32965v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                
+                <span class="date">2026-10-23</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.32880v1" target="_blank">Multimodal Generative AI Assists Comprehensive Echocardiographic Interpretation</a>
+            </h4>
+            <p class="authors">Yi Qin, Marawan Elbatel, Shanshan Song et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>超声心动图诊断依赖经验丰富的判读者，但全球范围内这类专家严重短缺；现有AI多为不透明的黑箱或仅处理窄任务，无法模拟临床医生基于指南的整体推理。</div>
+                <div class="summary-item"><strong>方法：</strong>提出EchoChat，一个生成式多模态视觉-语言模型，模拟心脏病医生的认知流程，将医学知识与思维链推理结合，使结论显式基于视觉证据，并在46,358次检查的超声心动图指令对上训练。</div>
+                <div class="summary-item"><strong>结论：</strong>在六个国际医学中心的多队列中达到新SOTA，覆盖33种心脏状况/发现（含15种新增），外部评估平均F1为73.7%；心脏状况识别平均召回率提升13.54%，量化任务平均R2提升0.275；读者研究中联合生成报告诊断F1从72.78%提升至82.75%。</div>
+                <div class="summary-item"><strong>创新点：</strong>将显式临床思维链推理与视觉证据 grounding 融入生成式多模态AI，实现覆盖广泛心脏状况的综合超声心动图解读。</div>
+                <div class="summary-item"><strong>意义：</strong>表明把临床推理注入多模态AI可帮助普及专科专家能力，并推动心血管诊疗标准变革。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2610.32880v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                
+                <span class="date">2026-10-23</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.32776v1" target="_blank">Predictive Long-Horizon Progress Modeling with Action-Aware Quantification</a>
+            </h4>
+            <p class="authors">Tianchi Xu, Yalin Zheng, Yangxin Zhu et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>机器人长程操作中，现有任务进度标注依赖稀疏关键帧和主观人工判断，难以扩展且跨任务一致性差，缺乏密集、定量的进度反馈。</div>
+                <div class="summary-item"><strong>方法：</strong>论文提出动作感知量化，将长程轨迹通过VLM分解为对象级子任务并分配加权动作信用；构建800+小时训练视频数据集和LOOM基准，并训练预测式进度评论器NimCritic，结合联合视频-进度学习、历史进度扰动和对比式视频-进度对齐。</div>
+                <div class="summary-item"><strong>结论：</strong>NimCritic在VPB和LOOM上匹配或超过现有过程奖励模型，在VPB终端成功准确率上比GVL（GPT-6-Sol）高约65%；在RoboArena策略评估中以约97%总体召回率检索人类选出的成功轨迹。</div>
+                <div class="summary-item"><strong>创新点：</strong>提出统一的动作感知进度量化规范，并用VLM自动标注与视频-进度联合学习训练密集进度评论器。</div>
+                <div class="summary-item"><strong>意义：</strong>为机器人操作中的数据筛选、策略评估和强化学习提供了可扩展的密集进度反馈基础。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2610.32776v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                
+                <span class="date">2026-10-23</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.32664v1" target="_blank">The Answer Knows Where to Look: Zooming before MLLMs Answer under Visual-Token Budgets</a>
+            </h4>
+            <p class="authors">Zhensheng Hu, Guanglong Xu, Guanqiang Hu</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>在多模态大模型受视觉Token预算限制时，文档、图表和信息图中的细粒度文字会变得难以辨认；放大图像虽能恢复证据，但必须在模型作答前选准区域。</div>
+                <div class="summary-item"><strong>方法：</strong>论文发现答案Token能在中间层定位证据，而作答前注意力无法稳定读出该位置。为此提出一个专用look token：它在单次prefill中处理且不进入作答过程，通过事后监督学习模仿模型自身正确答案的注意力，将定位知识提取为作答前的集中指针，并由其隐藏状态选择不缩放、裁剪、方形窗口、指针自适应窗口或中央凹变换等查看方式，以每种视图的反事实结果为监督。</div>
+                <div class="summary-item"><strong>结论：</strong>在Qwen3-VL三个规模和五个文本丰富基准上，每视图98个视觉Token时，该方法比最强基线高4.8-9.1分，比注意力引导缩放高11.1-17.0分，且运行速度快于注意力引导和基于grounding的缩放方法。</div>
+                <div class="summary-item"><strong>创新点：</strong>核心创新是用事后监督的look token把模型“答案知道看哪里”的知识提前转化为作答前可用的定位指针，并据此选择自适应缩放方式，无需框标注、逐模型层搜索、外部定位器或作答前生成。</div>
+                <div class="summary-item"><strong>意义：</strong>该工作为视觉Token预算受限下的高效多模态高分辨率阅读提供了新思路，说明可利用模型内部答案定位能力指导作答前视觉取证。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2610.32664v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-10-23</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.32971v1" target="_blank">RobustRLlib: A Unified Library and Benchmark for Robust Reinforcement Learning Algorithms</a>
+            </h4>
+            <p class="authors">Xi Chen, Fengqi Hu, Zeyu Shen et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>鲁棒强化学习算法复用性差，且现有算法在真实扰动下的能力边界不清晰，阻碍其可靠部署与进一步发展。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 RobustRLlib，一个以算法为中心的库与基准，在统一接口下集成17种代表性鲁棒在线、离线与安全强化学习算法，并提供覆盖真实世界偏移、先进人形机器人与视觉-语言-动作任务的评测平台。</div>
+                <div class="summary-item"><strong>结论：</strong>通过对273种扰动配置的系统评测，给出了当前鲁棒强化学习算法的最新能力图谱，明确了其有效场景与仍存在的显著鲁棒性缺口。</div>
+                <div class="summary-item"><strong>创新点：</strong>将多类鲁棒强化学习算法统一集成与大规模扰动基准评测结合，形成可复用、可复现、可扩展的算法中心化平台。</div>
+                <div class="summary-item"><strong>意义：</strong>有助于推动鲁棒强化学习算法的标准化比较、复现与真实部署，并为后续算法研发提供统一评测基础。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2610.32971v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-10-23</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.32941v1" target="_blank">If at First You Don't Succeed, Backtrack: Lightweight Recovery for Frozen VLAs</a>
+            </h4>
+            <p class="authors">Thomas Landeg, Thierry Tambe</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>视觉-语言-动作（VLA）模型在机器人操作中表现良好，但一旦自身动作进入训练数据覆盖不足的状态就容易失败；现有恢复方法通常需要恢复演示、策略重训练或额外推理模型。</div>
+                <div class="summary-item"><strong>方法：</strong>论文提出 Backtrack，为冻结 VLA 增加一个轻量失败预测头，仅用带结果标签的 rollout 训练，读取 VLA 内部表示估计当前 episode 是否会失败。当预测失败概率超过阈值时，控制器暂停策略、回溯机械臂近期已完成的运动，再把控制权交回未修改的策略，使其从较早状态重试。该头仅增加 0.48%–0.88% 参数量。</div>
+                <div class="summary-item"><strong>结论：</strong>在 LIBERO-Long 上，Backtrack 将三种 VLA 策略的失败率降低 19%–48%，成功率最多提升 7.4 个百分点；在成功率已达 85%–99% 的较短任务套件上提升较小。在 MetaWorld 上，SmolVLA 测试的全部 12 种控制器配置均优于无辅助策略。</div>
+                <div class="summary-item"><strong>创新点：</strong>核心创新是无需恢复演示、策略重训练或额外推理模型，仅靠冻结 VLA 内部表示上的轻量失败预测与动作回溯实现即时恢复。</div>
+                <div class="summary-item"><strong>意义：</strong>该工作为冻结 VLA 的部署提供了一种低成本、模型无关的故障检测与恢复机制，有助于提升机器人策略在真实长程任务中的鲁棒性。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2610.32941v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-10-23</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.32894v1" target="_blank">LoCA: Enabling Multi-Modality in Geospatial Location Encoders</a>
+            </h4>
+            <p class="authors">Panagiotis Koromilas, Eleanna Vali, Diogenis Antonopoulos et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有地理坐标位置编码器只能通过对比学习对齐单一冻结的遥感图像编码器来获得高秩嵌入目标，扩展至多模态输入时面临模态间无法共对齐与有效秩下降的双重困难。</div>
+                <div class="summary-item"><strong>方法：</strong>论文首先从理论上证明任何Lipschitz位置编码器的内在维度至多为2，并指出冻结图像编码器实际上充当协方差正则化器。为此提出LoCA两阶段流程：第一阶段用对比学习联合训练Sentinel-1与Sentinel-2编码器，得到共对齐、高秩的多模态目标；第二阶段冻结图像编码器，用多视图对比学习训练位置编码器与表格元数据编码器作为投影适配器。</div>
+                <div class="summary-item"><strong>结论：</strong>在覆盖土地覆盖、野火预测、地球物理、社会经济、生物多样性与气候等17项任务上，LoCA取得最多任务胜出，是唯一在多数任务上超越所有对比模型的方案，逐任务比较胜率达68.8%。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次从内在维度和谱坍缩角度理论刻画位置编码器的结构性局限，并据此设计满足共对齐与高有效秩要求的多模态位置编码训练框架。</div>
+                <div class="summary-item"><strong>意义：</strong>为地理空间基础模型与多模态表示学习提供了理论洞察和可复用的正则化设计原则，推动位置编码走向多模态、高秩表示。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2610.32894v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-10-23</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.32890v1" target="_blank">Closing the Modality Gap via Simplex-Constrained Representations</a>
+            </h4>
+            <p class="authors">Shubham Gupta, Siva Reddy, Perouz Taslakian et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>多模态对比模型（如CLIP、CLAP）虽然能学习共享表示，但其嵌入存在持续存在的“模态间隙”，即不同模态的表示在空间中彼此分离。</div>
+                <div class="summary-item"><strong>方法：</strong>作者提出一种纯几何方法，将嵌入域从单位球面 $S^{d-1}$ 改为概率单纯形 $\Delta^{d-1}$，利用非负、单位质量和约束作为跨模态校准的先验。通过附加轻量级softmax适配器并使用Total Variation相似度，使不同模态在同一坐标系中对齐。</div>
+                <div class="summary-item"><strong>结论：</strong>在五个多模态检索基准上，该方法将质心 $\ell_2$ 模态间隙降低97–99%，同时检索性能匹配或超过标准无约束模型。</div>
+                <div class="summary-item"><strong>创新点：</strong>核心创新是用概率单纯形的几何结构作为跨模态对齐先验，从嵌入域层面直接缓解模态间隙。</div>
+                <div class="summary-item"><strong>意义：</strong>为多模态表示学习提供了一种简单且有效的几何校准思路，对CLIP类模型的对齐与检索应用具有潜在价值。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2610.32890v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-10-23</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.32770v1" target="_blank">On-Policy Self-Training: Data-Free Self-Improvement in Large Language Models</a>
+            </h4>
+            <p class="authors">Leon Sick, Lukas Hoyer, Yannick Strümpler et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有 on-policy 自蒸馏方法依赖真实问答对、人工整理的问题集或其他监督信号，本文希望实现无需外部数据和人工标注的模型自我提升。</div>
+                <div class="summary-item"><strong>方法：</strong>论文将 on-policy 自蒸馏重构为自训练框架：仅给定粗粒度主题描述，模型自行生成问答对和带“特权推理”的示范轨迹，并在这些完全合成信息上进行自蒸馏训练。</div>
+                <div class="summary-item"><strong>结论：</strong>该方法在多个领域上实现自我提升，同时保持在未自训练领域的能力；在标准语言基准和视觉问答任务上均取得一致的性能改进。</div>
+                <div class="summary-item"><strong>创新点：</strong>核心创新是在没有人工提示、答案或课程分布的情况下，让模型仅凭粗粒度主题自生成课程和特权推理信息，实现数据无关的 on-policy 自训练。</div>
+                <div class="summary-item"><strong>意义：</strong>该工作表明基础模型具有可被放大的潜在能力，为无需外部任务监督的可扩展自我改进提供了新思路，对大模型和多模态模型的后训练有启发意义。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2610.32770v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-10-23</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.32755v1" target="_blank">Semantic Representation for Agentic Self-Play in Automated Laboratories</a>
+            </h4>
+            <p class="authors">Yves Delley, John Coller, Zachary Cutts et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>论文旨在解决AI智能体的高层推理与湿实验室中复杂、易错的物理执行之间的鸿沟，尤其是静态实验室自动化和未建模物理变异导致的瓶颈。</div>
+                <div class="summary-item"><strong>方法：</strong>提出VERID，一个持久、高保真的实验室工作单元语义数字孪生基础设施，提供可查询内省、时间压缩仿真、完整轨迹持久化和安全执行框架四项核心服务，并用染料与去离子水混合案例验证其光学和流体基础。</div>
+                <div class="summary-item"><strong>结论：</strong>案例表明VERID能预先检测实验协议关键错误、支持运行中状态化错误恢复和事后识别细微物理故障；其仿真可作为离散核算引擎，让智能体低成本在硅内探索实验设计并通过迭代自博弈优化策略，同时捕获结构化多模态实验数据。</div>
+                <div class="summary-item"><strong>创新点：</strong>核心创新是面向自动化实验室的语义数字孪生基础设施，将AI智能体推理、仿真验证、安全执行与完整实验记录统一起来，支撑智能体自博弈。</div>
+                <div class="summary-item"><strong>意义：</strong>对AI领域而言，这为AI for Science、自主智能体和具身智能在生化与生物医学实验中的安全部署提供了关键基础设施。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / Agent</span>
+                <a href="https://arxiv.org/pdf/2610.32755v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-10-23</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.32676v1" target="_blank">Retiming Robot Demonstrations with a Learned Speed Prior</a>
+            </h4>
+            <p class="authors">Seungyong Moon, Deokjae Lee, Hansang Lee et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>机器人示教数据的执行速度往往由遥操作者的习惯决定而非任务本身，导致同一动作在不同示教中速度差异很大，训练出的策略会把操作者的时间节律当作任务行为一并学进去。</div>
+                <div class="summary-item"><strong>方法：</strong>作者从大规模示教数据（机器人遥操作数据+人类手持夹爪的示范）中学习一个速度先验：输入任务指令、运动路径及沿途图像，预测沿路径的执行速度分布，取某个分位数作为统一的“时钟”对每条示教重新定时。该先验一次训练即可覆盖语料库中所有任务，无需为每个新任务重新拟合或标注；重定时后的数据用于微调视觉-语言-动作（VLA）策略，执行时再配合一个实时最优控制层，在机器人约束下按预测节奏跟踪动作块。</div>
+                <div class="summary-item"><strong>结论：</strong>在120个RoboLab任务上，用以学到的时钟微调的策略成功率更高，抖动最多降低一半（相比按原始时序微调再均匀加速到同一速度的基线）。在真实机器人上，叠杯子任务耗时3.50秒，比默认策略的6.02秒快1.72倍，成功率相当（30次试验成功29次）。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次从大规模示教数据中学习任务条件下的速度先验，用一个统一模型为任意任务分配一致执行时钟，替代依赖被加速数据自身的逐任务拟合/标注方法。</div>
+                <div class="summary-item"><strong>意义：</strong>为机器人示教数据的时序规范化与VLA策略的高效平滑执行提供了通用、可扩展的方案，对具身智能与机器人学习有直接价值。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2610.32676v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="6">
+            <div class="card-header">
+                <span class="score medium">6/10</span>
+                
+                <span class="date">2026-10-23</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.32967v1" target="_blank">MiD-VLM: Detecting and Grounding Global Semantic Misinformation in Image-Caption Pairs</a>
+            </h4>
+            <p class="authors">Tarunya Prasad, Bharatesh Chakravarthi</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>论文要解决真实图像配误导性文字说明（图像-文本对）中的全局语义虚假信息检测问题，这类误导不依赖像素级篡改痕迹。</div>
+                <div class="summary-item"><strong>方法：</strong>方法融合SigLIP的图像-文本表示与DINOv2的视觉场景特征，经投影MLP后接入Qwen2-VL-7B，并用LoRA进行参数高效适配；模型联合判断图文对是否真实、识别操纵类型，并定位误导性caption token。</div>
+                <div class="summary-item"><strong>结论：</strong>在DGM4+验证集上，二分类真实性检测取得0.9679的F1分数；结果表明视觉语言模型的高效适配在检测语义不一致方面有潜力，但token级精确定位仍需进一步研究。</div>
+                <div class="summary-item"><strong>创新点：</strong>将全局场景语义不一致检测与误导性文本token定位统一到一个参数高效适配的多模态模型中。</div>
+                <div class="summary-item"><strong>意义：</strong>为多模态虚假信息检测提供了不依赖像素伪影的新思路，对图文一致性与可解释性研究有参考价值。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2610.32967v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="6">
+            <div class="card-header">
+                <span class="score medium">6/10</span>
+                
+                <span class="date">2026-10-23</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.32948v1" target="_blank">Beyond Discrete Tokens: Preserving Numerical Continuity in Medical Vision-Language Models</a>
+            </h4>
+            <p class="authors">Dianye Huang, Jiamei Guo, Yue Zhou et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>医学视觉语言模型通常将数值预测离散化为 token，这与超声等场景中连续测量目标（如卡尺端点坐标、长度）存在本质不匹配，导致定量测量精度受限。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 HAD-VLM 混合自回归-扩散框架：在共享骨干中结合自回归文本生成与扩散式连续预测，用视觉提示微调适配超声图像，扩散过程输出由卡尺端点坐标与测量长度构成的五分量表示，并用坐标-长度一致性机制与集成预测进行后处理精修。</div>
+                <div class="summary-item"><strong>结论：</strong>在 EchoNet-LVH 四项超声测量任务上 MAE 分别为 1.36、2.77、3.05、1.16 mm，较 Vicuna 自回归基线降低 21.4–37.6%，并优于微调 Qwen3-VL 与直接 MLP 回归；医学问答性能保持，X 射线椎体测量 MAE 从 11.4 降至 6.7 像素。</div>
+                <div class="summary-item"><strong>创新点：</strong>将自回归语言生成与扩散式连续数值预测统一到同一骨干中，用扩散头替代离散 token 化来实现解剖学接地的定量测量。</div>
+                <div class="summary-item"><strong>意义：</strong>为多模态大模型处理连续数值/定量输出提供了一条可行路径，对医学影像分析及其他需要精确数值回归的 VLM 应用具有借鉴意义。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2610.32948v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="6">
+            <div class="card-header">
+                <span class="score medium">6/10</span>
+                
+                <span class="date">2026-10-23</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.32835v1" target="_blank">SPOOK: Sparse Pixel Optimization for Off-Manifold Knowledge in Vision Encoders</a>
+            </h4>
+            <p class="authors">Ankit Gupta, Akshat Pandya, Christoph Adami et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现代视觉编码器在远离自然图像流形时，嵌入相似度与人类可见语义之间的关系可能失效；论文要探究并刻画这种离流形（off-manifold）表示行为。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 SPOOK：在空白画布上进行稀疏像素编辑，用简单的像素级爬山搜索做黑盒优化，分别以类别提示词（OpenCLIP）和类别原型（DINOv3）为目标，在多模态对比编码器和自监督视觉编码器中测试目标检索与对齐。</div>
+                <div class="summary-item"><strong>结论：</strong>在 ImageNet 和 Flickr30k 上，优化后的稀疏编辑空白画布能显著检索到目标：OpenCLIP 取得较强的 top-1/top-5 定向检索性能，DINOv3 达到较高的目标对齐和接近顶部的原型排名。</div>
+                <div class="summary-item"><strong>创新点：</strong>揭示了语言对齐与自监督视觉编码器共享的离流形失效模式，并提出用稀疏空白画布优化作为探测表示几何的简单黑盒方法。</div>
+                <div class="summary-item"><strong>意义：</strong>有助于理解视觉编码器表示空间的几何结构与鲁棒性边界，并为评估多模态和自监督模型的语义对齐提供新探针。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2610.32835v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="6">
+            <div class="card-header">
+                <span class="score medium">6/10</span>
+                
+                <span class="date">2026-10-23</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.32784v1" target="_blank">Video-MemComp: Taylor-Guided Sensitivity-Aware Memory Management for Streaming Video Understanding</a>
+            </h4>
+            <p class="authors">Yonghui Niu, Yuhao Ji, Chang Nie et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>流式视频理解中，MLLM 面临严重的 KV cache 内存瓶颈，而现有压缩方法忽视了近似误差的爆炸式累积问题。</div>
+                <div class="summary-item"><strong>方法：</strong>提出免训练、感知敏感度的上下文管理框架 Video-MemComp：用一阶泰勒展开将压缩误差分解为正交的局部近似误差与层级结构敏感度两部分；局部误差通过在 RoPE 旋转前的安全区做 token 聚合并施加注意力保持的 logit bias 来抑制几何失真，层级敏感度则依据离线梯度先验与在线上下文熵动态分配各层 KV cache 预算，优先保障高敏感层。</div>
+                <div class="summary-item"><strong>结论：</strong>在 MLVU、VideoMME、EgoSchema 等基准上性能超越或持平全缓存与 SOTA 压缩方法；Qwen2.5-VL-3B 整体准确率由 62.3% 提升至 64.1%，同时将 KV cache 压缩至每层约 6,000 token 等效规模，节省 90% 以上 KV 内存。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次用泰勒展开将压缩误差显式拆解为局部近似误差与层间敏感度两项，并分别用 RoPE 前安全区聚合和梯度先验+上下文熵的动态预算分配加以优化。</div>
+                <div class="summary-item"><strong>意义：</strong>为长视频流式多模态理解提供了免训练、可即插即用的高效记忆管理方案，对降低 MLLM 长上下文部署成本具有实用价值。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2610.32784v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                
+                <span class="date">2026-10-23</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.32888v1" target="_blank">When Human Corrections Travel: Safety in Federated VLA Adaptation</a>
+            </h4>
+            <p class="authors">Vigneshwaran Subbaraju, Obaidullah Zaland, Monowar Bhuyan</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>论文关注 federated VLA 适配中，来自不同任务、环境、人和机器人本体的多样化人类纠正被共享后，可能带来安全语义丢失、稀有安全干预被抑制及隐私泄露等问题。</div>
+                <div class="summary-item"><strong>方法：</strong>这是一篇立场/议程论文，而非实验论文：作者提出三项要求——共享时保留多模态纠正的上下文与不确定性；在接收机器人闭环中评估候选更新后再部署；同时评估安全关键证据的保留与泄漏。</div>
+                <div class="summary-item"><strong>结论：</strong>论文没有实验结果，主要结论是联邦 VLA 适配不能只优化平均任务成功率，必须把人类纠正的安全语义、接收端闭环安全和隐私泄漏纳入评估，并保持人机交互中的即时可理解防御行为。</div>
+                <div class="summary-item"><strong>创新点：</strong>创新点在于将联邦 VLA 适配与人类纠正的多模态安全语义及隐私问题结合，提出可证伪的安全评估议程和反例。</div>
+                <div class="summary-item"><strong>意义：</strong>对具身智能和机器人 VLA 的联邦学习安全部署具有方向性意义，提醒领域关注共享纠正更新时的安全与隐私风险。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2610.32888v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                
+                <span class="date">2026-10-23</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.32697v1" target="_blank">SP-Guide: Enhancing Aerial Vision-Language Navigation with Spatial Priors</a>
+            </h4>
+            <p class="authors">Haoxiang Tang, Dong Zhou, Shen Tan et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>空中视觉语言导航（AVLN）要求无人机仅依赖部分第一人称视角的观测，在大型户外场景中理解语言描述并抵达目标。现有方法通常把以视角为中心的RGB观测和全局对齐的历史地图直接融合为通用视觉嵌入，导致跨模态空间对齐只能从稀疏的导航监督中隐式学习。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 SP-Guide，一个基于 Transformer 的目标预测框架，包含三个核心组件：空间先验跨模态编码器（Spatial Prior Cross-Modal Encoder），利用物理上可解释的空间先验显式对齐视觉与语言模态；指令增强解码器（Instruction Enhanced Decoder），强化语言指令的引导作用；目标收敛过滤器（Goal Convergence Filter），对终端目标位置进行精细化修正。</div>
+                <div class="summary-item"><strong>结论：</strong>在 CityNav 基准上的实验显示，SP-Guide 相比代表性基线提升了成功率，且在未见过的环境中提升幅度最大，表明物理上可解释的空间先验是提升 AVLN 鲁棒性的有效归纳偏置。</div>
+                <div class="summary-item"><strong>创新点：</strong>该框架将显式的空间先验注入跨模态编码过程，而不再依赖数据驱动的方式隐式学习跨模态空间对齐，从而提升了跨模态对齐质量与目标预测精度。</div>
+                <div class="summary-item"><strong>意义：</strong>为具身智能中的无人机视觉语言导航提供了一种利用显式空间先验提升跨模态对齐与泛化能力的思路，对多模态大模型与具身Agent的空间推理研究具有参考价值。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2610.32697v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+<h3 class="topic-header">大模型 <span class="count">(5 篇)</span></h3>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                
+                <span class="date">2026-10-23</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.32880v1" target="_blank">Multimodal Generative AI Assists Comprehensive Echocardiographic Interpretation</a>
+            </h4>
+            <p class="authors">Yi Qin, Marawan Elbatel, Shanshan Song et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>超声心动图诊断依赖经验丰富的判读者，但全球范围内这类专家严重短缺；现有AI多为不透明的黑箱或仅处理窄任务，无法模拟临床医生基于指南的整体推理。</div>
+                <div class="summary-item"><strong>方法：</strong>提出EchoChat，一个生成式多模态视觉-语言模型，模拟心脏病医生的认知流程，将医学知识与思维链推理结合，使结论显式基于视觉证据，并在46,358次检查的超声心动图指令对上训练。</div>
+                <div class="summary-item"><strong>结论：</strong>在六个国际医学中心的多队列中达到新SOTA，覆盖33种心脏状况/发现（含15种新增），外部评估平均F1为73.7%；心脏状况识别平均召回率提升13.54%，量化任务平均R2提升0.275；读者研究中联合生成报告诊断F1从72.78%提升至82.75%。</div>
+                <div class="summary-item"><strong>创新点：</strong>将显式临床思维链推理与视觉证据 grounding 融入生成式多模态AI，实现覆盖广泛心脏状况的综合超声心动图解读。</div>
+                <div class="summary-item"><strong>意义：</strong>表明把临床推理注入多模态AI可帮助普及专科专家能力，并推动心血管诊疗标准变革。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2610.32880v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                
+                <span class="date">2026-10-23</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.32776v1" target="_blank">Predictive Long-Horizon Progress Modeling with Action-Aware Quantification</a>
+            </h4>
+            <p class="authors">Tianchi Xu, Yalin Zheng, Yangxin Zhu et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>机器人长程操作中，现有任务进度标注依赖稀疏关键帧和主观人工判断，难以扩展且跨任务一致性差，缺乏密集、定量的进度反馈。</div>
+                <div class="summary-item"><strong>方法：</strong>论文提出动作感知量化，将长程轨迹通过VLM分解为对象级子任务并分配加权动作信用；构建800+小时训练视频数据集和LOOM基准，并训练预测式进度评论器NimCritic，结合联合视频-进度学习、历史进度扰动和对比式视频-进度对齐。</div>
+                <div class="summary-item"><strong>结论：</strong>NimCritic在VPB和LOOM上匹配或超过现有过程奖励模型，在VPB终端成功准确率上比GVL（GPT-6-Sol）高约65%；在RoboArena策略评估中以约97%总体召回率检索人类选出的成功轨迹。</div>
+                <div class="summary-item"><strong>创新点：</strong>提出统一的动作感知进度量化规范，并用VLM自动标注与视频-进度联合学习训练密集进度评论器。</div>
+                <div class="summary-item"><strong>意义：</strong>为机器人操作中的数据筛选、策略评估和强化学习提供了可扩展的密集进度反馈基础。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2610.32776v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                
+                <span class="date">2026-10-23</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.32664v1" target="_blank">The Answer Knows Where to Look: Zooming before MLLMs Answer under Visual-Token Budgets</a>
+            </h4>
+            <p class="authors">Zhensheng Hu, Guanglong Xu, Guanqiang Hu</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>在多模态大模型受视觉Token预算限制时，文档、图表和信息图中的细粒度文字会变得难以辨认；放大图像虽能恢复证据，但必须在模型作答前选准区域。</div>
+                <div class="summary-item"><strong>方法：</strong>论文发现答案Token能在中间层定位证据，而作答前注意力无法稳定读出该位置。为此提出一个专用look token：它在单次prefill中处理且不进入作答过程，通过事后监督学习模仿模型自身正确答案的注意力，将定位知识提取为作答前的集中指针，并由其隐藏状态选择不缩放、裁剪、方形窗口、指针自适应窗口或中央凹变换等查看方式，以每种视图的反事实结果为监督。</div>
+                <div class="summary-item"><strong>结论：</strong>在Qwen3-VL三个规模和五个文本丰富基准上，每视图98个视觉Token时，该方法比最强基线高4.8-9.1分，比注意力引导缩放高11.1-17.0分，且运行速度快于注意力引导和基于grounding的缩放方法。</div>
+                <div class="summary-item"><strong>创新点：</strong>核心创新是用事后监督的look token把模型“答案知道看哪里”的知识提前转化为作答前可用的定位指针，并据此选择自适应缩放方式，无需框标注、逐模型层搜索、外部定位器或作答前生成。</div>
+                <div class="summary-item"><strong>意义：</strong>该工作为视觉Token预算受限下的高效多模态高分辨率阅读提供了新思路，说明可利用模型内部答案定位能力指导作答前视觉取证。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2610.32664v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-10-23</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.32770v1" target="_blank">On-Policy Self-Training: Data-Free Self-Improvement in Large Language Models</a>
+            </h4>
+            <p class="authors">Leon Sick, Lukas Hoyer, Yannick Strümpler et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有 on-policy 自蒸馏方法依赖真实问答对、人工整理的问题集或其他监督信号，本文希望实现无需外部数据和人工标注的模型自我提升。</div>
+                <div class="summary-item"><strong>方法：</strong>论文将 on-policy 自蒸馏重构为自训练框架：仅给定粗粒度主题描述，模型自行生成问答对和带“特权推理”的示范轨迹，并在这些完全合成信息上进行自蒸馏训练。</div>
+                <div class="summary-item"><strong>结论：</strong>该方法在多个领域上实现自我提升，同时保持在未自训练领域的能力；在标准语言基准和视觉问答任务上均取得一致的性能改进。</div>
+                <div class="summary-item"><strong>创新点：</strong>核心创新是在没有人工提示、答案或课程分布的情况下，让模型仅凭粗粒度主题自生成课程和特权推理信息，实现数据无关的 on-policy 自训练。</div>
+                <div class="summary-item"><strong>意义：</strong>该工作表明基础模型具有可被放大的潜在能力，为无需外部任务监督的可扩展自我改进提供了新思路，对大模型和多模态模型的后训练有启发意义。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2610.32770v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="6">
+            <div class="card-header">
+                <span class="score medium">6/10</span>
+                
+                <span class="date">2026-10-23</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.32784v1" target="_blank">Video-MemComp: Taylor-Guided Sensitivity-Aware Memory Management for Streaming Video Understanding</a>
+            </h4>
+            <p class="authors">Yonghui Niu, Yuhao Ji, Chang Nie et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>流式视频理解中，MLLM 面临严重的 KV cache 内存瓶颈，而现有压缩方法忽视了近似误差的爆炸式累积问题。</div>
+                <div class="summary-item"><strong>方法：</strong>提出免训练、感知敏感度的上下文管理框架 Video-MemComp：用一阶泰勒展开将压缩误差分解为正交的局部近似误差与层级结构敏感度两部分；局部误差通过在 RoPE 旋转前的安全区做 token 聚合并施加注意力保持的 logit bias 来抑制几何失真，层级敏感度则依据离线梯度先验与在线上下文熵动态分配各层 KV cache 预算，优先保障高敏感层。</div>
+                <div class="summary-item"><strong>结论：</strong>在 MLVU、VideoMME、EgoSchema 等基准上性能超越或持平全缓存与 SOTA 压缩方法；Qwen2.5-VL-3B 整体准确率由 62.3% 提升至 64.1%，同时将 KV cache 压缩至每层约 6,000 token 等效规模，节省 90% 以上 KV 内存。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次用泰勒展开将压缩误差显式拆解为局部近似误差与层间敏感度两项，并分别用 RoPE 前安全区聚合和梯度先验+上下文熵的动态预算分配加以优化。</div>
+                <div class="summary-item"><strong>意义：</strong>为长视频流式多模态理解提供了免训练、可即插即用的高效记忆管理方案，对降低 MLLM 长上下文部署成本具有实用价值。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2610.32784v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+<h3 class="topic-header">Agent <span class="count">(2 篇)</span></h3>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                
+                <span class="date">2026-10-23</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.32965v1" target="_blank">RynnUnify: Towards Unified Embodied Brain</a>
+            </h4>
+            <p class="authors">Minghao Zhu, Bohan Hou, Kun Xiang et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>该论文旨在构建一个统一的具身智能基础模型，同时具备物理世界理解、长程视觉规划与机器人控制能力，解决理解、预测与行动割裂的问题。</div>
+                <div class="summary-item"><strong>方法：</strong>提出16B统一具身模型RynnUnify，通过交错的视频-语言推理整合空间推理、物理预测与 grounding；并用强化学习构建 agentic 扩展以选择性使用视频预测，同时扩展出 world-action 模块用于机器人控制。</div>
+                <div class="summary-item"><strong>结论：</strong>RynnUnify在评测的统一多模态模型中取得最高平均具身理解分数，Rynn-VP总分比Cosmos 3 Nano高9.75分；agentic扩展使Rynn-GEU平均提升6.0分，world-action扩展在RoboCasa365复合任务上达到51.5%成功率，三个真实机器人任务平均成功率为46.7%。</div>
+                <div class="summary-item"><strong>创新点：</strong>将具身理解、长程视频预测、agentic推理与机器人动作控制统一到一个16B模型中，并配套提出长程视觉规划与预见性推理评测基准。</div>
+                <div class="summary-item"><strong>意义：</strong>为世界模型、多模态推理与具身智能的融合提供了统一基础模型范式，并展示了从理解预测到真实机器人控制的可行路径。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / Agent</span>
+                <a href="https://arxiv.org/pdf/2610.32965v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-10-23</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2610.32755v1" target="_blank">Semantic Representation for Agentic Self-Play in Automated Laboratories</a>
+            </h4>
+            <p class="authors">Yves Delley, John Coller, Zachary Cutts et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>论文旨在解决AI智能体的高层推理与湿实验室中复杂、易错的物理执行之间的鸿沟，尤其是静态实验室自动化和未建模物理变异导致的瓶颈。</div>
+                <div class="summary-item"><strong>方法：</strong>提出VERID，一个持久、高保真的实验室工作单元语义数字孪生基础设施，提供可查询内省、时间压缩仿真、完整轨迹持久化和安全执行框架四项核心服务，并用染料与去离子水混合案例验证其光学和流体基础。</div>
+                <div class="summary-item"><strong>结论：</strong>案例表明VERID能预先检测实验协议关键错误、支持运行中状态化错误恢复和事后识别细微物理故障；其仿真可作为离散核算引擎，让智能体低成本在硅内探索实验设计并通过迭代自博弈优化策略，同时捕获结构化多模态实验数据。</div>
+                <div class="summary-item"><strong>创新点：</strong>核心创新是面向自动化实验室的语义数字孪生基础设施，将AI智能体推理、仿真验证、安全执行与完整实验记录统一起来，支撑智能体自博弈。</div>
+                <div class="summary-item"><strong>意义：</strong>对AI领域而言，这为AI for Science、自主智能体和具身智能在生化与生物医学实验中的安全部署提供了关键基础设施。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / Agent</span>
+                <a href="https://arxiv.org/pdf/2610.32755v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+    <div id="contacts">
+    <div class="section-contacts">
+    <h2 class="contacts-title">联系人库 <span class="contacts-count">10 位作者</span></h2>
+    <h3 class="contacts-subtitle">其他作者</h3>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2610.32977v1" target="_blank">[8分] UniAction: Unified Action Conditioning for World Models</a>
+                
+            </div>
+            <div class="contact-list">
+                <div class="contact-person"><span class="role-badge">第一作者（共同第一作者，标有 ∗）</span><strong>Bowen Xue</strong> — Stanford University </div>
+                <div class="contact-person"><span class="role-badge">共同第一作者（标有 ∗）</span><strong>Zizhang Li</strong> — Stanford University </div>
+                <div class="contact-person"><strong>Hong-Xing Yu</strong> — Stanford University </div>
+                <div class="contact-person"><strong>Jiajun Wu</strong> — Stanford University </div>
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2610.32965v1" target="_blank">[8分] RynnUnify: Towards Unified Embodied Brain</a>
+                
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2610.32880v1" target="_blank">[8分] Multimodal Generative AI Assists Comprehensive Echocardiogra...</a>
+                
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2610.32776v1" target="_blank">[8分] Predictive Long-Horizon Progress Modeling with Action-Aware ...</a>
+                
+            </div>
+            <div class="contact-list">
+                <div class="contact-person"><span class="role-badge">共同第一作者（Equal contribution）</span><strong>Tianchi Xu</strong> — RIMBOT; Peking University </div>
+                <div class="contact-person"><span class="role-badge">共同第一作者（Equal contribution）</span><strong>Yalin Zheng</strong> — RIMBOT </div>
+                <div class="contact-person"><strong>Yangxin Zhu</strong> — RIMBOT </div>
+                <div class="contact-person"><strong>Ruonan Ren</strong> — RIMBOT </div>
+                <div class="contact-person"><strong>Zheng Fu</strong> — RIMBOT; Tsinghua University </div>
+            </div>
+            <div class="corresponding">通讯作者: Yuanxin Zhong</div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2610.32664v1" target="_blank">[8分] The Answer Knows Where to Look: Zooming before MLLMs Answer ...</a>
+                
+            </div>
+            <div class="contact-list">
+                <div class="contact-person"><span class="role-badge">第一作者</span><strong>Zhensheng Hu</strong> — Integrated Hospital of Traditional Chinese Medicine, Southern Medical University, Guangzhou, China; Institute of Medical Engineering Interdisciplinary Research, Xinjiang Medical University, Urumqi, China <a href="mailto:huzhensheng@smu.edu.cn" class="email-link">huzhensheng@smu.edu.cn</a></div>
+                <div class="contact-person"><strong>Guanglong Xu</strong> — School of Mathematics and Statistics, Zhaoqing University, Guangdong 526061, China <a href="mailto:xugl2018@163.com" class="email-link">xugl2018@163.com</a></div>
+                <div class="contact-person"><span class="role-badge">通讯作者</span><strong>Guanqiang Hu</strong> — Guangdong Kamfu Technology Co., Ltd., Foshan, China <a href="mailto:guanqiang.hu.cn@gmail.com" class="email-link">guanqiang.hu.cn@gmail.com</a></div>
+            </div>
+            <div class="corresponding">通讯作者: Guanqiang Hu</div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2610.32971v1" target="_blank">[7分] RobustRLlib: A Unified Library and Benchmark for Robust Rein...</a>
+                
+            </div>
+            <div class="contact-list">
+                <div class="contact-person"><span class="role-badge">第一作者</span><strong>Xi Chen</strong> — JHU </div>
+                <div class="contact-person"><strong>Fengqi Hu</strong> — JHU </div>
+                <div class="contact-person"><strong>Zeyu Shen</strong> — JHU </div>
+                <div class="contact-person"><strong>Jiaying Xu</strong> — UCSD </div>
+                <div class="contact-person"><strong>Shangding Gu</strong> — UC Berkeley </div>
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2610.32941v1" target="_blank">[7分] If at First You Don't Succeed, Backtrack: Lightweight Recove...</a>
+                
+            </div>
+            <div class="contact-list">
+                <div class="contact-person"><span class="role-badge">第一作者</span><strong>Thomas Landeg</strong> — Stanford University; ETH Zurich <a href="mailto:tlandeg@stanford.edu" class="email-link">tlandeg@stanford.edu</a></div>
+                <div class="contact-person"><strong>Thierry Tambe</strong> — Stanford University <a href="mailto:ttambe@stanford.edu" class="email-link">ttambe@stanford.edu</a></div>
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2610.32894v1" target="_blank">[7分] LoCA: Enabling Multi-Modality in Geospatial Location Encoder...</a>
+                
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2610.32890v1" target="_blank">[7分] Closing the Modality Gap via Simplex-Constrained Representat...</a>
+                
+            </div>
+            <div class="contact-list">
+                <div class="contact-person"><span class="role-badge">第一作者、通讯作者</span><strong>Shubham Gupta</strong> — Mila – Québec AI Institute, ServiceNow Research, Université Laval <a href="mailto:shgup1@ulaval.ca" class="email-link">shgup1@ulaval.ca</a></div>
+                <div class="contact-person"><span class="role-badge">作者</span><strong>Siva Reddy</strong> — Mila – Québec AI Institute, ServiceNow Research, McGill University </div>
+                <div class="contact-person"><span class="role-badge">作者</span><strong>Perouz Taslakian</strong> — Mila – Québec AI Institute, ServiceNow Research, McGill University </div>
+                <div class="contact-person"><span class="role-badge">作者</span><strong>Valentina Zantedeschi</strong> — ServiceNow Research, Université Laval </div>
+                <div class="contact-person"><span class="role-badge">作者</span><strong>Cem Subakan</strong> — Mila – Québec AI Institute, Université Laval </div>
+            </div>
+            <div class="corresponding">通讯作者: Shubham Gupta</div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2610.32770v1" target="_blank">[7分] On-Policy Self-Training: Data-Free Self-Improvement in Large...</a>
+                
+            </div>
+            <div class="contact-list">
+                <div class="contact-person"><span class="role-badge">第一作者；*标注（推测为通讯作者）</span><strong>Leon Sick</strong> — Google; Ulm University </div>
+                <div class="contact-person"><strong>Lukas Hoyer</strong> — Google </div>
+                <div class="contact-person"><strong>Yannick Strümpler</strong> — Google </div>
+                <div class="contact-person"><strong>Christian Reisswig</strong> — Google </div>
+                <div class="contact-person"><strong>Timo Ropinski</strong> — Ulm University </div>
+            </div>
+            <div class="corresponding">通讯作者: Leon Sick</div>
+        </div>
+</div>
+
+    </div>
+
+    <div class="section-archive">
+        <div class="archive">
+            <a href="index.html" class="back-latest">← 返回最新日报</a>
+            <h2>历史归档</h2>
+            <a href="2026-10-26.html" class="archive-link">2026-10-26</a>
+<a href="2026-10-25.html" class="archive-link">2026-10-25</a>
+<a href="2026-10-24.html" class="archive-link">2026-10-24</a>
+<a href="2026-10-23.html" class="archive-link">2026-10-23</a>
+<a href="2026-10-22.html" class="archive-link">2026-10-22</a>
+<a href="2026-10-21.html" class="archive-link">2026-10-21</a>
+<a href="2026-10-20.html" class="archive-link">2026-10-20</a>
+<a href="2026-10-19.html" class="archive-link">2026-10-19</a>
+<a href="2026-10-18.html" class="archive-link">2026-10-18</a>
+<a href="2026-10-17.html" class="archive-link">2026-10-17</a>
+<a href="2026-10-16.html" class="archive-link">2026-10-16</a>
+<a href="2026-10-15.html" class="archive-link">2026-10-15</a>
+<a href="2026-10-14.html" class="archive-link">2026-10-14</a>
+<a href="2026-10-13.html" class="archive-link">2026-10-13</a>
+<a href="2026-10-11.html" class="archive-link">2026-10-11</a>
+<a href="2026-10-10.html" class="archive-link">2026-10-10</a>
+<a href="2026-10-09.html" class="archive-link">2026-10-09</a>
+<a href="2026-10-08.html" class="archive-link">2026-10-08</a>
+<a href="2026-10-07.html" class="archive-link">2026-10-07</a>
+<a href="2026-10-06.html" class="archive-link">2026-10-06</a>
+<a href="2026-10-04.html" class="archive-link">2026-10-04</a>
+<a href="2026-10-03.html" class="archive-link">2026-10-03</a>
+<a href="2026-10-02.html" class="archive-link">2026-10-02</a>
+<a href="2026-10-01.html" class="archive-link">2026-10-01</a>
+<a href="2026-09-30.html" class="archive-link">2026-09-30</a>
+<a href="2026-09-29.html" class="archive-link">2026-09-29</a>
+<a href="2026-09-28.html" class="archive-link">2026-09-28</a>
+<a href="2026-09-15.html" class="archive-link">2026-09-15</a>
+<a href="2026-09-14.html" class="archive-link">2026-09-14</a>
+<a href="2026-09-12.html" class="archive-link">2026-09-12</a>
+
+        </div>
+    </div>
+</body>
+</html>
