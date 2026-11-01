@@ -1,0 +1,2351 @@
+{
+  "date": "2026-11-01",
+  "generated_at": "2026-11-01T22:39:26.793371",
+  "total_fetched": 100,
+  "total_matched": 20,
+  "papers": [
+    {
+      "title": "Algebraic World Model: From Exploration to Proofs",
+      "abstract": "AI has made remarkable progress in mathematics, solving challenging problems with machine-checkable proofs in Lean, yet typically relying on predefined mathematical definitions and formal specifications. This raises a natural question: can it reason rigorously about an unknown world? We introduce the Algebraic World Model (AWM), a framework that turns interaction with unfamiliar environments into explicit mathematical models supporting formal reasoning. AWM explores the environment and develops executable Python hypotheses, continually testing and revising them against observations. It then structures these hypotheses into typed objects and shared rules, simplifies their structure through category-theory-guided transformations, and formalizes the resulting model in Lean 4 to prove reachability and impossibility. AWM can formally prove that a goal is unreachable, even beyond explored trajectories. On two impossible game levels, it constructs closed, kernel-checked Lean proofs excluding every legal winning sequence in all six runs, while Claude Opus 5.5 and GPT-6 Astra, equipped with coding tools, produce none in twelve baseline runs. Four of AWM's six initial bounds are correct, compared with one for Opus 5.5 and none for GPT-6 Astra; given only feedback that a cheaper win exists, AWM revises its rules and constructs new proofs, reaching six of six correct bounds. Moreover, AWM produces interpretable mathematical models whose rules can be inspected and tested step by step. Across all 25 public ARC-AGI-3 games, these models enable Lean to replay the winning trajectories of all 183 levels and generalize beyond observed play, predicting unseen transitions and detecting changes in game mechanics. With Claude Opus 5, AWM clears all levels with a score of 99.9, while its certified winning trajectories use only 43% of the human baseline's actions.",
+      "url": "https://arxiv.org/abs/2610.40503v1",
+      "pdf": "https://arxiv.org/pdf/2610.40503v1",
+      "categories": [
+        "cs.AI",
+        "cs.LO"
+      ],
+      "authors": [
+        "Guancheng Pan",
+        "Qixin Tan",
+        "Yang Yuan",
+        "Andrew Chi-Chih Yao"
+      ],
+      "all_authors": [
+        "Guancheng Pan",
+        "Qixin Tan",
+        "Yang Yuan",
+        "Andrew Chi-Chih Yao"
+      ],
+      "affiliations": [
+        {
+          "name": "Guancheng Pan",
+          "affiliations": []
+        },
+        {
+          "name": "Qixin Tan",
+          "affiliations": []
+        },
+        {
+          "name": "Yang Yuan",
+          "affiliations": []
+        },
+        {
+          "name": "Andrew Chi-Chih Yao",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-10-29",
+      "matched_topics": [
+        "世界模型",
+        "大模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "现有AI虽然能在Lean中给出可机器验证的数学证明，但依赖预定义的数学定义与形式化规范；论文探究AI能否对未知世界进行严格推理，即在陌生环境中自主建立可形式化验证的数学模型，并证明目标可达或不可达。",
+        "method": "提出代数世界模型（AWM）：先通过与环境交互探索，生成可执行的Python假设并不断用观测检验和修正；再把这些假设组织为类型化对象与共享规则，借助范畴论指导的变换简化结构；最后在Lean 4中形式化该模型，证明可达性与不可能性。",
+        "result": "在两个不可能通关的游戏关卡上，AWM六次运行均构造出经内核检查的封闭Lean证明，排除了所有合法获胜序列，而Claude Opus 5.5与GPT-6 Astra在十二次基线运行中均未做到；初始界限有四个正确，收到反馈后修正规则，最终六个界限全部正确。在全部25个公开ARC-AGI-3游戏中，其模型让Lean重放全部183关的获胜轨迹并能预测未见转移、检测机制变化；配合Claude Opus 5通关全部关卡得分99.9，且认证获胜轨迹仅用人类基线43%的动作。",
+        "novelty": "首次把环境探索、范畴论结构简化与Lean形式化证明结合起来，构建出可解释、可检验、可证明“不可能”的代数世界模型。",
+        "relevance": "为世界模型提供了可形式化验证与可证明边界的范式，推动AI从经验性试错走向具备严格数学保证的推理与泛化。",
+        "org": "清华大学交叉信息研究院（IIIS, Tsinghua University）",
+        "score": 9
+      },
+      "identified_orgs": [
+        "Anthropic",
+        "清华"
+      ],
+      "contact_info": {
+        "emails_found": [
+          "tqx23@mails.tsinghua.edu.cn",
+          "andrewcyao@mail.tsinghua.edu.cn",
+          "3250101086@zju.edu.cn",
+          "yuanyang@tsinghua.edu.cn"
+        ],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Guancheng Pan",
+              "email": "3250101086@zju.edu.cn",
+              "affiliation": "Zhejiang University",
+              "role": "共同第一作者"
+            },
+            {
+              "name": "Qixin Tan",
+              "email": "tqx23@mails.tsinghua.edu.cn",
+              "affiliation": "Tsinghua University",
+              "role": "共同第一作者"
+            },
+            {
+              "name": "Yang Yuan",
+              "email": "yuanyang@tsinghua.edu.cn",
+              "affiliation": "Tsinghua University; Shanghai QiZhi Institute",
+              "role": "通讯作者"
+            },
+            {
+              "name": "Andrew C. Yao",
+              "email": "andrewcyao@mail.tsinghua.edu.cn",
+              "affiliation": "Tsinghua University; Shanghai QiZhi Institute",
+              "role": "通讯作者"
+            }
+          ],
+          "corresponding_author": "Yang Yuan, Andrew C. Yao"
+        }
+      }
+    },
+    {
+      "title": "world2vec: Mechanistic world models through latent dynamics learning",
+      "abstract": "World models can achieve strong control performance without faithfully capturing the dynamics of their environment, limiting their potential for mechanistic interpretability and scientific discovery. Here, we introduce world2vec to learn mechanistic world models without reward information directly from observations and actions. World2vec learns latent dynamics that faithfully reproduce the true system over long prediction horizons, with at least one order of magnitude fewer parameters than DreamerV3, TD-MPC2 and LeWM. This enables state of the art performance in controlling continuous environments from pixels and accurate system identification across a benchmark of 71 attractors, demonstrating how world models are amenable to scientific discovery.",
+      "url": "https://arxiv.org/abs/2610.40637v1",
+      "pdf": "https://arxiv.org/pdf/2610.40637v1",
+      "categories": [
+        "cs.LG"
+      ],
+      "authors": [
+        "Tobias Schmidt",
+        "Rodrigo Gonzalez Laiz",
+        "Krisztián Szuppinger",
+        "Steffen Schneider"
+      ],
+      "all_authors": [
+        "Tobias Schmidt",
+        "Rodrigo Gonzalez Laiz",
+        "Krisztián Szuppinger",
+        "Steffen Schneider"
+      ],
+      "affiliations": [
+        {
+          "name": "Tobias Schmidt",
+          "affiliations": []
+        },
+        {
+          "name": "Rodrigo Gonzalez Laiz",
+          "affiliations": []
+        },
+        {
+          "name": "Krisztián Szuppinger",
+          "affiliations": []
+        },
+        {
+          "name": "Steffen Schneider",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-10-29",
+      "matched_topics": [
+        "世界模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "现有世界模型虽能实现较强控制性能，但未必忠实捕捉环境动力学，限制了其机制可解释性和科学发现潜力。论文旨在仅从观测和动作中学习忠实的机制世界模型。",
+        "method": "提出 world2vec，在不使用奖励信息的情况下，直接从观测和动作中学习潜在动力学。该方法强调长预测时域下忠实复现真实系统，并以显著更少的参数量实现建模。",
+        "result": "在基于像素的连续控制环境中达到先进性能，并在71个吸引子基准上实现准确的系统辨识，参数量比 DreamerV3、TD-MPC2 和 LeWM 至少少一个数量级。",
+        "novelty": "以无奖励方式学习长时程忠实潜在动力学，用极少参数同时支持控制与机制性系统辨识。",
+        "relevance": "推动世界模型从仅服务控制转向可解释、可用于科学发现的环境动力学建模。",
+        "org": "未能从提供信息中识别作者机构",
+        "score": 8
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [
+          "steffen.schneider@helmholtz-munich.de"
+        ],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Tobias Schmidt",
+              "email": "",
+              "affiliation": "Helmholtz Munich & Munich Center for Machine Learning (MCML)",
+              "role": "作者（标注*）"
+            },
+            {
+              "name": "Rodrigo Gonzalez Laiz",
+              "email": "",
+              "affiliation": "Helmholtz Munich & Munich Center for Machine Learning (MCML)",
+              "role": "作者（标注*）"
+            },
+            {
+              "name": "Krisztián Szuppinger",
+              "email": "",
+              "affiliation": "Helmholtz Munich & Munich Center for Machine Learning (MCML)",
+              "role": "作者"
+            },
+            {
+              "name": "Steffen Schneider",
+              "email": "",
+              "affiliation": "Helmholtz Munich & Munich Center for Machine Learning (MCML)",
+              "role": "通讯作者（标注†）"
+            }
+          ],
+          "corresponding_author": "Steffen Schneider"
+        }
+      }
+    },
+    {
+      "title": "L3G-World: Real-Time Infinite World Generation with Latent 3D Gaussian Memory",
+      "abstract": "Interactive world models generate visual content conditioned on user actions, yet maintaining spatial consistency over long-horizon exploration in real time remains challenging. Existing approaches rely on either temporal context or explicit 3D memory, both of which scale poorly because memory grows with the length of the generated stream. Moreover, explicit 3D memories condition latent video generators by re-encoding RGB renderings, which precludes real-time generation. In this paper, we introduce a Latent 3D Gaussian Memory (L3G) that combines the efficiency of feed-forward reconstruction with a compact, rapidly renderable scene representation. Building on this memory, we propose L3G-World, in which a memory updater and a video diffusion transformer (DiT) alternate autoregressively to generate spatially consistent worlds. The memory updater spawns Gaussians in newly observed regions and refines existing ones, so that the memory grows with scene extent rather than stream length. Each Gaussian further stores a VAE latent feature, allowing the memory to be rendered directly into the DiT's latent space without VAE re-encoding. Experiments show that L3G-World achieves state-of-the-art generation quality and long-horizon spatial consistency, with up to $38.6\\times$ fewer 3D primitives, $3.2\\times$ faster memory updates, and $359\\times$ faster memory rendering relative to the most efficient prior 3D-memory baseline for each metric, enabling real-time world generation at 9 FPS.",
+      "url": "https://arxiv.org/abs/2610.40614v1",
+      "pdf": "https://arxiv.org/pdf/2610.40614v1",
+      "categories": [
+        "cs.CV"
+      ],
+      "authors": [
+        "Jinhyeok Choi",
+        "JoungBin Lee",
+        "Jongmin Lee",
+        "Minkyeong Jeon",
+        "Jiyoung Kim"
+      ],
+      "all_authors": [
+        "Jinhyeok Choi",
+        "JoungBin Lee",
+        "Jongmin Lee",
+        "Minkyeong Jeon",
+        "Jiyoung Kim",
+        "Kaeun Han",
+        "Yoonjin Yoon",
+        "Seungryong Kim"
+      ],
+      "affiliations": [
+        {
+          "name": "Jinhyeok Choi",
+          "affiliations": []
+        },
+        {
+          "name": "JoungBin Lee",
+          "affiliations": []
+        },
+        {
+          "name": "Jongmin Lee",
+          "affiliations": []
+        },
+        {
+          "name": "Minkyeong Jeon",
+          "affiliations": []
+        },
+        {
+          "name": "Jiyoung Kim",
+          "affiliations": []
+        },
+        {
+          "name": "Kaeun Han",
+          "affiliations": []
+        },
+        {
+          "name": "Yoonjin Yoon",
+          "affiliations": []
+        },
+        {
+          "name": "Seungryong Kim",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-10-29",
+      "matched_topics": [
+        "世界模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "交互式世界模型在长时程探索中难以同时保持空间一致性与实时生成速度：时序上下文和显式3D记忆都会随生成流长度增长而膨胀，且显式3D记忆需重新编码RGB渲染结果，无法实时。",
+        "method": "提出潜在3D高斯记忆（L3G），将前馈重建的高效性与紧凑、可快速渲染的场景表示结合；记忆更新器在新观测区域生成高斯并精修已有高斯，使记忆随场景范围而非流长度增长；每个高斯存储VAE潜在特征，可直接渲染到DiT的潜空间而无需VAE重编码。基于此构建L3G-World，由记忆更新器与视频扩散Transformer自回归交替生成。",
+        "result": "取得最优的生成质量与长时程空间一致性；相比最高效的3D记忆基线，3D基元少38.6倍、记忆更新快3.2倍、记忆渲染快359倍，实现9 FPS的实时世界生成。",
+        "novelty": "用存储VAE潜特征的可增长3D高斯作为紧凑外部记忆，并直接渲染进DiT潜空间，从而解耦记忆规模与生成时长并去掉VAE重编码瓶颈。",
+        "relevance": "为实时、长时程一致的可交互世界模型提供了一条可扩展的记忆与渲染路径，对世界模型、视频生成与具身智能仿真均有直接价值。",
+        "org": "未提供（作者机构信息缺失）",
+        "score": 8
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Jinhyeok Choi",
+              "email": "",
+              "affiliation": "KAIST AI",
+              "role": "共同第一作者"
+            },
+            {
+              "name": "JoungBin Lee",
+              "email": "",
+              "affiliation": "KAIST AI",
+              "role": "共同第一作者"
+            },
+            {
+              "name": "Jongmin Lee",
+              "email": "",
+              "affiliation": "KAIST AI",
+              "role": ""
+            },
+            {
+              "name": "Minkyeong Jeon",
+              "email": "",
+              "affiliation": "KAIST AI",
+              "role": ""
+            },
+            {
+              "name": "Jiyoung Kim",
+              "email": "",
+              "affiliation": "KAIST AI",
+              "role": ""
+            },
+            {
+              "name": "Kaeun Han",
+              "email": "",
+              "affiliation": "Ewha Womans University",
+              "role": ""
+            },
+            {
+              "name": "Yoonjin Yoon",
+              "email": "",
+              "affiliation": "KAIST AI; KAIST Urban AI Institute",
+              "role": "通讯作者"
+            },
+            {
+              "name": "Seungryong Kim",
+              "email": "",
+              "affiliation": "KAIST AI",
+              "role": "通讯作者"
+            }
+          ],
+          "corresponding_author": "Yoonjin Yoon, Seungryong Kim"
+        }
+      }
+    },
+    {
+      "title": "Gym-Anything for Robotics: Scaling physical simulations with digital agents",
+      "abstract": "Realistic, fast robotics simulations could enable large-scale training of embodied AI models that transfer to the real world. However, despite decades of progress, available simulations cover only a narrow range of real-world tasks and physical phenomena. The core bottleneck is that creating better simulations requires significant expert effort and therefore does not scale. To address this, we introduce Gym-Anything for Robotics, a framework in which coding agents create realistic robotics simulations. Our core insight is that simulation creation is a coding agent task, so improvements in coding agents translate directly into richer and more faithful simulations. We select simulations based on U.S. GDP data to cover economically valuable physical work, define what makes a good simulation and a good task, and develop an adversarial creation-audit loop that checks each simulation and task against these definitions. Using this pipeline, we build RoboWorld, a set of 25 simulations with 25 test and 175 training RL environments of varying difficulty. Even the best frontier models fail on every RoboWorld test task, achieving an average reward of only 0.06. Building on RoboWorld, we introduce several new ways for frontier models to improve, including in-context learning across repeated attempts, a privileged teacher that reads the simulator state and teaches a student in context, self-assisted learning from the model's own privileged experience, and code policies that generate demonstrations across varied scenes to train vision-language-action models (VLAs) such as $π_{0.5}$. Each of these substantially improves performance. We release our pipeline, RL environments, and benchmark to facilitate future research. Code and data are available at https://gym-anything.github.io/robotics",
+      "url": "https://arxiv.org/abs/2610.40565v1",
+      "pdf": "https://arxiv.org/pdf/2610.40565v1",
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "authors": [
+        "Pranjal Aggarwal",
+        "Sean Welleck"
+      ],
+      "all_authors": [
+        "Pranjal Aggarwal",
+        "Sean Welleck"
+      ],
+      "affiliations": [
+        {
+          "name": "Pranjal Aggarwal",
+          "affiliations": []
+        },
+        {
+          "name": "Sean Welleck",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-10-29",
+      "matched_topics": [
+        "多模态",
+        "具身智能"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "机器人仿真环境覆盖的真实任务与物理现象极其有限，而手工构建高质量仿真需要大量专家投入、无法规模化，成为具身智能大规模训练的核心瓶颈。",
+        "method": "提出 Gym-Anything for Robotics 框架，让编码智能体（coding agents）自动生成机器人仿真：依据美国 GDP 数据挑选有经济价值的物理工作场景，明确定义“好仿真/好任务”的判据，并用对抗式的“创建—审计”循环逐条校验；据此构建了包含 25 个仿真、25 个测试与 175 个训练 RL 环境的 RoboWorld。",
+        "result": "最强前沿模型在 RoboWorld 所有测试任务上均失败，平均回报仅 0.06；论文进一步提出多种提升途径（重复尝试的上下文学习、读取仿真器状态的特权教师、自我辅助学习、生成示范训练 π0.5 等 VLA 的代码策略），每种都带来显著性能提升。",
+        "novelty": "把“仿真创建”重新定义为编码智能体任务，使编码智能体能力的进步可直接转化为更丰富、更逼真的仿真，并配套提出可审计的对抗式生成流程与可扩展基准。",
+        "relevance": "为具身智能/世界模型提供了可规模化扩充仿真数据的新范式，并给出一个当前前沿模型几乎无法完成的困难基准，指明模型能力缺口与改进方向。",
+        "org": "元数据未给出机构信息（作者 Sean Welleck 等任职于卡内基梅隆大学）",
+        "score": 8
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Pranjal Aggarwal",
+              "email": "",
+              "affiliation": "Carnegie Mellon University",
+              "role": "第一作者"
+            },
+            {
+              "name": "Sean Welleck",
+              "email": "",
+              "affiliation": "Carnegie Mellon University",
+              "role": "作者"
+            }
+          ],
+          "corresponding_author": ""
+        }
+      }
+    },
+    {
+      "title": "PhysCount: Do MLLMs Count Visual Appearances or Physical Entities?",
+      "abstract": "Images reveal appearances, but counting often asks about physical objects. A single entity may be visible directly, in several reflections, or through glass, so detecting every visible occurrence does not determine how many entities are present. Existing visual counting benchmarks rarely separate these two operations. We introduce PhysCount, a benchmark for evaluating whether multimodal large language models (MLLMs) can distinguish what appears in an image from what physically exists in the scene. PhysCount contains 546 real-world images and 4,595 human-written questions organized into 651 target-specific groups. For each group, annotators locate the relevant appearances, label how each is observed, and identify appearances of the same entity. Four complementary question families test the enumeration of appearances, the enumeration of physical entities, image-formation-specific counting, and appearance--entity correspondence. We measure both accuracy on each family and the proportion of groups answered entirely correctly. Across 40 MLLMs, counting visible appearances is substantially easier than recovering the identities that connect them. Even the strongest model answers every question correctly in only 13.36\\% of groups. Performance declines when one entity produces many appearances or when its appearances cross observation modes. Higher image resolution improves access to visual evidence but brings limited gains in complete-group accuracy, whereas answering related questions jointly produces a marked improvement. These results expose a gap between recognizing what is visible and correctly recovering the physical entities behind those observations.",
+      "url": "https://arxiv.org/abs/2610.40530v1",
+      "pdf": "https://arxiv.org/pdf/2610.40530v1",
+      "categories": [
+        "cs.CV"
+      ],
+      "authors": [
+        "Lidong Lu",
+        "Jiaxin Lv",
+        "Liangrui Dong",
+        "Xinyi Mao",
+        "Lidong Zou"
+      ],
+      "all_authors": [
+        "Lidong Lu",
+        "Jiaxin Lv",
+        "Liangrui Dong",
+        "Xinyi Mao",
+        "Lidong Zou",
+        "Zhenquan Li",
+        "Tong Lu",
+        "Guo Chen"
+      ],
+      "affiliations": [
+        {
+          "name": "Lidong Lu",
+          "affiliations": []
+        },
+        {
+          "name": "Jiaxin Lv",
+          "affiliations": []
+        },
+        {
+          "name": "Liangrui Dong",
+          "affiliations": []
+        },
+        {
+          "name": "Xinyi Mao",
+          "affiliations": []
+        },
+        {
+          "name": "Lidong Zou",
+          "affiliations": []
+        },
+        {
+          "name": "Zhenquan Li",
+          "affiliations": []
+        },
+        {
+          "name": "Tong Lu",
+          "affiliations": []
+        },
+        {
+          "name": "Guo Chen",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-10-29",
+      "matched_topics": [
+        "多模态",
+        "大模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "多模态大模型在计数时，常把图像中可见的“外观出现”等同于场景中真实的“物理实体”，但同一实体可能通过反射、玻璃等产生多次可见出现。论文要解决的是如何评估并区分MLLMs是在数视觉外观还是在数物理实体。",
+        "method": "作者构建了PhysCount基准，包含546张真实图像、4595个人工问题、651个目标特定问题组；标注者定位相关外观、标注观察方式并识别同一实体的多次出现。基准设计四类互补问题，分别测试外观枚举、物理实体枚举、成像方式特定计数和外观—实体对应关系，并评测40个MLLMs。",
+        "result": "实验发现计数可见外观明显易于恢复实体身份；最强模型也仅在13.36%的问题组中全部答对。当一个实体产生多次外观或外观跨观察模式时性能下降；提高图像分辨率对完整组准确率提升有限，而联合回答相关问题可显著改善。",
+        "novelty": "提出了显式区分“视觉外观计数”与“物理实体计数”的基准，并通过多观察模式标注和四类互补问题系统评测MLLMs的实体级计数与对应推理能力。",
+        "relevance": "该工作揭示了MLLMs从可见观察恢复物理实体的关键能力缺口，对世界模型、具身智能和多模态推理评测具有重要参考价值。",
+        "org": "未能从提供信息中识别",
+        "score": 8
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Lidong Lu",
+              "email": "",
+              "affiliation": "Nanjing University",
+              "role": "第一作者"
+            },
+            {
+              "name": "Jiaxin Lv",
+              "email": "",
+              "affiliation": "Nanjing University",
+              "role": ""
+            },
+            {
+              "name": "Liangrui Dong",
+              "email": "",
+              "affiliation": "Nanjing University",
+              "role": ""
+            },
+            {
+              "name": "Xinyi Mao",
+              "email": "",
+              "affiliation": "Nanjing University",
+              "role": ""
+            },
+            {
+              "name": "Lidong Zou",
+              "email": "",
+              "affiliation": "Nanjing University",
+              "role": ""
+            },
+            {
+              "name": "Zhenquan Li",
+              "email": "",
+              "affiliation": "Nanjing University",
+              "role": ""
+            },
+            {
+              "name": "Tong Lu",
+              "email": "",
+              "affiliation": "Nanjing University",
+              "role": ""
+            },
+            {
+              "name": "Guo Chen",
+              "email": "",
+              "affiliation": "NVIDIA",
+              "role": ""
+            }
+          ],
+          "corresponding_author": ""
+        }
+      }
+    },
+    {
+      "title": "TouchBridge: Tactile-Conditioned Human-to-Robot Transfer for Dexterous Manipulation",
+      "abstract": "Human demonstrations offer an efficient and scalable source of data for dexterous robot manipulation, but differences in sensing and hand morphology complicate the transfer of contact-rich interactions. We present TouchBridge, a hardware--software co-designed framework for human-to-robot data transformation. A wearable human demonstration interface and a corresponding robot interface establish cross-embodiment correspondence in visual and fingertip tactile sensing. We introduce Tac-Retarget, a tactile-conditioned retargeting method that uses measured contact to align fingertip contact patches and preserve their spatial relations within and across hands. Unlike object-aware or simulation-based transfer pipelines, Tac-Retarget requires no object mesh, object-pose estimate, or physics simulation for retargeting, enabling direct and scalable conversion of human demonstrations into robot-domain training data. Combined with visual synthesis and camera-anchored action conversion, TouchBridge produces robot-domain demonstrations for fine-tuning a pretrained vision-language-action (VLA) model. Across four real-world contact-rich tasks, policies fine-tuned solely on TouchBridge-converted human demonstrations achieve a 72.5% average success rate, compared with 77.5% using an equal number of teleoperated robot demonstrations, while human demonstration collection is 7.0x faster. Under the same policy and training setup, Tac-Retarget outperforms DexPilot and UniDex by 25.0 and 42.5 percentage points, respectively.",
+      "url": "https://arxiv.org/abs/2610.40349v1",
+      "pdf": "https://arxiv.org/pdf/2610.40349v1",
+      "categories": [
+        "cs.RO"
+      ],
+      "authors": [
+        "Haozhe Zhang",
+        "Gu Zhang",
+        "Zirui Zou",
+        "Yuzheng Chen",
+        "Jinlong Wu"
+      ],
+      "all_authors": [
+        "Haozhe Zhang",
+        "Gu Zhang",
+        "Zirui Zou",
+        "Yuzheng Chen",
+        "Jinlong Wu",
+        "Zixuan Hu",
+        "Jianke Zhang",
+        "Yucheng Hu",
+        "Zhecheng Yuan",
+        "Huazhe Xu"
+      ],
+      "affiliations": [
+        {
+          "name": "Haozhe Zhang",
+          "affiliations": []
+        },
+        {
+          "name": "Gu Zhang",
+          "affiliations": []
+        },
+        {
+          "name": "Zirui Zou",
+          "affiliations": []
+        },
+        {
+          "name": "Yuzheng Chen",
+          "affiliations": []
+        },
+        {
+          "name": "Jinlong Wu",
+          "affiliations": []
+        },
+        {
+          "name": "Zixuan Hu",
+          "affiliations": []
+        },
+        {
+          "name": "Jianke Zhang",
+          "affiliations": []
+        },
+        {
+          "name": "Yucheng Hu",
+          "affiliations": []
+        },
+        {
+          "name": "Zhecheng Yuan",
+          "affiliations": []
+        },
+        {
+          "name": "Huazhe Xu",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-10-29",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "人类演示是灵巧机器人操作的高效数据来源，但人手机器人在触觉传感和手部形态上的差异，使得接触丰富交互的跨本体迁移困难。",
+        "method": "提出 TouchBridge 软硬件协同框架，通过可穿戴人类演示接口与对应机器人接口建立视觉和指尖触觉的跨本体对应；核心 Tac-Retarget 使用实测接触对齐指尖接触区域并保持手内/手间空间关系，无需物体网格、位姿估计或物理仿真，结合视觉合成与相机锚定动作转换生成机器人域演示，用于微调预训练 VLA 模型。",
+        "result": "在四个真实接触丰富任务中，仅用 TouchBridge 转换的人类演示微调的策略平均成功率达 72.5%，接近同等数量遥操作机器人演示的 77.5%，且人类演示采集快 7.0 倍；相同策略与训练设置下，Tac-Retarget 分别比 DexPilot 和 UniDex 高 25.0 和 42.5 个百分点。",
+        "novelty": "提出无需物体模型、位姿估计或物理仿真的触觉条件重定向方法，实现直接、可扩展的人到机器人接触丰富演示转换。",
+        "relevance": "为利用大规模人类演示训练机器人 VLA 与灵巧操作策略提供了可扩展的跨本体数据转换方案，对具身智能和多模态机器人学习有重要意义。",
+        "org": "未在提供信息中明确（作者机构为空）",
+        "score": 8
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Haozhe Zhang",
+              "email": "",
+              "affiliation": "Tsinghua University",
+              "role": "共同第一作者"
+            },
+            {
+              "name": "Gu Zhang",
+              "email": "",
+              "affiliation": "Tsinghua University",
+              "role": "共同第一作者、项目负责人"
+            },
+            {
+              "name": "Zirui Zou",
+              "email": "",
+              "affiliation": "Zhejiang University",
+              "role": "共同第一作者"
+            },
+            {
+              "name": "Yuzheng Chen",
+              "email": "",
+              "affiliation": "Nanyang Technological University",
+              "role": ""
+            },
+            {
+              "name": "Jinlong Wu",
+              "email": "",
+              "affiliation": "Hunan University",
+              "role": ""
+            },
+            {
+              "name": "Zixuan Hu",
+              "email": "",
+              "affiliation": "Peking University",
+              "role": ""
+            },
+            {
+              "name": "Jianke Zhang",
+              "email": "",
+              "affiliation": "Tsinghua University",
+              "role": ""
+            },
+            {
+              "name": "Yucheng Hu",
+              "email": "",
+              "affiliation": "Tsinghua University",
+              "role": ""
+            },
+            {
+              "name": "Zhecheng Yuan",
+              "email": "",
+              "affiliation": "Tsinghua University",
+              "role": ""
+            },
+            {
+              "name": "Huazhe Xu",
+              "email": "",
+              "affiliation": "Tsinghua University",
+              "role": ""
+            }
+          ],
+          "corresponding_author": ""
+        }
+      }
+    },
+    {
+      "title": "Fight World Model: Customizable Combat through Visual Interaction Proxies",
+      "abstract": "A playable, programmable game world must maintain persistent state, enforce executable rules, and support extensible gameplay mechanics. Existing video world models can generate plausible combat, yet struggle to keep hit reactions and health updates consistent with game rules. We introduce Fight World Model (FWM), which separates rule-governed combat execution from video rendering. An executable engine maintains state and resolves interactions. A deterministic compiler encodes these outcomes and attempted actions in a spatially and temporally aligned interaction proxy. The proxy aligns action and skill windows, brief hit reactions, and persistent health by fighter identity and timing. These cues can be controlled separately to render interactions under modified rules. Identity-bound references preserve character appearance across side switches. We train FWM on FightWorld Corpus, spanning 52 skill effects, 187 character-appearance variants, and 15 arenas. Without retraining the renderer, FWM supports damage scaling, limited-hit immunity, lifesteal, and multi-stage skill mechanisms beyond the native game. It also allows character and arena customization. Experiments demonstrate the effectiveness of FWM, which outperforms existing game world models in action fidelity, hit reactions, health-state consistency, and character appearance preservation. Our project is available at https://fight-world-model.github.io.",
+      "url": "https://arxiv.org/abs/2610.40607v1",
+      "pdf": "https://arxiv.org/pdf/2610.40607v1",
+      "categories": [
+        "cs.CV"
+      ],
+      "authors": [
+        "Jiahua Li",
+        "Zixu John",
+        "Tom Zhong",
+        "Fuping Wu",
+        "Tianhao Xu"
+      ],
+      "all_authors": [
+        "Jiahua Li",
+        "Zixu John",
+        "Tom Zhong",
+        "Fuping Wu",
+        "Tianhao Xu",
+        "Ruicheng Zhang",
+        "Jun Zhou",
+        "Zunnan Xu"
+      ],
+      "affiliations": [
+        {
+          "name": "Jiahua Li",
+          "affiliations": []
+        },
+        {
+          "name": "Zixu John",
+          "affiliations": []
+        },
+        {
+          "name": "Tom Zhong",
+          "affiliations": []
+        },
+        {
+          "name": "Fuping Wu",
+          "affiliations": []
+        },
+        {
+          "name": "Tianhao Xu",
+          "affiliations": []
+        },
+        {
+          "name": "Ruicheng Zhang",
+          "affiliations": []
+        },
+        {
+          "name": "Jun Zhou",
+          "affiliations": []
+        },
+        {
+          "name": "Zunnan Xu",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-10-29",
+      "matched_topics": [
+        "世界模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "现有视频世界模型虽能生成看似合理的战斗画面，但难以保持受击反馈、生命值更新等与游戏规则和持久状态一致，也缺乏可编程、可定制的战斗机制。",
+        "method": "FWM将受规则约束的战斗执行与视频渲染分离：可执行引擎维护状态并裁决交互，确定性编译器将结果和尝试动作编码为时空对齐的交互代理；该代理按角色身份与时间对齐动作/技能窗口、受击反馈和生命值，并可用身份绑定参考保持角色外观一致。模型在FightWorld Corpus上训练。",
+        "result": "FWM无需重新训练渲染器即可支持伤害缩放、限次受击免疫、吸血、多阶段技能等原生游戏外机制，以及角色和场景定制；实验表明其在动作保真度、受击反馈、生命状态一致性和角色外观保持上优于现有游戏世界模型。",
+        "novelty": "提出时空对齐的交互代理，将规则裁决与视频渲染解耦，实现规则一致且可定制的战斗视频世界模型。",
+        "relevance": "为可控视频生成、游戏世界模型和可编程交互式世界建模提供了规则一致性与可定制性的新思路。",
+        "org": "作者机构信息未提供，无法识别",
+        "score": 7
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Jiahua Li",
+              "email": "",
+              "affiliation": "University of Oxford, UK",
+              "role": "第一作者"
+            },
+            {
+              "name": "Zixu John",
+              "email": "",
+              "affiliation": "Independent Researcher",
+              "role": ""
+            },
+            {
+              "name": "Tom Zhong",
+              "email": "",
+              "affiliation": "Independent Researcher",
+              "role": ""
+            },
+            {
+              "name": "Fuping Wu",
+              "email": "",
+              "affiliation": "Imperial College London, UK",
+              "role": ""
+            },
+            {
+              "name": "Tianhao Xu",
+              "email": "",
+              "affiliation": "Independent Researcher",
+              "role": ""
+            },
+            {
+              "name": "Ruicheng Zhang",
+              "email": "",
+              "affiliation": "Tsinghua University, China",
+              "role": ""
+            },
+            {
+              "name": "Jun Zhou",
+              "email": "",
+              "affiliation": "Tsinghua University, China",
+              "role": ""
+            },
+            {
+              "name": "Zunnan Xu",
+              "email": "",
+              "affiliation": "Nanyang Technological University, Singapore",
+              "role": "通讯作者（标注*）"
+            }
+          ],
+          "corresponding_author": "Zunnan Xu"
+        }
+      }
+    },
+    {
+      "title": "RADIOlogy: A Single-Pass Approach to Training-Free Zero-Shot Anomaly Detection",
+      "abstract": "Current zero-shot anomaly detection methods often rely on complex prompt-learning techniques or computationally expensive sliding-window strategies to achieve fine-grained visual alignment to detect small-scale anomalies. This reliance stems from the fundamental limitation of standard CLIP architectures, where [CLS] token attention and spatial patch pooling struggle to capture subtle, localized anomaly features. While prompt-learning approaches aim to bridge this gap, they typically require a large number of ground-truth segmentation masks from auxiliary datasets, which are often unavailable in specialized domains. In this work, we show an emerging property of multi-head attention pooling in vision-language models: remarkable zero-shot anomaly localization and detection right out of the box. We translate this property into a single-pass anomaly detection technique, RADIOlogy, that does not require dense, windowed execution and significantly outperforms other training-free baselines. Instead, the method relies on a simple contrastive scoring approach that compares the average similarity between vision features and a suite of normal and abnormal prompts. Furthermore, we leverage the agglomerative features of RADIO models to enhance pixel-level anomaly segmentation using a dense anomaly refinement pipeline. Finally, we show how the vision-language family of training-free zero-shot anomaly detection techniques can be applied successfully to the medical domain with minimal modifications. Code is available at https://github.com/jacomof/RADIOlogy.",
+      "url": "https://arxiv.org/abs/2610.40580v1",
+      "pdf": "https://arxiv.org/pdf/2610.40580v1",
+      "categories": [
+        "cs.CV"
+      ],
+      "authors": [
+        "Joaquín Figueira",
+        "Giacomo D'Amicantonio",
+        "Egor Bondarau"
+      ],
+      "all_authors": [
+        "Joaquín Figueira",
+        "Giacomo D'Amicantonio",
+        "Egor Bondarau"
+      ],
+      "affiliations": [
+        {
+          "name": "Joaquín Figueira",
+          "affiliations": []
+        },
+        {
+          "name": "Giacomo D'Amicantonio",
+          "affiliations": []
+        },
+        {
+          "name": "Egor Bondarau",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-10-29",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "现有零样本异常检测方法通常依赖复杂的提示学习或计算昂贵的滑动窗口策略，因为标准CLIP架构难以捕捉细微的局部异常特征；本文旨在实现无需训练、单次前向的零样本异常检测与定位。",
+        "method": "作者发现视觉-语言模型中的多头注意力池化天然具备零样本异常定位与检测能力，并提出RADIOlogy：通过对比视觉特征与正常/异常提示的平均相似度进行单次评分，同时利用RADIO模型的凝聚特征进行稠密异常细化以提升像素级分割，并可低成本迁移到医学领域。",
+        "result": "RADIOlogy无需稠密滑动窗口执行，在训练-free基线中显著更优，能够实现零样本异常检测与定位，并通过最小修改成功应用于医学图像领域。",
+        "novelty": "揭示了多头注意力池化在视觉-语言模型中开箱即用的零样本异常定位特性，并将其转化为单次前向、无需训练的对比评分与细化框架。",
+        "relevance": "该方法降低了零样本异常检测对提示学习、辅助分割标注和密集计算的需求，对工业与医学等专业领域的异常检测应用具有推动意义。",
+        "org": "推断为荷兰埃因霍温理工大学（TU/e），但提供信息中未明确列出作者机构",
+        "score": 7
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Joaquín Figueira",
+              "email": "j.figueira@tue.nl",
+              "affiliation": "AIMS Group, Department of Electrical Engineering, Eindhoven University of Technology",
+              "role": "第一作者"
+            },
+            {
+              "name": "Giacomo D'Amicantonio",
+              "email": "g.d.amicantonio@tue.nl",
+              "affiliation": "AIMS Group, Department of Electrical Engineering, Eindhoven University of Technology",
+              "role": ""
+            },
+            {
+              "name": "Egor Bondarau",
+              "email": "e.bondarev@tue.nl",
+              "affiliation": "AIMS Group, Department of Electrical Engineering, Eindhoven University of Technology",
+              "role": ""
+            }
+          ],
+          "corresponding_author": ""
+        }
+      }
+    },
+    {
+      "title": "VeriCUA: Verification as Agentic Exploration for Computer-Using Agents",
+      "abstract": "Building and scaling computer-using agents (CUAs) across desktop, mobile, and web environments requires reliable task-completion verification for data curation, evaluation, and reinforcement learning. Typical automated approaches prompt vision-language models (VLMs) to judge trajectories or generate programs to inspect application state. However, both rely on partial views of complex digital environments. VLM judges are restricted to supplied observations, while generated programs depend on accessible state. These views can omit decisive evidence or leave completion judgments unsupported. Tailoring separate verifiers to different platforms and access settings adds further engineering cost. We present VeriCUA, a platform-agnostic framework for verification through agentic exploration. It treats verification as dynamic evidence gathering and assessment within a shared procedure for online and offline settings across platforms and observation modalities. After inspecting the available context to construct a task rubric, the verifier selects GUI or code checks for unresolved requirements and combines their findings under explicit evidence rules. Experiments show improved agreement with reference labels over the compared baselines across these settings, with the largest offline gains on hard cases and stronger rejection of false completion claims online. Further analyses connect these gains to complementary evidence and test-time exploration.",
+      "url": "https://arxiv.org/abs/2610.40578v1",
+      "pdf": "https://arxiv.org/pdf/2610.40578v1",
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV"
+      ],
+      "authors": [
+        "Qiushi Sun",
+        "Da Yu",
+        "Alexander Knop",
+        "Amer Sinha",
+        "Lingpeng Kong"
+      ],
+      "all_authors": [
+        "Qiushi Sun",
+        "Da Yu",
+        "Alexander Knop",
+        "Amer Sinha",
+        "Lingpeng Kong",
+        "Ben Kao",
+        "Ravi Kumar",
+        "Pritish Kamath"
+      ],
+      "affiliations": [
+        {
+          "name": "Qiushi Sun",
+          "affiliations": []
+        },
+        {
+          "name": "Da Yu",
+          "affiliations": []
+        },
+        {
+          "name": "Alexander Knop",
+          "affiliations": []
+        },
+        {
+          "name": "Amer Sinha",
+          "affiliations": []
+        },
+        {
+          "name": "Lingpeng Kong",
+          "affiliations": []
+        },
+        {
+          "name": "Ben Kao",
+          "affiliations": []
+        },
+        {
+          "name": "Ravi Kumar",
+          "affiliations": []
+        },
+        {
+          "name": "Pritish Kamath",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-10-29",
+      "matched_topics": [
+        "多模态",
+        "Agent"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "在桌面、移动端和网页等环境中构建和扩展computer-using agents（CUAs）时，缺乏可靠的任务完成验证手段，从而制约了数据筛选、评测和强化学习；现有VLM评判器或生成程序检查都只依赖局部视角，证据不全且难以跨平台统一。",
+        "method": "提出VeriCUA，把验证重新定义为智能体自主探索中的动态证据收集与评估：先检查可用上下文构建任务rubric（评分细则），再针对未解决的要求选择GUI检查或代码检查，并按显式证据规则融合两类结果。该框架不依赖特定平台，统一覆盖在线与离线、多种观测模态。",
+        "result": "在多种设置下，VeriCUA与参考标签的一致率优于对比基线；离线场景在困难样本上提升最大，在线场景对虚假完成声明的拒绝更强。分析表明提升来自GUI与代码证据的互补性以及测试时探索。",
+        "novelty": "将验证从静态判断或单次程序检查转变为跨平台、统一在线离线的智能体探索式证据收集与规则化裁决。",
+        "relevance": "为CUA的数据标注、评测与强化学习提供了更可靠的通用验证器，有助于推动具身/多模态Agent的可扩展训练与评估。",
+        "org": "作者列表未提供机构信息（无法确认）",
+        "score": 7
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [
+          "qiushisun@connect.hku.hk",
+          "pritishk@google.com"
+        ],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Qiushi Sun",
+              "email": "",
+              "affiliation": "Google; The University of Hong Kong",
+              "role": "第一作者；通讯作者（标注*）"
+            },
+            {
+              "name": "Da Yu",
+              "email": "",
+              "affiliation": "Google",
+              "role": ""
+            },
+            {
+              "name": "Alexander Knop",
+              "email": "",
+              "affiliation": "Google",
+              "role": ""
+            },
+            {
+              "name": "Amer Sinha",
+              "email": "",
+              "affiliation": "Google",
+              "role": ""
+            },
+            {
+              "name": "Lingpeng Kong",
+              "email": "",
+              "affiliation": "The University of Hong Kong",
+              "role": ""
+            },
+            {
+              "name": "Ben Kao",
+              "email": "",
+              "affiliation": "The University of Hong Kong",
+              "role": ""
+            },
+            {
+              "name": "Ravi Kumar",
+              "email": "",
+              "affiliation": "Google",
+              "role": ""
+            },
+            {
+              "name": "Pritish Kamath",
+              "email": "",
+              "affiliation": "Google",
+              "role": ""
+            }
+          ],
+          "corresponding_author": "Qiushi Sun"
+        }
+      }
+    },
+    {
+      "title": "PhysVLMM: Interaction-Conditioned Physical Belief Maps for Articulated Objects in Robot Scene Maps",
+      "abstract": "Mobile robots must open doors and drawers, yet their scene maps record what each object is and whether it has moved, not how it will respond to a pull. This paper proposes PhysVLMM, a method that maintains a physical belief for every articulated part of a Vision-Language-Motion Map and answers a planner's queries about it, with two algorithms: a map update and a query. Watching a part move provably cannot identify its dynamics, and a measured pull identifies only the pulled part, up to one direction. PhysVLMM therefore (i) keeps that direction as a posterior instead of a point estimate, (ii) passes the evidence of each pull in closed form to the untouched look-alike parts of the map, and (iii) answers whether an action will succeed at a stated risk, or abstains. On real doors and drawers in 18 homes, it identifies the joint type in 86% of held-out pulls (48% for a learned single-view method) and predicts the response to a pull with 41% lower error than differentiable simulation (CRPS 0.323 vs. 0.544), four orders of magnitude faster (13 ms vs. 230 s per case). The posterior lowers the final-position error from 0.460 to 0.270, sharing lowers the force error of untouched parts from 56% to 42%, and at every stated risk from 0.02 to 0.30 the false-safe answers stay within it. Pooling all measured parts of a home does as well as the look-alike groups, and simpler variants predict where a pulled part stops at least as well.",
+      "url": "https://arxiv.org/abs/2610.40539v1",
+      "pdf": "https://arxiv.org/pdf/2610.40539v1",
+      "categories": [
+        "cs.RO"
+      ],
+      "authors": [
+        "Dibyendu Ghosh"
+      ],
+      "all_authors": [
+        "Dibyendu Ghosh"
+      ],
+      "affiliations": [
+        {
+          "name": "Dibyendu Ghosh",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-10-29",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "移动机器人在开门、拉抽屉等操作中需要预测铰接物体对交互的响应，但现有场景地图只记录物体类别和是否移动，不记录其动力学响应。",
+        "method": "提出 PhysVLMM，在 Vision-Language-Motion Map 中为每个铰接部件维护物理信念；用后验表示拉动方向而非点估计，以闭式形式将每次拉动的证据传播给未接触的相似部件，并支持在给定风险下回答动作能否成功或选择弃权。",
+        "result": "在18个真实家庭的门和抽屉上，关节类型识别率达86%（单视图学习方法为48%）；对拉动响应的预测误差比可微分仿真低41%，速度快四个数量级（13 ms vs. 230 s）；后验和证据共享分别降低最终位置与未接触部件力误差，且在各风险水平下 false-safe 答案控制在设定风险内。",
+        "novelty": "将交互条件下的物理信念、不确定性后验和相似部件证据共享引入机器人场景地图，用于铰接物体动力学查询与风险感知决策。",
+        "relevance": "对具身智能和机器人规划有意义，使场景地图不仅描述物体状态，还能支持对交互结果的概率预测与安全决策。",
+        "org": "未知（作者机构信息未提供）",
+        "score": 7
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Dibyendu Ghosh",
+              "email": "",
+              "affiliation": "",
+              "role": ""
+            }
+          ],
+          "corresponding_author": ""
+        }
+      }
+    },
+    {
+      "title": "DAWN: Diffusion-based Alignment and unfastening Workflow Network",
+      "abstract": "We present DAWN (Diffusion-based Alignment and unfastening Workflow Network), a hierarchical robotic framework designed to perform real-world, unfastening tasks through multi-modal sensory integration. Autonomous robotic unfastening is crucial for improving recycling processes, enhancing safety, and reducing operational costs; yet, it remains predominantly manual due to inherent challenges in precise screwdriver engagement with fasteners, detailed force execution, and robustness to environmental variability. To address the complexity of learning long-horizon, contact-rich manipulation tasks, we subdivide the unfastening task procedure into two sequential stages: (1) alignment & insertion, and (2) unfastening. DAWN consists of three key components: AlignNet, a diffusion-based policy ensuring precise screwdriver tip engagement; LatchNet, a multi-modal classifier reliably detecting successful stage transitions; and UnfastNet, which achieves stable, force-controlled screw removal. Experimental validation on a Franka Emika robot demonstrates that DAWN achieves alignment & insertion success rates comparable to trained human operators, robustly transitions between stages, and attains an impressive success rate in unfastening across various unseen scenarios. Ablation studies further elucidate critical input modalities and effective training strategies, highlighting DAWN's scalability, robustness, and data efficiency.",
+      "url": "https://arxiv.org/abs/2610.40537v1",
+      "pdf": "https://arxiv.org/pdf/2610.40537v1",
+      "categories": [
+        "cs.RO"
+      ],
+      "authors": [
+        "Hemant Kumar",
+        "Piyush Goenka",
+        "Nikhil Chopra"
+      ],
+      "all_authors": [
+        "Hemant Kumar",
+        "Piyush Goenka",
+        "Nikhil Chopra"
+      ],
+      "affiliations": [
+        {
+          "name": "Hemant Kumar",
+          "affiliations": []
+        },
+        {
+          "name": "Piyush Goenka",
+          "affiliations": []
+        },
+        {
+          "name": "Nikhil Chopra",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-10-29",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "论文旨在解决真实世界中机器人自动拆卸紧固件（如拧螺丝）的难题，该任务需要精确对准、接触丰富操作和长时程控制，目前主要依赖人工。",
+        "method": "提出分层机器人框架 DAWN，将拆解任务分为“对准与插入”和“拧出”两阶段；使用基于扩散策略的 AlignNet 保证螺丝刀精确对准，LatchNet 多模态分类器检测阶段转换，UnfastNet 实现稳定力控拆卸。",
+        "result": "在 Franka Emika 机器人上的实验表明，DAWN 的对准与插入成功率接近熟练人工操作员，阶段转换稳健，并在多种未见场景中取得较高的拆卸成功率。",
+        "novelty": "将扩散策略、多模态阶段检测与力控拆卸结合成分层框架，用于长时程、接触丰富的真实机器人拆解任务。",
+        "relevance": "对具身智能和机器人操作中的长时程接触丰富任务具有参考价值，尤其展示了扩散策略在多阶段真实世界操作中的应用潜力。",
+        "org": "University of Maryland",
+        "score": 7
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "BURGER: Benchmarking and Understanding Robotic Generalization via Embodied Drawing",
+      "abstract": "How effectively can vision-language-action (VLA) models learn diverse language-conditioned behaviors as training data scales? Investigating this question requires large and varied robot datasets, whose collection on physical robots remains costly. We introduce BURGER, a language-conditioned robotic drawing benchmark with a scalable, prompt-driven pipeline for generating continuous drawing trajectories, both in simulation and the real world. In BURGER, an agent starts from the same blank canvas and controls a robot arm to draw the object or spatial composition specified by language, while each instruction allows an open-ended variety of valid drawings and stroke orders. Using 28,200 simulated demonstrations spanning 282 drawing tasks, we evaluate five representative VLA models across data scales, language grounding, and multimodal behavior. BURGER supports fine-grained analysis of language grounding, spatial composition, and action generation, revealing distinct failure patterns across VLA models. Our experiments suggest that some VLA models can benefit from greater task diversity and demonstration scale, capture multimodal drawing behaviors, and generalize to unseen compositions of familiar objects. Finally, we deploy a trained policy on a Franka Panda arm, demonstrating the ability to draw reactively under human intervention. Project homepage and code can be found at https://siyingzhao.github.io/BURGER/.",
+      "url": "https://arxiv.org/abs/2610.40532v1",
+      "pdf": "https://arxiv.org/pdf/2610.40532v1",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "authors": [
+        "Xiangyu Xu",
+        "Bangshuai Peng",
+        "Ziyi Liu",
+        "Mengjie Zhao",
+        "Chenhao Lu"
+      ],
+      "all_authors": [
+        "Xiangyu Xu",
+        "Bangshuai Peng",
+        "Ziyi Liu",
+        "Mengjie Zhao",
+        "Chenhao Lu",
+        "Zhengyang Fan",
+        "Huazhe Xu",
+        "Kaizhe Hu"
+      ],
+      "affiliations": [
+        {
+          "name": "Xiangyu Xu",
+          "affiliations": []
+        },
+        {
+          "name": "Bangshuai Peng",
+          "affiliations": []
+        },
+        {
+          "name": "Ziyi Liu",
+          "affiliations": []
+        },
+        {
+          "name": "Mengjie Zhao",
+          "affiliations": []
+        },
+        {
+          "name": "Chenhao Lu",
+          "affiliations": []
+        },
+        {
+          "name": "Zhengyang Fan",
+          "affiliations": []
+        },
+        {
+          "name": "Huazhe Xu",
+          "affiliations": []
+        },
+        {
+          "name": "Kaizhe Hu",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-10-29",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "论文要研究视觉-语言-动作（VLA）模型在训练数据规模扩大时，能多大程度学习多样化的语言条件行为；但真实机器人数据采集成本高，缺少大规模、多样化的评测基准。",
+        "method": "提出 BURGER，一个语言条件机器人绘画基准和可扩展的提示驱动轨迹生成流程，可在仿真与真实世界中生成连续绘画轨迹；基于 28,200 条仿真演示、282 个绘画任务，评估五种代表性 VLA 模型在数据规模、语言 grounding 和多模态行为上的表现，并在 Franka Panda 机械臂上部署策略。",
+        "result": "实验揭示了不同 VLA 模型的典型失败模式，并发现部分模型可从更高任务多样性和演示规模中受益，能捕捉多模态绘画行为，并泛化到熟悉物体的未见组合；真实机器人上展示了人在干预下的反应式绘画能力。",
+        "novelty": "将开放式、多有效轨迹的机器人绘画任务系统化为可扩展的 VLA 泛化评测基准，支持细粒度分析语言 grounding、空间组合和动作生成。",
+        "relevance": "为 VLA 模型的数据规模规律、语言条件泛化和多模态行为评测提供了低成本、可扩展的新基准，有助于推动机器人基础模型的可复现研究。",
+        "org": "未能从提供信息中识别作者机构",
+        "score": 7
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "A Unified Benchmark for Aerial-Enhanced Autonomous Driving: The KITScenes Aerial Dataset",
+      "abstract": "Aerial imagery provides complementary spatial context for autonomous driving by exposing road structure beyond the immediate perception range of onboard sensors. Yet map construction from aerial imagery, aerial-assisted online HD mapping, and cross-view localization are typically studied on separate data and benchmarks. We introduce KITScenes Aerial, an extension of the KITScenes Multimodal dataset that augments synchronized onboard sensor data, vehicle poses, and rich Lanelet2 map annotations with spatially associated aerial imagery and higher-resolution neural representations, providing a common basis for a variety of research tasks. Our mapping evaluation focuses on all 53 KITScenes map classes across different model designs, spatial ranges, and aerial resolutions, while retaining compatibility with the widely used three-class setting. Representative baselines show that aerial context is particularly beneficial for fine-grained and extended-range mapping, more than doubling 53-class mAP at the larger mapping extent. Higher-resolution aerial imagery yields a further 4.3 mAP (+24 %) improvement, with gains extending to challenging map elements such as traffic lights. We additionally evaluate cross-view localization under geographically disjoint conditions, where an adapted fine-grained feature-matching baseline achieves a mean translation error of 5.13 m. KITScenes Aerial thus enables unified study of aerial and ground-level information across complementary mapping and localization tasks. Project page: https://kitscenes.com/aerial",
+      "url": "https://arxiv.org/abs/2610.40455v1",
+      "pdf": "https://arxiv.org/pdf/2610.40455v1",
+      "categories": [
+        "cs.CV"
+      ],
+      "authors": [
+        "Daniel Lengerer",
+        "Richard Schwarzkopf",
+        "Jonas Merkert",
+        "Fabian Immel",
+        "Rupert Polley"
+      ],
+      "all_authors": [
+        "Daniel Lengerer",
+        "Richard Schwarzkopf",
+        "Jonas Merkert",
+        "Fabian Immel",
+        "Rupert Polley",
+        "Frank Bieder",
+        "Jan-Hendrik Pauls",
+        "J. Marius Zöllner",
+        "Klaus Bogenberger",
+        "Christoph Stiller",
+        "Carsten Markgraf"
+      ],
+      "affiliations": [
+        {
+          "name": "Daniel Lengerer",
+          "affiliations": []
+        },
+        {
+          "name": "Richard Schwarzkopf",
+          "affiliations": []
+        },
+        {
+          "name": "Jonas Merkert",
+          "affiliations": []
+        },
+        {
+          "name": "Fabian Immel",
+          "affiliations": []
+        },
+        {
+          "name": "Rupert Polley",
+          "affiliations": []
+        },
+        {
+          "name": "Frank Bieder",
+          "affiliations": []
+        },
+        {
+          "name": "Jan-Hendrik Pauls",
+          "affiliations": []
+        },
+        {
+          "name": "J. Marius Zöllner",
+          "affiliations": []
+        },
+        {
+          "name": "Klaus Bogenberger",
+          "affiliations": []
+        },
+        {
+          "name": "Christoph Stiller",
+          "affiliations": []
+        },
+        {
+          "name": "Carsten Markgraf",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-10-29",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "空中影像能为自动驾驶提供超出车载传感器范围的道路结构信息，但航拍地图构建、空中辅助在线高精地图和跨视角定位通常分别在不同数据和基准上研究，缺乏统一评测。",
+        "method": "论文提出 KITScenes Aerial，在 KITScenes 多模态数据集基础上加入空间关联的航拍影像和更高分辨率神经表示，并统一评测 53 类地图构建及地理不相交条件下的跨视角定位。",
+        "result": "空中上下文在大范围地图构建中使 53 类 mAP 提升一倍以上，更高分辨率航拍影像进一步带来 4.3 mAP（+24%）提升；跨视角定位平均平移误差为 5.13 米。",
+        "novelty": "构建了统一融合地面传感器数据、航拍影像与丰富 Lanelet2 标注的基准，支持多类地图构建和跨视角定位任务。",
+        "relevance": "为自动驾驶中的跨视角感知、空中辅助高精地图构建和定位研究提供了统一评测基础。",
+        "org": "卡尔斯鲁厄理工学院（KIT，根据 KITScenes 命名推测）",
+        "score": 7
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "Continuous-Action World Models: Learning Cross-Embodiment Spatiotemporal Dynamics Priors",
+      "abstract": "We introduce Continuous-Action World Models (CoAWM), a framework for learning cross-embodiment spatiotemporal dynamics priors that support robot action generation across embodiments and execution frequencies. At its core is a shared latent function space that captures the spatial and temporal structure of robot actions. We learn this space through two stages. First, function pretraining brings trajectories from different embodiments and sampling frequencies into a common representation, learning shared dynamics priors through action reconstruction and consistency across temporal sampling views. By accommodating heterogeneous robot trajectories, this stage broadens the range of data sources available for pretraining and facilitates scaling to larger and more diverse datasets. Second, we connect the pretrained function space to a world-model backbone, enabling observations, language instructions, and the current robot state to condition the prediction of a latent action function. A single decoder takes any query time and returns the corresponding end-effector action. By separating shared dynamics priors from task-conditioned action selection and temporal sampling, our approach provides a unified foundation for transferring robot experience across embodiments and control frequencies.",
+      "url": "https://arxiv.org/abs/2610.40401v1",
+      "pdf": "https://arxiv.org/pdf/2610.40401v1",
+      "categories": [
+        "cs.RO",
+        "cs.CV",
+        "cs.LG"
+      ],
+      "authors": [
+        "Liangyu Li",
+        "Qingwen Liu"
+      ],
+      "all_authors": [
+        "Liangyu Li",
+        "Qingwen Liu"
+      ],
+      "affiliations": [
+        {
+          "name": "Liangyu Li",
+          "affiliations": []
+        },
+        {
+          "name": "Qingwen Liu",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-10-29",
+      "matched_topics": [
+        "世界模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "这篇论文旨在解决跨具身（不同机器人形态）和跨执行频率的机器人动作生成问题，即如何学习可迁移的时空动力学先验，使动作生成不局限于单一具身或控制频率。",
+        "method": "提出连续动作世界模型（CoAWM），核心是构建共享的潜在函数空间来刻画机器人动作的时空结构。方法分两阶段：先通过动作重建和不同时间采样视图间的一致性，将不同具身和采样频率的轨迹统一表示，预训练共享动力学先验；再将预训练函数空间连接到世界模型主干，以观测、语言指令和当前机器人状态为条件预测潜在动作函数，并由单一解码器在任意查询时间输出对应末端执行器动作。",
+        "result": "摘要未给出定量实验结果，但该方法为跨具身和跨控制频率迁移机器人经验提供了统一基础，可支持不同具身与执行频率下的动作生成。",
+        "novelty": "创新在于用共享潜在函数空间学习跨具身、跨采样频率的连续动作时空先验，并将共享动力学先验与任务条件动作选择和时间采样解耦。",
+        "relevance": "该工作将世界模型与连续动作表示结合，有望提升具身智能中跨机器人平台的数据复用和策略泛化能力。",
+        "org": "未知（作者未提供所属机构信息）",
+        "score": 7
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "Agentic LLM reasoning in pediatric diabetes outcome prediction from multimodal medical records",
+      "abstract": "Large language model (LLM) agents are proposed for clinical prediction but are untested in pediatrics, where cohorts are small and outcomes are uncommon. Using records from 2,489 youth with type 2 diabetes (T2D) and 4,018 with type 1 diabetes (T1D), spanning structured data, note-derived social determinants and, in T1D, continuous glucose monitoring data, we predicted seven T2D outcomes, four also in T1D, at 24 months from 18 months of follow-up. CEDAR (Clinical Evidence-Driven Agent for Risk-prediction), an evidence-citing, self-auditing LLM pipeline, outperformed trained machine learning in both cohorts (pooled area under the receiver operating characteristic curve 0.815 versus 0.656 to 0.700 in T2D and 0.756 versus 0.603 to 0.631 in T1D), most on the sparsely screened outcomes. Only 4 of 70,246 values it cited did not match the chart. Reading only the evidence and reasoning cited by CEDAR, two pediatric endocrinologists reached the same prediction as CEDAR in about nine of ten cases, agreeing with each other on 90.5%.",
+      "url": "https://arxiv.org/abs/2610.40379v1",
+      "pdf": "https://arxiv.org/pdf/2610.40379v1",
+      "categories": [
+        "q-bio.QM",
+        "cs.CL"
+      ],
+      "authors": [
+        "Daniel Palacios",
+        "Guantong Qi",
+        "Anna Kadi",
+        "Natali Borrego",
+        "Sukru Aras"
+      ],
+      "all_authors": [
+        "Daniel Palacios",
+        "Guantong Qi",
+        "Anna Kadi",
+        "Natali Borrego",
+        "Sukru Aras",
+        "Michael L. Ferm",
+        "Elizabeth Kubota-Mishra",
+        "Maria J. Redondo",
+        "Zhandong Liu",
+        "Mustafa Tosur",
+        "Hu Chen"
+      ],
+      "affiliations": [
+        {
+          "name": "Daniel Palacios",
+          "affiliations": []
+        },
+        {
+          "name": "Guantong Qi",
+          "affiliations": []
+        },
+        {
+          "name": "Anna Kadi",
+          "affiliations": []
+        },
+        {
+          "name": "Natali Borrego",
+          "affiliations": []
+        },
+        {
+          "name": "Sukru Aras",
+          "affiliations": []
+        },
+        {
+          "name": "Michael L. Ferm",
+          "affiliations": []
+        },
+        {
+          "name": "Elizabeth Kubota-Mishra",
+          "affiliations": []
+        },
+        {
+          "name": "Maria J. Redondo",
+          "affiliations": []
+        },
+        {
+          "name": "Zhandong Liu",
+          "affiliations": []
+        },
+        {
+          "name": "Mustafa Tosur",
+          "affiliations": []
+        },
+        {
+          "name": "Hu Chen",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-10-29",
+      "matched_topics": [
+        "多模态",
+        "大模型",
+        "Agent"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "LLM智能体在临床预测中虽有提议但尚未在儿科验证，而儿科队列小、结局事件罕见，传统机器学习表现受限；本文要在儿童2型与1型糖尿病中预测24个月后的多种结局。",
+        "method": "提出CEDAR（Clinical Evidence-Driven Agent for Risk-prediction），一个可引用证据、自我审计的LLM推理流水线，输入结构化数据、病历笔记衍生的社会决定因素以及T1D的连续血糖监测数据，从18个月随访信息预测24个月结局。",
+        "result": "CEDAR在两个队列中均优于训练好的机器学习模型（T2D汇总AUC 0.815 vs 0.656–0.700；T1D 0.756 vs 0.603–0.631），在筛查稀疏的结局上优势最大；引用的70,246个数值中仅4个与病历不符；两位儿科内分泌医生仅阅读其引用证据与推理，约九成病例得出与CEDAR相同预测，彼此一致率90.5%。",
+        "novelty": "首次在儿科罕见结局场景中系统验证证据可溯源、可自审计的LLM智能体预测流程，并同时用 EHR 结构化、文本与社会决定因素及 CGM 多模态数据。",
+        "relevance": "展示了可解释、可审计的LLM智能体在临床多模态预测中超越传统ML的潜力，为高风险医疗场景的可信AI提供了验证范式。",
+        "org": "未提供（作者机构信息为空，无法识别）",
+        "score": 7
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "HiFOR: Hierarchical Foresight with Action-Guided World Grounding for Vision-Language-Action Model",
+      "abstract": "Vision-Language-Action (VLA) models have demonstrated promising capabilities in robotic manipulation by integrating visual perception, language understanding, and action generation. Recent advances have further incorporated future prediction to enhance the understanding of environmental dynamics and task progression. However, existing methods often model short-term dynamics and long-term task objectives separately, while directly incorporating predicted futures into action policies without sufficiently considering their relevance to current action requirements. To address these limitations, we propose HiFOR, a hierarchical foresight framework with action-guided world retrieval. Specifically, Hierarchical Foresight Prediction jointly predicts short-term state evolution, semantic milestones, and final goal states through a Hierarchical Dependency Mask (HDM), establishing dependencies across temporal horizons. Building upon these predictions, Structure-Aware Latent World Modeling organizes future latent representations along the horizon, view, and spatial dimensions to facilitate fine-grained retrieval. Furthermore, Action-Guided Factorized World Retrieval adaptively retrieves relevant future information from the structured latent world based on evolving action representations during denoising, providing targeted guidance for action generation. Extensive experiments on two simulation benchmarks and six real-world robotic manipulation tasks demonstrate the effectiveness of our approach.",
+      "url": "https://arxiv.org/abs/2610.40373v1",
+      "pdf": "https://arxiv.org/pdf/2610.40373v1",
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ],
+      "authors": [
+        "Rongxing Ding",
+        "Hongyu Qu",
+        "Kehong Wu",
+        "Xudong Wang",
+        "Fan Zhang"
+      ],
+      "all_authors": [
+        "Rongxing Ding",
+        "Hongyu Qu",
+        "Kehong Wu",
+        "Xudong Wang",
+        "Fan Zhang",
+        "Xinguang Xiang",
+        "Xiangbo Shu"
+      ],
+      "affiliations": [
+        {
+          "name": "Rongxing Ding",
+          "affiliations": []
+        },
+        {
+          "name": "Hongyu Qu",
+          "affiliations": []
+        },
+        {
+          "name": "Kehong Wu",
+          "affiliations": []
+        },
+        {
+          "name": "Xudong Wang",
+          "affiliations": []
+        },
+        {
+          "name": "Fan Zhang",
+          "affiliations": []
+        },
+        {
+          "name": "Xinguang Xiang",
+          "affiliations": []
+        },
+        {
+          "name": "Xiangbo Shu",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-10-29",
+      "matched_topics": [
+        "世界模型",
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "现有视觉-语言-动作（VLA）模型在引入未来预测时，往往分别建模短期动态与长期任务目标，且直接将预测未来注入动作策略，未充分考虑其与当前动作需求的相关性。",
+        "method": "提出HiFOR分层预见框架：通过分层依赖掩码联合预测短期状态演化、语义里程碑和最终目标状态；构建结构感知潜在世界模型，按时间跨度、视角和空间维度组织未来表示；并在去噪过程中根据动作表示自适应检索相关未来信息，以指导动作生成。",
+        "result": "在两个仿真基准和六个真实机器人操作任务上验证了方法的有效性，表明分层未来预测与动作引导的世界检索能提升VLA模型的操作表现。",
+        "novelty": "将分层未来预测、结构化潜在世界建模与动作引导的未来信息检索统一到VLA框架中，使未来预测按当前动作需求被定向利用。",
+        "relevance": "为VLA模型融合世界模型与未来预测提供了更精细的 grounding 机制，对具身智能和机器人操作有参考价值。",
+        "org": "未提供（作者机构信息缺失）",
+        "score": 7
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "JEDI: Joint-Embedding Demonstration Compression for In-Context Imitation Learning",
+      "abstract": "In-context imitation learning (ICIL) adapts robot policies through test-time demonstrations, but long multimodal trajectories constrain how many examples fit in context. We ask what a compressed demonstration should preserve. We propose JEDI, which compresses demonstrations into latent slots trained to predict the query episode's next-stage keyframe in a frozen video-JEPA space. Task and process counterfactuals help the slots preserve execution details, while the predictor selects demonstrations from a bank. Post-training with keypoint tokens enables human-hand conditioning on robots. Experiments on LIBERO and real robots show that JEDI supports many-shot context; LIBERO objective controls show improved success and demonstration following over action-only compression. These findings support query-future prediction as a training objective for preserving execution-relevant information in compressed demonstrations.",
+      "url": "https://arxiv.org/abs/2610.40356v1",
+      "pdf": "https://arxiv.org/pdf/2610.40356v1",
+      "categories": [
+        "cs.RO"
+      ],
+      "authors": [
+        "Jiazhao Liang",
+        "Zhewen He",
+        "Shuaihang Yuan",
+        "Hao Huang",
+        "Yi Fang"
+      ],
+      "all_authors": [
+        "Jiazhao Liang",
+        "Zhewen He",
+        "Shuaihang Yuan",
+        "Hao Huang",
+        "Yi Fang"
+      ],
+      "affiliations": [
+        {
+          "name": "Jiazhao Liang",
+          "affiliations": []
+        },
+        {
+          "name": "Zhewen He",
+          "affiliations": []
+        },
+        {
+          "name": "Shuaihang Yuan",
+          "affiliations": []
+        },
+        {
+          "name": "Hao Huang",
+          "affiliations": []
+        },
+        {
+          "name": "Yi Fang",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-10-29",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "上下文模仿学习（ICIL）依赖测试时演示来适配机器人策略，但长多模态轨迹限制了可放入上下文的示例数量；论文研究压缩后的演示应保留哪些信息。",
+        "method": "提出 JEDI，将演示压缩为潜在槽，并在冻结的视频-JEPA 空间中训练其预测查询回合的下一阶段关键帧；利用任务与过程反事实帮助保留执行细节，并用预测器从演示库中选择示例，后训练关键点 token 支持人类手部条件到机器人的迁移。",
+        "result": "在 LIBERO 和真实机器人上的实验表明，JEDI 支持 many-shot 上下文，并在成功率和演示跟随上优于仅动作压缩的基线。",
+        "novelty": "核心创新是用查询未来关键帧预测作为压缩演示的训练目标，以在冻结视频-JEPA 空间中保留与执行相关的信息。",
+        "relevance": "为机器人上下文模仿学习中的多模态演示压缩与 many-shot 上下文利用提供了新思路。",
+        "org": "未明确提供；从作者信息推测可能与纽约大学阿布扎比分校（NYU Abu Dhabi）相关",
+        "score": 7
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "IMPACT: Inverter-Informed Multimodal Learning for Photovoltaic Generation Forecasting",
+      "abstract": "This work develops a physics-informed multimodal deep learning framework for 10- to 110-minute-ahead probabilistic photovoltaic power forecasting. The forecasting model is built on a four-branch architecture that separately encodes plant-level temporal history and inverter-level spatial cloud dynamics through a graph attention encoder with a learned adjacency, known-future solar geometry, and the current meteorological state, fused through gated cross-attention. The geometry branch adds two forward-looking physical signals, spatial cloud heterogeneity and inverter ramp-down activity, each empirically weighted toward the horizon where it is most predictive. The decoder anchors its prediction to a smart persistence baseline, learning a horizon-conditioned correction, and the resulting quantile forecasts are calibrated online through a kernel-weighted adaptive conformal calibration step. The proposed model outperforms all 14 baselines, achieving a forecast skill score (FSS) of 0.2950, 0.099 above the next-best model. A branch-composition ablation shows that every branch contributes positively and the model retains substantial skill in challenging overcast and variable sky conditions (FSS 0.198 and 0.255).",
+      "url": "https://arxiv.org/abs/2610.40418v1",
+      "pdf": "https://arxiv.org/pdf/2610.40418v1",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "authors": [
+        "Anushka Katiyar",
+        "Cong Feng",
+        "Jing Wang",
+        "Tristan Liu",
+        "Simon Julien"
+      ],
+      "all_authors": [
+        "Anushka Katiyar",
+        "Cong Feng",
+        "Jing Wang",
+        "Tristan Liu",
+        "Simon Julien",
+        "Zachary Jacobs"
+      ],
+      "affiliations": [
+        {
+          "name": "Anushka Katiyar",
+          "affiliations": []
+        },
+        {
+          "name": "Cong Feng",
+          "affiliations": []
+        },
+        {
+          "name": "Jing Wang",
+          "affiliations": []
+        },
+        {
+          "name": "Tristan Liu",
+          "affiliations": []
+        },
+        {
+          "name": "Simon Julien",
+          "affiliations": []
+        },
+        {
+          "name": "Zachary Jacobs",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-10-29",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "这篇论文要解决的是10到110分钟前的光伏发电概率预测问题，目标是在多云等复杂天空条件下提高短期预测精度。",
+        "method": "提出一个四分支物理信息多模态深度学习框架，分别编码电站级时序历史、基于图注意力（邻接矩阵可学习）的逆变器级空间云动态、已知的未来太阳几何信息以及当前气象状态，并通过门控交叉注意力融合；几何分支引入空间云异质性和逆变器降功率活动两个前瞻性物理信号；解码器以智能持续性基线为锚点，学习随预测时长变化的修正量，并通过核加权自适应保形校准实现在线分位数校准。",
+        "result": "模型在14个基线中表现最佳，预测技巧得分（FSS）达0.2950，比次优模型高0.099；分支消融表明每个分支均有正贡献，在阴天和变化天空条件下仍保持较强预测能力（FSS分别为0.198和0.255）。",
+        "novelty": "将逆变器级空间云动态图建模、可学习邻接、物理前瞻信号与智能持续性锚定的在线保形校准统一到一个多模态框架中，用于短期光伏概率预测。",
+        "relevance": "展示了物理信息与多模态图学习在时序概率预测中的结合方式，对能源预测以及更广泛的时空多模态预测任务具有参考价值。",
+        "org": "未能从提供的信息中识别作者机构",
+        "score": 6
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "Soil Moisture Estimation in Precision Agriculture: A Knowledge Distillation Approach",
+      "abstract": "Accurate soil moisture estimation is critical for precision agriculture, influencing irrigation, fertilization, and harvesting strategies. Traditional methods primarily rely on meteorological and soil property data, while recent approaches incorporate visual modalities such as aerial and geospatial imagery. However, these high-resolution images are expensive and computationally demanding to analyze. In this work, we propose Soil Moisture Distillation (SMD), a Knowledge Distillation (KD)-based multimodal learning framework that leverages unimodal teachers to enhance multimodal soil moisture estimation. SMD surpasses not only traditional multimodal fusion techniques, including MIS-ME, but also outperforms unimodal models, demonstrating the benefits of guided unimodal knowledge transfer. Additionally, we conduct a comparative analysis of soil patches and crop images, showing that crop images provide superior visual cues, leading to improved prediction accuracy. SMD achieves a 2% improvement in MAPE for soil patches and 1.2% for crops over state-of-the-art baselines, highlighting the effectiveness of leveraging both meteorological and visual data through knowledge distillation for enhanced soil moisture forecasting.",
+      "url": "https://arxiv.org/abs/2610.40432v1",
+      "pdf": "https://arxiv.org/pdf/2610.40432v1",
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ],
+      "authors": [
+        "Mohammed Rakib",
+        "Vrinda Nagula",
+        "Arunkumar Bagavathi"
+      ],
+      "all_authors": [
+        "Mohammed Rakib",
+        "Vrinda Nagula",
+        "Arunkumar Bagavathi"
+      ],
+      "affiliations": [
+        {
+          "name": "Mohammed Rakib",
+          "affiliations": []
+        },
+        {
+          "name": "Vrinda Nagula",
+          "affiliations": []
+        },
+        {
+          "name": "Arunkumar Bagavathi",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-10-29",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "精准农业中土壤湿度估计对灌溉和施肥等决策很重要，但高分辨率航空/地理影像成本高且分析计算量大。",
+        "method": "提出 Soil Moisture Distillation（SMD），一种基于知识蒸馏的多模态学习框架，利用单模态教师模型增强多模态土壤湿度估计，并比较土壤斑块与作物图像两种视觉输入的效用。",
+        "result": "SMD 优于传统多模态融合方法 MIS-ME 和单模态模型；作物图像比土壤斑块提供更优视觉线索，并在 MAPE 上分别提升 2%（土壤斑块）和 1.2%（作物）。",
+        "novelty": "将单模态教师知识蒸馏用于多模态土壤湿度估计，并系统比较不同视觉模态对预测效果的贡献。",
+        "relevance": "展示了知识蒸馏在农业多模态感知中的应用潜力，为低成本、高效的多模态环境监测提供参考。",
+        "org": "未提供作者机构信息",
+        "score": 5
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "Improving Fine-Grained Manipulation through Demonstration Expansion and Execution Design",
+      "abstract": "Fine-grained manipulation requires a robot policy to follow instructions, remain robust to visual variations, and translate predicted actions into precise robot control. We present Demonstration Expansion and Execution Design (DEED), a framework for adapting a pretrained vision-language-action policy to the five MetaFine tasks through structured demonstration expansion and execution design. DEED generates demonstrations for different instructions from the same initial scene and renders each physical trajectory under different camera positions and lighting conditions while preserving its original states and action targets. A hierarchical sampling strategy balances instructions, trajectories, and visual conditions during supervised adaptation. At deployment, DEED converts predicted action chunks into robot commands using inverse kinematics, gripper mappings selected for each task, and closed-loop replanning. DEED achieves an official Overall score of 85.55%. Fixed-policy evaluations show that performance varies with execution horizon, denoising budget, and gripper mapping.",
+      "url": "https://arxiv.org/abs/2610.40430v1",
+      "pdf": "https://arxiv.org/pdf/2610.40430v1",
+      "categories": [
+        "cs.RO"
+      ],
+      "authors": [
+        "Jingxu Gu",
+        "Dongze Lian"
+      ],
+      "all_authors": [
+        "Jingxu Gu",
+        "Dongze Lian"
+      ],
+      "affiliations": [
+        {
+          "name": "Jingxu Gu",
+          "affiliations": []
+        },
+        {
+          "name": "Dongze Lian",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-10-29",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "精细操作任务要求机器人策略既能遵循指令、对视觉变化保持鲁棒，又能把预测动作精确转换为机器人控制，而现有预训练视觉-语言-动作模型在少样本、多指令、多视觉条件下难以直接迁移到 MetaFine 这类精细操作任务上。",
+        "method": "提出 DEED 框架：围绕同一初始场景为不同指令生成演示，并把每条物理轨迹在不同相机位姿与光照条件下重新渲染（保持状态与动作目标不变）；监督适配阶段用分层采样平衡指令、轨迹与视觉条件；部署阶段用逆运动学、按任务选择的夹爪映射和闭环重规划把预测动作块转成机器人指令。",
+        "result": "在 MetaFine 五项任务上取得官方 Overall 85.55% 的成绩；固定策略评测显示性能随执行时域、去噪预算和夹爪映射方式显著变化。",
+        "novelty": "将数据侧的演示扩展（指令多样化 + 视觉条件重渲染）与执行侧的工程化设计（逆运动学、任务定制夹爪映射、闭环重规划）结合，形成一套可复用的 VLA 策略适配流程。",
+        "relevance": "为预训练 VLA 模型落地精细操作任务提供了低成本的数据增强与部署调优范式，对具身智能中的数据扩展和 sim-to-real 执行设计有直接参考价值。",
+        "org": "未在提供信息中注明（作者机构为空，无法识别）",
+        "score": 5
+      },
+      "identified_orgs": []
+    }
+  ],
+  "key_lab_papers": [
+    {
+      "title": "Algebraic World Model: From Exploration to Proofs",
+      "abstract": "AI has made remarkable progress in mathematics, solving challenging problems with machine-checkable proofs in Lean, yet typically relying on predefined mathematical definitions and formal specifications. This raises a natural question: can it reason rigorously about an unknown world? We introduce the Algebraic World Model (AWM), a framework that turns interaction with unfamiliar environments into explicit mathematical models supporting formal reasoning. AWM explores the environment and develops executable Python hypotheses, continually testing and revising them against observations. It then structures these hypotheses into typed objects and shared rules, simplifies their structure through category-theory-guided transformations, and formalizes the resulting model in Lean 4 to prove reachability and impossibility. AWM can formally prove that a goal is unreachable, even beyond explored trajectories. On two impossible game levels, it constructs closed, kernel-checked Lean proofs excluding every legal winning sequence in all six runs, while Claude Opus 5.5 and GPT-6 Astra, equipped with coding tools, produce none in twelve baseline runs. Four of AWM's six initial bounds are correct, compared with one for Opus 5.5 and none for GPT-6 Astra; given only feedback that a cheaper win exists, AWM revises its rules and constructs new proofs, reaching six of six correct bounds. Moreover, AWM produces interpretable mathematical models whose rules can be inspected and tested step by step. Across all 25 public ARC-AGI-3 games, these models enable Lean to replay the winning trajectories of all 183 levels and generalize beyond observed play, predicting unseen transitions and detecting changes in game mechanics. With Claude Opus 5, AWM clears all levels with a score of 99.9, while its certified winning trajectories use only 43% of the human baseline's actions.",
+      "url": "https://arxiv.org/abs/2610.40503v1",
+      "pdf": "https://arxiv.org/pdf/2610.40503v1",
+      "categories": [
+        "cs.AI",
+        "cs.LO"
+      ],
+      "authors": [
+        "Guancheng Pan",
+        "Qixin Tan",
+        "Yang Yuan",
+        "Andrew Chi-Chih Yao"
+      ],
+      "all_authors": [
+        "Guancheng Pan",
+        "Qixin Tan",
+        "Yang Yuan",
+        "Andrew Chi-Chih Yao"
+      ],
+      "affiliations": [
+        {
+          "name": "Guancheng Pan",
+          "affiliations": []
+        },
+        {
+          "name": "Qixin Tan",
+          "affiliations": []
+        },
+        {
+          "name": "Yang Yuan",
+          "affiliations": []
+        },
+        {
+          "name": "Andrew Chi-Chih Yao",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-10-29",
+      "matched_topics": [
+        "世界模型",
+        "大模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "现有AI虽然能在Lean中给出可机器验证的数学证明，但依赖预定义的数学定义与形式化规范；论文探究AI能否对未知世界进行严格推理，即在陌生环境中自主建立可形式化验证的数学模型，并证明目标可达或不可达。",
+        "method": "提出代数世界模型（AWM）：先通过与环境交互探索，生成可执行的Python假设并不断用观测检验和修正；再把这些假设组织为类型化对象与共享规则，借助范畴论指导的变换简化结构；最后在Lean 4中形式化该模型，证明可达性与不可能性。",
+        "result": "在两个不可能通关的游戏关卡上，AWM六次运行均构造出经内核检查的封闭Lean证明，排除了所有合法获胜序列，而Claude Opus 5.5与GPT-6 Astra在十二次基线运行中均未做到；初始界限有四个正确，收到反馈后修正规则，最终六个界限全部正确。在全部25个公开ARC-AGI-3游戏中，其模型让Lean重放全部183关的获胜轨迹并能预测未见转移、检测机制变化；配合Claude Opus 5通关全部关卡得分99.9，且认证获胜轨迹仅用人类基线43%的动作。",
+        "novelty": "首次把环境探索、范畴论结构简化与Lean形式化证明结合起来，构建出可解释、可检验、可证明“不可能”的代数世界模型。",
+        "relevance": "为世界模型提供了可形式化验证与可证明边界的范式，推动AI从经验性试错走向具备严格数学保证的推理与泛化。",
+        "org": "清华大学交叉信息研究院（IIIS, Tsinghua University）",
+        "score": 9
+      },
+      "identified_orgs": [
+        "Anthropic",
+        "清华"
+      ],
+      "contact_info": {
+        "emails_found": [
+          "tqx23@mails.tsinghua.edu.cn",
+          "andrewcyao@mail.tsinghua.edu.cn",
+          "3250101086@zju.edu.cn",
+          "yuanyang@tsinghua.edu.cn"
+        ],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Guancheng Pan",
+              "email": "3250101086@zju.edu.cn",
+              "affiliation": "Zhejiang University",
+              "role": "共同第一作者"
+            },
+            {
+              "name": "Qixin Tan",
+              "email": "tqx23@mails.tsinghua.edu.cn",
+              "affiliation": "Tsinghua University",
+              "role": "共同第一作者"
+            },
+            {
+              "name": "Yang Yuan",
+              "email": "yuanyang@tsinghua.edu.cn",
+              "affiliation": "Tsinghua University; Shanghai QiZhi Institute",
+              "role": "通讯作者"
+            },
+            {
+              "name": "Andrew C. Yao",
+              "email": "andrewcyao@mail.tsinghua.edu.cn",
+              "affiliation": "Tsinghua University; Shanghai QiZhi Institute",
+              "role": "通讯作者"
+            }
+          ],
+          "corresponding_author": "Yang Yuan, Andrew C. Yao"
+        }
+      }
+    }
+  ],
+  "org_analysis": [
+    {
+      "org": "Anthropic",
+      "count": 1,
+      "topics": {
+        "世界模型": 1,
+        "大模型": 1
+      },
+      "papers": [
+        {
+          "title": "Algebraic World Model: From Exploration to Proofs",
+          "url": "https://arxiv.org/abs/2610.40503v1",
+          "score": 9
+        }
+      ]
+    },
+    {
+      "org": "清华",
+      "count": 1,
+      "topics": {
+        "世界模型": 1,
+        "大模型": 1
+      },
+      "papers": [
+        {
+          "title": "Algebraic World Model: From Exploration to Proofs",
+          "url": "https://arxiv.org/abs/2610.40503v1",
+          "score": 9
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "paper_title": "Algebraic World Model: From Exploration to Proofs",
+      "paper_url": "https://arxiv.org/abs/2610.40503v1",
+      "paper_score": 9,
+      "topics": [
+        "世界模型",
+        "大模型"
+      ],
+      "orgs": [
+        "Anthropic",
+        "清华"
+      ],
+      "is_key_lab": true,
+      "emails": [
+        "tqx23@mails.tsinghua.edu.cn",
+        "andrewcyao@mail.tsinghua.edu.cn",
+        "3250101086@zju.edu.cn",
+        "yuanyang@tsinghua.edu.cn"
+      ],
+      "contacts": [
+        {
+          "name": "Guancheng Pan",
+          "email": "3250101086@zju.edu.cn",
+          "affiliation": "Zhejiang University",
+          "role": "共同第一作者"
+        },
+        {
+          "name": "Qixin Tan",
+          "email": "tqx23@mails.tsinghua.edu.cn",
+          "affiliation": "Tsinghua University",
+          "role": "共同第一作者"
+        },
+        {
+          "name": "Yang Yuan",
+          "email": "yuanyang@tsinghua.edu.cn",
+          "affiliation": "Tsinghua University; Shanghai QiZhi Institute",
+          "role": "通讯作者"
+        },
+        {
+          "name": "Andrew C. Yao",
+          "email": "andrewcyao@mail.tsinghua.edu.cn",
+          "affiliation": "Tsinghua University; Shanghai QiZhi Institute",
+          "role": "通讯作者"
+        }
+      ],
+      "corresponding_author": "Yang Yuan, Andrew C. Yao"
+    },
+    {
+      "paper_title": "world2vec: Mechanistic world models through latent dynamics learning",
+      "paper_url": "https://arxiv.org/abs/2610.40637v1",
+      "paper_score": 8,
+      "topics": [
+        "世界模型"
+      ],
+      "orgs": [],
+      "is_key_lab": false,
+      "emails": [
+        "steffen.schneider@helmholtz-munich.de"
+      ],
+      "contacts": [
+        {
+          "name": "Tobias Schmidt",
+          "email": "",
+          "affiliation": "Helmholtz Munich & Munich Center for Machine Learning (MCML)",
+          "role": "作者（标注*）"
+        },
+        {
+          "name": "Rodrigo Gonzalez Laiz",
+          "email": "",
+          "affiliation": "Helmholtz Munich & Munich Center for Machine Learning (MCML)",
+          "role": "作者（标注*）"
+        },
+        {
+          "name": "Krisztián Szuppinger",
+          "email": "",
+          "affiliation": "Helmholtz Munich & Munich Center for Machine Learning (MCML)",
+          "role": "作者"
+        },
+        {
+          "name": "Steffen Schneider",
+          "email": "",
+          "affiliation": "Helmholtz Munich & Munich Center for Machine Learning (MCML)",
+          "role": "通讯作者（标注†）"
+        }
+      ],
+      "corresponding_author": "Steffen Schneider"
+    },
+    {
+      "paper_title": "L3G-World: Real-Time Infinite World Generation with Latent 3D Gaussian Memory",
+      "paper_url": "https://arxiv.org/abs/2610.40614v1",
+      "paper_score": 8,
+      "topics": [
+        "世界模型"
+      ],
+      "orgs": [],
+      "is_key_lab": false,
+      "emails": [],
+      "contacts": [
+        {
+          "name": "Jinhyeok Choi",
+          "email": "",
+          "affiliation": "KAIST AI",
+          "role": "共同第一作者"
+        },
+        {
+          "name": "JoungBin Lee",
+          "email": "",
+          "affiliation": "KAIST AI",
+          "role": "共同第一作者"
+        },
+        {
+          "name": "Jongmin Lee",
+          "email": "",
+          "affiliation": "KAIST AI",
+          "role": ""
+        },
+        {
+          "name": "Minkyeong Jeon",
+          "email": "",
+          "affiliation": "KAIST AI",
+          "role": ""
+        },
+        {
+          "name": "Jiyoung Kim",
+          "email": "",
+          "affiliation": "KAIST AI",
+          "role": ""
+        },
+        {
+          "name": "Kaeun Han",
+          "email": "",
+          "affiliation": "Ewha Womans University",
+          "role": ""
+        },
+        {
+          "name": "Yoonjin Yoon",
+          "email": "",
+          "affiliation": "KAIST AI; KAIST Urban AI Institute",
+          "role": "通讯作者"
+        },
+        {
+          "name": "Seungryong Kim",
+          "email": "",
+          "affiliation": "KAIST AI",
+          "role": "通讯作者"
+        }
+      ],
+      "corresponding_author": "Yoonjin Yoon, Seungryong Kim"
+    },
+    {
+      "paper_title": "Gym-Anything for Robotics: Scaling physical simulations with digital agents",
+      "paper_url": "https://arxiv.org/abs/2610.40565v1",
+      "paper_score": 8,
+      "topics": [
+        "多模态",
+        "具身智能"
+      ],
+      "orgs": [],
+      "is_key_lab": false,
+      "emails": [],
+      "contacts": [
+        {
+          "name": "Pranjal Aggarwal",
+          "email": "",
+          "affiliation": "Carnegie Mellon University",
+          "role": "第一作者"
+        },
+        {
+          "name": "Sean Welleck",
+          "email": "",
+          "affiliation": "Carnegie Mellon University",
+          "role": "作者"
+        }
+      ],
+      "corresponding_author": ""
+    },
+    {
+      "paper_title": "PhysCount: Do MLLMs Count Visual Appearances or Physical Entities?",
+      "paper_url": "https://arxiv.org/abs/2610.40530v1",
+      "paper_score": 8,
+      "topics": [
+        "多模态",
+        "大模型"
+      ],
+      "orgs": [],
+      "is_key_lab": false,
+      "emails": [],
+      "contacts": [
+        {
+          "name": "Lidong Lu",
+          "email": "",
+          "affiliation": "Nanjing University",
+          "role": "第一作者"
+        },
+        {
+          "name": "Jiaxin Lv",
+          "email": "",
+          "affiliation": "Nanjing University",
+          "role": ""
+        },
+        {
+          "name": "Liangrui Dong",
+          "email": "",
+          "affiliation": "Nanjing University",
+          "role": ""
+        },
+        {
+          "name": "Xinyi Mao",
+          "email": "",
+          "affiliation": "Nanjing University",
+          "role": ""
+        },
+        {
+          "name": "Lidong Zou",
+          "email": "",
+          "affiliation": "Nanjing University",
+          "role": ""
+        },
+        {
+          "name": "Zhenquan Li",
+          "email": "",
+          "affiliation": "Nanjing University",
+          "role": ""
+        },
+        {
+          "name": "Tong Lu",
+          "email": "",
+          "affiliation": "Nanjing University",
+          "role": ""
+        },
+        {
+          "name": "Guo Chen",
+          "email": "",
+          "affiliation": "NVIDIA",
+          "role": ""
+        }
+      ],
+      "corresponding_author": ""
+    },
+    {
+      "paper_title": "TouchBridge: Tactile-Conditioned Human-to-Robot Transfer for Dexterous Manipulation",
+      "paper_url": "https://arxiv.org/abs/2610.40349v1",
+      "paper_score": 8,
+      "topics": [
+        "多模态"
+      ],
+      "orgs": [],
+      "is_key_lab": false,
+      "emails": [],
+      "contacts": [
+        {
+          "name": "Haozhe Zhang",
+          "email": "",
+          "affiliation": "Tsinghua University",
+          "role": "共同第一作者"
+        },
+        {
+          "name": "Gu Zhang",
+          "email": "",
+          "affiliation": "Tsinghua University",
+          "role": "共同第一作者、项目负责人"
+        },
+        {
+          "name": "Zirui Zou",
+          "email": "",
+          "affiliation": "Zhejiang University",
+          "role": "共同第一作者"
+        },
+        {
+          "name": "Yuzheng Chen",
+          "email": "",
+          "affiliation": "Nanyang Technological University",
+          "role": ""
+        },
+        {
+          "name": "Jinlong Wu",
+          "email": "",
+          "affiliation": "Hunan University",
+          "role": ""
+        },
+        {
+          "name": "Zixuan Hu",
+          "email": "",
+          "affiliation": "Peking University",
+          "role": ""
+        },
+        {
+          "name": "Jianke Zhang",
+          "email": "",
+          "affiliation": "Tsinghua University",
+          "role": ""
+        },
+        {
+          "name": "Yucheng Hu",
+          "email": "",
+          "affiliation": "Tsinghua University",
+          "role": ""
+        },
+        {
+          "name": "Zhecheng Yuan",
+          "email": "",
+          "affiliation": "Tsinghua University",
+          "role": ""
+        },
+        {
+          "name": "Huazhe Xu",
+          "email": "",
+          "affiliation": "Tsinghua University",
+          "role": ""
+        }
+      ],
+      "corresponding_author": ""
+    },
+    {
+      "paper_title": "Fight World Model: Customizable Combat through Visual Interaction Proxies",
+      "paper_url": "https://arxiv.org/abs/2610.40607v1",
+      "paper_score": 7,
+      "topics": [
+        "世界模型"
+      ],
+      "orgs": [],
+      "is_key_lab": false,
+      "emails": [],
+      "contacts": [
+        {
+          "name": "Jiahua Li",
+          "email": "",
+          "affiliation": "University of Oxford, UK",
+          "role": "第一作者"
+        },
+        {
+          "name": "Zixu John",
+          "email": "",
+          "affiliation": "Independent Researcher",
+          "role": ""
+        },
+        {
+          "name": "Tom Zhong",
+          "email": "",
+          "affiliation": "Independent Researcher",
+          "role": ""
+        },
+        {
+          "name": "Fuping Wu",
+          "email": "",
+          "affiliation": "Imperial College London, UK",
+          "role": ""
+        },
+        {
+          "name": "Tianhao Xu",
+          "email": "",
+          "affiliation": "Independent Researcher",
+          "role": ""
+        },
+        {
+          "name": "Ruicheng Zhang",
+          "email": "",
+          "affiliation": "Tsinghua University, China",
+          "role": ""
+        },
+        {
+          "name": "Jun Zhou",
+          "email": "",
+          "affiliation": "Tsinghua University, China",
+          "role": ""
+        },
+        {
+          "name": "Zunnan Xu",
+          "email": "",
+          "affiliation": "Nanyang Technological University, Singapore",
+          "role": "通讯作者（标注*）"
+        }
+      ],
+      "corresponding_author": "Zunnan Xu"
+    },
+    {
+      "paper_title": "RADIOlogy: A Single-Pass Approach to Training-Free Zero-Shot Anomaly Detection",
+      "paper_url": "https://arxiv.org/abs/2610.40580v1",
+      "paper_score": 7,
+      "topics": [
+        "多模态"
+      ],
+      "orgs": [],
+      "is_key_lab": false,
+      "emails": [],
+      "contacts": [
+        {
+          "name": "Joaquín Figueira",
+          "email": "j.figueira@tue.nl",
+          "affiliation": "AIMS Group, Department of Electrical Engineering, Eindhoven University of Technology",
+          "role": "第一作者"
+        },
+        {
+          "name": "Giacomo D'Amicantonio",
+          "email": "g.d.amicantonio@tue.nl",
+          "affiliation": "AIMS Group, Department of Electrical Engineering, Eindhoven University of Technology",
+          "role": ""
+        },
+        {
+          "name": "Egor Bondarau",
+          "email": "e.bondarev@tue.nl",
+          "affiliation": "AIMS Group, Department of Electrical Engineering, Eindhoven University of Technology",
+          "role": ""
+        }
+      ],
+      "corresponding_author": ""
+    },
+    {
+      "paper_title": "VeriCUA: Verification as Agentic Exploration for Computer-Using Agents",
+      "paper_url": "https://arxiv.org/abs/2610.40578v1",
+      "paper_score": 7,
+      "topics": [
+        "多模态",
+        "Agent"
+      ],
+      "orgs": [],
+      "is_key_lab": false,
+      "emails": [
+        "qiushisun@connect.hku.hk",
+        "pritishk@google.com"
+      ],
+      "contacts": [
+        {
+          "name": "Qiushi Sun",
+          "email": "",
+          "affiliation": "Google; The University of Hong Kong",
+          "role": "第一作者；通讯作者（标注*）"
+        },
+        {
+          "name": "Da Yu",
+          "email": "",
+          "affiliation": "Google",
+          "role": ""
+        },
+        {
+          "name": "Alexander Knop",
+          "email": "",
+          "affiliation": "Google",
+          "role": ""
+        },
+        {
+          "name": "Amer Sinha",
+          "email": "",
+          "affiliation": "Google",
+          "role": ""
+        },
+        {
+          "name": "Lingpeng Kong",
+          "email": "",
+          "affiliation": "The University of Hong Kong",
+          "role": ""
+        },
+        {
+          "name": "Ben Kao",
+          "email": "",
+          "affiliation": "The University of Hong Kong",
+          "role": ""
+        },
+        {
+          "name": "Ravi Kumar",
+          "email": "",
+          "affiliation": "Google",
+          "role": ""
+        },
+        {
+          "name": "Pritish Kamath",
+          "email": "",
+          "affiliation": "Google",
+          "role": ""
+        }
+      ],
+      "corresponding_author": "Qiushi Sun"
+    },
+    {
+      "paper_title": "PhysVLMM: Interaction-Conditioned Physical Belief Maps for Articulated Objects in Robot Scene Maps",
+      "paper_url": "https://arxiv.org/abs/2610.40539v1",
+      "paper_score": 7,
+      "topics": [
+        "多模态"
+      ],
+      "orgs": [],
+      "is_key_lab": false,
+      "emails": [],
+      "contacts": [
+        {
+          "name": "Dibyendu Ghosh",
+          "email": "",
+          "affiliation": "",
+          "role": ""
+        }
+      ],
+      "corresponding_author": ""
+    }
+  ],
+  "daily_insight": {
+    "hot_topics": "今日研究热点集中在世界模型与多模态/具身智能。世界模型论文约6篇，路线覆盖形式化证明、潜动力学、3D高斯记忆、跨具身连续动作和VLA未来预测；多模态相关约15篇，明显偏向机器人操作、评测基准、数据扩展与物理/触觉感知。",
+    "lab_overlap": "今日大厂论文仅Anthropic一篇，且与清华合作，方向为代数世界模型；没有其他大厂在同方向发论文，因此不存在大厂间方向重合。其方法将环境探索、范畴论结构简化与Lean形式化证明结合，偏可解释、可检验、可证明的世界模型，与多数视频生成或具身世界模型形成差异化路线。",
+    "signals": "世界模型论文密度最高，且技术路线从生成/预测转向可证明性、外部记忆、跨具身动力学和动作引导未来预测；多模态与具身智能集中在基准构建、数据扩展和真实机器人操作。Anthropic以最高分形式化世界模型入场，值得关注其是否推动世界模型从“可生成”走向“可验证”。",
+    "overlap_labs": [],
+    "overlap_topic": ""
+  },
+  "key_labs_list": [
+    "Google",
+    "Meta",
+    "OpenAI",
+    "Microsoft",
+    "NVIDIA",
+    "Anthropic",
+    "字节跳动",
+    "腾讯",
+    "阿里巴巴",
+    "百度",
+    "华为",
+    "DeepSeek"
+  ]
+}
