@@ -1,0 +1,2743 @@
+{
+  "date": "2026-11-06",
+  "generated_at": "2026-11-06T23:42:43.275291",
+  "total_fetched": 100,
+  "total_matched": 20,
+  "papers": [
+    {
+      "title": "OopsieRecover: Learning Transferable VLA Corrections from Semantic Interventions",
+      "abstract": "Vision-Language-Action (VLA) models can perform a wide range of robotic manipulation tasks, but often fail during deployment. Teaching them to recover from these failures requires substantial corrective data: existing approaches learn to recover from failures by directly associating corrective actions with the observations in which they were demonstrated. For instance, DAgger-like fine-tuning can require tens to hundreds of interactions, yet the resulting policy may still fail to generalize the learned corrections beyond the demonstrated scenarios. We hypothesize that semantics can capture the underlying reasons for failures and their corrections, enabling policies to learn from only a handful of corrective demonstrations and generalize those corrections to novel objects, and scene variations. We propose OopsieRecover, a framework that uses abduction to infer the intent behind a small set of corrective demonstrations and encodes the inferred knowledge as dense spatial representations and conditional costs. These costs capture when a behavior is undesirable and steer the policy toward more desirable action regions. We experiment across 6 tasks and variations in object poses, scenes, and related tasks, and find that only a handful of corrective demonstrations can enable a VLA to overcome failures across a broad range of novel situations, without requiring new corrective data for each variation. Please refer to https://robin-lab.cs.utexas.edu/oopsierecover for videos.",
+      "url": "https://arxiv.org/abs/2611.08462v1",
+      "pdf": "https://arxiv.org/pdf/2611.08462v1",
+      "categories": [
+        "cs.RO"
+      ],
+      "authors": [
+        "Arpit Bahety",
+        "Skand Peri",
+        "Sriniket Ambatipudi",
+        "Chen Xu",
+        "Haruki Nishimura"
+      ],
+      "all_authors": [
+        "Arpit Bahety",
+        "Skand Peri",
+        "Sriniket Ambatipudi",
+        "Chen Xu",
+        "Haruki Nishimura",
+        "Masha Itkina",
+        "Roberto Martín-Martín"
+      ],
+      "affiliations": [
+        {
+          "name": "Arpit Bahety",
+          "affiliations": []
+        },
+        {
+          "name": "Skand Peri",
+          "affiliations": []
+        },
+        {
+          "name": "Sriniket Ambatipudi",
+          "affiliations": []
+        },
+        {
+          "name": "Chen Xu",
+          "affiliations": []
+        },
+        {
+          "name": "Haruki Nishimura",
+          "affiliations": []
+        },
+        {
+          "name": "Masha Itkina",
+          "affiliations": []
+        },
+        {
+          "name": "Roberto Martín-Martín",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-05",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "视觉-语言-动作（VLA）模型在机器人操作部署中常失败，而现有纠正方法需要大量交互数据，且学到的纠正难以泛化到新场景。",
+        "method": "提出 OopsieRecover，利用溯因推理从少量纠正示范中推断失败意图，并将知识编码为稠密空间表示和条件代价，以此引导策略避开不可取行为区域。",
+        "result": "在6个任务及物体位姿、场景和相关任务变化中，仅需少量纠正示范即可让VLA在广泛新情境下克服失败，无需为每种变化重新采集纠正数据。",
+        "novelty": "用语义溯因从少量纠正示范中提取可迁移的失败原因，并以空间代价形式指导VLA策略纠正。",
+        "relevance": "为具身智能中VLA模型的数据高效失败恢复与跨场景泛化提供了新思路。",
+        "org": "University of Texas at Austin",
+        "score": 8
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Arpit Bahety",
+              "email": "",
+              "affiliation": "",
+              "role": "第一作者（与 Skand Peri 共同一作，标注 ∗ 表示同等贡献）"
+            },
+            {
+              "name": "Skand Peri",
+              "email": "",
+              "affiliation": "",
+              "role": "共同第一作者（标注 ∗ 表示同等贡献）"
+            },
+            {
+              "name": "Sriniket Ambatipudi",
+              "email": "",
+              "affiliation": "",
+              "role": "作者"
+            },
+            {
+              "name": "Chen Xu",
+              "email": "",
+              "affiliation": "",
+              "role": "作者"
+            },
+            {
+              "name": "Haruki Nishimura",
+              "email": "",
+              "affiliation": "",
+              "role": "作者"
+            },
+            {
+              "name": "Masha Itkina",
+              "email": "",
+              "affiliation": "",
+              "role": "作者"
+            },
+            {
+              "name": "Roberto Martín-Martín",
+              "email": "",
+              "affiliation": "",
+              "role": "作者"
+            }
+          ],
+          "corresponding_author": ""
+        }
+      }
+    },
+    {
+      "title": "Failure Prediction and Classification in Vision-Language-Action Models Via Calibrated Latent Probing",
+      "abstract": "Vision-Language-Action models (VLAs) enable general-purpose embodied intelligence, but their performance is brittle under distribution shift, where unanticipated failures can damage equipment or endanger people. Deploying VLAs in real-world systems therefore requires a runtime monitor that is timely, calibrated, and informative while being efficient enough to run on the edge. Existing methods fail to fulfill these requirements. We present VLA-Tug, a lightweight probe over the latent layers of a VLA backbone that improves early failure detection and bounds the missed-detection and false-alarm rates, with minimal inference overhead. We show that supervising on the pre-failure segment of a trajectory increases early failure detection at matched false-positive rates by up to 30% over the strongest learned baseline. Under shift to unseen tasks, the bounds on missed-detection and false-alarm rates remain valid in up to 86% of runs, versus at most 21% for baselines. Unlike existing methods, VLA-Tug predicts the failure mode to enable corrective actions, raising top-3 accuracy on unseen tasks by up to 44% over a majority baseline. VLA-Tug enables real-time monitoring where the well-timed and informative probe supports lightweight steering that improves task success. We release a dataset of 3,180 annotated manipulation episodes to support future work on latent failure detection in VLAs at https://vla-tug.github.io.",
+      "url": "https://arxiv.org/abs/2611.08425v1",
+      "pdf": "https://arxiv.org/pdf/2611.08425v1",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "authors": [
+        "Michal P. Podolinsky",
+        "Yunhao Yang",
+        "Daniel Little",
+        "Hong Lu",
+        "Rohan Siva"
+      ],
+      "all_authors": [
+        "Michal P. Podolinsky",
+        "Yunhao Yang",
+        "Daniel Little",
+        "Hong Lu",
+        "Rohan Siva",
+        "Olin Goudey",
+        "Neel P. Bhatt",
+        "Matthias Scheutz",
+        "Ufuk Topcu"
+      ],
+      "affiliations": [
+        {
+          "name": "Michal P. Podolinsky",
+          "affiliations": []
+        },
+        {
+          "name": "Yunhao Yang",
+          "affiliations": []
+        },
+        {
+          "name": "Daniel Little",
+          "affiliations": []
+        },
+        {
+          "name": "Hong Lu",
+          "affiliations": []
+        },
+        {
+          "name": "Rohan Siva",
+          "affiliations": []
+        },
+        {
+          "name": "Olin Goudey",
+          "affiliations": []
+        },
+        {
+          "name": "Neel P. Bhatt",
+          "affiliations": []
+        },
+        {
+          "name": "Matthias Scheutz",
+          "affiliations": []
+        },
+        {
+          "name": "Ufuk Topcu",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-05",
+      "matched_topics": [
+        "多模态",
+        "具身智能"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "视觉-语言-动作（VLA）模型在分布偏移下性能脆弱，意外失败可能损坏设备或危及人员，因此需要一种及时、校准良好、信息丰富且可在边缘高效运行的运行时失败监控器。",
+        "method": "提出 VLA-Tug：在 VLA 骨干网络的潜在层上训练轻量级探针，利用轨迹中失败前片段进行监督，实现早期失败检测，并对漏检率和误报率给出界限；同时预测失败模式以支持纠正动作。",
+        "result": "在相同误报率下，早期失败检测比最强学习基线最高提升 30%；任务偏移下漏检/误报界限在最高 86% 的运行中仍有效（基线最多 21%）；未见任务上失败模式 top-3 准确率比多数类基线最高提升 44%，并支持轻量转向以提升任务成功率。",
+        "novelty": "将校准的潜在层探针、失败前片段监督和失败模式分类结合，用于 VLA 的实时运行时失败预测与纠正。",
+        "relevance": "提升 VLA 在真实具身系统中的安全性、可监控性和部署可靠性。",
+        "org": "未能从提供信息中识别（作者机构未给出）",
+        "score": 8
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [
+          "michal.podolinsky@utexas.edu"
+        ],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Michal P. Podolinsky",
+              "email": "",
+              "affiliation": "",
+              "role": "第一作者"
+            },
+            {
+              "name": "Yunhao Yang",
+              "email": "",
+              "affiliation": "",
+              "role": ""
+            },
+            {
+              "name": "Daniel Little",
+              "email": "",
+              "affiliation": "",
+              "role": ""
+            },
+            {
+              "name": "Hong Lu",
+              "email": "",
+              "affiliation": "",
+              "role": ""
+            },
+            {
+              "name": "Rohan Siva",
+              "email": "",
+              "affiliation": "",
+              "role": ""
+            },
+            {
+              "name": "Olin Goudey",
+              "email": "",
+              "affiliation": "",
+              "role": ""
+            },
+            {
+              "name": "Neel P. Bhatt",
+              "email": "",
+              "affiliation": "",
+              "role": ""
+            },
+            {
+              "name": "Matthias Scheutz",
+              "email": "",
+              "affiliation": "",
+              "role": ""
+            },
+            {
+              "name": "Ufuk Topcu",
+              "email": "",
+              "affiliation": "",
+              "role": ""
+            }
+          ],
+          "corresponding_author": ""
+        }
+      }
+    },
+    {
+      "title": "VisionSIM: Beyond Idealized Sensors - A Multi-Modal Simulator for Robot Perception",
+      "abstract": "Robotic perception increasingly relies on heterogeneous sensor suites combining cameras with emerging modalities (event, SPAD, iToF/dToF, and thermal). Yet existing simulators idealize these sensors, hiding critical modality-specific failure modes that limit real-world deployment. We present VisionSIM, a unified, physically grounded simulation platform that elevates sensor realism to a first-class concern by modeling the raw physical measurement process for diverse conventional and emerging modalities. We expose fine-grained control over physical sensor parameters, reproducing failure modes overlooked by general-purpose simulators: pileup and glare for LiDAR; phase wrapping, saturation, and motion artifacts for iToF; refractory drops for event cameras; and history-dependent emission for thermal cameras. This enables principled cross-modality comparison on identical scenes and trajectories. We release the platform and a large indoor dataset with synchronized raw measurements and rich ground-truth annotations.",
+      "url": "https://arxiv.org/abs/2611.08368v1",
+      "pdf": "https://arxiv.org/pdf/2611.08368v1",
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.CV"
+      ],
+      "authors": [
+        "Sacha Jungerman",
+        "Kaustubh Sadekar",
+        "Avery Gump",
+        "Sriram Narayanan",
+        "Shantanu Gupta"
+      ],
+      "all_authors": [
+        "Sacha Jungerman",
+        "Kaustubh Sadekar",
+        "Avery Gump",
+        "Sriram Narayanan",
+        "Shantanu Gupta",
+        "Bhuyashi Deka",
+        "Srinivasa Narasimhan",
+        "Atul Ingle",
+        "Mohit Gupta"
+      ],
+      "affiliations": [
+        {
+          "name": "Sacha Jungerman",
+          "affiliations": []
+        },
+        {
+          "name": "Kaustubh Sadekar",
+          "affiliations": []
+        },
+        {
+          "name": "Avery Gump",
+          "affiliations": []
+        },
+        {
+          "name": "Sriram Narayanan",
+          "affiliations": []
+        },
+        {
+          "name": "Shantanu Gupta",
+          "affiliations": []
+        },
+        {
+          "name": "Bhuyashi Deka",
+          "affiliations": []
+        },
+        {
+          "name": "Srinivasa Narasimhan",
+          "affiliations": []
+        },
+        {
+          "name": "Atul Ingle",
+          "affiliations": []
+        },
+        {
+          "name": "Mohit Gupta",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-05",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "现有机器人感知仿真器通常将多模态传感器理想化，掩盖了事件相机、SPAD、iToF/dToF、热成像等新兴模态在真实部署中的关键失效模式，阻碍了可靠的跨模态研究与sim-to-real迁移。",
+        "method": "提出VisionSIM，一个统一的、物理 grounded 的多模态仿真平台，对传统与新兴传感器的原始物理测量过程建模，并提供细粒度物理参数控制，以复现LiDAR堆积与眩光、iToF相位卷绕/饱和/运动伪影、事件相机 refractory drops、热相机历史依赖发射等失效模式。",
+        "result": "该平台支持在相同场景与轨迹上进行有原则的跨模态比较，并发布了包含同步原始测量与丰富真值标注的大规模室内数据集。",
+        "novelty": "将传感器真实感作为一等目标，系统建模多种新兴模态的物理测量过程与模态特定失效模式，而非仅做理想化渲染。",
+        "relevance": "有助于机器人感知、多模态融合与世界模型在更真实传感器条件下评估鲁棒性，并推动sim-to-real研究。",
+        "org": "未明确（作者机构未提供）",
+        "score": 8
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Sacha Jungerman",
+              "email": "",
+              "affiliation": "University of Wisconsin – Madison",
+              "role": "第一作者"
+            },
+            {
+              "name": "Kaustubh Sadekar",
+              "email": "",
+              "affiliation": "Portland State University",
+              "role": ""
+            },
+            {
+              "name": "Avery Gump",
+              "email": "",
+              "affiliation": "University of Wisconsin – Madison",
+              "role": ""
+            },
+            {
+              "name": "Sriram Narayanan",
+              "email": "",
+              "affiliation": "Carnegie Mellon University",
+              "role": ""
+            },
+            {
+              "name": "Shantanu Gupta",
+              "email": "",
+              "affiliation": "University of Wisconsin – Madison",
+              "role": ""
+            },
+            {
+              "name": "Bhuyashi Deka",
+              "email": "",
+              "affiliation": "University of Wisconsin – Madison",
+              "role": ""
+            },
+            {
+              "name": "Srinivasa Narasimhan",
+              "email": "",
+              "affiliation": "Carnegie Mellon University",
+              "role": ""
+            },
+            {
+              "name": "Atul Ingle",
+              "email": "",
+              "affiliation": "Portland State University",
+              "role": ""
+            },
+            {
+              "name": "Mohit Gupta",
+              "email": "",
+              "affiliation": "University of Wisconsin – Madison",
+              "role": ""
+            }
+          ],
+          "corresponding_author": ""
+        }
+      }
+    },
+    {
+      "title": "GPWM: Modeling the World as 3D Particle Motion",
+      "abstract": "We introduce GPWM, a Generative Particle World Model that predicts how 3D scenes evolve by generating the motion of particles and rigid bodies over time. Unlike video world models that generate scene appearance, GPWM operates directly in 3D physical space. A single representation and architecture cover rigid, deformable, cloth, and granular materials, in both passive physics and robotic interaction. GPWM is an object-aware multi-resolution transformer that combines flow matching with diffusion forcing to generate coherent physical trajectories far beyond its training horizon. We train and evaluate GPWM on ParticleWorlds, a 25.5-million-frame corpus spanning diverse geometries, materials, interactions, and robot embodiments. GPWM outperforms the best prior learned-dynamics baseline in each of six physical domains, reducing prediction error by 31% on average. Breaking from the domain-specific setting of prior methods, a single Unified GPWM models these heterogeneous regimes with one set of weights, largely outperforming per-domain baselines and even surpassing our own specialist models in two domains. GPWM further generalizes to unseen geometries, physical properties, object counts, and rollout horizons. Beyond prediction, GPWM enables contact-rich planning by learning a generative prior over joint actuator-object motion. Instead of searching over unconstrained actions, planning searches the model's latent noise for interactions that achieve a desired object-space goal. With the same world model, noise-space planning substantially outperforms action-space search on pushing and picking, where complex contact sequences are hard to discover. Executed open-loop in simulation, the resulting plans achieve goal-directed manipulation without reference action trajectories or goal-specific policies.",
+      "url": "https://arxiv.org/abs/2611.08338v1",
+      "pdf": "https://arxiv.org/pdf/2611.08338v1",
+      "categories": [
+        "cs.RO"
+      ],
+      "authors": [
+        "Robert Ren",
+        "Matthew Bronars",
+        "He Zhu",
+        "Yikai Tang",
+        "Jianing Zhang"
+      ],
+      "all_authors": [
+        "Robert Ren",
+        "Matthew Bronars",
+        "He Zhu",
+        "Yikai Tang",
+        "Jianing Zhang",
+        "Sergey Zakharov",
+        "Pavel Tokmakov",
+        "Katerina Fragkiadaki"
+      ],
+      "affiliations": [
+        {
+          "name": "Robert Ren",
+          "affiliations": []
+        },
+        {
+          "name": "Matthew Bronars",
+          "affiliations": []
+        },
+        {
+          "name": "He Zhu",
+          "affiliations": []
+        },
+        {
+          "name": "Yikai Tang",
+          "affiliations": []
+        },
+        {
+          "name": "Jianing Zhang",
+          "affiliations": []
+        },
+        {
+          "name": "Sergey Zakharov",
+          "affiliations": []
+        },
+        {
+          "name": "Pavel Tokmakov",
+          "affiliations": []
+        },
+        {
+          "name": "Katerina Fragkiadaki",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-05",
+      "matched_topics": [
+        "世界模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "现有世界模型多以视频形式生成场景外观，缺乏对三维物理空间与物体运动的直接建模，难以统一处理刚体、可变形体、布料、颗粒等多种材料及机器人交互。",
+        "method": "提出 GPWM（生成式粒子世界模型），直接在 3D 物理空间生成粒子与刚体随时间的运动轨迹；采用物体感知的多分辨率 Transformer，结合 flow matching 与 diffusion forcing 生成连贯物理轨迹；并在包含 2550 万帧的 ParticleWorlds 数据集上训练，用同一套权重统一建模多种材料与交互。",
+        "result": "在六个物理域上平均降低预测误差 31%，超越此前最佳的学得动力学基线；统一的单一模型大幅优于按域分训的基线，并在两个域上超过专用模型；还能泛化到未见几何、物理属性、物体数量与更长推演时长；通过在世界模型潜噪声空间搜索，实现接触丰富的推动与抓取规划，开环执行即可完成目标操作。",
+        "novelty": "以 3D 粒子运动而非视频像素作为世界模型的生成对象，并用单一架构统一刚体、形变、布料、颗粒及机器人交互，同时把规划转化为对生成模型潜噪声的搜索。",
+        "relevance": "为世界模型提供了从“视频生成”转向“三维物理轨迹生成”的可行路线，对具身智能中的物理预测与基于模型的规划具有重要参考价值。",
+        "org": "未能从提供的元数据中识别（作者机构信息为空）",
+        "score": 8
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Robert Ren",
+              "email": "",
+              "affiliation": "Carnegie Mellon University",
+              "role": "共同第一作者（同等贡献）"
+            },
+            {
+              "name": "Matthew Bronars",
+              "email": "",
+              "affiliation": "Carnegie Mellon University",
+              "role": "共同第一作者（同等贡献）"
+            },
+            {
+              "name": "He Zhu",
+              "email": "",
+              "affiliation": "Carnegie Mellon University",
+              "role": ""
+            },
+            {
+              "name": "Yikai Tang",
+              "email": "",
+              "affiliation": "Carnegie Mellon University",
+              "role": ""
+            },
+            {
+              "name": "Jianing Zhang",
+              "email": "",
+              "affiliation": "Carnegie Mellon University",
+              "role": ""
+            },
+            {
+              "name": "Sergey Zakharov",
+              "email": "",
+              "affiliation": "Toyota Research Institute",
+              "role": ""
+            },
+            {
+              "name": "Pavel Tokmakov",
+              "email": "",
+              "affiliation": "Toyota Research Institute",
+              "role": ""
+            },
+            {
+              "name": "Katerina Fragkiadaki",
+              "email": "",
+              "affiliation": "Carnegie Mellon University",
+              "role": ""
+            }
+          ],
+          "corresponding_author": ""
+        }
+      }
+    },
+    {
+      "title": "Interactive Visual Gym: Evaluating Visual Interaction Models with Simulated Users in Interactive Worlds",
+      "abstract": "Visual interaction models that support users during ongoing physical tasks require evaluation in closed loop, where assistant responses can change subsequent user behavior and task outcomes. Existing benchmarks largely rely on offline replay and therefore cannot capture these effects. We introduce Interactive Visual Gym, a framework for closed-loop evaluation and training of visual interaction models through joint simulation of executable task environments and human users. We contribute three simulators that recreate everyday tasks and human-aligned action spaces across cooking, household manipulation, and mobile-interface domains, together with a persona-conditioned user simulation harness that collaborates with the assistant while incorporating controlled execution errors and other out-of-plan behaviors. We instantiate the framework as IVG-Bench, a benchmark with 315 interaction scenarios. Evaluating state-of-the-art VLMs as visual interaction models reveals substantial limitations: the best-performing model, Gemini 4 Argon, completes only 53.4% of tasks within the time limit, exhibits significant weaknesses in factual grounding and actionable guidance, and is often too slow to prevent errors when response latency is considered. We verify our evaluation protocol with a human study which finds 78.5% agreement between our interaction-quality metric and participant preferences. We further show that the environments provide useful learning signals: in a proof-of-concept GRPO experiment, closed-loop training improves both task success and interaction quality for Qwen3.5-4B model in our cooking environment.",
+      "url": "https://arxiv.org/abs/2611.08286v1",
+      "pdf": "https://arxiv.org/pdf/2611.08286v1",
+      "categories": [
+        "cs.CV"
+      ],
+      "authors": [
+        "Chenhao Zheng",
+        "Zixian Ma",
+        "Kai Li",
+        "Kanchana Ranasinghe",
+        "Jieyu Zhang"
+      ],
+      "all_authors": [
+        "Chenhao Zheng",
+        "Zixian Ma",
+        "Kai Li",
+        "Kanchana Ranasinghe",
+        "Jieyu Zhang",
+        "Artemis Panagopoulou",
+        "Weikai Huang",
+        "Jianxu Shangguan",
+        "Yuanyuan Tan",
+        "Silvio Savarese",
+        "Juan Carlos Niebles",
+        "Ranjay Krishna",
+        "Ran Xu",
+        "Honglu Zhou"
+      ],
+      "affiliations": [
+        {
+          "name": "Chenhao Zheng",
+          "affiliations": []
+        },
+        {
+          "name": "Zixian Ma",
+          "affiliations": []
+        },
+        {
+          "name": "Kai Li",
+          "affiliations": []
+        },
+        {
+          "name": "Kanchana Ranasinghe",
+          "affiliations": []
+        },
+        {
+          "name": "Jieyu Zhang",
+          "affiliations": []
+        },
+        {
+          "name": "Artemis Panagopoulou",
+          "affiliations": []
+        },
+        {
+          "name": "Weikai Huang",
+          "affiliations": []
+        },
+        {
+          "name": "Jianxu Shangguan",
+          "affiliations": []
+        },
+        {
+          "name": "Yuanyuan Tan",
+          "affiliations": []
+        },
+        {
+          "name": "Silvio Savarese",
+          "affiliations": []
+        },
+        {
+          "name": "Juan Carlos Niebles",
+          "affiliations": []
+        },
+        {
+          "name": "Ranjay Krishna",
+          "affiliations": []
+        },
+        {
+          "name": "Ran Xu",
+          "affiliations": []
+        },
+        {
+          "name": "Honglu Zhou",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-05",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "现有视觉交互模型（在用户执行物理任务时提供实时指导的模型）的评测大多依赖离线回放，无法刻画助手回复如何反过来改变用户后续行为与任务结果，因而缺少闭环评估手段。",
+        "method": "提出 Interactive Visual Gym 框架，联合仿真可执行的任务环境与人物画像条件化（persona-conditioned）的用户模拟器，在烹饪、家庭操作、移动界面三个领域构建与人对齐的动作空间并注入受控执行错误等偏离计划的行为。基于该框架实例化 IVG-Bench（315 个交互场景），并用人类研究校验评测协议，另做 GRPO 闭环训练的概念验证。",
+        "result": "评测显示现有 VLM 作为视觉交互模型存在明显不足：最佳模型 Gemini 4 Argon 在时限内仅完成 53.4% 的任务，事实依据与可操作指导能力薄弱，且考虑响应延迟时常因过慢而无法阻止错误；交互质量指标与人类偏好的吻合度为 78.5%；在烹饪环境中闭环 GRPO 训练同时提升了 Qwen3.5-4B 的任务成功率与交互质量。",
+        "novelty": "首次将可执行任务环境与带有人类偏差的用户模拟器结合，构建面向视觉交互模型的闭环评测与训练基准（含人类验证的交互质量指标）。",
+        "relevance": "为多模态大模型作为「实时任务助手」的能力提供了更贴近真实部署的闭环评测与可训练信号，推动视觉交互模型与世界模型式交互研究的发展。",
+        "org": "作者机构信息未提供（从作者名单看，可能关联华盛顿大学等机构，无法确认）",
+        "score": 8
+      },
+      "identified_orgs": [
+        "Google"
+      ],
+      "contact_info": {
+        "emails_found": [],
+        "ai_extracted": null
+      }
+    },
+    {
+      "title": "Multimodal-SEA: Benchmarking AI Agent Security under Multimodal Social Engineering Attacks",
+      "abstract": "Personal AI agents face social engineering attacks supported by forged multimodal content, but existing evaluations mainly focus on text-based dialogue, leaving their intrinsic security under such attacks insufficiently studied. We introduce Multimodal-SEA, an interactive benchmark comprising 608 expert-designed tasks grounded in real-world fraud cases, covering 14 domains and 152 attack scenarios with prepared multimodal content. The tasks span four difficulty levels and reflect the distinct social and cultural contexts of Chinese and English environments. Agents inspect content, verify requests, and execute actions in simulated applications, with attack outcomes grounded in verifiable tool execution logs. To enable controlled red teaming of personal agents, we design a multimodal attack harness that integrates task information, attack progression control, and multimodal content construction to evaluate their intrinsic security against adaptive social engineering attacks in simulated environments. Evaluating seven widely used multimodal models across six dimensions reveals that all are vulnerable, with attack success rates of 7.1% to 34.5%. Adding multimodal content increases attack success from 19.9% to 29.2%, despite increased proactive verification coverage. Stronger safety instructions reduce attack success without improving recognition of deceptive multimodal content, while lower attack success rates for some models accompany excessive refusal of legitimate requests.",
+      "url": "https://arxiv.org/abs/2611.08281v1",
+      "pdf": "https://arxiv.org/pdf/2611.08281v1",
+      "categories": [
+        "cs.CL"
+      ],
+      "authors": [
+        "Zhitao He",
+        "Chi Him Zhang",
+        "Chengru Han",
+        "Yi R Fung"
+      ],
+      "all_authors": [
+        "Zhitao He",
+        "Chi Him Zhang",
+        "Chengru Han",
+        "Yi R Fung"
+      ],
+      "affiliations": [
+        {
+          "name": "Zhitao He",
+          "affiliations": []
+        },
+        {
+          "name": "Chi Him Zhang",
+          "affiliations": []
+        },
+        {
+          "name": "Chengru Han",
+          "affiliations": []
+        },
+        {
+          "name": "Yi R Fung",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-05",
+      "matched_topics": [
+        "多模态",
+        "Agent"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "个人AI Agent面临由伪造多模态内容支持的社会工程攻击，但现有评估主要集中于纯文本对话，缺乏对其内在安全性的系统研究。",
+        "method": "提出 Multimodal-SEA 交互式基准，包含608个专家设计任务，基于真实欺诈案例，覆盖14个领域、152种攻击场景和多模态内容，并涵盖中英文社会环境与四个难度等级；设计多模态攻击测试框架，让Agent在模拟应用中检查内容、验证请求并执行动作，以可验证的工具执行日志判定攻击结果。",
+        "result": "评估7个常用多模态模型发现均存在漏洞，攻击成功率为7.1%至34.5%；加入多模态内容使攻击成功率从19.9%升至29.2%，尽管主动验证覆盖率提高；更强安全指令能降低攻击成功率，但未提升对欺骗性多模态内容的识别，部分模型低攻击成功率伴随对合法请求的过度拒绝。",
+        "novelty": "构建了面向个人AI Agent、结合真实多模态社会工程攻击与可验证工具执行日志的交互式安全评测基准和可控红队测试框架。",
+        "relevance": "为多模态大模型与个人Agent的安全评估、红队测试和防御机制设计提供了重要基准与实证依据。",
+        "org": "作者未提供机构信息，无法从摘要中识别",
+        "score": 8
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [
+          "yrfung@ust.hk",
+          "zhebu@cse.ust.hk"
+        ],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Zhitao He",
+              "email": "zhebu@cse.ust.hk",
+              "affiliation": "MMSense Lab, The Hong Kong University of Science and Technology",
+              "role": "共同第一作者"
+            },
+            {
+              "name": "Chi Him Zhang",
+              "email": "",
+              "affiliation": "MMSense Lab, The Hong Kong University of Science and Technology",
+              "role": "共同第一作者"
+            },
+            {
+              "name": "Chengru Han",
+              "email": "",
+              "affiliation": "MMSense Lab, The Hong Kong University of Science and Technology",
+              "role": "共同第一作者"
+            },
+            {
+              "name": "Yi R. (May) Fung",
+              "email": "yrfung@ust.hk",
+              "affiliation": "MMSense Lab, The Hong Kong University of Science and Technology",
+              "role": "通讯作者"
+            }
+          ],
+          "corresponding_author": "Yi R. (May) Fung"
+        }
+      }
+    },
+    {
+      "title": "Terminal-style Mathematical Modeling Bench: The First Agentic and Verifiable Benchmark for Mathematical Modeling",
+      "abstract": "Mathematical modeling turns an open-ended real-world problem into assumptions, a model, a solution, and a defended recommendation, and its answers matter only if they are both close to a credible reference and physically feasible; existing benchmarks either score solver fragments or grade reports with an LLM judge, leaving those numbers unchecked. We introduce TB-MathModel (the Terminal-style Mathematical Modeling Bench), the first benchmark to make complete contest-style modeling problems agentic, verifiable, and terminal at once, over 18 real CUMCM and MCM problems (2023--2025). Each task ships the verbatim statement, official attachments, and figures in a containerized terminal; the agent returns one JSON artifact, scored on the numeric core of the final question against a reproduction of the Outstanding-award paper. Two design choices distinguish it: direction-aware, one-sided scoring, which never penalises beating the anchor, and two-layer feasibility verification---a programmatic gate over six decidable invariant forms plus 624 Lean~4 obligations---with a hard gate that zeroes infeasible answers. Each task is scored against a panel of human outstanding papers rather than one, so a model must be close to many accepted answers; across seven multimodal entries (three seeds each) the strongest reach a multi-reference O-Eval of 64.58\\%, while the \\$2.54 open model holds 59.81\\% at $1/100$ the cost. TB-MathModel turns the numeric core of modeling into a reproducible, machine-checkable signal for measuring long-horizon modeling competence and for collecting agent trajectories. The source code is available at https://github.com/wxj630/terminal-bench-math-modeling.",
+      "url": "https://arxiv.org/abs/2611.08237v1",
+      "pdf": "https://arxiv.org/pdf/2611.08237v1",
+      "categories": [
+        "cs.CL"
+      ],
+      "authors": [
+        "Xiaojun Wu",
+        "Cehao Yang",
+        "Xuhui Jiang",
+        "Chengjin Xu",
+        "Jia Li"
+      ],
+      "all_authors": [
+        "Xiaojun Wu",
+        "Cehao Yang",
+        "Xuhui Jiang",
+        "Chengjin Xu",
+        "Jia Li",
+        "Jian Guo"
+      ],
+      "affiliations": [
+        {
+          "name": "Xiaojun Wu",
+          "affiliations": []
+        },
+        {
+          "name": "Cehao Yang",
+          "affiliations": []
+        },
+        {
+          "name": "Xuhui Jiang",
+          "affiliations": []
+        },
+        {
+          "name": "Chengjin Xu",
+          "affiliations": []
+        },
+        {
+          "name": "Jia Li",
+          "affiliations": []
+        },
+        {
+          "name": "Jian Guo",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-05",
+      "matched_topics": [
+        "多模态",
+        "大模型",
+        "Agent"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "现有数学建模基准要么只评测求解片段，要么依赖LLM评审报告，缺少对完整建模问题答案是否接近可信参考且物理可行的可验证评测。",
+        "method": "提出TB-MathModel，将18个2023—2025年真实CUMCM和MCM赛题放入容器化终端，智能体返回统一JSON产物，并针对最终问题的数值核心与多篇Outstanding论文复现结果进行评分。采用方向感知的单侧评分，避免惩罚优于锚点的答案，并加入六类可判定不变量与624条Lean 4义务构成的两层可行性验证，硬门控将不可行答案置零。",
+        "result": "在七个多模态模型（每个三次种子）中，最强模型的多参考O-Eval达到64.58%；成本仅2.54美元的开源模型以约1/100成本达到59.81%。",
+        "novelty": "首个同时具备智能体化、可验证和终端化特征，并面向完整竞赛式数学建模问题的基准，结合多参考评分与Lean可行性硬门控。",
+        "relevance": "为衡量长程数学建模能力与收集智能体轨迹提供了可复现、机器可检查的评测信号。",
+        "org": "未明确（作者机构信息缺失）",
+        "score": 8
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Xiaojun Wu",
+              "email": "",
+              "affiliation": "IDEA Research; The Hong Kong University of Science and Technology (Guangzhou)",
+              "role": "共同第一作者"
+            },
+            {
+              "name": "Cehao Yang",
+              "email": "",
+              "affiliation": "IDEA Research; The Hong Kong University of Science and Technology (Guangzhou)",
+              "role": "共同第一作者"
+            },
+            {
+              "name": "Xuhui Jiang",
+              "email": "",
+              "affiliation": "IDEA Research; DataArcTech Ltd.",
+              "role": ""
+            },
+            {
+              "name": "Chengjin Xu",
+              "email": "",
+              "affiliation": "IDEA Research; DataArcTech Ltd.",
+              "role": ""
+            },
+            {
+              "name": "Jia Li",
+              "email": "",
+              "affiliation": "The Hong Kong University of Science and Technology (Guangzhou)",
+              "role": "通讯作者"
+            },
+            {
+              "name": "Jian Guo",
+              "email": "",
+              "affiliation": "IDEA Research",
+              "role": "通讯作者"
+            }
+          ],
+          "corresponding_author": "Jia Li, Jian Guo"
+        }
+      }
+    },
+    {
+      "title": "RoboARCade: Benchmarking Agentic Robot Control",
+      "abstract": "Improvements in multi-modal capabilities have enabled agents to act directly as robot policies, a setting we refer to as agentic robot control (ARC). We introduce RoboARCade, a benchmark of long-horizon manipulation tasks across three embodiments designed to test in-context adaptation, memory, and reasoning for precise control. The tasks build on existing open-source benchmarks, which we make harder by widening the range of initial conditions. RoboARCade is easy to use and extend: all tasks run on a single simulation backend, MuJoCo, each task is a self-contained data pack, and agents connect through interchangeable interfaces, so new tasks, agents, and interfaces can be added independently. The benchmark separates leading agents: GPT-6 Astra achieves 49.8% compared with 43.6% for Claude Fable 5.1, leaving substantial room for improvement. Comparing two interfaces, we find that a richer visual interface adds only 1.5 to 6.8 points at 1.7 to 2.3 times the cost. Failures stem mostly from choosing a poor manipulation strategy or executing a good one imprecisely, rarely from misunderstanding the scene, and agents incorrectly claim success on 24% to 39% of attempted subtasks. Agents can also improve without human input: one successful demonstration in context raises Astra's score from 53.5% to 73.0% on a five-task subset, and a prompt the agent writes and revises itself reaches 72.0%. Code, videos and full traces are available at roboarcade.org.",
+      "url": "https://arxiv.org/abs/2611.08209v1",
+      "pdf": "https://arxiv.org/pdf/2611.08209v1",
+      "categories": [
+        "cs.RO"
+      ],
+      "authors": [
+        "Satvik Sharma",
+        "Hengyuan Hu",
+        "Mihika Kamat",
+        "Dorsa Sadigh",
+        "Jeannette Bohg"
+      ],
+      "all_authors": [
+        "Satvik Sharma",
+        "Hengyuan Hu",
+        "Mihika Kamat",
+        "Dorsa Sadigh",
+        "Jeannette Bohg"
+      ],
+      "affiliations": [
+        {
+          "name": "Satvik Sharma",
+          "affiliations": []
+        },
+        {
+          "name": "Hengyuan Hu",
+          "affiliations": []
+        },
+        {
+          "name": "Mihika Kamat",
+          "affiliations": []
+        },
+        {
+          "name": "Dorsa Sadigh",
+          "affiliations": []
+        },
+        {
+          "name": "Jeannette Bohg",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-05",
+      "matched_topics": [
+        "多模态",
+        "大模型",
+        "Agent"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "论文要评估多模态智能体直接作为机器人策略时的长程精确操作能力，尤其是上下文适应、记忆与推理能力。",
+        "method": "提出 RoboARCade 基准，包含跨三种具身形态的长程操作任务，统一运行在 MuJoCo 后端，并通过自包含数据包和可替换接口支持独立扩展任务、智能体和接口。通过扩大初始条件范围提升任务难度。",
+        "result": "基准能区分领先智能体：GPT-6 Astra 得分 49.8%，Claude Fable 5.1 为 43.6%；更丰富视觉接口仅提升 1.5 到 6.8 分但成本增至 1.7 到 2.3 倍。失败主要来自策略选择差或执行不精确，而非场景理解错误；智能体在 24% 到 39% 的尝试子任务中错误声称成功。上下文示例可将 Astra 在五任务子集上从 53.5% 提升至 73.0%，自写自改提示达到 72.0%。",
+        "novelty": "提出了可扩展、模块化的智能体机器人控制基准，系统评测长程操作中的上下文适应、记忆、推理及接口影响。",
+        "relevance": "为多模态智能体作为机器人策略提供了诊断性评测平台，揭示关键失败模式与无需人工反馈的自提升潜力。",
+        "org": "Stanford University",
+        "score": 8
+      },
+      "identified_orgs": [
+        "Anthropic",
+        "Stanford"
+      ],
+      "contact_info": {
+        "emails_found": [],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Satvik Sharma",
+              "email": "",
+              "affiliation": "Stanford University",
+              "role": "第一作者"
+            },
+            {
+              "name": "Hengyuan Hu",
+              "email": "",
+              "affiliation": "Stanford University",
+              "role": ""
+            },
+            {
+              "name": "Mihika Kamat",
+              "email": "",
+              "affiliation": "Stanford University",
+              "role": ""
+            },
+            {
+              "name": "Dorsa Sadigh",
+              "email": "",
+              "affiliation": "Stanford University",
+              "role": ""
+            },
+            {
+              "name": "Jeannette Bohg",
+              "email": "",
+              "affiliation": "Stanford University",
+              "role": ""
+            }
+          ],
+          "corresponding_author": ""
+        }
+      }
+    },
+    {
+      "title": "VFlash: Fast, Accurate Visual Planning via Flash Primitive Decoding",
+      "abstract": "Models for physical AI tasks, such as robotics and autonomous driving, need not reason solely in language. They can use visual plans--points, bounding boxes, and trajectories--to represent spatial goals and anticipate motion. However, autoregressive vision-language models generate these plans one coordinate token at a time, making richer predictions increasingly costly. We introduce VFlash, a method for fast, accurate visual planning through Flash Primitive Decoding. VFlash exploits the known structure of visual primitives to predict their coordinates jointly, using a lightweight drafter that generates an entire primitive in one forward pass. The layout adapts to the primitive's type, dimensionality, and length, supporting compact boxes and long, variable-length trajectories. Crucially, spatial accuracy need not require reproducing an autoregressive model's exact token sequence. VFlash therefore trains on annotated primitives and directly accepts structurally valid predictions without target-token agreement. Across the evaluated 2D and 3D robot trajectory tasks, VFlash consistently reduces prediction errors relative to autoregressive decoding. Preliminary single-rollout measurements indicate approximately 25x faster generation for 3D point motion forecasting. A world action model conditioned on VFlash plans achieves 70.2% average success across four MolmoSpaces task suites, compared with 62.6% for the baseline.",
+      "url": "https://arxiv.org/abs/2611.08449v1",
+      "pdf": "https://arxiv.org/pdf/2611.08449v1",
+      "categories": [
+        "cs.RO",
+        "cs.CV"
+      ],
+      "authors": [
+        "Yu-Cheng Chou",
+        "Shihao Wang",
+        "Jin Huang",
+        "Chi-Pin Huang",
+        "Chiao-An Yang"
+      ],
+      "all_authors": [
+        "Yu-Cheng Chou",
+        "Shihao Wang",
+        "Jin Huang",
+        "Chi-Pin Huang",
+        "Chiao-An Yang",
+        "Xianzhe Fan",
+        "Jing Wang",
+        "Zhiqi Li",
+        "Yuanguo Kuang",
+        "Ruijie Zheng",
+        "Johan Bjorck",
+        "Sifei Liu",
+        "Hang Su",
+        "Abhishek Badki",
+        "Lei Zhang",
+        "Alan Yuille",
+        "Linxi \"Jim'' Fan",
+        "Jan Kautz",
+        "Zhiding Yu"
+      ],
+      "affiliations": [
+        {
+          "name": "Yu-Cheng Chou",
+          "affiliations": []
+        },
+        {
+          "name": "Shihao Wang",
+          "affiliations": []
+        },
+        {
+          "name": "Jin Huang",
+          "affiliations": []
+        },
+        {
+          "name": "Chi-Pin Huang",
+          "affiliations": []
+        },
+        {
+          "name": "Chiao-An Yang",
+          "affiliations": []
+        },
+        {
+          "name": "Xianzhe Fan",
+          "affiliations": []
+        },
+        {
+          "name": "Jing Wang",
+          "affiliations": []
+        },
+        {
+          "name": "Zhiqi Li",
+          "affiliations": []
+        },
+        {
+          "name": "Yuanguo Kuang",
+          "affiliations": []
+        },
+        {
+          "name": "Ruijie Zheng",
+          "affiliations": []
+        },
+        {
+          "name": "Johan Bjorck",
+          "affiliations": []
+        },
+        {
+          "name": "Sifei Liu",
+          "affiliations": []
+        },
+        {
+          "name": "Hang Su",
+          "affiliations": []
+        },
+        {
+          "name": "Abhishek Badki",
+          "affiliations": []
+        },
+        {
+          "name": "Lei Zhang",
+          "affiliations": []
+        },
+        {
+          "name": "Alan Yuille",
+          "affiliations": []
+        },
+        {
+          "name": "Linxi \"Jim'' Fan",
+          "affiliations": []
+        },
+        {
+          "name": "Jan Kautz",
+          "affiliations": []
+        },
+        {
+          "name": "Zhiding Yu",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-05",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "自回归视觉语言模型在生成视觉规划（点、边界框、轨迹）时需逐个坐标 token 解码，导致预测越丰富、生成代价越高、速度越慢，难以满足机器人与自动驾驶等物理 AI 任务对实时性的需求。",
+        "method": "提出 VFlash，利用视觉基元的已知结构，用一个轻量级 drafter 在一次前向中联合预测整个基元的全部坐标，布局随基元类型、维度和长度自适应，可同时支持紧凑边界框与长变长轨迹。训练时直接使用标注基元监督，推理时只要预测在结构上合法即被接受，不要求与自回归模型的目标 token 序列逐一对齐。",
+        "result": "在评测的 2D 与 3D 机器人轨迹任务上，VFlash 相比自回归解码持续降低预测误差；初步单次 rollout 测量显示 3D 点运动预测生成速度约提升 25 倍。以 VFlash 规划为条件的世界动作模型在四个 MolmoSpaces 任务套件上平均成功率达 70.2%，优于基线的 62.6%。",
+        "novelty": "核心创新在于把视觉基元的空间结构先验转化为并行联合解码，并放弃对自回归 token 序列的精确复现要求，从而在保持甚至提升空间精度的同时大幅加速。",
+        "relevance": "为具身智能与物理 AI 中的视觉规划提供了一种快速、准确且可直接接入世界动作模型的解码范式，有助于推动实时机器人决策与多模态空间推理的发展。",
+        "org": "作者机构信息未在提供的数据中给出，无法识别",
+        "score": 7
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [
+          "zhidingy@nvidia.com"
+        ],
+        "ai_extracted": null
+      }
+    },
+    {
+      "title": "T3R: Training-Free Two-Stage Token Refinement Towards Efficient and Robust VLA Models",
+      "abstract": "Vision-Language-Action (VLA) models enable end-to-end robot control, but inference is increasingly expensive. Each decision processes hundreds of visual tokens, often across multiple cameras, leading to substantial computation while allowing irrelevant background content to distract action prediction under distribution shift. We argue that these issues stem from two complementary forms of redundancy: many visual tokens are spatially irrelevant, while attention over the remaining tokens is often misallocated. Based on this observation, we propose T3R, a Training-Free Two-Stage Token Refinement framework. In the first stage, segmentation-guided token pruning removes irrelevant visual patches to reduce computation and eliminate distracting context. In the second stage, saliency-guided attention biasing reallocates attention toward action-critical visual regions and language instructions within the retained tokens. Together, pruning produces a cleaner candidate set, while attention biasing further emphasizes the most decision-relevant evidence, yielding a better accuracy-efficiency frontier than either stage alone. On LIBERO-Spatial, T3R removes 85% of scene-camera visual tokens while essentially matching the unpruned success rate, and improves success by up to 7 percentage points under out-of-distribution object-placement perturbations. The timing comparison attributes 7.8 ms per inference call to pruning and attention-bias application. As input resolution increases, LLM-forward profiling shows up to a 3.3x speedup over the unpruned baseline. Evaluations across LIBERO, SIMPLER, and RoboTwin with three VLA backbones show the strongest accuracy-efficiency benefits in multi-camera settings. These results demonstrate that training-free token refinement is a practical approach to efficient and robust VLA inference.",
+      "url": "https://arxiv.org/abs/2611.08413v1",
+      "pdf": "https://arxiv.org/pdf/2611.08413v1",
+      "categories": [
+        "cs.RO",
+        "cs.CV"
+      ],
+      "authors": [
+        "Mohammed Hassan",
+        "Zhenyang Chen",
+        "Zheng Wang",
+        "Zhixin Zhu",
+        "Tianlong Chen"
+      ],
+      "all_authors": [
+        "Mohammed Hassan",
+        "Zhenyang Chen",
+        "Zheng Wang",
+        "Zhixin Zhu",
+        "Tianlong Chen",
+        " Yingyan",
+        " Lin",
+        "Chaojian Li"
+      ],
+      "affiliations": [
+        {
+          "name": "Mohammed Hassan",
+          "affiliations": [
+            "Celine"
+          ]
+        },
+        {
+          "name": "Zhenyang Chen",
+          "affiliations": [
+            "Celine"
+          ]
+        },
+        {
+          "name": "Zheng Wang",
+          "affiliations": [
+            "Celine"
+          ]
+        },
+        {
+          "name": "Zhixin Zhu",
+          "affiliations": [
+            "Celine"
+          ]
+        },
+        {
+          "name": "Tianlong Chen",
+          "affiliations": [
+            "Celine"
+          ]
+        },
+        {
+          "name": " Yingyan",
+          "affiliations": [
+            "Celine"
+          ]
+        },
+        {
+          "name": " Lin",
+          "affiliations": []
+        },
+        {
+          "name": "Chaojian Li",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-05",
+      "matched_topics": [
+        "多模态",
+        "大模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "VLA 模型推理成本高：每次决策都处理来自多相机的数百个视觉 token，并且背景内容会分散注意力，导致在分布偏移下动作预测的准确率下降。",
+        "method": "提出免训练的两阶段 token 精炼框架 T3R：第一阶段用分割引导的 token 剪枝去除无关视觉 patch；第二阶段用显著性引导的注意力偏置，把注意力重新分配到对动作关键的视觉区域和语言指令上。",
+        "result": "在 LIBERO-Spatial 上剪掉 85% 的场景相机视觉 token，成功率基本保持不变；在分布外物体摆放扰动下成功率最高提升 7 个百分点；LLM 前向最多加速 3.3 倍，精炼开销仅 7.8 ms/次。",
+        "novelty": "无需额外训练，把“空间冗余剪枝”与“注意力错配纠正”这两类互补冗余统一到一个两阶段 token 精炼框架中。",
+        "relevance": "为 VLA 与具身智能模型提供了一种即插即用、兼顾效率与鲁棒性的推理侧优化方案，有利于降低机器人端到端控制的部署成本。",
+        "org": "Celine",
+        "score": 7
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [
+          "celine.lin@gatech.edu",
+          "mohassan@utexas.edu",
+          "cindy.zhu@live.cn",
+          "zhengw10@illinois.edu",
+          "tianlong@cs.unc.edu",
+          "chaojian@ust.hk",
+          "chenzy086@gmail.com"
+        ],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Mohammed Hassan",
+              "email": "mohassan@utexas.edu",
+              "affiliation": "The University of Texas at Austin",
+              "role": "第一作者"
+            },
+            {
+              "name": "Zhenyang Chen",
+              "email": "chenzy086@gmail.com",
+              "affiliation": "Georgia Institute of Technology",
+              "role": ""
+            },
+            {
+              "name": "Zheng Wang",
+              "email": "zhengw10@illinois.edu",
+              "affiliation": "University of Illinois Urbana-Champaign",
+              "role": ""
+            },
+            {
+              "name": "Zhixin Zhu",
+              "email": "cindy.zhu@live.cn",
+              "affiliation": "Hong Kong University of Science and Technology",
+              "role": ""
+            },
+            {
+              "name": "Tianlong Chen",
+              "email": "tianlong@cs.unc.edu",
+              "affiliation": "University of North Carolina at Chapel Hill",
+              "role": ""
+            },
+            {
+              "name": "Yingyan (Celine) Lin",
+              "email": "celine.lin@gatech.edu",
+              "affiliation": "Georgia Institute of Technology",
+              "role": ""
+            },
+            {
+              "name": "Chaojian Li",
+              "email": "chaojian@ust.hk",
+              "affiliation": "Hong Kong University of Science and Technology",
+              "role": ""
+            }
+          ],
+          "corresponding_author": ""
+        }
+      }
+    },
+    {
+      "title": "Learning a patient world model for health system simulation in intensive care",
+      "abstract": "Designing healthcare strategies requires anticipating their clinical and operational consequences before implementation, a task that often relies on health system simulation. Such a simulation necessitates modeling how patient states evolve and generate care demands. However, conventional approaches typically tailor compact state transitions to a single policy question and omit history-dependent dynamics, thus requiring the redefinition of states and transitions when there is a new question that entails different clinical information. We propose to learn a patient world model from longitudinal EHRs using a neural network to provide a shared clinical representation of patient trajectories that can serve simulation questions across scenarios. Taking ICU operations as an example, we train the model on MIMIC-IV, freeze it, and couple its time-queryable predictions to shared ICU calendars, resources, and queues via scenario-specific mappings, so that one model renders admission demand, care tasks, and discharge proposals across simulations evaluating ICU bed capacity, care dispatch, and post-ICU transfer capacity. Experiments show that our model matches Markov and semi-Markov comparators in aggregate occupancy and directional responses to capacity and dispatch policies. It also reproduces policy gains from replayed observed trajectories. For patients entering the same support state from different prior trajectories, the learned representation captures a 24-h recovery difference (-6.4 predicted versus -6.7 observed percentage points), a contrast missed by compact state models, which propagates into distinct simulated care demand, queue burden, and bed use. These results indicate that a learned world model of patient dynamics has the potential to replace question-specific state models, allowing new care policies to be evaluated by reconfiguring the scenario without model rebuilding.",
+      "url": "https://arxiv.org/abs/2611.08392v1",
+      "pdf": "https://arxiv.org/pdf/2611.08392v1",
+      "categories": [
+        "cs.AI"
+      ],
+      "authors": [
+        "Yingtai Li",
+        "Ruoyan Wang",
+        "Yu Li",
+        "Shaohua Kevin Zhou"
+      ],
+      "all_authors": [
+        "Yingtai Li",
+        "Ruoyan Wang",
+        "Yu Li",
+        "Shaohua Kevin Zhou"
+      ],
+      "affiliations": [
+        {
+          "name": "Yingtai Li",
+          "affiliations": []
+        },
+        {
+          "name": "Ruoyan Wang",
+          "affiliations": []
+        },
+        {
+          "name": "Yu Li",
+          "affiliations": []
+        },
+        {
+          "name": "Shaohua Kevin Zhou",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-05",
+      "matched_topics": [
+        "世界模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "医疗系统仿真需要预测患者状态如何演变并产生护理需求，但传统方法往往针对单一政策问题定制紧凑的状态转移模型，忽略历史依赖的动态，换一个新问题就要重新定义状态和转移。",
+        "method": "作者提出从纵向电子病历（EHR）中学习一个「患者世界模型」：用神经网络学习患者轨迹的共享临床表征，并在 MIMIC-IV 上训练后冻结；再通过场景特定的映射，把模型可按时查询的预测接入共享的 ICU 日历、资源和队列，从而用同一个模型支持床位数、护理调度、转出容量等多种仿真。",
+        "result": "实验表明，该模型在总占用率，以及对容量和调度政策的方向性响应上，与马尔可夫/半马尔可夫基线相当，并能复现真实轨迹中的政策收益；同时对来自不同既往轨迹、进入同一支持状态的患者，模型能捕捉到 24 小时恢复差异（预测 -6.4 对观测 -6.7 个百分点），而紧凑状态模型会漏掉这一差异，并由此产生不同的护理需求、队列压力和床位使用。",
+        "novelty": "首次把「学习式患者世界模型」引入健康系统仿真，用一个冻结的、历史依赖的患者动力学模型替代针对每个问题定制的状态转移模型，换政策时只需重配场景、无需重建模型。",
+        "relevance": "把世界模型思想从物理/具身环境拓展到医疗运营决策仿真，示范了「一次学习、多场景复用」的仿真范式，对 AI 驱动的医疗政策评估与决策基础模型有启发意义。",
+        "org": "中国科学技术大学（据作者 Shaohua Kevin Zhou 等推断，原文未列出机构信息）",
+        "score": 7
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "SLA: Scaling Spatial-Language-Action Model via Continual Pre-training",
+      "abstract": "Reliable robotic manipulation requires both semantic understanding and precise control in three-dimensional space. However, vision-language-action (VLA) foundations largely inherit visual representations from 2D vision-language pre-training, while spatial supervision is often introduced only during task-specific adaptation. Developing spatial understanding as a transferable foundation-model capability therefore calls for learning from broader robot experience. We present SLA, a Spatial-Language-Action Model that scales implicit spatial alignment to continual pre-training and maintains it during downstream post-training. Initialized from a pretrained pi05 policy, SLA jointly optimizes action prediction and alignment between intermediate visual embeddings and spatial representations from a frozen 3D perception model. We curate and unify heterogeneous robot datasets to support spatial learning across diverse embodiments, tasks, and scenes. To accommodate this diversity, we introduce feature-dependent gates that adaptively aggregate visual embeddings from multiple VLA layers for spatial supervision. The teacher further exploits partially available depth and camera calibration alongside RGB observations, enabling effective use of heterogeneous geometric annotations. Probabilistic state dropout encourages reliance on visual cues and mitigates overfitting to demonstration trajectories. All auxiliary components are used only during training, allowing direct reuse of pretrained VLA weights and preserving the original inference architecture.",
+      "url": "https://arxiv.org/abs/2611.08373v1",
+      "pdf": "https://arxiv.org/pdf/2611.08373v1",
+      "categories": [
+        "cs.RO"
+      ],
+      "authors": [
+        "Fuhao Li",
+        "Wenxuan Song",
+        "Qizhou Huang",
+        "Ziyang Zhou",
+        "Jingbo Wang"
+      ],
+      "all_authors": [
+        "Fuhao Li",
+        "Wenxuan Song",
+        "Qizhou Huang",
+        "Ziyang Zhou",
+        "Jingbo Wang",
+        "Junwu E",
+        "Pengwei Wang",
+        "Yan Wang",
+        "Shunbo Zhou",
+        "Haoang Li"
+      ],
+      "affiliations": [
+        {
+          "name": "Fuhao Li",
+          "affiliations": []
+        },
+        {
+          "name": "Wenxuan Song",
+          "affiliations": []
+        },
+        {
+          "name": "Qizhou Huang",
+          "affiliations": []
+        },
+        {
+          "name": "Ziyang Zhou",
+          "affiliations": []
+        },
+        {
+          "name": "Jingbo Wang",
+          "affiliations": []
+        },
+        {
+          "name": "Junwu E",
+          "affiliations": []
+        },
+        {
+          "name": "Pengwei Wang",
+          "affiliations": []
+        },
+        {
+          "name": "Yan Wang",
+          "affiliations": []
+        },
+        {
+          "name": "Shunbo Zhou",
+          "affiliations": []
+        },
+        {
+          "name": "Haoang Li",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-05",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "现有视觉-语言-动作（VLA）模型主要继承 2D 视觉-语言预训练的表征，空间理解能力往往只在任务特定微调阶段才被引入，缺乏可迁移的三维空间基础能力。论文希望把空间理解变成可持续预训练、可迁移的基础模型能力。",
+        "method": "提出 SLA（Spatial-Language-Action）模型：从预训练 pi05 策略初始化，在持续预训练中联合优化动作预测与隐式空间对齐——让中间层视觉嵌入去对齐一个冻结的 3D 感知模型的空间表征。作者统一了异构机器人数据集，引入特征相关的门控自适应聚合多层 VLA 视觉嵌入，教师模型利用部分可得的深度与相机标定以适配稀疏几何标注，并用概率状态丢弃增强对视觉线索的依赖。所有辅助模块仅在训练时使用，推理架构与预训练权重可直接复用。",
+        "result": "论文将隐式空间对齐扩展到持续预训练并保持到下游后训练，在多种 embodiment、任务和场景上实现了可迁移的空间理解能力，同时保持原始推理结构与预训练权重的兼容性（摘要未给出具体数值结果）。",
+        "method_note": "",
+        "novelty": "把空间对齐从任务特定后训练提升为持续预训练阶段的可迁移能力，并用多层门控聚合与异构几何标注（深度/标定）的鲁棒教师监督实现无需改动推理架构的空间增强。",
+        "relevance": "为 VLA/具身智能提供了一条低成本、可扩展的路径：通过持续预训练向 2D 视觉-语言基础模型注入 3D 空间先验，推动机器人操作中语义理解与精细控制的统一。",
+        "org": "提供信息中未列出作者机构（无法确认；从作者背景推测可能为国内具身智能/机器人相关实验室，如上海人工智能实验室等，但不确定）",
+        "score": 7
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "RM-VLM: From Natural-Language Task Descriptions to Vision-Grounded Reward Machines",
+      "abstract": "Reward machines (RMs) have been proposed as a reward formulation in reinforcement learning (RL) to capture non-Markovian tasks where credit assignment depends on history. By representing reward functions as automata, RMs expose the task's temporal structure and allow such rewards to be handled within a Markovian framework. However, they assume a labelling function, a proposition-grounding oracle for observations, which must be manually engineered for each environment, limiting their wider applicability. In this work, we address this limitation by proposing RM-VLM, a novel approach in which a large language model (LLM) generates an RM from a natural-language task description, and a vision-language model (VLM) acts as the labelling function, grounding the RM's propositions over image-based observations during RM-guided policy learning. A VLM-based value function estimator is used to assess the agent's progress towards each RM transition and derive a dense reward signal. We evaluate RM-VLM on three domains covering non-Markovian grid-world navigation, robotic manipulation, and 3D object collection. Our experimental results show that RM-VLM consistently achieves higher task success rates than existing VLM-based reward methods across all tested domains.",
+      "url": "https://arxiv.org/abs/2611.08308v1",
+      "pdf": "https://arxiv.org/pdf/2611.08308v1",
+      "categories": [
+        "cs.AI",
+        "cs.LG"
+      ],
+      "authors": [
+        "Roko Parac",
+        "Christos Ziakas",
+        "Leo Ardon",
+        "Alessandra Russo"
+      ],
+      "all_authors": [
+        "Roko Parac",
+        "Christos Ziakas",
+        "Leo Ardon",
+        "Alessandra Russo"
+      ],
+      "affiliations": [
+        {
+          "name": "Roko Parac",
+          "affiliations": []
+        },
+        {
+          "name": "Christos Ziakas",
+          "affiliations": []
+        },
+        {
+          "name": "Leo Ardon",
+          "affiliations": []
+        },
+        {
+          "name": "Alessandra Russo",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-05",
+      "matched_topics": [
+        "多模态",
+        "大模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "奖励机（RM）能建模非马尔可夫任务，但依赖人工设计的命题标注函数，难以扩展到新环境。论文要解决如何从自然语言任务描述自动生成RM，并用视觉模型自动完成命题 grounding。",
+        "method": "提出 RM-VLM：由大语言模型（LLM）根据自然语言任务描述生成奖励机；由视觉语言模型（VLM）作为 labelling function，在基于图像的观测上 grounding RM 命题；并用基于 VLM 的价值函数估计器评估智能体向各 RM 转移的进展，从而推导稠密奖励信号，指导策略学习。",
+        "result": "在非马尔可夫网格世界导航、机器人操作和3D物体收集三个域上，RM-VLM 的任务成功率一致高于现有基于 VLM 的奖励方法。",
+        "novelty": "将 LLM 自动生成奖励机与 VLM 自动视觉 grounding 结合，替代人工命题标注，并利用 VLM 价值估计为 RM 转移提供稠密奖励。",
+        "relevance": "为具身智能和强化学习提供了一种从自然语言任务描述到可执行、可解释时序奖励的自动路径，推动了非马尔可夫任务中的语言到奖励落地。",
+        "org": "Imperial College London（帝国理工学院）",
+        "score": 7
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "ProQuant: Progressive Quantization-aware Training for Edge MLLMs",
+      "abstract": "Multi-modal large language models (MLLMs) with impressive perception and understanding capabilities will enable a range of downstream applications. However, their substantial computational and memory requirements hinder the real-world implementation, particularly for resource-constrained edge devices. Quantization has emerged as an effective solution for deploying large models. While post-training quantization (PTQ) successfully retains the performance at moderate bit-width (e.g., W8A8), it suffers from severe performance degradation under low-bit quantization (e.g., W4A8), especially for small-scale models that are more suitable for edge deployment. In this paper, we propose ProQuant, a novel weight-activation quantization-aware training (QAT) framework tailored for low-bit MLLMs. First, to align the limited finetuning dataset distribution with the pretrained dataset distribution, we propose a self-relabeling (SRL) scheme to resample the responses of the open-source multimodal dataset. Second, we are the first to take a decoupled view of multi-modal (MM) understanding and language modeling abilities. We propose a progressive block activation (PBA) mechanism to prioritize the MM understanding recovery. We also introduce a vision-sensitive factor $\\vecτ$ that effectively identifies the MM-critical layers. Extensive experiments across various benchmarks, covering models with 2B-8B parameters, show that ProQuant significantly outperforms existing methods. For example, our W4A8 Qwen3-VL-2B-Instruct improves average accuracy by impressively 6.6% and achieves performance comparable to full precision counterparts with only approximately 1% performance drop. Code is available at https://github.com/yufeixue-ai/ProQuant/.",
+      "url": "https://arxiv.org/abs/2611.08216v1",
+      "pdf": "https://arxiv.org/pdf/2611.08216v1",
+      "categories": [
+        "cs.CV",
+        "cs.CL"
+      ],
+      "authors": [
+        "Yufei Xue",
+        "Yushi Huang",
+        "Jiawei Shao",
+        "Pingcheng Dong",
+        "Yonghao Tan"
+      ],
+      "all_authors": [
+        "Yufei Xue",
+        "Yushi Huang",
+        "Jiawei Shao",
+        "Pingcheng Dong",
+        "Yonghao Tan",
+        "Shiyao Li",
+        "Kwang-Ting Cheng",
+        "Jun Zhang"
+      ],
+      "affiliations": [
+        {
+          "name": "Yufei Xue",
+          "affiliations": []
+        },
+        {
+          "name": "Yushi Huang",
+          "affiliations": []
+        },
+        {
+          "name": "Jiawei Shao",
+          "affiliations": []
+        },
+        {
+          "name": "Pingcheng Dong",
+          "affiliations": []
+        },
+        {
+          "name": "Yonghao Tan",
+          "affiliations": []
+        },
+        {
+          "name": "Shiyao Li",
+          "affiliations": []
+        },
+        {
+          "name": "Kwang-Ting Cheng",
+          "affiliations": []
+        },
+        {
+          "name": "Jun Zhang",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-05",
+      "matched_topics": [
+        "多模态",
+        "大模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "多模态大模型（MLLM）计算与内存开销巨大，难以部署在边缘设备上；现有PTQ在低比特（如W4A8）下性能严重下降，尤其对适合边缘部署的小规模模型更为明显。",
+        "method": "提出ProQuant，一种面向低比特MLLM的权重-激活量化感知训练（QAT）框架：用自重新标注（SRL）方案重采样开源多模态数据集的回复，使微调数据分布对齐预训练分布；首次解耦多模态理解与语言建模能力，提出渐进式块激活（PBA）机制优先恢复多模态理解能力，并引入视觉敏感因子τ识别多模态关键层。",
+        "result": "在2B-8B参数的多种模型与多个基准上显著优于现有方法，例如W4A8的Qwen3-VL-2B-Instruct平均准确率提升6.6%，相比全精度模型仅约1%的性能下降。",
+        "novelty": "首次从解耦多模态理解与语言建模能力的视角设计量化感知训练，结合渐进式块激活与视觉敏感因子定位多模态关键层。",
+        "relevance": "为低比特多模态大模型在边缘设备上的高效部署提供了可行的量化训练范式，推动MLLM落地应用。",
+        "org": "未提供作者机构信息，无法识别",
+        "score": 7
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "Multimodal Hierarchical Mixture-of-Experts for 3D Medical Vision-Language Modeling",
+      "abstract": "Medical 3D scans and reports are inherently hierarchical, with diagnostic cues concentrated in specific anatomical regions across multiple levels of organization. Yet, most medical vision-language models ignore this structure and fail to focus on clinically relevant anatomy. We introduce MedHiVE, which combines hierarchical vision-language Soft Mixture-of-Experts (SMoE) with contrastive learning to jointly model fine-grained anatomy and global scan context. To our knowledge, MedHiVE is the first framework to route both vision and text tokens through a two-level SMoE hierarchy organized by anatomical scale, coupling this with report-derived anatomy-level contrastive alignment for 3D medical imaging. This replaces the direct region-text alignment of statically pooled features and vision-only hierarchical routing of prior work with dynamic, slot-based cross-modal information flow across anatomical scales. MedHiVE operates via a two-level, learnable token-routing mechanism, where local image and text features are first routed through a local SMoE and then fused by a global SMoE into unified multimodal representations. Contrastive learning aligns both anatomy-level and global vision-language representations in a unified space. Pre-trained on 25,000+ CT scans with anatomical supervision, MedHiVE consistently surpasses 11 state-of-the-art methods across 6 datasets on 3 tasks: segmentation, classification, and detection, demonstrating the importance of hierarchical modeling. The code for MedHiVE is at github.com/szczurek-lab/MedHiVE.",
+      "url": "https://arxiv.org/abs/2611.08185v1",
+      "pdf": "https://arxiv.org/pdf/2611.08185v1",
+      "categories": [
+        "cs.CV"
+      ],
+      "authors": [
+        "Gizem Mert",
+        "Szymon Płotka",
+        "Pedro R. A. S. Bassi",
+        "Wenxuan Li",
+        "Zongwei Zhou"
+      ],
+      "all_authors": [
+        "Gizem Mert",
+        "Szymon Płotka",
+        "Pedro R. A. S. Bassi",
+        "Wenxuan Li",
+        "Zongwei Zhou",
+        "Jarosław B. Ćwikła",
+        "Arkadiusz Sitek",
+        "Ewa Szczurek"
+      ],
+      "affiliations": [
+        {
+          "name": "Gizem Mert",
+          "affiliations": []
+        },
+        {
+          "name": "Szymon Płotka",
+          "affiliations": []
+        },
+        {
+          "name": "Pedro R. A. S. Bassi",
+          "affiliations": []
+        },
+        {
+          "name": "Wenxuan Li",
+          "affiliations": []
+        },
+        {
+          "name": "Zongwei Zhou",
+          "affiliations": []
+        },
+        {
+          "name": "Jarosław B. Ćwikła",
+          "affiliations": []
+        },
+        {
+          "name": "Arkadiusz Sitek",
+          "affiliations": []
+        },
+        {
+          "name": "Ewa Szczurek",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-05",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "现有的医学视觉-语言模型忽视了3D医学影像与报告中固有的层级解剖结构，无法聚焦临床相关的解剖区域，导致区域-文本对齐依赖静态池化特征，精度不足。",
+        "method": "提出 MedHiVE，将层级式视觉-语言软混合专家（Soft MoE, SMoE）与对比学习结合：让局部图像与文本 token 先经局部 SMoE 路由，再由全局 SMoE 融合为统一的多模态表示；同时在解剖层与全局层两个尺度上做由报告监督的跨模态对比对齐。",
+        "result": "在2.5万余例CT扫描上预训练后，MedHiVE在6个数据集、分割/分类/检测3项任务上一致超越11种最先进方法。",
+        "novelty": "首个按解剖尺度组织两级 SMoE 层级、并同时路由视觉与文本 token 的3D医学视觉-语言框架，用动态槽位式跨模态信息流替代静态池化对齐与纯视觉层级路由。",
+        "relevance": "为医学多模态大模型引入结构先验与可解释的解剖层级路由提供了范式，可推广至其他层级化科学数据的跨模态建模。",
+        "org": "约翰斯·霍普金斯大学（Johns Hopkins University，Zongwei Zhou 课题组，推测）",
+        "score": 7
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "Edge-Assisted Crowdsensing for Explainable Cyclist Safety Perception",
+      "abstract": "Cyclist fatality rates remain high despite policy support for active travel, and autonomous vehicles add complexity to mixed traffic. Neither crash statistics nor multi-model detection pipelines scale to continuous monitoring of perceived safety along a route. We present an edge-assisted crowdsensing system: handlebar cameras supply street-level frames, a vision-language model (VLM) turns each frame into structured traffic attributes through a single prompt, and an explainable boosting machine (EBM) combines them with OpenStreetMap road infrastructure and on-bike kinematics to predict a crowdsourced 1-9 safety score. Extraction belongs at the network edge: the fastest self-hosted model needs 2.49 s per frame and scoring takes 0.4 ms on a CPU. On 1,362 annotated frames from two London routes, the EBM regressor reaches 72.2 percent binary accuracy and a mean absolute error of 1.011 under five-fold cross-validation. It is within one accuracy point of black-box ensembles. Its per-feature shape functions give exact attribution: physical lane separation is worth +0.97 rating points, a painted lane +0.70 and a construction site -0.65. Planners can therefore price an infrastructure change in rating points, and the results enter cost-benefit analysis directly. We also report inter-annotator agreement (alpha = 0.4695), an attribute audit, and a sensitivity analysis linking attribute error to accuracy. With re-encoding, a 20 s sampling interval serves 1,000 riders at 54 Mbit/s at a cost of 1.4 accuracy points, making continuous monitoring practical.",
+      "url": "https://arxiv.org/abs/2611.08441v1",
+      "pdf": "https://arxiv.org/pdf/2611.08441v1",
+      "categories": [
+        "cs.CV",
+        "eess.IV"
+      ],
+      "authors": [
+        "Hongsen Cao",
+        "Chia-Yen Chiang",
+        "Mona Jaber",
+        "Meihui Wang",
+        "Yasmin Fathy"
+      ],
+      "all_authors": [
+        "Hongsen Cao",
+        "Chia-Yen Chiang",
+        "Mona Jaber",
+        "Meihui Wang",
+        "Yasmin Fathy"
+      ],
+      "affiliations": [
+        {
+          "name": "Hongsen Cao",
+          "affiliations": []
+        },
+        {
+          "name": "Chia-Yen Chiang",
+          "affiliations": []
+        },
+        {
+          "name": "Mona Jaber",
+          "affiliations": []
+        },
+        {
+          "name": "Meihui Wang",
+          "affiliations": []
+        },
+        {
+          "name": "Yasmin Fathy",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-05",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "论文要解决骑行安全感知难以沿路线连续、可解释地监测的问题；事故统计和多模型检测流水线都难以扩展到实际部署。",
+        "method": "提出边缘辅助众包感知系统：自行车把手摄像头采集街景帧，视觉语言模型（VLM）通过单次提示提取结构化交通属性，再用可解释提升机（EBM）融合OpenStreetMap道路基础设施和车辆运动学数据，预测1-9分骑行安全评分。",
+        "result": "在伦敦两条路线的1362帧标注数据上，EBM回归器五折交叉验证达到72.2%二分类准确率和1.011平均绝对误差，仅比黑盒集成模型低约1个百分点；特征形状函数可给出精确归因，如物理车道隔离+0.97分、划线车道+0.70分、施工点-0.65分。",
+        "novelty": "将VLM属性提取与可解释EBM结合，用于路线级骑行安全评分，并验证边缘端部署与采样频率-精度权衡。",
+        "relevance": "展示了可解释多模态VLM与边缘AI在城市出行安全和基础设施评估中的实用潜力。",
+        "org": "疑似伦敦玛丽女王大学（Queen Mary University of London）",
+        "score": 6
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "NPCBench: A Clinical Apprenticeship Benchmark for Multimodal Care-Pathway Reasoning in Nasopharyngeal Carcinoma",
+      "abstract": "Current medical benchmarks typically break down clinical competence into isolated factual questions, single-image tasks, or static case vignettes. These tests score individual answers, but reveal less about whether a model can integrate subspecialty knowledge with multimodal evidence and track a patient's condition throughout a course of care. To close this gap, we introduce NPCBench, a clinical apprenticeship benchmark for nasopharyngeal carcinoma (NPC). NPCBench mirrors specialist training, from guideline and foundational knowledge to case planning, longitudinal review, CarePath integration, and open-ended consultation. It contains 4,777 component and consultation items and a 100-patient CarePath cohort with 417 scored diagnostic and care tasks. The episode-level evaluation tests whether diagnostic and care answers are jointly correct within a care pathway. By linking stepwise tasks to patient-level care trajectories, NPCBench evaluates whether models ground decisions in visual evidence, interpret changes in patient state, and meet clinical requirements in consultation. Across 30 evaluated models, we observe a composition gap: strong performance on individual tasks does not ensure jointly correct diagnostic and care answers for the same patient. Among 21 multimodal models, strict CarePath success reaches at most 23%. Paired controls and physician calibration further examine evidence grounding, longitudinal revision, and consultation judging. Overall, NPCBench broadens the evaluation of medical artificial intelligence beyond static question-answering paradigms to an apprenticeship-oriented assessment of clinical workflows, thereby offering a testbed for evidence-based and temporally coherent reasoning in oncology care.",
+      "url": "https://arxiv.org/abs/2611.08369v1",
+      "pdf": "https://arxiv.org/pdf/2611.08369v1",
+      "categories": [
+        "cs.AI"
+      ],
+      "authors": [
+        "Pengkai Wang",
+        "Wei-Wei Zhang",
+        "Yan Li",
+        "Min Tang",
+        "Zhitian Hou"
+      ],
+      "all_authors": [
+        "Pengkai Wang",
+        "Wei-Wei Zhang",
+        "Yan Li",
+        "Min Tang",
+        "Zhitian Hou",
+        "Zeyu Liu",
+        "Guanghao Zhu",
+        "Yuanyi Wang",
+        "Yanggan Gu",
+        "Wenjun Wang",
+        "Minheng Ni",
+        "Congkai Xie",
+        "Zhijie Sang",
+        "Jianmin Wu",
+        "Ying Sun",
+        "Hongxia Yang"
+      ],
+      "affiliations": [
+        {
+          "name": "Pengkai Wang",
+          "affiliations": []
+        },
+        {
+          "name": "Wei-Wei Zhang",
+          "affiliations": []
+        },
+        {
+          "name": "Yan Li",
+          "affiliations": []
+        },
+        {
+          "name": "Min Tang",
+          "affiliations": []
+        },
+        {
+          "name": "Zhitian Hou",
+          "affiliations": []
+        },
+        {
+          "name": "Zeyu Liu",
+          "affiliations": []
+        },
+        {
+          "name": "Guanghao Zhu",
+          "affiliations": []
+        },
+        {
+          "name": "Yuanyi Wang",
+          "affiliations": []
+        },
+        {
+          "name": "Yanggan Gu",
+          "affiliations": []
+        },
+        {
+          "name": "Wenjun Wang",
+          "affiliations": []
+        },
+        {
+          "name": "Minheng Ni",
+          "affiliations": []
+        },
+        {
+          "name": "Congkai Xie",
+          "affiliations": []
+        },
+        {
+          "name": "Zhijie Sang",
+          "affiliations": []
+        },
+        {
+          "name": "Jianmin Wu",
+          "affiliations": []
+        },
+        {
+          "name": "Ying Sun",
+          "affiliations": []
+        },
+        {
+          "name": "Hongxia Yang",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-05",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "现有医学基准多将临床能力拆解为孤立的知识问答、单图任务或静态病例，难以评估模型能否整合专科知识与多模态证据、并在完整诊疗路径中持续追踪患者状态。",
+        "method": "论文提出 NPCBench，一个面向鼻咽癌（NPC）的“临床学徒式”基准，按专科培训进阶组织任务：指南与基础知识、病例规划、纵向复评、CarePath 整合与开放式问诊；包含 4,777 个组件与问诊条目，以及 100 例患者的 CarePath 队列（417 个计分诊断与照护任务），并采用 episode 级评测检验同一患者路径中诊断与照护答案是否联合正确。",
+        "result": "在 30 个模型上发现“组合差距”：单项任务表现好并不保证同一患者的诊断与照护联合正确；21 个多模态模型中严格 CarePath 成功率最高仅 23%。配对对照与医师校准进一步考察了证据落地、纵向修正与问诊评判。",
+        "novelty": "首次将肿瘤临床能力评测从静态问答转向以患者诊疗路径为纽带的“学徒式”纵向、多模态、联合正确性评估。",
+        "relevance": "为医疗 AI 提供了从证据 grounding 到时序连贯推理的流程级测试平台，推动评测超越静态 VQA 范式。",
+        "org": "未能从提供的信息中识别（作者机构字段为空）",
+        "score": 6
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "The Geometry of Simulated Perspectives: Dissociating Representation and Behaviour in a Multimodal Language Model",
+      "abstract": "Multimodal language models can simulate different observers, yet it remains unclear how assigned perspectives reshape their internal representations and whether these changes govern their judgements. Here, we investigate the representational geometry of persona-conditioned visual interestingness in Qwen3-VL-8B-Instruct. Across 100 images and 53 prompting conditions, we systematically vary persona content and the linguistic framing used to introduce it, while recording behavioural ratings and layer-wise hidden states. We observe a systematic reorganisation of representational geometry across processing depth: early layers primarily encode image identity, whereas persona-specific structures emerge in later layers. Strikingly, prompt framing reshapes internal representations more strongly than persona identity, whereas persona content has a greater impact on behavioural judgements. This dissociation is further illustrated by minimal identity statements that alter representations even without changing responses. These findings demonstrate that representational distance does not necessarily reflect behavioural relevance. More broadly, they reveal how simulated perspectives emerge as distinct structures within the representational space of artificial cognitive systems, highlighting a fundamental distinction between the geometry of internal representations and their functional consequences.",
+      "url": "https://arxiv.org/abs/2611.08262v1",
+      "pdf": "https://arxiv.org/pdf/2611.08262v1",
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV"
+      ],
+      "authors": [
+        "Mathis Immertreu",
+        "Fitim Abdullahu",
+        "Thomas Kinfe",
+        "Claus Metzner",
+        "Helmut Grabner"
+      ],
+      "all_authors": [
+        "Mathis Immertreu",
+        "Fitim Abdullahu",
+        "Thomas Kinfe",
+        "Claus Metzner",
+        "Helmut Grabner",
+        "Patrick Krauss",
+        "Achim Schilling"
+      ],
+      "affiliations": [
+        {
+          "name": "Mathis Immertreu",
+          "affiliations": []
+        },
+        {
+          "name": "Fitim Abdullahu",
+          "affiliations": []
+        },
+        {
+          "name": "Thomas Kinfe",
+          "affiliations": []
+        },
+        {
+          "name": "Claus Metzner",
+          "affiliations": []
+        },
+        {
+          "name": "Helmut Grabner",
+          "affiliations": []
+        },
+        {
+          "name": "Patrick Krauss",
+          "affiliations": []
+        },
+        {
+          "name": "Achim Schilling",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-05",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "多模态语言模型可以模拟不同观察者视角，但被赋予的人格视角如何重塑其内部表征、以及这些表征变化是否真正驱动其判断，尚不清楚。",
+        "method": "以 Qwen3-VL-8B-Instruct 为对象，在 100 张图像和 53 种提示条件下系统变化人格内容与引入人格的语言框架，同时记录行为评分与逐层隐藏状态，并分析表征几何结构随处理深度的变化。",
+        "result": "早期层主要编码图像身份，人格相关结构在较深层才出现；提示框架对内部表征的重塑强于人格身份本身，而人格内容对行为判断的影响更大，形成表征与行为的分离——甚至不改变回答的最小身份陈述也能改变表征。",
+        "novelty": "首次系统揭示多模态大模型中“模拟视角”的表征几何与行为效应之间存在解耦，即表征距离并不必然反映行为相关性。",
+        "relevance": "为理解多模态大模型内部表征与功能输出之间的关系提供新证据，对可解释性、人格/角色提示设计及模型行为调控具有启示意义。",
+        "org": "作者机构信息缺失，无法识别",
+        "score": 6
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "Do You Miss the Nights We Spent Crafting Figures? Rethinking Teaser and Framework Figures in the Age of Generative AI",
+      "abstract": "Scientific figures give research ideas a visual form through choices of abstraction, composition, and emphasis. Generative AI offers new ways to realize these choices, raising questions about explanatory clarity and purposeful visual expression. We examine these questions through a visual retrospective of 371 motivation and framework figures from 200 papers. The corpus comprises a quota-based main sample of 160 papers spanning four temporal periods and a separate purposive style-contrast sample of 40 papers. A single multimodal judge evaluates six dimensions of communication and design, with three repeated judgments per figure. We attempt source-constrained revisions of all 371 figures, of which 369 pass the recorded fidelity checks. Original-figure ratings show no uniform decline across periods. Revisions increase mean clarity ratings by 0.428 points and decrease aesthetic coherence ratings by 0.111 points on a five-point scale. Gains in the six-dimension average are larger for main-sample motivation figures than for frameworks. Case analyses show that added explanation can clarify comparisons while leaving typographic hierarchy and visual economy unresolved. These model-based findings support researcher-led design, with AI assisting exploration and authors retaining responsibility for explanatory purpose, composition, and scientific relationships. The accompanying atlas and evaluation records are available at https://ntu-ai4x.github.io/Rethinking_Figures/index_en.html.",
+      "url": "https://arxiv.org/abs/2611.08486v1",
+      "pdf": "https://arxiv.org/pdf/2611.08486v1",
+      "categories": [
+        "cs.CV"
+      ],
+      "authors": [
+        "Xiaoqi Zhao",
+        "Youwei Pang",
+        "Kailai Zhou"
+      ],
+      "all_authors": [
+        "Xiaoqi Zhao",
+        "Youwei Pang",
+        "Kailai Zhou"
+      ],
+      "affiliations": [
+        {
+          "name": "Xiaoqi Zhao",
+          "affiliations": []
+        },
+        {
+          "name": "Youwei Pang",
+          "affiliations": []
+        },
+        {
+          "name": "Kailai Zhou",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-05",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "论文关注生成式AI时代科研论文中的 teaser figure 与 framework figure 应如何设计，以及AI辅助修改是否能提升其解释清晰度与视觉表达质量。",
+        "method": "作者对200篇论文中的371幅动机图与框架图进行视觉回顾，包括160篇配额主样本和40篇风格对比样本；使用单一多模态评判模型从六个维度对每幅图重复评判三次，并对全部371幅图进行受源约束的修改，其中369幅通过保真度检查。",
+        "result": "原始图评分未呈现跨时期的统一下降趋势；AI辅助修改使清晰度平均提高0.428分，但美学一致性平均下降0.111分（五分制）。六维平均增益在动机图上大于框架图，案例显示补充解释可改善比较，但排版层级与视觉经济性仍未解决。",
+        "novelty": "首次以较大规模视觉回顾和受源约束的AI修改实验，系统评估生成式AI对科研论文动机图与框架图传播效果的影响。",
+        "relevance": "为AI辅助科研可视化与论文写作工具提供实证依据，强调AI可辅助探索，但解释目的、构图和科学关系仍应由研究者负责。",
+        "org": "南洋理工大学（依据论文链接 ntu-ai4x.github.io 推断）",
+        "score": 5
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "A Multimodal Haptic Interface for Simultaneous Softness and Thermal Modulation",
+      "abstract": "Haptic interactions, such as touching an object in virtual reality, involve detecting a plethora of sensations through the skin. Whilst tactile displays exist to simulate and manipulate all of these cues individually, little progress has been made constructing devices that can control multiple cues simultaneously. This paper presents a tactile display technology that offers both softness and temperature change.   A prototype display, based on particle jamming and the thermal transfer of heated and cooled water, is evaluated in terms of its ability to change both stiffness and temperature. Mechanical evaluations demonstrate controllable stiffness increase of 300%, whilst thermal characterisation showed strong surface uniformity and a range of achievable temperatures from 10°C up to 50°C, with closed-loop control maintaining a 0.2°C error from a setpoint. This work advances the design of multimodal tactile displays with applications to perceptual research, medical simulation, and affective haptics.",
+      "url": "https://arxiv.org/abs/2611.08398v1",
+      "pdf": "https://arxiv.org/pdf/2611.08398v1",
+      "categories": [
+        "cs.RO",
+        "cs.HC",
+        "eess.SY"
+      ],
+      "authors": [
+        "Joshua Brown",
+        "Fernando Bello",
+        "Lynette Jones"
+      ],
+      "all_authors": [
+        "Joshua Brown",
+        "Fernando Bello",
+        "Lynette Jones"
+      ],
+      "affiliations": [
+        {
+          "name": "Joshua Brown",
+          "affiliations": []
+        },
+        {
+          "name": "Fernando Bello",
+          "affiliations": []
+        },
+        {
+          "name": "Lynette Jones",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-05",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "现有触觉显示设备大多只能单独模拟某一种皮肤触觉线索，缺乏能够同时、独立地控制多种触觉通道（如柔软度与温度）的器件，论文旨在填补这一空白。",
+        "method": "作者设计并制作了一款多模态触觉显示原型：用颗粒阻塞（particle jamming）实现可控刚度变化，用加热/冷却水的循环热传导实现表面温度调节；随后通过机械测试与热学表征（含闭环温控）评估其刚度与温度调控能力。",
+        "result": "机械测试显示刚度可提升约300%且可控；热学表征显示表面温度均匀性好，可实现10°C至50°C的温度范围，闭环控制下稳态误差约0.2°C。",
+        "novelty": "在同一触觉显示器件中集成颗粒阻塞式刚度调制与水循环式双向温控，实现对柔软度和温度两种触觉线索的同时、独立呈现。",
+        "relevance": "这是一项触觉硬件工作，本身不含AI算法，但可作为具身智能、遥操作与VR感知研究中为智能体或人类提供多模态触觉反馈的底层器件支撑。",
+        "org": "提供的元数据中未标注作者机构（Fernando Bello 常与帝国理工学院相关、Lynette Jones 常与MIT相关，但需核实）",
+        "score": 3
+      },
+      "identified_orgs": [
+        "MIT"
+      ]
+    }
+  ],
+  "key_lab_papers": [
+    {
+      "title": "Interactive Visual Gym: Evaluating Visual Interaction Models with Simulated Users in Interactive Worlds",
+      "abstract": "Visual interaction models that support users during ongoing physical tasks require evaluation in closed loop, where assistant responses can change subsequent user behavior and task outcomes. Existing benchmarks largely rely on offline replay and therefore cannot capture these effects. We introduce Interactive Visual Gym, a framework for closed-loop evaluation and training of visual interaction models through joint simulation of executable task environments and human users. We contribute three simulators that recreate everyday tasks and human-aligned action spaces across cooking, household manipulation, and mobile-interface domains, together with a persona-conditioned user simulation harness that collaborates with the assistant while incorporating controlled execution errors and other out-of-plan behaviors. We instantiate the framework as IVG-Bench, a benchmark with 315 interaction scenarios. Evaluating state-of-the-art VLMs as visual interaction models reveals substantial limitations: the best-performing model, Gemini 4 Argon, completes only 53.4% of tasks within the time limit, exhibits significant weaknesses in factual grounding and actionable guidance, and is often too slow to prevent errors when response latency is considered. We verify our evaluation protocol with a human study which finds 78.5% agreement between our interaction-quality metric and participant preferences. We further show that the environments provide useful learning signals: in a proof-of-concept GRPO experiment, closed-loop training improves both task success and interaction quality for Qwen3.5-4B model in our cooking environment.",
+      "url": "https://arxiv.org/abs/2611.08286v1",
+      "pdf": "https://arxiv.org/pdf/2611.08286v1",
+      "categories": [
+        "cs.CV"
+      ],
+      "authors": [
+        "Chenhao Zheng",
+        "Zixian Ma",
+        "Kai Li",
+        "Kanchana Ranasinghe",
+        "Jieyu Zhang"
+      ],
+      "all_authors": [
+        "Chenhao Zheng",
+        "Zixian Ma",
+        "Kai Li",
+        "Kanchana Ranasinghe",
+        "Jieyu Zhang",
+        "Artemis Panagopoulou",
+        "Weikai Huang",
+        "Jianxu Shangguan",
+        "Yuanyuan Tan",
+        "Silvio Savarese",
+        "Juan Carlos Niebles",
+        "Ranjay Krishna",
+        "Ran Xu",
+        "Honglu Zhou"
+      ],
+      "affiliations": [
+        {
+          "name": "Chenhao Zheng",
+          "affiliations": []
+        },
+        {
+          "name": "Zixian Ma",
+          "affiliations": []
+        },
+        {
+          "name": "Kai Li",
+          "affiliations": []
+        },
+        {
+          "name": "Kanchana Ranasinghe",
+          "affiliations": []
+        },
+        {
+          "name": "Jieyu Zhang",
+          "affiliations": []
+        },
+        {
+          "name": "Artemis Panagopoulou",
+          "affiliations": []
+        },
+        {
+          "name": "Weikai Huang",
+          "affiliations": []
+        },
+        {
+          "name": "Jianxu Shangguan",
+          "affiliations": []
+        },
+        {
+          "name": "Yuanyuan Tan",
+          "affiliations": []
+        },
+        {
+          "name": "Silvio Savarese",
+          "affiliations": []
+        },
+        {
+          "name": "Juan Carlos Niebles",
+          "affiliations": []
+        },
+        {
+          "name": "Ranjay Krishna",
+          "affiliations": []
+        },
+        {
+          "name": "Ran Xu",
+          "affiliations": []
+        },
+        {
+          "name": "Honglu Zhou",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-05",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "现有视觉交互模型（在用户执行物理任务时提供实时指导的模型）的评测大多依赖离线回放，无法刻画助手回复如何反过来改变用户后续行为与任务结果，因而缺少闭环评估手段。",
+        "method": "提出 Interactive Visual Gym 框架，联合仿真可执行的任务环境与人物画像条件化（persona-conditioned）的用户模拟器，在烹饪、家庭操作、移动界面三个领域构建与人对齐的动作空间并注入受控执行错误等偏离计划的行为。基于该框架实例化 IVG-Bench（315 个交互场景），并用人类研究校验评测协议，另做 GRPO 闭环训练的概念验证。",
+        "result": "评测显示现有 VLM 作为视觉交互模型存在明显不足：最佳模型 Gemini 4 Argon 在时限内仅完成 53.4% 的任务，事实依据与可操作指导能力薄弱，且考虑响应延迟时常因过慢而无法阻止错误；交互质量指标与人类偏好的吻合度为 78.5%；在烹饪环境中闭环 GRPO 训练同时提升了 Qwen3.5-4B 的任务成功率与交互质量。",
+        "novelty": "首次将可执行任务环境与带有人类偏差的用户模拟器结合，构建面向视觉交互模型的闭环评测与训练基准（含人类验证的交互质量指标）。",
+        "relevance": "为多模态大模型作为「实时任务助手」的能力提供了更贴近真实部署的闭环评测与可训练信号，推动视觉交互模型与世界模型式交互研究的发展。",
+        "org": "作者机构信息未提供（从作者名单看，可能关联华盛顿大学等机构，无法确认）",
+        "score": 8
+      },
+      "identified_orgs": [
+        "Google"
+      ],
+      "contact_info": {
+        "emails_found": [],
+        "ai_extracted": null
+      }
+    },
+    {
+      "title": "RoboARCade: Benchmarking Agentic Robot Control",
+      "abstract": "Improvements in multi-modal capabilities have enabled agents to act directly as robot policies, a setting we refer to as agentic robot control (ARC). We introduce RoboARCade, a benchmark of long-horizon manipulation tasks across three embodiments designed to test in-context adaptation, memory, and reasoning for precise control. The tasks build on existing open-source benchmarks, which we make harder by widening the range of initial conditions. RoboARCade is easy to use and extend: all tasks run on a single simulation backend, MuJoCo, each task is a self-contained data pack, and agents connect through interchangeable interfaces, so new tasks, agents, and interfaces can be added independently. The benchmark separates leading agents: GPT-6 Astra achieves 49.8% compared with 43.6% for Claude Fable 5.1, leaving substantial room for improvement. Comparing two interfaces, we find that a richer visual interface adds only 1.5 to 6.8 points at 1.7 to 2.3 times the cost. Failures stem mostly from choosing a poor manipulation strategy or executing a good one imprecisely, rarely from misunderstanding the scene, and agents incorrectly claim success on 24% to 39% of attempted subtasks. Agents can also improve without human input: one successful demonstration in context raises Astra's score from 53.5% to 73.0% on a five-task subset, and a prompt the agent writes and revises itself reaches 72.0%. Code, videos and full traces are available at roboarcade.org.",
+      "url": "https://arxiv.org/abs/2611.08209v1",
+      "pdf": "https://arxiv.org/pdf/2611.08209v1",
+      "categories": [
+        "cs.RO"
+      ],
+      "authors": [
+        "Satvik Sharma",
+        "Hengyuan Hu",
+        "Mihika Kamat",
+        "Dorsa Sadigh",
+        "Jeannette Bohg"
+      ],
+      "all_authors": [
+        "Satvik Sharma",
+        "Hengyuan Hu",
+        "Mihika Kamat",
+        "Dorsa Sadigh",
+        "Jeannette Bohg"
+      ],
+      "affiliations": [
+        {
+          "name": "Satvik Sharma",
+          "affiliations": []
+        },
+        {
+          "name": "Hengyuan Hu",
+          "affiliations": []
+        },
+        {
+          "name": "Mihika Kamat",
+          "affiliations": []
+        },
+        {
+          "name": "Dorsa Sadigh",
+          "affiliations": []
+        },
+        {
+          "name": "Jeannette Bohg",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-05",
+      "matched_topics": [
+        "多模态",
+        "大模型",
+        "Agent"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "论文要评估多模态智能体直接作为机器人策略时的长程精确操作能力，尤其是上下文适应、记忆与推理能力。",
+        "method": "提出 RoboARCade 基准，包含跨三种具身形态的长程操作任务，统一运行在 MuJoCo 后端，并通过自包含数据包和可替换接口支持独立扩展任务、智能体和接口。通过扩大初始条件范围提升任务难度。",
+        "result": "基准能区分领先智能体：GPT-6 Astra 得分 49.8%，Claude Fable 5.1 为 43.6%；更丰富视觉接口仅提升 1.5 到 6.8 分但成本增至 1.7 到 2.3 倍。失败主要来自策略选择差或执行不精确，而非场景理解错误；智能体在 24% 到 39% 的尝试子任务中错误声称成功。上下文示例可将 Astra 在五任务子集上从 53.5% 提升至 73.0%，自写自改提示达到 72.0%。",
+        "novelty": "提出了可扩展、模块化的智能体机器人控制基准，系统评测长程操作中的上下文适应、记忆、推理及接口影响。",
+        "relevance": "为多模态智能体作为机器人策略提供了诊断性评测平台，揭示关键失败模式与无需人工反馈的自提升潜力。",
+        "org": "Stanford University",
+        "score": 8
+      },
+      "identified_orgs": [
+        "Anthropic",
+        "Stanford"
+      ],
+      "contact_info": {
+        "emails_found": [],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Satvik Sharma",
+              "email": "",
+              "affiliation": "Stanford University",
+              "role": "第一作者"
+            },
+            {
+              "name": "Hengyuan Hu",
+              "email": "",
+              "affiliation": "Stanford University",
+              "role": ""
+            },
+            {
+              "name": "Mihika Kamat",
+              "email": "",
+              "affiliation": "Stanford University",
+              "role": ""
+            },
+            {
+              "name": "Dorsa Sadigh",
+              "email": "",
+              "affiliation": "Stanford University",
+              "role": ""
+            },
+            {
+              "name": "Jeannette Bohg",
+              "email": "",
+              "affiliation": "Stanford University",
+              "role": ""
+            }
+          ],
+          "corresponding_author": ""
+        }
+      }
+    }
+  ],
+  "org_analysis": [
+    {
+      "org": "Google",
+      "count": 1,
+      "topics": {
+        "多模态": 1
+      },
+      "papers": [
+        {
+          "title": "Interactive Visual Gym: Evaluating Visual Interaction Models with Simulated Users in Interactive Worlds",
+          "url": "https://arxiv.org/abs/2611.08286v1",
+          "score": 8
+        }
+      ]
+    },
+    {
+      "org": "Anthropic",
+      "count": 1,
+      "topics": {
+        "多模态": 1,
+        "大模型": 1,
+        "Agent": 1
+      },
+      "papers": [
+        {
+          "title": "RoboARCade: Benchmarking Agentic Robot Control",
+          "url": "https://arxiv.org/abs/2611.08209v1",
+          "score": 8
+        }
+      ]
+    },
+    {
+      "org": "Stanford",
+      "count": 1,
+      "topics": {
+        "多模态": 1,
+        "大模型": 1,
+        "Agent": 1
+      },
+      "papers": [
+        {
+          "title": "RoboARCade: Benchmarking Agentic Robot Control",
+          "url": "https://arxiv.org/abs/2611.08209v1",
+          "score": 8
+        }
+      ]
+    },
+    {
+      "org": "MIT",
+      "count": 1,
+      "topics": {
+        "多模态": 1
+      },
+      "papers": [
+        {
+          "title": "A Multimodal Haptic Interface for Simultaneous Softness and Thermal Modulation",
+          "url": "https://arxiv.org/abs/2611.08398v1",
+          "score": 3
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "paper_title": "OopsieRecover: Learning Transferable VLA Corrections from Semantic Interventions",
+      "paper_url": "https://arxiv.org/abs/2611.08462v1",
+      "paper_score": 8,
+      "topics": [
+        "多模态"
+      ],
+      "orgs": [],
+      "is_key_lab": false,
+      "emails": [],
+      "contacts": [
+        {
+          "name": "Arpit Bahety",
+          "email": "",
+          "affiliation": "",
+          "role": "第一作者（与 Skand Peri 共同一作，标注 ∗ 表示同等贡献）"
+        },
+        {
+          "name": "Skand Peri",
+          "email": "",
+          "affiliation": "",
+          "role": "共同第一作者（标注 ∗ 表示同等贡献）"
+        },
+        {
+          "name": "Sriniket Ambatipudi",
+          "email": "",
+          "affiliation": "",
+          "role": "作者"
+        },
+        {
+          "name": "Chen Xu",
+          "email": "",
+          "affiliation": "",
+          "role": "作者"
+        },
+        {
+          "name": "Haruki Nishimura",
+          "email": "",
+          "affiliation": "",
+          "role": "作者"
+        },
+        {
+          "name": "Masha Itkina",
+          "email": "",
+          "affiliation": "",
+          "role": "作者"
+        },
+        {
+          "name": "Roberto Martín-Martín",
+          "email": "",
+          "affiliation": "",
+          "role": "作者"
+        }
+      ],
+      "corresponding_author": ""
+    },
+    {
+      "paper_title": "Failure Prediction and Classification in Vision-Language-Action Models Via Calibrated Latent Probing",
+      "paper_url": "https://arxiv.org/abs/2611.08425v1",
+      "paper_score": 8,
+      "topics": [
+        "多模态",
+        "具身智能"
+      ],
+      "orgs": [],
+      "is_key_lab": false,
+      "emails": [
+        "michal.podolinsky@utexas.edu"
+      ],
+      "contacts": [
+        {
+          "name": "Michal P. Podolinsky",
+          "email": "",
+          "affiliation": "",
+          "role": "第一作者"
+        },
+        {
+          "name": "Yunhao Yang",
+          "email": "",
+          "affiliation": "",
+          "role": ""
+        },
+        {
+          "name": "Daniel Little",
+          "email": "",
+          "affiliation": "",
+          "role": ""
+        },
+        {
+          "name": "Hong Lu",
+          "email": "",
+          "affiliation": "",
+          "role": ""
+        },
+        {
+          "name": "Rohan Siva",
+          "email": "",
+          "affiliation": "",
+          "role": ""
+        },
+        {
+          "name": "Olin Goudey",
+          "email": "",
+          "affiliation": "",
+          "role": ""
+        },
+        {
+          "name": "Neel P. Bhatt",
+          "email": "",
+          "affiliation": "",
+          "role": ""
+        },
+        {
+          "name": "Matthias Scheutz",
+          "email": "",
+          "affiliation": "",
+          "role": ""
+        },
+        {
+          "name": "Ufuk Topcu",
+          "email": "",
+          "affiliation": "",
+          "role": ""
+        }
+      ],
+      "corresponding_author": ""
+    },
+    {
+      "paper_title": "VisionSIM: Beyond Idealized Sensors - A Multi-Modal Simulator for Robot Perception",
+      "paper_url": "https://arxiv.org/abs/2611.08368v1",
+      "paper_score": 8,
+      "topics": [
+        "多模态"
+      ],
+      "orgs": [],
+      "is_key_lab": false,
+      "emails": [],
+      "contacts": [
+        {
+          "name": "Sacha Jungerman",
+          "email": "",
+          "affiliation": "University of Wisconsin – Madison",
+          "role": "第一作者"
+        },
+        {
+          "name": "Kaustubh Sadekar",
+          "email": "",
+          "affiliation": "Portland State University",
+          "role": ""
+        },
+        {
+          "name": "Avery Gump",
+          "email": "",
+          "affiliation": "University of Wisconsin – Madison",
+          "role": ""
+        },
+        {
+          "name": "Sriram Narayanan",
+          "email": "",
+          "affiliation": "Carnegie Mellon University",
+          "role": ""
+        },
+        {
+          "name": "Shantanu Gupta",
+          "email": "",
+          "affiliation": "University of Wisconsin – Madison",
+          "role": ""
+        },
+        {
+          "name": "Bhuyashi Deka",
+          "email": "",
+          "affiliation": "University of Wisconsin – Madison",
+          "role": ""
+        },
+        {
+          "name": "Srinivasa Narasimhan",
+          "email": "",
+          "affiliation": "Carnegie Mellon University",
+          "role": ""
+        },
+        {
+          "name": "Atul Ingle",
+          "email": "",
+          "affiliation": "Portland State University",
+          "role": ""
+        },
+        {
+          "name": "Mohit Gupta",
+          "email": "",
+          "affiliation": "University of Wisconsin – Madison",
+          "role": ""
+        }
+      ],
+      "corresponding_author": ""
+    },
+    {
+      "paper_title": "GPWM: Modeling the World as 3D Particle Motion",
+      "paper_url": "https://arxiv.org/abs/2611.08338v1",
+      "paper_score": 8,
+      "topics": [
+        "世界模型"
+      ],
+      "orgs": [],
+      "is_key_lab": false,
+      "emails": [],
+      "contacts": [
+        {
+          "name": "Robert Ren",
+          "email": "",
+          "affiliation": "Carnegie Mellon University",
+          "role": "共同第一作者（同等贡献）"
+        },
+        {
+          "name": "Matthew Bronars",
+          "email": "",
+          "affiliation": "Carnegie Mellon University",
+          "role": "共同第一作者（同等贡献）"
+        },
+        {
+          "name": "He Zhu",
+          "email": "",
+          "affiliation": "Carnegie Mellon University",
+          "role": ""
+        },
+        {
+          "name": "Yikai Tang",
+          "email": "",
+          "affiliation": "Carnegie Mellon University",
+          "role": ""
+        },
+        {
+          "name": "Jianing Zhang",
+          "email": "",
+          "affiliation": "Carnegie Mellon University",
+          "role": ""
+        },
+        {
+          "name": "Sergey Zakharov",
+          "email": "",
+          "affiliation": "Toyota Research Institute",
+          "role": ""
+        },
+        {
+          "name": "Pavel Tokmakov",
+          "email": "",
+          "affiliation": "Toyota Research Institute",
+          "role": ""
+        },
+        {
+          "name": "Katerina Fragkiadaki",
+          "email": "",
+          "affiliation": "Carnegie Mellon University",
+          "role": ""
+        }
+      ],
+      "corresponding_author": ""
+    },
+    {
+      "paper_title": "Interactive Visual Gym: Evaluating Visual Interaction Models with Simulated Users in Interactive Worlds",
+      "paper_url": "https://arxiv.org/abs/2611.08286v1",
+      "paper_score": 8,
+      "topics": [
+        "多模态"
+      ],
+      "orgs": [
+        "Google"
+      ],
+      "is_key_lab": true,
+      "emails": [],
+      "contacts": [],
+      "corresponding_author": ""
+    },
+    {
+      "paper_title": "Multimodal-SEA: Benchmarking AI Agent Security under Multimodal Social Engineering Attacks",
+      "paper_url": "https://arxiv.org/abs/2611.08281v1",
+      "paper_score": 8,
+      "topics": [
+        "多模态",
+        "Agent"
+      ],
+      "orgs": [],
+      "is_key_lab": false,
+      "emails": [
+        "yrfung@ust.hk",
+        "zhebu@cse.ust.hk"
+      ],
+      "contacts": [
+        {
+          "name": "Zhitao He",
+          "email": "zhebu@cse.ust.hk",
+          "affiliation": "MMSense Lab, The Hong Kong University of Science and Technology",
+          "role": "共同第一作者"
+        },
+        {
+          "name": "Chi Him Zhang",
+          "email": "",
+          "affiliation": "MMSense Lab, The Hong Kong University of Science and Technology",
+          "role": "共同第一作者"
+        },
+        {
+          "name": "Chengru Han",
+          "email": "",
+          "affiliation": "MMSense Lab, The Hong Kong University of Science and Technology",
+          "role": "共同第一作者"
+        },
+        {
+          "name": "Yi R. (May) Fung",
+          "email": "yrfung@ust.hk",
+          "affiliation": "MMSense Lab, The Hong Kong University of Science and Technology",
+          "role": "通讯作者"
+        }
+      ],
+      "corresponding_author": "Yi R. (May) Fung"
+    },
+    {
+      "paper_title": "Terminal-style Mathematical Modeling Bench: The First Agentic and Verifiable Benchmark for Mathematical Modeling",
+      "paper_url": "https://arxiv.org/abs/2611.08237v1",
+      "paper_score": 8,
+      "topics": [
+        "多模态",
+        "大模型",
+        "Agent"
+      ],
+      "orgs": [],
+      "is_key_lab": false,
+      "emails": [],
+      "contacts": [
+        {
+          "name": "Xiaojun Wu",
+          "email": "",
+          "affiliation": "IDEA Research; The Hong Kong University of Science and Technology (Guangzhou)",
+          "role": "共同第一作者"
+        },
+        {
+          "name": "Cehao Yang",
+          "email": "",
+          "affiliation": "IDEA Research; The Hong Kong University of Science and Technology (Guangzhou)",
+          "role": "共同第一作者"
+        },
+        {
+          "name": "Xuhui Jiang",
+          "email": "",
+          "affiliation": "IDEA Research; DataArcTech Ltd.",
+          "role": ""
+        },
+        {
+          "name": "Chengjin Xu",
+          "email": "",
+          "affiliation": "IDEA Research; DataArcTech Ltd.",
+          "role": ""
+        },
+        {
+          "name": "Jia Li",
+          "email": "",
+          "affiliation": "The Hong Kong University of Science and Technology (Guangzhou)",
+          "role": "通讯作者"
+        },
+        {
+          "name": "Jian Guo",
+          "email": "",
+          "affiliation": "IDEA Research",
+          "role": "通讯作者"
+        }
+      ],
+      "corresponding_author": "Jia Li, Jian Guo"
+    },
+    {
+      "paper_title": "RoboARCade: Benchmarking Agentic Robot Control",
+      "paper_url": "https://arxiv.org/abs/2611.08209v1",
+      "paper_score": 8,
+      "topics": [
+        "多模态",
+        "大模型",
+        "Agent"
+      ],
+      "orgs": [
+        "Anthropic",
+        "Stanford"
+      ],
+      "is_key_lab": true,
+      "emails": [],
+      "contacts": [
+        {
+          "name": "Satvik Sharma",
+          "email": "",
+          "affiliation": "Stanford University",
+          "role": "第一作者"
+        },
+        {
+          "name": "Hengyuan Hu",
+          "email": "",
+          "affiliation": "Stanford University",
+          "role": ""
+        },
+        {
+          "name": "Mihika Kamat",
+          "email": "",
+          "affiliation": "Stanford University",
+          "role": ""
+        },
+        {
+          "name": "Dorsa Sadigh",
+          "email": "",
+          "affiliation": "Stanford University",
+          "role": ""
+        },
+        {
+          "name": "Jeannette Bohg",
+          "email": "",
+          "affiliation": "Stanford University",
+          "role": ""
+        }
+      ],
+      "corresponding_author": ""
+    },
+    {
+      "paper_title": "VFlash: Fast, Accurate Visual Planning via Flash Primitive Decoding",
+      "paper_url": "https://arxiv.org/abs/2611.08449v1",
+      "paper_score": 7,
+      "topics": [
+        "多模态"
+      ],
+      "orgs": [],
+      "is_key_lab": false,
+      "emails": [
+        "zhidingy@nvidia.com"
+      ],
+      "contacts": [],
+      "corresponding_author": ""
+    },
+    {
+      "paper_title": "T3R: Training-Free Two-Stage Token Refinement Towards Efficient and Robust VLA Models",
+      "paper_url": "https://arxiv.org/abs/2611.08413v1",
+      "paper_score": 7,
+      "topics": [
+        "多模态",
+        "大模型"
+      ],
+      "orgs": [],
+      "is_key_lab": false,
+      "emails": [
+        "celine.lin@gatech.edu",
+        "mohassan@utexas.edu",
+        "cindy.zhu@live.cn",
+        "zhengw10@illinois.edu",
+        "tianlong@cs.unc.edu",
+        "chaojian@ust.hk",
+        "chenzy086@gmail.com"
+      ],
+      "contacts": [
+        {
+          "name": "Mohammed Hassan",
+          "email": "mohassan@utexas.edu",
+          "affiliation": "The University of Texas at Austin",
+          "role": "第一作者"
+        },
+        {
+          "name": "Zhenyang Chen",
+          "email": "chenzy086@gmail.com",
+          "affiliation": "Georgia Institute of Technology",
+          "role": ""
+        },
+        {
+          "name": "Zheng Wang",
+          "email": "zhengw10@illinois.edu",
+          "affiliation": "University of Illinois Urbana-Champaign",
+          "role": ""
+        },
+        {
+          "name": "Zhixin Zhu",
+          "email": "cindy.zhu@live.cn",
+          "affiliation": "Hong Kong University of Science and Technology",
+          "role": ""
+        },
+        {
+          "name": "Tianlong Chen",
+          "email": "tianlong@cs.unc.edu",
+          "affiliation": "University of North Carolina at Chapel Hill",
+          "role": ""
+        },
+        {
+          "name": "Yingyan (Celine) Lin",
+          "email": "celine.lin@gatech.edu",
+          "affiliation": "Georgia Institute of Technology",
+          "role": ""
+        },
+        {
+          "name": "Chaojian Li",
+          "email": "chaojian@ust.hk",
+          "affiliation": "Hong Kong University of Science and Technology",
+          "role": ""
+        }
+      ],
+      "corresponding_author": ""
+    }
+  ],
+  "daily_insight": {
+    "hot_topics": "今日研究几乎被「多模态」主导（20篇中17篇），核心趋势是把VLA从单纯执行推向可纠错、可预测失败、可量化评测的工程化阶段：OopsieRecover、VLA失败预测、T3R、SLA等围绕纠错与token精炼。同时评测基准集中爆发（RoboARCade、Multimodal-SEA、NPCBench、Terminal-style Math Modeling），机器人智能体与安全/可验证评测成为新的基础设施竞争点。世界模型出现两条分化路线：3D粒子运动（GPWM）与医疗系统仿真。",
+    "lab_overlap": "Google 与 Anthropic 均落在「多模态+Agent」的机器人/智能体评测方向，但不存在方法重合：Google 的 Interactive Visual Gym 聚焦视觉交互模型的闭环评测，用人类偏差模拟器做交互质量评估；Anthropic（与Stanford合作）的 RoboARCade 聚焦长程机器人操作中的上下文适应、记忆与接口影响。两者是互补关系——一个提供交互世界与用户模拟，一个提供任务化机器人控制压力测试，共同拼出智能体能力评测栈，竞争点在于谁成为社区默认基准。",
+    "signals": "评测基准类论文今日达5篇以上（RoboARCade、Multimodal-SEA、NPCBench、Terminal-style Math Modeling、Interactive Visual Gym），且首次出现面向个人Agent的多模态社会工程安全基准与终端化可验证数学建模基准，说明竞争正从模型能力转向「可验证评测+安全红队」基础设施。另一信号是VLA研究的重心从策略学习转向运行时可靠性（失败预测、纠正、token冗余），工程化落地的信号明显。世界模型生成对象从像素转向3D粒子等物理表征，值得持续跟踪。",
+    "overlap_labs": [
+      "Google",
+      "Anthropic"
+    ],
+    "overlap_topic": "多模态智能体/机器人的交互与能力评测基准"
+  },
+  "key_labs_list": [
+    "Google",
+    "Meta",
+    "OpenAI",
+    "Microsoft",
+    "NVIDIA",
+    "Anthropic",
+    "字节跳动",
+    "腾讯",
+    "阿里巴巴",
+    "百度",
+    "华为",
+    "DeepSeek"
+  ]
+}

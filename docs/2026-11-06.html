@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 论文日报 - 2026-11-06</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
+            background: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* ====== 页头 ====== */
+        .page-header {
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .page-header h1 {
+            font-size: 1.8em;
+            color: #1a1a2e;
+            margin-bottom: 6px;
+        }
+        .page-header .meta {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .stats {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+        .stat {
+            background: #f8f9fa;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.82em;
+            color: #555;
+        }
+
+        /* ====== 导航 ====== */
+        .nav-bar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 10px 20px;
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .nav-bar a {
+            text-decoration: none;
+            font-size: 0.85em;
+            padding: 5px 14px;
+            border-radius: 16px;
+            color: #555;
+            background: #f3f4f6;
+            transition: all 0.2s;
+        }
+        .nav-bar a:hover { background: #4a6cf7; color: white; }
+        .nav-bar a.nav-labs { background: #1e293b; color: #94a3b8; }
+        .nav-bar a.nav-labs:hover { background: #334155; color: white; }
+
+        /* ====== 板块4: 趋势总结 ====== */
+        .section-insight {
+            max-width: 900px;
+            margin: 24px auto;
+            padding: 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            color: white;
+        }
+        .insight-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .insight-header h2 {
+            font-size: 1.3em;
+        }
+        .insight-date {
+            opacity: 0.8;
+            font-size: 0.85em;
+        }
+        .insight-body {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .insight-item {
+            background: rgba(255,255,255,0.12);
+            border-radius: 10px;
+            padding: 14px 16px;
+        }
+        .insight-item.highlight {
+            background: rgba(255,255,255,0.22);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        .insight-label {
+            font-size: 0.78em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.8;
+            margin-bottom: 4px;
+        }
+        .insight-content {
+            font-size: 0.92em;
+            line-height: 1.5;
+        }
+        .overlap-tags {
+            margin-top: 8px;
+        }
+        .overlap-badge {
+            display: inline-block;
+            background: #fbbf24;
+            color: #1a1a2e;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 0.78em;
+            font-weight: 600;
+            margin-right: 6px;
+        }
+        .overlap-topic {
+            font-size: 0.82em;
+            opacity: 0.9;
+        }
+
+        /* ====== 板块3: 大厂动态 ====== */
+        .section-labs {
+            max-width: 900px;
+            margin: 24px auto;
+            padding: 24px;
+            background: #1e293b;
+            border-radius: 16px;
+            color: #e2e8f0;
+        }
+        .labs-title {
+            font-size: 1.3em;
+            color: white;
+            margin-bottom: 20px;
+        }
+        .labs-count {
+            font-size: 0.6em;
+            font-weight: normal;
+            color: #94a3b8;
+        }
+        .lab-group {
+            margin-bottom: 20px;
+        }
+        .lab-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #334155;
+        }
+        .lab-name {
+            font-size: 1.05em;
+            font-weight: 600;
+            color: #f1f5f9;
+        }
+        .lab-badge {
+            background: #3b82f6;
+            color: white;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 0.75em;
+        }
+        .lab-paper {
+            background: #293548;
+            border-radius: 10px;
+            padding: 14px 16px;
+            margin-bottom: 10px;
+        }
+        .lab-paper-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+        .lab-paper-topics {
+            font-size: 0.8em;
+            color: #94a3b8;
+        }
+        .lab-paper-title {
+            font-size: 0.95em;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        .lab-paper-title a {
+            color: #e2e8f0;
+            text-decoration: none;
+        }
+        .lab-paper-title a:hover {
+            color: #60a5fa;
+            text-decoration: underline;
+        }
+        .lab-paper-summary {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-size: 0.85em;
+            color: #94a3b8;
+            margin-bottom: 8px;
+        }
+        .lab-paper-summary strong {
+            color: #cbd5e1;
+        }
+        .lab-pdf-link {
+            color: #60a5fa;
+            text-decoration: none;
+            font-size: 0.82em;
+        }
+        .lab-pdf-link:hover { text-decoration: underline; }
+
+        /* ====== 板块1: 全部论文 ====== */
+        .section-papers {
+            max-width: 900px;
+            margin: 24px auto;
+            padding: 24px;
+            background: white;
+            border-radius: 16px;
+        }
+        .papers-title {
+            font-size: 1.3em;
+            color: #1a1a2e;
+            margin-bottom: 20px;
+        }
+        .topic-header {
+            font-size: 1.15em;
+            color: #1a1a2e;
+            margin: 24px 0 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .topic-header .count {
+            font-size: 0.7em;
+            color: #888;
+            font-weight: normal;
+        }
+        .paper-card {
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 14px;
+            border: 1px solid #e5e7eb;
+            transition: box-shadow 0.2s;
+        }
+        .paper-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+        .score {
+            font-weight: bold;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 0.82em;
+        }
+        .score.high { background: #d1fae5; color: #065f46; }
+        .score.medium { background: #fef3c7; color: #92400e; }
+        .score.low { background: #f3f4f6; color: #6b7280; }
+        .org-tag {
+            background: #ede9fe;
+            color: #6d28d9;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.75em;
+        }
+        .date { color: #9ca3af; font-size: 0.82em; margin-left: auto; }
+        .paper-title {
+            font-size: 0.98em;
+            margin-bottom: 4px;
+            line-height: 1.4;
+        }
+        .paper-title a {
+            color: #1e293b;
+            text-decoration: none;
+        }
+        .paper-title a:hover {
+            color: #4a6cf7;
+            text-decoration: underline;
+        }
+        .authors {
+            color: #6b7280;
+            font-size: 0.82em;
+            margin-bottom: 10px;
+        }
+        .summary {
+            background: white;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 1px solid #f1f5f9;
+        }
+        .summary-item {
+            margin-bottom: 4px;
+            font-size: 0.85em;
+            color: #4b5563;
+        }
+        .summary-item:last-child { margin-bottom: 0; }
+        .summary-item strong { color: #374151; }
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topics { color: #9ca3af; font-size: 0.78em; }
+        .pdf-link {
+            color: #4a6cf7;
+            text-decoration: none;
+            font-size: 0.82em;
+            font-weight: 500;
+        }
+        .pdf-link:hover { text-decoration: underline; }
+
+        /* ====== 板块2: 联系人库 ====== */
+        .section-contacts {
+            max-width: 900px;
+            margin: 24px auto;
+            padding: 24px;
+            background: white;
+            border-radius: 16px;
+        }
+        .contacts-title {
+            font-size: 1.3em;
+            color: #1a1a2e;
+            margin-bottom: 16px;
+        }
+        .contacts-count {
+            font-size: 0.6em;
+            font-weight: normal;
+            color: #888;
+        }
+        .contacts-subtitle {
+            font-size: 1em;
+            color: #555;
+            margin: 16px 0 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .key-lab-subtitle {
+            color: #ea580c;
+        }
+        .contact-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 12px 14px;
+            margin-bottom: 10px;
+            border: 1px solid #e5e7eb;
+        }
+        .contact-card.key-lab {
+            background: #fff7ed;
+            border-color: #fed7aa;
+        }
+        .contact-paper {
+            margin-bottom: 6px;
+        }
+        .contact-paper a {
+            color: #1e293b;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.88em;
+        }
+        .contact-paper a:hover { color: #4a6cf7; text-decoration: underline; }
+        .contact-org-badge {
+            display: inline-block;
+            background: #ea580c;
+            color: white;
+            padding: 1px 8px;
+            border-radius: 4px;
+            font-size: 0.72em;
+            margin-left: 6px;
+        }
+        .contact-org-badge.normal {
+            background: #6b7280;
+        }
+        .contact-list {
+            padding-left: 10px;
+            border-left: 3px solid #fed7aa;
+        }
+        .contact-card:not(.key-lab) .contact-list {
+            border-left-color: #e5e7eb;
+        }
+        .contact-person {
+            font-size: 0.84em;
+            margin-bottom: 3px;
+            color: #374151;
+        }
+        .email-link {
+            color: #ea580c;
+            text-decoration: none;
+            font-size: 0.84em;
+        }
+        .contact-card:not(.key-lab) .email-link {
+            color: #4a6cf7;
+        }
+        .email-link:hover { text-decoration: underline; }
+        .role-badge {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-size: 0.72em;
+            margin-right: 4px;
+        }
+        .corresponding {
+            font-size: 0.78em;
+            color: #9ca3af;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        /* ====== 底部归档 ====== */
+        .section-archive {
+            max-width: 900px;
+            margin: 24px auto;
+            padding: 20px 24px;
+            background: white;
+            border-radius: 16px;
+        }
+        .archive h2 { font-size: 1em; margin-bottom: 10px; color: #666; }
+        .back-latest {
+            display: inline-block;
+            margin-bottom: 12px;
+            padding: 6px 16px;
+            background: #4a6cf7;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.88em;
+            font-weight: 500;
+        }
+        .back-latest:hover { background: #3a5ce5; }
+        .archive-link {
+            display: inline-block;
+            margin: 4px 8px 4px 0;
+            padding: 4px 12px;
+            background: #f3f4f6;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #4a6cf7;
+            font-size: 0.82em;
+        }
+        .archive-link:hover { background: #e5e7eb; }
+
+        .empty-state {
+            text-align: center;
+            padding: 50px 20px;
+            color: #9ca3af;
+        }
+
+        @media (max-width: 640px) {
+            .section-insight, .section-labs, .section-papers, .section-contacts, .section-archive {
+                margin: 12px 8px;
+                padding: 16px;
+                border-radius: 12px;
+            }
+            .page-header h1 { font-size: 1.4em; }
+            .stats { gap: 8px; }
+            .nav-bar { gap: 6px; padding: 8px 12px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-header">
+        <h1>AI 论文日报</h1>
+        <p class="meta">2026-11-06 | 世界模型 / 多模态 / 大模型 / Agent / 具身智能</p>
+        <div class="stats">
+            <span class="stat">arXiv 抓取 100 篇</span>
+            <span class="stat">AI 筛选 20 篇</span>
+            <span class="stat">大厂论文 2 篇</span>
+            <span class="stat">联系人 10 位</span>
+        </div>
+    </div>
+
+    <nav class="nav-bar">
+        <a href="#insight">趋势总结</a>
+        <a href="#labs" class="nav-labs">大厂动态</a>
+        <a href="#papers">全部论文</a>
+        <a href="#contacts">联系人库</a>
+    </nav>
+
+    <div id="insight">
+    
+    <div class="section-insight">
+        <div class="insight-header">
+            <h2>今日趋势总结</h2>
+            <span class="insight-date">2026-11-06</span>
+        </div>
+        <div class="insight-body">
+            <div class="insight-item">
+                <div class="insight-label">研究热点</div>
+                <div class="insight-content">今日研究几乎被「多模态」主导（20篇中17篇），核心趋势是把VLA从单纯执行推向可纠错、可预测失败、可量化评测的工程化阶段：OopsieRecover、VLA失败预测、T3R、SLA等围绕纠错与token精炼。同时评测基准集中爆发（RoboARCade、Multimodal-SEA、NPCBench、Terminal-style Math Modeling），机器人智能体与安全/可验证评测成为新的基础设施竞争点。世界模型出现两条分化路线：3D粒子运动（GPWM）与医疗系统仿真。</div>
+            </div>
+            <div class="insight-item highlight">
+                <div class="insight-label">大厂方向重合</div>
+                <div class="insight-content">Google 与 Anthropic 均落在「多模态+Agent」的机器人/智能体评测方向，但不存在方法重合：Google 的 Interactive Visual Gym 聚焦视觉交互模型的闭环评测，用人类偏差模拟器做交互质量评估；Anthropic（与Stanford合作）的 RoboARCade 聚焦长程机器人操作中的上下文适应、记忆与接口影响。两者是互补关系——一个提供交互世界与用户模拟，一个提供任务化机器人控制压力测试，共同拼出智能体能力评测栈，竞争点在于谁成为社区默认基准。</div>
+                <div class="overlap-tags"><span class="overlap-badge">Google</span> <span class="overlap-badge">Anthropic</span> <span class="overlap-topic">→ 多模态智能体/机器人的交互与能力评测基准</span></div>
+            </div>
+            <div class="insight-item">
+                <div class="insight-label">值得关注</div>
+                <div class="insight-content">评测基准类论文今日达5篇以上（RoboARCade、Multimodal-SEA、NPCBench、Terminal-style Math Modeling、Interactive Visual Gym），且首次出现面向个人Agent的多模态社会工程安全基准与终端化可验证数学建模基准，说明竞争正从模型能力转向「可验证评测+安全红队」基础设施。另一信号是VLA研究的重心从策略学习转向运行时可靠性（失败预测、纠正、token冗余），工程化落地的信号明显。世界模型生成对象从像素转向3D粒子等物理表征，值得持续跟踪。</div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <div id="labs">
+    <div class="section-labs">
+    <h2 class="labs-title">大厂动态 <span class="labs-count">2 篇来自重点机构</span></h2>
+
+        <div class="lab-group">
+            <div class="lab-header">
+                <span class="lab-name">Google</span>
+                <span class="lab-badge">1 篇</span>
+            </div>
+
+            <div class="lab-paper">
+                <div class="lab-paper-header">
+                    <span class="score high">8/10</span>
+                    <span class="lab-paper-topics">多模态</span>
+                </div>
+                <h4 class="lab-paper-title">
+                    <a href="https://arxiv.org/abs/2611.08286v1" target="_blank">Interactive Visual Gym: Evaluating Visual Interaction Models with Simulated Users in Interactive Worlds</a>
+                </h4>
+                <div class="lab-paper-summary">
+                    <span><strong>方法：</strong>提出 Interactive Visual Gym 框架，联合仿真可执行的任务环境与人物画像条件化（persona-conditioned）的用户模拟器，在烹饪、家庭操作、移动界面三个领域构建与人对齐的动作空间并注入受控执行错误等偏离计划的行为。基于该框架实例化 IVG-Bench（315 个交互场景），并用人类研究校验评测协议，另做 GRPO 闭环训练的概念验证。</span>
+                    <span><strong>创新：</strong>首次将可执行任务环境与带有人类偏差的用户模拟器结合，构建面向视觉交互模型的闭环评测与训练基准（含人类验证的交互质量指标）。</span>
+                </div>
+                <a href="https://arxiv.org/pdf/2611.08286v1" target="_blank" class="lab-pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="lab-group">
+            <div class="lab-header">
+                <span class="lab-name">Anthropic</span>
+                <span class="lab-badge">1 篇</span>
+            </div>
+
+            <div class="lab-paper">
+                <div class="lab-paper-header">
+                    <span class="score high">8/10</span>
+                    <span class="lab-paper-topics">多模态 / 大模型 / Agent</span>
+                </div>
+                <h4 class="lab-paper-title">
+                    <a href="https://arxiv.org/abs/2611.08209v1" target="_blank">RoboARCade: Benchmarking Agentic Robot Control</a>
+                </h4>
+                <div class="lab-paper-summary">
+                    <span><strong>方法：</strong>提出 RoboARCade 基准，包含跨三种具身形态的长程操作任务，统一运行在 MuJoCo 后端，并通过自包含数据包和可替换接口支持独立扩展任务、智能体和接口。通过扩大初始条件范围提升任务难度。</span>
+                    <span><strong>创新：</strong>提出了可扩展、模块化的智能体机器人控制基准，系统评测长程操作中的上下文适应、记忆、推理及接口影响。</span>
+                </div>
+                <a href="https://arxiv.org/pdf/2611.08209v1" target="_blank" class="lab-pdf-link">PDF 原文</a>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <div id="papers">
+    <div class="section-papers">
+        <h2 class="papers-title">全部精选论文</h2>
+        <h3 class="topic-header">世界模型 <span class="count">(2 篇)</span></h3>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                
+                <span class="date">2026-11-05</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.08338v1" target="_blank">GPWM: Modeling the World as 3D Particle Motion</a>
+            </h4>
+            <p class="authors">Robert Ren, Matthew Bronars, He Zhu et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有世界模型多以视频形式生成场景外观，缺乏对三维物理空间与物体运动的直接建模，难以统一处理刚体、可变形体、布料、颗粒等多种材料及机器人交互。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 GPWM（生成式粒子世界模型），直接在 3D 物理空间生成粒子与刚体随时间的运动轨迹；采用物体感知的多分辨率 Transformer，结合 flow matching 与 diffusion forcing 生成连贯物理轨迹；并在包含 2550 万帧的 ParticleWorlds 数据集上训练，用同一套权重统一建模多种材料与交互。</div>
+                <div class="summary-item"><strong>结论：</strong>在六个物理域上平均降低预测误差 31%，超越此前最佳的学得动力学基线；统一的单一模型大幅优于按域分训的基线，并在两个域上超过专用模型；还能泛化到未见几何、物理属性、物体数量与更长推演时长；通过在世界模型潜噪声空间搜索，实现接触丰富的推动与抓取规划，开环执行即可完成目标操作。</div>
+                <div class="summary-item"><strong>创新点：</strong>以 3D 粒子运动而非视频像素作为世界模型的生成对象，并用单一架构统一刚体、形变、布料、颗粒及机器人交互，同时把规划转化为对生成模型潜噪声的搜索。</div>
+                <div class="summary-item"><strong>意义：</strong>为世界模型提供了从“视频生成”转向“三维物理轨迹生成”的可行路线，对具身智能中的物理预测与基于模型的规划具有重要参考价值。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">世界模型</span>
+                <a href="https://arxiv.org/pdf/2611.08338v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-11-05</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.08392v1" target="_blank">Learning a patient world model for health system simulation in intensive care</a>
+            </h4>
+            <p class="authors">Yingtai Li, Ruoyan Wang, Yu Li et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>医疗系统仿真需要预测患者状态如何演变并产生护理需求，但传统方法往往针对单一政策问题定制紧凑的状态转移模型，忽略历史依赖的动态，换一个新问题就要重新定义状态和转移。</div>
+                <div class="summary-item"><strong>方法：</strong>作者提出从纵向电子病历（EHR）中学习一个「患者世界模型」：用神经网络学习患者轨迹的共享临床表征，并在 MIMIC-IV 上训练后冻结；再通过场景特定的映射，把模型可按时查询的预测接入共享的 ICU 日历、资源和队列，从而用同一个模型支持床位数、护理调度、转出容量等多种仿真。</div>
+                <div class="summary-item"><strong>结论：</strong>实验表明，该模型在总占用率，以及对容量和调度政策的方向性响应上，与马尔可夫/半马尔可夫基线相当，并能复现真实轨迹中的政策收益；同时对来自不同既往轨迹、进入同一支持状态的患者，模型能捕捉到 24 小时恢复差异（预测 -6.4 对观测 -6.7 个百分点），而紧凑状态模型会漏掉这一差异，并由此产生不同的护理需求、队列压力和床位使用。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次把「学习式患者世界模型」引入健康系统仿真，用一个冻结的、历史依赖的患者动力学模型替代针对每个问题定制的状态转移模型，换政策时只需重配场景、无需重建模型。</div>
+                <div class="summary-item"><strong>意义：</strong>把世界模型思想从物理/具身环境拓展到医疗运营决策仿真，示范了「一次学习、多场景复用」的仿真范式，对 AI 驱动的医疗政策评估与决策基础模型有启发意义。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">世界模型</span>
+                <a href="https://arxiv.org/pdf/2611.08392v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+<h3 class="topic-header">多模态 <span class="count">(18 篇)</span></h3>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                
+                <span class="date">2026-11-05</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.08462v1" target="_blank">OopsieRecover: Learning Transferable VLA Corrections from Semantic Interventions</a>
+            </h4>
+            <p class="authors">Arpit Bahety, Skand Peri, Sriniket Ambatipudi et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>视觉-语言-动作（VLA）模型在机器人操作部署中常失败，而现有纠正方法需要大量交互数据，且学到的纠正难以泛化到新场景。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 OopsieRecover，利用溯因推理从少量纠正示范中推断失败意图，并将知识编码为稠密空间表示和条件代价，以此引导策略避开不可取行为区域。</div>
+                <div class="summary-item"><strong>结论：</strong>在6个任务及物体位姿、场景和相关任务变化中，仅需少量纠正示范即可让VLA在广泛新情境下克服失败，无需为每种变化重新采集纠正数据。</div>
+                <div class="summary-item"><strong>创新点：</strong>用语义溯因从少量纠正示范中提取可迁移的失败原因，并以空间代价形式指导VLA策略纠正。</div>
+                <div class="summary-item"><strong>意义：</strong>为具身智能中VLA模型的数据高效失败恢复与跨场景泛化提供了新思路。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2611.08462v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                
+                <span class="date">2026-11-05</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.08425v1" target="_blank">Failure Prediction and Classification in Vision-Language-Action Models Via Calibrated Latent Probing</a>
+            </h4>
+            <p class="authors">Michal P. Podolinsky, Yunhao Yang, Daniel Little et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>视觉-语言-动作（VLA）模型在分布偏移下性能脆弱，意外失败可能损坏设备或危及人员，因此需要一种及时、校准良好、信息丰富且可在边缘高效运行的运行时失败监控器。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 VLA-Tug：在 VLA 骨干网络的潜在层上训练轻量级探针，利用轨迹中失败前片段进行监督，实现早期失败检测，并对漏检率和误报率给出界限；同时预测失败模式以支持纠正动作。</div>
+                <div class="summary-item"><strong>结论：</strong>在相同误报率下，早期失败检测比最强学习基线最高提升 30%；任务偏移下漏检/误报界限在最高 86% 的运行中仍有效（基线最多 21%）；未见任务上失败模式 top-3 准确率比多数类基线最高提升 44%，并支持轻量转向以提升任务成功率。</div>
+                <div class="summary-item"><strong>创新点：</strong>将校准的潜在层探针、失败前片段监督和失败模式分类结合，用于 VLA 的实时运行时失败预测与纠正。</div>
+                <div class="summary-item"><strong>意义：</strong>提升 VLA 在真实具身系统中的安全性、可监控性和部署可靠性。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 具身智能</span>
+                <a href="https://arxiv.org/pdf/2611.08425v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                
+                <span class="date">2026-11-05</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.08368v1" target="_blank">VisionSIM: Beyond Idealized Sensors - A Multi-Modal Simulator for Robot Perception</a>
+            </h4>
+            <p class="authors">Sacha Jungerman, Kaustubh Sadekar, Avery Gump et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有机器人感知仿真器通常将多模态传感器理想化，掩盖了事件相机、SPAD、iToF/dToF、热成像等新兴模态在真实部署中的关键失效模式，阻碍了可靠的跨模态研究与sim-to-real迁移。</div>
+                <div class="summary-item"><strong>方法：</strong>提出VisionSIM，一个统一的、物理 grounded 的多模态仿真平台，对传统与新兴传感器的原始物理测量过程建模，并提供细粒度物理参数控制，以复现LiDAR堆积与眩光、iToF相位卷绕/饱和/运动伪影、事件相机 refractory drops、热相机历史依赖发射等失效模式。</div>
+                <div class="summary-item"><strong>结论：</strong>该平台支持在相同场景与轨迹上进行有原则的跨模态比较，并发布了包含同步原始测量与丰富真值标注的大规模室内数据集。</div>
+                <div class="summary-item"><strong>创新点：</strong>将传感器真实感作为一等目标，系统建模多种新兴模态的物理测量过程与模态特定失效模式，而非仅做理想化渲染。</div>
+                <div class="summary-item"><strong>意义：</strong>有助于机器人感知、多模态融合与世界模型在更真实传感器条件下评估鲁棒性，并推动sim-to-real研究。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2611.08368v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                <span class="org-tag">Google</span>
+                <span class="date">2026-11-05</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.08286v1" target="_blank">Interactive Visual Gym: Evaluating Visual Interaction Models with Simulated Users in Interactive Worlds</a>
+            </h4>
+            <p class="authors">Chenhao Zheng, Zixian Ma, Kai Li et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有视觉交互模型（在用户执行物理任务时提供实时指导的模型）的评测大多依赖离线回放，无法刻画助手回复如何反过来改变用户后续行为与任务结果，因而缺少闭环评估手段。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 Interactive Visual Gym 框架，联合仿真可执行的任务环境与人物画像条件化（persona-conditioned）的用户模拟器，在烹饪、家庭操作、移动界面三个领域构建与人对齐的动作空间并注入受控执行错误等偏离计划的行为。基于该框架实例化 IVG-Bench（315 个交互场景），并用人类研究校验评测协议，另做 GRPO 闭环训练的概念验证。</div>
+                <div class="summary-item"><strong>结论：</strong>评测显示现有 VLM 作为视觉交互模型存在明显不足：最佳模型 Gemini 4 Argon 在时限内仅完成 53.4% 的任务，事实依据与可操作指导能力薄弱，且考虑响应延迟时常因过慢而无法阻止错误；交互质量指标与人类偏好的吻合度为 78.5%；在烹饪环境中闭环 GRPO 训练同时提升了 Qwen3.5-4B 的任务成功率与交互质量。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将可执行任务环境与带有人类偏差的用户模拟器结合，构建面向视觉交互模型的闭环评测与训练基准（含人类验证的交互质量指标）。</div>
+                <div class="summary-item"><strong>意义：</strong>为多模态大模型作为「实时任务助手」的能力提供了更贴近真实部署的闭环评测与可训练信号，推动视觉交互模型与世界模型式交互研究的发展。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2611.08286v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                
+                <span class="date">2026-11-05</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.08281v1" target="_blank">Multimodal-SEA: Benchmarking AI Agent Security under Multimodal Social Engineering Attacks</a>
+            </h4>
+            <p class="authors">Zhitao He, Chi Him Zhang, Chengru Han et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>个人AI Agent面临由伪造多模态内容支持的社会工程攻击，但现有评估主要集中于纯文本对话，缺乏对其内在安全性的系统研究。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 Multimodal-SEA 交互式基准，包含608个专家设计任务，基于真实欺诈案例，覆盖14个领域、152种攻击场景和多模态内容，并涵盖中英文社会环境与四个难度等级；设计多模态攻击测试框架，让Agent在模拟应用中检查内容、验证请求并执行动作，以可验证的工具执行日志判定攻击结果。</div>
+                <div class="summary-item"><strong>结论：</strong>评估7个常用多模态模型发现均存在漏洞，攻击成功率为7.1%至34.5%；加入多模态内容使攻击成功率从19.9%升至29.2%，尽管主动验证覆盖率提高；更强安全指令能降低攻击成功率，但未提升对欺骗性多模态内容的识别，部分模型低攻击成功率伴随对合法请求的过度拒绝。</div>
+                <div class="summary-item"><strong>创新点：</strong>构建了面向个人AI Agent、结合真实多模态社会工程攻击与可验证工具执行日志的交互式安全评测基准和可控红队测试框架。</div>
+                <div class="summary-item"><strong>意义：</strong>为多模态大模型与个人Agent的安全评估、红队测试和防御机制设计提供了重要基准与实证依据。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / Agent</span>
+                <a href="https://arxiv.org/pdf/2611.08281v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                
+                <span class="date">2026-11-05</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.08237v1" target="_blank">Terminal-style Mathematical Modeling Bench: The First Agentic and Verifiable Benchmark for Mathematical Modeling</a>
+            </h4>
+            <p class="authors">Xiaojun Wu, Cehao Yang, Xuhui Jiang et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有数学建模基准要么只评测求解片段，要么依赖LLM评审报告，缺少对完整建模问题答案是否接近可信参考且物理可行的可验证评测。</div>
+                <div class="summary-item"><strong>方法：</strong>提出TB-MathModel，将18个2023—2025年真实CUMCM和MCM赛题放入容器化终端，智能体返回统一JSON产物，并针对最终问题的数值核心与多篇Outstanding论文复现结果进行评分。采用方向感知的单侧评分，避免惩罚优于锚点的答案，并加入六类可判定不变量与624条Lean 4义务构成的两层可行性验证，硬门控将不可行答案置零。</div>
+                <div class="summary-item"><strong>结论：</strong>在七个多模态模型（每个三次种子）中，最强模型的多参考O-Eval达到64.58%；成本仅2.54美元的开源模型以约1/100成本达到59.81%。</div>
+                <div class="summary-item"><strong>创新点：</strong>首个同时具备智能体化、可验证和终端化特征，并面向完整竞赛式数学建模问题的基准，结合多参考评分与Lean可行性硬门控。</div>
+                <div class="summary-item"><strong>意义：</strong>为衡量长程数学建模能力与收集智能体轨迹提供了可复现、机器可检查的评测信号。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型 / Agent</span>
+                <a href="https://arxiv.org/pdf/2611.08237v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                <span class="org-tag">Anthropic / Stanford</span>
+                <span class="date">2026-11-05</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.08209v1" target="_blank">RoboARCade: Benchmarking Agentic Robot Control</a>
+            </h4>
+            <p class="authors">Satvik Sharma, Hengyuan Hu, Mihika Kamat et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>论文要评估多模态智能体直接作为机器人策略时的长程精确操作能力，尤其是上下文适应、记忆与推理能力。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 RoboARCade 基准，包含跨三种具身形态的长程操作任务，统一运行在 MuJoCo 后端，并通过自包含数据包和可替换接口支持独立扩展任务、智能体和接口。通过扩大初始条件范围提升任务难度。</div>
+                <div class="summary-item"><strong>结论：</strong>基准能区分领先智能体：GPT-6 Astra 得分 49.8%，Claude Fable 5.1 为 43.6%；更丰富视觉接口仅提升 1.5 到 6.8 分但成本增至 1.7 到 2.3 倍。失败主要来自策略选择差或执行不精确，而非场景理解错误；智能体在 24% 到 39% 的尝试子任务中错误声称成功。上下文示例可将 Astra 在五任务子集上从 53.5% 提升至 73.0%，自写自改提示达到 72.0%。</div>
+                <div class="summary-item"><strong>创新点：</strong>提出了可扩展、模块化的智能体机器人控制基准，系统评测长程操作中的上下文适应、记忆、推理及接口影响。</div>
+                <div class="summary-item"><strong>意义：</strong>为多模态智能体作为机器人策略提供了诊断性评测平台，揭示关键失败模式与无需人工反馈的自提升潜力。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型 / Agent</span>
+                <a href="https://arxiv.org/pdf/2611.08209v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-11-05</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.08449v1" target="_blank">VFlash: Fast, Accurate Visual Planning via Flash Primitive Decoding</a>
+            </h4>
+            <p class="authors">Yu-Cheng Chou, Shihao Wang, Jin Huang et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>自回归视觉语言模型在生成视觉规划（点、边界框、轨迹）时需逐个坐标 token 解码，导致预测越丰富、生成代价越高、速度越慢，难以满足机器人与自动驾驶等物理 AI 任务对实时性的需求。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 VFlash，利用视觉基元的已知结构，用一个轻量级 drafter 在一次前向中联合预测整个基元的全部坐标，布局随基元类型、维度和长度自适应，可同时支持紧凑边界框与长变长轨迹。训练时直接使用标注基元监督，推理时只要预测在结构上合法即被接受，不要求与自回归模型的目标 token 序列逐一对齐。</div>
+                <div class="summary-item"><strong>结论：</strong>在评测的 2D 与 3D 机器人轨迹任务上，VFlash 相比自回归解码持续降低预测误差；初步单次 rollout 测量显示 3D 点运动预测生成速度约提升 25 倍。以 VFlash 规划为条件的世界动作模型在四个 MolmoSpaces 任务套件上平均成功率达 70.2%，优于基线的 62.6%。</div>
+                <div class="summary-item"><strong>创新点：</strong>核心创新在于把视觉基元的空间结构先验转化为并行联合解码，并放弃对自回归 token 序列的精确复现要求，从而在保持甚至提升空间精度的同时大幅加速。</div>
+                <div class="summary-item"><strong>意义：</strong>为具身智能与物理 AI 中的视觉规划提供了一种快速、准确且可直接接入世界动作模型的解码范式，有助于推动实时机器人决策与多模态空间推理的发展。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2611.08449v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-11-05</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.08413v1" target="_blank">T3R: Training-Free Two-Stage Token Refinement Towards Efficient and Robust VLA Models</a>
+            </h4>
+            <p class="authors">Mohammed Hassan, Zhenyang Chen, Zheng Wang et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>VLA 模型推理成本高：每次决策都处理来自多相机的数百个视觉 token，并且背景内容会分散注意力，导致在分布偏移下动作预测的准确率下降。</div>
+                <div class="summary-item"><strong>方法：</strong>提出免训练的两阶段 token 精炼框架 T3R：第一阶段用分割引导的 token 剪枝去除无关视觉 patch；第二阶段用显著性引导的注意力偏置，把注意力重新分配到对动作关键的视觉区域和语言指令上。</div>
+                <div class="summary-item"><strong>结论：</strong>在 LIBERO-Spatial 上剪掉 85% 的场景相机视觉 token，成功率基本保持不变；在分布外物体摆放扰动下成功率最高提升 7 个百分点；LLM 前向最多加速 3.3 倍，精炼开销仅 7.8 ms/次。</div>
+                <div class="summary-item"><strong>创新点：</strong>无需额外训练，把“空间冗余剪枝”与“注意力错配纠正”这两类互补冗余统一到一个两阶段 token 精炼框架中。</div>
+                <div class="summary-item"><strong>意义：</strong>为 VLA 与具身智能模型提供了一种即插即用、兼顾效率与鲁棒性的推理侧优化方案，有利于降低机器人端到端控制的部署成本。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2611.08413v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-11-05</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.08373v1" target="_blank">SLA: Scaling Spatial-Language-Action Model via Continual Pre-training</a>
+            </h4>
+            <p class="authors">Fuhao Li, Wenxuan Song, Qizhou Huang et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有视觉-语言-动作（VLA）模型主要继承 2D 视觉-语言预训练的表征，空间理解能力往往只在任务特定微调阶段才被引入，缺乏可迁移的三维空间基础能力。论文希望把空间理解变成可持续预训练、可迁移的基础模型能力。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 SLA（Spatial-Language-Action）模型：从预训练 pi05 策略初始化，在持续预训练中联合优化动作预测与隐式空间对齐——让中间层视觉嵌入去对齐一个冻结的 3D 感知模型的空间表征。作者统一了异构机器人数据集，引入特征相关的门控自适应聚合多层 VLA 视觉嵌入，教师模型利用部分可得的深度与相机标定以适配稀疏几何标注，并用概率状态丢弃增强对视觉线索的依赖。所有辅助模块仅在训练时使用，推理架构与预训练权重可直接复用。</div>
+                <div class="summary-item"><strong>结论：</strong>论文将隐式空间对齐扩展到持续预训练并保持到下游后训练，在多种 embodiment、任务和场景上实现了可迁移的空间理解能力，同时保持原始推理结构与预训练权重的兼容性（摘要未给出具体数值结果）。</div>
+                <div class="summary-item"><strong>创新点：</strong>把空间对齐从任务特定后训练提升为持续预训练阶段的可迁移能力，并用多层门控聚合与异构几何标注（深度/标定）的鲁棒教师监督实现无需改动推理架构的空间增强。</div>
+                <div class="summary-item"><strong>意义：</strong>为 VLA/具身智能提供了一条低成本、可扩展的路径：通过持续预训练向 2D 视觉-语言基础模型注入 3D 空间先验，推动机器人操作中语义理解与精细控制的统一。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2611.08373v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-11-05</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.08308v1" target="_blank">RM-VLM: From Natural-Language Task Descriptions to Vision-Grounded Reward Machines</a>
+            </h4>
+            <p class="authors">Roko Parac, Christos Ziakas, Leo Ardon et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>奖励机（RM）能建模非马尔可夫任务，但依赖人工设计的命题标注函数，难以扩展到新环境。论文要解决如何从自然语言任务描述自动生成RM，并用视觉模型自动完成命题 grounding。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 RM-VLM：由大语言模型（LLM）根据自然语言任务描述生成奖励机；由视觉语言模型（VLM）作为 labelling function，在基于图像的观测上 grounding RM 命题；并用基于 VLM 的价值函数估计器评估智能体向各 RM 转移的进展，从而推导稠密奖励信号，指导策略学习。</div>
+                <div class="summary-item"><strong>结论：</strong>在非马尔可夫网格世界导航、机器人操作和3D物体收集三个域上，RM-VLM 的任务成功率一致高于现有基于 VLM 的奖励方法。</div>
+                <div class="summary-item"><strong>创新点：</strong>将 LLM 自动生成奖励机与 VLM 自动视觉 grounding 结合，替代人工命题标注，并利用 VLM 价值估计为 RM 转移提供稠密奖励。</div>
+                <div class="summary-item"><strong>意义：</strong>为具身智能和强化学习提供了一种从自然语言任务描述到可执行、可解释时序奖励的自动路径，推动了非马尔可夫任务中的语言到奖励落地。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2611.08308v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-11-05</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.08216v1" target="_blank">ProQuant: Progressive Quantization-aware Training for Edge MLLMs</a>
+            </h4>
+            <p class="authors">Yufei Xue, Yushi Huang, Jiawei Shao et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>多模态大模型（MLLM）计算与内存开销巨大，难以部署在边缘设备上；现有PTQ在低比特（如W4A8）下性能严重下降，尤其对适合边缘部署的小规模模型更为明显。</div>
+                <div class="summary-item"><strong>方法：</strong>提出ProQuant，一种面向低比特MLLM的权重-激活量化感知训练（QAT）框架：用自重新标注（SRL）方案重采样开源多模态数据集的回复，使微调数据分布对齐预训练分布；首次解耦多模态理解与语言建模能力，提出渐进式块激活（PBA）机制优先恢复多模态理解能力，并引入视觉敏感因子τ识别多模态关键层。</div>
+                <div class="summary-item"><strong>结论：</strong>在2B-8B参数的多种模型与多个基准上显著优于现有方法，例如W4A8的Qwen3-VL-2B-Instruct平均准确率提升6.6%，相比全精度模型仅约1%的性能下降。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次从解耦多模态理解与语言建模能力的视角设计量化感知训练，结合渐进式块激活与视觉敏感因子定位多模态关键层。</div>
+                <div class="summary-item"><strong>意义：</strong>为低比特多模态大模型在边缘设备上的高效部署提供了可行的量化训练范式，推动MLLM落地应用。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2611.08216v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-11-05</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.08185v1" target="_blank">Multimodal Hierarchical Mixture-of-Experts for 3D Medical Vision-Language Modeling</a>
+            </h4>
+            <p class="authors">Gizem Mert, Szymon Płotka, Pedro R. A. S. Bassi et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有的医学视觉-语言模型忽视了3D医学影像与报告中固有的层级解剖结构，无法聚焦临床相关的解剖区域，导致区域-文本对齐依赖静态池化特征，精度不足。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 MedHiVE，将层级式视觉-语言软混合专家（Soft MoE, SMoE）与对比学习结合：让局部图像与文本 token 先经局部 SMoE 路由，再由全局 SMoE 融合为统一的多模态表示；同时在解剖层与全局层两个尺度上做由报告监督的跨模态对比对齐。</div>
+                <div class="summary-item"><strong>结论：</strong>在2.5万余例CT扫描上预训练后，MedHiVE在6个数据集、分割/分类/检测3项任务上一致超越11种最先进方法。</div>
+                <div class="summary-item"><strong>创新点：</strong>首个按解剖尺度组织两级 SMoE 层级、并同时路由视觉与文本 token 的3D医学视觉-语言框架，用动态槽位式跨模态信息流替代静态池化对齐与纯视觉层级路由。</div>
+                <div class="summary-item"><strong>意义：</strong>为医学多模态大模型引入结构先验与可解释的解剖层级路由提供了范式，可推广至其他层级化科学数据的跨模态建模。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2611.08185v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="6">
+            <div class="card-header">
+                <span class="score medium">6/10</span>
+                
+                <span class="date">2026-11-05</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.08441v1" target="_blank">Edge-Assisted Crowdsensing for Explainable Cyclist Safety Perception</a>
+            </h4>
+            <p class="authors">Hongsen Cao, Chia-Yen Chiang, Mona Jaber et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>论文要解决骑行安全感知难以沿路线连续、可解释地监测的问题；事故统计和多模型检测流水线都难以扩展到实际部署。</div>
+                <div class="summary-item"><strong>方法：</strong>提出边缘辅助众包感知系统：自行车把手摄像头采集街景帧，视觉语言模型（VLM）通过单次提示提取结构化交通属性，再用可解释提升机（EBM）融合OpenStreetMap道路基础设施和车辆运动学数据，预测1-9分骑行安全评分。</div>
+                <div class="summary-item"><strong>结论：</strong>在伦敦两条路线的1362帧标注数据上，EBM回归器五折交叉验证达到72.2%二分类准确率和1.011平均绝对误差，仅比黑盒集成模型低约1个百分点；特征形状函数可给出精确归因，如物理车道隔离+0.97分、划线车道+0.70分、施工点-0.65分。</div>
+                <div class="summary-item"><strong>创新点：</strong>将VLM属性提取与可解释EBM结合，用于路线级骑行安全评分，并验证边缘端部署与采样频率-精度权衡。</div>
+                <div class="summary-item"><strong>意义：</strong>展示了可解释多模态VLM与边缘AI在城市出行安全和基础设施评估中的实用潜力。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2611.08441v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="6">
+            <div class="card-header">
+                <span class="score medium">6/10</span>
+                
+                <span class="date">2026-11-05</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.08369v1" target="_blank">NPCBench: A Clinical Apprenticeship Benchmark for Multimodal Care-Pathway Reasoning in Nasopharyngeal Carcinoma</a>
+            </h4>
+            <p class="authors">Pengkai Wang, Wei-Wei Zhang, Yan Li et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有医学基准多将临床能力拆解为孤立的知识问答、单图任务或静态病例，难以评估模型能否整合专科知识与多模态证据、并在完整诊疗路径中持续追踪患者状态。</div>
+                <div class="summary-item"><strong>方法：</strong>论文提出 NPCBench，一个面向鼻咽癌（NPC）的“临床学徒式”基准，按专科培训进阶组织任务：指南与基础知识、病例规划、纵向复评、CarePath 整合与开放式问诊；包含 4,777 个组件与问诊条目，以及 100 例患者的 CarePath 队列（417 个计分诊断与照护任务），并采用 episode 级评测检验同一患者路径中诊断与照护答案是否联合正确。</div>
+                <div class="summary-item"><strong>结论：</strong>在 30 个模型上发现“组合差距”：单项任务表现好并不保证同一患者的诊断与照护联合正确；21 个多模态模型中严格 CarePath 成功率最高仅 23%。配对对照与医师校准进一步考察了证据落地、纵向修正与问诊评判。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将肿瘤临床能力评测从静态问答转向以患者诊疗路径为纽带的“学徒式”纵向、多模态、联合正确性评估。</div>
+                <div class="summary-item"><strong>意义：</strong>为医疗 AI 提供了从证据 grounding 到时序连贯推理的流程级测试平台，推动评测超越静态 VQA 范式。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2611.08369v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="6">
+            <div class="card-header">
+                <span class="score medium">6/10</span>
+                
+                <span class="date">2026-11-05</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.08262v1" target="_blank">The Geometry of Simulated Perspectives: Dissociating Representation and Behaviour in a Multimodal Language Model</a>
+            </h4>
+            <p class="authors">Mathis Immertreu, Fitim Abdullahu, Thomas Kinfe et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>多模态语言模型可以模拟不同观察者视角，但被赋予的人格视角如何重塑其内部表征、以及这些表征变化是否真正驱动其判断，尚不清楚。</div>
+                <div class="summary-item"><strong>方法：</strong>以 Qwen3-VL-8B-Instruct 为对象，在 100 张图像和 53 种提示条件下系统变化人格内容与引入人格的语言框架，同时记录行为评分与逐层隐藏状态，并分析表征几何结构随处理深度的变化。</div>
+                <div class="summary-item"><strong>结论：</strong>早期层主要编码图像身份，人格相关结构在较深层才出现；提示框架对内部表征的重塑强于人格身份本身，而人格内容对行为判断的影响更大，形成表征与行为的分离——甚至不改变回答的最小身份陈述也能改变表征。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次系统揭示多模态大模型中“模拟视角”的表征几何与行为效应之间存在解耦，即表征距离并不必然反映行为相关性。</div>
+                <div class="summary-item"><strong>意义：</strong>为理解多模态大模型内部表征与功能输出之间的关系提供新证据，对可解释性、人格/角色提示设计及模型行为调控具有启示意义。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2611.08262v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                
+                <span class="date">2026-11-05</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.08486v1" target="_blank">Do You Miss the Nights We Spent Crafting Figures? Rethinking Teaser and Framework Figures in the Age of Generative AI</a>
+            </h4>
+            <p class="authors">Xiaoqi Zhao, Youwei Pang, Kailai Zhou</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>论文关注生成式AI时代科研论文中的 teaser figure 与 framework figure 应如何设计，以及AI辅助修改是否能提升其解释清晰度与视觉表达质量。</div>
+                <div class="summary-item"><strong>方法：</strong>作者对200篇论文中的371幅动机图与框架图进行视觉回顾，包括160篇配额主样本和40篇风格对比样本；使用单一多模态评判模型从六个维度对每幅图重复评判三次，并对全部371幅图进行受源约束的修改，其中369幅通过保真度检查。</div>
+                <div class="summary-item"><strong>结论：</strong>原始图评分未呈现跨时期的统一下降趋势；AI辅助修改使清晰度平均提高0.428分，但美学一致性平均下降0.111分（五分制）。六维平均增益在动机图上大于框架图，案例显示补充解释可改善比较，但排版层级与视觉经济性仍未解决。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次以较大规模视觉回顾和受源约束的AI修改实验，系统评估生成式AI对科研论文动机图与框架图传播效果的影响。</div>
+                <div class="summary-item"><strong>意义：</strong>为AI辅助科研可视化与论文写作工具提供实证依据，强调AI可辅助探索，但解释目的、构图和科学关系仍应由研究者负责。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2611.08486v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="3">
+            <div class="card-header">
+                <span class="score low">3/10</span>
+                <span class="org-tag">MIT</span>
+                <span class="date">2026-11-05</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.08398v1" target="_blank">A Multimodal Haptic Interface for Simultaneous Softness and Thermal Modulation</a>
+            </h4>
+            <p class="authors">Joshua Brown, Fernando Bello, Lynette Jones</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有触觉显示设备大多只能单独模拟某一种皮肤触觉线索，缺乏能够同时、独立地控制多种触觉通道（如柔软度与温度）的器件，论文旨在填补这一空白。</div>
+                <div class="summary-item"><strong>方法：</strong>作者设计并制作了一款多模态触觉显示原型：用颗粒阻塞（particle jamming）实现可控刚度变化，用加热/冷却水的循环热传导实现表面温度调节；随后通过机械测试与热学表征（含闭环温控）评估其刚度与温度调控能力。</div>
+                <div class="summary-item"><strong>结论：</strong>机械测试显示刚度可提升约300%且可控；热学表征显示表面温度均匀性好，可实现10°C至50°C的温度范围，闭环控制下稳态误差约0.2°C。</div>
+                <div class="summary-item"><strong>创新点：</strong>在同一触觉显示器件中集成颗粒阻塞式刚度调制与水循环式双向温控，实现对柔软度和温度两种触觉线索的同时、独立呈现。</div>
+                <div class="summary-item"><strong>意义：</strong>这是一项触觉硬件工作，本身不含AI算法，但可作为具身智能、遥操作与VR感知研究中为智能体或人类提供多模态触觉反馈的底层器件支撑。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2611.08398v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+<h3 class="topic-header">大模型 <span class="count">(5 篇)</span></h3>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                
+                <span class="date">2026-11-05</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.08237v1" target="_blank">Terminal-style Mathematical Modeling Bench: The First Agentic and Verifiable Benchmark for Mathematical Modeling</a>
+            </h4>
+            <p class="authors">Xiaojun Wu, Cehao Yang, Xuhui Jiang et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有数学建模基准要么只评测求解片段，要么依赖LLM评审报告，缺少对完整建模问题答案是否接近可信参考且物理可行的可验证评测。</div>
+                <div class="summary-item"><strong>方法：</strong>提出TB-MathModel，将18个2023—2025年真实CUMCM和MCM赛题放入容器化终端，智能体返回统一JSON产物，并针对最终问题的数值核心与多篇Outstanding论文复现结果进行评分。采用方向感知的单侧评分，避免惩罚优于锚点的答案，并加入六类可判定不变量与624条Lean 4义务构成的两层可行性验证，硬门控将不可行答案置零。</div>
+                <div class="summary-item"><strong>结论：</strong>在七个多模态模型（每个三次种子）中，最强模型的多参考O-Eval达到64.58%；成本仅2.54美元的开源模型以约1/100成本达到59.81%。</div>
+                <div class="summary-item"><strong>创新点：</strong>首个同时具备智能体化、可验证和终端化特征，并面向完整竞赛式数学建模问题的基准，结合多参考评分与Lean可行性硬门控。</div>
+                <div class="summary-item"><strong>意义：</strong>为衡量长程数学建模能力与收集智能体轨迹提供了可复现、机器可检查的评测信号。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型 / Agent</span>
+                <a href="https://arxiv.org/pdf/2611.08237v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                <span class="org-tag">Anthropic / Stanford</span>
+                <span class="date">2026-11-05</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.08209v1" target="_blank">RoboARCade: Benchmarking Agentic Robot Control</a>
+            </h4>
+            <p class="authors">Satvik Sharma, Hengyuan Hu, Mihika Kamat et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>论文要评估多模态智能体直接作为机器人策略时的长程精确操作能力，尤其是上下文适应、记忆与推理能力。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 RoboARCade 基准，包含跨三种具身形态的长程操作任务，统一运行在 MuJoCo 后端，并通过自包含数据包和可替换接口支持独立扩展任务、智能体和接口。通过扩大初始条件范围提升任务难度。</div>
+                <div class="summary-item"><strong>结论：</strong>基准能区分领先智能体：GPT-6 Astra 得分 49.8%，Claude Fable 5.1 为 43.6%；更丰富视觉接口仅提升 1.5 到 6.8 分但成本增至 1.7 到 2.3 倍。失败主要来自策略选择差或执行不精确，而非场景理解错误；智能体在 24% 到 39% 的尝试子任务中错误声称成功。上下文示例可将 Astra 在五任务子集上从 53.5% 提升至 73.0%，自写自改提示达到 72.0%。</div>
+                <div class="summary-item"><strong>创新点：</strong>提出了可扩展、模块化的智能体机器人控制基准，系统评测长程操作中的上下文适应、记忆、推理及接口影响。</div>
+                <div class="summary-item"><strong>意义：</strong>为多模态智能体作为机器人策略提供了诊断性评测平台，揭示关键失败模式与无需人工反馈的自提升潜力。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型 / Agent</span>
+                <a href="https://arxiv.org/pdf/2611.08209v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-11-05</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.08413v1" target="_blank">T3R: Training-Free Two-Stage Token Refinement Towards Efficient and Robust VLA Models</a>
+            </h4>
+            <p class="authors">Mohammed Hassan, Zhenyang Chen, Zheng Wang et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>VLA 模型推理成本高：每次决策都处理来自多相机的数百个视觉 token，并且背景内容会分散注意力，导致在分布偏移下动作预测的准确率下降。</div>
+                <div class="summary-item"><strong>方法：</strong>提出免训练的两阶段 token 精炼框架 T3R：第一阶段用分割引导的 token 剪枝去除无关视觉 patch；第二阶段用显著性引导的注意力偏置，把注意力重新分配到对动作关键的视觉区域和语言指令上。</div>
+                <div class="summary-item"><strong>结论：</strong>在 LIBERO-Spatial 上剪掉 85% 的场景相机视觉 token，成功率基本保持不变；在分布外物体摆放扰动下成功率最高提升 7 个百分点；LLM 前向最多加速 3.3 倍，精炼开销仅 7.8 ms/次。</div>
+                <div class="summary-item"><strong>创新点：</strong>无需额外训练，把“空间冗余剪枝”与“注意力错配纠正”这两类互补冗余统一到一个两阶段 token 精炼框架中。</div>
+                <div class="summary-item"><strong>意义：</strong>为 VLA 与具身智能模型提供了一种即插即用、兼顾效率与鲁棒性的推理侧优化方案，有利于降低机器人端到端控制的部署成本。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2611.08413v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-11-05</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.08308v1" target="_blank">RM-VLM: From Natural-Language Task Descriptions to Vision-Grounded Reward Machines</a>
+            </h4>
+            <p class="authors">Roko Parac, Christos Ziakas, Leo Ardon et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>奖励机（RM）能建模非马尔可夫任务，但依赖人工设计的命题标注函数，难以扩展到新环境。论文要解决如何从自然语言任务描述自动生成RM，并用视觉模型自动完成命题 grounding。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 RM-VLM：由大语言模型（LLM）根据自然语言任务描述生成奖励机；由视觉语言模型（VLM）作为 labelling function，在基于图像的观测上 grounding RM 命题；并用基于 VLM 的价值函数估计器评估智能体向各 RM 转移的进展，从而推导稠密奖励信号，指导策略学习。</div>
+                <div class="summary-item"><strong>结论：</strong>在非马尔可夫网格世界导航、机器人操作和3D物体收集三个域上，RM-VLM 的任务成功率一致高于现有基于 VLM 的奖励方法。</div>
+                <div class="summary-item"><strong>创新点：</strong>将 LLM 自动生成奖励机与 VLM 自动视觉 grounding 结合，替代人工命题标注，并利用 VLM 价值估计为 RM 转移提供稠密奖励。</div>
+                <div class="summary-item"><strong>意义：</strong>为具身智能和强化学习提供了一种从自然语言任务描述到可执行、可解释时序奖励的自动路径，推动了非马尔可夫任务中的语言到奖励落地。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2611.08308v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-11-05</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.08216v1" target="_blank">ProQuant: Progressive Quantization-aware Training for Edge MLLMs</a>
+            </h4>
+            <p class="authors">Yufei Xue, Yushi Huang, Jiawei Shao et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>多模态大模型（MLLM）计算与内存开销巨大，难以部署在边缘设备上；现有PTQ在低比特（如W4A8）下性能严重下降，尤其对适合边缘部署的小规模模型更为明显。</div>
+                <div class="summary-item"><strong>方法：</strong>提出ProQuant，一种面向低比特MLLM的权重-激活量化感知训练（QAT）框架：用自重新标注（SRL）方案重采样开源多模态数据集的回复，使微调数据分布对齐预训练分布；首次解耦多模态理解与语言建模能力，提出渐进式块激活（PBA）机制优先恢复多模态理解能力，并引入视觉敏感因子τ识别多模态关键层。</div>
+                <div class="summary-item"><strong>结论：</strong>在2B-8B参数的多种模型与多个基准上显著优于现有方法，例如W4A8的Qwen3-VL-2B-Instruct平均准确率提升6.6%，相比全精度模型仅约1%的性能下降。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次从解耦多模态理解与语言建模能力的视角设计量化感知训练，结合渐进式块激活与视觉敏感因子定位多模态关键层。</div>
+                <div class="summary-item"><strong>意义：</strong>为低比特多模态大模型在边缘设备上的高效部署提供了可行的量化训练范式，推动MLLM落地应用。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2611.08216v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+<h3 class="topic-header">Agent <span class="count">(3 篇)</span></h3>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                
+                <span class="date">2026-11-05</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.08281v1" target="_blank">Multimodal-SEA: Benchmarking AI Agent Security under Multimodal Social Engineering Attacks</a>
+            </h4>
+            <p class="authors">Zhitao He, Chi Him Zhang, Chengru Han et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>个人AI Agent面临由伪造多模态内容支持的社会工程攻击，但现有评估主要集中于纯文本对话，缺乏对其内在安全性的系统研究。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 Multimodal-SEA 交互式基准，包含608个专家设计任务，基于真实欺诈案例，覆盖14个领域、152种攻击场景和多模态内容，并涵盖中英文社会环境与四个难度等级；设计多模态攻击测试框架，让Agent在模拟应用中检查内容、验证请求并执行动作，以可验证的工具执行日志判定攻击结果。</div>
+                <div class="summary-item"><strong>结论：</strong>评估7个常用多模态模型发现均存在漏洞，攻击成功率为7.1%至34.5%；加入多模态内容使攻击成功率从19.9%升至29.2%，尽管主动验证覆盖率提高；更强安全指令能降低攻击成功率，但未提升对欺骗性多模态内容的识别，部分模型低攻击成功率伴随对合法请求的过度拒绝。</div>
+                <div class="summary-item"><strong>创新点：</strong>构建了面向个人AI Agent、结合真实多模态社会工程攻击与可验证工具执行日志的交互式安全评测基准和可控红队测试框架。</div>
+                <div class="summary-item"><strong>意义：</strong>为多模态大模型与个人Agent的安全评估、红队测试和防御机制设计提供了重要基准与实证依据。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / Agent</span>
+                <a href="https://arxiv.org/pdf/2611.08281v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                
+                <span class="date">2026-11-05</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.08237v1" target="_blank">Terminal-style Mathematical Modeling Bench: The First Agentic and Verifiable Benchmark for Mathematical Modeling</a>
+            </h4>
+            <p class="authors">Xiaojun Wu, Cehao Yang, Xuhui Jiang et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有数学建模基准要么只评测求解片段，要么依赖LLM评审报告，缺少对完整建模问题答案是否接近可信参考且物理可行的可验证评测。</div>
+                <div class="summary-item"><strong>方法：</strong>提出TB-MathModel，将18个2023—2025年真实CUMCM和MCM赛题放入容器化终端，智能体返回统一JSON产物，并针对最终问题的数值核心与多篇Outstanding论文复现结果进行评分。采用方向感知的单侧评分，避免惩罚优于锚点的答案，并加入六类可判定不变量与624条Lean 4义务构成的两层可行性验证，硬门控将不可行答案置零。</div>
+                <div class="summary-item"><strong>结论：</strong>在七个多模态模型（每个三次种子）中，最强模型的多参考O-Eval达到64.58%；成本仅2.54美元的开源模型以约1/100成本达到59.81%。</div>
+                <div class="summary-item"><strong>创新点：</strong>首个同时具备智能体化、可验证和终端化特征，并面向完整竞赛式数学建模问题的基准，结合多参考评分与Lean可行性硬门控。</div>
+                <div class="summary-item"><strong>意义：</strong>为衡量长程数学建模能力与收集智能体轨迹提供了可复现、机器可检查的评测信号。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型 / Agent</span>
+                <a href="https://arxiv.org/pdf/2611.08237v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                <span class="org-tag">Anthropic / Stanford</span>
+                <span class="date">2026-11-05</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.08209v1" target="_blank">RoboARCade: Benchmarking Agentic Robot Control</a>
+            </h4>
+            <p class="authors">Satvik Sharma, Hengyuan Hu, Mihika Kamat et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>论文要评估多模态智能体直接作为机器人策略时的长程精确操作能力，尤其是上下文适应、记忆与推理能力。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 RoboARCade 基准，包含跨三种具身形态的长程操作任务，统一运行在 MuJoCo 后端，并通过自包含数据包和可替换接口支持独立扩展任务、智能体和接口。通过扩大初始条件范围提升任务难度。</div>
+                <div class="summary-item"><strong>结论：</strong>基准能区分领先智能体：GPT-6 Astra 得分 49.8%，Claude Fable 5.1 为 43.6%；更丰富视觉接口仅提升 1.5 到 6.8 分但成本增至 1.7 到 2.3 倍。失败主要来自策略选择差或执行不精确，而非场景理解错误；智能体在 24% 到 39% 的尝试子任务中错误声称成功。上下文示例可将 Astra 在五任务子集上从 53.5% 提升至 73.0%，自写自改提示达到 72.0%。</div>
+                <div class="summary-item"><strong>创新点：</strong>提出了可扩展、模块化的智能体机器人控制基准，系统评测长程操作中的上下文适应、记忆、推理及接口影响。</div>
+                <div class="summary-item"><strong>意义：</strong>为多模态智能体作为机器人策略提供了诊断性评测平台，揭示关键失败模式与无需人工反馈的自提升潜力。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型 / Agent</span>
+                <a href="https://arxiv.org/pdf/2611.08209v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+<h3 class="topic-header">具身智能 <span class="count">(1 篇)</span></h3>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                
+                <span class="date">2026-11-05</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.08425v1" target="_blank">Failure Prediction and Classification in Vision-Language-Action Models Via Calibrated Latent Probing</a>
+            </h4>
+            <p class="authors">Michal P. Podolinsky, Yunhao Yang, Daniel Little et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>视觉-语言-动作（VLA）模型在分布偏移下性能脆弱，意外失败可能损坏设备或危及人员，因此需要一种及时、校准良好、信息丰富且可在边缘高效运行的运行时失败监控器。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 VLA-Tug：在 VLA 骨干网络的潜在层上训练轻量级探针，利用轨迹中失败前片段进行监督，实现早期失败检测，并对漏检率和误报率给出界限；同时预测失败模式以支持纠正动作。</div>
+                <div class="summary-item"><strong>结论：</strong>在相同误报率下，早期失败检测比最强学习基线最高提升 30%；任务偏移下漏检/误报界限在最高 86% 的运行中仍有效（基线最多 21%）；未见任务上失败模式 top-3 准确率比多数类基线最高提升 44%，并支持轻量转向以提升任务成功率。</div>
+                <div class="summary-item"><strong>创新点：</strong>将校准的潜在层探针、失败前片段监督和失败模式分类结合，用于 VLA 的实时运行时失败预测与纠正。</div>
+                <div class="summary-item"><strong>意义：</strong>提升 VLA 在真实具身系统中的安全性、可监控性和部署可靠性。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 具身智能</span>
+                <a href="https://arxiv.org/pdf/2611.08425v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+    <div id="contacts">
+    <div class="section-contacts">
+    <h2 class="contacts-title">联系人库 <span class="contacts-count">10 位作者</span></h2>
+    <h3 class="contacts-subtitle key-lab-subtitle">重点机构作者</h3>
+
+        <div class="contact-card key-lab">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2611.08286v1" target="_blank">[8分] Interactive Visual Gym: Evaluating Visual Interaction Models...</a>
+                <span class="contact-org-badge">Google</span>
+            </div>
+        </div>
+
+        <div class="contact-card key-lab">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2611.08209v1" target="_blank">[8分] RoboARCade: Benchmarking Agentic Robot Control</a>
+                <span class="contact-org-badge">Anthropic / Stanford</span>
+            </div>
+            <div class="contact-list">
+                <div class="contact-person"><span class="role-badge">第一作者</span><strong>Satvik Sharma</strong> — Stanford University </div>
+                <div class="contact-person"><strong>Hengyuan Hu</strong> — Stanford University </div>
+                <div class="contact-person"><strong>Mihika Kamat</strong> — Stanford University </div>
+                <div class="contact-person"><strong>Dorsa Sadigh</strong> — Stanford University </div>
+                <div class="contact-person"><strong>Jeannette Bohg</strong> — Stanford University </div>
+            </div>
+        </div>
+    <h3 class="contacts-subtitle">其他作者</h3>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2611.08462v1" target="_blank">[8分] OopsieRecover: Learning Transferable VLA Corrections from Se...</a>
+                
+            </div>
+            <div class="contact-list">
+                <div class="contact-person"><span class="role-badge">第一作者（与 Skand Peri 共同一作，标注 ∗ 表示同等贡献）</span><strong>Arpit Bahety</strong>  </div>
+                <div class="contact-person"><span class="role-badge">共同第一作者（标注 ∗ 表示同等贡献）</span><strong>Skand Peri</strong>  </div>
+                <div class="contact-person"><span class="role-badge">作者</span><strong>Sriniket Ambatipudi</strong>  </div>
+                <div class="contact-person"><span class="role-badge">作者</span><strong>Chen Xu</strong>  </div>
+                <div class="contact-person"><span class="role-badge">作者</span><strong>Haruki Nishimura</strong>  </div>
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2611.08425v1" target="_blank">[8分] Failure Prediction and Classification in Vision-Language-Act...</a>
+                
+            </div>
+            <div class="contact-list">
+                <div class="contact-person"><span class="role-badge">第一作者</span><strong>Michal P. Podolinsky</strong>  </div>
+                <div class="contact-person"><strong>Yunhao Yang</strong>  </div>
+                <div class="contact-person"><strong>Daniel Little</strong>  </div>
+                <div class="contact-person"><strong>Hong Lu</strong>  </div>
+                <div class="contact-person"><strong>Rohan Siva</strong>  </div>
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2611.08368v1" target="_blank">[8分] VisionSIM: Beyond Idealized Sensors - A Multi-Modal Simulato...</a>
+                
+            </div>
+            <div class="contact-list">
+                <div class="contact-person"><span class="role-badge">第一作者</span><strong>Sacha Jungerman</strong> — University of Wisconsin – Madison </div>
+                <div class="contact-person"><strong>Kaustubh Sadekar</strong> — Portland State University </div>
+                <div class="contact-person"><strong>Avery Gump</strong> — University of Wisconsin – Madison </div>
+                <div class="contact-person"><strong>Sriram Narayanan</strong> — Carnegie Mellon University </div>
+                <div class="contact-person"><strong>Shantanu Gupta</strong> — University of Wisconsin – Madison </div>
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2611.08338v1" target="_blank">[8分] GPWM: Modeling the World as 3D Particle Motion</a>
+                
+            </div>
+            <div class="contact-list">
+                <div class="contact-person"><span class="role-badge">共同第一作者（同等贡献）</span><strong>Robert Ren</strong> — Carnegie Mellon University </div>
+                <div class="contact-person"><span class="role-badge">共同第一作者（同等贡献）</span><strong>Matthew Bronars</strong> — Carnegie Mellon University </div>
+                <div class="contact-person"><strong>He Zhu</strong> — Carnegie Mellon University </div>
+                <div class="contact-person"><strong>Yikai Tang</strong> — Carnegie Mellon University </div>
+                <div class="contact-person"><strong>Jianing Zhang</strong> — Carnegie Mellon University </div>
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2611.08281v1" target="_blank">[8分] Multimodal-SEA: Benchmarking AI Agent Security under Multimo...</a>
+                
+            </div>
+            <div class="contact-list">
+                <div class="contact-person"><span class="role-badge">共同第一作者</span><strong>Zhitao He</strong> — MMSense Lab, The Hong Kong University of Science and Technology <a href="mailto:zhebu@cse.ust.hk" class="email-link">zhebu@cse.ust.hk</a></div>
+                <div class="contact-person"><span class="role-badge">共同第一作者</span><strong>Chi Him Zhang</strong> — MMSense Lab, The Hong Kong University of Science and Technology </div>
+                <div class="contact-person"><span class="role-badge">共同第一作者</span><strong>Chengru Han</strong> — MMSense Lab, The Hong Kong University of Science and Technology </div>
+                <div class="contact-person"><span class="role-badge">通讯作者</span><strong>Yi R. (May) Fung</strong> — MMSense Lab, The Hong Kong University of Science and Technology <a href="mailto:yrfung@ust.hk" class="email-link">yrfung@ust.hk</a></div>
+            </div>
+            <div class="corresponding">通讯作者: Yi R. (May) Fung</div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2611.08237v1" target="_blank">[8分] Terminal-style Mathematical Modeling Bench: The First Agenti...</a>
+                
+            </div>
+            <div class="contact-list">
+                <div class="contact-person"><span class="role-badge">共同第一作者</span><strong>Xiaojun Wu</strong> — IDEA Research; The Hong Kong University of Science and Technology (Guangzhou) </div>
+                <div class="contact-person"><span class="role-badge">共同第一作者</span><strong>Cehao Yang</strong> — IDEA Research; The Hong Kong University of Science and Technology (Guangzhou) </div>
+                <div class="contact-person"><strong>Xuhui Jiang</strong> — IDEA Research; DataArcTech Ltd. </div>
+                <div class="contact-person"><strong>Chengjin Xu</strong> — IDEA Research; DataArcTech Ltd. </div>
+                <div class="contact-person"><span class="role-badge">通讯作者</span><strong>Jia Li</strong> — The Hong Kong University of Science and Technology (Guangzhou) </div>
+            </div>
+            <div class="corresponding">通讯作者: Jia Li, Jian Guo</div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2611.08449v1" target="_blank">[7分] VFlash: Fast, Accurate Visual Planning via Flash Primitive D...</a>
+                
+            </div>
+            <div class="contact-list">
+                <div class="contact-person"><a href="mailto:zhidingy@nvidia.com" class="email-link">zhidingy@nvidia.com</a></div>
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2611.08413v1" target="_blank">[7分] T3R: Training-Free Two-Stage Token Refinement Towards Effici...</a>
+                
+            </div>
+            <div class="contact-list">
+                <div class="contact-person"><span class="role-badge">第一作者</span><strong>Mohammed Hassan</strong> — The University of Texas at Austin <a href="mailto:mohassan@utexas.edu" class="email-link">mohassan@utexas.edu</a></div>
+                <div class="contact-person"><strong>Zhenyang Chen</strong> — Georgia Institute of Technology <a href="mailto:chenzy086@gmail.com" class="email-link">chenzy086@gmail.com</a></div>
+                <div class="contact-person"><strong>Zheng Wang</strong> — University of Illinois Urbana-Champaign <a href="mailto:zhengw10@illinois.edu" class="email-link">zhengw10@illinois.edu</a></div>
+                <div class="contact-person"><strong>Zhixin Zhu</strong> — Hong Kong University of Science and Technology <a href="mailto:cindy.zhu@live.cn" class="email-link">cindy.zhu@live.cn</a></div>
+                <div class="contact-person"><strong>Tianlong Chen</strong> — University of North Carolina at Chapel Hill <a href="mailto:tianlong@cs.unc.edu" class="email-link">tianlong@cs.unc.edu</a></div>
+            </div>
+        </div>
+</div>
+
+    </div>
+
+    <div class="section-archive">
+        <div class="archive">
+            <a href="index.html" class="back-latest">← 返回最新日报</a>
+            <h2>历史归档</h2>
+            <a href="2026-11-06.html" class="archive-link">2026-11-06</a>
+<a href="2026-11-05.html" class="archive-link">2026-11-05</a>
+<a href="2026-11-03.html" class="archive-link">2026-11-03</a>
+<a href="2026-11-01.html" class="archive-link">2026-11-01</a>
+<a href="2026-10-31.html" class="archive-link">2026-10-31</a>
+<a href="2026-10-30.html" class="archive-link">2026-10-30</a>
+<a href="2026-10-29.html" class="archive-link">2026-10-29</a>
+<a href="2026-10-28.html" class="archive-link">2026-10-28</a>
+<a href="2026-10-27.html" class="archive-link">2026-10-27</a>
+<a href="2026-10-26.html" class="archive-link">2026-10-26</a>
+<a href="2026-10-25.html" class="archive-link">2026-10-25</a>
+<a href="2026-10-24.html" class="archive-link">2026-10-24</a>
+<a href="2026-10-23.html" class="archive-link">2026-10-23</a>
+<a href="2026-10-22.html" class="archive-link">2026-10-22</a>
+<a href="2026-10-21.html" class="archive-link">2026-10-21</a>
+<a href="2026-10-20.html" class="archive-link">2026-10-20</a>
+<a href="2026-10-19.html" class="archive-link">2026-10-19</a>
+<a href="2026-10-18.html" class="archive-link">2026-10-18</a>
+<a href="2026-10-17.html" class="archive-link">2026-10-17</a>
+<a href="2026-10-16.html" class="archive-link">2026-10-16</a>
+<a href="2026-10-15.html" class="archive-link">2026-10-15</a>
+<a href="2026-10-14.html" class="archive-link">2026-10-14</a>
+<a href="2026-10-13.html" class="archive-link">2026-10-13</a>
+<a href="2026-10-11.html" class="archive-link">2026-10-11</a>
+<a href="2026-10-10.html" class="archive-link">2026-10-10</a>
+<a href="2026-10-09.html" class="archive-link">2026-10-09</a>
+<a href="2026-10-08.html" class="archive-link">2026-10-08</a>
+<a href="2026-10-07.html" class="archive-link">2026-10-07</a>
+<a href="2026-10-06.html" class="archive-link">2026-10-06</a>
+<a href="2026-10-04.html" class="archive-link">2026-10-04</a>
+
+        </div>
+    </div>
+</body>
+</html>
