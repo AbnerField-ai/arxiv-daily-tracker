@@ -1,0 +1,1940 @@
+{
+  "date": "2026-11-13",
+  "generated_at": "2026-11-13T00:01:55.736877",
+  "total_fetched": 100,
+  "total_matched": 20,
+  "papers": [
+    {
+      "title": "Emergent Biological Capabilities in a Foundation Model for Molecular Interactions",
+      "abstract": "Foundation models trained on large unlabeled corpora develop emergent capabilities, tasks that go beyond the training objective. We extend this paradigm to multimodal biology with Bonbon, a foundation model for molecular interactions trained on approximately 3.2 trillion tokens of paired protein-ligand sequences. From a single representation space, Bonbon exhibits three zero-shot emergent capabilities at hierarchical levels of resolution: functional (mechanism of action), residue (binding site localization, including orthosteric/allosteric discrimination), and bond (covalent versus non-covalent engagement). All three capabilities generalize to out-of-distribution complexes. Bonbon was trained on protein-ligand sequences alone, without any task-specific supervision and without structural coordinates. We conducted controlled scaling experiments across six model scales from 42M to 1.6B parameters; every capability evaluated shows a sharp jump at the largest scale on continuous metrics, even as pretraining loss decreases smoothly. This demonstrates that loss-based scaling laws alone are insufficient to predict when zero-shot emergent capabilities become available. The capabilities reported here emerge after training at a 1:2,000 parameter-to-token ratio to accommodate the sparsity of paired biological interaction data. The same frozen representations achieve state-of-the-art binding and affinity prediction at five orders of magnitude greater speed than co-folding methods. In prospective wet-lab validation across nine disease targets spanning seven protein families, Bonbon achieves a 61.5% dose-response hit rate on de novo compounds, yielding structurally novel molecules not previously reported to inhibit these proteins, including for out-of-distribution targets.",
+      "url": "https://arxiv.org/abs/2611.14504v1",
+      "pdf": "https://arxiv.org/pdf/2611.14504v1",
+      "categories": [
+        "cs.LG",
+        "q-bio.BM"
+      ],
+      "authors": [
+        "Adi Mashiach"
+      ],
+      "all_authors": [
+        "Adi Mashiach"
+      ],
+      "affiliations": [
+        {
+          "name": "Adi Mashiach",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-10",
+      "matched_topics": [
+        "多模态",
+        "大模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "探索能否仅用配对蛋白质-配体序列训练一个多模态基础模型，并在没有任何任务监督和结构坐标的情况下，自发涌现出多层次的分子相互作用理解能力，从而克服共折叠方法速度慢、依赖结构的瓶颈。",
+        "method": "提出 Bonbon，一个在约 3.2 万亿 token 的蛋白质-配体配对序列上训练的基础模型，用单一表征空间同时编码相互作用；通过 42M 到 1.6B 六个规模的受控缩放实验，考察零样本涌现能力与预训练损失之间的关系，并用冻结表征做结合与亲和力预测及湿实验验证。",
+        "result": "模型零样本涌现出三类能力：功能层面判断作用机制、残基层面定位结合位点并区分正构和变构、键层面区分共价与非共价结合；这些能力可泛化到分布外复合物，并在最大规模处出现指标上的跃升；结合与亲和力预测达到 SOTA 且比共折叠方法快约 10^5 倍，在 9 个疾病靶点的湿实验中，从头设计化合物的剂量反应命中率为 61.5%。",
+        "novelty": "仅凭序列训练的分子相互作用基础模型在零样本下自发涌现出从功能、残基到化学键的多层级生物能力，并揭示损失平滑下降时涌现能力会突变，说明仅靠基于损失的缩放律无法预测涌现。",
+        "relevance": "为多模态生物基础模型的涌现能力与缩放规律提供了实证，说明参数与 token 之比需达到约 1:2000 才能适配稀疏的配对生物数据，对 AI 驱动的药物发现和科学基础模型有重要启示。",
+        "org": "论文未提供作者所属机构信息（仅有作者 Adi Mashiach，无 affiliation）",
+        "score": 9
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [
+          "adi@outputlabs.ai"
+        ],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Adi Mashiach",
+              "email": "adi@outputlabs.ai",
+              "affiliation": "Output Labs",
+              "role": "第一作者"
+            }
+          ],
+          "corresponding_author": ""
+        }
+      }
+    },
+    {
+      "title": "OnlyAct: Extracting Action Representations from Foundation Models for World Models",
+      "abstract": "Video world models promise general-purpose interactive simulators, but their training is limited by action supervision: action labels are scarce, fragmented across incompatible specifications, and do not scale with the unlabeled video pretraining corpus. A common workaround jointly trains an action encoder to compress consecutive frames into a latent action and a decoder to reconstruct the next frame from the previous frame and that latent, forcing the latent to capture only new information. This has two limitations: learning the action space from scratch can limit generalization to unseen domains, and the bottleneck trades expressiveness for separation, with tighter settings losing nuance and looser ones risking scene leakage under domain shifts. We argue for a different starting point: rather than learning actions from scratch, we start from a pretrained foundation model (V-JEPA 2), whose embeddings of a frame pair already carry substantial action information after large-scale, diverse video pretraining. The remaining challenge is to extract the action while discarding the scene. We propose a label-free contrastive adaptation framework that pulls together frame pairs sharing the same motion under a different scene and pushes apart pairs from the same scene with different motion, reshaping the geometry of the pretrained space without imposing a reconstruction bottleneck. We introduce a unified evaluation protocol along three axes (action expressiveness, scene invariance, and action-conditioned video generation quality) across robot manipulation, camera navigation, game, and driving benchmarks, most of which are unseen during adaptation. Compared with annotation-free latent-action methods, our representations are substantially more expressive while matching their scene invariance, and they yield world models that transfer demonstrated actions to new scenes more faithfully.",
+      "url": "https://arxiv.org/abs/2611.14420v1",
+      "pdf": "https://arxiv.org/pdf/2611.14420v1",
+      "categories": [
+        "cs.CV"
+      ],
+      "authors": [
+        "Runjia Li",
+        "Minghao Chen",
+        "Junyu Xie",
+        "Philip Torr",
+        "Andrea Vedaldi"
+      ],
+      "all_authors": [
+        "Runjia Li",
+        "Minghao Chen",
+        "Junyu Xie",
+        "Philip Torr",
+        "Andrea Vedaldi",
+        "Tomas Jakab"
+      ],
+      "affiliations": [
+        {
+          "name": "Runjia Li",
+          "affiliations": []
+        },
+        {
+          "name": "Minghao Chen",
+          "affiliations": []
+        },
+        {
+          "name": "Junyu Xie",
+          "affiliations": []
+        },
+        {
+          "name": "Philip Torr",
+          "affiliations": []
+        },
+        {
+          "name": "Andrea Vedaldi",
+          "affiliations": []
+        },
+        {
+          "name": "Tomas Jakab",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-10",
+      "matched_topics": [
+        "世界模型",
+        "大模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "视频世界模型的训练依赖动作标注，但动作标签稀缺、规格不统一且无法随无标注视频语料扩展；现有从零学习隐动作的方法受重建瓶颈限制，在泛化性以及表达力与场景分离的权衡上存在不足。",
+        "method": "论文不从零学习动作，而是以预训练基础模型 V-JEPA 2 为起点，利用其帧对嵌入已蕴含的动作信息。提出一种无标签的对比适配框架：将不同场景下相同运动的帧对拉近，将同一场景下不同运动的帧对推远，在不引入重建瓶颈的情况下重塑预训练嵌入空间的几何结构。同时提出涵盖动作表达力、场景不变性和动作条件视频生成质量三个维度的统一评测协议。",
+        "result": "在机器人操作、相机导航、游戏和驾驶等多个基准（多数在适配时未见）上，该方法比无需标注的隐动作方法表达力显著更强，同时保持相当的场景不变性，且所构建的世界模型能更忠实地将演示动作迁移到新场景。",
+        "novelty": "首次提出从预训练视频基础模型的嵌入中通过无标签对比适配“提取”动作、丢弃场景，绕开传统隐动作学习的重建瓶颈。",
+        "relevance": "为世界模型提供了一种可扩展、无需动作标注的动作表征学习范式，有助于利用海量无标注视频提升世界模型的交互与迁移能力。",
+        "org": "牛津大学（VGG组，Philip Torr、Andrea Vedaldi），可能合作 Meta AI",
+        "score": 8
+      },
+      "identified_orgs": [
+        "Meta"
+      ],
+      "contact_info": {
+        "emails_found": [],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Runjia Li",
+              "email": "",
+              "affiliation": "University of Oxford",
+              "role": "第一作者"
+            },
+            {
+              "name": "Minghao Chen",
+              "email": "",
+              "affiliation": "University of Oxford",
+              "role": ""
+            },
+            {
+              "name": "Junyu Xie",
+              "email": "",
+              "affiliation": "University of Oxford",
+              "role": ""
+            },
+            {
+              "name": "Philip Torr",
+              "email": "",
+              "affiliation": "University of Oxford",
+              "role": ""
+            },
+            {
+              "name": "Andrea Vedaldi",
+              "email": "",
+              "affiliation": "University of Oxford",
+              "role": ""
+            },
+            {
+              "name": "Tomas Jakab",
+              "email": "",
+              "affiliation": "University of Oxford",
+              "role": ""
+            }
+          ],
+          "corresponding_author": ""
+        }
+      }
+    },
+    {
+      "title": "Is Your Robot's Memory Just a Clock? Temporal Shortcuts in Memory-Augmented VLA Policies",
+      "abstract": "Memory-augmented vision-language-action (VLA) policies are meant to remember what happened. Many of them, however, fill memory by time: they sample frames uniformly across the episode and stamp each frame with its time step. Because time passes even when nothing happens, such a memory may not tell waiting from working. We show that it does not. On the counting tasks of RoboMME, we make the robot briefly pause or fidget its wrist. Such a null event changes nothing the task depends on, yet a released memory VLA counts the interval as work done and stops early. We call this failure phantom progress. It cuts success from 47 to 16 of 50 on one task and from 44 to 10 on the other. When the same frames are withheld from memory, success returns, so the cause lies in memory rather than in the interruption itself. We trace the failure to a temporal shortcut: because demonstrations proceed at a steady pace, elapsed time predicts progress. Indeed, rescaling the time stamps alone makes the policy stop early when the clock runs fast and repeat when it runs slow. Surprisingly, removing the time encoding does not cure the failure, because the frames of a null event still occupy slots of the time-sampled memory. Across RoboMME's released designs, vulnerability follows how memory is indexed. Of the fixes the diagnosis suggests, training with injected pauses does not remove the failure and impairs counting, whereas indexing memory by events recovers half or more of the loss without retraining. A memory meant to remember what happened should count events rather than clock ticks.",
+      "url": "https://arxiv.org/abs/2611.14488v1",
+      "pdf": "https://arxiv.org/pdf/2611.14488v1",
+      "categories": [
+        "cs.RO"
+      ],
+      "authors": [
+        "Chubin Zhang",
+        "Bo An"
+      ],
+      "all_authors": [
+        "Chubin Zhang",
+        "Bo An"
+      ],
+      "affiliations": [
+        {
+          "name": "Chubin Zhang",
+          "affiliations": []
+        },
+        {
+          "name": "Bo An",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-10",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "记忆增强的视觉-语言-动作（VLA）策略通常按时间均匀采样帧并用时间步标记来构建记忆，导致机器人把「时间流逝」误当作「任务进展」——论文要揭示并诊断这种时间捷径带来的失败模式。",
+        "method": "在 RoboMME 的计数任务上做受控干预实验：让机器人短暂停顿或抖动手腕（不影响任务的空事件），并对比「扣留这些帧」、「缩放时间戳」、「去除时间编码」、「注入停顿训练」以及「按事件索引记忆」等多种条件的表现。",
+        "result": "空事件使成功率从 50 次中 47 次降至 16 次、44 次降至 10 次；扣留相同帧后成功率恢复，证明问题出在记忆而非中断本身；仅缩放时间戳即可让策略在时钟快时早停、慢时重复；而去除时间编码无效，改用事件索引记忆无需重训即可挽回一半以上损失，注入停顿训练则无效且损害计数。",
+        "novelty": "首次命名并系统刻画了记忆增强 VLA 中的「幻影进展（phantom progress）」时间捷径，并指出脆弱性取决于记忆的索引方式而非时间编码本身。",
+        "relevance": "为具身智能与世界模型中的记忆设计提供了重要原则：记忆应按事件而非时钟滴答来索引，对长程任务策略的可靠性有直接意义。",
+        "org": "未提供（作者机构信息缺失）",
+        "score": 7
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [
+          "chubinzhang23@gmail.com"
+        ],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Chubin Zhang",
+              "email": "chubinzhang23@gmail.com",
+              "affiliation": "Nanyang Technological University",
+              "role": "第一作者"
+            },
+            {
+              "name": "Bo An",
+              "email": "",
+              "affiliation": "Nanyang Technological University",
+              "role": "通讯作者"
+            }
+          ],
+          "corresponding_author": "Bo An"
+        }
+      }
+    },
+    {
+      "title": "Evaluating LLM-Generated World Models for Neuro-Symbolic Reasoning",
+      "abstract": "Formal world models can support planning, verification, and safety reasoning, but constructing them from open-ended natural-language situations is difficult, particularly in multi-agent settings where several formalizations may be plausible. We study whether five LLMs can generate such world models as partially observable stochastic games and whether mechanical validity is sufficient to establish that the resulting model faithfully represents the intended decision problem. We introduce a benchmark of 44 scenarios spanning game, situational, and cultural settings and evaluate generated world models along three dimensions: mechanical validity, reference-relative structural agreement, and semantic criteria. Across three empirical tracks, we analyze 410 first-pass generations. In the reference-backed game track, 134/135 generated world models pass a strict mechanical audit, yet mean permutation-invariant structural F1 is only 0.366, with just 28/134 mechanically valid models exactly matching the authored reference. In the cultural track, explicitly naming the country changes the generated structural representation for most LLMs while producing only small changes in automated semantic scores. These results show that executability is a necessary but insufficient criterion for LLM-generated world models: models that are mechanically valid can still differ substantially in the structure used by downstream neuro-symbolic reasoning and planning.",
+      "url": "https://arxiv.org/abs/2611.14419v1",
+      "pdf": "https://arxiv.org/pdf/2611.14419v1",
+      "categories": [
+        "cs.AI"
+      ],
+      "authors": [
+        "Souhaila Djaffal",
+        "Amna Jamal",
+        "Gagana Madhugiri Devaraja",
+        "Anidipta Pal",
+        "Jobst Heitzig"
+      ],
+      "all_authors": [
+        "Souhaila Djaffal",
+        "Amna Jamal",
+        "Gagana Madhugiri Devaraja",
+        "Anidipta Pal",
+        "Jobst Heitzig"
+      ],
+      "affiliations": [
+        {
+          "name": "Souhaila Djaffal",
+          "affiliations": []
+        },
+        {
+          "name": "Amna Jamal",
+          "affiliations": []
+        },
+        {
+          "name": "Gagana Madhugiri Devaraja",
+          "affiliations": []
+        },
+        {
+          "name": "Anidipta Pal",
+          "affiliations": []
+        },
+        {
+          "name": "Jobst Heitzig",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-10",
+      "matched_topics": [
+        "世界模型",
+        "大模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "研究LLM能否从开放式自然语言情境中生成可用于神经符号推理与规划的形式化世界模型，以及“机械有效性”是否足以保证模型忠实反映目标决策问题。",
+        "method": "构建包含44个场景的基准，覆盖游戏、情境与文化设定，将世界模型表示为部分可观察随机博弈，并从机械有效性、参考相对结构一致性和语义标准三个维度评估五个LLM生成的410个首轮世界模型。",
+        "result": "在游戏参考轨中，134/135个模型通过严格机械审计，但平均置换不变结构F1仅0.366，仅28/134个机械有效模型与参考完全匹配；文化轨中显式国家名会显著改变结构表示但自动语义分数变化很小。",
+        "novelty": "系统区分并实证了LLM生成世界模型的“可执行性”与“结构忠实性”，指出机械有效性是必要但不充分条件。",
+        "relevance": "对世界模型、神经符号推理、Agent规划与安全验证具有直接意义，提醒下游推理不能仅依赖可执行性作为正确性标准。",
+        "org": "提供信息未列出作者机构；Jobst Heitzig 可能与波茨坦气候影响研究所（PIK）相关。",
+        "score": 7
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [
+          "heitzig@pik-potsdam.de"
+        ],
+        "ai_extracted": null
+      }
+    },
+    {
+      "title": "An Energy-Based Perspective on Machine Learning",
+      "abstract": "Energy-based models (EBMs) define a distribution through a scalar energy, $p_θ(x)\\propto\\exp(-E_θ(x))$, and are usually presented as one model family among many. This tutorial has a broader goal: beyond introducing EBMs, it uses them as a single lens that connects the different aspects of machine learning. Any EBM is specified by three choices, the energy, which determines what the model represents; the inference procedure, which samples from or optimizes the energy; and the learning method, which fits the energy to data. We first develop these components, including sampling, variational inference, and learning by maximum likelihood, noise contrastive estimation, pseudolikelihood, score matching, and adversarial training, and show that the learning methods share one contrastive structure. We then show that discriminative models, generative models such as GANs, normalizing flows, diffusion and autoregressive models, representation learning methods such as contrastive learning, word2vec, BERT, denoising auto-encoders, and diffusion representations, reinforcement learning with EBM policies and world models, inverse reinforcement learning, and planning, as well as inference-time computation with verifiers, are all EBMs that differ in these three choices, mostly in how they handle the partition function and sampling. This view explains existing methods, organizes them into a common framework, and suggests new algorithms by replacing one component while keeping the others, with composition of energies as a principled way to combine learned models at inference time.",
+      "url": "https://arxiv.org/abs/2611.14383v1",
+      "pdf": "https://arxiv.org/pdf/2611.14383v1",
+      "categories": [
+        "cs.AI",
+        "cs.LG"
+      ],
+      "authors": [
+        "Bo Dai",
+        "Yilun Du"
+      ],
+      "all_authors": [
+        "Bo Dai",
+        "Yilun Du"
+      ],
+      "affiliations": [
+        {
+          "name": "Bo Dai",
+          "affiliations": []
+        },
+        {
+          "name": "Yilun Du",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-10",
+      "matched_topics": [
+        "世界模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "论文试图用统一的能量基模型（EBM）视角重新组织和理解机器学习中的多种模型与方法，说明它们本质上是同一框架下不同设计选择的产物。",
+        "method": "将EBM拆解为能量函数、推断过程和学习方法三个组件，系统介绍采样、变分推断、最大似然、噪声对比估计、伪似然、得分匹配和对抗训练，并指出这些学习方法共享对比式结构；随后用该框架统一解释判别模型、生成模型、表示学习、强化学习、逆强化学习、规划及推理时验证器等方法。",
+        "result": "论文表明，大量现有方法都可视为EBM在三项设计选择上的不同组合，主要差异在于如何处理配分函数与采样；该视角不仅能解释和组织现有方法，还能通过替换组件或组合能量函数来启发新算法。",
+        "novelty": "核心创新在于以EBM为单一透镜，将判别、生成、表示学习、强化学习和推理时计算统一到一个可解释、可组合的框架中。",
+        "relevance": "该工作有助于AI研究者从统一视角理解不同建模范式，并为设计新算法、组合已有模型及推理时计算提供原则性指导。",
+        "org": "未提供（作者机构信息缺失）",
+        "score": 7
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [
+          "ydu@seas.harvard.edu",
+          "bodai@cc.gatech.edu"
+        ],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Bo Dai",
+              "email": "bodai@cc.gatech.edu",
+              "affiliation": "Georgia Institute of Technology",
+              "role": "第一作者"
+            },
+            {
+              "name": "Yilun Du",
+              "email": "ydu@seas.harvard.edu",
+              "affiliation": "Harvard University",
+              "role": ""
+            }
+          ],
+          "corresponding_author": ""
+        }
+      }
+    },
+    {
+      "title": "What Factors Matter for Collection-Level Counting with Human-AI Collaboration?",
+      "abstract": "Many scientific and policy decisions require estimating the total number of target objects across a large image collection. Exhaustive human labeling is often infeasible, while raw model predictions can be biased, especially under domain shift. Recent human-AI estimation methods combine imperfect model predictions with limited human verification to obtain reliable collection-level estimates. However, existing work provides little guidance on how practitioners should choose among models, estimators, and adaptation strategies for a new deployment. We study these choices within a common human-in-the-loop counting framework across 12 tasks spanning biomedical microscopy, ground-level and aerial wildlife surveys, and overhead imagery of urban structures. Our results show that modern multimodal models provide a strong, training-free starting point for many tasks, while fine-tuned detectors become more advantageous at larger labeling budgets and across repeated deployments. Estimation efficiency improves further when model predictions are used to prioritize which units humans label, rather than sampling uniformly. We also find that each model's ranking quality can be estimated with a small pilot set, yielding practical guidance for selecting strategies on new counting tasks. In a field deployment on aerial pronghorn surveys, a task-specific adaptation of these methods meets the survey's $\\pm 5\\%$ tolerance after reviewing a median of only $3.2\\%$ of collected images.",
+      "url": "https://arxiv.org/abs/2611.14380v1",
+      "pdf": "https://arxiv.org/pdf/2611.14380v1",
+      "categories": [
+        "cs.CV"
+      ],
+      "authors": [
+        "Seoyun Jeong",
+        "Logan Lawrence",
+        "Owen L. Martin",
+        "Benjamin Koger",
+        "Daniel Sheldon"
+      ],
+      "all_authors": [
+        "Seoyun Jeong",
+        "Logan Lawrence",
+        "Owen L. Martin",
+        "Benjamin Koger",
+        "Daniel Sheldon",
+        "Subhransu Maji"
+      ],
+      "affiliations": [
+        {
+          "name": "Seoyun Jeong",
+          "affiliations": []
+        },
+        {
+          "name": "Logan Lawrence",
+          "affiliations": []
+        },
+        {
+          "name": "Owen L. Martin",
+          "affiliations": []
+        },
+        {
+          "name": "Benjamin Koger",
+          "affiliations": []
+        },
+        {
+          "name": "Daniel Sheldon",
+          "affiliations": []
+        },
+        {
+          "name": "Subhransu Maji",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-10",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "在大规模图像集合中估计目标总数时，人工标注不可行而模型预测存在偏差；现有的人机协同估计方法缺乏对模型、估计器和适配策略选择的实践指导。",
+        "method": "在统一的人机交互回路计数框架下，跨越12个任务（生物医学显微、地面与航拍野生动物、城市结构航拍）系统比较模型选择、估计器与适配策略；并利用模型预测优先选择人工标注单元，以及用小规模试点集估计模型排序质量来指导策略选择。",
+        "result": "现代多模态模型在多数任务上提供强且免训练的起点，微调检测器在标注预算更大和重复部署时更优；按模型预测优先标注可提升估计效率；航拍叉角羚实地部署中仅需审查中位数3.2%的图像即达到±5%容差。",
+        "novelty": "首次在跨领域12个计数任务上系统评估人机协同集合级估计中模型、估计器与适配策略的选择，并提出用试点集估计排序质量以指导新任务部署。",
+        "relevance": "为AI在实际部署中的人机协同计数与估计提供了可操作的策略选择指南，推动了多模态模型在科学调查与政策决策中的可靠应用。",
+        "org": "未明确识别（作者机构信息缺失）",
+        "score": 7
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [
+          "omartin9@uwyo.edu",
+          "bkoger@uwyo.edu",
+          "lclawrence@umass.edu",
+          "seoyunjeong@umass.edu",
+          "sheldon@cs.umass.edu",
+          "smaji@umass.edu"
+        ],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Seoyun Jeong",
+              "email": "seoyunjeong@umass.edu",
+              "affiliation": "University of Massachusetts Amherst",
+              "role": "第一作者"
+            },
+            {
+              "name": "Logan Lawrence",
+              "email": "lclawrence@umass.edu",
+              "affiliation": "University of Massachusetts Amherst",
+              "role": "作者"
+            },
+            {
+              "name": "Owen L. Martin",
+              "email": "omartin9@uwyo.edu",
+              "affiliation": "University of Wyoming",
+              "role": "作者"
+            },
+            {
+              "name": "Benjamin Koger",
+              "email": "bkoger@uwyo.edu",
+              "affiliation": "University of Wyoming",
+              "role": "作者"
+            },
+            {
+              "name": "Daniel Sheldon",
+              "email": "sheldon@cs.umass.edu",
+              "affiliation": "University of Massachusetts Amherst",
+              "role": "作者"
+            },
+            {
+              "name": "Subhransu Maji",
+              "email": "smaji@umass.edu",
+              "affiliation": "University of Massachusetts Amherst",
+              "role": "作者"
+            }
+          ],
+          "corresponding_author": ""
+        }
+      }
+    },
+    {
+      "title": "Multimodal Abstention That Preserves Acquired Correct Answers",
+      "abstract": "Adding abstention to a task-adapted multimodal model can discard correct answers, including capabilities acquired during adaptation. We formulate abstention repair as maximizing correct abstention on unanswerable questions under a budget on newly lost correct answers. We propose ReFrain (Regression-Free Abstention), which combines a linear probe on first-token logits, threshold calibration on held-out image clusters, and a deterministic veto that replaces rejected outputs with the displayed \"none of the above\" option while preserving all other responses. \"Regression-free\" denotes zero loss on the calibration set at the zero-budget target. All abstention methods in our main comparison start from the same answering-SFT checkpoint; we separately track lost correct answers, repaired errors, and retained SFT gains. On Qwen2.5-VL-3B, ReFrain at zero budget retains all 57 SFT-gained answers with no losses and improves correct abstention by 7.30 percentage points. At a 0.5% calibration budget, it reaches 74.05% correct abstention with 8 losses and retains 55 gains; CLIP-UP EmbLoRA reaches 64.65% with 62 losses, 41 repairs, and 40 retained gains. The same probe at its default threshold loses 298 correct answers. With models and thresholds frozen, confirmation on 228 independent question clusters yields 66.05% correct abstention and no losses at the 0.5% point, exceeding EmbLoRA by 32.72 percentage points. Ordinary refusal SFT achieves higher correct abstention at greater regression cost. Code and reproduction materials: https://github.com/ModeLiberaL/ReFrain.",
+      "url": "https://arxiv.org/abs/2611.14311v1",
+      "pdf": "https://arxiv.org/pdf/2611.14311v1",
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.LG"
+      ],
+      "authors": [
+        "Jinyuan Zhang"
+      ],
+      "all_authors": [
+        "Jinyuan Zhang"
+      ],
+      "affiliations": [
+        {
+          "name": "Jinyuan Zhang",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-10",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "多模态模型在任务适配后加入弃答能力时，往往会丢弃原本正确的答案，包括适配阶段获得的能力。论文要在限制新丢失正确答案的预算下，最大化对不可回答问题正确弃答。",
+        "method": "提出 ReFrain（Regression-Free Abstention），基于首 token logits 的线性探针、在留出图像簇上的阈值校准，以及确定性 veto：被拒绝输出替换为界面中的“none of the above”选项，同时保留其他回答。所有主比较中的弃答方法都从同一 answering-SFT checkpoint 出发，并分别跟踪丢失正确答案、修复错误和保留 SFT 增益。",
+        "result": "在 Qwen2.5-VL-3B 上，零预算 ReFrain 保留全部 57 个 SFT 增益答案且无损失，并将正确弃答率提升 7.30 个百分点；0.5% 校准预算下达到 74.05% 正确弃答、仅 8 个损失并保留 55 个增益，显著优于 CLIP-UP EmbLoRA 的 64.65% 和 62 个损失。冻结模型与阈值后在 228 个独立问题簇确认，0.5% 点达到 66.05% 正确弃答且无损失，比 EmbLoRA 高 32.72 个百分点。",
+        "novelty": "将弃答修复形式化为有预算约束的回归最小化问题，并用线性探针、阈值校准与确定性 veto 实现“无回归”弃答。",
+        "relevance": "对多模态模型的安全可靠部署有实际意义，表明可以在不牺牲已获得正确答案能力的前提下提升弃答能力。",
+        "org": "未知（作者未提供机构信息）",
+        "score": 7
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [
+          "202621116012480@stu.hubu.edu.cn"
+        ],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Jinyuan Zhang",
+              "email": "202621116012480@stu.hubu.edu.cn",
+              "affiliation": "湖北大学",
+              "role": "第一作者"
+            }
+          ],
+          "corresponding_author": ""
+        }
+      }
+    },
+    {
+      "title": "GARD: Gradient-Guided Adversarial Representation Defense against Backdoors in Multimodal Contrastive Learning Models",
+      "abstract": "Multimodal contrastive learning models such as CLIP are vulnerable to backdoor attacks with diverse trigger structures, ranging from localized patches to globally distributed perturbations, with recent attacks increasingly optimizing these triggers in the representation space. Existing post-hoc defenses based on clean fine-tuning may leave backdoors active, while trigger-inversion methods depend on accurately estimating the attack target and trigger. We observe that backdoored encoders exhibit structure-dependent representation sensitivity: global perturbations preferentially expose distributed backdoors, whereas local patch perturbations are more effective for localized backdoors. Based on this observation, we propose Gradient-Guided Adversarial Representation Defense (GARD), a target- and trigger-agnostic post-hoc defense. GARD optimizes complementary global and local adversarial probes to maximally displace clean-image representations, and then realigns the perturbed representations with detached clean anchors while preserving image-text alignment. The resulting model requires no additional computation at inference time. Across six visual backdoor attacks and two CLIP visual backbones, GARD reduces the attack success rate below 1% in all 12 evaluated attack-backbone combinations while maintaining competitive clean accuracy. These results demonstrate the effectiveness of adversarial representation probing for repairing backdoored multimodal contrastive encoders.",
+      "url": "https://arxiv.org/abs/2611.14143v1",
+      "pdf": "https://arxiv.org/pdf/2611.14143v1",
+      "categories": [
+        "cs.CR",
+        "cs.CV"
+      ],
+      "authors": [
+        "Yuhong Wang",
+        "Yujun Cai",
+        "Lei Feng",
+        "Songze Li"
+      ],
+      "all_authors": [
+        "Yuhong Wang",
+        "Yujun Cai",
+        "Lei Feng",
+        "Songze Li"
+      ],
+      "affiliations": [
+        {
+          "name": "Yuhong Wang",
+          "affiliations": []
+        },
+        {
+          "name": "Yujun Cai",
+          "affiliations": []
+        },
+        {
+          "name": "Lei Feng",
+          "affiliations": []
+        },
+        {
+          "name": "Songze Li",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-10",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "多模态对比学习模型（如CLIP）容易受到多种触发器结构的后门攻击，现有后处理防御方法存在后门残留或依赖攻击目标/触发器估计的问题。",
+        "method": "提出GARD，一种与攻击目标和触发器无关的后处理防御方法。该方法利用后门编码器对全局和局部扰动具有结构依赖敏感性的观察，优化互补的全局与局部对抗探针以最大程度偏移干净图像表示，再将扰动表示与分离的干净锚点重新对齐，同时保持图文对齐。",
+        "result": "在6种视觉后门攻击和2种CLIP视觉骨干的12种组合中，GARD将所有攻击成功率降至1%以下，同时保持有竞争力的干净准确率，且推理时无需额外计算。",
+        "novelty": "首次利用梯度引导的全局-局部对抗表示探针来修复后门多模态对比编码器，实现目标与触发器无关的后处理防御。",
+        "relevance": "为CLIP等多模态对比学习模型的后门安全提供了一种无需推理开销且不依赖攻击先验的实用防御思路。",
+        "org": "未提供作者机构信息，无法从摘要中识别",
+        "score": 7
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [
+          "songzeli@seu.edu.cn",
+          "yuhongwang@seu.edu.cn"
+        ],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Yuhong Wang",
+              "email": "yuhongwang@seu.edu.cn",
+              "affiliation": "Southeast University",
+              "role": "第一作者"
+            },
+            {
+              "name": "Yujun Cai",
+              "email": "",
+              "affiliation": "Southeast University",
+              "role": ""
+            },
+            {
+              "name": "Lei Feng",
+              "email": "",
+              "affiliation": "Southeast University",
+              "role": ""
+            },
+            {
+              "name": "Songze Li",
+              "email": "songzeli@seu.edu.cn",
+              "affiliation": "Southeast University",
+              "role": "通讯作者"
+            }
+          ],
+          "corresponding_author": "Songze Li"
+        }
+      }
+    },
+    {
+      "title": "Hx2Dx: From Anamnesis to Diagnosis - A Multimodal Arena for Conversational Clinical Reasoning in LLMs",
+      "abstract": "Large language models (LLMs) achieve expert-level diagnostic accuracy in static evaluations, where the model receives a curated vignette or case report that already condenses the diagnostically relevant findings. Such evaluations measure inference over already selected evidence; the evaluations do not account for the inquiry used to obtain it. In clinical practice, however, diagnosis is an iterative process of inquiry. Clinicians take the patient's history, or anamnesis (Hx), through targeted questioning, examine the patient, and request and interpret tests, progressively narrowing the differential until they reach a final diagnosis (Dx). We introduce Hx2Dx ARENA, an interactive benchmark of 1'000 clinical cases from the New England Journal of Medicine (NEJM). Each case is a simulated encounter that proceeds from initial presentation through history taking and physical examination to diagnostic workup. We evaluate open- and closed-source LLMs under multiple configurations. Performance varies considerably across models in the interactive setting, and every model loses diagnostic accuracy relative to the static setting, where the full case is presented upfront. The ability to ask the right questions accounts for much of both the gap between models and the loss of accuracy: diagnosis improves as questions become more targeted and build a more complete clinical picture. LLMs thus reason well once the relevant data are available but remain limited in hypothesis-driven information gathering, in knowing what to ask in order to know. Closing this gap is a prerequisite for their safe integration into real-world diagnostic workflows.",
+      "url": "https://arxiv.org/abs/2611.14122v1",
+      "pdf": "https://arxiv.org/pdf/2611.14122v1",
+      "categories": [
+        "cs.AI"
+      ],
+      "authors": [
+        "Federico Ravenda",
+        "Mirko Cesarini",
+        "Daniele Montagnani",
+        "Volodymyr Karpenko",
+        "Antonietta Mira"
+      ],
+      "all_authors": [
+        "Federico Ravenda",
+        "Mirko Cesarini",
+        "Daniele Montagnani",
+        "Volodymyr Karpenko",
+        "Antonietta Mira",
+        "Andrea Raballo"
+      ],
+      "affiliations": [
+        {
+          "name": "Federico Ravenda",
+          "affiliations": []
+        },
+        {
+          "name": "Mirko Cesarini",
+          "affiliations": []
+        },
+        {
+          "name": "Daniele Montagnani",
+          "affiliations": []
+        },
+        {
+          "name": "Volodymyr Karpenko",
+          "affiliations": []
+        },
+        {
+          "name": "Antonietta Mira",
+          "affiliations": []
+        },
+        {
+          "name": "Andrea Raballo",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-10",
+      "matched_topics": [
+        "多模态",
+        "大模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "现有 LLM 诊断评测多为静态病例摘要，只衡量模型对已筛选证据的推理能力，无法反映临床中通过问诊（Hx）、查体和检查逐步缩小鉴别诊断的迭代问询过程。",
+        "method": "提出 Hx2Dx ARENA，一个基于《新英格兰医学杂志》（NEJM）1,000 个临床病例的交互式基准，每个病例模拟从初诊、病史采集、体格检查到诊断检查的完整就诊流程；在多种配置下评测开源与闭源 LLM 的问询与诊断表现。",
+        "result": "交互场景下各模型诊断准确率差异明显，且所有模型相对静态一次性给出完整病例的场景均出现准确率下降；能否提出有针对性的问题、构建完整临床图景，是解释模型间差距与准确率损失的主要因素。",
+        "novelty": "首次将 LLM 临床评测从“对给定证据做推理”转向“通过主动提问获取证据”的交互式问诊竞技场。",
+        "relevance": "揭示了 LLM 在假设驱动的信息采集（知道该问什么才能知道）上的关键短板，是医疗诊断 Agent 安全落地需跨越的门槛，也为主动信息获取类 Agent 研究提供了评测范式。",
+        "org": "论文未提供作者所属机构信息（作者包括 Federico Ravenda、Antonietta Mira 等，推测为意大利高校）",
+        "score": 7
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [
+          "federico.ravenda@usi.ch"
+        ],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Federico Ravenda",
+              "email": "federico.ravenda@usi.ch",
+              "affiliation": "REMEDI Lab, Università della Svizzera italiana, Lugano, Switzerland",
+              "role": "第一作者、通讯作者"
+            },
+            {
+              "name": "Mirko Cesarini",
+              "email": "",
+              "affiliation": "Department of Statistics and Quantitative Methods, University of Milano-Bicocca, Milan, Italy",
+              "role": "作者"
+            },
+            {
+              "name": "Daniele Montagnani",
+              "email": "",
+              "affiliation": "REMEDI Lab, Università della Svizzera italiana, Lugano, Switzerland; Department of Mathematics, Pavia University, Pavia, Italy",
+              "role": "作者"
+            },
+            {
+              "name": "Volodymyr Karpenko",
+              "email": "",
+              "affiliation": "REMEDI Lab, Università della Svizzera italiana, Lugano, Switzerland",
+              "role": "作者"
+            },
+            {
+              "name": "Antonietta Mira",
+              "email": "",
+              "affiliation": "REMEDI Lab, Università della Svizzera italiana, Lugano, Switzerland; Department of Science and High Technology, Insubria University, Como, Italy",
+              "role": "作者（共同监督）"
+            },
+            {
+              "name": "Andrea Raballo",
+              "email": "",
+              "affiliation": "REMEDI Lab, Università della Svizzera italiana, Lugano, Switzerland; Cantonal Sociopsychiatric Organisation, Public Health Division, Department of Health and Social Care, Repubblica e Cantone Ticino, Mendrisio, Switzerland",
+              "role": "作者（共同监督）"
+            }
+          ],
+          "corresponding_author": "Federico Ravenda"
+        }
+      }
+    },
+    {
+      "title": "TAMEing the Open-World Personalization: Towards Open-Set Personalized MLLM Assistant",
+      "abstract": "Personalizing Multimodal Large Language Models (MLLMs) as intelligent assistants has recently emerged as an active research topic, where an MLLM is expected to go beyond generic, one-size-fits-all replies, and instead generate responses grounded in user-specific objects, entities, and concepts encountered during interactions. Nevertheless, existing studies mainly focus on personalizing MLLMs on a static, predefined set of personalized concepts and require users to manually and frequently extend this set to accommodate newly emerging concepts, which is infeasible in dynamic-world scenarios. To address this limitation, we recast conventional MLLM personalization as an Open-Set problem, and propose TAME-O, the first long-context open-set personalized MLLM assistant. Specifically, TAME-O introduces a training-free, plug-and-play Concept Reconciliation Skill (CR Skill). It enables the assistant to automatically unlock novel concepts during prolonged human-MLLM interactions while preventing confusion with previously unlocked ones, allowing the MLLM to continually grasp more and more concepts and progressively refine the modeling of known ones. Extensive experiments under the open-set personalization setting underscore the efficacy of our method.",
+      "url": "https://arxiv.org/abs/2611.14118v1",
+      "pdf": "https://arxiv.org/pdf/2611.14118v1",
+      "categories": [
+        "cs.CV"
+      ],
+      "authors": [
+        "Rongpei Hong",
+        "Jian Lang",
+        "Ting Zhong",
+        "Fan Zhou"
+      ],
+      "all_authors": [
+        "Rongpei Hong",
+        "Jian Lang",
+        "Ting Zhong",
+        "Fan Zhou"
+      ],
+      "affiliations": [
+        {
+          "name": "Rongpei Hong",
+          "affiliations": []
+        },
+        {
+          "name": "Jian Lang",
+          "affiliations": []
+        },
+        {
+          "name": "Ting Zhong",
+          "affiliations": []
+        },
+        {
+          "name": "Fan Zhou",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-10",
+      "matched_topics": [
+        "多模态",
+        "大模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "现有 MLLM 个性化主要依赖静态、预定义的个性化概念集，需要用户手动频繁扩展，难以适应动态开放世界中的新概念。",
+        "method": "论文将传统 MLLM 个性化重新定义为开放集问题，提出首个长上下文开放集个性化 MLLM 助手 TAME-O，并引入免训练、即插即用的概念协调技能（CR Skill），在长期人机交互中自动解锁新概念并避免与已知概念混淆。",
+        "result": "开放集个性化设置下的大量实验验证了方法的有效性，使 MLLM 能持续掌握更多概念并逐步细化对已知概念的建模。",
+        "novelty": "首次将 MLLM 个性化建模为开放集长上下文问题，并提出免训练、即插即用的概念协调技能来实现持续概念解锁。",
+        "relevance": "推动个性化多模态助手从静态封闭概念集走向动态开放世界中的持续学习与自适应交互。",
+        "org": "未提供（作者机构信息缺失，无法确认）",
+        "score": 7
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [
+          "zhongting@uestc.edu.cn"
+        ],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Rongpei Hong",
+              "email": "",
+              "affiliation": "University of Electronic Science and Technology of China",
+              "role": "第一作者"
+            },
+            {
+              "name": "Jian Lang",
+              "email": "",
+              "affiliation": "University of Electronic Science and Technology of China",
+              "role": "作者"
+            },
+            {
+              "name": "Ting Zhong",
+              "email": "",
+              "affiliation": "University of Electronic Science and Technology of China",
+              "role": "通讯作者"
+            },
+            {
+              "name": "Fan Zhou",
+              "email": "",
+              "affiliation": "University of Electronic Science and Technology of China; Intelligent Digital Media Technology Key Laboratory of Sichuan Province",
+              "role": "作者"
+            }
+          ],
+          "corresponding_author": "Ting Zhong"
+        }
+      }
+    },
+    {
+      "title": "Looking One Step Ahead: An Anticipation-guided Agent for Object State Readout in Videos",
+      "abstract": "Understanding the progress of an activity requires tracking how the objects involved change over time. Object state readout provides this information by describing a target object's states and transitions across video frames. Although multimodal large language models (MLLMs) generate detailed visual descriptions, these descriptions may leave the attributes needed to distinguish successive states insufficiently specified. In this paper, we propose look-ahead state readout (LASER), an anticipation-guided agent for object state readout that uses possible next-step changes to determine which attributes to inspect in the present. Given temporally ordered frames and a target object, LASER converts anticipated changes into targeted visual questions and inspects the current frame to establish attribute values. It then checks state readouts and forecasts against independent observations of subsequent frames, refining a state record used to generate the final description. Reusable textual observation skills guide this process and are refined by tracing discrepancies with reference captions to the responsible instructions. Candidate revisions are selected on separate videos based on improved caption quality without increased contradictions with reference facts. Model parameters remain frozen throughout adaptation and inference, and the revised skills remain fixed during evaluation. Experiment results and further analysis on OSCaR and PLM RCap show consistent improvements of LASER over strong baselines and existing approaches, which demonstrates the effectiveness of our approach.",
+      "url": "https://arxiv.org/abs/2611.14113v1",
+      "pdf": "https://arxiv.org/pdf/2611.14113v1",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "authors": [
+        "Yuanhe Tian",
+        "Yan Song"
+      ],
+      "all_authors": [
+        "Yuanhe Tian",
+        "Yan Song"
+      ],
+      "affiliations": [
+        {
+          "name": "Yuanhe Tian",
+          "affiliations": []
+        },
+        {
+          "name": "Yan Song",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-10",
+      "matched_topics": [
+        "多模态",
+        "大模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "多模态大模型生成的视频描述往往无法充分指定区分物体连续状态所需的关键属性，因此需要更准确的对象状态读出方法。",
+        "method": "提出 LASER，一种由预期引导的智能体：根据时间有序帧和目标物体，将预期的下一步变化转化为针对性视觉问题，检查当前帧以确定属性值，并利用后续帧的独立观察校验状态读出与预测，进而细化状态记录。该方法使用可复用的文本观察技能，并通过与参考描述的不一致追溯到责任指令来改进技能，模型参数保持冻结。",
+        "result": "在 OSCaR 和 PLM RCap 上的实验与分析表明，LASER 相比强基线和现有方法取得一致提升。",
+        "novelty": "利用对下一步变化的预期来指导当前帧中关键属性的检查，并结合可复用观察技能与差异驱动的技能修订。",
+        "relevance": "有助于提升视频理解中的物体状态跟踪与细粒度描述能力，对多模态智能体和世界模型中的状态建模有参考价值。",
+        "org": "未提供",
+        "score": 7
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "C$^2$-Routing: Complementary Cropping and Compression for Efficient Vision-Language Inference",
+      "abstract": "Visual Question Answering (VQA) imposes substantial computational overhead on vision-language models (VLMs), motivating model-agnostic input reduction methods that can be readily applied across diverse VLMs, including in black-box settings. Simply enforcing a visual-token cap reduces computation, but it can discard information needed to answer the question. A single reduction strategy also struggles to accommodate different scenarios. Our key observation is that cropping and compression are complementary: cropping highlights small targets and local details, whereas whole-image compression better preserves context for large targets or distributed evidence. Based on this observation, we propose C$^2$-Routing, which adaptively selects cropping or compression according to the input image and question. Since both strategies may still discard key information, we further design a safety gate that uses the predicted joint correctness distribution under original and reduced inputs to guide fallback and protect accuracy. To accommodate consumer GPU resource constraints, all training and evaluation experiments run on RTX 3090 GPUs. To measure gains beyond token capping, we use full-image baselines with the same cap of 1,024 visual tokens. We conduct extensive evaluation on three VLMs and 18 datasets spanning local details, global scenes, scene text, and documents. With the visual budget already capped, C$^2$-Routing further reduces end-to-end FLOPs by 36.53% and visual tokens by 42.36% on average, with a mean relative task-score decrease of only 0.77%.",
+      "url": "https://arxiv.org/abs/2611.14469v1",
+      "pdf": "https://arxiv.org/pdf/2611.14469v1",
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ],
+      "authors": [
+        "Guorui Lu",
+        "Qinyu Chen"
+      ],
+      "all_authors": [
+        "Guorui Lu",
+        "Qinyu Chen"
+      ],
+      "affiliations": [
+        {
+          "name": "Guorui Lu",
+          "affiliations": []
+        },
+        {
+          "name": "Qinyu Chen",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-10",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "视觉问答（VQA）中视觉语言模型（VLMs）计算开销大，现有单一视觉 token 削减策略容易丢失回答所需信息，且难以适应不同场景。",
+        "method": "提出 C$^2$-Routing，根据输入图像和问题自适应选择裁剪或压缩两种互补的视觉 token 削减策略；并设计安全门，利用原始输入与削减输入下的预测联合正确性分布来指导回退，保护准确率。",
+        "result": "在 3 个 VLM 和 18 个数据集上，在视觉预算已限制为 1,024 tokens 的基线下，进一步平均减少端到端 FLOPs 36.53%、视觉 tokens 42.36%，任务分数平均相对下降仅 0.77%。",
+        "novelty": "核心创新是将裁剪与压缩视为互补策略并按输入自适应路由，同时用预测联合正确性分布的安全门控制回退以保护精度。",
+        "relevance": "为视觉语言模型提供模型无关、可用于黑盒场景的高效推理输入削减方法，有助于降低多模态大模型部署成本。",
+        "org": "未提供作者机构信息",
+        "score": 6
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "Metric-Aligned Group Relative Policy Optimization for Explainable Deepfake Detection",
+      "abstract": "Deepfake detectors are commonly evaluated on real/fake classification alone, but real-world applications require explanations of the visual evidence behind each prediction. Joint vision-language models struggle with authenticity assessment, producing \"real\" narratives for manipulated images. To address this, we propose a decoupled predict-then-explain pipeline as our submission to the ACM Multimedia 2026 Explainable Deepfake Detection Challenge, with methods trained and evaluated on the XPlainVerse benchmark. A vision-foundation-model ensemble first classifies the image, then a Qwen3-VL-8B model generates a decision-conditioned explanation of the visual evidence. For fake images, a second Qwen3-VL-8B compresses that text into a short non-expert summary without using the image. We further apply metric-aligned Group Relative Policy Optimization (GRPO) to optimize both explainers against the challenge criteria. Under matched conditions, GRPO raises complex BERTScore-F1 from 0.686 to 0.712 and also improves grounding (entity and evidence F1); our submission ranked first on complex BERTScore-F1 and seventh overall.",
+      "url": "https://arxiv.org/abs/2611.14436v1",
+      "pdf": "https://arxiv.org/pdf/2611.14436v1",
+      "categories": [
+        "cs.CV"
+      ],
+      "authors": [
+        "Luka Dragar",
+        "Peter Peer",
+        "Vitomir Štruc",
+        "Borut Batagelj"
+      ],
+      "all_authors": [
+        "Luka Dragar",
+        "Peter Peer",
+        "Vitomir Štruc",
+        "Borut Batagelj"
+      ],
+      "affiliations": [
+        {
+          "name": "Luka Dragar",
+          "affiliations": []
+        },
+        {
+          "name": "Peter Peer",
+          "affiliations": []
+        },
+        {
+          "name": "Vitomir Štruc",
+          "affiliations": []
+        },
+        {
+          "name": "Borut Batagelj",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-10",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "深度伪造检测通常只评估真伪分类，但实际应用需要解释预测背后的视觉证据；联合视觉语言模型在真伪判断上表现不佳，容易为篡改图像生成“真实”叙述。",
+        "method": "提出解耦的“先预测、后解释”流程：先用视觉基础模型集成分类图像，再由Qwen3-VL-8B生成以决策为条件的视觉证据解释；对伪造图像，第二个Qwen3-VL-8B在不使用图像的情况下将解释压缩为非专家摘要，并用指标对齐的GRPO优化两个解释器以贴合挑战赛评价标准。",
+        "result": "在匹配条件下，GRPO将复杂BERTScore-F1从0.686提升到0.712，并改善实体与证据F1等grounding指标；提交结果在复杂BERTScore-F1上排名第一，总排名第七。",
+        "novelty": "将指标对齐的GRPO用于两阶段可解释深度伪造检测中的解释器优化，使生成解释更贴合评测指标。",
+        "relevance": "为可解释深度伪造检测提供了可复用的预测-解释分离范式，并展示了强化学习对齐解释质量指标的潜力。",
+        "org": "University of Ljubljana",
+        "score": 6
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "One Policy for 100 Household Tasks: Our Solution for the 2026 BEHAVIOR Challenge",
+      "abstract": "We describe our solution for the 2026 BEHAVIOR Challenge: 100 long-horizon household tasks in the OmniGibson simulator. We placed 9th on the final leaderboard, the only independent team in the top 10. The core of the solution is a single vision-language-action (VLA) model, one checkpoint for all 100 tasks, built on our 1st-place 2025 solution, which is based on $π_{0.5}$. On the 50 tasks shared with 2025, its Q rises from 0.260 to 0.371; across all 100 tasks it scores 0.392. Our main conclusion from 2025 was that the model was undertrained, so most of the 2026 work went into training the model for longer, optimizing some training parameters, making each training step slightly faster and reducing the gradient noise: a migration from 50 to 100 tasks (semantic stages built from the demonstrations' skill annotations, task and stage embeddings of new tasks warm-started from similar old ones, and a 21-dimensional action space matching the teleoperation controls); variance-reduced multi-sample flow matching with a simple noise-vs-compute model that picks the number of action-expert samples per observation without ablations; and a 200k-step training run, about one pass over the 211M frames of the demonstrations. A cloud evaluation infrastructure keeps a shared record with provenance, episode diagnostics and restorable simulator states, and runs six simulators on one GPU together faster than real time. On top of the learned policy, 14 tasks are routed to a GPT-6 Astra coding agent that controls the robot through observation and motion tools, starting every episode from a frozen copy of its own practice session on training instances. Across these 14 tasks, Astra's mean Q is 0.639, against 0.108 for the learned policy. The public submission included only part of the Astra results and scored 0.446 Q with 27.3% full-task success.",
+      "url": "https://arxiv.org/abs/2611.14432v1",
+      "pdf": "https://arxiv.org/pdf/2611.14432v1",
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.CV",
+        "cs.LG"
+      ],
+      "authors": [
+        "Ilia Larchenko",
+        "Gleb Zarin",
+        "Atindra Nair",
+        "Keerti Manney",
+        "Vitaly Kleban"
+      ],
+      "all_authors": [
+        "Ilia Larchenko",
+        "Gleb Zarin",
+        "Atindra Nair",
+        "Keerti Manney",
+        "Vitaly Kleban",
+        "Mirko Kiefer",
+        "Anjana Yodaiken"
+      ],
+      "affiliations": [
+        {
+          "name": "Ilia Larchenko",
+          "affiliations": []
+        },
+        {
+          "name": "Gleb Zarin",
+          "affiliations": []
+        },
+        {
+          "name": "Atindra Nair",
+          "affiliations": []
+        },
+        {
+          "name": "Keerti Manney",
+          "affiliations": []
+        },
+        {
+          "name": "Vitaly Kleban",
+          "affiliations": []
+        },
+        {
+          "name": "Mirko Kiefer",
+          "affiliations": []
+        },
+        {
+          "name": "Anjana Yodaiken",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-10",
+      "matched_topics": [
+        "多模态",
+        "大模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "解决2026 BEHAVIOR Challenge中的100个长时程家庭任务（OmniGibson仿真环境），需要用单一策略模型覆盖全部任务并提升成功率。",
+        "method": "基于π0.5构建单个VLA模型、一个checkpoint服务全部100个任务：用演示的技能标注构建语义阶段，新任务/阶段嵌入从相似旧任务热启动，动作空间扩展为21维以匹配遥操作；采用方差缩减的多样本flow matching，并用简单的noise-vs-compute模型自适应选择每个观测的动作专家采样数；训练20万步（约覆盖2.11亿帧演示一遍）。此外将14个任务路由给GPT-6 Astra编码智能体，通过观测与运动工具控制机器人，每回合从其在训练实例上练习会话的冻结副本开始。",
+        "result": "最终排行榜第9名（前10中唯一独立团队）；与2025共享的50个任务Q从0.260升至0.371，全部100任务Q为0.392；Astra在14个任务上平均Q为0.639（学习策略仅0.108）。公开提交仅含部分Astra结果，Q为0.446、全任务成功率27.3%。",
+        "novelty": "核心结论是“模型训练不足”，通过大幅延长训练、方差缩减多样本flow matching与自适应采样数选择，并叠加VLA与编码智能体的混合路由来提升长时程任务表现。",
+        "relevance": "为长时程具身操作中单一VLA策略的规模化训练、样本效率与LLM编码智能体混合方案提供了可复现的工程实证。",
+        "org": "未标注隶属机构（独立参赛团队）",
+        "score": 6
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "Gaussian Process-Augmented Model Predictive Contouring Control for 6-DoF Trajectory Tracking with a Holonomic AUV",
+      "abstract": "Small, holonomic Autonomous Underwater Vehicles (AUVs) enable close-range inspection of underwater structures from arbitrary viewpoints, requiring accurate position and attitude tracking under state and input constraints. Model Predictive Contouring Control (MPCC) naturally handles these requirements, but relies on an accurate dynamics model, which is difficult to obtain underwater. In this paper, we present a nonlinear MPCC in all six Degrees of Freedom (DoF) for a holonomic AUV and alleviate the inaccuracies in the dynamics by augmenting the nominal model employed with residual dynamics learned via Gaussian Process (GP) regression. The learned residual is embedded in the optimal control problem through a zero-order robust optimization scheme, which keeps the controller real-time capable at 25 Hz. A simulation ablation shows that residual selection is essential when designing the controller, and simulation and in-water experiments with the Multimodality, Observing, Low-cost, Agile (MOLA) AUV validate the resulting controllers against a nominal MPCC and a field proven Proportional-Integral-Derivative (PID) controller.",
+      "url": "https://arxiv.org/abs/2611.14373v1",
+      "pdf": "https://arxiv.org/pdf/2611.14373v1",
+      "categories": [
+        "cs.RO"
+      ],
+      "authors": [
+        "David Dörner",
+        "Giancarlo Troni",
+        "Ignacio Torroba",
+        "Ivan Stenius"
+      ],
+      "all_authors": [
+        "David Dörner",
+        "Giancarlo Troni",
+        "Ignacio Torroba",
+        "Ivan Stenius"
+      ],
+      "affiliations": [
+        {
+          "name": "David Dörner",
+          "affiliations": []
+        },
+        {
+          "name": "Giancarlo Troni",
+          "affiliations": []
+        },
+        {
+          "name": "Ignacio Torroba",
+          "affiliations": []
+        },
+        {
+          "name": "Ivan Stenius",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-10",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "全驱动（holonomic）小型AUV在近距离水下结构检测中需要同时精确跟踪六自由度的位置与姿态，并满足状态与输入约束；而模型预测轮廓控制（MPCC）依赖精确的动力学模型，这在水下环境难以获得。",
+        "method": "作者为全驱动AUV设计了六自由度的非线性MPCC控制器，并用高斯过程（GP）回归学习名义动力学模型中的残差动力学；学习到的残差通过零阶鲁棒优化（zero-order robust optimization）嵌入最优控制问题，使控制器保持25 Hz的实时性。",
+        "result": "仿真消融实验表明，残差项的选择对控制器设计至关重要；在MOLA AUV上的仿真与水下实验表明，该方法相较于名义MPCC和经过现场验证的PID控制器具有更优的跟踪性能。",
+        "novelty": "把GP学习的残差动力学通过零阶鲁棒优化嵌入六自由度MPCC中，在保证约束满足与实时性的同时提升了全驱动AUV的轨迹跟踪精度。",
+        "relevance": "该工作展示了数据高效的GP残差学习与基于模型的优化控制相结合，为机器人（尤其水下与具身智能系统）在模型不确定条件下的学习增强控制提供了可实时部署的范式。",
+        "org": "论文未给出作者单位信息；根据作者（Ivan Stenius、Ignacio Torroba等）推测可能主要来自瑞典皇家理工学院（KTH Royal Institute of Technology），但需以原文为准。",
+        "score": 6
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "A Cross-Scenario Survey and Analysis of Self-Evolving Multimodal Agents",
+      "abstract": "Recent work shows that multimodal agents increasingly self-improve without recurring human annotation. However, each self-improvement mechanism is designed and evaluated within a single scenario, leaving its preconditions unverified under cross-scenario transfer. This survey investigates the structural source of asymmetric mechanism transfer across four scenarios: multimodal reasoning, multimodal generation, GUI and Web navigation, and embodied manipulation. We first formalize the self-evolving multimodal agent by four criteria and a differentia of self-reference, and adopt the three-stage self-evolving loop of experience generation, feedback acquisition, and update consolidation as our analytical framework to position the scenarios along ceilings on rollout count and feedback fidelity. Comparing self-evolving with fixed loops within each scenario separates the limitations that the scenario imposes from those inherent in the self-evolving design. We then recast each mechanism as a trade-off that raises a scarce factor by presupposing a task-structural resource, such as output equivalence or checkable outcomes, and judge it portable, conditional, blocked, or redundant across scenarios. We attribute the asymmetry to divergent combinations of scarce factors and resources across opposite transfer directions, and identify the matched-budget measurements that could overturn these still untested verdicts.",
+      "url": "https://arxiv.org/abs/2611.14256v1",
+      "pdf": "https://arxiv.org/pdf/2611.14256v1",
+      "categories": [
+        "cs.AI"
+      ],
+      "authors": [
+        "Jingjing Jiang"
+      ],
+      "all_authors": [
+        "Jingjing Jiang"
+      ],
+      "affiliations": [
+        {
+          "name": "Jingjing Jiang",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-10",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "多模态智能体的各类自我改进机制通常在单一场景内设计与评估，其前提条件在跨场景迁移时是否成立缺乏验证，论文要解决的是这种机制迁移不对称性的结构性来源问题。",
+        "method": "论文首先用四条准则与一个自指判别式形式化定义“自演化多模态智能体”，并以“经验生成—反馈获取—更新巩固”的三阶段自演化闭环作为分析框架，将多模态推理、多模态生成、GUI与Web导航、具身操作四个场景沿“ rollout 次数上限”和“反馈保真度”两个维度定位；随后在每个场景内对比自演化闭环与固定闭环，把场景固有局限与自演化设计本身的局限区分开，并将每种机制重构为“以任务结构性资源（如输出等价性、可检验结果）为前提来抬升某一稀缺因子”的权衡，判定其跨场景可移植、有条件、受阻或冗余。",
+        "result": "论文将迁移不对称归因于相反迁移方向上“稀缺因子—任务结构性资源”组合的差异，并指出当前多数跨场景判定仍未经实测，给出了可能推翻这些结论的匹配预算测量方案。",
+        "novelty": "首次以统一的三阶段闭环框架和“稀缺因子 vs 任务结构性资源”权衡视角，系统比较四类场景下自演化多模态智能体机制的跨场景可迁移性。",
+        "relevance": "为自演化多模态智能体的机制设计、跨场景复用与公平评测提供了结构化的分析坐标系，有助于避免把场景红利误判为方法创新。",
+        "org": "未提供（作者机构信息为空）",
+        "score": 6
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "DailyWildfireCAN: A Dataset and Benchmark for Next-Day Wildfire Spread Prediction in Canada",
+      "abstract": "Wildfires represent a critical ecological and socio-economic challenge in Canada, where vast boreal forests and a warming climate have amplified the frequency and severity of extreme fire seasons. Predicting next-day wildfire spread can support fire management, but requires capturing complex interactions among weather, fuels, and terrain. Deep learning has emerged as a promising approach to learning these relationships from heterogeneous environmental data, yet its development and evaluation depend on representative datasets. Existing deep learning research on wildfire spread relies predominantly on US-focused datasets, leaving Canadian fire environments underrepresented. To address this gap, we present DailyWildfireCAN, a multi-modal, multi-temporal dataset and benchmark for predicting next-day wildfire spread across Canada. The dataset tracks continuous fire progression over multi-day events at a high spatial and temporal resolution of 90-m and 24-hour, respectively. This resolution preserves fine-scale information relevant to fire-edge geometry, local fuel variations, and terrain effects, supporting research toward improved daily wildfire spread forecasting. DailyWildfireCAN covers 2,440 wildfire events across eight fire seasons 2017-2024 and integrates 33 features across diverse modalities, including topography, meteorology, land cover, vegetation and forest structure, human influence indices, and satellite imagery. We establish a comprehensive benchmark comparing mono-temporal and multi-temporal prediction models, accompanied by a multi-dimensional evaluation framework assessing robustness across wildfire characteristics, geographic regions, and temporal conditions, spatial prediction quality, and sensitivity to reference label variations.",
+      "url": "https://arxiv.org/abs/2611.14207v1",
+      "pdf": "https://arxiv.org/pdf/2611.14207v1",
+      "categories": [
+        "cs.CV"
+      ],
+      "authors": [
+        "Mahacine Ettahri",
+        "Hager Radi Abdelwahed",
+        "Toluwaleke Olutayo",
+        "Daniel Aloise",
+        "Gaétan Marceau Caron"
+      ],
+      "all_authors": [
+        "Mahacine Ettahri",
+        "Hager Radi Abdelwahed",
+        "Toluwaleke Olutayo",
+        "Daniel Aloise",
+        "Gaétan Marceau Caron"
+      ],
+      "affiliations": [
+        {
+          "name": "Mahacine Ettahri",
+          "affiliations": []
+        },
+        {
+          "name": "Hager Radi Abdelwahed",
+          "affiliations": []
+        },
+        {
+          "name": "Toluwaleke Olutayo",
+          "affiliations": []
+        },
+        {
+          "name": "Daniel Aloise",
+          "affiliations": []
+        },
+        {
+          "name": "Gaétan Marceau Caron",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-10",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "现有深度学习野火蔓延预测研究主要依赖美国数据集，加拿大广阔森林环境代表性不足；该论文旨在构建加拿大次日野火蔓延预测的数据集与基准。",
+        "method": "提出 DailyWildfireCAN 多模态、多时序数据集，以 90 米空间分辨率和 24 小时时间分辨率追踪 2017-2024 年 2,440 场野火，整合地形、气象、土地覆盖、植被与森林结构、人类影响指数和卫星影像等 33 类特征。并建立单时序与多时序模型对比基准及多维度评估框架。",
+        "result": "论文提供了覆盖加拿大八个火季的野火蔓延数据集和综合评测基准，用于比较不同预测模型并评估其在野火特征、地理区域、时间条件、空间预测质量和标签变化下的鲁棒性；摘要未给出具体性能数值。",
+        "novelty": "构建了面向加拿大野火次日蔓延的高分辨率、多模态、多时序数据集，并配套多维度鲁棒性评估基准。",
+        "relevance": "为时空深度学习、遥感与地理空间预测提供了新的野火蔓延基准，有助于推动数据驱动的灾害管理与环境建模研究。",
+        "org": "根据作者推断可能为 Mila / Polytechnique Montréal（提供信息中机构字段为空）",
+        "score": 6
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "CroCoMAE: Cross-modal self-supervised collaborative representation learning for SAR-optical remote sensing data",
+      "abstract": "Remote sensing increasingly captures the Earth's surface through complementary sensors such as SAR and optical, yet ground-truth annotations remain scarce, limiting supervised approaches. Self-supervised learning (SSL) addresses the label scarcity, and cross-modal SSL further exploits the complementarity between co-located sensors, but existing cross-modal frameworks align modalities mostly through global image-level representations or treat them as largely redundant, leaving their fine-grained complementary structure underexploited. We propose CroCoMAE, a cross-modal SSL framework for SAR-optical remote sensing that unifies contrastive learning and masked image modeling within a ViT-based architecture, operating at two complementary levels. At the image level, an intra-modality contrastive loss on the class token yields globally discriminative, augmentation-invariant representations. At the patch level, masked image modeling drives fine-grained per-modality representations, while a cross-modal contrastive objective aligns a shared subspace across SAR and optical patch tokens, leaving the complementary subspace unconstrained to retain modality-specific information. On two SAR-optical benchmarks covering scene classification and semantic segmentation, CroCoMAE improves over uni-modal SSL baselines and outperforms state-of-the-art cross-modal frameworks in most configurations, with gains in both single-modality and multi-modal evaluation across varying label regimes and the largest improvements on semantic segmentation.",
+      "url": "https://arxiv.org/abs/2611.14124v1",
+      "pdf": "https://arxiv.org/pdf/2611.14124v1",
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ],
+      "authors": [
+        "Vito Recchia",
+        "Giuseppe Guarino",
+        "Cássio Fraga Dantas",
+        "Giuseppina Andresini",
+        "Annalisa Appice"
+      ],
+      "all_authors": [
+        "Vito Recchia",
+        "Giuseppe Guarino",
+        "Cássio Fraga Dantas",
+        "Giuseppina Andresini",
+        "Annalisa Appice",
+        "Dino Ienco"
+      ],
+      "affiliations": [
+        {
+          "name": "Vito Recchia",
+          "affiliations": []
+        },
+        {
+          "name": "Giuseppe Guarino",
+          "affiliations": []
+        },
+        {
+          "name": "Cássio Fraga Dantas",
+          "affiliations": []
+        },
+        {
+          "name": "Giuseppina Andresini",
+          "affiliations": []
+        },
+        {
+          "name": "Annalisa Appice",
+          "affiliations": []
+        },
+        {
+          "name": "Dino Ienco",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-10",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "SAR与光学遥感数据缺乏标注，现有跨模态自监督方法多在全局图像层面做对齐或将两模态视为冗余，未能充分利用其细粒度互补信息。",
+        "method": "提出CroCoMAE，在ViT架构下统一对比学习与掩码图像建模：图像层面对class token施加模态内对比损失获得全局判别性表示；块层面对各模态做掩码建模，并用跨模态对比目标对齐SAR与光学的共享子空间，同时保留不受约束的互补子空间。",
+        "result": "在两个SAR-光学基准（场景分类与语义分割）上，多数配置下优于单模态自监督基线和现有跨模态SOTA框架，且在不同标注量条件下均有提升，语义分割任务提升最大。",
+        "novelty": "在patch级别显式分离共享子空间与模态特有互补子空间，将对比学习与掩码建模统一到跨模态SAR-光学表示学习中。",
+        "relevance": "为多模态遥感自监督提供了一种兼顾模态一致性与互补性的细粒度对齐范式，对多传感器融合与标签稀缺场景下的表征学习有参考价值。",
+        "org": "未能从提供信息中识别（作者机构字段为空，推测为意大利高校，如巴里大学）",
+        "score": 6
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "BODYinTRANSIT-Lab: A Multimodal Dataset for Investigating Sensory-Driven Transformations in Body Perception and Affective Experiences",
+      "abstract": "Multimodal datasets that combine synchronised behavioural and physiological signals with subjective affective and body perception measures are still rare. This limits both the understanding of embodied experience and the development of computational models that infer subjective states from sensor data. We introduce BODYinTRANSIT-Lab, a multimodal dataset that addresses this gap by capturing affective, perceptual, and behavioural responses to the Footsteps Illusion. In this closed-loop paradigm, participants perform walking tasks while receiving real-time manipulated auditory feedback of their own footsteps intended to alter perceived body weight. The dataset comprises synchronised recordings from 101 participants recruited through systematic stratification by eating-disorder symptomatology and physical activity level. BODYinTRANSIT-Lab combines full-body kinematics with electromyography, electrocardiography, respiration, and electrodermal activity. Its annotations capture both immediate and post-trial experience, including within-trial perceived-weight ratings, post-trial assessments of body feelings and affective experience, 3D avatar body visualisations, and quantitative body maps. Psychological, behavioural, demographic, and social measures provide further information about factors that may influence individual responses. We provide a deep learning benchmark that uses walking kinematics to classify relative affective valence and perceived weight within subjects. On within-session, segment-level splits, the baseline model achieved mean balanced accuracies of 45.9% for affective valence and 44.5% for perceived weight. The BODYinTRANSIT-Lab dataset provides an experimentally controlled resource for cognitive neuroscience and affective computing research, with potential applications in affect-aware interactive systems, health and well-being technologies, and creative embodied experiences.",
+      "url": "https://arxiv.org/abs/2611.14093v1",
+      "pdf": "https://arxiv.org/pdf/2611.14093v1",
+      "categories": [
+        "cs.HC",
+        "cs.LG"
+      ],
+      "authors": [
+        "Mohammad Mahdi Dehshibi",
+        "Tomás Martínez Cortés",
+        "Amar D'Adamo",
+        "Daniel de la Prida",
+        "Luis-Antonio Azpicueta-Ruíz"
+      ],
+      "all_authors": [
+        "Mohammad Mahdi Dehshibi",
+        "Tomás Martínez Cortés",
+        "Amar D'Adamo",
+        "Daniel de la Prida",
+        "Luis-Antonio Azpicueta-Ruíz",
+        "Laia Turmo Vidal",
+        "Marte Roel Lesur",
+        "Joaquín R. Díaz-Durán",
+        "Alexander Väljamäe",
+        "Angel Sánchez",
+        "Temitayo Olugbade",
+        "Nadia Bianchi-Berthouze",
+        "Fernando Díaz-de-María",
+        "Ana Tajadura-Jiménez"
+      ],
+      "affiliations": [
+        {
+          "name": "Mohammad Mahdi Dehshibi",
+          "affiliations": []
+        },
+        {
+          "name": "Tomás Martínez Cortés",
+          "affiliations": []
+        },
+        {
+          "name": "Amar D'Adamo",
+          "affiliations": []
+        },
+        {
+          "name": "Daniel de la Prida",
+          "affiliations": []
+        },
+        {
+          "name": "Luis-Antonio Azpicueta-Ruíz",
+          "affiliations": []
+        },
+        {
+          "name": "Laia Turmo Vidal",
+          "affiliations": []
+        },
+        {
+          "name": "Marte Roel Lesur",
+          "affiliations": []
+        },
+        {
+          "name": "Joaquín R. Díaz-Durán",
+          "affiliations": []
+        },
+        {
+          "name": "Alexander Väljamäe",
+          "affiliations": []
+        },
+        {
+          "name": "Angel Sánchez",
+          "affiliations": []
+        },
+        {
+          "name": "Temitayo Olugbade",
+          "affiliations": []
+        },
+        {
+          "name": "Nadia Bianchi-Berthouze",
+          "affiliations": []
+        },
+        {
+          "name": "Fernando Díaz-de-María",
+          "affiliations": []
+        },
+        {
+          "name": "Ana Tajadura-Jiménez",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-10",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "现有数据集很少将同步的行为与生理信号同主观情感和身体感知测量结合起来，限制了对具身体验的理解以及从传感器数据推断主观状态的计算模型发展。",
+        "method": "论文构建了 BODYinTRANSIT-Lab 多模态数据集，围绕 Footsteps Illusion 闭环范式，让 101 名参与者在实时操纵自身脚步声听觉反馈的条件下完成行走任务，并同步采集全身运动学、肌电、心电、呼吸和皮肤电活动，同时记录试验内感知体重评分、试验后身体感受与情感体验、3D 化身身体可视化和定量身体图等标注。",
+        "result": "论文提供了一个使用行走运动学进行被试内情感效价和感知体重分类的深度学习基准；在会话内片段级划分下，基线模型对情感效价和感知体重的平均平衡准确率分别为 45.9% 和 44.5%。",
+        "novelty": "其创新在于构建了实验控制严格、同步多模态生理与行为信号并包含丰富主观身体感知和情感标注的闭环脚步声错觉数据集。",
+        "relevance": "该数据集可推动情感计算、认知神经科学以及从多模态传感信号推断主观具身状态的研究，并可用于情感感知交互系统、健康福祉技术和具身体验应用。",
+        "org": "未提供（作者机构字段为空）",
+        "score": 6
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "Sckwoky at SHROOM-Visions: Character-Level Hallucination-Span Detection in Image-Conditioned VLMs via Dual-Prompted LoRA Decoders",
+      "abstract": "We present our system for the SHROOM-visions 2026 shared task on character-level hallucination span detection in image-conditioned vision-language model (VLM) responses, evaluated across English, French, Italian, and Chinese. The detector is built on a frozen Gemma-4-12B-it backbone with trainable LoRA adapters (approximately 10.7M parameters). Because the backbone is a causal decoder, hidden states read from a single copy of an answer cannot attend to subsequent tokens; we therefore repeat the candidate answer within one prompt and extract features from its second occurrence, giving every position approximate bidirectional context in a single non-autoregressive pass. A character-level locator combines intermediate hidden states to predict hallucination probabilities, BIO boundaries, and a response-level abstention score, while separate language-specific classifiers assign one of five hallucination types to each predicted span. On the closed test set, our system reaches a macro-averaged character IoU of 0.4404, more than doubling the official baseline (0.1854), and ranks 5th-6th on IoU across the four languages. On the English tuning split, controlled ablations attribute a gain to the repeated answer that is comparable to that of LoRA adaptation (its held-out gain is smaller and concentrated on hallucinated answers), and they show that the detector relies on the image-answer pairing: shuffling images across examples drives IoU down to the level of the predict-nothing floor or below it in every language. In deployments where the same Gemma-4-12B-it model also generates answers, its base weights can be reused, making the approach practical for local question-answering systems that cannot run a separate verifier.",
+      "url": "https://arxiv.org/abs/2611.14100v1",
+      "pdf": "https://arxiv.org/pdf/2611.14100v1",
+      "categories": [
+        "cs.CL"
+      ],
+      "authors": [
+        "Mikhail Kulakov",
+        "Ruslan Solikhov",
+        "Ivan Bondarenko"
+      ],
+      "all_authors": [
+        "Mikhail Kulakov",
+        "Ruslan Solikhov",
+        "Ivan Bondarenko"
+      ],
+      "affiliations": [
+        {
+          "name": "Mikhail Kulakov",
+          "affiliations": [
+            "Novosibirsk State University"
+          ]
+        },
+        {
+          "name": "Ruslan Solikhov",
+          "affiliations": [
+            "Novosibirsk State University"
+          ]
+        },
+        {
+          "name": "Ivan Bondarenko",
+          "affiliations": [
+            "Novosibirsk State University"
+          ]
+        }
+      ],
+      "published": "2026-11-10",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "该论文面向SHROOM-Visions 2026共享任务，解决图像条件视觉语言模型回答中字符级幻觉片段的检测问题，并覆盖英语、法语、意大利语和中文。",
+        "method": "系统以冻结的Gemma-4-12B-it为骨干，仅训练约10.7M参数的LoRA适配器；通过在单个提示中重复候选答案并从第二次出现处提取隐状态，使每个位置获得近似双向上下文。字符级定位器融合中间隐状态，联合预测幻觉概率、BIO边界和回答级弃权分数，并用语言特定分类器为每个预测片段分配五类幻觉类型。",
+        "result": "在封闭测试集上，系统取得0.4404的宏平均字符IoU，显著超过官方基线0.1854，在四种语言上的IoU排名约为第5至第6名。消融显示重复答案带来的增益与LoRA适配相当，且检测器依赖图像-答案配对，打乱图像会使IoU降至“全不预测”下限或更低。",
+        "novelty": "提出通过重复候选答案在因果解码器中实现单次非自回归的近似双向上下文，并结合LoRA多任务解码器完成字符级幻觉片段检测、类型分类与弃权判断。",
+        "relevance": "该工作为多语言VLM幻觉检测提供了可复用生成模型权重的实用方案，对本地问答系统中的轻量验证器部署有参考价值。",
+        "org": "新西伯利亚国立大学（Novosibirsk State University）",
+        "score": 5
+      },
+      "identified_orgs": []
+    }
+  ],
+  "key_lab_papers": [
+    {
+      "title": "OnlyAct: Extracting Action Representations from Foundation Models for World Models",
+      "abstract": "Video world models promise general-purpose interactive simulators, but their training is limited by action supervision: action labels are scarce, fragmented across incompatible specifications, and do not scale with the unlabeled video pretraining corpus. A common workaround jointly trains an action encoder to compress consecutive frames into a latent action and a decoder to reconstruct the next frame from the previous frame and that latent, forcing the latent to capture only new information. This has two limitations: learning the action space from scratch can limit generalization to unseen domains, and the bottleneck trades expressiveness for separation, with tighter settings losing nuance and looser ones risking scene leakage under domain shifts. We argue for a different starting point: rather than learning actions from scratch, we start from a pretrained foundation model (V-JEPA 2), whose embeddings of a frame pair already carry substantial action information after large-scale, diverse video pretraining. The remaining challenge is to extract the action while discarding the scene. We propose a label-free contrastive adaptation framework that pulls together frame pairs sharing the same motion under a different scene and pushes apart pairs from the same scene with different motion, reshaping the geometry of the pretrained space without imposing a reconstruction bottleneck. We introduce a unified evaluation protocol along three axes (action expressiveness, scene invariance, and action-conditioned video generation quality) across robot manipulation, camera navigation, game, and driving benchmarks, most of which are unseen during adaptation. Compared with annotation-free latent-action methods, our representations are substantially more expressive while matching their scene invariance, and they yield world models that transfer demonstrated actions to new scenes more faithfully.",
+      "url": "https://arxiv.org/abs/2611.14420v1",
+      "pdf": "https://arxiv.org/pdf/2611.14420v1",
+      "categories": [
+        "cs.CV"
+      ],
+      "authors": [
+        "Runjia Li",
+        "Minghao Chen",
+        "Junyu Xie",
+        "Philip Torr",
+        "Andrea Vedaldi"
+      ],
+      "all_authors": [
+        "Runjia Li",
+        "Minghao Chen",
+        "Junyu Xie",
+        "Philip Torr",
+        "Andrea Vedaldi",
+        "Tomas Jakab"
+      ],
+      "affiliations": [
+        {
+          "name": "Runjia Li",
+          "affiliations": []
+        },
+        {
+          "name": "Minghao Chen",
+          "affiliations": []
+        },
+        {
+          "name": "Junyu Xie",
+          "affiliations": []
+        },
+        {
+          "name": "Philip Torr",
+          "affiliations": []
+        },
+        {
+          "name": "Andrea Vedaldi",
+          "affiliations": []
+        },
+        {
+          "name": "Tomas Jakab",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-10",
+      "matched_topics": [
+        "世界模型",
+        "大模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "视频世界模型的训练依赖动作标注，但动作标签稀缺、规格不统一且无法随无标注视频语料扩展；现有从零学习隐动作的方法受重建瓶颈限制，在泛化性以及表达力与场景分离的权衡上存在不足。",
+        "method": "论文不从零学习动作，而是以预训练基础模型 V-JEPA 2 为起点，利用其帧对嵌入已蕴含的动作信息。提出一种无标签的对比适配框架：将不同场景下相同运动的帧对拉近，将同一场景下不同运动的帧对推远，在不引入重建瓶颈的情况下重塑预训练嵌入空间的几何结构。同时提出涵盖动作表达力、场景不变性和动作条件视频生成质量三个维度的统一评测协议。",
+        "result": "在机器人操作、相机导航、游戏和驾驶等多个基准（多数在适配时未见）上，该方法比无需标注的隐动作方法表达力显著更强，同时保持相当的场景不变性，且所构建的世界模型能更忠实地将演示动作迁移到新场景。",
+        "novelty": "首次提出从预训练视频基础模型的嵌入中通过无标签对比适配“提取”动作、丢弃场景，绕开传统隐动作学习的重建瓶颈。",
+        "relevance": "为世界模型提供了一种可扩展、无需动作标注的动作表征学习范式，有助于利用海量无标注视频提升世界模型的交互与迁移能力。",
+        "org": "牛津大学（VGG组，Philip Torr、Andrea Vedaldi），可能合作 Meta AI",
+        "score": 8
+      },
+      "identified_orgs": [
+        "Meta"
+      ],
+      "contact_info": {
+        "emails_found": [],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Runjia Li",
+              "email": "",
+              "affiliation": "University of Oxford",
+              "role": "第一作者"
+            },
+            {
+              "name": "Minghao Chen",
+              "email": "",
+              "affiliation": "University of Oxford",
+              "role": ""
+            },
+            {
+              "name": "Junyu Xie",
+              "email": "",
+              "affiliation": "University of Oxford",
+              "role": ""
+            },
+            {
+              "name": "Philip Torr",
+              "email": "",
+              "affiliation": "University of Oxford",
+              "role": ""
+            },
+            {
+              "name": "Andrea Vedaldi",
+              "email": "",
+              "affiliation": "University of Oxford",
+              "role": ""
+            },
+            {
+              "name": "Tomas Jakab",
+              "email": "",
+              "affiliation": "University of Oxford",
+              "role": ""
+            }
+          ],
+          "corresponding_author": ""
+        }
+      }
+    }
+  ],
+  "org_analysis": [
+    {
+      "org": "Meta",
+      "count": 1,
+      "topics": {
+        "世界模型": 1,
+        "大模型": 1
+      },
+      "papers": [
+        {
+          "title": "OnlyAct: Extracting Action Representations from Foundation Models for World Models",
+          "url": "https://arxiv.org/abs/2611.14420v1",
+          "score": 8
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "paper_title": "Emergent Biological Capabilities in a Foundation Model for Molecular Interactions",
+      "paper_url": "https://arxiv.org/abs/2611.14504v1",
+      "paper_score": 9,
+      "topics": [
+        "多模态",
+        "大模型"
+      ],
+      "orgs": [],
+      "is_key_lab": false,
+      "emails": [
+        "adi@outputlabs.ai"
+      ],
+      "contacts": [
+        {
+          "name": "Adi Mashiach",
+          "email": "adi@outputlabs.ai",
+          "affiliation": "Output Labs",
+          "role": "第一作者"
+        }
+      ],
+      "corresponding_author": ""
+    },
+    {
+      "paper_title": "OnlyAct: Extracting Action Representations from Foundation Models for World Models",
+      "paper_url": "https://arxiv.org/abs/2611.14420v1",
+      "paper_score": 8,
+      "topics": [
+        "世界模型",
+        "大模型"
+      ],
+      "orgs": [
+        "Meta"
+      ],
+      "is_key_lab": true,
+      "emails": [],
+      "contacts": [
+        {
+          "name": "Runjia Li",
+          "email": "",
+          "affiliation": "University of Oxford",
+          "role": "第一作者"
+        },
+        {
+          "name": "Minghao Chen",
+          "email": "",
+          "affiliation": "University of Oxford",
+          "role": ""
+        },
+        {
+          "name": "Junyu Xie",
+          "email": "",
+          "affiliation": "University of Oxford",
+          "role": ""
+        },
+        {
+          "name": "Philip Torr",
+          "email": "",
+          "affiliation": "University of Oxford",
+          "role": ""
+        },
+        {
+          "name": "Andrea Vedaldi",
+          "email": "",
+          "affiliation": "University of Oxford",
+          "role": ""
+        },
+        {
+          "name": "Tomas Jakab",
+          "email": "",
+          "affiliation": "University of Oxford",
+          "role": ""
+        }
+      ],
+      "corresponding_author": ""
+    },
+    {
+      "paper_title": "Is Your Robot's Memory Just a Clock? Temporal Shortcuts in Memory-Augmented VLA Policies",
+      "paper_url": "https://arxiv.org/abs/2611.14488v1",
+      "paper_score": 7,
+      "topics": [
+        "多模态"
+      ],
+      "orgs": [],
+      "is_key_lab": false,
+      "emails": [
+        "chubinzhang23@gmail.com"
+      ],
+      "contacts": [
+        {
+          "name": "Chubin Zhang",
+          "email": "chubinzhang23@gmail.com",
+          "affiliation": "Nanyang Technological University",
+          "role": "第一作者"
+        },
+        {
+          "name": "Bo An",
+          "email": "",
+          "affiliation": "Nanyang Technological University",
+          "role": "通讯作者"
+        }
+      ],
+      "corresponding_author": "Bo An"
+    },
+    {
+      "paper_title": "Evaluating LLM-Generated World Models for Neuro-Symbolic Reasoning",
+      "paper_url": "https://arxiv.org/abs/2611.14419v1",
+      "paper_score": 7,
+      "topics": [
+        "世界模型",
+        "大模型"
+      ],
+      "orgs": [],
+      "is_key_lab": false,
+      "emails": [
+        "heitzig@pik-potsdam.de"
+      ],
+      "contacts": [],
+      "corresponding_author": ""
+    },
+    {
+      "paper_title": "An Energy-Based Perspective on Machine Learning",
+      "paper_url": "https://arxiv.org/abs/2611.14383v1",
+      "paper_score": 7,
+      "topics": [
+        "世界模型"
+      ],
+      "orgs": [],
+      "is_key_lab": false,
+      "emails": [
+        "ydu@seas.harvard.edu",
+        "bodai@cc.gatech.edu"
+      ],
+      "contacts": [
+        {
+          "name": "Bo Dai",
+          "email": "bodai@cc.gatech.edu",
+          "affiliation": "Georgia Institute of Technology",
+          "role": "第一作者"
+        },
+        {
+          "name": "Yilun Du",
+          "email": "ydu@seas.harvard.edu",
+          "affiliation": "Harvard University",
+          "role": ""
+        }
+      ],
+      "corresponding_author": ""
+    },
+    {
+      "paper_title": "What Factors Matter for Collection-Level Counting with Human-AI Collaboration?",
+      "paper_url": "https://arxiv.org/abs/2611.14380v1",
+      "paper_score": 7,
+      "topics": [
+        "多模态"
+      ],
+      "orgs": [],
+      "is_key_lab": false,
+      "emails": [
+        "omartin9@uwyo.edu",
+        "bkoger@uwyo.edu",
+        "lclawrence@umass.edu",
+        "seoyunjeong@umass.edu",
+        "sheldon@cs.umass.edu",
+        "smaji@umass.edu"
+      ],
+      "contacts": [
+        {
+          "name": "Seoyun Jeong",
+          "email": "seoyunjeong@umass.edu",
+          "affiliation": "University of Massachusetts Amherst",
+          "role": "第一作者"
+        },
+        {
+          "name": "Logan Lawrence",
+          "email": "lclawrence@umass.edu",
+          "affiliation": "University of Massachusetts Amherst",
+          "role": "作者"
+        },
+        {
+          "name": "Owen L. Martin",
+          "email": "omartin9@uwyo.edu",
+          "affiliation": "University of Wyoming",
+          "role": "作者"
+        },
+        {
+          "name": "Benjamin Koger",
+          "email": "bkoger@uwyo.edu",
+          "affiliation": "University of Wyoming",
+          "role": "作者"
+        },
+        {
+          "name": "Daniel Sheldon",
+          "email": "sheldon@cs.umass.edu",
+          "affiliation": "University of Massachusetts Amherst",
+          "role": "作者"
+        },
+        {
+          "name": "Subhransu Maji",
+          "email": "smaji@umass.edu",
+          "affiliation": "University of Massachusetts Amherst",
+          "role": "作者"
+        }
+      ],
+      "corresponding_author": ""
+    },
+    {
+      "paper_title": "Multimodal Abstention That Preserves Acquired Correct Answers",
+      "paper_url": "https://arxiv.org/abs/2611.14311v1",
+      "paper_score": 7,
+      "topics": [
+        "多模态"
+      ],
+      "orgs": [],
+      "is_key_lab": false,
+      "emails": [
+        "202621116012480@stu.hubu.edu.cn"
+      ],
+      "contacts": [
+        {
+          "name": "Jinyuan Zhang",
+          "email": "202621116012480@stu.hubu.edu.cn",
+          "affiliation": "湖北大学",
+          "role": "第一作者"
+        }
+      ],
+      "corresponding_author": ""
+    },
+    {
+      "paper_title": "GARD: Gradient-Guided Adversarial Representation Defense against Backdoors in Multimodal Contrastive Learning Models",
+      "paper_url": "https://arxiv.org/abs/2611.14143v1",
+      "paper_score": 7,
+      "topics": [
+        "多模态"
+      ],
+      "orgs": [],
+      "is_key_lab": false,
+      "emails": [
+        "songzeli@seu.edu.cn",
+        "yuhongwang@seu.edu.cn"
+      ],
+      "contacts": [
+        {
+          "name": "Yuhong Wang",
+          "email": "yuhongwang@seu.edu.cn",
+          "affiliation": "Southeast University",
+          "role": "第一作者"
+        },
+        {
+          "name": "Yujun Cai",
+          "email": "",
+          "affiliation": "Southeast University",
+          "role": ""
+        },
+        {
+          "name": "Lei Feng",
+          "email": "",
+          "affiliation": "Southeast University",
+          "role": ""
+        },
+        {
+          "name": "Songze Li",
+          "email": "songzeli@seu.edu.cn",
+          "affiliation": "Southeast University",
+          "role": "通讯作者"
+        }
+      ],
+      "corresponding_author": "Songze Li"
+    },
+    {
+      "paper_title": "Hx2Dx: From Anamnesis to Diagnosis - A Multimodal Arena for Conversational Clinical Reasoning in LLMs",
+      "paper_url": "https://arxiv.org/abs/2611.14122v1",
+      "paper_score": 7,
+      "topics": [
+        "多模态",
+        "大模型"
+      ],
+      "orgs": [],
+      "is_key_lab": false,
+      "emails": [
+        "federico.ravenda@usi.ch"
+      ],
+      "contacts": [
+        {
+          "name": "Federico Ravenda",
+          "email": "federico.ravenda@usi.ch",
+          "affiliation": "REMEDI Lab, Università della Svizzera italiana, Lugano, Switzerland",
+          "role": "第一作者、通讯作者"
+        },
+        {
+          "name": "Mirko Cesarini",
+          "email": "",
+          "affiliation": "Department of Statistics and Quantitative Methods, University of Milano-Bicocca, Milan, Italy",
+          "role": "作者"
+        },
+        {
+          "name": "Daniele Montagnani",
+          "email": "",
+          "affiliation": "REMEDI Lab, Università della Svizzera italiana, Lugano, Switzerland; Department of Mathematics, Pavia University, Pavia, Italy",
+          "role": "作者"
+        },
+        {
+          "name": "Volodymyr Karpenko",
+          "email": "",
+          "affiliation": "REMEDI Lab, Università della Svizzera italiana, Lugano, Switzerland",
+          "role": "作者"
+        },
+        {
+          "name": "Antonietta Mira",
+          "email": "",
+          "affiliation": "REMEDI Lab, Università della Svizzera italiana, Lugano, Switzerland; Department of Science and High Technology, Insubria University, Como, Italy",
+          "role": "作者（共同监督）"
+        },
+        {
+          "name": "Andrea Raballo",
+          "email": "",
+          "affiliation": "REMEDI Lab, Università della Svizzera italiana, Lugano, Switzerland; Cantonal Sociopsychiatric Organisation, Public Health Division, Department of Health and Social Care, Repubblica e Cantone Ticino, Mendrisio, Switzerland",
+          "role": "作者（共同监督）"
+        }
+      ],
+      "corresponding_author": "Federico Ravenda"
+    },
+    {
+      "paper_title": "TAMEing the Open-World Personalization: Towards Open-Set Personalized MLLM Assistant",
+      "paper_url": "https://arxiv.org/abs/2611.14118v1",
+      "paper_score": 7,
+      "topics": [
+        "多模态",
+        "大模型"
+      ],
+      "orgs": [],
+      "is_key_lab": false,
+      "emails": [
+        "zhongting@uestc.edu.cn"
+      ],
+      "contacts": [
+        {
+          "name": "Rongpei Hong",
+          "email": "",
+          "affiliation": "University of Electronic Science and Technology of China",
+          "role": "第一作者"
+        },
+        {
+          "name": "Jian Lang",
+          "email": "",
+          "affiliation": "University of Electronic Science and Technology of China",
+          "role": "作者"
+        },
+        {
+          "name": "Ting Zhong",
+          "email": "",
+          "affiliation": "University of Electronic Science and Technology of China",
+          "role": "通讯作者"
+        },
+        {
+          "name": "Fan Zhou",
+          "email": "",
+          "affiliation": "University of Electronic Science and Technology of China; Intelligent Digital Media Technology Key Laboratory of Sichuan Province",
+          "role": "作者"
+        }
+      ],
+      "corresponding_author": "Ting Zhong"
+    }
+  ],
+  "daily_insight": {
+    "hot_topics": "今日论文明显由多模态主导，覆盖VLA记忆、开放集个性化、临床问诊、深度伪造检测与多模态智能体等评测和可靠性问题。世界模型与基础模型能力边界成为另一主线，包括从视频模型提取动作表征、LLM世界模型的结构忠实性以及分子基础模型的零样本生物能力涌现。整体趋势从“堆能力”转向“可执行性、鲁棒性、可解释性和人机协同”的系统评估。",
+    "lab_overlap": "大厂论文仅见Meta 1篇，聚焦从预训练视频基础模型无标签提取动作表征以服务世界模型，属于世界模型/动作抽象方向。其他大厂今日无论文入榜，因此不存在同方向论文重合，也暂无可比较的方法竞争关系。",
+    "signals": "值得关注：多模态论文量在筛选中占比显著偏高，且多集中在VLA记忆捷径、后门防御、弃答无回归、幻觉片段检测等可靠性与评测；Meta的动作表征提取显示世界模型路线正从隐动作重建转向无标签对比适配；分子基础模型的涌现能力突变提示仅靠损失缩放律难以预测能力边界。",
+    "overlap_labs": [],
+    "overlap_topic": "无"
+  },
+  "key_labs_list": [
+    "Google",
+    "Meta",
+    "OpenAI",
+    "Microsoft",
+    "NVIDIA",
+    "Anthropic",
+    "字节跳动",
+    "腾讯",
+    "阿里巴巴",
+    "百度",
+    "华为",
+    "DeepSeek"
+  ]
+}
