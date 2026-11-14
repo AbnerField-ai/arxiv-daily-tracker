@@ -1,125 +1,101 @@
 {
-  "date": "2026-11-13",
-  "generated_at": "2026-11-13T00:01:55.736877",
+  "date": "2026-11-14",
+  "generated_at": "2026-11-14T00:15:38.870186",
   "total_fetched": 100,
   "total_matched": 20,
   "papers": [
     {
-      "title": "Emergent Biological Capabilities in a Foundation Model for Molecular Interactions",
-      "abstract": "Foundation models trained on large unlabeled corpora develop emergent capabilities, tasks that go beyond the training objective. We extend this paradigm to multimodal biology with Bonbon, a foundation model for molecular interactions trained on approximately 3.2 trillion tokens of paired protein-ligand sequences. From a single representation space, Bonbon exhibits three zero-shot emergent capabilities at hierarchical levels of resolution: functional (mechanism of action), residue (binding site localization, including orthosteric/allosteric discrimination), and bond (covalent versus non-covalent engagement). All three capabilities generalize to out-of-distribution complexes. Bonbon was trained on protein-ligand sequences alone, without any task-specific supervision and without structural coordinates. We conducted controlled scaling experiments across six model scales from 42M to 1.6B parameters; every capability evaluated shows a sharp jump at the largest scale on continuous metrics, even as pretraining loss decreases smoothly. This demonstrates that loss-based scaling laws alone are insufficient to predict when zero-shot emergent capabilities become available. The capabilities reported here emerge after training at a 1:2,000 parameter-to-token ratio to accommodate the sparsity of paired biological interaction data. The same frozen representations achieve state-of-the-art binding and affinity prediction at five orders of magnitude greater speed than co-folding methods. In prospective wet-lab validation across nine disease targets spanning seven protein families, Bonbon achieves a 61.5% dose-response hit rate on de novo compounds, yielding structurally novel molecules not previously reported to inhibit these proteins, including for out-of-distribution targets.",
-      "url": "https://arxiv.org/abs/2611.14504v1",
-      "pdf": "https://arxiv.org/pdf/2611.14504v1",
+      "title": "Unbundling Multimodal Vision Encoding",
+      "abstract": "How multimodal language models should encode visual input remains up for debate. Most models use a pretrained vision encoder, while some recent recipes train the encoder from scratch with the language model or remove it entirely. Vision encoders bundle together three design choices: a visual prior from upstream pretraining, dedicated vision capacity, and pre-fusion placement of that capacity (i.e., before the multimodal backbone). Because published models also differ in data, architecture, and compute, comparing them cannot isolate the effect of each choice. We disentangle these choices via a controlled framework where we pretrain all models from scratch on common data and compare them on visual question answering and language benchmarks at matched lifetime compute. We find that the visual prior is not necessary; an encoder trained jointly from scratch is on par with a pretrained one, without a separate training stage. What matters instead is dedicated vision capacity: an encoder-free model trails on visual understanding even when its backbone is enlarged by the encoder's parameter count. Yet that capacity need not precede multimodal fusion, as vision-only modules added in-fusion to early backbone layers perform comparably to a pre-fusion encoder and can lower time to first token. These results also hold across backbone sizes, when encoder pretraining is treated as free, and when starting from a pretrained language model. Overall, our findings favor dedicated vision capacity trained jointly with the backbone and placed early within it.",
+      "url": "https://arxiv.org/abs/2611.17334v1",
+      "pdf": "https://arxiv.org/pdf/2611.17334v1",
       "categories": [
-        "cs.LG",
-        "q-bio.BM"
+        "cs.CV",
+        "cs.LG"
       ],
       "authors": [
-        "Adi Mashiach"
+        "Ellis Brown",
+        "Chris Hoang",
+        "Shengyi Qian",
+        "Shang-Wen Li",
+        "Mike Lewis"
       ],
       "all_authors": [
-        "Adi Mashiach"
+        "Ellis Brown",
+        "Chris Hoang",
+        "Shengyi Qian",
+        "Shang-Wen Li",
+        "Mike Lewis",
+        "Marjan Ghazvininejad",
+        "Luke Zettlemoyer",
+        "Lucas Beyer",
+        "Mengye Ren",
+        "Jakob Verbeek",
+        "Saining Xie",
+        "Hu Xu"
       ],
       "affiliations": [
         {
-          "name": "Adi Mashiach",
+          "name": "Ellis Brown",
+          "affiliations": []
+        },
+        {
+          "name": "Chris Hoang",
+          "affiliations": []
+        },
+        {
+          "name": "Shengyi Qian",
+          "affiliations": []
+        },
+        {
+          "name": "Shang-Wen Li",
+          "affiliations": []
+        },
+        {
+          "name": "Mike Lewis",
+          "affiliations": []
+        },
+        {
+          "name": "Marjan Ghazvininejad",
+          "affiliations": []
+        },
+        {
+          "name": "Luke Zettlemoyer",
+          "affiliations": []
+        },
+        {
+          "name": "Lucas Beyer",
+          "affiliations": []
+        },
+        {
+          "name": "Mengye Ren",
+          "affiliations": []
+        },
+        {
+          "name": "Jakob Verbeek",
+          "affiliations": []
+        },
+        {
+          "name": "Saining Xie",
+          "affiliations": []
+        },
+        {
+          "name": "Hu Xu",
           "affiliations": []
         }
       ],
-      "published": "2026-11-10",
+      "published": "2026-11-12",
       "matched_topics": [
-        "多模态",
-        "大模型"
+        "多模态"
       ],
       "priority": 1,
       "ai_summary": {
-        "problem": "探索能否仅用配对蛋白质-配体序列训练一个多模态基础模型，并在没有任何任务监督和结构坐标的情况下，自发涌现出多层次的分子相互作用理解能力，从而克服共折叠方法速度慢、依赖结构的瓶颈。",
-        "method": "提出 Bonbon，一个在约 3.2 万亿 token 的蛋白质-配体配对序列上训练的基础模型，用单一表征空间同时编码相互作用；通过 42M 到 1.6B 六个规模的受控缩放实验，考察零样本涌现能力与预训练损失之间的关系，并用冻结表征做结合与亲和力预测及湿实验验证。",
-        "result": "模型零样本涌现出三类能力：功能层面判断作用机制、残基层面定位结合位点并区分正构和变构、键层面区分共价与非共价结合；这些能力可泛化到分布外复合物，并在最大规模处出现指标上的跃升；结合与亲和力预测达到 SOTA 且比共折叠方法快约 10^5 倍，在 9 个疾病靶点的湿实验中，从头设计化合物的剂量反应命中率为 61.5%。",
-        "novelty": "仅凭序列训练的分子相互作用基础模型在零样本下自发涌现出从功能、残基到化学键的多层级生物能力，并揭示损失平滑下降时涌现能力会突变，说明仅靠基于损失的缩放律无法预测涌现。",
-        "relevance": "为多模态生物基础模型的涌现能力与缩放规律提供了实证，说明参数与 token 之比需达到约 1:2000 才能适配稀疏的配对生物数据，对 AI 驱动的药物发现和科学基础模型有重要启示。",
-        "org": "论文未提供作者所属机构信息（仅有作者 Adi Mashiach，无 affiliation）",
-        "score": 9
-      },
-      "identified_orgs": [],
-      "contact_info": {
-        "emails_found": [
-          "adi@outputlabs.ai"
-        ],
-        "ai_extracted": {
-          "contacts": [
-            {
-              "name": "Adi Mashiach",
-              "email": "adi@outputlabs.ai",
-              "affiliation": "Output Labs",
-              "role": "第一作者"
-            }
-          ],
-          "corresponding_author": ""
-        }
-      }
-    },
-    {
-      "title": "OnlyAct: Extracting Action Representations from Foundation Models for World Models",
-      "abstract": "Video world models promise general-purpose interactive simulators, but their training is limited by action supervision: action labels are scarce, fragmented across incompatible specifications, and do not scale with the unlabeled video pretraining corpus. A common workaround jointly trains an action encoder to compress consecutive frames into a latent action and a decoder to reconstruct the next frame from the previous frame and that latent, forcing the latent to capture only new information. This has two limitations: learning the action space from scratch can limit generalization to unseen domains, and the bottleneck trades expressiveness for separation, with tighter settings losing nuance and looser ones risking scene leakage under domain shifts. We argue for a different starting point: rather than learning actions from scratch, we start from a pretrained foundation model (V-JEPA 2), whose embeddings of a frame pair already carry substantial action information after large-scale, diverse video pretraining. The remaining challenge is to extract the action while discarding the scene. We propose a label-free contrastive adaptation framework that pulls together frame pairs sharing the same motion under a different scene and pushes apart pairs from the same scene with different motion, reshaping the geometry of the pretrained space without imposing a reconstruction bottleneck. We introduce a unified evaluation protocol along three axes (action expressiveness, scene invariance, and action-conditioned video generation quality) across robot manipulation, camera navigation, game, and driving benchmarks, most of which are unseen during adaptation. Compared with annotation-free latent-action methods, our representations are substantially more expressive while matching their scene invariance, and they yield world models that transfer demonstrated actions to new scenes more faithfully.",
-      "url": "https://arxiv.org/abs/2611.14420v1",
-      "pdf": "https://arxiv.org/pdf/2611.14420v1",
-      "categories": [
-        "cs.CV"
-      ],
-      "authors": [
-        "Runjia Li",
-        "Minghao Chen",
-        "Junyu Xie",
-        "Philip Torr",
-        "Andrea Vedaldi"
-      ],
-      "all_authors": [
-        "Runjia Li",
-        "Minghao Chen",
-        "Junyu Xie",
-        "Philip Torr",
-        "Andrea Vedaldi",
-        "Tomas Jakab"
-      ],
-      "affiliations": [
-        {
-          "name": "Runjia Li",
-          "affiliations": []
-        },
-        {
-          "name": "Minghao Chen",
-          "affiliations": []
-        },
-        {
-          "name": "Junyu Xie",
-          "affiliations": []
-        },
-        {
-          "name": "Philip Torr",
-          "affiliations": []
-        },
-        {
-          "name": "Andrea Vedaldi",
-          "affiliations": []
-        },
-        {
-          "name": "Tomas Jakab",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-11-10",
-      "matched_topics": [
-        "世界模型",
-        "大模型"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "视频世界模型的训练依赖动作标注，但动作标签稀缺、规格不统一且无法随无标注视频语料扩展；现有从零学习隐动作的方法受重建瓶颈限制，在泛化性以及表达力与场景分离的权衡上存在不足。",
-        "method": "论文不从零学习动作，而是以预训练基础模型 V-JEPA 2 为起点，利用其帧对嵌入已蕴含的动作信息。提出一种无标签的对比适配框架：将不同场景下相同运动的帧对拉近，将同一场景下不同运动的帧对推远，在不引入重建瓶颈的情况下重塑预训练嵌入空间的几何结构。同时提出涵盖动作表达力、场景不变性和动作条件视频生成质量三个维度的统一评测协议。",
-        "result": "在机器人操作、相机导航、游戏和驾驶等多个基准（多数在适配时未见）上，该方法比无需标注的隐动作方法表达力显著更强，同时保持相当的场景不变性，且所构建的世界模型能更忠实地将演示动作迁移到新场景。",
-        "novelty": "首次提出从预训练视频基础模型的嵌入中通过无标签对比适配“提取”动作、丢弃场景，绕开传统隐动作学习的重建瓶颈。",
-        "relevance": "为世界模型提供了一种可扩展、无需动作标注的动作表征学习范式，有助于利用海量无标注视频提升世界模型的交互与迁移能力。",
-        "org": "牛津大学（VGG组，Philip Torr、Andrea Vedaldi），可能合作 Meta AI",
+        "problem": "多模态语言模型应如何编码视觉输入仍无定论，已有模型在视觉先验、专用视觉容量和融合前放置等设计上相互纠缠，难以隔离各自影响。",
+        "method": "作者提出一个受控实验框架，在相同数据和匹配的总训练计算下从零预训练所有模型，并在视觉问答与语言基准上比较不同设计选择，同时覆盖不同骨干规模、将编码器预训练视为免费以及从预训练语言模型初始化等设定。",
+        "result": "实验发现预训练视觉先验并非必要，从零联合训练的编码器可与预训练编码器相当；真正关键的是专用视觉容量，而无编码器模型即使扩大骨干参数量仍在视觉理解上落后；该容量不必置于多模态融合之前，早期骨干层内融合的纯视觉模块表现相当并可降低首 token 延迟。",
+        "novelty": "通过受控框架解耦并分别检验视觉先验、专用视觉容量和融合前放置这三个常被混在一起的设计选择。",
+        "relevance": "为多模态模型视觉编码架构提供了可操作的实证指导，支持将专用视觉容量与骨干联合训练并早期置于骨干内部。",
+        "org": "Meta AI（FAIR）",
         "score": 8
       },
       "identified_orgs": [
@@ -127,240 +103,56 @@
       ],
       "contact_info": {
         "emails_found": [],
-        "ai_extracted": {
-          "contacts": [
-            {
-              "name": "Runjia Li",
-              "email": "",
-              "affiliation": "University of Oxford",
-              "role": "第一作者"
-            },
-            {
-              "name": "Minghao Chen",
-              "email": "",
-              "affiliation": "University of Oxford",
-              "role": ""
-            },
-            {
-              "name": "Junyu Xie",
-              "email": "",
-              "affiliation": "University of Oxford",
-              "role": ""
-            },
-            {
-              "name": "Philip Torr",
-              "email": "",
-              "affiliation": "University of Oxford",
-              "role": ""
-            },
-            {
-              "name": "Andrea Vedaldi",
-              "email": "",
-              "affiliation": "University of Oxford",
-              "role": ""
-            },
-            {
-              "name": "Tomas Jakab",
-              "email": "",
-              "affiliation": "University of Oxford",
-              "role": ""
-            }
-          ],
-          "corresponding_author": ""
-        }
-      }
-    },
-    {
-      "title": "Is Your Robot's Memory Just a Clock? Temporal Shortcuts in Memory-Augmented VLA Policies",
-      "abstract": "Memory-augmented vision-language-action (VLA) policies are meant to remember what happened. Many of them, however, fill memory by time: they sample frames uniformly across the episode and stamp each frame with its time step. Because time passes even when nothing happens, such a memory may not tell waiting from working. We show that it does not. On the counting tasks of RoboMME, we make the robot briefly pause or fidget its wrist. Such a null event changes nothing the task depends on, yet a released memory VLA counts the interval as work done and stops early. We call this failure phantom progress. It cuts success from 47 to 16 of 50 on one task and from 44 to 10 on the other. When the same frames are withheld from memory, success returns, so the cause lies in memory rather than in the interruption itself. We trace the failure to a temporal shortcut: because demonstrations proceed at a steady pace, elapsed time predicts progress. Indeed, rescaling the time stamps alone makes the policy stop early when the clock runs fast and repeat when it runs slow. Surprisingly, removing the time encoding does not cure the failure, because the frames of a null event still occupy slots of the time-sampled memory. Across RoboMME's released designs, vulnerability follows how memory is indexed. Of the fixes the diagnosis suggests, training with injected pauses does not remove the failure and impairs counting, whereas indexing memory by events recovers half or more of the loss without retraining. A memory meant to remember what happened should count events rather than clock ticks.",
-      "url": "https://arxiv.org/abs/2611.14488v1",
-      "pdf": "https://arxiv.org/pdf/2611.14488v1",
-      "categories": [
-        "cs.RO"
-      ],
-      "authors": [
-        "Chubin Zhang",
-        "Bo An"
-      ],
-      "all_authors": [
-        "Chubin Zhang",
-        "Bo An"
-      ],
-      "affiliations": [
-        {
-          "name": "Chubin Zhang",
-          "affiliations": []
-        },
-        {
-          "name": "Bo An",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-11-10",
-      "matched_topics": [
-        "多模态"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "记忆增强的视觉-语言-动作（VLA）策略通常按时间均匀采样帧并用时间步标记来构建记忆，导致机器人把「时间流逝」误当作「任务进展」——论文要揭示并诊断这种时间捷径带来的失败模式。",
-        "method": "在 RoboMME 的计数任务上做受控干预实验：让机器人短暂停顿或抖动手腕（不影响任务的空事件），并对比「扣留这些帧」、「缩放时间戳」、「去除时间编码」、「注入停顿训练」以及「按事件索引记忆」等多种条件的表现。",
-        "result": "空事件使成功率从 50 次中 47 次降至 16 次、44 次降至 10 次；扣留相同帧后成功率恢复，证明问题出在记忆而非中断本身；仅缩放时间戳即可让策略在时钟快时早停、慢时重复；而去除时间编码无效，改用事件索引记忆无需重训即可挽回一半以上损失，注入停顿训练则无效且损害计数。",
-        "novelty": "首次命名并系统刻画了记忆增强 VLA 中的「幻影进展（phantom progress）」时间捷径，并指出脆弱性取决于记忆的索引方式而非时间编码本身。",
-        "relevance": "为具身智能与世界模型中的记忆设计提供了重要原则：记忆应按事件而非时钟滴答来索引，对长程任务策略的可靠性有直接意义。",
-        "org": "未提供（作者机构信息缺失）",
-        "score": 7
-      },
-      "identified_orgs": [],
-      "contact_info": {
-        "emails_found": [
-          "chubinzhang23@gmail.com"
-        ],
-        "ai_extracted": {
-          "contacts": [
-            {
-              "name": "Chubin Zhang",
-              "email": "chubinzhang23@gmail.com",
-              "affiliation": "Nanyang Technological University",
-              "role": "第一作者"
-            },
-            {
-              "name": "Bo An",
-              "email": "",
-              "affiliation": "Nanyang Technological University",
-              "role": "通讯作者"
-            }
-          ],
-          "corresponding_author": "Bo An"
-        }
-      }
-    },
-    {
-      "title": "Evaluating LLM-Generated World Models for Neuro-Symbolic Reasoning",
-      "abstract": "Formal world models can support planning, verification, and safety reasoning, but constructing them from open-ended natural-language situations is difficult, particularly in multi-agent settings where several formalizations may be plausible. We study whether five LLMs can generate such world models as partially observable stochastic games and whether mechanical validity is sufficient to establish that the resulting model faithfully represents the intended decision problem. We introduce a benchmark of 44 scenarios spanning game, situational, and cultural settings and evaluate generated world models along three dimensions: mechanical validity, reference-relative structural agreement, and semantic criteria. Across three empirical tracks, we analyze 410 first-pass generations. In the reference-backed game track, 134/135 generated world models pass a strict mechanical audit, yet mean permutation-invariant structural F1 is only 0.366, with just 28/134 mechanically valid models exactly matching the authored reference. In the cultural track, explicitly naming the country changes the generated structural representation for most LLMs while producing only small changes in automated semantic scores. These results show that executability is a necessary but insufficient criterion for LLM-generated world models: models that are mechanically valid can still differ substantially in the structure used by downstream neuro-symbolic reasoning and planning.",
-      "url": "https://arxiv.org/abs/2611.14419v1",
-      "pdf": "https://arxiv.org/pdf/2611.14419v1",
-      "categories": [
-        "cs.AI"
-      ],
-      "authors": [
-        "Souhaila Djaffal",
-        "Amna Jamal",
-        "Gagana Madhugiri Devaraja",
-        "Anidipta Pal",
-        "Jobst Heitzig"
-      ],
-      "all_authors": [
-        "Souhaila Djaffal",
-        "Amna Jamal",
-        "Gagana Madhugiri Devaraja",
-        "Anidipta Pal",
-        "Jobst Heitzig"
-      ],
-      "affiliations": [
-        {
-          "name": "Souhaila Djaffal",
-          "affiliations": []
-        },
-        {
-          "name": "Amna Jamal",
-          "affiliations": []
-        },
-        {
-          "name": "Gagana Madhugiri Devaraja",
-          "affiliations": []
-        },
-        {
-          "name": "Anidipta Pal",
-          "affiliations": []
-        },
-        {
-          "name": "Jobst Heitzig",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-11-10",
-      "matched_topics": [
-        "世界模型",
-        "大模型"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "研究LLM能否从开放式自然语言情境中生成可用于神经符号推理与规划的形式化世界模型，以及“机械有效性”是否足以保证模型忠实反映目标决策问题。",
-        "method": "构建包含44个场景的基准，覆盖游戏、情境与文化设定，将世界模型表示为部分可观察随机博弈，并从机械有效性、参考相对结构一致性和语义标准三个维度评估五个LLM生成的410个首轮世界模型。",
-        "result": "在游戏参考轨中，134/135个模型通过严格机械审计，但平均置换不变结构F1仅0.366，仅28/134个机械有效模型与参考完全匹配；文化轨中显式国家名会显著改变结构表示但自动语义分数变化很小。",
-        "novelty": "系统区分并实证了LLM生成世界模型的“可执行性”与“结构忠实性”，指出机械有效性是必要但不充分条件。",
-        "relevance": "对世界模型、神经符号推理、Agent规划与安全验证具有直接意义，提醒下游推理不能仅依赖可执行性作为正确性标准。",
-        "org": "提供信息未列出作者机构；Jobst Heitzig 可能与波茨坦气候影响研究所（PIK）相关。",
-        "score": 7
-      },
-      "identified_orgs": [],
-      "contact_info": {
-        "emails_found": [
-          "heitzig@pik-potsdam.de"
-        ],
         "ai_extracted": null
       }
     },
     {
-      "title": "An Energy-Based Perspective on Machine Learning",
-      "abstract": "Energy-based models (EBMs) define a distribution through a scalar energy, $p_θ(x)\\propto\\exp(-E_θ(x))$, and are usually presented as one model family among many. This tutorial has a broader goal: beyond introducing EBMs, it uses them as a single lens that connects the different aspects of machine learning. Any EBM is specified by three choices, the energy, which determines what the model represents; the inference procedure, which samples from or optimizes the energy; and the learning method, which fits the energy to data. We first develop these components, including sampling, variational inference, and learning by maximum likelihood, noise contrastive estimation, pseudolikelihood, score matching, and adversarial training, and show that the learning methods share one contrastive structure. We then show that discriminative models, generative models such as GANs, normalizing flows, diffusion and autoregressive models, representation learning methods such as contrastive learning, word2vec, BERT, denoising auto-encoders, and diffusion representations, reinforcement learning with EBM policies and world models, inverse reinforcement learning, and planning, as well as inference-time computation with verifiers, are all EBMs that differ in these three choices, mostly in how they handle the partition function and sampling. This view explains existing methods, organizes them into a common framework, and suggests new algorithms by replacing one component while keeping the others, with composition of energies as a principled way to combine learned models at inference time.",
-      "url": "https://arxiv.org/abs/2611.14383v1",
-      "pdf": "https://arxiv.org/pdf/2611.14383v1",
+      "title": "Asymmetric Multimodal Learning with Decomposed JEPAs",
+      "abstract": "Cross-modal alignment is the standard objective for building multimodal representations. We show that alignment as a \\emph{sole} objective is lossy wherever modalities are informationally asymmetric---where neither can express what the other carries. Visual question answering is an obvious case: a question is a selective relational operator probing a dense visual field whose fine-grained features no query recovers, so what alignment preserves is not what the task requires. We prove an \\textbf{Alignment Redundancy Bound}: alignment-only Dirichlet energy minimization retains at most the redundant information atom $\\Red(Z; X_1, X_2)$, annihilating private modality-specific structure $\\Unq(Z; X_m)$ and cross-modal synergy $\\Syn(Z; X_1, X_2)$.   We introduce \\textbf{Decomposed JEPA (D-JEPA)}, which factorizes latents into an aligned shared core and private modality-specific fibers. The shared core retains most of the structure alignment targets; the private fibers recover what alignment discards, via contextual masked prediction and asymmetric cross-subspace independence. Under information asymmetry, alignment-only training undergoes catastrophic semantic collapse on compositional reasoning benchmarks, surviving only on binary queries. D-JEPA averts this collapse, substantially improving downstream accuracy over both alignment-only and alignment-with-reconstruction baselines, and restoring a positive multimodal synergy gap in place of the baseline's inverted gap. Information-theoretic audits confirm that D-JEPA recovers most of the mutual information available from a frozen backbone, and causal fiber-swap interventions demonstrate that the recovered information is causally localized in the private fibers.",
+      "url": "https://arxiv.org/abs/2611.16639v1",
+      "pdf": "https://arxiv.org/pdf/2611.16639v1",
       "categories": [
-        "cs.AI",
-        "cs.LG"
+        "cs.LG",
+        "cs.CV"
       ],
       "authors": [
-        "Bo Dai",
-        "Yilun Du"
+        "Yusuf Shihata"
       ],
       "all_authors": [
-        "Bo Dai",
-        "Yilun Du"
+        "Yusuf Shihata"
       ],
       "affiliations": [
         {
-          "name": "Bo Dai",
-          "affiliations": []
-        },
-        {
-          "name": "Yilun Du",
+          "name": "Yusuf Shihata",
           "affiliations": []
         }
       ],
-      "published": "2026-11-10",
+      "published": "2026-11-12",
       "matched_topics": [
-        "世界模型"
+        "多模态"
       ],
       "priority": 1,
       "ai_summary": {
-        "problem": "论文试图用统一的能量基模型（EBM）视角重新组织和理解机器学习中的多种模型与方法，说明它们本质上是同一框架下不同设计选择的产物。",
-        "method": "将EBM拆解为能量函数、推断过程和学习方法三个组件，系统介绍采样、变分推断、最大似然、噪声对比估计、伪似然、得分匹配和对抗训练，并指出这些学习方法共享对比式结构；随后用该框架统一解释判别模型、生成模型、表示学习、强化学习、逆强化学习、规划及推理时验证器等方法。",
-        "result": "论文表明，大量现有方法都可视为EBM在三项设计选择上的不同组合，主要差异在于如何处理配分函数与采样；该视角不仅能解释和组织现有方法，还能通过替换组件或组合能量函数来启发新算法。",
-        "novelty": "核心创新在于以EBM为单一透镜，将判别、生成、表示学习、强化学习和推理时计算统一到一个可解释、可组合的框架中。",
-        "relevance": "该工作有助于AI研究者从统一视角理解不同建模范式，并为设计新算法、组合已有模型及推理时计算提供原则性指导。",
-        "org": "未提供（作者机构信息缺失）",
-        "score": 7
+        "problem": "论文指出跨模态对齐作为唯一目标在模态信息不对称时是有损的，会丢失私有模态特有结构和跨模态协同信息，导致多模态表征无法保留任务所需信息并可能引发语义崩溃。",
+        "method": "提出Decomposed JEPA（D-JEPA），将潜表征分解为对齐共享核心和私有模态纤维；共享核心保留对齐目标的主要结构，私有纤维通过上下文掩码预测与非对称跨子空间独立性恢复被对齐丢弃的信息。",
+        "result": "论文证明Alignment Redundancy Bound，表明仅对齐训练最多保留冗余信息并消除私有结构与协同；实验显示仅对齐训练在组合推理基准上发生语义崩溃且仅二元查询存活，而D-JEPA避免崩溃、显著提升下游准确率，并恢复正的多模态协同差距。",
+        "novelty": "从信息论上揭示仅对齐目标存在冗余瓶颈，并提出共享核心加私有纤维分解的JEPA架构，在信息不对称多模态场景中恢复私有与协同信息。",
+        "relevance": "为多模态表征学习提供了超越单纯对齐的分解式范式，对VQA等不对称模态任务以及世界模型中的多模态融合具有指导意义。",
+        "org": "未提供（作者机构信息为空）",
+        "score": 8
       },
       "identified_orgs": [],
       "contact_info": {
         "emails_found": [
-          "ydu@seas.harvard.edu",
-          "bodai@cc.gatech.edu"
+          "yusufshihata2006@gmail.com"
         ],
         "ai_extracted": {
           "contacts": [
             {
-              "name": "Bo Dai",
-              "email": "bodai@cc.gatech.edu",
-              "affiliation": "Georgia Institute of Technology",
-              "role": "第一作者"
-            },
-            {
-              "name": "Yilun Du",
-              "email": "ydu@seas.harvard.edu",
-              "affiliation": "Harvard University",
-              "role": ""
+              "name": "Yusuf Shihata",
+              "email": "yusufshihata2006@gmail.com",
+              "affiliation": "",
+              "role": "第一作者（唯一作者）"
             }
           ],
           "corresponding_author": ""
@@ -368,168 +160,600 @@
       }
     },
     {
-      "title": "What Factors Matter for Collection-Level Counting with Human-AI Collaboration?",
-      "abstract": "Many scientific and policy decisions require estimating the total number of target objects across a large image collection. Exhaustive human labeling is often infeasible, while raw model predictions can be biased, especially under domain shift. Recent human-AI estimation methods combine imperfect model predictions with limited human verification to obtain reliable collection-level estimates. However, existing work provides little guidance on how practitioners should choose among models, estimators, and adaptation strategies for a new deployment. We study these choices within a common human-in-the-loop counting framework across 12 tasks spanning biomedical microscopy, ground-level and aerial wildlife surveys, and overhead imagery of urban structures. Our results show that modern multimodal models provide a strong, training-free starting point for many tasks, while fine-tuned detectors become more advantageous at larger labeling budgets and across repeated deployments. Estimation efficiency improves further when model predictions are used to prioritize which units humans label, rather than sampling uniformly. We also find that each model's ranking quality can be estimated with a small pilot set, yielding practical guidance for selecting strategies on new counting tasks. In a field deployment on aerial pronghorn surveys, a task-specific adaptation of these methods meets the survey's $\\pm 5\\%$ tolerance after reviewing a median of only $3.2\\%$ of collected images.",
-      "url": "https://arxiv.org/abs/2611.14380v1",
-      "pdf": "https://arxiv.org/pdf/2611.14380v1",
+      "title": "Spatial Foundry: A Multimodal Dataset for Spatial Intelligence",
+      "abstract": "Spatial intelligence requires connecting visual observations to the geometry, objects, and persistent state of an environment. Images alone leave these relationships implicit, while disconnected annotations make it difficult to study appearance, camera motion, and scene changes under a common reference. We introduce Spatial Foundry, a collection of 5,280 furnished residential 3D scene configurations with editable assets and aligned visual, geometric, and temporal data. Its modalities include floor plans, perspective and panoramic RGB, metric depth, point clouds, meshes, instance-level 3D bounding boxes, and camera trajectories paired with video. Shared scene coordinates link observations across views and time; editable source scenes enable additional camera paths and controlled object changes. We describe the data representation and construction workflow, and discuss applications in floor-plan-conditioned 3D generation, geometric reconstruction, instance-level perception, camera-conditioned video generation, shared world modeling, and scene editing. Controlled camera and scene variations support spatial perception and world-model research. The public project page provides videos and an interactive colored point-cloud preview.",
+      "url": "https://arxiv.org/abs/2611.17318v1",
+      "pdf": "https://arxiv.org/pdf/2611.17318v1",
       "categories": [
         "cs.CV"
       ],
       "authors": [
-        "Seoyun Jeong",
-        "Logan Lawrence",
-        "Owen L. Martin",
-        "Benjamin Koger",
-        "Daniel Sheldon"
+        "Ethan Lin",
+        "Yang Song"
       ],
       "all_authors": [
-        "Seoyun Jeong",
-        "Logan Lawrence",
-        "Owen L. Martin",
-        "Benjamin Koger",
-        "Daniel Sheldon",
-        "Subhransu Maji"
+        "Ethan Lin",
+        "Yang Song"
       ],
       "affiliations": [
         {
-          "name": "Seoyun Jeong",
+          "name": "Ethan Lin",
           "affiliations": []
         },
         {
-          "name": "Logan Lawrence",
-          "affiliations": []
-        },
-        {
-          "name": "Owen L. Martin",
-          "affiliations": []
-        },
-        {
-          "name": "Benjamin Koger",
-          "affiliations": []
-        },
-        {
-          "name": "Daniel Sheldon",
-          "affiliations": []
-        },
-        {
-          "name": "Subhransu Maji",
+          "name": "Yang Song",
           "affiliations": []
         }
       ],
-      "published": "2026-11-10",
+      "published": "2026-11-12",
       "matched_topics": [
+        "世界模型",
         "多模态"
       ],
       "priority": 1,
       "ai_summary": {
-        "problem": "在大规模图像集合中估计目标总数时，人工标注不可行而模型预测存在偏差；现有的人机协同估计方法缺乏对模型、估计器和适配策略选择的实践指导。",
-        "method": "在统一的人机交互回路计数框架下，跨越12个任务（生物医学显微、地面与航拍野生动物、城市结构航拍）系统比较模型选择、估计器与适配策略；并利用模型预测优先选择人工标注单元，以及用小规模试点集估计模型排序质量来指导策略选择。",
-        "result": "现代多模态模型在多数任务上提供强且免训练的起点，微调检测器在标注预算更大和重复部署时更优；按模型预测优先标注可提升估计效率；航拍叉角羚实地部署中仅需审查中位数3.2%的图像即达到±5%容差。",
-        "novelty": "首次在跨领域12个计数任务上系统评估人机协同集合级估计中模型、估计器与适配策略的选择，并提出用试点集估计排序质量以指导新任务部署。",
-        "relevance": "为AI在实际部署中的人机协同计数与估计提供了可操作的策略选择指南，推动了多模态模型在科学调查与政策决策中的可靠应用。",
-        "org": "未明确识别（作者机构信息缺失）",
-        "score": 7
-      },
-      "identified_orgs": [],
-      "contact_info": {
-        "emails_found": [
-          "omartin9@uwyo.edu",
-          "bkoger@uwyo.edu",
-          "lclawrence@umass.edu",
-          "seoyunjeong@umass.edu",
-          "sheldon@cs.umass.edu",
-          "smaji@umass.edu"
-        ],
-        "ai_extracted": {
-          "contacts": [
-            {
-              "name": "Seoyun Jeong",
-              "email": "seoyunjeong@umass.edu",
-              "affiliation": "University of Massachusetts Amherst",
-              "role": "第一作者"
-            },
-            {
-              "name": "Logan Lawrence",
-              "email": "lclawrence@umass.edu",
-              "affiliation": "University of Massachusetts Amherst",
-              "role": "作者"
-            },
-            {
-              "name": "Owen L. Martin",
-              "email": "omartin9@uwyo.edu",
-              "affiliation": "University of Wyoming",
-              "role": "作者"
-            },
-            {
-              "name": "Benjamin Koger",
-              "email": "bkoger@uwyo.edu",
-              "affiliation": "University of Wyoming",
-              "role": "作者"
-            },
-            {
-              "name": "Daniel Sheldon",
-              "email": "sheldon@cs.umass.edu",
-              "affiliation": "University of Massachusetts Amherst",
-              "role": "作者"
-            },
-            {
-              "name": "Subhransu Maji",
-              "email": "smaji@umass.edu",
-              "affiliation": "University of Massachusetts Amherst",
-              "role": "作者"
-            }
-          ],
-          "corresponding_author": ""
-        }
-      }
-    },
-    {
-      "title": "Multimodal Abstention That Preserves Acquired Correct Answers",
-      "abstract": "Adding abstention to a task-adapted multimodal model can discard correct answers, including capabilities acquired during adaptation. We formulate abstention repair as maximizing correct abstention on unanswerable questions under a budget on newly lost correct answers. We propose ReFrain (Regression-Free Abstention), which combines a linear probe on first-token logits, threshold calibration on held-out image clusters, and a deterministic veto that replaces rejected outputs with the displayed \"none of the above\" option while preserving all other responses. \"Regression-free\" denotes zero loss on the calibration set at the zero-budget target. All abstention methods in our main comparison start from the same answering-SFT checkpoint; we separately track lost correct answers, repaired errors, and retained SFT gains. On Qwen2.5-VL-3B, ReFrain at zero budget retains all 57 SFT-gained answers with no losses and improves correct abstention by 7.30 percentage points. At a 0.5% calibration budget, it reaches 74.05% correct abstention with 8 losses and retains 55 gains; CLIP-UP EmbLoRA reaches 64.65% with 62 losses, 41 repairs, and 40 retained gains. The same probe at its default threshold loses 298 correct answers. With models and thresholds frozen, confirmation on 228 independent question clusters yields 66.05% correct abstention and no losses at the 0.5% point, exceeding EmbLoRA by 32.72 percentage points. Ordinary refusal SFT achieves higher correct abstention at greater regression cost. Code and reproduction materials: https://github.com/ModeLiberaL/ReFrain.",
-      "url": "https://arxiv.org/abs/2611.14311v1",
-      "pdf": "https://arxiv.org/pdf/2611.14311v1",
-      "categories": [
-        "cs.AI",
-        "cs.CV",
-        "cs.LG"
-      ],
-      "authors": [
-        "Jinyuan Zhang"
-      ],
-      "all_authors": [
-        "Jinyuan Zhang"
-      ],
-      "affiliations": [
-        {
-          "name": "Jinyuan Zhang",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-11-10",
-      "matched_topics": [
-        "多模态"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "多模态模型在任务适配后加入弃答能力时，往往会丢弃原本正确的答案，包括适配阶段获得的能力。论文要在限制新丢失正确答案的预算下，最大化对不可回答问题正确弃答。",
-        "method": "提出 ReFrain（Regression-Free Abstention），基于首 token logits 的线性探针、在留出图像簇上的阈值校准，以及确定性 veto：被拒绝输出替换为界面中的“none of the above”选项，同时保留其他回答。所有主比较中的弃答方法都从同一 answering-SFT checkpoint 出发，并分别跟踪丢失正确答案、修复错误和保留 SFT 增益。",
-        "result": "在 Qwen2.5-VL-3B 上，零预算 ReFrain 保留全部 57 个 SFT 增益答案且无损失，并将正确弃答率提升 7.30 个百分点；0.5% 校准预算下达到 74.05% 正确弃答、仅 8 个损失并保留 55 个增益，显著优于 CLIP-UP EmbLoRA 的 64.65% 和 62 个损失。冻结模型与阈值后在 228 个独立问题簇确认，0.5% 点达到 66.05% 正确弃答且无损失，比 EmbLoRA 高 32.72 个百分点。",
-        "novelty": "将弃答修复形式化为有预算约束的回归最小化问题，并用线性探针、阈值校准与确定性 veto 实现“无回归”弃答。",
-        "relevance": "对多模态模型的安全可靠部署有实际意义，表明可以在不牺牲已获得正确答案能力的前提下提升弃答能力。",
+        "problem": "空间智能研究需要将视觉观测与场景几何、物体和持久状态关联起来，但现有数据要么仅有图像使关系隐含，要么标注割裂，难以在统一参考下研究外观、相机运动和场景变化。",
+        "method": "作者构建了 Spatial Foundry 数据集，包含 5,280 个可编辑的带家具住宅 3D 场景配置，并提供平面图、透视/全景 RGB、度量深度、点云、网格、实例级 3D 包围盒以及与视频配对的相机轨迹等多模态数据。所有观测通过共享场景坐标关联，并支持额外相机路径和受控物体变化。",
+        "result": "该数据集支持平面图条件 3D 生成、几何重建、实例级感知、相机条件视频生成、共享世界建模和场景编辑等应用；受控相机与场景变化有助于空间感知和世界模型研究，但摘要未给出定量实验结果。",
+        "novelty": "其创新在于提供可编辑、多模态对齐、跨视角与跨时间共享场景坐标的住宅 3D 场景数据集，并支持受控相机和物体变化。",
+        "relevance": "该工作为空间智能、3D/视频生成、具身感知和世界模型研究提供了统一的多模态数据基础，有望推动相关基准与模型发展。",
         "org": "未知（作者未提供机构信息）",
         "score": 7
       },
       "identified_orgs": [],
       "contact_info": {
         "emails_found": [
-          "202621116012480@stu.hubu.edu.cn"
+          "support@ranolabs.com"
         ],
         "ai_extracted": {
           "contacts": [
             {
-              "name": "Jinyuan Zhang",
-              "email": "202621116012480@stu.hubu.edu.cn",
-              "affiliation": "湖北大学",
+              "name": "Ethan Lin",
+              "email": "support@ranolabs.com",
+              "affiliation": "Ranolabs",
+              "role": "第一作者"
+            },
+            {
+              "name": "Yang Song",
+              "email": "support@ranolabs.com",
+              "affiliation": "Ranolabs",
+              "role": ""
+            }
+          ],
+          "corresponding_author": ""
+        }
+      }
+    },
+    {
+      "title": "XBot-Omni: An Omni-Modal Model for Embodied Understanding and Interaction",
+      "abstract": "Embodied interaction requires an agent to integrate multimodal perception with verbal and nonverbal behaviors to effectively communicate its intentions, including speech, body motion, and facial expressions. We present XBot-Omni, a Thinker--Talker--Actor architecture that extends the Omni paradigm to robotic modalities, including body motion and facial expressions, with ``X'' representing the extensibility to robotic-specific modalities. The Thinker processes text, images, audio, and video to formulate contextually appropriate responses, which are then realized by the Talker and Actor through speech and coordinated bodily expressions, respectively. In this report, we innovatively introduce the concept of ``Actor'' as a dedicated component for embodied agents: a coordinated, streaming module that leverages the native representations of the Thinker and Talker within an end-to-end pipeline, introducing only modest latency overhead. This unified architecture enables multimodal generation conditioned on omni-modal inputs directly to prevent information loss in staged designs. We comprehensively evaluate XBot-Omni across seven benchmarks, demonstrating strong multimodal understanding capabilities on both general-domain and robot-centric videos, as well as high-quality, natural, and well-coordinated motion generation. Furthermore, our results validate its capability to generate embodied multimodal responses directly from omni inputs, meeting the diverse requirements of embodied interaction. XBot-Omni enables robots not only to perceive the omni world but also to express themselves through speech and bodily behaviors, extending Omni models from conversational interaction to embodied communication in physical environments.",
+      "url": "https://arxiv.org/abs/2611.17160v1",
+      "pdf": "https://arxiv.org/pdf/2611.17160v1",
+      "categories": [
+        "cs.RO"
+      ],
+      "authors": [
+        "Kerui Gu",
+        "Xing Fu",
+        "Shuoyang Sun",
+        "Cheng Peng",
+        "Jingru Duan"
+      ],
+      "all_authors": [
+        "Kerui Gu",
+        "Xing Fu",
+        "Shuoyang Sun",
+        "Cheng Peng",
+        "Jingru Duan",
+        "Huayu Gu",
+        "Zhenyu Chen",
+        "Jiaxin Huang",
+        "Cheng Wen",
+        "Rui Zhen",
+        "Kairui Chen",
+        "Zhihui Peng",
+        "Shaoli Huang"
+      ],
+      "affiliations": [
+        {
+          "name": "Kerui Gu",
+          "affiliations": []
+        },
+        {
+          "name": "Xing Fu",
+          "affiliations": []
+        },
+        {
+          "name": "Shuoyang Sun",
+          "affiliations": []
+        },
+        {
+          "name": "Cheng Peng",
+          "affiliations": []
+        },
+        {
+          "name": "Jingru Duan",
+          "affiliations": []
+        },
+        {
+          "name": "Huayu Gu",
+          "affiliations": []
+        },
+        {
+          "name": "Zhenyu Chen",
+          "affiliations": []
+        },
+        {
+          "name": "Jiaxin Huang",
+          "affiliations": []
+        },
+        {
+          "name": "Cheng Wen",
+          "affiliations": []
+        },
+        {
+          "name": "Rui Zhen",
+          "affiliations": []
+        },
+        {
+          "name": "Kairui Chen",
+          "affiliations": []
+        },
+        {
+          "name": "Zhihui Peng",
+          "affiliations": []
+        },
+        {
+          "name": "Shaoli Huang",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-12",
+      "matched_topics": [
+        "多模态",
+        "具身智能"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "具身智能体需要将多模态感知（语音、肢体动作、面部表情等）与语言和非语言行为统一整合，而现有 Omni 模型局限于对话交互，缺乏面向机器人的动作与表情生成能力，且分阶段设计易造成信息损失。",
+        "method": "提出 XBot-Omni 的 Thinker–Talker–Actor 架构：Thinker 处理文本、图像、音频、视频并生成上下文响应，Talker 与 Actor 分别将其落实为语音与协调的肢体/面部表达；Actor 作为端到端流式模块复用 Thinker 与 Talker 的原生表示，以较低延迟实现全模态输入条件下的多模态生成。",
+        "result": "在七个基准上验证了其在通用域与机器人中心视频上的强多模态理解能力，以及高质量、自然且协调的动作生成，并可直接从全模态输入生成具身多模态响应。",
+        "novelty": "首次将 Omni 范式从对话扩展至机器人专属模态，引入专职的 Actor 流式组件，以统一端到端架构避免分阶段设计的信息损失。",
+        "relevance": "推动 Omni 模型从对话交互走向物理环境中的具身沟通，为世界模型与具身智能体的多模态感知-表达一体化提供架构参考。",
+        "org": "未标注（作者机构信息缺失）",
+        "score": 7
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [],
+        "ai_extracted": null
+      }
+    },
+    {
+      "title": "From Foundation VLM to Versatile Driving VLM: A Triplet Incremental Training Approach",
+      "abstract": "Adapting general Vision-Language Models (VLMs) to Autonomous Driving (AD) is thought to require heavy 3D spatial priors or intrusive architectural overhauls to compensate for a lack of spatial grounding. In this work, we present a counterintuitive pilot study: off-the-shelf general VLMs already exhibit remarkable adaptability across diverse driving tasks, while precise metric depth remains the primary missing link, a bottleneck readily addressable via onboard sensors and depth foundation models. To this end, we introduce the Triplet Incremental Training Framework, a non-intrusive paradigm that seamlessly instills 3D geometric awareness into a general VLM backbone while fully preserving its open-world capabilities. Driven by automatically constructed (image, depth, QA pair) triplets, our framework operates via a unified tri-stream training pipeline: an unfrozen primary VLM stream to adapt to driving tasks, an auxiliary depth stream that guides the visual backbone to implicitly imagine 3D scene geometry via explicit geometric constraints, and a frozen twin VLM stream employing logit-level KL distillation to prevent semantic drift. Crucially, the auxiliary depth branch is discarded during deployment, ensuring the enhanced geometric awareness comes with zero inference overhead. We evaluate our framework across four major benchmarks targeting four diverse capabilities spanning 3D spatial perception, driving-oriented language reasoning, end-to-end planning, and general multimodal understanding. Our approach outperforms state-of-the-art driving VLMs, rivals domain-specific expert models in 3D perception, and successfully retains its original general reasoning capabilities. This demonstrates that Triplet Incremental Training offers a unified, deployment-ready paradigm for transforming general foundation models into robust driving intelligences.",
+      "url": "https://arxiv.org/abs/2611.16727v1",
+      "pdf": "https://arxiv.org/pdf/2611.16727v1",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "authors": [
+        "Shengtao Wu",
+        "Zichao Dong",
+        "Weixuan Qiao",
+        "Xiaolu Liu",
+        "Xin Zhan"
+      ],
+      "all_authors": [
+        "Shengtao Wu",
+        "Zichao Dong",
+        "Weixuan Qiao",
+        "Xiaolu Liu",
+        "Xin Zhan",
+        "Junbo Chen",
+        "Jianke Zhu"
+      ],
+      "affiliations": [
+        {
+          "name": "Shengtao Wu",
+          "affiliations": []
+        },
+        {
+          "name": "Zichao Dong",
+          "affiliations": []
+        },
+        {
+          "name": "Weixuan Qiao",
+          "affiliations": []
+        },
+        {
+          "name": "Xiaolu Liu",
+          "affiliations": []
+        },
+        {
+          "name": "Xin Zhan",
+          "affiliations": []
+        },
+        {
+          "name": "Junbo Chen",
+          "affiliations": []
+        },
+        {
+          "name": "Jianke Zhu",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-12",
+      "matched_topics": [
+        "多模态",
+        "大模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "通用视觉语言模型（VLM）适配自动驾驶时缺乏3D空间 grounding，现有方案往往依赖重型3D先验或侵入式架构改造。论文要验证通用VLM是否已具备多任务驾驶适应性，并解决其精确度量深度/3D几何感知不足这一关键瓶颈。",
+        "method": "提出Triplet Incremental Training框架，基于自动构建的（图像、深度、QA对）三元组进行统一三流训练：主VLM流不冻结以适配驾驶任务，辅助深度流通过显式几何约束引导视觉骨干隐式想象3D场景几何，冻结的双VLM流用logit级KL蒸馏防止语义漂移。部署时丢弃辅助深度分支，实现零推理开销的3D几何感知增强。",
+        "result": "在覆盖3D空间感知、驾驶语言推理、端到端规划和通用多模态理解的四类基准上，方法优于当前SOTA驾驶VLM，3D感知可媲美领域专家模型，同时成功保留原始通用推理能力。",
+        "novelty": "用自动三元组训练和非侵入式辅助深度流+冻结双VLM蒸馏，将3D几何意识注入通用VLM且部署零额外开销。",
+        "relevance": "为通用基础模型低成本、可部署地适配自动驾驶提供了一条保留开放世界能力的统一范式，对VLM与具身/驾驶智能结合有参考价值。",
+        "org": "未提供（作者机构信息缺失）",
+        "score": 7
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [],
+        "ai_extracted": null
+      }
+    },
+    {
+      "title": "NSDL: Neuro-Symbolic Division of Labor for Multi-Robot Task Planning",
+      "abstract": "Planning for a heterogeneous robot team from a scene image and an instruction involves two kinds of decisions. Some must be judged from the scene: which goals are already met, how the task splits, and which robot does what. Others follow from these and can be computed: prerequisite actions, handoffs between robots, and timing. We argue that each kind should go to the component suited to it: a small vision-language model learns the first, and a deterministic solver computes the second. In NSDL (Neuro-Symbolic Division of Labor), the trained model writes its judgments as a plan sketch, which lists the goals that still need action and the intended steps in order, each with a robot. The solver expands the sketch into an executable joint plan. The model calls two tools, a detector for evidence and the solver, and is trained with the solver in the loop. We evaluate on the public VIKI-L2 benchmark and on LOCUS-Bench, a new benchmark that grades the two kinds of difficulty separately. NSDL outperforms end-to-end planners and formalize-then-plan baselines on both benchmarks and with three backbones from 3B to 8B; the 7B model reaches 97.0% out-of-distribution accuracy on VIKI-L2. Ordering and scheduling errors nearly disappear once the solver writes the structure; the remaining failures are misjudged states, and most goals the model misses are ones it never lists. Code, model weights, and LOCUS-Bench are publicly available at https://github.com/Xincheng-Tan/NSDL.",
+      "url": "https://arxiv.org/abs/2611.16671v1",
+      "pdf": "https://arxiv.org/pdf/2611.16671v1",
+      "categories": [
+        "cs.RO"
+      ],
+      "authors": [
+        "Xincheng Tan",
+        "Ke Wang",
+        "Yining Di",
+        "Minfeng Zhu"
+      ],
+      "all_authors": [
+        "Xincheng Tan",
+        "Ke Wang",
+        "Yining Di",
+        "Minfeng Zhu"
+      ],
+      "affiliations": [
+        {
+          "name": "Xincheng Tan",
+          "affiliations": []
+        },
+        {
+          "name": "Ke Wang",
+          "affiliations": []
+        },
+        {
+          "name": "Yining Di",
+          "affiliations": []
+        },
+        {
+          "name": "Minfeng Zhu",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-12",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "论文研究如何从场景图像和自然语言指令出发，为异构多机器人团队进行联合任务规划，并合理分配视觉判断与符号计算两类决策。",
+        "method": "提出NSDL神经符号分工框架：小型视觉语言模型负责判断目标是否完成、任务拆分和机器人分配，并输出计划草图；确定性求解器负责展开前置动作、交接和时序，生成可执行联合计划。模型调用检测器与求解器工具，并采用求解器在环训练。",
+        "result": "在VIKI-L2和新提出的LOCUS-Bench上，NSDL优于端到端规划器和formalize-then-plan基线，3B至8B三种骨干均有效，7B模型在VIKI-L2分布外准确率达97.0%；排序与调度错误几乎消失，剩余错误主要来自状态误判和遗漏目标。",
+        "novelty": "核心创新是将多机器人任务规划中的感知判断与符号计算显式分工，并让视觉语言模型生成计划草图、求解器在环扩展为可执行计划。",
+        "relevance": "该工作为具身智能和多机器人Agent提供了一种神经符号协同规划范式，强调小模型判断与确定性求解器计算的互补性。",
+        "org": "作者机构信息未提供，无法识别",
+        "score": 7
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [
+          "zhu@zju.edu.cn"
+        ],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Xincheng Tan",
+              "email": "",
+              "affiliation": "",
+              "role": "第一作者"
+            },
+            {
+              "name": "Ke Wang",
+              "email": "",
+              "affiliation": "",
+              "role": ""
+            },
+            {
+              "name": "Yining Di",
+              "email": "",
+              "affiliation": "",
+              "role": ""
+            },
+            {
+              "name": "Minfeng Zhu",
+              "email": "",
+              "affiliation": "",
+              "role": ""
+            }
+          ],
+          "corresponding_author": ""
+        }
+      }
+    },
+    {
+      "title": "Rethinking Actions: Continuity-Aware Priors for World-Model Planning",
+      "abstract": "Actions in expert demonstrations exhibit temporal structure. An ordered-versus-shuffled analysis across five environments confirms this dependence. We ask whether action proposals that better reflect expert continuity can improve visual world-model planning. Rather than imposing generic smoothness, we learn continuations from the temporal structure of demonstrated actions. Our locality-gated deep-kernel Gaussian-process prior, LG-DKGP, combines recent and longer-range executed action history, predicts a neural continuation, and learns a temporal Gaussian-process (GP) residual. A training-derived exploration scale initializes search around the corrected mean; a frozen world model evaluates progress toward the goal. Training first fits the neural mean, then jointly optimizes the prior with the GP residual using expert future actions. The resulting planner achieves 87.07\\% macro success across five simulated tasks spanning native and fragment-level goal attainment, compared with 71.03\\% for INTACT, 61.66\\% for PRISM, and 58.66\\% for LeWM. Component interventions and expert-relative action-structure comparisons support demonstration-informed continuations and reveal task-dependent effects of visual conditioning, history length, and planning horizon.",
+      "url": "https://arxiv.org/abs/2611.16645v1",
+      "pdf": "https://arxiv.org/pdf/2611.16645v1",
+      "categories": [
+        "cs.RO",
+        "cs.LG"
+      ],
+      "authors": [
+        "Shaobo Yang",
+        "Zichen Ai",
+        "Ziyang Ma",
+        "Qian Yang",
+        "Bin Fang"
+      ],
+      "all_authors": [
+        "Shaobo Yang",
+        "Zichen Ai",
+        "Ziyang Ma",
+        "Qian Yang",
+        "Bin Fang"
+      ],
+      "affiliations": [
+        {
+          "name": "Shaobo Yang",
+          "affiliations": []
+        },
+        {
+          "name": "Zichen Ai",
+          "affiliations": []
+        },
+        {
+          "name": "Ziyang Ma",
+          "affiliations": []
+        },
+        {
+          "name": "Qian Yang",
+          "affiliations": []
+        },
+        {
+          "name": "Bin Fang",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-12",
+      "matched_topics": [
+        "世界模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "论文研究如何利用专家演示动作中的时间连续性结构，来改进基于视觉世界模型的规划与动作提议质量。",
+        "method": "提出 LG-DKGP：一种局部门控的深度核高斯过程先验，融合近期与更长程的动作历史，预测神经网络动作延续，并学习时间高斯过程残差；用训练得到的探索尺度初始化搜索，并由冻结世界模型评估目标进展。训练先拟合神经均值，再结合专家未来动作联合优化 GP 残差。",
+        "result": "在五个模拟任务上取得 87.07% 宏平均成功率，显著高于 INTACT 的 71.03%、PRISM 的 61.66% 和 LeWM 的 58.66%；消融与动作结构比较支持演示驱动的动作延续先验，并揭示视觉条件、历史长度和规划视野的任务依赖效应。",
+        "novelty": "核心创新是从专家演示动作的时间结构中学习连续性先验，而非施加通用平滑约束，并将其用于世界模型规划。",
+        "relevance": "该工作表明动作时间结构与演示先验可显著提升世界模型规划，对具身智能和基于模型的决策研究有参考价值。",
+        "org": "作者机构信息未提供，无法从给定内容识别",
+        "score": 7
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [
+          "chashi.yq@antgroup.com"
+        ],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Shaobo Yang",
+              "email": "yangshaobo@bupt.edu.cn",
+              "affiliation": "Beijing University of Posts and Telecommunications",
+              "role": "共同第一作者（Equal contribution）"
+            },
+            {
+              "name": "Zichen Ai",
+              "email": "aizichen@bupt.edu.cn",
+              "affiliation": "Beijing University of Posts and Telecommunications",
+              "role": "共同第一作者（Equal contribution）"
+            },
+            {
+              "name": "Ziyang Ma",
+              "email": "maziyang@bupt.edu.cn",
+              "affiliation": "Beijing University of Posts and Telecommunications",
+              "role": "共同第一作者（Equal contribution）"
+            },
+            {
+              "name": "Qian Yang",
+              "email": "chashi.yq@antgroup.com",
+              "affiliation": "Alibaba Group",
+              "role": "共同第一作者（Equal contribution）"
+            },
+            {
+              "name": "Bin Fang",
+              "email": "fangbin1120@bupt.edu.cn",
+              "affiliation": "Beijing University of Posts and Telecommunications",
+              "role": "通讯作者（Corresponding author）"
+            }
+          ],
+          "corresponding_author": "Bin Fang"
+        }
+      }
+    },
+    {
+      "title": "Reins: Frontier Multimodal Models Driving Real Robot Arms on Long-Horizon Tasks, Zero-Shot",
+      "abstract": "Frontier models such as GPT-6.1 Sol, GPT-6 Astra and Claude Opus 5.5 can now plan and call tools, yet they still struggle to drive real robots through long-horizon, contact-rich manipulation, blind while the arm moves and while they think. We present Reins, a harness in which an off-the-shelf model operates a dual-arm robot with 3D perception tools and atomic actions that report contact and grip. The model chains actions in one call, each with a condition that must hold, stopping at the first that fails; a second instance, the narrator, watches the cameras continuously and reports what changed with every result. From images, Reins also builds a simulation-ready twin of the scene for continual policy learning. With natural-language prompts and no task-specific code, GPT-6.1 Sol succeeds in 88% of real episodes on five tasks; without the harness, it fails every shell game, taking 8 times as long. Three frontier models perform alike but differ in tracking a scene that changes while the actor thinks. Code will be released upon publication.",
+      "url": "https://arxiv.org/abs/2611.16632v1",
+      "pdf": "https://arxiv.org/pdf/2611.16632v1",
+      "categories": [
+        "cs.RO"
+      ],
+      "authors": [
+        "Pengfei Ye",
+        "Zhiyang Dou",
+        "Yuxiang Ma",
+        "Haonan Chen",
+        "Heng Yang"
+      ],
+      "all_authors": [
+        "Pengfei Ye",
+        "Zhiyang Dou",
+        "Yuxiang Ma",
+        "Haonan Chen",
+        "Heng Yang",
+        "Edward H. Adelson"
+      ],
+      "affiliations": [
+        {
+          "name": "Pengfei Ye",
+          "affiliations": []
+        },
+        {
+          "name": "Zhiyang Dou",
+          "affiliations": []
+        },
+        {
+          "name": "Yuxiang Ma",
+          "affiliations": []
+        },
+        {
+          "name": "Haonan Chen",
+          "affiliations": []
+        },
+        {
+          "name": "Heng Yang",
+          "affiliations": []
+        },
+        {
+          "name": "Edward H. Adelson",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-12",
+      "matched_topics": [
+        "多模态",
+        "大模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "前沿多模态大模型虽能规划和调用工具，却难以零样本驱动真实机械臂完成长时程、富接触的操作任务；而且机械臂运动时以及模型思考时都处于“盲”状态，缺乏对场景变化的持续感知与失败反馈。",
+        "method": "提出 Reins：一种把现成前沿模型与双臂机器人结合的执行框架，为模型提供 3D 感知工具，以及能回报接触与抓取状态的原子动作；模型在一次调用中串联多个带前置条件的动作，一旦某条件不满足即停止，并由第二个模型实例（narrator，旁白）持续观看摄像头，报告每个结果带来的场景变化；此外，Reins 可从图像构建可仿真的场景数字孪生，用于持续的策略学习。",
+        "result": "在无需任务专用代码、仅用自然语言提示的情况下，GPT-6.1 Sol 在五个真实任务的实机实验中成功率达 88%；去掉该框架后，它在所有 shell game 任务上均失败，且耗时增至 8 倍。三个前沿模型整体表现相近，但在“执行者思考期间场景发生变化”的跟踪能力上存在差异。",
+        "novelty": "用一个“动作-前置条件链 + 持续旁白反馈 + 自动构建仿真孪生”的 harness，把通用前沿模型零样本变成可靠的真实机器人长时程操作控制器。",
+        "relevance": "证明了通用多模态大模型无需专门训练即可通过合适的执行框架操控真实机器人，为通用具身智能体和长时程机器人任务提供了可复用的系统范式。",
+        "org": "未提供（作者机构信息缺失）",
+        "score": 7
+      },
+      "identified_orgs": [
+        "Anthropic"
+      ],
+      "contact_info": {
+        "emails_found": [
+          "pfy712@mit.edu"
+        ],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Pengfei Ye",
+              "email": "pfy712@mit.edu",
+              "affiliation": "MIT CSAIL",
+              "role": "第一作者"
+            },
+            {
+              "name": "Zhiyang Dou",
+              "email": "",
+              "affiliation": "MIT CSAIL",
+              "role": ""
+            },
+            {
+              "name": "Yuxiang Ma",
+              "email": "",
+              "affiliation": "MIT CSAIL",
+              "role": ""
+            },
+            {
+              "name": "Haonan Chen",
+              "email": "",
+              "affiliation": "Harvard University",
+              "role": ""
+            },
+            {
+              "name": "Heng Yang",
+              "email": "",
+              "affiliation": "Harvard University",
+              "role": ""
+            },
+            {
+              "name": "Edward H. Adelson",
+              "email": "",
+              "affiliation": "MIT CSAIL",
+              "role": ""
+            }
+          ],
+          "corresponding_author": ""
+        }
+      }
+    },
+    {
+      "title": "Safety as a Budget: Calibrating the Control Channel of Constrained GRPO for Vision-Language Models",
+      "abstract": "Reinforcement learning can teach vision-language models (VLMs) to decline harmful image-text requests, but how safe the result becomes is set indirectly, through reward weights found by trial runs. Stating safety as budgets on the rate of harmful assistance and the rate of over-refusal, enforced by Lagrange multipliers inside GRPO with an off-the-shelf scorer as the cost, is the natural fix, and it fails twice. The multiplier compares the scorer's mean with the budget, and scorers built for ranking get the mean wrong: a fixed-point analysis shows that the mean bias, not the budget, then decides whether the multiplier settles, saturates or switches off. And standard GRPO standardizes the penalized reward within each group, which cancels the multiplier before it reaches the gradient. Two-channel constrained GRPO repairs both: the base reward keeps the raw score for the within-group comparison, the penalty and the constraint estimate pass through a monotone map fitted on judge-labeled training responses, and the advantage keeps the multiplier. On a Qwen3-VL-2B policy with a training-free readout of an open 4B model as the scorer, held-out harm on 1,037 adversarial prompts falls from 8.9% under standard GRPO to 4.8%, lower in every seed, where the uncalibrated budget gives 7.6%; over-refusal stays at most 2% on 400 benign queries and MMBench is unchanged. The gain is largest where the intent sits in the image (10.1% -> 5.1%) and grows on the unseen HADES benchmark (28.9% -> 12.8%). Order-preserving distortions of the scores reproduce each predicted controller state in every seed, and the results hold under a map fitted on another judge's labels, an image-reading judge and a human audit.",
+      "url": "https://arxiv.org/abs/2611.16628v1",
+      "pdf": "https://arxiv.org/pdf/2611.16628v1",
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ],
+      "authors": [
+        "Bo Han"
+      ],
+      "all_authors": [
+        "Bo Han"
+      ],
+      "affiliations": [
+        {
+          "name": "Bo Han",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-12",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "论文要解决如何在视觉语言模型（VLM）中通过强化学习可靠地控制安全性，而不是依赖试错得到的奖励权重；同时指出直接用 Lagrange 乘子做约束 GRPO 会因评分器均值偏差和组内标准化而失效。",
+        "method": "提出两通道约束 GRPO：基础奖励保留原始分数用于组内比较，惩罚项与约束估计通过一个在裁判标注训练响应上拟合的单调映射传递，并让优势函数保留 Lagrange 乘子，从而把有害协助率和过度拒答率作为预算进行校准控制。",
+        "result": "在 Qwen3-VL-2B 上，使用开放 4B 模型作为免训练评分器，1,037 条对抗提示上的留出有害率从标准 GRPO 的 8.9% 降至 4.8%（每个随机种子都更低，未校准预算为 7.6%）；400 条良性查询上过度拒答不超过 2%，MMBench 不变；图像承载意图场景从 10.1% 降至 5.1%，未见 HADES 基准从 28.9% 降至 12.8%，并有多评分器与人工审计鲁棒性验证。",
+        "novelty": "识别并修复了约束 GRPO 中评分器均值偏差导致乘子失控、以及组内标准化抵消乘子的两个机制性问题，提出可校准的安全预算控制通道。",
+        "relevance": "为 VLM 安全对齐提供了更可控、可复现的约束强化学习方案，使安全预算从间接调参变为可校准的训练目标。",
+        "org": "提供信息中作者机构为空，无法可靠识别",
+        "score": 7
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [
+          "hanb2025@lzu.edu.cn"
+        ],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Bo Han",
+              "email": "hanb2025@lzu.edu.cn",
+              "affiliation": "Lanzhou University",
               "role": "第一作者"
             }
           ],
@@ -538,951 +762,929 @@
       }
     },
     {
-      "title": "GARD: Gradient-Guided Adversarial Representation Defense against Backdoors in Multimodal Contrastive Learning Models",
-      "abstract": "Multimodal contrastive learning models such as CLIP are vulnerable to backdoor attacks with diverse trigger structures, ranging from localized patches to globally distributed perturbations, with recent attacks increasingly optimizing these triggers in the representation space. Existing post-hoc defenses based on clean fine-tuning may leave backdoors active, while trigger-inversion methods depend on accurately estimating the attack target and trigger. We observe that backdoored encoders exhibit structure-dependent representation sensitivity: global perturbations preferentially expose distributed backdoors, whereas local patch perturbations are more effective for localized backdoors. Based on this observation, we propose Gradient-Guided Adversarial Representation Defense (GARD), a target- and trigger-agnostic post-hoc defense. GARD optimizes complementary global and local adversarial probes to maximally displace clean-image representations, and then realigns the perturbed representations with detached clean anchors while preserving image-text alignment. The resulting model requires no additional computation at inference time. Across six visual backdoor attacks and two CLIP visual backbones, GARD reduces the attack success rate below 1% in all 12 evaluated attack-backbone combinations while maintaining competitive clean accuracy. These results demonstrate the effectiveness of adversarial representation probing for repairing backdoored multimodal contrastive encoders.",
-      "url": "https://arxiv.org/abs/2611.14143v1",
-      "pdf": "https://arxiv.org/pdf/2611.14143v1",
-      "categories": [
-        "cs.CR",
-        "cs.CV"
-      ],
-      "authors": [
-        "Yuhong Wang",
-        "Yujun Cai",
-        "Lei Feng",
-        "Songze Li"
-      ],
-      "all_authors": [
-        "Yuhong Wang",
-        "Yujun Cai",
-        "Lei Feng",
-        "Songze Li"
-      ],
-      "affiliations": [
-        {
-          "name": "Yuhong Wang",
-          "affiliations": []
-        },
-        {
-          "name": "Yujun Cai",
-          "affiliations": []
-        },
-        {
-          "name": "Lei Feng",
-          "affiliations": []
-        },
-        {
-          "name": "Songze Li",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-11-10",
-      "matched_topics": [
-        "多模态"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "多模态对比学习模型（如CLIP）容易受到多种触发器结构的后门攻击，现有后处理防御方法存在后门残留或依赖攻击目标/触发器估计的问题。",
-        "method": "提出GARD，一种与攻击目标和触发器无关的后处理防御方法。该方法利用后门编码器对全局和局部扰动具有结构依赖敏感性的观察，优化互补的全局与局部对抗探针以最大程度偏移干净图像表示，再将扰动表示与分离的干净锚点重新对齐，同时保持图文对齐。",
-        "result": "在6种视觉后门攻击和2种CLIP视觉骨干的12种组合中，GARD将所有攻击成功率降至1%以下，同时保持有竞争力的干净准确率，且推理时无需额外计算。",
-        "novelty": "首次利用梯度引导的全局-局部对抗表示探针来修复后门多模态对比编码器，实现目标与触发器无关的后处理防御。",
-        "relevance": "为CLIP等多模态对比学习模型的后门安全提供了一种无需推理开销且不依赖攻击先验的实用防御思路。",
-        "org": "未提供作者机构信息，无法从摘要中识别",
-        "score": 7
-      },
-      "identified_orgs": [],
-      "contact_info": {
-        "emails_found": [
-          "songzeli@seu.edu.cn",
-          "yuhongwang@seu.edu.cn"
-        ],
-        "ai_extracted": {
-          "contacts": [
-            {
-              "name": "Yuhong Wang",
-              "email": "yuhongwang@seu.edu.cn",
-              "affiliation": "Southeast University",
-              "role": "第一作者"
-            },
-            {
-              "name": "Yujun Cai",
-              "email": "",
-              "affiliation": "Southeast University",
-              "role": ""
-            },
-            {
-              "name": "Lei Feng",
-              "email": "",
-              "affiliation": "Southeast University",
-              "role": ""
-            },
-            {
-              "name": "Songze Li",
-              "email": "songzeli@seu.edu.cn",
-              "affiliation": "Southeast University",
-              "role": "通讯作者"
-            }
-          ],
-          "corresponding_author": "Songze Li"
-        }
-      }
-    },
-    {
-      "title": "Hx2Dx: From Anamnesis to Diagnosis - A Multimodal Arena for Conversational Clinical Reasoning in LLMs",
-      "abstract": "Large language models (LLMs) achieve expert-level diagnostic accuracy in static evaluations, where the model receives a curated vignette or case report that already condenses the diagnostically relevant findings. Such evaluations measure inference over already selected evidence; the evaluations do not account for the inquiry used to obtain it. In clinical practice, however, diagnosis is an iterative process of inquiry. Clinicians take the patient's history, or anamnesis (Hx), through targeted questioning, examine the patient, and request and interpret tests, progressively narrowing the differential until they reach a final diagnosis (Dx). We introduce Hx2Dx ARENA, an interactive benchmark of 1'000 clinical cases from the New England Journal of Medicine (NEJM). Each case is a simulated encounter that proceeds from initial presentation through history taking and physical examination to diagnostic workup. We evaluate open- and closed-source LLMs under multiple configurations. Performance varies considerably across models in the interactive setting, and every model loses diagnostic accuracy relative to the static setting, where the full case is presented upfront. The ability to ask the right questions accounts for much of both the gap between models and the loss of accuracy: diagnosis improves as questions become more targeted and build a more complete clinical picture. LLMs thus reason well once the relevant data are available but remain limited in hypothesis-driven information gathering, in knowing what to ask in order to know. Closing this gap is a prerequisite for their safe integration into real-world diagnostic workflows.",
-      "url": "https://arxiv.org/abs/2611.14122v1",
-      "pdf": "https://arxiv.org/pdf/2611.14122v1",
-      "categories": [
-        "cs.AI"
-      ],
-      "authors": [
-        "Federico Ravenda",
-        "Mirko Cesarini",
-        "Daniele Montagnani",
-        "Volodymyr Karpenko",
-        "Antonietta Mira"
-      ],
-      "all_authors": [
-        "Federico Ravenda",
-        "Mirko Cesarini",
-        "Daniele Montagnani",
-        "Volodymyr Karpenko",
-        "Antonietta Mira",
-        "Andrea Raballo"
-      ],
-      "affiliations": [
-        {
-          "name": "Federico Ravenda",
-          "affiliations": []
-        },
-        {
-          "name": "Mirko Cesarini",
-          "affiliations": []
-        },
-        {
-          "name": "Daniele Montagnani",
-          "affiliations": []
-        },
-        {
-          "name": "Volodymyr Karpenko",
-          "affiliations": []
-        },
-        {
-          "name": "Antonietta Mira",
-          "affiliations": []
-        },
-        {
-          "name": "Andrea Raballo",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-11-10",
-      "matched_topics": [
-        "多模态",
-        "大模型"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "现有 LLM 诊断评测多为静态病例摘要，只衡量模型对已筛选证据的推理能力，无法反映临床中通过问诊（Hx）、查体和检查逐步缩小鉴别诊断的迭代问询过程。",
-        "method": "提出 Hx2Dx ARENA，一个基于《新英格兰医学杂志》（NEJM）1,000 个临床病例的交互式基准，每个病例模拟从初诊、病史采集、体格检查到诊断检查的完整就诊流程；在多种配置下评测开源与闭源 LLM 的问询与诊断表现。",
-        "result": "交互场景下各模型诊断准确率差异明显，且所有模型相对静态一次性给出完整病例的场景均出现准确率下降；能否提出有针对性的问题、构建完整临床图景，是解释模型间差距与准确率损失的主要因素。",
-        "novelty": "首次将 LLM 临床评测从“对给定证据做推理”转向“通过主动提问获取证据”的交互式问诊竞技场。",
-        "relevance": "揭示了 LLM 在假设驱动的信息采集（知道该问什么才能知道）上的关键短板，是医疗诊断 Agent 安全落地需跨越的门槛，也为主动信息获取类 Agent 研究提供了评测范式。",
-        "org": "论文未提供作者所属机构信息（作者包括 Federico Ravenda、Antonietta Mira 等，推测为意大利高校）",
-        "score": 7
-      },
-      "identified_orgs": [],
-      "contact_info": {
-        "emails_found": [
-          "federico.ravenda@usi.ch"
-        ],
-        "ai_extracted": {
-          "contacts": [
-            {
-              "name": "Federico Ravenda",
-              "email": "federico.ravenda@usi.ch",
-              "affiliation": "REMEDI Lab, Università della Svizzera italiana, Lugano, Switzerland",
-              "role": "第一作者、通讯作者"
-            },
-            {
-              "name": "Mirko Cesarini",
-              "email": "",
-              "affiliation": "Department of Statistics and Quantitative Methods, University of Milano-Bicocca, Milan, Italy",
-              "role": "作者"
-            },
-            {
-              "name": "Daniele Montagnani",
-              "email": "",
-              "affiliation": "REMEDI Lab, Università della Svizzera italiana, Lugano, Switzerland; Department of Mathematics, Pavia University, Pavia, Italy",
-              "role": "作者"
-            },
-            {
-              "name": "Volodymyr Karpenko",
-              "email": "",
-              "affiliation": "REMEDI Lab, Università della Svizzera italiana, Lugano, Switzerland",
-              "role": "作者"
-            },
-            {
-              "name": "Antonietta Mira",
-              "email": "",
-              "affiliation": "REMEDI Lab, Università della Svizzera italiana, Lugano, Switzerland; Department of Science and High Technology, Insubria University, Como, Italy",
-              "role": "作者（共同监督）"
-            },
-            {
-              "name": "Andrea Raballo",
-              "email": "",
-              "affiliation": "REMEDI Lab, Università della Svizzera italiana, Lugano, Switzerland; Cantonal Sociopsychiatric Organisation, Public Health Division, Department of Health and Social Care, Repubblica e Cantone Ticino, Mendrisio, Switzerland",
-              "role": "作者（共同监督）"
-            }
-          ],
-          "corresponding_author": "Federico Ravenda"
-        }
-      }
-    },
-    {
-      "title": "TAMEing the Open-World Personalization: Towards Open-Set Personalized MLLM Assistant",
-      "abstract": "Personalizing Multimodal Large Language Models (MLLMs) as intelligent assistants has recently emerged as an active research topic, where an MLLM is expected to go beyond generic, one-size-fits-all replies, and instead generate responses grounded in user-specific objects, entities, and concepts encountered during interactions. Nevertheless, existing studies mainly focus on personalizing MLLMs on a static, predefined set of personalized concepts and require users to manually and frequently extend this set to accommodate newly emerging concepts, which is infeasible in dynamic-world scenarios. To address this limitation, we recast conventional MLLM personalization as an Open-Set problem, and propose TAME-O, the first long-context open-set personalized MLLM assistant. Specifically, TAME-O introduces a training-free, plug-and-play Concept Reconciliation Skill (CR Skill). It enables the assistant to automatically unlock novel concepts during prolonged human-MLLM interactions while preventing confusion with previously unlocked ones, allowing the MLLM to continually grasp more and more concepts and progressively refine the modeling of known ones. Extensive experiments under the open-set personalization setting underscore the efficacy of our method.",
-      "url": "https://arxiv.org/abs/2611.14118v1",
-      "pdf": "https://arxiv.org/pdf/2611.14118v1",
-      "categories": [
-        "cs.CV"
-      ],
-      "authors": [
-        "Rongpei Hong",
-        "Jian Lang",
-        "Ting Zhong",
-        "Fan Zhou"
-      ],
-      "all_authors": [
-        "Rongpei Hong",
-        "Jian Lang",
-        "Ting Zhong",
-        "Fan Zhou"
-      ],
-      "affiliations": [
-        {
-          "name": "Rongpei Hong",
-          "affiliations": []
-        },
-        {
-          "name": "Jian Lang",
-          "affiliations": []
-        },
-        {
-          "name": "Ting Zhong",
-          "affiliations": []
-        },
-        {
-          "name": "Fan Zhou",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-11-10",
-      "matched_topics": [
-        "多模态",
-        "大模型"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "现有 MLLM 个性化主要依赖静态、预定义的个性化概念集，需要用户手动频繁扩展，难以适应动态开放世界中的新概念。",
-        "method": "论文将传统 MLLM 个性化重新定义为开放集问题，提出首个长上下文开放集个性化 MLLM 助手 TAME-O，并引入免训练、即插即用的概念协调技能（CR Skill），在长期人机交互中自动解锁新概念并避免与已知概念混淆。",
-        "result": "开放集个性化设置下的大量实验验证了方法的有效性，使 MLLM 能持续掌握更多概念并逐步细化对已知概念的建模。",
-        "novelty": "首次将 MLLM 个性化建模为开放集长上下文问题，并提出免训练、即插即用的概念协调技能来实现持续概念解锁。",
-        "relevance": "推动个性化多模态助手从静态封闭概念集走向动态开放世界中的持续学习与自适应交互。",
-        "org": "未提供（作者机构信息缺失，无法确认）",
-        "score": 7
-      },
-      "identified_orgs": [],
-      "contact_info": {
-        "emails_found": [
-          "zhongting@uestc.edu.cn"
-        ],
-        "ai_extracted": {
-          "contacts": [
-            {
-              "name": "Rongpei Hong",
-              "email": "",
-              "affiliation": "University of Electronic Science and Technology of China",
-              "role": "第一作者"
-            },
-            {
-              "name": "Jian Lang",
-              "email": "",
-              "affiliation": "University of Electronic Science and Technology of China",
-              "role": "作者"
-            },
-            {
-              "name": "Ting Zhong",
-              "email": "",
-              "affiliation": "University of Electronic Science and Technology of China",
-              "role": "通讯作者"
-            },
-            {
-              "name": "Fan Zhou",
-              "email": "",
-              "affiliation": "University of Electronic Science and Technology of China; Intelligent Digital Media Technology Key Laboratory of Sichuan Province",
-              "role": "作者"
-            }
-          ],
-          "corresponding_author": "Ting Zhong"
-        }
-      }
-    },
-    {
-      "title": "Looking One Step Ahead: An Anticipation-guided Agent for Object State Readout in Videos",
-      "abstract": "Understanding the progress of an activity requires tracking how the objects involved change over time. Object state readout provides this information by describing a target object's states and transitions across video frames. Although multimodal large language models (MLLMs) generate detailed visual descriptions, these descriptions may leave the attributes needed to distinguish successive states insufficiently specified. In this paper, we propose look-ahead state readout (LASER), an anticipation-guided agent for object state readout that uses possible next-step changes to determine which attributes to inspect in the present. Given temporally ordered frames and a target object, LASER converts anticipated changes into targeted visual questions and inspects the current frame to establish attribute values. It then checks state readouts and forecasts against independent observations of subsequent frames, refining a state record used to generate the final description. Reusable textual observation skills guide this process and are refined by tracing discrepancies with reference captions to the responsible instructions. Candidate revisions are selected on separate videos based on improved caption quality without increased contradictions with reference facts. Model parameters remain frozen throughout adaptation and inference, and the revised skills remain fixed during evaluation. Experiment results and further analysis on OSCaR and PLM RCap show consistent improvements of LASER over strong baselines and existing approaches, which demonstrates the effectiveness of our approach.",
-      "url": "https://arxiv.org/abs/2611.14113v1",
-      "pdf": "https://arxiv.org/pdf/2611.14113v1",
-      "categories": [
-        "cs.CV",
-        "cs.AI"
-      ],
-      "authors": [
-        "Yuanhe Tian",
-        "Yan Song"
-      ],
-      "all_authors": [
-        "Yuanhe Tian",
-        "Yan Song"
-      ],
-      "affiliations": [
-        {
-          "name": "Yuanhe Tian",
-          "affiliations": []
-        },
-        {
-          "name": "Yan Song",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-11-10",
-      "matched_topics": [
-        "多模态",
-        "大模型"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "多模态大模型生成的视频描述往往无法充分指定区分物体连续状态所需的关键属性，因此需要更准确的对象状态读出方法。",
-        "method": "提出 LASER，一种由预期引导的智能体：根据时间有序帧和目标物体，将预期的下一步变化转化为针对性视觉问题，检查当前帧以确定属性值，并利用后续帧的独立观察校验状态读出与预测，进而细化状态记录。该方法使用可复用的文本观察技能，并通过与参考描述的不一致追溯到责任指令来改进技能，模型参数保持冻结。",
-        "result": "在 OSCaR 和 PLM RCap 上的实验与分析表明，LASER 相比强基线和现有方法取得一致提升。",
-        "novelty": "利用对下一步变化的预期来指导当前帧中关键属性的检查，并结合可复用观察技能与差异驱动的技能修订。",
-        "relevance": "有助于提升视频理解中的物体状态跟踪与细粒度描述能力，对多模态智能体和世界模型中的状态建模有参考价值。",
-        "org": "未提供",
-        "score": 7
-      },
-      "identified_orgs": []
-    },
-    {
-      "title": "C$^2$-Routing: Complementary Cropping and Compression for Efficient Vision-Language Inference",
-      "abstract": "Visual Question Answering (VQA) imposes substantial computational overhead on vision-language models (VLMs), motivating model-agnostic input reduction methods that can be readily applied across diverse VLMs, including in black-box settings. Simply enforcing a visual-token cap reduces computation, but it can discard information needed to answer the question. A single reduction strategy also struggles to accommodate different scenarios. Our key observation is that cropping and compression are complementary: cropping highlights small targets and local details, whereas whole-image compression better preserves context for large targets or distributed evidence. Based on this observation, we propose C$^2$-Routing, which adaptively selects cropping or compression according to the input image and question. Since both strategies may still discard key information, we further design a safety gate that uses the predicted joint correctness distribution under original and reduced inputs to guide fallback and protect accuracy. To accommodate consumer GPU resource constraints, all training and evaluation experiments run on RTX 3090 GPUs. To measure gains beyond token capping, we use full-image baselines with the same cap of 1,024 visual tokens. We conduct extensive evaluation on three VLMs and 18 datasets spanning local details, global scenes, scene text, and documents. With the visual budget already capped, C$^2$-Routing further reduces end-to-end FLOPs by 36.53% and visual tokens by 42.36% on average, with a mean relative task-score decrease of only 0.77%.",
-      "url": "https://arxiv.org/abs/2611.14469v1",
-      "pdf": "https://arxiv.org/pdf/2611.14469v1",
-      "categories": [
-        "cs.CV",
-        "cs.LG"
-      ],
-      "authors": [
-        "Guorui Lu",
-        "Qinyu Chen"
-      ],
-      "all_authors": [
-        "Guorui Lu",
-        "Qinyu Chen"
-      ],
-      "affiliations": [
-        {
-          "name": "Guorui Lu",
-          "affiliations": []
-        },
-        {
-          "name": "Qinyu Chen",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-11-10",
-      "matched_topics": [
-        "多模态"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "视觉问答（VQA）中视觉语言模型（VLMs）计算开销大，现有单一视觉 token 削减策略容易丢失回答所需信息，且难以适应不同场景。",
-        "method": "提出 C$^2$-Routing，根据输入图像和问题自适应选择裁剪或压缩两种互补的视觉 token 削减策略；并设计安全门，利用原始输入与削减输入下的预测联合正确性分布来指导回退，保护准确率。",
-        "result": "在 3 个 VLM 和 18 个数据集上，在视觉预算已限制为 1,024 tokens 的基线下，进一步平均减少端到端 FLOPs 36.53%、视觉 tokens 42.36%，任务分数平均相对下降仅 0.77%。",
-        "novelty": "核心创新是将裁剪与压缩视为互补策略并按输入自适应路由，同时用预测联合正确性分布的安全门控制回退以保护精度。",
-        "relevance": "为视觉语言模型提供模型无关、可用于黑盒场景的高效推理输入削减方法，有助于降低多模态大模型部署成本。",
-        "org": "未提供作者机构信息",
-        "score": 6
-      },
-      "identified_orgs": []
-    },
-    {
-      "title": "Metric-Aligned Group Relative Policy Optimization for Explainable Deepfake Detection",
-      "abstract": "Deepfake detectors are commonly evaluated on real/fake classification alone, but real-world applications require explanations of the visual evidence behind each prediction. Joint vision-language models struggle with authenticity assessment, producing \"real\" narratives for manipulated images. To address this, we propose a decoupled predict-then-explain pipeline as our submission to the ACM Multimedia 2026 Explainable Deepfake Detection Challenge, with methods trained and evaluated on the XPlainVerse benchmark. A vision-foundation-model ensemble first classifies the image, then a Qwen3-VL-8B model generates a decision-conditioned explanation of the visual evidence. For fake images, a second Qwen3-VL-8B compresses that text into a short non-expert summary without using the image. We further apply metric-aligned Group Relative Policy Optimization (GRPO) to optimize both explainers against the challenge criteria. Under matched conditions, GRPO raises complex BERTScore-F1 from 0.686 to 0.712 and also improves grounding (entity and evidence F1); our submission ranked first on complex BERTScore-F1 and seventh overall.",
-      "url": "https://arxiv.org/abs/2611.14436v1",
-      "pdf": "https://arxiv.org/pdf/2611.14436v1",
-      "categories": [
-        "cs.CV"
-      ],
-      "authors": [
-        "Luka Dragar",
-        "Peter Peer",
-        "Vitomir Štruc",
-        "Borut Batagelj"
-      ],
-      "all_authors": [
-        "Luka Dragar",
-        "Peter Peer",
-        "Vitomir Štruc",
-        "Borut Batagelj"
-      ],
-      "affiliations": [
-        {
-          "name": "Luka Dragar",
-          "affiliations": []
-        },
-        {
-          "name": "Peter Peer",
-          "affiliations": []
-        },
-        {
-          "name": "Vitomir Štruc",
-          "affiliations": []
-        },
-        {
-          "name": "Borut Batagelj",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-11-10",
-      "matched_topics": [
-        "多模态"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "深度伪造检测通常只评估真伪分类，但实际应用需要解释预测背后的视觉证据；联合视觉语言模型在真伪判断上表现不佳，容易为篡改图像生成“真实”叙述。",
-        "method": "提出解耦的“先预测、后解释”流程：先用视觉基础模型集成分类图像，再由Qwen3-VL-8B生成以决策为条件的视觉证据解释；对伪造图像，第二个Qwen3-VL-8B在不使用图像的情况下将解释压缩为非专家摘要，并用指标对齐的GRPO优化两个解释器以贴合挑战赛评价标准。",
-        "result": "在匹配条件下，GRPO将复杂BERTScore-F1从0.686提升到0.712，并改善实体与证据F1等grounding指标；提交结果在复杂BERTScore-F1上排名第一，总排名第七。",
-        "novelty": "将指标对齐的GRPO用于两阶段可解释深度伪造检测中的解释器优化，使生成解释更贴合评测指标。",
-        "relevance": "为可解释深度伪造检测提供了可复用的预测-解释分离范式，并展示了强化学习对齐解释质量指标的潜力。",
-        "org": "University of Ljubljana",
-        "score": 6
-      },
-      "identified_orgs": []
-    },
-    {
-      "title": "One Policy for 100 Household Tasks: Our Solution for the 2026 BEHAVIOR Challenge",
-      "abstract": "We describe our solution for the 2026 BEHAVIOR Challenge: 100 long-horizon household tasks in the OmniGibson simulator. We placed 9th on the final leaderboard, the only independent team in the top 10. The core of the solution is a single vision-language-action (VLA) model, one checkpoint for all 100 tasks, built on our 1st-place 2025 solution, which is based on $π_{0.5}$. On the 50 tasks shared with 2025, its Q rises from 0.260 to 0.371; across all 100 tasks it scores 0.392. Our main conclusion from 2025 was that the model was undertrained, so most of the 2026 work went into training the model for longer, optimizing some training parameters, making each training step slightly faster and reducing the gradient noise: a migration from 50 to 100 tasks (semantic stages built from the demonstrations' skill annotations, task and stage embeddings of new tasks warm-started from similar old ones, and a 21-dimensional action space matching the teleoperation controls); variance-reduced multi-sample flow matching with a simple noise-vs-compute model that picks the number of action-expert samples per observation without ablations; and a 200k-step training run, about one pass over the 211M frames of the demonstrations. A cloud evaluation infrastructure keeps a shared record with provenance, episode diagnostics and restorable simulator states, and runs six simulators on one GPU together faster than real time. On top of the learned policy, 14 tasks are routed to a GPT-6 Astra coding agent that controls the robot through observation and motion tools, starting every episode from a frozen copy of its own practice session on training instances. Across these 14 tasks, Astra's mean Q is 0.639, against 0.108 for the learned policy. The public submission included only part of the Astra results and scored 0.446 Q with 27.3% full-task success.",
-      "url": "https://arxiv.org/abs/2611.14432v1",
-      "pdf": "https://arxiv.org/pdf/2611.14432v1",
-      "categories": [
-        "cs.RO",
-        "cs.AI",
-        "cs.CV",
-        "cs.LG"
-      ],
-      "authors": [
-        "Ilia Larchenko",
-        "Gleb Zarin",
-        "Atindra Nair",
-        "Keerti Manney",
-        "Vitaly Kleban"
-      ],
-      "all_authors": [
-        "Ilia Larchenko",
-        "Gleb Zarin",
-        "Atindra Nair",
-        "Keerti Manney",
-        "Vitaly Kleban",
-        "Mirko Kiefer",
-        "Anjana Yodaiken"
-      ],
-      "affiliations": [
-        {
-          "name": "Ilia Larchenko",
-          "affiliations": []
-        },
-        {
-          "name": "Gleb Zarin",
-          "affiliations": []
-        },
-        {
-          "name": "Atindra Nair",
-          "affiliations": []
-        },
-        {
-          "name": "Keerti Manney",
-          "affiliations": []
-        },
-        {
-          "name": "Vitaly Kleban",
-          "affiliations": []
-        },
-        {
-          "name": "Mirko Kiefer",
-          "affiliations": []
-        },
-        {
-          "name": "Anjana Yodaiken",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-11-10",
-      "matched_topics": [
-        "多模态",
-        "大模型"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "解决2026 BEHAVIOR Challenge中的100个长时程家庭任务（OmniGibson仿真环境），需要用单一策略模型覆盖全部任务并提升成功率。",
-        "method": "基于π0.5构建单个VLA模型、一个checkpoint服务全部100个任务：用演示的技能标注构建语义阶段，新任务/阶段嵌入从相似旧任务热启动，动作空间扩展为21维以匹配遥操作；采用方差缩减的多样本flow matching，并用简单的noise-vs-compute模型自适应选择每个观测的动作专家采样数；训练20万步（约覆盖2.11亿帧演示一遍）。此外将14个任务路由给GPT-6 Astra编码智能体，通过观测与运动工具控制机器人，每回合从其在训练实例上练习会话的冻结副本开始。",
-        "result": "最终排行榜第9名（前10中唯一独立团队）；与2025共享的50个任务Q从0.260升至0.371，全部100任务Q为0.392；Astra在14个任务上平均Q为0.639（学习策略仅0.108）。公开提交仅含部分Astra结果，Q为0.446、全任务成功率27.3%。",
-        "novelty": "核心结论是“模型训练不足”，通过大幅延长训练、方差缩减多样本flow matching与自适应采样数选择，并叠加VLA与编码智能体的混合路由来提升长时程任务表现。",
-        "relevance": "为长时程具身操作中单一VLA策略的规模化训练、样本效率与LLM编码智能体混合方案提供了可复现的工程实证。",
-        "org": "未标注隶属机构（独立参赛团队）",
-        "score": 6
-      },
-      "identified_orgs": []
-    },
-    {
-      "title": "Gaussian Process-Augmented Model Predictive Contouring Control for 6-DoF Trajectory Tracking with a Holonomic AUV",
-      "abstract": "Small, holonomic Autonomous Underwater Vehicles (AUVs) enable close-range inspection of underwater structures from arbitrary viewpoints, requiring accurate position and attitude tracking under state and input constraints. Model Predictive Contouring Control (MPCC) naturally handles these requirements, but relies on an accurate dynamics model, which is difficult to obtain underwater. In this paper, we present a nonlinear MPCC in all six Degrees of Freedom (DoF) for a holonomic AUV and alleviate the inaccuracies in the dynamics by augmenting the nominal model employed with residual dynamics learned via Gaussian Process (GP) regression. The learned residual is embedded in the optimal control problem through a zero-order robust optimization scheme, which keeps the controller real-time capable at 25 Hz. A simulation ablation shows that residual selection is essential when designing the controller, and simulation and in-water experiments with the Multimodality, Observing, Low-cost, Agile (MOLA) AUV validate the resulting controllers against a nominal MPCC and a field proven Proportional-Integral-Derivative (PID) controller.",
-      "url": "https://arxiv.org/abs/2611.14373v1",
-      "pdf": "https://arxiv.org/pdf/2611.14373v1",
+      "title": "STVLA: Spatial-aware and Temporal-memory forVision-Language-Action Models",
+      "abstract": "Robotic manipulation often requires both spatial scene understanding and task history. However, many vision-language-action (VLA) policies rely primarily on current observations, without explicitly integrating spatial structure and task history. Appearance-based memories can be sensitive to occlusion and viewpoint changes, while spatial representations of the current scene alone do not preserve how the scene has changed during task execution. We introduce STVLA, a framework that incorporates features from a pretrained visual geometry foundation model into temporal memory alongside visual representations. This allows the policy to recall past scene structure as context for current action decisions. To select informative history, STVLA uses a mathematically grounded scoring rule that balances relevance to the current observation with complementary evidence from memory. Across evaluations on LIBERO, LIBERO-Mem, MIKASA-Robo, and SimplerEnv Bridge, STVLA achieves the highest average success rate among the compared methods on each benchmark. On real-world block stacking, object organization, and phone packaging, it improves success over $π_{0.5}$ by $58.33$, $30.00$, and $35.00$ percentage points, respectively. These results support integrating scene geometry into temporal memory to improve manipulation requiring both spatial precision and task history. Project website: \\href{https://stvla.github.io/}{https://stvla.github.io/}",
+      "url": "https://arxiv.org/abs/2611.16589v1",
+      "pdf": "https://arxiv.org/pdf/2611.16589v1",
       "categories": [
         "cs.RO"
       ],
       "authors": [
-        "David Dörner",
-        "Giancarlo Troni",
-        "Ignacio Torroba",
-        "Ivan Stenius"
+        "Zhuo Han",
+        "Yeqiang Wang",
+        "Xinran Wang",
+        "Hongwei Han",
+        "Yi Xiong"
       ],
       "all_authors": [
-        "David Dörner",
-        "Giancarlo Troni",
-        "Ignacio Torroba",
-        "Ivan Stenius"
+        "Zhuo Han",
+        "Yeqiang Wang",
+        "Xinran Wang",
+        "Hongwei Han",
+        "Yi Xiong",
+        "Zunian Wan",
+        "Jianbo Mao",
+        "Huan Peng",
+        "Yongcheng Liu",
+        "Wei Shan",
+        "Maoqing Yao"
       ],
       "affiliations": [
         {
-          "name": "David Dörner",
+          "name": "Zhuo Han",
           "affiliations": []
         },
         {
-          "name": "Giancarlo Troni",
+          "name": "Yeqiang Wang",
           "affiliations": []
         },
         {
-          "name": "Ignacio Torroba",
+          "name": "Xinran Wang",
           "affiliations": []
         },
         {
-          "name": "Ivan Stenius",
+          "name": "Hongwei Han",
+          "affiliations": []
+        },
+        {
+          "name": "Yi Xiong",
+          "affiliations": []
+        },
+        {
+          "name": "Zunian Wan",
+          "affiliations": []
+        },
+        {
+          "name": "Jianbo Mao",
+          "affiliations": []
+        },
+        {
+          "name": "Huan Peng",
+          "affiliations": []
+        },
+        {
+          "name": "Yongcheng Liu",
+          "affiliations": []
+        },
+        {
+          "name": "Wei Shan",
+          "affiliations": []
+        },
+        {
+          "name": "Maoqing Yao",
           "affiliations": []
         }
       ],
-      "published": "2026-11-10",
+      "published": "2026-11-12",
+      "matched_topics": [
+        "多模态",
+        "大模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "现有视觉-语言-动作（VLA）策略主要依赖当前观测，缺乏对空间结构和任务历史的显式建模：基于外观的记忆对遮挡和视角变化敏感，而仅用当前场景的空间表征又无法记录场景在任务执行中的变化。",
+        "method": "STVLA 将预训练视觉几何基础模型提取的空间特征与视觉表征一起纳入时序记忆，使策略能够回溯过往场景结构作为当前动作决策的上下文；并设计了一个有数学依据的打分规则，在选择历史信息时平衡其与当前观测的相关性和记忆中的互补证据。",
+        "result": "在 LIBERO、LIBERO-Mem、MIKASA-Robo 和 SimplerEnv Bridge 四个基准上，STVLA 的平均成功率均为对比方法中最高；在真实世界的积木堆叠、物体整理和手机包装任务上，相比 π_{0.5} 分别提升 58.33、30.00 和 35.00 个百分点。",
+        "novelty": "将预训练视觉几何基础模型的空间特征引入时序记忆，并用数学化的打分机制筛选互补的历史空间信息，使策略同时具备空间精度与任务历史感知能力。",
+        "relevance": "为具身智能/VLA 模型融合三维空间理解与长时序记忆提供了有效范式，对需要空间精度和任务历史回忆的机器人操作任务具有直接推动意义。",
+        "org": "未能识别（作者未提供机构信息）",
+        "score": 7
+      },
+      "identified_orgs": [],
+      "contact_info": {
+        "emails_found": [],
+        "ai_extracted": {
+          "contacts": [
+            {
+              "name": "Zhuo Han",
+              "email": "",
+              "affiliation": "AgiBot",
+              "role": "第一作者"
+            },
+            {
+              "name": "Yeqiang Wang",
+              "email": "",
+              "affiliation": "AgiBot",
+              "role": ""
+            },
+            {
+              "name": "Xinran Wang",
+              "email": "",
+              "affiliation": "AgiBot",
+              "role": ""
+            },
+            {
+              "name": "Hongwei Han",
+              "email": "",
+              "affiliation": "AgiBot",
+              "role": ""
+            },
+            {
+              "name": "Yi Xiong",
+              "email": "",
+              "affiliation": "AgiBot",
+              "role": ""
+            },
+            {
+              "name": "Zunian Wan",
+              "email": "",
+              "affiliation": "AgiBot",
+              "role": ""
+            },
+            {
+              "name": "Jianbo Mao",
+              "email": "",
+              "affiliation": "AgiBot",
+              "role": ""
+            },
+            {
+              "name": "Huan Peng",
+              "email": "",
+              "affiliation": "AgiBot",
+              "role": ""
+            },
+            {
+              "name": "Yongcheng Liu",
+              "email": "",
+              "affiliation": "AgiBot",
+              "role": ""
+            },
+            {
+              "name": "Wei Shan",
+              "email": "",
+              "affiliation": "AgiBot",
+              "role": ""
+            },
+            {
+              "name": "Maoqing Yao",
+              "email": "",
+              "affiliation": "AgiBot",
+              "role": "通讯作者"
+            }
+          ],
+          "corresponding_author": "Maoqing Yao"
+        }
+      }
+    },
+    {
+      "title": "HEIR: Harness Egocentric Intent for Human-Robot Interactions",
+      "abstract": "For robots to assist, serve, and collaborate with humans, they must not only interpret human requests conveyed through language and multimodal intentional cues, but also execute long-horizon tasks that interleave navigation and manipulation. In this paper, we introduce HEIR, a resource for studying how to Harness Egocentric Intent for Human-Robot Interaction. HEIR pairs human speech, measured gaze, and egocentric video with robot observations and teleoperated navigation-manipulation trajectories, while each session preserves successive episodes, with each request fulfilled through multiple execution subtasks. The captured data, together with human-authored annotations, support the study of intent grounding, execution planning, and task completion within a unified interaction setting. To demonstrate the value of HEIR, we conduct extensive offline experiments to evaluate how models benefit from additional human-centric context across these tasks, together with real-robot experiments that assess execution task completion. HEIR thus provides a valuable resource for studying user-centric robot interaction in naturalistic household environments. Our demo and dataset are available online.",
+      "url": "https://arxiv.org/abs/2611.17238v1",
+      "pdf": "https://arxiv.org/pdf/2611.17238v1",
+      "categories": [
+        "cs.RO"
+      ],
+      "authors": [
+        "Yichi Zhang",
+        "Bo Wang",
+        "Zhenghan Zhu",
+        "Yutong Han",
+        "Jiayin Zou"
+      ],
+      "all_authors": [
+        "Yichi Zhang",
+        "Bo Wang",
+        "Zhenghan Zhu",
+        "Yutong Han",
+        "Jiayin Zou",
+        "Gao Kejun",
+        "Chang Liu",
+        "Shaoxuan Xie",
+        "Chi Zhang",
+        "Shi Haoyang",
+        "Zongxuan Lai",
+        "Sen Cui",
+        "Guocai Yao",
+        "Miao Liu"
+      ],
+      "affiliations": [
+        {
+          "name": "Yichi Zhang",
+          "affiliations": []
+        },
+        {
+          "name": "Bo Wang",
+          "affiliations": []
+        },
+        {
+          "name": "Zhenghan Zhu",
+          "affiliations": []
+        },
+        {
+          "name": "Yutong Han",
+          "affiliations": []
+        },
+        {
+          "name": "Jiayin Zou",
+          "affiliations": []
+        },
+        {
+          "name": "Gao Kejun",
+          "affiliations": []
+        },
+        {
+          "name": "Chang Liu",
+          "affiliations": []
+        },
+        {
+          "name": "Shaoxuan Xie",
+          "affiliations": []
+        },
+        {
+          "name": "Chi Zhang",
+          "affiliations": []
+        },
+        {
+          "name": "Shi Haoyang",
+          "affiliations": []
+        },
+        {
+          "name": "Zongxuan Lai",
+          "affiliations": []
+        },
+        {
+          "name": "Sen Cui",
+          "affiliations": []
+        },
+        {
+          "name": "Guocai Yao",
+          "affiliations": []
+        },
+        {
+          "name": "Miao Liu",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-12",
       "matched_topics": [
         "多模态"
       ],
       "priority": 1,
       "ai_summary": {
-        "problem": "全驱动（holonomic）小型AUV在近距离水下结构检测中需要同时精确跟踪六自由度的位置与姿态，并满足状态与输入约束；而模型预测轮廓控制（MPCC）依赖精确的动力学模型，这在水下环境难以获得。",
-        "method": "作者为全驱动AUV设计了六自由度的非线性MPCC控制器，并用高斯过程（GP）回归学习名义动力学模型中的残差动力学；学习到的残差通过零阶鲁棒优化（zero-order robust optimization）嵌入最优控制问题，使控制器保持25 Hz的实时性。",
-        "result": "仿真消融实验表明，残差项的选择对控制器设计至关重要；在MOLA AUV上的仿真与水下实验表明，该方法相较于名义MPCC和经过现场验证的PID控制器具有更优的跟踪性能。",
-        "novelty": "把GP学习的残差动力学通过零阶鲁棒优化嵌入六自由度MPCC中，在保证约束满足与实时性的同时提升了全驱动AUV的轨迹跟踪精度。",
-        "relevance": "该工作展示了数据高效的GP残差学习与基于模型的优化控制相结合，为机器人（尤其水下与具身智能系统）在模型不确定条件下的学习增强控制提供了可实时部署的范式。",
-        "org": "论文未给出作者单位信息；根据作者（Ivan Stenius、Ignacio Torroba等）推测可能主要来自瑞典皇家理工学院（KTH Royal Institute of Technology），但需以原文为准。",
+        "problem": "机器人在家庭环境中协助人类时，需要理解通过语言和多模态意图线索（如目光）传达的请求，并执行导航与操作交错的长时程任务；现有资源缺乏将人类以自我为中心的多模态意图与机器人长时程执行轨迹对齐的数据。",
+        "method": "提出 HEIR 数据集/资源，将人类语音、实测注视点、自我中心（egocentric）视频与机器人观测及遥操作的导航-操作轨迹配对；每个会话保留连续多个回合，每个请求由多个执行子任务完成，并提供人工标注，支撑意图落地、执行规划与任务完成的研究。",
+        "result": "通过大量离线实验验证模型如何从额外的人类中心上下文（语音、注视等）中受益，并配合真机实验评估执行任务的完成情况，证明 HEIR 是研究自然家庭环境下以用户为中心的机器人交互的有价值资源。",
+        "novelty": "首次将人类的自我中心多模态意图线索（语音+注视+egocentric 视频）与机器人长时程导航-操作轨迹在多回合连续会话中统一对齐并开放数据集与演示。",
+        "relevance": "为具身智能与人机交互中的意图理解、长时程规划与多模态基础研究提供了贴近真实家庭场景的基准数据资源。",
+        "org": "未知（摘要与作者信息中未提供机构归属）",
         "score": 6
       },
       "identified_orgs": []
     },
     {
-      "title": "A Cross-Scenario Survey and Analysis of Self-Evolving Multimodal Agents",
-      "abstract": "Recent work shows that multimodal agents increasingly self-improve without recurring human annotation. However, each self-improvement mechanism is designed and evaluated within a single scenario, leaving its preconditions unverified under cross-scenario transfer. This survey investigates the structural source of asymmetric mechanism transfer across four scenarios: multimodal reasoning, multimodal generation, GUI and Web navigation, and embodied manipulation. We first formalize the self-evolving multimodal agent by four criteria and a differentia of self-reference, and adopt the three-stage self-evolving loop of experience generation, feedback acquisition, and update consolidation as our analytical framework to position the scenarios along ceilings on rollout count and feedback fidelity. Comparing self-evolving with fixed loops within each scenario separates the limitations that the scenario imposes from those inherent in the self-evolving design. We then recast each mechanism as a trade-off that raises a scarce factor by presupposing a task-structural resource, such as output equivalence or checkable outcomes, and judge it portable, conditional, blocked, or redundant across scenarios. We attribute the asymmetry to divergent combinations of scarce factors and resources across opposite transfer directions, and identify the matched-budget measurements that could overturn these still untested verdicts.",
-      "url": "https://arxiv.org/abs/2611.14256v1",
-      "pdf": "https://arxiv.org/pdf/2611.14256v1",
+      "title": "Validation-Guided Prompt Selection for Differential Morphing Attack Detection",
+      "abstract": "Differential morphing attack detection (D-MAD) compares a trusted live capture with a document image that may contain a facial morph. We investigate whether labelled validation data can improve a frozen-parameter vision-language evaluator through prompt selection rather than model fine-tuning. Version~1 generates 50 candidate prompts and selects the top-ranked instruction using a security-oriented loss that prioritises missed morph attacks (MACER) while accounting for bona fide classification errors (BSCER), response failures, parse failures, and decision inconsistency. Version~2 recursively revises prompts using aggregate validation feedback. On a subject-disjoint test set of 160 pairs spanning LMA, MIPGAN-2, and PIPE, the selected Version~1 prompt achieves a (19.17\\%) morph attack classification error rate (MACER), with (0.00\\%) observed bona fide sample classification error rate (BSCER), compared with (70.00\\%) MACER for a controlled manual prompt. The paired (50.83) percentage-point difference has a (95\\%) subject-bootstrap interval of ([43.33,58.33]). Recursive revision does not surpass the best Generation~0 validation loss; the reported revised descendant obtains (31.67\\%) test MACER. All 23 attacks missed by Version~1 are landmark-based (LMA) morphs. Overall, the results show that prompt formulation can substantially influence frozen-parameter VLM-based D-MAD performance, while also highlighting the challenge of recursive prompt refinement under a compact 10-subject validation setting.",
+      "url": "https://arxiv.org/abs/2611.17176v1",
+      "pdf": "https://arxiv.org/pdf/2611.17176v1",
       "categories": [
-        "cs.AI"
+        "cs.CV"
       ],
       "authors": [
-        "Jingjing Jiang"
+        "Raghavendra Ramachandra",
+        "Hailin Li"
       ],
       "all_authors": [
-        "Jingjing Jiang"
+        "Raghavendra Ramachandra",
+        "Hailin Li"
       ],
       "affiliations": [
         {
-          "name": "Jingjing Jiang",
+          "name": "Raghavendra Ramachandra",
+          "affiliations": []
+        },
+        {
+          "name": "Hailin Li",
           "affiliations": []
         }
       ],
-      "published": "2026-11-10",
+      "published": "2026-11-12",
       "matched_topics": [
         "多模态"
       ],
       "priority": 1,
       "ai_summary": {
-        "problem": "多模态智能体的各类自我改进机制通常在单一场景内设计与评估，其前提条件在跨场景迁移时是否成立缺乏验证，论文要解决的是这种机制迁移不对称性的结构性来源问题。",
-        "method": "论文首先用四条准则与一个自指判别式形式化定义“自演化多模态智能体”，并以“经验生成—反馈获取—更新巩固”的三阶段自演化闭环作为分析框架，将多模态推理、多模态生成、GUI与Web导航、具身操作四个场景沿“ rollout 次数上限”和“反馈保真度”两个维度定位；随后在每个场景内对比自演化闭环与固定闭环，把场景固有局限与自演化设计本身的局限区分开，并将每种机制重构为“以任务结构性资源（如输出等价性、可检验结果）为前提来抬升某一稀缺因子”的权衡，判定其跨场景可移植、有条件、受阻或冗余。",
-        "result": "论文将迁移不对称归因于相反迁移方向上“稀缺因子—任务结构性资源”组合的差异，并指出当前多数跨场景判定仍未经实测，给出了可能推翻这些结论的匹配预算测量方案。",
-        "novelty": "首次以统一的三阶段闭环框架和“稀缺因子 vs 任务结构性资源”权衡视角，系统比较四类场景下自演化多模态智能体机制的跨场景可迁移性。",
-        "relevance": "为自演化多模态智能体的机制设计、跨场景复用与公平评测提供了结构化的分析坐标系，有助于避免把场景红利误判为方法创新。",
+        "problem": "研究在冻结参数的视觉语言模型（VLM）用于差分变形攻击检测（D-MAD）时，能否通过基于标注验证集的提示选择来提升检测性能，而不是微调模型。",
+        "method": "提出验证引导的提示选择方法：Version 1 生成50个候选提示，并用面向安全的损失（优先降低漏检变形攻击的MACER，同时考虑BSCER、响应失败、解析失败和决策不一致）选择最佳指令；Version 2 利用验证集聚合反馈递归修订提示。",
+        "result": "在160对、跨LMA/MIPGAN-2/PIPE且受试者不重叠的测试集上，Version 1选出的提示达到19.17% MACER和0.00% BSCER，而受控人工提示MACER为70.00%；递归修订未超过最佳初始验证损失，修订后测试MACER为31.67%。所有23个漏检攻击均为基于关键点的LMA变形。",
+        "novelty": "将验证集驱动的提示选择而非模型微调用于冻结VLM的差分变形攻击检测，并系统评估提示公式对安全性能的影响。",
+        "relevance": "表明提示工程可显著影响冻结VLM在生物特征安全检测中的表现，同时揭示小规模验证集下递归提示优化的困难。",
+        "org": "未提供（作者机构信息缺失）",
+        "score": 6
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "HiVE-VQA: Hierarchical Interaction via Volumetric Embedding for Video Quality Assessment",
+      "abstract": "The proliferation of user-generated video content has made accurate and robust no-reference video quality assessment (NR-VQA) a highly important challenge. Existing research increasingly relies on architecturally complex multi-branch pipelines or computationally intensive fine-tuning of single-branch backbones. In this paper, we investigate whether a single frozen video foundation model can serve as an effective NR-VQA backbone, and propose HiVE-VQA, the first framework (to our knowledge) to apply a JEPA-based video encoder to this task. HiVE-VQA extracts token grids from multiple depths of a pre-trained V-JEPA 2.1 encoder and stacks them into a hierarchical spatio-temporal volume, which a compact 3D convolutional head fuses across its layer, spatial, and temporal axes, combining low-level distortion cues from shallow layers with the semantic and temporal context captured at greater depths. The encoder remains frozen throughout, so only the head is trained: 5.2M parameters (5.7\\% of the total), with no auxiliary multi-modal models and an inference cost that is invariant to video resolution. Trained solely on LSVQ and evaluated without any fine-tuning, HiVE-VQA outperforms 17 state-of-the-art (SOTA) methods in SROCC and PLCC on both intra-dataset (LSVQ-test, LSVQ-1080p) and cross-dataset (KoNViD-1k, LIVE-VQC) benchmarks. These results indicate that hierarchical, depth-wise fusion of features from a single frozen video foundation model provides a more effective and efficient basis for NR-VQA than task-specific multi-network fusion. Code and model checkpoints are available at https://github.com/RobHam99/HiVE-VQA.",
+      "url": "https://arxiv.org/abs/2611.17146v1",
+      "pdf": "https://arxiv.org/pdf/2611.17146v1",
+      "categories": [
+        "cs.CV"
+      ],
+      "authors": [
+        "Robbie Hamilton",
+        "Fan Zhang",
+        "David Bull"
+      ],
+      "all_authors": [
+        "Robbie Hamilton",
+        "Fan Zhang",
+        "David Bull"
+      ],
+      "affiliations": [
+        {
+          "name": "Robbie Hamilton",
+          "affiliations": []
+        },
+        {
+          "name": "Fan Zhang",
+          "affiliations": []
+        },
+        {
+          "name": "David Bull",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-12",
+      "matched_topics": [
+        "多模态",
+        "大模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "无参考视频质量评估（NR-VQA）现有方法依赖复杂的多分支流水线或对单分支骨干网络进行昂贵的微调，论文要探究单个冻结视频基础模型能否作为高效的 NR-VQA 骨干。",
+        "method": "提出 HiVE-VQA：从冻结的 V-JEPA 2.1 视频编码器多个深度提取 token 网格，堆叠成层次化时空体（hierarchical spatio-temporal volume），再用轻量 3D 卷积头沿层、空间、时间三个轴融合，结合浅层失真线索与深层语义/时序上下文；编码器全程冻结，仅训练 5.2M 参数（占总量 5.7%）的头部。",
+        "result": "仅在 LSVQ 上训练、不做任何微调，即在数据集内（LSVQ-test、LSVQ-1080p）和跨数据集（KoNViD-1k、LIVE-VQC）的 SROCC 与 PLCC 上超越 17 个 SOTA 方法，且推理开销与视频分辨率无关。",
+        "novelty": "首次将 JEPA 类视频编码器用于 NR-VQA，并提出对冻结骨干多深度特征做层次化体堆叠与 3D 融合的轻量范式，替代任务特定的多网络融合。",
+        "relevance": "证明了冻结视频基础模型加轻量头的层次化特征融合可优于复杂专用流水线，为视频理解与质量评估提供了高效、可复用的大模型利用思路。",
+        "org": "推测为布里斯托大学（University of Bristol，作者 Robbie Hamilton、Fan Zhang、David Bull 隶属其视觉信息实验室）",
+        "score": 6
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "Scale-Induced Semantic Shift in Visual Prompt Injection Against VLMs and Web Agents",
+      "abstract": "Visual content in multimedia systems may be resized, compressed, or re-rendered before it is interpreted by a vision-language model. We study a security failure mode in which these transformations change the machine-readable semantics of an image: a textual instruction is not recovered at a $512\\times512$ presentation resolution under our evaluation protocol but becomes recoverable after aggressive downsampling. We formulate this behavior as Scale-Induced Semantic Shift (SISS) and develop a closed-loop black-box framework that combines dual-scale verification, selective self-hardening, shallow-layer low-rank adaptation, and pixel-space noise regularization. On a fixed 300-case benchmark, the third SISS refinement round obtains a $58.75\\%$ average attack success rate across four closed-source vision-language models, compared with $41.08\\%$ for the strongest generation baseline. A controlled sweep bounds the effect to aggressive compression: average success decreases to $17.68\\%$, $6.85\\%$, and $5.60\\%$ at $128\\times128$, $224\\times224$, and $336\\times336$, respectively. In a downstream web-agent study, the generated images increase hidden-instruction perception, but absolute behavioral compromise remains about $4\\%$. Generic input transformations provide little protection in a separate defense protocol, whereas the proposed ScaleGuard consistency detector reduces non-adaptive success from $61.4\\%$ to $24.3\\%$ and one-round defense-aware success from $42.5\\%$ to $15.0\\%$, with no observed rejection among matched clean controls. The results characterize a bounded but reproducible semantic inconsistency in multimedia preprocessing and motivate scale-consistent visual-language inference.",
+      "url": "https://arxiv.org/abs/2611.16744v1",
+      "pdf": "https://arxiv.org/pdf/2611.16744v1",
+      "categories": [
+        "cs.AI"
+      ],
+      "authors": [
+        "Yiheng Zhao",
+        "Runze Ji",
+        "Chenyu Yi",
+        "Yi Yu",
+        "Bingquan Shen"
+      ],
+      "all_authors": [
+        "Yiheng Zhao",
+        "Runze Ji",
+        "Chenyu Yi",
+        "Yi Yu",
+        "Bingquan Shen",
+        "Alex Kot",
+        "Xudong Jiang"
+      ],
+      "affiliations": [
+        {
+          "name": "Yiheng Zhao",
+          "affiliations": []
+        },
+        {
+          "name": "Runze Ji",
+          "affiliations": []
+        },
+        {
+          "name": "Chenyu Yi",
+          "affiliations": []
+        },
+        {
+          "name": "Yi Yu",
+          "affiliations": []
+        },
+        {
+          "name": "Bingquan Shen",
+          "affiliations": []
+        },
+        {
+          "name": "Alex Kot",
+          "affiliations": []
+        },
+        {
+          "name": "Xudong Jiang",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-12",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "多媒体系统中的图像在送入视觉语言模型前常被缩放、压缩或重渲染，本文研究这种预处理变换会改变图像机器可读语义的安全失效模式——文本指令在512×512分辨率下不可恢复，但经激进下采样后却变得可恢复（尺度诱导语义漂移，SISS）。",
+        "method": "提出闭环黑盒框架，结合双尺度验证、选择性自硬化、浅层低秩适配与像素空间噪声正则来生成具有尺度依赖性的注入图像；同时提出ScaleGuard一致性检测器作为防御，通过跨尺度语义一致性判别可疑输入。",
+        "result": "在固定300例基准上，第三轮SISS精炼在四个闭源VLM上取得58.75%平均攻击成功率（最强基线41.08%），但效应局限于激进压缩（128/224/336分辨率下分别降至17.68%/6.85%/5.60%）；下游Web Agent中隐藏指令感知提升，但实际行为劫持仅约4%。ScaleGuard将非自适应成功率从61.4%降至24.3%、防御感知单轮从42.5%降至15.0%，且干净对照无误拒。",
+        "novelty": "首次将预处理尺度变换导致的语义漂移形式化为可复现的安全失效模式（SISS），并给出闭环攻击框架与尺度一致性防御方案。",
+        "relevance": "揭示了多模态系统与Web Agent在图像预处理环节的语义不一致风险，推动尺度一致的视觉-语言推理与更鲁棒的多模态安全防御研究。",
+        "org": "未提供（作者机构信息缺失）",
+        "score": 6
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "MusicRWKV: A Multimodal RWKV Framework for Music Representation Learning",
+      "abstract": "Recent music foundation models have achieved remarkable progress in music representation learning, yet most existing approaches rely on Transformer architectures whose quadratic attention complexity introduces substantial computational and memory overhead when modeling long-duration music recordings. In this work, we propose MusicRWKV, a multimodal music representation learning framework built upon the RWKV architecture. MusicRWKV jointly models waveform, spectrogram, and metadata information within a unified self-supervised learning framework. To improve efficiency for long musical sequences, we introduce an invertible compression module that reduces sequence length while preserving reconstruction capability. A FiLM-based conditioning strategy is employed to facilitate modality-aware representation learning without introducing expensive cross-attention operations. We further investigate the integration of Soft ROSA as a differentiable retrieval mechanism for neural-symbolic interaction. Experimental evaluation across a diverse collection of Music Information Retrieval (MIR) benchmarks demonstrates that the proposed RWKV-based architecture can be effectively adapted to heterogeneous music understanding tasks. A controlled pretraining ablation shows that Soft ROSA improves validation performance, while layer-wise telemetry analysis reveals a progressive transition from distributed retrieval to selective retrieval in deeper network layers. These results suggest that RWKV provides a promising architectural alternative to Transformer-based models for multimodal music understanding.",
+      "url": "https://arxiv.org/abs/2611.16718v1",
+      "pdf": "https://arxiv.org/pdf/2611.16718v1",
+      "categories": [
+        "cs.SD",
+        "cs.AI",
+        "eess.AS"
+      ],
+      "authors": [
+        "Terry Tan"
+      ],
+      "all_authors": [
+        "Terry Tan"
+      ],
+      "affiliations": [
+        {
+          "name": "Terry Tan",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-12",
+      "matched_topics": [
+        "多模态",
+        "大模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "现有音乐基础模型多依赖 Transformer，其二次注意力复杂度在建模长时间音乐录音时带来显著计算和内存开销；本文旨在探索更高效的多模态音乐表示学习框架。",
+        "method": "提出 MusicRWKV，基于 RWKV 架构统一建模波形、频谱图和元数据，并进行自监督学习；引入可逆压缩模块缩短长序列且保留重建能力，采用 FiLM 条件策略实现模态感知表示学习，并探索 Soft ROSA 作为可微分检索机制用于神经-符号交互。",
+        "result": "在多个 MIR 基准上验证了 RWKV 架构可适配异构音乐理解任务；受控预训练消融显示 Soft ROSA 提升验证性能，逐层分析揭示从分布式检索到选择性检索的渐进转变。",
+        "novelty": "将 RWKV、可逆序列压缩、FiLM 模态条件与 Soft ROSA 检索机制结合，用于高效多模态音乐表示学习。",
+        "relevance": "表明 RWKV 可作为 Transformer 之外的有前景架构选择，用于长序列多模态音乐理解及其他高效序列建模场景。",
+        "org": "未提供（作者机构信息缺失）",
+        "score": 6
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "MuViRL: Multimodal View-Invariant Visual Speech Representation Learning via Calibrated View Aggregation",
+      "abstract": "Multimodal representation learning combines complementary signals to capture shared semantic information. For dynamic scenes, these representations need to remain consistent across views while preserving distinctions between temporal states. In visual speech representation learning, view variation changes the visibility and reliability of articulation cues, making it difficult to learn such representations from synchronized audio and video. To address this challenge, we propose MuViRL, a self-supervised framework for multimodal view-invariant visual speech representation learning via calibrated view aggregation. The framework combines synchronized 3D Gaussian view synthesis with multimodal self-supervision to learn consistent representations from real and synthesized data. A multimodal decision model learns relative view utility from teacher prediction losses, and its calibrated scores guide the aggregation of complementary information. Aggregation-to-Single Distillation transfers the aggregated predictions to a single branch. Real-synthetic alignment matches synchronized windows across views while preserving their temporal relations. Experiments on real and synthesized multiview data demonstrate that MuViRL improves multimodal representation consistency and visual speech recognition performance across views.",
+      "url": "https://arxiv.org/abs/2611.16655v1",
+      "pdf": "https://arxiv.org/pdf/2611.16655v1",
+      "categories": [
+        "cs.CV"
+      ],
+      "authors": [
+        "Fei Su",
+        "Kai Qiu",
+        "Juan Liu"
+      ],
+      "all_authors": [
+        "Fei Su",
+        "Kai Qiu",
+        "Juan Liu"
+      ],
+      "affiliations": [
+        {
+          "name": "Fei Su",
+          "affiliations": []
+        },
+        {
+          "name": "Kai Qiu",
+          "affiliations": []
+        },
+        {
+          "name": "Juan Liu",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-12",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "在视觉语音表征学习中，视角变化会改变发音线索的可见性与可靠性，导致难以从同步的音视频中学习到既跨视角一致、又能区分不同时间状态的多模态表征。",
+        "method": "提出自监督框架 MuViRL，将同步的 3D 高斯视角合成与多模态自监督结合，利用真实与合成数据学习一致表征；通过多模态决策模型从教师预测损失中学习各视角的相对效用，并用校准分数引导互补信息聚合；再用聚合到单分支蒸馏将聚合预测迁移到单分支，并通过真实-合成对齐在保持时间关系的同时匹配跨视角同步窗口。",
+        "result": "在真实与合成的多视角数据上，MuViRL 提升了多模态表征的一致性和跨视角视觉语音识别性能。",
+        "novelty": "将校准后的视角效用评估与 3D 高斯视角合成、自监督蒸馏结合，实现视角不变的视觉语音表征聚合。",
+        "relevance": "为多视角、多模态场景下的视角不变表征学习提供了可借鉴的聚合与蒸馏范式，对多模态大模型与具身感知中的鲁棒表征学习有参考价值。",
         "org": "未提供（作者机构信息为空）",
         "score": 6
       },
       "identified_orgs": []
     },
     {
-      "title": "DailyWildfireCAN: A Dataset and Benchmark for Next-Day Wildfire Spread Prediction in Canada",
-      "abstract": "Wildfires represent a critical ecological and socio-economic challenge in Canada, where vast boreal forests and a warming climate have amplified the frequency and severity of extreme fire seasons. Predicting next-day wildfire spread can support fire management, but requires capturing complex interactions among weather, fuels, and terrain. Deep learning has emerged as a promising approach to learning these relationships from heterogeneous environmental data, yet its development and evaluation depend on representative datasets. Existing deep learning research on wildfire spread relies predominantly on US-focused datasets, leaving Canadian fire environments underrepresented. To address this gap, we present DailyWildfireCAN, a multi-modal, multi-temporal dataset and benchmark for predicting next-day wildfire spread across Canada. The dataset tracks continuous fire progression over multi-day events at a high spatial and temporal resolution of 90-m and 24-hour, respectively. This resolution preserves fine-scale information relevant to fire-edge geometry, local fuel variations, and terrain effects, supporting research toward improved daily wildfire spread forecasting. DailyWildfireCAN covers 2,440 wildfire events across eight fire seasons 2017-2024 and integrates 33 features across diverse modalities, including topography, meteorology, land cover, vegetation and forest structure, human influence indices, and satellite imagery. We establish a comprehensive benchmark comparing mono-temporal and multi-temporal prediction models, accompanied by a multi-dimensional evaluation framework assessing robustness across wildfire characteristics, geographic regions, and temporal conditions, spatial prediction quality, and sensitivity to reference label variations.",
-      "url": "https://arxiv.org/abs/2611.14207v1",
-      "pdf": "https://arxiv.org/pdf/2611.14207v1",
+      "title": "InertiaMPDD: Multimodal Personalized Depression Detection via Emotional Inertia-Inspired Dynamics Modeling",
+      "abstract": "Multimodal depression screening estimates risk from speech, visual behavior and language. Current methods mainly predict labels, with limited evidence of departures from a non-depressed reference. Recording-level supervision also leaves fine-grained emotional dynamics unannotated. Motivated by emotional inertia, the persistence of affect, InertiaMPDD learns healthy next-state patterns using a world-model-inspired latent predictor. Using pretrained multimodal representations, it predicts from observed history and context. Reference deviation, residual decay rate and a Jacobian spectral descriptor form reference-derived emotional dynamics descriptors, evaluated as candidate proxy biomarkers for standalone screening and personalized decision correction. Across five cohorts from four datasets, fusion reaches 98.41% F1 on D-Vlog and 84.98% on LMVD. Standalone descriptors outperform fixed additive fusion on MPDD but discriminate weakly on AVEC2014. These findings distinguish reference informativeness from fusion benefit and reveal context-dependent utility.",
+      "url": "https://arxiv.org/abs/2611.16647v1",
+      "pdf": "https://arxiv.org/pdf/2611.16647v1",
+      "categories": [
+        "cs.AI"
+      ],
+      "authors": [
+        "Changzeng Fu",
+        "Songyang Wang",
+        "Chang Gao",
+        "Xinyi Zhang",
+        "Peilin Li"
+      ],
+      "all_authors": [
+        "Changzeng Fu",
+        "Songyang Wang",
+        "Chang Gao",
+        "Xinyi Zhang",
+        "Peilin Li",
+        "Mo Meng",
+        "Jiarui Wu",
+        "Mingze Li",
+        "Hongwei Ding",
+        "Shiqi Zhao",
+        "Yong Li",
+        "Lang He"
+      ],
+      "affiliations": [
+        {
+          "name": "Changzeng Fu",
+          "affiliations": []
+        },
+        {
+          "name": "Songyang Wang",
+          "affiliations": []
+        },
+        {
+          "name": "Chang Gao",
+          "affiliations": []
+        },
+        {
+          "name": "Xinyi Zhang",
+          "affiliations": []
+        },
+        {
+          "name": "Peilin Li",
+          "affiliations": []
+        },
+        {
+          "name": "Mo Meng",
+          "affiliations": []
+        },
+        {
+          "name": "Jiarui Wu",
+          "affiliations": []
+        },
+        {
+          "name": "Mingze Li",
+          "affiliations": []
+        },
+        {
+          "name": "Hongwei Ding",
+          "affiliations": []
+        },
+        {
+          "name": "Shiqi Zhao",
+          "affiliations": []
+        },
+        {
+          "name": "Yong Li",
+          "affiliations": []
+        },
+        {
+          "name": "Lang He",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-12",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "现有多模态抑郁筛查主要直接预测标签，缺乏对偏离健康参考状态的证据，且记录级监督难以刻画细粒度情绪动态。",
+        "method": "受情感惯性启发，作者提出InertiaMPDD，用世界模型启发的潜在预测器基于预训练多模态表示学习健康下一状态模式。方法进一步构造参考偏差、残差衰减率和Jacobian谱描述符，作为候选代理生物标志物，用于独立筛查和个性化决策校正。",
+        "result": "在四个数据集的五个队列上，融合方法在D-Vlog达到98.41% F1、LMVD达到84.98% F1；独立描述符在MPDD上优于固定加性融合，但在AVEC2014上判别较弱，说明其效用依赖上下文。",
+        "novelty": "将情感惯性与世界模型式潜在预测结合，用参考偏离动态描述符实现可解释的个性化抑郁筛查与决策校正。",
+        "relevance": "为多模态抑郁检测提供了基于健康参考偏离的建模思路，也展示了世界模型思想在心理与情绪动态建模中的应用潜力。",
+        "org": "未知（作者机构信息未提供）",
+        "score": 6
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "Report of the 8th LSVOS Challenge: Mobile Unified Multimodal Understanding",
+      "abstract": "This report summarizes the Mobile Unified Multimodal Understanding (MUMU) track of the 8th Large-scale Video Object Segmentation (LSVOS) Challenge, held in conjunction with ECCV 2026. MUMU asks for a single unified model that jointly performs multi-concept image tagging over quality, scene, and event vocabularies, open-vocabulary object detection, and concise image captioning, within a budget of 0.5B parameters and 8 GB of peak inference memory. Submissions are ranked by a weighted task score scaled by an efficiency factor. We describe the tasks, rules, and evaluation protocol, report the final results, and review the methods of the top three teams. All three leading solutions build on the compact Florence-2-base model, but extend it in different ways: lightweight tagging heads with cross-task inference refinement, a shared low-rank adapter trained on coverage-aware multi-source data with task-dependent decoding, and a training-free pipeline that maps captions to tags and applies detection test-time augmentation. The results show that a compact prompt-based vision-language model can serve all three outputs when supervision, decoding, and cross-task cues are designed for each task, while open-vocabulary detection on novel categories remains the main bottleneck.",
+      "url": "https://arxiv.org/abs/2611.16925v1",
+      "pdf": "https://arxiv.org/pdf/2611.16925v1",
       "categories": [
         "cs.CV"
       ],
       "authors": [
-        "Mahacine Ettahri",
-        "Hager Radi Abdelwahed",
-        "Toluwaleke Olutayo",
-        "Daniel Aloise",
-        "Gaétan Marceau Caron"
+        "Chang Liu",
+        "Henghui Ding",
+        "Tong Yang",
+        "Dayoung Kil",
+        "Seong-heum Kim"
       ],
       "all_authors": [
-        "Mahacine Ettahri",
-        "Hager Radi Abdelwahed",
-        "Toluwaleke Olutayo",
-        "Daniel Aloise",
-        "Gaétan Marceau Caron"
+        "Chang Liu",
+        "Henghui Ding",
+        "Tong Yang",
+        "Dayoung Kil",
+        "Seong-heum Kim",
+        "Qilin Xiang",
+        "Ronghao Zheng",
+        "Ziyang Zhang",
+        "Shanlin Jiang",
+        "Ruohan Shi",
+        "Qilin Fan",
+        "Chengfeng Qiu",
+        "Kaifeng Wei"
       ],
       "affiliations": [
         {
-          "name": "Mahacine Ettahri",
+          "name": "Chang Liu",
           "affiliations": []
         },
         {
-          "name": "Hager Radi Abdelwahed",
+          "name": "Henghui Ding",
           "affiliations": []
         },
         {
-          "name": "Toluwaleke Olutayo",
+          "name": "Tong Yang",
           "affiliations": []
         },
         {
-          "name": "Daniel Aloise",
+          "name": "Dayoung Kil",
           "affiliations": []
         },
         {
-          "name": "Gaétan Marceau Caron",
+          "name": "Seong-heum Kim",
+          "affiliations": []
+        },
+        {
+          "name": "Qilin Xiang",
+          "affiliations": []
+        },
+        {
+          "name": "Ronghao Zheng",
+          "affiliations": []
+        },
+        {
+          "name": "Ziyang Zhang",
+          "affiliations": []
+        },
+        {
+          "name": "Shanlin Jiang",
+          "affiliations": []
+        },
+        {
+          "name": "Ruohan Shi",
+          "affiliations": []
+        },
+        {
+          "name": "Qilin Fan",
+          "affiliations": []
+        },
+        {
+          "name": "Chengfeng Qiu",
+          "affiliations": []
+        },
+        {
+          "name": "Kaifeng Wei",
           "affiliations": []
         }
       ],
-      "published": "2026-11-10",
+      "published": "2026-11-12",
       "matched_topics": [
         "多模态"
       ],
       "priority": 1,
       "ai_summary": {
-        "problem": "现有深度学习野火蔓延预测研究主要依赖美国数据集，加拿大广阔森林环境代表性不足；该论文旨在构建加拿大次日野火蔓延预测的数据集与基准。",
-        "method": "提出 DailyWildfireCAN 多模态、多时序数据集，以 90 米空间分辨率和 24 小时时间分辨率追踪 2017-2024 年 2,440 场野火，整合地形、气象、土地覆盖、植被与森林结构、人类影响指数和卫星影像等 33 类特征。并建立单时序与多时序模型对比基准及多维度评估框架。",
-        "result": "论文提供了覆盖加拿大八个火季的野火蔓延数据集和综合评测基准，用于比较不同预测模型并评估其在野火特征、地理区域、时间条件、空间预测质量和标签变化下的鲁棒性；摘要未给出具体性能数值。",
-        "novelty": "构建了面向加拿大野火次日蔓延的高分辨率、多模态、多时序数据集，并配套多维度鲁棒性评估基准。",
-        "relevance": "为时空深度学习、遥感与地理空间预测提供了新的野火蔓延基准，有助于推动数据驱动的灾害管理与环境建模研究。",
-        "org": "根据作者推断可能为 Mila / Polytechnique Montréal（提供信息中机构字段为空）",
-        "score": 6
+        "problem": "该挑战赛要求单一统一模型在0.5B参数和8GB峰值推理内存预算内，同时完成多概念图像标签、开放词汇目标检测和简洁图像描述。",
+        "method": "报告介绍了MUMU赛道任务、规则与评测协议，并总结前三名方法：均基于Florence-2-base，分别采用轻量标签头与跨任务推理优化、覆盖感知多源数据训练的共享低秩适配器与任务相关解码、以及免训练的描述到标签映射和检测测试时增强。",
+        "result": "结果表明紧凑的提示式视觉语言模型在针对各任务设计监督、解码和跨任务线索时可同时支持三类输出，但新类别上的开放词汇检测仍是主要瓶颈。",
+        "novelty": "提出并系统评测移动端统一多模态理解挑战设定，并归纳高效统一模型在标签、检测和描述任务上的可行设计路径。",
+        "relevance": "为移动端高效统一多模态模型提供基准与经验，并指出开放词汇检测是未来关键改进方向。",
+        "org": "未在提供信息中明确",
+        "score": 5
       },
       "identified_orgs": []
     },
     {
-      "title": "CroCoMAE: Cross-modal self-supervised collaborative representation learning for SAR-optical remote sensing data",
-      "abstract": "Remote sensing increasingly captures the Earth's surface through complementary sensors such as SAR and optical, yet ground-truth annotations remain scarce, limiting supervised approaches. Self-supervised learning (SSL) addresses the label scarcity, and cross-modal SSL further exploits the complementarity between co-located sensors, but existing cross-modal frameworks align modalities mostly through global image-level representations or treat them as largely redundant, leaving their fine-grained complementary structure underexploited. We propose CroCoMAE, a cross-modal SSL framework for SAR-optical remote sensing that unifies contrastive learning and masked image modeling within a ViT-based architecture, operating at two complementary levels. At the image level, an intra-modality contrastive loss on the class token yields globally discriminative, augmentation-invariant representations. At the patch level, masked image modeling drives fine-grained per-modality representations, while a cross-modal contrastive objective aligns a shared subspace across SAR and optical patch tokens, leaving the complementary subspace unconstrained to retain modality-specific information. On two SAR-optical benchmarks covering scene classification and semantic segmentation, CroCoMAE improves over uni-modal SSL baselines and outperforms state-of-the-art cross-modal frameworks in most configurations, with gains in both single-modality and multi-modal evaluation across varying label regimes and the largest improvements on semantic segmentation.",
-      "url": "https://arxiv.org/abs/2611.14124v1",
-      "pdf": "https://arxiv.org/pdf/2611.14124v1",
+      "title": "Predicting Ethanol Drinking Status from Nonhuman Primate Liver Histology: A Proof of Concept for Parameter-efficient Fine-tuning in Few-Shot Vision-Language Modeling",
+      "abstract": "Combining vision-language models (VLMs) with parameter-efficient fine-tuning (PEFT) offers a promising approach to few-shot whole-slide image (WSI) classification in computational pathology. This study evaluates this approach for predicting ethanol drinking status from nonhuman primate liver histology. Adapters are evaluated against non-PEFT configurations on a subset of the Monkey Alcohol Tissue Research Resource (MATRR). All evaluated PEFT configurations achieve higher mean balanced accuracy than the non-PEFT baselines. For example, in the four-shot setting, attention-based multiple instance learning (ABMIL) alone achieves 43.5% mean balanced accuracy, compared with 78.1% after adding an adapter. Qualitative attention analysis shows that textual pathway adaptations produce localized attention heatmaps, while visual pathway adaptations produce more diffuse ones. A pathologist's review identified similar histological features across adaptations.",
+      "url": "https://arxiv.org/abs/2611.17105v1",
+      "pdf": "https://arxiv.org/pdf/2611.17105v1",
       "categories": [
         "cs.CV",
-        "cs.LG"
+        "cs.AI"
       ],
       "authors": [
-        "Vito Recchia",
-        "Giuseppe Guarino",
-        "Cássio Fraga Dantas",
-        "Giuseppina Andresini",
-        "Annalisa Appice"
+        "Amirmohammad Mohammadi",
+        "Rupak Khadka",
+        "Kathleen A. Grant",
+        "Mary Lauren Benton",
+        "Joshua Peeples"
       ],
       "all_authors": [
-        "Vito Recchia",
-        "Giuseppe Guarino",
-        "Cássio Fraga Dantas",
-        "Giuseppina Andresini",
-        "Annalisa Appice",
-        "Dino Ienco"
+        "Amirmohammad Mohammadi",
+        "Rupak Khadka",
+        "Kathleen A. Grant",
+        "Mary Lauren Benton",
+        "Joshua Peeples"
       ],
       "affiliations": [
         {
-          "name": "Vito Recchia",
+          "name": "Amirmohammad Mohammadi",
           "affiliations": []
         },
         {
-          "name": "Giuseppe Guarino",
+          "name": "Rupak Khadka",
           "affiliations": []
         },
         {
-          "name": "Cássio Fraga Dantas",
+          "name": "Kathleen A. Grant",
           "affiliations": []
         },
         {
-          "name": "Giuseppina Andresini",
+          "name": "Mary Lauren Benton",
           "affiliations": []
         },
         {
-          "name": "Annalisa Appice",
-          "affiliations": []
-        },
-        {
-          "name": "Dino Ienco",
+          "name": "Joshua Peeples",
           "affiliations": []
         }
       ],
-      "published": "2026-11-10",
+      "published": "2026-11-12",
       "matched_topics": [
         "多模态"
       ],
       "priority": 1,
       "ai_summary": {
-        "problem": "SAR与光学遥感数据缺乏标注，现有跨模态自监督方法多在全局图像层面做对齐或将两模态视为冗余，未能充分利用其细粒度互补信息。",
-        "method": "提出CroCoMAE，在ViT架构下统一对比学习与掩码图像建模：图像层面对class token施加模态内对比损失获得全局判别性表示；块层面对各模态做掩码建模，并用跨模态对比目标对齐SAR与光学的共享子空间，同时保留不受约束的互补子空间。",
-        "result": "在两个SAR-光学基准（场景分类与语义分割）上，多数配置下优于单模态自监督基线和现有跨模态SOTA框架，且在不同标注量条件下均有提升，语义分割任务提升最大。",
-        "novelty": "在patch级别显式分离共享子空间与模态特有互补子空间，将对比学习与掩码建模统一到跨模态SAR-光学表示学习中。",
-        "relevance": "为多模态遥感自监督提供了一种兼顾模态一致性与互补性的细粒度对齐范式，对多传感器融合与标签稀缺场景下的表征学习有参考价值。",
-        "org": "未能从提供信息中识别（作者机构字段为空，推测为意大利高校，如巴里大学）",
-        "score": 6
+        "problem": "该论文研究能否利用视觉-语言模型结合参数高效微调，在少样本条件下从非人灵长类肝脏组织病理图像预测乙醇饮酒状态。",
+        "method": "研究在MATRR数据集子集上比较Adapter等PEFT配置与非PEFT基线，并采用ABMIL进行全切片图像分类；同时通过注意力图定性分析文本通路与视觉通路适配的差异。",
+        "result": "所有评估的PEFT配置平均平衡准确率均高于非PEFT基线；例如四样本设置下，ABMIL单独为43.5%，加入Adapter后提升至78.1%。注意力分析显示文本通路适配产生更局部化的热图，视觉通路适配更弥散，病理学家认为不同适配识别出的组织学特征相似。",
+        "novelty": "首次将参数高效微调视觉-语言模型用于少样本非人灵长类肝脏组织学预测乙醇饮酒状态，并比较不同适配通路的注意力行为。",
+        "relevance": "为计算病理学中的少样本全切片图像分类提供了PEFT-VLM的概念验证，并提示不同模态适配对模型注意力的影响。",
+        "org": "给定信息未提供作者机构，无法可靠识别",
+        "score": 4
       },
       "identified_orgs": []
     },
     {
-      "title": "BODYinTRANSIT-Lab: A Multimodal Dataset for Investigating Sensory-Driven Transformations in Body Perception and Affective Experiences",
-      "abstract": "Multimodal datasets that combine synchronised behavioural and physiological signals with subjective affective and body perception measures are still rare. This limits both the understanding of embodied experience and the development of computational models that infer subjective states from sensor data. We introduce BODYinTRANSIT-Lab, a multimodal dataset that addresses this gap by capturing affective, perceptual, and behavioural responses to the Footsteps Illusion. In this closed-loop paradigm, participants perform walking tasks while receiving real-time manipulated auditory feedback of their own footsteps intended to alter perceived body weight. The dataset comprises synchronised recordings from 101 participants recruited through systematic stratification by eating-disorder symptomatology and physical activity level. BODYinTRANSIT-Lab combines full-body kinematics with electromyography, electrocardiography, respiration, and electrodermal activity. Its annotations capture both immediate and post-trial experience, including within-trial perceived-weight ratings, post-trial assessments of body feelings and affective experience, 3D avatar body visualisations, and quantitative body maps. Psychological, behavioural, demographic, and social measures provide further information about factors that may influence individual responses. We provide a deep learning benchmark that uses walking kinematics to classify relative affective valence and perceived weight within subjects. On within-session, segment-level splits, the baseline model achieved mean balanced accuracies of 45.9% for affective valence and 44.5% for perceived weight. The BODYinTRANSIT-Lab dataset provides an experimentally controlled resource for cognitive neuroscience and affective computing research, with potential applications in affect-aware interactive systems, health and well-being technologies, and creative embodied experiences.",
-      "url": "https://arxiv.org/abs/2611.14093v1",
-      "pdf": "https://arxiv.org/pdf/2611.14093v1",
+      "title": "AgriSense: Vision-Language Decision Support and Robotic Intervention in a Virtual Greenhouse Copy title",
+      "abstract": "Autonomous greenhouse management increasingly requires robotic systems that integrate perception, navigation, environmental regulation, and plant-level intervention. This paper presents AgriSense, a framework combining an Isaac Sim virtual greenhouse, a quadruped mobile manipulator, RGB and LiDAR-inertial sensing, environmental control, and supervised vision-language decision support. Frozen DINOv2 and BERT encoders, together with structured environmental inputs, support joint prediction of twelve environmental references, a target zone, and an intervention flag. Checkpoint replay reproduces 41/43 zone decisions. Across five seeds on a source-grouped test set, the full, image-removed, and language-removed configurations each achieve 43/44 correct zone decisions, providing no evidence of incremental multimodal zone-accuracy improvement. The full model achieves mean absolute errors of 0.249 degrees C for temperature, 2.030 percentage points for humidity, and 0.997 percentage points for soil moisture. Sensor-only inputs match full-model zone accuracy, while language-only inputs achieve 68.64%. External real-image benchmarks reveal distribution-shift limitations. Five offline Point-LIO routes yield rigidly aligned trajectory errors of 5.22-17.32 mm. Of 40 virtual-arm targets, 32 satisfy geometric acceptance criteria and eight are rejected at boundaries. Six long-horizon climate cases and fault protocols characterize integration limits. Navigation and integrated treatment rely on simulator-state inputs; physical greenhouse performance and agronomic treatment efficacy remain unvalidated. The contribution is an evaluated decision-support and robotic-intervention framework for a virtual greenhouse.",
+      "url": "https://arxiv.org/abs/2611.16752v1",
+      "pdf": "https://arxiv.org/pdf/2611.16752v1",
       "categories": [
-        "cs.HC",
-        "cs.LG"
+        "cs.RO",
+        "cs.AI",
+        "cs.CV"
       ],
       "authors": [
-        "Mohammad Mahdi Dehshibi",
-        "Tomás Martínez Cortés",
-        "Amar D'Adamo",
-        "Daniel de la Prida",
-        "Luis-Antonio Azpicueta-Ruíz"
+        "Lyes Saad Saoud",
+        "Oualid Doukhi",
+        "Reza Ghorbani",
+        "Moussa Ayyash"
       ],
       "all_authors": [
-        "Mohammad Mahdi Dehshibi",
-        "Tomás Martínez Cortés",
-        "Amar D'Adamo",
-        "Daniel de la Prida",
-        "Luis-Antonio Azpicueta-Ruíz",
-        "Laia Turmo Vidal",
-        "Marte Roel Lesur",
-        "Joaquín R. Díaz-Durán",
-        "Alexander Väljamäe",
-        "Angel Sánchez",
-        "Temitayo Olugbade",
-        "Nadia Bianchi-Berthouze",
-        "Fernando Díaz-de-María",
-        "Ana Tajadura-Jiménez"
+        "Lyes Saad Saoud",
+        "Oualid Doukhi",
+        "Reza Ghorbani",
+        "Moussa Ayyash"
       ],
       "affiliations": [
         {
-          "name": "Mohammad Mahdi Dehshibi",
+          "name": "Lyes Saad Saoud",
           "affiliations": []
         },
         {
-          "name": "Tomás Martínez Cortés",
+          "name": "Oualid Doukhi",
           "affiliations": []
         },
         {
-          "name": "Amar D'Adamo",
+          "name": "Reza Ghorbani",
           "affiliations": []
         },
         {
-          "name": "Daniel de la Prida",
-          "affiliations": []
-        },
-        {
-          "name": "Luis-Antonio Azpicueta-Ruíz",
-          "affiliations": []
-        },
-        {
-          "name": "Laia Turmo Vidal",
-          "affiliations": []
-        },
-        {
-          "name": "Marte Roel Lesur",
-          "affiliations": []
-        },
-        {
-          "name": "Joaquín R. Díaz-Durán",
-          "affiliations": []
-        },
-        {
-          "name": "Alexander Väljamäe",
-          "affiliations": []
-        },
-        {
-          "name": "Angel Sánchez",
-          "affiliations": []
-        },
-        {
-          "name": "Temitayo Olugbade",
-          "affiliations": []
-        },
-        {
-          "name": "Nadia Bianchi-Berthouze",
-          "affiliations": []
-        },
-        {
-          "name": "Fernando Díaz-de-María",
-          "affiliations": []
-        },
-        {
-          "name": "Ana Tajadura-Jiménez",
+          "name": "Moussa Ayyash",
           "affiliations": []
         }
       ],
-      "published": "2026-11-10",
+      "published": "2026-11-12",
       "matched_topics": [
         "多模态"
       ],
       "priority": 1,
       "ai_summary": {
-        "problem": "现有数据集很少将同步的行为与生理信号同主观情感和身体感知测量结合起来，限制了对具身体验的理解以及从传感器数据推断主观状态的计算模型发展。",
-        "method": "论文构建了 BODYinTRANSIT-Lab 多模态数据集，围绕 Footsteps Illusion 闭环范式，让 101 名参与者在实时操纵自身脚步声听觉反馈的条件下完成行走任务，并同步采集全身运动学、肌电、心电、呼吸和皮肤电活动，同时记录试验内感知体重评分、试验后身体感受与情感体验、3D 化身身体可视化和定量身体图等标注。",
-        "result": "论文提供了一个使用行走运动学进行被试内情感效价和感知体重分类的深度学习基准；在会话内片段级划分下，基线模型对情感效价和感知体重的平均平衡准确率分别为 45.9% 和 44.5%。",
-        "novelty": "其创新在于构建了实验控制严格、同步多模态生理与行为信号并包含丰富主观身体感知和情感标注的闭环脚步声错觉数据集。",
-        "relevance": "该数据集可推动情感计算、认知神经科学以及从多模态传感信号推断主观具身状态的研究，并可用于情感感知交互系统、健康福祉技术和具身体验应用。",
-        "org": "未提供（作者机构字段为空）",
-        "score": 6
-      },
-      "identified_orgs": []
-    },
-    {
-      "title": "Sckwoky at SHROOM-Visions: Character-Level Hallucination-Span Detection in Image-Conditioned VLMs via Dual-Prompted LoRA Decoders",
-      "abstract": "We present our system for the SHROOM-visions 2026 shared task on character-level hallucination span detection in image-conditioned vision-language model (VLM) responses, evaluated across English, French, Italian, and Chinese. The detector is built on a frozen Gemma-4-12B-it backbone with trainable LoRA adapters (approximately 10.7M parameters). Because the backbone is a causal decoder, hidden states read from a single copy of an answer cannot attend to subsequent tokens; we therefore repeat the candidate answer within one prompt and extract features from its second occurrence, giving every position approximate bidirectional context in a single non-autoregressive pass. A character-level locator combines intermediate hidden states to predict hallucination probabilities, BIO boundaries, and a response-level abstention score, while separate language-specific classifiers assign one of five hallucination types to each predicted span. On the closed test set, our system reaches a macro-averaged character IoU of 0.4404, more than doubling the official baseline (0.1854), and ranks 5th-6th on IoU across the four languages. On the English tuning split, controlled ablations attribute a gain to the repeated answer that is comparable to that of LoRA adaptation (its held-out gain is smaller and concentrated on hallucinated answers), and they show that the detector relies on the image-answer pairing: shuffling images across examples drives IoU down to the level of the predict-nothing floor or below it in every language. In deployments where the same Gemma-4-12B-it model also generates answers, its base weights can be reused, making the approach practical for local question-answering systems that cannot run a separate verifier.",
-      "url": "https://arxiv.org/abs/2611.14100v1",
-      "pdf": "https://arxiv.org/pdf/2611.14100v1",
-      "categories": [
-        "cs.CL"
-      ],
-      "authors": [
-        "Mikhail Kulakov",
-        "Ruslan Solikhov",
-        "Ivan Bondarenko"
-      ],
-      "all_authors": [
-        "Mikhail Kulakov",
-        "Ruslan Solikhov",
-        "Ivan Bondarenko"
-      ],
-      "affiliations": [
-        {
-          "name": "Mikhail Kulakov",
-          "affiliations": [
-            "Novosibirsk State University"
-          ]
-        },
-        {
-          "name": "Ruslan Solikhov",
-          "affiliations": [
-            "Novosibirsk State University"
-          ]
-        },
-        {
-          "name": "Ivan Bondarenko",
-          "affiliations": [
-            "Novosibirsk State University"
-          ]
-        }
-      ],
-      "published": "2026-11-10",
-      "matched_topics": [
-        "多模态"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "该论文面向SHROOM-Visions 2026共享任务，解决图像条件视觉语言模型回答中字符级幻觉片段的检测问题，并覆盖英语、法语、意大利语和中文。",
-        "method": "系统以冻结的Gemma-4-12B-it为骨干，仅训练约10.7M参数的LoRA适配器；通过在单个提示中重复候选答案并从第二次出现处提取隐状态，使每个位置获得近似双向上下文。字符级定位器融合中间隐状态，联合预测幻觉概率、BIO边界和回答级弃权分数，并用语言特定分类器为每个预测片段分配五类幻觉类型。",
-        "result": "在封闭测试集上，系统取得0.4404的宏平均字符IoU，显著超过官方基线0.1854，在四种语言上的IoU排名约为第5至第6名。消融显示重复答案带来的增益与LoRA适配相当，且检测器依赖图像-答案配对，打乱图像会使IoU降至“全不预测”下限或更低。",
-        "novelty": "提出通过重复候选答案在因果解码器中实现单次非自回归的近似双向上下文，并结合LoRA多任务解码器完成字符级幻觉片段检测、类型分类与弃权判断。",
-        "relevance": "该工作为多语言VLM幻觉检测提供了可复用生成模型权重的实用方案，对本地问答系统中的轻量验证器部署有参考价值。",
-        "org": "新西伯利亚国立大学（Novosibirsk State University）",
-        "score": 5
+        "problem": "如何在虚拟温室中构建一个集感知、导航、环境调控与植株级干预于一体的机器人决策支持系统，并评估视觉-语言多模态融合是否真正带来增益。",
+        "method": "在 Isaac Sim 中搭建虚拟温室，使用四足移动机械臂与 RGB、LiDAR-惯性传感，采用冻结的 DINOv2 与 BERT 编码器结合结构化环境输入，联合预测 12 个环境参考值、目标区域和干预标志；通过消融（去图像、去语言、仅传感器）与离线 Point-LIO 轨迹、机械臂几何验收、长时序气候与故障协议进行评估。",
+        "result": "完整模型温度 MAE 为 0.249°C、湿度 2.030 个百分点、土壤湿度 0.997 个百分点；但完整、去图像、去语言三种配置在分组测试集上均为 43/44 区域决策正确，未能证明多模态带来增量收益，仅传感器输入已可匹敌完整模型，仅语言输入为 68.64%；真实图像基准显示存在分布偏移问题，所有验证均在仿真中完成，物理温室与农艺效果未经验证。",
+        "novelty": "在统一的虚拟温室平台中整合四足移动操作、多模态决策支持与机械臂干预，并以严谨消融给出多模态融合无增益的负向证据。",
+        "relevance": "为具身智能与机器人-视觉语言模型研究提供了仿真集成范式和诚实的负结果参考，但缺乏真实世界验证，实用价值有限。",
+        "org": "未能识别（作者机构信息未提供）",
+        "score": 4
       },
       "identified_orgs": []
     }
   ],
   "key_lab_papers": [
     {
-      "title": "OnlyAct: Extracting Action Representations from Foundation Models for World Models",
-      "abstract": "Video world models promise general-purpose interactive simulators, but their training is limited by action supervision: action labels are scarce, fragmented across incompatible specifications, and do not scale with the unlabeled video pretraining corpus. A common workaround jointly trains an action encoder to compress consecutive frames into a latent action and a decoder to reconstruct the next frame from the previous frame and that latent, forcing the latent to capture only new information. This has two limitations: learning the action space from scratch can limit generalization to unseen domains, and the bottleneck trades expressiveness for separation, with tighter settings losing nuance and looser ones risking scene leakage under domain shifts. We argue for a different starting point: rather than learning actions from scratch, we start from a pretrained foundation model (V-JEPA 2), whose embeddings of a frame pair already carry substantial action information after large-scale, diverse video pretraining. The remaining challenge is to extract the action while discarding the scene. We propose a label-free contrastive adaptation framework that pulls together frame pairs sharing the same motion under a different scene and pushes apart pairs from the same scene with different motion, reshaping the geometry of the pretrained space without imposing a reconstruction bottleneck. We introduce a unified evaluation protocol along three axes (action expressiveness, scene invariance, and action-conditioned video generation quality) across robot manipulation, camera navigation, game, and driving benchmarks, most of which are unseen during adaptation. Compared with annotation-free latent-action methods, our representations are substantially more expressive while matching their scene invariance, and they yield world models that transfer demonstrated actions to new scenes more faithfully.",
-      "url": "https://arxiv.org/abs/2611.14420v1",
-      "pdf": "https://arxiv.org/pdf/2611.14420v1",
+      "title": "Unbundling Multimodal Vision Encoding",
+      "abstract": "How multimodal language models should encode visual input remains up for debate. Most models use a pretrained vision encoder, while some recent recipes train the encoder from scratch with the language model or remove it entirely. Vision encoders bundle together three design choices: a visual prior from upstream pretraining, dedicated vision capacity, and pre-fusion placement of that capacity (i.e., before the multimodal backbone). Because published models also differ in data, architecture, and compute, comparing them cannot isolate the effect of each choice. We disentangle these choices via a controlled framework where we pretrain all models from scratch on common data and compare them on visual question answering and language benchmarks at matched lifetime compute. We find that the visual prior is not necessary; an encoder trained jointly from scratch is on par with a pretrained one, without a separate training stage. What matters instead is dedicated vision capacity: an encoder-free model trails on visual understanding even when its backbone is enlarged by the encoder's parameter count. Yet that capacity need not precede multimodal fusion, as vision-only modules added in-fusion to early backbone layers perform comparably to a pre-fusion encoder and can lower time to first token. These results also hold across backbone sizes, when encoder pretraining is treated as free, and when starting from a pretrained language model. Overall, our findings favor dedicated vision capacity trained jointly with the backbone and placed early within it.",
+      "url": "https://arxiv.org/abs/2611.17334v1",
+      "pdf": "https://arxiv.org/pdf/2611.17334v1",
       "categories": [
-        "cs.CV"
+        "cs.CV",
+        "cs.LG"
       ],
       "authors": [
-        "Runjia Li",
-        "Minghao Chen",
-        "Junyu Xie",
-        "Philip Torr",
-        "Andrea Vedaldi"
+        "Ellis Brown",
+        "Chris Hoang",
+        "Shengyi Qian",
+        "Shang-Wen Li",
+        "Mike Lewis"
       ],
       "all_authors": [
-        "Runjia Li",
-        "Minghao Chen",
-        "Junyu Xie",
-        "Philip Torr",
-        "Andrea Vedaldi",
-        "Tomas Jakab"
+        "Ellis Brown",
+        "Chris Hoang",
+        "Shengyi Qian",
+        "Shang-Wen Li",
+        "Mike Lewis",
+        "Marjan Ghazvininejad",
+        "Luke Zettlemoyer",
+        "Lucas Beyer",
+        "Mengye Ren",
+        "Jakob Verbeek",
+        "Saining Xie",
+        "Hu Xu"
       ],
       "affiliations": [
         {
-          "name": "Runjia Li",
+          "name": "Ellis Brown",
           "affiliations": []
         },
         {
-          "name": "Minghao Chen",
+          "name": "Chris Hoang",
           "affiliations": []
         },
         {
-          "name": "Junyu Xie",
+          "name": "Shengyi Qian",
           "affiliations": []
         },
         {
-          "name": "Philip Torr",
+          "name": "Shang-Wen Li",
           "affiliations": []
         },
         {
-          "name": "Andrea Vedaldi",
+          "name": "Mike Lewis",
           "affiliations": []
         },
         {
-          "name": "Tomas Jakab",
+          "name": "Marjan Ghazvininejad",
+          "affiliations": []
+        },
+        {
+          "name": "Luke Zettlemoyer",
+          "affiliations": []
+        },
+        {
+          "name": "Lucas Beyer",
+          "affiliations": []
+        },
+        {
+          "name": "Mengye Ren",
+          "affiliations": []
+        },
+        {
+          "name": "Jakob Verbeek",
+          "affiliations": []
+        },
+        {
+          "name": "Saining Xie",
+          "affiliations": []
+        },
+        {
+          "name": "Hu Xu",
           "affiliations": []
         }
       ],
-      "published": "2026-11-10",
+      "published": "2026-11-12",
       "matched_topics": [
-        "世界模型",
-        "大模型"
+        "多模态"
       ],
       "priority": 1,
       "ai_summary": {
-        "problem": "视频世界模型的训练依赖动作标注，但动作标签稀缺、规格不统一且无法随无标注视频语料扩展；现有从零学习隐动作的方法受重建瓶颈限制，在泛化性以及表达力与场景分离的权衡上存在不足。",
-        "method": "论文不从零学习动作，而是以预训练基础模型 V-JEPA 2 为起点，利用其帧对嵌入已蕴含的动作信息。提出一种无标签的对比适配框架：将不同场景下相同运动的帧对拉近，将同一场景下不同运动的帧对推远，在不引入重建瓶颈的情况下重塑预训练嵌入空间的几何结构。同时提出涵盖动作表达力、场景不变性和动作条件视频生成质量三个维度的统一评测协议。",
-        "result": "在机器人操作、相机导航、游戏和驾驶等多个基准（多数在适配时未见）上，该方法比无需标注的隐动作方法表达力显著更强，同时保持相当的场景不变性，且所构建的世界模型能更忠实地将演示动作迁移到新场景。",
-        "novelty": "首次提出从预训练视频基础模型的嵌入中通过无标签对比适配“提取”动作、丢弃场景，绕开传统隐动作学习的重建瓶颈。",
-        "relevance": "为世界模型提供了一种可扩展、无需动作标注的动作表征学习范式，有助于利用海量无标注视频提升世界模型的交互与迁移能力。",
-        "org": "牛津大学（VGG组，Philip Torr、Andrea Vedaldi），可能合作 Meta AI",
+        "problem": "多模态语言模型应如何编码视觉输入仍无定论，已有模型在视觉先验、专用视觉容量和融合前放置等设计上相互纠缠，难以隔离各自影响。",
+        "method": "作者提出一个受控实验框架，在相同数据和匹配的总训练计算下从零预训练所有模型，并在视觉问答与语言基准上比较不同设计选择，同时覆盖不同骨干规模、将编码器预训练视为免费以及从预训练语言模型初始化等设定。",
+        "result": "实验发现预训练视觉先验并非必要，从零联合训练的编码器可与预训练编码器相当；真正关键的是专用视觉容量，而无编码器模型即使扩大骨干参数量仍在视觉理解上落后；该容量不必置于多模态融合之前，早期骨干层内融合的纯视觉模块表现相当并可降低首 token 延迟。",
+        "novelty": "通过受控框架解耦并分别检验视觉先验、专用视觉容量和融合前放置这三个常被混在一起的设计选择。",
+        "relevance": "为多模态模型视觉编码架构提供了可操作的实证指导，支持将专用视觉容量与骨干联合训练并早期置于骨干内部。",
+        "org": "Meta AI（FAIR）",
         "score": 8
       },
       "identified_orgs": [
@@ -1490,42 +1692,116 @@
       ],
       "contact_info": {
         "emails_found": [],
+        "ai_extracted": null
+      }
+    },
+    {
+      "title": "Reins: Frontier Multimodal Models Driving Real Robot Arms on Long-Horizon Tasks, Zero-Shot",
+      "abstract": "Frontier models such as GPT-6.1 Sol, GPT-6 Astra and Claude Opus 5.5 can now plan and call tools, yet they still struggle to drive real robots through long-horizon, contact-rich manipulation, blind while the arm moves and while they think. We present Reins, a harness in which an off-the-shelf model operates a dual-arm robot with 3D perception tools and atomic actions that report contact and grip. The model chains actions in one call, each with a condition that must hold, stopping at the first that fails; a second instance, the narrator, watches the cameras continuously and reports what changed with every result. From images, Reins also builds a simulation-ready twin of the scene for continual policy learning. With natural-language prompts and no task-specific code, GPT-6.1 Sol succeeds in 88% of real episodes on five tasks; without the harness, it fails every shell game, taking 8 times as long. Three frontier models perform alike but differ in tracking a scene that changes while the actor thinks. Code will be released upon publication.",
+      "url": "https://arxiv.org/abs/2611.16632v1",
+      "pdf": "https://arxiv.org/pdf/2611.16632v1",
+      "categories": [
+        "cs.RO"
+      ],
+      "authors": [
+        "Pengfei Ye",
+        "Zhiyang Dou",
+        "Yuxiang Ma",
+        "Haonan Chen",
+        "Heng Yang"
+      ],
+      "all_authors": [
+        "Pengfei Ye",
+        "Zhiyang Dou",
+        "Yuxiang Ma",
+        "Haonan Chen",
+        "Heng Yang",
+        "Edward H. Adelson"
+      ],
+      "affiliations": [
+        {
+          "name": "Pengfei Ye",
+          "affiliations": []
+        },
+        {
+          "name": "Zhiyang Dou",
+          "affiliations": []
+        },
+        {
+          "name": "Yuxiang Ma",
+          "affiliations": []
+        },
+        {
+          "name": "Haonan Chen",
+          "affiliations": []
+        },
+        {
+          "name": "Heng Yang",
+          "affiliations": []
+        },
+        {
+          "name": "Edward H. Adelson",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-12",
+      "matched_topics": [
+        "多模态",
+        "大模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "前沿多模态大模型虽能规划和调用工具，却难以零样本驱动真实机械臂完成长时程、富接触的操作任务；而且机械臂运动时以及模型思考时都处于“盲”状态，缺乏对场景变化的持续感知与失败反馈。",
+        "method": "提出 Reins：一种把现成前沿模型与双臂机器人结合的执行框架，为模型提供 3D 感知工具，以及能回报接触与抓取状态的原子动作；模型在一次调用中串联多个带前置条件的动作，一旦某条件不满足即停止，并由第二个模型实例（narrator，旁白）持续观看摄像头，报告每个结果带来的场景变化；此外，Reins 可从图像构建可仿真的场景数字孪生，用于持续的策略学习。",
+        "result": "在无需任务专用代码、仅用自然语言提示的情况下，GPT-6.1 Sol 在五个真实任务的实机实验中成功率达 88%；去掉该框架后，它在所有 shell game 任务上均失败，且耗时增至 8 倍。三个前沿模型整体表现相近，但在“执行者思考期间场景发生变化”的跟踪能力上存在差异。",
+        "novelty": "用一个“动作-前置条件链 + 持续旁白反馈 + 自动构建仿真孪生”的 harness，把通用前沿模型零样本变成可靠的真实机器人长时程操作控制器。",
+        "relevance": "证明了通用多模态大模型无需专门训练即可通过合适的执行框架操控真实机器人，为通用具身智能体和长时程机器人任务提供了可复用的系统范式。",
+        "org": "未提供（作者机构信息缺失）",
+        "score": 7
+      },
+      "identified_orgs": [
+        "Anthropic"
+      ],
+      "contact_info": {
+        "emails_found": [
+          "pfy712@mit.edu"
+        ],
         "ai_extracted": {
           "contacts": [
             {
-              "name": "Runjia Li",
-              "email": "",
-              "affiliation": "University of Oxford",
+              "name": "Pengfei Ye",
+              "email": "pfy712@mit.edu",
+              "affiliation": "MIT CSAIL",
               "role": "第一作者"
             },
             {
-              "name": "Minghao Chen",
+              "name": "Zhiyang Dou",
               "email": "",
-              "affiliation": "University of Oxford",
+              "affiliation": "MIT CSAIL",
               "role": ""
             },
             {
-              "name": "Junyu Xie",
+              "name": "Yuxiang Ma",
               "email": "",
-              "affiliation": "University of Oxford",
+              "affiliation": "MIT CSAIL",
               "role": ""
             },
             {
-              "name": "Philip Torr",
+              "name": "Haonan Chen",
               "email": "",
-              "affiliation": "University of Oxford",
+              "affiliation": "Harvard University",
               "role": ""
             },
             {
-              "name": "Andrea Vedaldi",
+              "name": "Heng Yang",
               "email": "",
-              "affiliation": "University of Oxford",
+              "affiliation": "Harvard University",
               "role": ""
             },
             {
-              "name": "Tomas Jakab",
+              "name": "Edward H. Adelson",
               "email": "",
-              "affiliation": "University of Oxford",
+              "affiliation": "MIT CSAIL",
               "role": ""
             }
           ],
@@ -1539,98 +1815,130 @@
       "org": "Meta",
       "count": 1,
       "topics": {
-        "世界模型": 1,
+        "多模态": 1
+      },
+      "papers": [
+        {
+          "title": "Unbundling Multimodal Vision Encoding",
+          "url": "https://arxiv.org/abs/2611.17334v1",
+          "score": 8
+        }
+      ]
+    },
+    {
+      "org": "Anthropic",
+      "count": 1,
+      "topics": {
+        "多模态": 1,
         "大模型": 1
       },
       "papers": [
         {
-          "title": "OnlyAct: Extracting Action Representations from Foundation Models for World Models",
-          "url": "https://arxiv.org/abs/2611.14420v1",
-          "score": 8
+          "title": "Reins: Frontier Multimodal Models Driving Real Robot Arms on Long-Horizon Tasks, Zero-Shot",
+          "url": "https://arxiv.org/abs/2611.16632v1",
+          "score": 7
         }
       ]
     }
   ],
   "contacts": [
     {
-      "paper_title": "Emergent Biological Capabilities in a Foundation Model for Molecular Interactions",
-      "paper_url": "https://arxiv.org/abs/2611.14504v1",
-      "paper_score": 9,
-      "topics": [
-        "多模态",
-        "大模型"
-      ],
-      "orgs": [],
-      "is_key_lab": false,
-      "emails": [
-        "adi@outputlabs.ai"
-      ],
-      "contacts": [
-        {
-          "name": "Adi Mashiach",
-          "email": "adi@outputlabs.ai",
-          "affiliation": "Output Labs",
-          "role": "第一作者"
-        }
-      ],
-      "corresponding_author": ""
-    },
-    {
-      "paper_title": "OnlyAct: Extracting Action Representations from Foundation Models for World Models",
-      "paper_url": "https://arxiv.org/abs/2611.14420v1",
+      "paper_title": "Unbundling Multimodal Vision Encoding",
+      "paper_url": "https://arxiv.org/abs/2611.17334v1",
       "paper_score": 8,
       "topics": [
-        "世界模型",
-        "大模型"
+        "多模态"
       ],
       "orgs": [
         "Meta"
       ],
       "is_key_lab": true,
       "emails": [],
+      "contacts": [],
+      "corresponding_author": ""
+    },
+    {
+      "paper_title": "Asymmetric Multimodal Learning with Decomposed JEPAs",
+      "paper_url": "https://arxiv.org/abs/2611.16639v1",
+      "paper_score": 8,
+      "topics": [
+        "多模态"
+      ],
+      "orgs": [],
+      "is_key_lab": false,
+      "emails": [
+        "yusufshihata2006@gmail.com"
+      ],
       "contacts": [
         {
-          "name": "Runjia Li",
-          "email": "",
-          "affiliation": "University of Oxford",
+          "name": "Yusuf Shihata",
+          "email": "yusufshihata2006@gmail.com",
+          "affiliation": "",
+          "role": "第一作者（唯一作者）"
+        }
+      ],
+      "corresponding_author": ""
+    },
+    {
+      "paper_title": "Spatial Foundry: A Multimodal Dataset for Spatial Intelligence",
+      "paper_url": "https://arxiv.org/abs/2611.17318v1",
+      "paper_score": 7,
+      "topics": [
+        "世界模型",
+        "多模态"
+      ],
+      "orgs": [],
+      "is_key_lab": false,
+      "emails": [
+        "support@ranolabs.com"
+      ],
+      "contacts": [
+        {
+          "name": "Ethan Lin",
+          "email": "support@ranolabs.com",
+          "affiliation": "Ranolabs",
           "role": "第一作者"
         },
         {
-          "name": "Minghao Chen",
-          "email": "",
-          "affiliation": "University of Oxford",
-          "role": ""
-        },
-        {
-          "name": "Junyu Xie",
-          "email": "",
-          "affiliation": "University of Oxford",
-          "role": ""
-        },
-        {
-          "name": "Philip Torr",
-          "email": "",
-          "affiliation": "University of Oxford",
-          "role": ""
-        },
-        {
-          "name": "Andrea Vedaldi",
-          "email": "",
-          "affiliation": "University of Oxford",
-          "role": ""
-        },
-        {
-          "name": "Tomas Jakab",
-          "email": "",
-          "affiliation": "University of Oxford",
+          "name": "Yang Song",
+          "email": "support@ranolabs.com",
+          "affiliation": "Ranolabs",
           "role": ""
         }
       ],
       "corresponding_author": ""
     },
     {
-      "paper_title": "Is Your Robot's Memory Just a Clock? Temporal Shortcuts in Memory-Augmented VLA Policies",
-      "paper_url": "https://arxiv.org/abs/2611.14488v1",
+      "paper_title": "XBot-Omni: An Omni-Modal Model for Embodied Understanding and Interaction",
+      "paper_url": "https://arxiv.org/abs/2611.17160v1",
+      "paper_score": 7,
+      "topics": [
+        "多模态",
+        "具身智能"
+      ],
+      "orgs": [],
+      "is_key_lab": false,
+      "emails": [],
+      "contacts": [],
+      "corresponding_author": ""
+    },
+    {
+      "paper_title": "From Foundation VLM to Versatile Driving VLM: A Triplet Incremental Training Approach",
+      "paper_url": "https://arxiv.org/abs/2611.16727v1",
+      "paper_score": 7,
+      "topics": [
+        "多模态",
+        "大模型"
+      ],
+      "orgs": [],
+      "is_key_lab": false,
+      "emails": [],
+      "contacts": [],
+      "corresponding_author": ""
+    },
+    {
+      "paper_title": "NSDL: Neuro-Symbolic Division of Labor for Multi-Robot Task Planning",
+      "paper_url": "https://arxiv.org/abs/2611.16671v1",
       "paper_score": 7,
       "topics": [
         "多模态"
@@ -1638,43 +1946,39 @@
       "orgs": [],
       "is_key_lab": false,
       "emails": [
-        "chubinzhang23@gmail.com"
+        "zhu@zju.edu.cn"
       ],
       "contacts": [
         {
-          "name": "Chubin Zhang",
-          "email": "chubinzhang23@gmail.com",
-          "affiliation": "Nanyang Technological University",
+          "name": "Xincheng Tan",
+          "email": "",
+          "affiliation": "",
           "role": "第一作者"
         },
         {
-          "name": "Bo An",
+          "name": "Ke Wang",
           "email": "",
-          "affiliation": "Nanyang Technological University",
-          "role": "通讯作者"
+          "affiliation": "",
+          "role": ""
+        },
+        {
+          "name": "Yining Di",
+          "email": "",
+          "affiliation": "",
+          "role": ""
+        },
+        {
+          "name": "Minfeng Zhu",
+          "email": "",
+          "affiliation": "",
+          "role": ""
         }
       ],
-      "corresponding_author": "Bo An"
-    },
-    {
-      "paper_title": "Evaluating LLM-Generated World Models for Neuro-Symbolic Reasoning",
-      "paper_url": "https://arxiv.org/abs/2611.14419v1",
-      "paper_score": 7,
-      "topics": [
-        "世界模型",
-        "大模型"
-      ],
-      "orgs": [],
-      "is_key_lab": false,
-      "emails": [
-        "heitzig@pik-potsdam.de"
-      ],
-      "contacts": [],
       "corresponding_author": ""
     },
     {
-      "paper_title": "An Energy-Based Perspective on Machine Learning",
-      "paper_url": "https://arxiv.org/abs/2611.14383v1",
+      "paper_title": "Rethinking Actions: Continuity-Aware Priors for World-Model Planning",
+      "paper_url": "https://arxiv.org/abs/2611.16645v1",
       "paper_score": 7,
       "topics": [
         "世界模型"
@@ -1682,148 +1986,122 @@
       "orgs": [],
       "is_key_lab": false,
       "emails": [
-        "ydu@seas.harvard.edu",
-        "bodai@cc.gatech.edu"
+        "chashi.yq@antgroup.com"
       ],
       "contacts": [
         {
-          "name": "Bo Dai",
-          "email": "bodai@cc.gatech.edu",
-          "affiliation": "Georgia Institute of Technology",
+          "name": "Shaobo Yang",
+          "email": "yangshaobo@bupt.edu.cn",
+          "affiliation": "Beijing University of Posts and Telecommunications",
+          "role": "共同第一作者（Equal contribution）"
+        },
+        {
+          "name": "Zichen Ai",
+          "email": "aizichen@bupt.edu.cn",
+          "affiliation": "Beijing University of Posts and Telecommunications",
+          "role": "共同第一作者（Equal contribution）"
+        },
+        {
+          "name": "Ziyang Ma",
+          "email": "maziyang@bupt.edu.cn",
+          "affiliation": "Beijing University of Posts and Telecommunications",
+          "role": "共同第一作者（Equal contribution）"
+        },
+        {
+          "name": "Qian Yang",
+          "email": "chashi.yq@antgroup.com",
+          "affiliation": "Alibaba Group",
+          "role": "共同第一作者（Equal contribution）"
+        },
+        {
+          "name": "Bin Fang",
+          "email": "fangbin1120@bupt.edu.cn",
+          "affiliation": "Beijing University of Posts and Telecommunications",
+          "role": "通讯作者（Corresponding author）"
+        }
+      ],
+      "corresponding_author": "Bin Fang"
+    },
+    {
+      "paper_title": "Reins: Frontier Multimodal Models Driving Real Robot Arms on Long-Horizon Tasks, Zero-Shot",
+      "paper_url": "https://arxiv.org/abs/2611.16632v1",
+      "paper_score": 7,
+      "topics": [
+        "多模态",
+        "大模型"
+      ],
+      "orgs": [
+        "Anthropic"
+      ],
+      "is_key_lab": true,
+      "emails": [
+        "pfy712@mit.edu"
+      ],
+      "contacts": [
+        {
+          "name": "Pengfei Ye",
+          "email": "pfy712@mit.edu",
+          "affiliation": "MIT CSAIL",
           "role": "第一作者"
         },
         {
-          "name": "Yilun Du",
-          "email": "ydu@seas.harvard.edu",
+          "name": "Zhiyang Dou",
+          "email": "",
+          "affiliation": "MIT CSAIL",
+          "role": ""
+        },
+        {
+          "name": "Yuxiang Ma",
+          "email": "",
+          "affiliation": "MIT CSAIL",
+          "role": ""
+        },
+        {
+          "name": "Haonan Chen",
+          "email": "",
           "affiliation": "Harvard University",
           "role": ""
-        }
-      ],
-      "corresponding_author": ""
-    },
-    {
-      "paper_title": "What Factors Matter for Collection-Level Counting with Human-AI Collaboration?",
-      "paper_url": "https://arxiv.org/abs/2611.14380v1",
-      "paper_score": 7,
-      "topics": [
-        "多模态"
-      ],
-      "orgs": [],
-      "is_key_lab": false,
-      "emails": [
-        "omartin9@uwyo.edu",
-        "bkoger@uwyo.edu",
-        "lclawrence@umass.edu",
-        "seoyunjeong@umass.edu",
-        "sheldon@cs.umass.edu",
-        "smaji@umass.edu"
-      ],
-      "contacts": [
-        {
-          "name": "Seoyun Jeong",
-          "email": "seoyunjeong@umass.edu",
-          "affiliation": "University of Massachusetts Amherst",
-          "role": "第一作者"
         },
         {
-          "name": "Logan Lawrence",
-          "email": "lclawrence@umass.edu",
-          "affiliation": "University of Massachusetts Amherst",
-          "role": "作者"
-        },
-        {
-          "name": "Owen L. Martin",
-          "email": "omartin9@uwyo.edu",
-          "affiliation": "University of Wyoming",
-          "role": "作者"
-        },
-        {
-          "name": "Benjamin Koger",
-          "email": "bkoger@uwyo.edu",
-          "affiliation": "University of Wyoming",
-          "role": "作者"
-        },
-        {
-          "name": "Daniel Sheldon",
-          "email": "sheldon@cs.umass.edu",
-          "affiliation": "University of Massachusetts Amherst",
-          "role": "作者"
-        },
-        {
-          "name": "Subhransu Maji",
-          "email": "smaji@umass.edu",
-          "affiliation": "University of Massachusetts Amherst",
-          "role": "作者"
-        }
-      ],
-      "corresponding_author": ""
-    },
-    {
-      "paper_title": "Multimodal Abstention That Preserves Acquired Correct Answers",
-      "paper_url": "https://arxiv.org/abs/2611.14311v1",
-      "paper_score": 7,
-      "topics": [
-        "多模态"
-      ],
-      "orgs": [],
-      "is_key_lab": false,
-      "emails": [
-        "202621116012480@stu.hubu.edu.cn"
-      ],
-      "contacts": [
-        {
-          "name": "Jinyuan Zhang",
-          "email": "202621116012480@stu.hubu.edu.cn",
-          "affiliation": "湖北大学",
-          "role": "第一作者"
-        }
-      ],
-      "corresponding_author": ""
-    },
-    {
-      "paper_title": "GARD: Gradient-Guided Adversarial Representation Defense against Backdoors in Multimodal Contrastive Learning Models",
-      "paper_url": "https://arxiv.org/abs/2611.14143v1",
-      "paper_score": 7,
-      "topics": [
-        "多模态"
-      ],
-      "orgs": [],
-      "is_key_lab": false,
-      "emails": [
-        "songzeli@seu.edu.cn",
-        "yuhongwang@seu.edu.cn"
-      ],
-      "contacts": [
-        {
-          "name": "Yuhong Wang",
-          "email": "yuhongwang@seu.edu.cn",
-          "affiliation": "Southeast University",
-          "role": "第一作者"
-        },
-        {
-          "name": "Yujun Cai",
+          "name": "Heng Yang",
           "email": "",
-          "affiliation": "Southeast University",
+          "affiliation": "Harvard University",
           "role": ""
         },
         {
-          "name": "Lei Feng",
+          "name": "Edward H. Adelson",
           "email": "",
-          "affiliation": "Southeast University",
+          "affiliation": "MIT CSAIL",
           "role": ""
-        },
-        {
-          "name": "Songze Li",
-          "email": "songzeli@seu.edu.cn",
-          "affiliation": "Southeast University",
-          "role": "通讯作者"
         }
       ],
-      "corresponding_author": "Songze Li"
+      "corresponding_author": ""
     },
     {
-      "paper_title": "Hx2Dx: From Anamnesis to Diagnosis - A Multimodal Arena for Conversational Clinical Reasoning in LLMs",
-      "paper_url": "https://arxiv.org/abs/2611.14122v1",
+      "paper_title": "Safety as a Budget: Calibrating the Control Channel of Constrained GRPO for Vision-Language Models",
+      "paper_url": "https://arxiv.org/abs/2611.16628v1",
+      "paper_score": 7,
+      "topics": [
+        "多模态"
+      ],
+      "orgs": [],
+      "is_key_lab": false,
+      "emails": [
+        "hanb2025@lzu.edu.cn"
+      ],
+      "contacts": [
+        {
+          "name": "Bo Han",
+          "email": "hanb2025@lzu.edu.cn",
+          "affiliation": "Lanzhou University",
+          "role": "第一作者"
+        }
+      ],
+      "corresponding_author": ""
+    },
+    {
+      "paper_title": "STVLA: Spatial-aware and Temporal-memory forVision-Language-Action Models",
+      "paper_url": "https://arxiv.org/abs/2611.16589v1",
       "paper_score": 7,
       "topics": [
         "多模态",
@@ -1831,97 +2109,84 @@
       ],
       "orgs": [],
       "is_key_lab": false,
-      "emails": [
-        "federico.ravenda@usi.ch"
-      ],
+      "emails": [],
       "contacts": [
         {
-          "name": "Federico Ravenda",
-          "email": "federico.ravenda@usi.ch",
-          "affiliation": "REMEDI Lab, Università della Svizzera italiana, Lugano, Switzerland",
-          "role": "第一作者、通讯作者"
-        },
-        {
-          "name": "Mirko Cesarini",
+          "name": "Zhuo Han",
           "email": "",
-          "affiliation": "Department of Statistics and Quantitative Methods, University of Milano-Bicocca, Milan, Italy",
-          "role": "作者"
-        },
-        {
-          "name": "Daniele Montagnani",
-          "email": "",
-          "affiliation": "REMEDI Lab, Università della Svizzera italiana, Lugano, Switzerland; Department of Mathematics, Pavia University, Pavia, Italy",
-          "role": "作者"
-        },
-        {
-          "name": "Volodymyr Karpenko",
-          "email": "",
-          "affiliation": "REMEDI Lab, Università della Svizzera italiana, Lugano, Switzerland",
-          "role": "作者"
-        },
-        {
-          "name": "Antonietta Mira",
-          "email": "",
-          "affiliation": "REMEDI Lab, Università della Svizzera italiana, Lugano, Switzerland; Department of Science and High Technology, Insubria University, Como, Italy",
-          "role": "作者（共同监督）"
-        },
-        {
-          "name": "Andrea Raballo",
-          "email": "",
-          "affiliation": "REMEDI Lab, Università della Svizzera italiana, Lugano, Switzerland; Cantonal Sociopsychiatric Organisation, Public Health Division, Department of Health and Social Care, Repubblica e Cantone Ticino, Mendrisio, Switzerland",
-          "role": "作者（共同监督）"
-        }
-      ],
-      "corresponding_author": "Federico Ravenda"
-    },
-    {
-      "paper_title": "TAMEing the Open-World Personalization: Towards Open-Set Personalized MLLM Assistant",
-      "paper_url": "https://arxiv.org/abs/2611.14118v1",
-      "paper_score": 7,
-      "topics": [
-        "多模态",
-        "大模型"
-      ],
-      "orgs": [],
-      "is_key_lab": false,
-      "emails": [
-        "zhongting@uestc.edu.cn"
-      ],
-      "contacts": [
-        {
-          "name": "Rongpei Hong",
-          "email": "",
-          "affiliation": "University of Electronic Science and Technology of China",
+          "affiliation": "AgiBot",
           "role": "第一作者"
         },
         {
-          "name": "Jian Lang",
+          "name": "Yeqiang Wang",
           "email": "",
-          "affiliation": "University of Electronic Science and Technology of China",
-          "role": "作者"
+          "affiliation": "AgiBot",
+          "role": ""
         },
         {
-          "name": "Ting Zhong",
+          "name": "Xinran Wang",
           "email": "",
-          "affiliation": "University of Electronic Science and Technology of China",
+          "affiliation": "AgiBot",
+          "role": ""
+        },
+        {
+          "name": "Hongwei Han",
+          "email": "",
+          "affiliation": "AgiBot",
+          "role": ""
+        },
+        {
+          "name": "Yi Xiong",
+          "email": "",
+          "affiliation": "AgiBot",
+          "role": ""
+        },
+        {
+          "name": "Zunian Wan",
+          "email": "",
+          "affiliation": "AgiBot",
+          "role": ""
+        },
+        {
+          "name": "Jianbo Mao",
+          "email": "",
+          "affiliation": "AgiBot",
+          "role": ""
+        },
+        {
+          "name": "Huan Peng",
+          "email": "",
+          "affiliation": "AgiBot",
+          "role": ""
+        },
+        {
+          "name": "Yongcheng Liu",
+          "email": "",
+          "affiliation": "AgiBot",
+          "role": ""
+        },
+        {
+          "name": "Wei Shan",
+          "email": "",
+          "affiliation": "AgiBot",
+          "role": ""
+        },
+        {
+          "name": "Maoqing Yao",
+          "email": "",
+          "affiliation": "AgiBot",
           "role": "通讯作者"
-        },
-        {
-          "name": "Fan Zhou",
-          "email": "",
-          "affiliation": "University of Electronic Science and Technology of China; Intelligent Digital Media Technology Key Laboratory of Sichuan Province",
-          "role": "作者"
         }
       ],
-      "corresponding_author": "Ting Zhong"
+      "corresponding_author": "Maoqing Yao"
     }
   ],
   "daily_insight": {
-    "hot_topics": "今日论文明显由多模态主导，覆盖VLA记忆、开放集个性化、临床问诊、深度伪造检测与多模态智能体等评测和可靠性问题。世界模型与基础模型能力边界成为另一主线，包括从视频模型提取动作表征、LLM世界模型的结构忠实性以及分子基础模型的零样本生物能力涌现。整体趋势从“堆能力”转向“可执行性、鲁棒性、可解释性和人机协同”的系统评估。",
-    "lab_overlap": "大厂论文仅见Meta 1篇，聚焦从预训练视频基础模型无标签提取动作表征以服务世界模型，属于世界模型/动作抽象方向。其他大厂今日无论文入榜，因此不存在同方向论文重合，也暂无可比较的方法竞争关系。",
-    "signals": "值得关注：多模态论文量在筛选中占比显著偏高，且多集中在VLA记忆捷径、后门防御、弃答无回归、幻觉片段检测等可靠性与评测；Meta的动作表征提取显示世界模型路线正从隐动作重建转向无标签对比适配；分子基础模型的涌现能力突变提示仅靠损失缩放律难以预测能力边界。",
+    "hot_topics": "今日20篇论文中17篇标注多模态，核心趋势是从“模态对齐”走向“多模态能力的解耦与结构化分解”：Meta解耦视觉编码设计变量，JEPA类工作拆分共享与私有信息，VLM被注入3D几何先验。同时多模态与具身智能、机器人长时程操作和世界模型规划的交叉明显升温，安全侧出现VLM提示注入的新失效模式研究。",
+    "lab_overlap": "Meta与Anthropic均只发1篇且同属多模态，但方向不重叠：Meta聚焦视觉编码器的受控解耦分析，属理解侧的基础架构归因研究；Anthropic的Reins则把前沿多模态模型零样本用于真实机械臂长时程操作，属具身控制侧的系统harness工程。二者是互补关系——前者提供编码设计准则，后者验证通用模型的下游控制可靠性，暂无直接方法竞争。",
+    "signals": "三个信号：一是JEPA/自监督范式外溢，被同时用于非对称多模态学习和视频质量评估；二是VLA与空间-时序记忆成为密集创新点（STVLA、XBot-Omni、Reins），显示通用前沿模型零样本接管机器人控制正在成为新路线；三是出现明确负向证据（AgriSense报告多模态融合无增益）和尺度诱导语义漂移（SISS）等安全失效模式，提示多模态融合的收益边界与攻击面正被系统审视。",
     "overlap_labs": [],
-    "overlap_topic": "无"
+    "overlap_topic": "无大厂方向重合（Meta偏视觉编码解耦分析，Anthropic偏具身长时程控制）"
   },
   "key_labs_list": [
     "Google",
