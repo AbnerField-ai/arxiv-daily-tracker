@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 论文日报 - 2026-11-24</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
+            background: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* ====== 页头 ====== */
+        .page-header {
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .page-header h1 {
+            font-size: 1.8em;
+            color: #1a1a2e;
+            margin-bottom: 6px;
+        }
+        .page-header .meta {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .stats {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+        .stat {
+            background: #f8f9fa;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.82em;
+            color: #555;
+        }
+
+        /* ====== 导航 ====== */
+        .nav-bar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 10px 20px;
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .nav-bar a {
+            text-decoration: none;
+            font-size: 0.85em;
+            padding: 5px 14px;
+            border-radius: 16px;
+            color: #555;
+            background: #f3f4f6;
+            transition: all 0.2s;
+        }
+        .nav-bar a:hover { background: #4a6cf7; color: white; }
+        .nav-bar a.nav-labs { background: #1e293b; color: #94a3b8; }
+        .nav-bar a.nav-labs:hover { background: #334155; color: white; }
+
+        /* ====== 板块4: 趋势总结 ====== */
+        .section-insight {
+            max-width: 900px;
+            margin: 24px auto;
+            padding: 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            color: white;
+        }
+        .insight-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .insight-header h2 {
+            font-size: 1.3em;
+        }
+        .insight-date {
+            opacity: 0.8;
+            font-size: 0.85em;
+        }
+        .insight-body {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .insight-item {
+            background: rgba(255,255,255,0.12);
+            border-radius: 10px;
+            padding: 14px 16px;
+        }
+        .insight-item.highlight {
+            background: rgba(255,255,255,0.22);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        .insight-label {
+            font-size: 0.78em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.8;
+            margin-bottom: 4px;
+        }
+        .insight-content {
+            font-size: 0.92em;
+            line-height: 1.5;
+        }
+        .overlap-tags {
+            margin-top: 8px;
+        }
+        .overlap-badge {
+            display: inline-block;
+            background: #fbbf24;
+            color: #1a1a2e;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 0.78em;
+            font-weight: 600;
+            margin-right: 6px;
+        }
+        .overlap-topic {
+            font-size: 0.82em;
+            opacity: 0.9;
+        }
+
+        /* ====== 板块3: 大厂动态 ====== */
+        .section-labs {
+            max-width: 900px;
+            margin: 24px auto;
+            padding: 24px;
+            background: #1e293b;
+            border-radius: 16px;
+            color: #e2e8f0;
+        }
+        .labs-title {
+            font-size: 1.3em;
+            color: white;
+            margin-bottom: 20px;
+        }
+        .labs-count {
+            font-size: 0.6em;
+            font-weight: normal;
+            color: #94a3b8;
+        }
+        .lab-group {
+            margin-bottom: 20px;
+        }
+        .lab-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #334155;
+        }
+        .lab-name {
+            font-size: 1.05em;
+            font-weight: 600;
+            color: #f1f5f9;
+        }
+        .lab-badge {
+            background: #3b82f6;
+            color: white;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 0.75em;
+        }
+        .lab-paper {
+            background: #293548;
+            border-radius: 10px;
+            padding: 14px 16px;
+            margin-bottom: 10px;
+        }
+        .lab-paper-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+        .lab-paper-topics {
+            font-size: 0.8em;
+            color: #94a3b8;
+        }
+        .lab-paper-title {
+            font-size: 0.95em;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        .lab-paper-title a {
+            color: #e2e8f0;
+            text-decoration: none;
+        }
+        .lab-paper-title a:hover {
+            color: #60a5fa;
+            text-decoration: underline;
+        }
+        .lab-paper-summary {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-size: 0.85em;
+            color: #94a3b8;
+            margin-bottom: 8px;
+        }
+        .lab-paper-summary strong {
+            color: #cbd5e1;
+        }
+        .lab-pdf-link {
+            color: #60a5fa;
+            text-decoration: none;
+            font-size: 0.82em;
+        }
+        .lab-pdf-link:hover { text-decoration: underline; }
+
+        /* ====== 板块1: 全部论文 ====== */
+        .section-papers {
+            max-width: 900px;
+            margin: 24px auto;
+            padding: 24px;
+            background: white;
+            border-radius: 16px;
+        }
+        .papers-title {
+            font-size: 1.3em;
+            color: #1a1a2e;
+            margin-bottom: 20px;
+        }
+        .topic-header {
+            font-size: 1.15em;
+            color: #1a1a2e;
+            margin: 24px 0 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .topic-header .count {
+            font-size: 0.7em;
+            color: #888;
+            font-weight: normal;
+        }
+        .paper-card {
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 14px;
+            border: 1px solid #e5e7eb;
+            transition: box-shadow 0.2s;
+        }
+        .paper-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+        .score {
+            font-weight: bold;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 0.82em;
+        }
+        .score.high { background: #d1fae5; color: #065f46; }
+        .score.medium { background: #fef3c7; color: #92400e; }
+        .score.low { background: #f3f4f6; color: #6b7280; }
+        .org-tag {
+            background: #ede9fe;
+            color: #6d28d9;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.75em;
+        }
+        .date { color: #9ca3af; font-size: 0.82em; margin-left: auto; }
+        .paper-title {
+            font-size: 0.98em;
+            margin-bottom: 4px;
+            line-height: 1.4;
+        }
+        .paper-title a {
+            color: #1e293b;
+            text-decoration: none;
+        }
+        .paper-title a:hover {
+            color: #4a6cf7;
+            text-decoration: underline;
+        }
+        .authors {
+            color: #6b7280;
+            font-size: 0.82em;
+            margin-bottom: 10px;
+        }
+        .summary {
+            background: white;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 1px solid #f1f5f9;
+        }
+        .summary-item {
+            margin-bottom: 4px;
+            font-size: 0.85em;
+            color: #4b5563;
+        }
+        .summary-item:last-child { margin-bottom: 0; }
+        .summary-item strong { color: #374151; }
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topics { color: #9ca3af; font-size: 0.78em; }
+        .pdf-link {
+            color: #4a6cf7;
+            text-decoration: none;
+            font-size: 0.82em;
+            font-weight: 500;
+        }
+        .pdf-link:hover { text-decoration: underline; }
+
+        /* ====== 板块2: 联系人库 ====== */
+        .section-contacts {
+            max-width: 900px;
+            margin: 24px auto;
+            padding: 24px;
+            background: white;
+            border-radius: 16px;
+        }
+        .contacts-title {
+            font-size: 1.3em;
+            color: #1a1a2e;
+            margin-bottom: 16px;
+        }
+        .contacts-count {
+            font-size: 0.6em;
+            font-weight: normal;
+            color: #888;
+        }
+        .contacts-subtitle {
+            font-size: 1em;
+            color: #555;
+            margin: 16px 0 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .key-lab-subtitle {
+            color: #ea580c;
+        }
+        .contact-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 12px 14px;
+            margin-bottom: 10px;
+            border: 1px solid #e5e7eb;
+        }
+        .contact-card.key-lab {
+            background: #fff7ed;
+            border-color: #fed7aa;
+        }
+        .contact-paper {
+            margin-bottom: 6px;
+        }
+        .contact-paper a {
+            color: #1e293b;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.88em;
+        }
+        .contact-paper a:hover { color: #4a6cf7; text-decoration: underline; }
+        .contact-org-badge {
+            display: inline-block;
+            background: #ea580c;
+            color: white;
+            padding: 1px 8px;
+            border-radius: 4px;
+            font-size: 0.72em;
+            margin-left: 6px;
+        }
+        .contact-org-badge.normal {
+            background: #6b7280;
+        }
+        .contact-list {
+            padding-left: 10px;
+            border-left: 3px solid #fed7aa;
+        }
+        .contact-card:not(.key-lab) .contact-list {
+            border-left-color: #e5e7eb;
+        }
+        .contact-person {
+            font-size: 0.84em;
+            margin-bottom: 3px;
+            color: #374151;
+        }
+        .email-link {
+            color: #ea580c;
+            text-decoration: none;
+            font-size: 0.84em;
+        }
+        .contact-card:not(.key-lab) .email-link {
+            color: #4a6cf7;
+        }
+        .email-link:hover { text-decoration: underline; }
+        .role-badge {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-size: 0.72em;
+            margin-right: 4px;
+        }
+        .corresponding {
+            font-size: 0.78em;
+            color: #9ca3af;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        /* ====== 底部归档 ====== */
+        .section-archive {
+            max-width: 900px;
+            margin: 24px auto;
+            padding: 20px 24px;
+            background: white;
+            border-radius: 16px;
+        }
+        .archive h2 { font-size: 1em; margin-bottom: 10px; color: #666; }
+        .back-latest {
+            display: inline-block;
+            margin-bottom: 12px;
+            padding: 6px 16px;
+            background: #4a6cf7;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.88em;
+            font-weight: 500;
+        }
+        .back-latest:hover { background: #3a5ce5; }
+        .archive-link {
+            display: inline-block;
+            margin: 4px 8px 4px 0;
+            padding: 4px 12px;
+            background: #f3f4f6;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #4a6cf7;
+            font-size: 0.82em;
+        }
+        .archive-link:hover { background: #e5e7eb; }
+
+        .empty-state {
+            text-align: center;
+            padding: 50px 20px;
+            color: #9ca3af;
+        }
+
+        @media (max-width: 640px) {
+            .section-insight, .section-labs, .section-papers, .section-contacts, .section-archive {
+                margin: 12px 8px;
+                padding: 16px;
+                border-radius: 12px;
+            }
+            .page-header h1 { font-size: 1.4em; }
+            .stats { gap: 8px; }
+            .nav-bar { gap: 6px; padding: 8px 12px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-header">
+        <h1>AI 论文日报</h1>
+        <p class="meta">2026-11-24 | 世界模型 / 多模态 / 大模型 / Agent / 具身智能</p>
+        <div class="stats">
+            <span class="stat">arXiv 抓取 100 篇</span>
+            <span class="stat">AI 筛选 20 篇</span>
+            <span class="stat">大厂论文 1 篇</span>
+            <span class="stat">联系人 10 位</span>
+        </div>
+    </div>
+
+    <nav class="nav-bar">
+        <a href="#insight">趋势总结</a>
+        <a href="#labs" class="nav-labs">大厂动态</a>
+        <a href="#papers">全部论文</a>
+        <a href="#contacts">联系人库</a>
+    </nav>
+
+    <div id="insight">
+    
+    <div class="section-insight">
+        <div class="insight-header">
+            <h2>今日趋势总结</h2>
+            <span class="insight-date">2026-11-24</span>
+        </div>
+        <div class="insight-body">
+            <div class="insight-item">
+                <div class="insight-label">研究热点</div>
+                <div class="insight-content">今日 20 篇论文由多模态（约 18 篇）与世界模型（5 篇）两大主线主导，且高度集中在具身智能、VLA 与机器人操作场景。研究重心明显从“模型能力”转向“可靠性与安全部署”：世界模型的规划空间几何对齐、不确定性校准与安全筛选（JEPA-Shield、Detecting Is Not Choosing），以及医学/工业 VLM 评估中的稳定错误模式与反事实敏感性成为共同关切。</div>
+            </div>
+            <div class="insight-item highlight">
+                <div class="insight-label">大厂方向重合</div>
+                <div class="insight-content">今日仅 NVIDIA 一家大厂上榜（Grounded in Contact：多模态技能-效果建模，用于抑制接触丰富操作中的漂浮与穿透伪影），无第二家大厂出现同方向论文，因此不存在大厂间的直接方法竞争。NVIDIA 该工作与当日世界模型、具身规划主线形成互补关系：其显式接触与技能效果建模可为世界模型的预测、安全 shielding 与候选动作排序提供更可靠的底层动力学输入，而非路线之争。</div>
+                
+            </div>
+            <div class="insight-item">
+                <div class="insight-label">值得关注</div>
+                <div class="insight-content">值得关注的信号：一是世界模型相关论文集体转向安全与不确定性（conformal 校准 + shielding、候选排序而非单纯“危险检测”），显示该方向正从预测精度竞赛进入“可验证、可部署”阶段；二是 S1Arena-MM 系统比较 System-1 小模型与 MLLM 的多模态决策分工，提示“哪些决策不必交给大模型”的推理成本议题正在成形；三是评估方法论普遍转向反事实与行为结构（医学 VLM、VLA 表征对齐），静态基准的可信度正被重新审视。</div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <div id="labs">
+    <div class="section-labs">
+    <h2 class="labs-title">大厂动态 <span class="labs-count">1 篇来自重点机构</span></h2>
+
+        <div class="lab-group">
+            <div class="lab-header">
+                <span class="lab-name">NVIDIA</span>
+                <span class="lab-badge">1 篇</span>
+            </div>
+
+            <div class="lab-paper">
+                <div class="lab-paper-header">
+                    <span class="score medium">7/10</span>
+                    <span class="lab-paper-topics">多模态</span>
+                </div>
+                <h4 class="lab-paper-title">
+                    <a href="https://arxiv.org/abs/2611.29662v1" target="_blank">Grounded in Contact: Reducing Floating and Interpenetration Artifacts with Multimodal Skill-Effect Models</a>
+                </h4>
+                <div class="lab-paper-summary">
+                    <span><strong>方法：</strong>论文研究概率化的“技能效果模型”：以部分点云和动作为输入，学习物体位姿变化的多模态分布，并实例化三类代表性模型——混合密度网络（MDN）、状态 tokenization、flow matching，各自与隐动力学模型配对用于下一步预测，进而在规划与真机中评估。</span>
+                    <span><strong>创新：</strong>系统对比三类多模态技能效果建模方式并与隐动力学结合，用实验证明显式多模态建模能在接触丰富操作中有效抑制漂浮/穿透类伪影并支撑不确定性下的推理与规划。</span>
+                </div>
+                <a href="https://arxiv.org/pdf/2611.29662v1" target="_blank" class="lab-pdf-link">PDF 原文</a>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <div id="papers">
+    <div class="section-papers">
+        <h2 class="papers-title">全部精选论文</h2>
+        <h3 class="topic-header">世界模型 <span class="count">(5 篇)</span></h3>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                
+                <span class="date">2026-11-22</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.29759v1" target="_blank">What Should World Models Plan Over? Learning Geometry-Aligned Representations of Body Motion</a>
+            </h4>
+            <p class="authors">Renhao Zhang, Abhranil Chandra, Bruno Castro da Silva</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有世界模型规划器通常在与预测学习相匹配的动作表示空间中进行搜索，但仅靠预测准确并不能保证优化能找到成功轨迹，导致规划性能受限。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 MotionPort，学习身体运动的低维潜在表示，并直接在身体轨迹表示而非动作块上进行规划；同时按运动相似性组织搜索空间，使预测改进更容易转化为成功执行。</div>
+                <div class="summary-item"><strong>结论：</strong>在不微调状态编码器的情况下，MotionPort 在四个领域、七种设置和三个骨干网络上将平均目标到达成功率从 37.9% 提升到 87.8%；在 AntMaze-OGBench 上达到 72% 成功率，而最强基线仅 4%。</div>
+                <div class="summary-item"><strong>创新点：</strong>核心创新是让世界模型的规划空间与身体运动的几何结构对齐，而不是单纯依赖为预测学习的动作表示。</div>
+                <div class="summary-item"><strong>意义：</strong>该工作表明世界模型规划中“规划什么表示”至关重要，为提升长时程规划与具身智能决策提供了新思路。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">世界模型</span>
+                <a href="https://arxiv.org/pdf/2611.29759v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                
+                <span class="date">2026-11-22</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.29749v1" target="_blank">CarlHOI: Counterfactual Predictive Imagination for Generalizable Multi-Humanoid Object Interaction under Constrained Environments</a>
+            </h4>
+            <p class="authors">Wenjie Lin, Jin Wei-Kocsis</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>多类人机器人团队在障碍约束环境下协同搬运共享物体时，预训练协作控制策略难以适应未见过的环境约束与队形变化。</div>
+                <div class="summary-item"><strong>方法：</strong>提出CarlHOI框架，基于反事实锚定的关系潜世界模型CarlWM，将共享物体、个体类人机器人和障碍建模为交互实体；通过离线反事实模拟器数据训练，在不同共享路点指令下想象团队与物体的耦合未来，并依据进展、失败、接触风险与长时价值选择自适应引导指令。</div>
+                <div class="summary-item"><strong>结论：</strong>在三个障碍约束搬运任务上，CarlHOI无需重新训练底层协作控制器即可提升协同搬运成功率，并能从四机器人训练泛化到二至十机器人、未见障碍、未见物体及新约束组合。</div>
+                <div class="summary-item"><strong>创新点：</strong>核心创新是用反事实预测想象为预训练多类人机器人协作策略提供在线自适应引导，而不重训底层控制策略。</div>
+                <div class="summary-item"><strong>意义：</strong>展示了世界模型与反事实想象在提升多智能体具身协作策略泛化性方面的潜力。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">世界模型</span>
+                <a href="https://arxiv.org/pdf/2611.29749v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                
+                <span class="date">2026-11-22</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.29609v1" target="_blank">JEPA-Shield: Safe Diffusion Planning with Latent World Models via Conformal Shielding</a>
+            </h4>
+            <p class="authors">Taekyung Kim, Ege Yuceel, Steven Hong et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>潜在世界模型可用于从图像进行规划，但其预测本身不能直接保证机器人满足物理约束，安全关键规划中缺乏可靠的任务空间安全校验。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 JEPA-Shield，将冻结的动作条件 JEPA 世界模型与任务空间安全约束连接起来：用两个下游模型从想象潜在 rollout 预测相对运动、从当前图像解码不安全几何，并用 split conformal prediction 将端到端运动预测误差转化为多步不确定性管；随后用基于备份的 shield 检查这些管是否满足物理约束，并在扩散启发式采样 MPC 中筛选候选轨迹与最终方案。</div>
+                <div class="summary-item"><strong>结论：</strong>在闭环评估中，JEPA-Shield 在 VParkBench 的几何泊车任务上分别达到 84.4%、82.3% 和 99.0% 的成功率，且未观察到约束违反；消融显示 shielding 与不确定性校准具有互补收益。</div>
+                <div class="summary-item"><strong>创新点：</strong>核心创新是将 conformal 不确定性校准与备份式 shielding 结合，把潜在世界模型的想象预测落地为任务空间安全约束，用于扩散式采样 MPC 的安全筛选。</div>
+                <div class="summary-item"><strong>意义：</strong>表明在安全关键的具身智能与基于世界模型的规划中，必须将潜在预测 grounding 到任务空间量并显式建模预测不确定性。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">世界模型</span>
+                <a href="https://arxiv.org/pdf/2611.29609v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-11-22</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.29715v1" target="_blank">From States to Dynamics: Detecting Rule Violations in OthelloGPT</a>
+            </h4>
+            <p class="authors">David L. Cao, Sai Sumedh R. Hindupur, Demba Ba</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>论文研究仅在奥赛罗棋走子序列上训练的 OthelloGPT 是否在其激活空间中编码并遵循游戏规则，以及能否检测非法走子。</div>
+                <div class="summary-item"><strong>方法：</strong>作者将规则违反分为三类：在空位落子、未夹住对方棋子、未轮流走子；使用线性探针区分合法与非法走子及不同违规类型，并提出基于连续走子激活步长的无监督违规检测器，还在稀疏自编码器潜空间中改进检测指标。</div>
+                <div class="summary-item"><strong>结论：</strong>线性探针能准确区分合法与非法走子并识别违规类型；基于激活步长的无监督检测器能以高于随机水平识别非法走子，稀疏自编码器潜空间可进一步提升检测效果。</div>
+                <div class="summary-item"><strong>创新点：</strong>从静态状态探测转向动态规则与规则违反检测，并提出基于激活步长及稀疏自编码器潜空间的无监督违规检测方法。</div>
+                <div class="summary-item"><strong>意义：</strong>有助于理解序列模型内部世界模型是否掌握动态规则，并推动基于激活的模型可解释性与规则一致性检测。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">世界模型 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2611.29715v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-11-22</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.29553v1" target="_blank">Detecting Is Not Choosing: What a World Model Needs to Keep a VLA Policy Safe</a>
+            </h4>
+            <p class="authors">Thanish Bolla</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>VLA 策略虽然能完成大多数基准任务，却经常违反安全约束。一种补救办法是用世界模型对采样出的多个候选动作块做前瞻式安全筛选，但这类世界模型究竟需要具备什么能力尚不明确。</div>
+                <div class="summary-item"><strong>方法：</strong>论文把仿真器当作精确世界模型，构建前瞻式安全过滤器，在 LIBERO、LIBERO-Plus 和 RoboCasa 上测试三个 VLA 策略以及 pi0.5；同时对比学习式 critic、学习动力学模型与视频模型，并区分“状态级危险检测”（pooled AUROC）与“同一状态下的候选排序”（within-decision AUROC）两种评测方式。作者还系统地扰动仿真器状态，考察选择性能随状态误差的退化规律。</div>
+                <div class="summary-item"><strong>结论：</strong>以仿真器作为精确世界模型时，安全率提升 11.5–25.7 个百分点；但学习式 critic 虽能检测危险状态（pooled AUROC 最高 0.864），在同一状态内对候选动作排序时却接近随机（within-decision AUROC 0.551–0.560），学习动力学模型与视频模型也无改善。状态一旦被扰动，选择性能远早于检测性能退化：3.18 mm 中位位置误差就抹掉 LIBERO-Spatial 上 70% 的收益；而中位误差仅 0.56 mm 的像素读取器反而比同等中位误差的高斯扰动少保留 6.5 个点，说明尾部误差与操作物体上的精度才是关键。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次明确指出“检测危险”不等于“在候选间正确选择”，并提出应以同一状态内的候选排序能力、以及状态估计在尾部与操作物体上的精度来评判安全用世界模型。</div>
+                <div class="summary-item"><strong>意义：</strong>为世界模型辅助的 VLA 安全部署提供了明确的评测准则与设计方向，提醒社区不能仅凭危险检测指标来判断世界模型是否可用于安全筛选。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">世界模型 / 多模态</span>
+                <a href="https://arxiv.org/pdf/2611.29553v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+<h3 class="topic-header">多模态 <span class="count">(16 篇)</span></h3>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                
+                <span class="date">2026-11-22</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.29773v1" target="_blank">S1Arena-MM: Which Multimodal Decisions Can Be Left to System 1?</a>
+            </h4>
+            <p class="authors">Lang Lin, Tianyu Chen, Yi Gu et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>需要判断哪些多模态离散决策可以由System-1模型处理，哪些仍更适合多模态大语言模型（MLLM），但目前缺乏统一、可比较的评测基准。</div>
+                <div class="summary-item"><strong>方法：</strong>提出S1Arena-MM基准，为所有模型提供相同决策请求并对其返回概率评分，覆盖51,060个问题、94个任务及图像/视频/音频输入，并包含102个闭环游戏环境；评测33个开源模型，其中12个System-1模型和21个MLLM。</div>
+                <div class="summary-item"><strong>结论：</strong>静态决策中最佳System-1模型在图像上领先最佳MLLM 4.9个百分点，在视频和音频上差距不超过1个百分点；thinking仅使最准确MLLM略超最佳System-1且多数情况下恶化Brier分数；闭环游戏中System-1模型显著领先，BALROG进度达22.0-33.3%，其他模型关闭thinking时不超过9.7%，实时延迟至1.1秒无明显进度损失。</div>
+                <div class="summary-item"><strong>创新点：</strong>构建了统一概率评分、覆盖多模态静态任务与实时闭环游戏的大规模基准，系统比较System-1模型与MLLM的多模态决策能力。</div>
+                <div class="summary-item"><strong>意义：</strong>为多模态决策场景中System-1模型与MLLM的选型、后训练策略及实时Agent设计提供了量化依据。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2611.29773v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                
+                <span class="date">2026-11-22</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.29592v1" target="_blank">Rethinking Closed-Ended Medical VLM Evaluation: From Stable Wrongness to Counterfactual Answer Sensitivity</a>
+            </h4>
+            <p class="authors">Qi Wu, Xiaoyu Liu, Ao Wang et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>闭式医学视觉问答（VQA）评估中，模型可能产生自信且可重复的错误答案（stable wrongness），即使患者相关视觉证据被移除或不匹配，现有基于采样稳定性的不确定性方法会失效。</div>
+                <div class="summary-item"><strong>方法：</strong>提出反事实答案敏感性（CAS），通过文本-only、全黑图像、损坏图像等跨模态反事实干预，检验模型已给出的是/否答案在视觉证据失效时是否仍受支持，从而将可靠性估计从答案稳定性转向证据敏感性。</div>
+                <div class="summary-item"><strong>结论：</strong>在7个VLM和3个基准上，CAS在所有设置中优于最佳HAC系列方法，错误检测宏平均AUROC提升+0.150，并能找回HAC高置信区域中的隐藏错误。</div>
+                <div class="summary-item"><strong>创新点：</strong>将医学VLM可靠性评估从“答案采样稳定性”转向“对视觉证据的反事实敏感性”，揭示并利用稳定错误模式。</div>
+                <div class="summary-item"><strong>意义：</strong>对安全关键医疗场景中的多模态模型评估具有直接意义，表明闭式评测应检验视觉依赖性而非仅看答案稳定性。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2611.29592v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                
+                <span class="date">2026-11-22</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.29483v1" target="_blank">Representation Alignment Is Only as Good as the Teacher's Behavioral Structure</a>
+            </h4>
+            <p class="authors">Zhengfeiyang Zhang, Haoyuan Chen, Hexin Wang et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>视觉-语言-动作（VLA）模型在微调时常用冻结视觉编码器做表征对齐，但教师编码器的选择主要依赖启发式，缺乏可靠标准；现有通用视觉编码器未必能提升VLA性能，甚至可能损害鲁棒性。</div>
+                <div class="summary-item"><strong>方法：</strong>论文提出行为结构度量（BSM），衡量教师特征空间中相近的状态在同一任务中是否对应相似的专家动作；并基于BSM提出Behavior-Aware VLA Alignment（BAVA）协议，优先选择BSM高于学生的视觉编码器，并在训练中根据学生BSM提前停止对齐。</div>
+                <div class="summary-item"><strong>结论：</strong>在14个教师和16个操作任务上，所有现成视觉编码器对π0.5干净成功率的提升均不超过1个点，且在扰动下降低10–39个点；BSM与扰动下成功率强相关（r=0.87）。在SmolVLA上，BAVA仅用三分之一对齐预算即可匹配持续对齐，并比未对齐微调平均提升4.6个点。</div>
+                <div class="summary-item"><strong>创新点：</strong>提出以“行为结构”而非全局语义或空间结构来评价和指导VLA表征对齐的BSM指标及BAVA协议。</div>
+                <div class="summary-item"><strong>意义：</strong>该工作表明VLA表征对齐只有在教师编码器包含丰富且行为相关的结构时才有效，为VLA教师选择和对齐策略提供了可操作的评估标准。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2611.29483v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                
+                <span class="date">2026-11-22</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.29460v1" target="_blank">Fill in the Blanks: Non-Autoregressive Schema-Parallel Key Information Extraction with CTC Decoding</a>
+            </h4>
+            <p class="authors">Shaked Perek, Avihu Dekel, Ben Wiesel et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>视觉语言模型在关键信息抽取（KIE）中逐 token 生成结构化 JSON，解码步数随答案长度增长，效率低；而 KIE 的 schema 已给定结构，只有字段值未知。</div>
+                <div class="summary-item"><strong>方法：</strong>提出非自回归的 schema 并行抽取器：直接按 schema 写出键、嵌套和列表结构，用一次 count pass 确定每个列表长度，并在固定轮数内并行预测所有字段值；每个值在独立 slot block 中用 CTC 解码，无需预测长度，未完成的值可扩大 token 预算。</div>
+                <div class="summary-item"><strong>结论：</strong>在 VAREX、CORD、FUNSD 零样本设置下，4B 模型平均比扩散 VLM 快 3.5 倍（最高 5.6 倍）且更准确，每文档仅需 4–6 次前向；作为投机解码草稿模型时，比自回归解码快 8.3 倍（最高 10.4 倍），精度仅差 0.4 分。</div>
+                <div class="summary-item"><strong>创新点：</strong>利用 KIE schema 已知结构，将结构生成、列表计数和字段值 CTC 并行解码结合，实现解码轮数不随文档/答案长度增长的非自回归 KIE。</div>
+                <div class="summary-item"><strong>意义：</strong>为文档结构化抽取提供更高效、可并行的新范式，并可兼作投机解码草稿模型，提升 VLM 结构化输出效率。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2611.29460v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                <span class="org-tag">NVIDIA</span>
+                <span class="date">2026-11-22</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.29662v1" target="_blank">Grounded in Contact: Reducing Floating and Interpenetration Artifacts with Multimodal Skill-Effect Models</a>
+            </h4>
+            <p class="authors">Siyeon Kim, Mohanraj Devendran Shanthi, Joseph C. Liechty et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>在接触丰富的操作技能（推、抓、放）中，几乎相同的状态和动作会因微小接触条件或几何差异产生定性不同的结果（滑动、倾倒、旋转），而确定性模型和高斯模型会把这些多模态结果平均掉或抹平为单一宽分布，导致预测与规划失真。</div>
+                <div class="summary-item"><strong>方法：</strong>论文研究概率化的“技能效果模型”：以部分点云和动作为输入，学习物体位姿变化的多模态分布，并实例化三类代表性模型——混合密度网络（MDN）、状态 tokenization、flow matching，各自与隐动力学模型配对用于下一步预测，进而在规划与真机中评估。</div>
+                <div class="summary-item"><strong>结论：</strong>显式多模态模型在多种物体和技能上比确定性/高斯基线更准确地预测实际发生的结果模式；规划中 flow matching 在每个技能上都显著优于确定性基线，并在所有多步序列任务上取得最高成功率；真机抓取成功率约为确定性基线的两倍。</div>
+                <div class="summary-item"><strong>创新点：</strong>系统对比三类多模态技能效果建模方式并与隐动力学结合，用实验证明显式多模态建模能在接触丰富操作中有效抑制漂浮/穿透类伪影并支撑不确定性下的推理与规划。</div>
+                <div class="summary-item"><strong>意义：</strong>为具身智能中接触不确定性建模与基于模型的规划提供了可用的抽象与实证依据，对机器人世界模型研究具有参考价值。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2611.29662v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-11-22</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.29610v1" target="_blank">Dr. Grasp-RL: Diverse and Robust Dexterous Grasping via Reinforcement Learning</a>
+            </h4>
+            <p class="authors">Kunqi Xu, Xiaokang Sun, Xueyan Zou</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>如何同时实现灵巧抓取的行为多样性与闭环鲁棒性，避免生成式方法开环执行不够鲁棒、强化学习方法策略多样性不足的问题。</div>
+                <div class="summary-item"><strong>方法：</strong>提出一种时间反转课程学习与协调重置机制，使简单的MLP策略通过PPO训练即可覆盖抓取姿态分布的多个模态，同时保持闭环控制能力。</div>
+                <div class="summary-item"><strong>结论：</strong>实验表明策略具备多样化抓取行为和鲁棒闭环执行能力，仅用约400个物体训练即可在超过20000个未见物体上展现较强泛化。</div>
+                <div class="summary-item"><strong>创新点：</strong>通过时间反转课程与协调重置机制，让简单PPO+MLP策略兼顾多模态抓取多样性与闭环鲁棒性。</div>
+                <div class="summary-item"><strong>意义：</strong>为灵巧抓取和机器人强化学习提供了一条同时提升策略多样性与鲁棒性的简单有效路径，对具身智能中的通用操作学习有参考价值。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2611.29610v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-11-22</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.29558v1" target="_blank">Action Windows Are Inherently Temporal: A Benchmark for Time-Sensitive Robotic Manipulation</a>
+            </h4>
+            <p class="authors">Haoxiang Zhan, Haoqin Hong, Congcong Zhu et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有机器人操作基准对时间敏感任务覆盖不足，VLM智能体难以在物理过程形成的有限动作窗口内及时干预，且未充分考虑决策与执行耗时。</div>
+                <div class="summary-item"><strong>方法：</strong>提出AWAIT仿真基准，用于评估VLM智能体在动作窗口内完成任务的能力，并将决策时间和物理执行时间共同纳入时间预算。</div>
+                <div class="summary-item"><strong>结论：</strong>实验显示智能体难以识别动作窗口开启时机；即使单次决策短于窗口时长，连续决策和移动也可能耗尽整个动作窗口。</div>
+                <div class="summary-item"><strong>创新点：</strong>将“动作窗口”的固有时序性与决策+执行共享时间预算结合，构建专门评估时间敏感机器人操作的基准。</div>
+                <div class="summary-item"><strong>意义：</strong>揭示了VLM智能体在具身任务中时序推理与实时协调能力的关键缺口，推动更贴近真实物理过程的时间敏感操作研究。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2611.29558v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-11-22</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.29553v1" target="_blank">Detecting Is Not Choosing: What a World Model Needs to Keep a VLA Policy Safe</a>
+            </h4>
+            <p class="authors">Thanish Bolla</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>VLA 策略虽然能完成大多数基准任务，却经常违反安全约束。一种补救办法是用世界模型对采样出的多个候选动作块做前瞻式安全筛选，但这类世界模型究竟需要具备什么能力尚不明确。</div>
+                <div class="summary-item"><strong>方法：</strong>论文把仿真器当作精确世界模型，构建前瞻式安全过滤器，在 LIBERO、LIBERO-Plus 和 RoboCasa 上测试三个 VLA 策略以及 pi0.5；同时对比学习式 critic、学习动力学模型与视频模型，并区分“状态级危险检测”（pooled AUROC）与“同一状态下的候选排序”（within-decision AUROC）两种评测方式。作者还系统地扰动仿真器状态，考察选择性能随状态误差的退化规律。</div>
+                <div class="summary-item"><strong>结论：</strong>以仿真器作为精确世界模型时，安全率提升 11.5–25.7 个百分点；但学习式 critic 虽能检测危险状态（pooled AUROC 最高 0.864），在同一状态内对候选动作排序时却接近随机（within-decision AUROC 0.551–0.560），学习动力学模型与视频模型也无改善。状态一旦被扰动，选择性能远早于检测性能退化：3.18 mm 中位位置误差就抹掉 LIBERO-Spatial 上 70% 的收益；而中位误差仅 0.56 mm 的像素读取器反而比同等中位误差的高斯扰动少保留 6.5 个点，说明尾部误差与操作物体上的精度才是关键。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次明确指出“检测危险”不等于“在候选间正确选择”，并提出应以同一状态内的候选排序能力、以及状态估计在尾部与操作物体上的精度来评判安全用世界模型。</div>
+                <div class="summary-item"><strong>意义：</strong>为世界模型辅助的 VLA 安全部署提供了明确的评测准则与设计方向，提醒社区不能仅凭危险检测指标来判断世界模型是否可用于安全筛选。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">世界模型 / 多模态</span>
+                <a href="https://arxiv.org/pdf/2611.29553v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-11-22</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.29551v1" target="_blank">Inspect Before You Decide: Evidence-Guided Visual Search for Industrial Anomaly Detection</a>
+            </h4>
+            <p class="authors">Peng Chen, Chao Huang, Yangyang Liu et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有多模态大模型在工业异常检测中往往只能依赖全局观察，难以获取并验证细粒度视觉证据，导致细微异常识别不可靠。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 EVAD 证据引导视觉搜索框架：先进行全局视觉评估定位潜在异常区域，再用蒙特卡洛树搜索引导语义细化与空间扩展两类操作，逐步采集、评估并整合视觉证据以支持异常判断。</div>
+                <div class="summary-item"><strong>结论：</strong>在多个工业异常检测任务上，EVAD 在大多数评估设置中达到 state-of-the-art，验证了主动证据探索对细粒度异常理解与推理的有效性。</div>
+                <div class="summary-item"><strong>创新点：</strong>将 MCTS 引导的主动视觉证据搜索引入 MLLM 工业异常检测，通过语义细化与空间扩展协同获取可验证的细粒度证据。</div>
+                <div class="summary-item"><strong>意义：</strong>为多模态大模型在工业质检等高风险场景中的可解释、证据驱动异常推理提供了新范式。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2611.29551v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-11-22</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.29489v1" target="_blank">CAR: Reducing Decoder Output Shift in Visual Token Pruning via Coverage Selection and Attention Reallocation</a>
+            </h4>
+            <p class="authors">Xixi Jiang, Pingcheng Dong, Chen Yang et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>多模态大模型（MLLMs）中的视觉 token 剪枝在激进裁剪率下会导致严重的性能退化，尤其在视觉定位（VG）任务上，现有方法几乎失效。</div>
+                <div class="summary-item"><strong>方法：</strong>作者从解码器输出偏移的角度将剪枝带来的误差闭式分解为“图像摘要误差”和“注意力分配误差”两项，并提出 CAR 框架：一方面用无标签探针挑选编码器头的显著性，选择既显著又非冗余的 token 以更好地覆盖全部视觉 token（降低摘要误差），另一方面通过闭式 logit bias 把被丢弃 token 的注意力重新分配给保留 token（降低分配误差）。</div>
+                <div class="summary-item"><strong>结论：</strong>在 Qwen2.5-VL-7B 上剪掉 90% 视觉 token 时，CAR 在 VQA 上保留 93.0% 的原始精度、在 VG 上保留 77.9%（现有最佳方法仅 26.5%）；仅 logit bias 一项即可让现有方法的 VG 精度提升最多 24 个点，并在多个 MLLM 的 VQA、VG 和视频理解任务上一致优于现有方法。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将剪枝导致的解码器输出偏移闭式拆解为摘要误差与分配误差，并据此分别设计覆盖式选择与基于闭式 logit bias 的注意力重分配。</div>
+                <div class="summary-item"><strong>意义：</strong>为多模态大模型的高效推理提供了可解释的误差分析框架和即插即用的剪枝方案，显著缓解了激进剪枝下视觉定位能力的崩塌问题，可推动 MLLM 在实际部署中的加速。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2611.29489v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-11-22</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.29470v1" target="_blank">GraphSeer: Multimodal Knowledge Graph Relational Image Retrieval with MLLMs</a>
+            </h4>
+            <p class="authors">Linyu Li, Zhi Jin, Yuanpeng He et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有 MMKG 链接预测只能在已知实体 ID 之间推断关系，图像检索（CLIP 到 MLLM embedder）只找外观或描述相似的实体，二者都无法回答“新照片中的实体与图中哪个实体相关”这一问题；论文将其定义为知识图谱关系图像检索（KRIR）。</div>
+                <div class="summary-item"><strong>方法：</strong>GraphSeer 在单个多模态大模型内完成两步隐式推理：先将照片链接到图谱实体，读出最佳匹配实体的事实，再用模型“即将说出答案”位置的隐状态做检索；对图中未出现的新实体，用一个 listwise 验证器读取候选答案一端的事实与照片，在一次前向中对 top 候选重排序。</div>
+                <div class="summary-item"><strong>结论：</strong>在 YAGO、Wikidata 与真实场景 OVEN 照片构建的三个基准上，基于 Qwen3.5-27B 的 GraphSeer 对已知实体 MRR 相比同预算微调的 MLLM embedder 提升 24.2–70.0%；融合并验证 embedder 候选后，未见实体 MRR 提升 12.5–25.6%，已知实体上甚至超过给定真实实体 ID 的 KG 补全模型。</div>
+                <div class="summary-item"><strong>创新点：</strong>提出 KRIR 新任务与三个基准，并用“隐状态检索 + 候选端事实验证”把 MMKG 关系推理统一进一个 MLLM。</div>
+                <div class="summary-item"><strong>意义：</strong>为多模态知识图谱与多模态大模型的结合提供了新的评测范式和可解释的检索式推理路径。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2611.29470v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="6">
+            <div class="card-header">
+                <span class="score medium">6/10</span>
+                
+                <span class="date">2026-11-22</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.29783v1" target="_blank">Beyond Language Optimization: Enhancing Visual Representations for Radiology Report Generation</a>
+            </h4>
+            <p class="authors">Rui Zuo, Qinyue Tong, Ziqian Lu et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>胸部X光报告生成需要识别临床相关异常，但GRPO主要提升生成报告的语言/临床准确性，对异常识别所需的视觉表征改进有限。</div>
+                <div class="summary-item"><strong>方法：</strong>提出选择性区域视觉蒸馏框架：先用针对性监督训练关注困难解剖区域的区域感知教师模型，再通过区域特征替换验证教师特征是否有用，仅选择能提升学生模型性能的特征，并用空间门控残差适配器（SGRA）进行蒸馏以减少对原有视觉表征的干扰。</div>
+                <div class="summary-item"><strong>结论：</strong>在MIMIC-CXR和IU-Xray上，方法在不同多模态大模型骨干上提升了临床报告准确性和区域级异常识别，同时基本保持非目标发现上的性能。</div>
+                <div class="summary-item"><strong>创新点：</strong>核心创新是面向报告生成的选择性区域视觉蒸馏，通过特征效用验证和SGRA在增强困难异常视觉表征的同时抑制负迁移。</div>
+                <div class="summary-item"><strong>意义：</strong>该工作提示多模态医学生成任务中除语言优化外，还需显式增强视觉表征，对医学多模态大模型和报告生成研究有参考价值。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2611.29783v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="6">
+            <div class="card-header">
+                <span class="score medium">6/10</span>
+                
+                <span class="date">2026-11-22</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.29693v1" target="_blank">HandiVid: A High-Quality Dataset for Hand-Driven Interactive Video Generation</a>
+            </h4>
+            <p class="authors">Chaoyang Zhang, Shaohao Rui, Xiaofeng Mao et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有的自我中心（egocentric）视频数据集难以同时兼顾场景多样性、有意义的手-物交互以及可靠的相机与手部运动标注，导致手驱动的交互式视频生成缺乏高质量训练数据。</div>
+                <div class="summary-item"><strong>方法：</strong>作者构建了 HandiVid 数据集，包含 20 万个经过筛选和标注的自我中心交互视频片段；通过统一的处理流水线整合公开数据集、在线视频与合成视频，并利用视频质量评估、手部检测过滤以及基于视觉语言模型（VLM）的多阶段交互验证来筛选高质量片段；同时将 SAM 3 引入手部检测流程，以减少漏检并提升 3D 手部标注的完整性。每个片段均附带高质量手部渲染、相机轨迹和交互描述。</div>
+                <div class="summary-item"><strong>结论：</strong>全面的数据集分析以及下游视频生成实验表明，HandiVid 在数据多样性、标注质量和可控视频生成效果方面均表现有效。</div>
+                <div class="summary-item"><strong>创新点：</strong>构建了首个面向手驱动交互式视频生成的大规模高质量自我中心数据集，并通过 VLM 多阶段验证与 SAM 3 增强的手部检测流水线，同时保证交互语义质量和 3D 手部标注完整性。</div>
+                <div class="summary-item"><strong>意义：</strong>为世界模型与具身智能中的交互式视频生成、手-物交互建模提供了关键的数据基础设施，有助于推动可控、物理一致的自我中心视频生成研究。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2611.29693v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="6">
+            <div class="card-header">
+                <span class="score medium">6/10</span>
+                
+                <span class="date">2026-11-22</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.29646v1" target="_blank">JKO-GRPO: Augmenting GRPO with Wasserstein Proximal Steps for Flow-Matching VLAs</a>
+            </h4>
+            <p class="authors">Jiyong Kwon, Yikun Bai, Amirhossein Mollaali et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>基于流匹配（flow matching）的 VLA 模型（如 π0、π0.5）在在线强化学习微调时，现有方法（Flow-GRPO、π_RL）只利用随机去噪转移的似然比，按优势对采样动作重新加权，却忽略了动作之间的距离信息。</div>
+                <div class="summary-item"><strong>方法：</strong>作者把每个状态下采样得到的一组动作看作经验分布，将策略改进建模为 Wasserstein 空间中的 JKO（Jordan-Kinderlehrer-Otto）近端步：用软离散 c-transform 依据组内相对优势构造传输目标，再把确定性流采样器在共享噪声下回归到这些目标，并与去掉 KL 正则的裁剪版 Flow-GRPO 目标结合。进一步通过“随机时间分支”扩展到序列 VLA 控制：沿旧策略轨迹选取一个或多个动作块索引，从对应状态生成候选续段并独立施加组级 JKO 更新。</div>
+                <div class="summary-item"><strong>结论：</strong>摘要未报告具体实验数值；作者主张该方法在保持 Flow-GRPO 优势加权机制的同时引入动作间的 Wasserstein 几何信息，并可在不依赖 KL 正则的情况下完成策略改进，且可推广到多步序列控制。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将 JKO/Wasserstein 近端步与 GRPO 风格的组相对优势结合，用于流匹配 VLA 的策略优化，并通过随机时间分支实现序列级更新。</div>
+                <div class="summary-item"><strong>意义：</strong>为扩散/流匹配类策略的在线强化学习提供了基于最优传输几何的新建模范式，对具身智能中 VLA 模型的 RL 后训练具有方法学参考价值。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2611.29646v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="6">
+            <div class="card-header">
+                <span class="score medium">6/10</span>
+                
+                <span class="date">2026-11-22</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.29545v1" target="_blank">SCRA-CLIP: Spherical-Contextual Representation Adaptation for Zero-Shot Anomaly Detection</a>
+            </h4>
+            <p class="authors">Peng Chen, Chao Huang, Wenqiang Wang et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>零样本异常检测中，现有视觉-语言模型对多样化异常模式及其空间上下文的建模不足，导致细粒度异常检测困难。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 SCRA-CLIP 框架，联合增强异常感知文本语义与上下文敏感视觉表示。具体包括球面原型条件提示 SPCP，用 von Mises-Fisher 混合建模正常/异常 patch 特征方向分布并注入文本提示；以及上下文偏差引导视觉适应 CGVA，捕捉局部特征相对多尺度邻域上下文的偏差并通过自适应门控细化 patch 表示。</div>
+                <div class="summary-item"><strong>结论：</strong>在 11 个工业和医学基准上验证了有效性，并在多样未见类别和域上展现出泛化能力。</div>
+                <div class="summary-item"><strong>创新点：</strong>将球面原型条件提示与上下文偏差引导的视觉适应相结合，实现分布感知语义建模和上下文敏感视觉表示的联合适配。</div>
+                <div class="summary-item"><strong>意义：</strong>推动视觉-语言模型在零样本异常检测与定位中的细粒度跨模态匹配能力。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2611.29545v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                
+                <span class="date">2026-11-22</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.29735v1" target="_blank">Seeing Beyond Names: Image-Grounded Concept Linking for Robust Vision-Language Recognition</a>
+            </h4>
+            <p class="authors">Behraj Khan, Shabir Ahmad, Tahir Qasim Syed et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>零样本视觉-语言分类器对类别名称高度敏感：即使图像不变，仅替换为同义词、缩写或本体术语等，也会导致预测显著变化（CLIP ViT-B/16 top-1 下降14.8–17.6个百分点）。</div>
+                <div class="summary-item"><strong>方法：</strong>提出一种免训练的“图像 grounded 概念链接”方法，将类别名称映射到视觉概念，并用可靠性门控来改进预测；在Tiny ImageNet、ImageNet-R、ImageNet-A、ImageNetV2上评估，并测试五个视觉-语言骨干。</div>
+                <div class="summary-item"><strong>结论：</strong>方法在四个数据集上均优于模板集成，汇总提升1.8个点；在20个骨干-数据集组合中16个有提升且无显著负面结果，并降低五个骨干的汇总负对数似然；但第二个CLIP种子仅在ImageNetV2上确认提升，ImageNet-A上未确认。</div>
+                <div class="summary-item"><strong>创新点：</strong>用免训练的图像 grounded 概念链接与可靠性门控来缓解类别名称词汇变化带来的零样本VLM性能退化。</div>
+                <div class="summary-item"><strong>意义：</strong>提醒并改善了视觉-语言模型对类别命名变化的鲁棒性，对零样本识别和VLM实际部署有参考价值。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2611.29735v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+<h3 class="topic-header">大模型 <span class="count">(6 篇)</span></h3>
+
+        <div class="paper-card" data-score="8">
+            <div class="card-header">
+                <span class="score high">8/10</span>
+                
+                <span class="date">2026-11-22</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.29773v1" target="_blank">S1Arena-MM: Which Multimodal Decisions Can Be Left to System 1?</a>
+            </h4>
+            <p class="authors">Lang Lin, Tianyu Chen, Yi Gu et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>需要判断哪些多模态离散决策可以由System-1模型处理，哪些仍更适合多模态大语言模型（MLLM），但目前缺乏统一、可比较的评测基准。</div>
+                <div class="summary-item"><strong>方法：</strong>提出S1Arena-MM基准，为所有模型提供相同决策请求并对其返回概率评分，覆盖51,060个问题、94个任务及图像/视频/音频输入，并包含102个闭环游戏环境；评测33个开源模型，其中12个System-1模型和21个MLLM。</div>
+                <div class="summary-item"><strong>结论：</strong>静态决策中最佳System-1模型在图像上领先最佳MLLM 4.9个百分点，在视频和音频上差距不超过1个百分点；thinking仅使最准确MLLM略超最佳System-1且多数情况下恶化Brier分数；闭环游戏中System-1模型显著领先，BALROG进度达22.0-33.3%，其他模型关闭thinking时不超过9.7%，实时延迟至1.1秒无明显进度损失。</div>
+                <div class="summary-item"><strong>创新点：</strong>构建了统一概率评分、覆盖多模态静态任务与实时闭环游戏的大规模基准，系统比较System-1模型与MLLM的多模态决策能力。</div>
+                <div class="summary-item"><strong>意义：</strong>为多模态决策场景中System-1模型与MLLM的选型、后训练策略及实时Agent设计提供了量化依据。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2611.29773v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-11-22</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.29715v1" target="_blank">From States to Dynamics: Detecting Rule Violations in OthelloGPT</a>
+            </h4>
+            <p class="authors">David L. Cao, Sai Sumedh R. Hindupur, Demba Ba</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>论文研究仅在奥赛罗棋走子序列上训练的 OthelloGPT 是否在其激活空间中编码并遵循游戏规则，以及能否检测非法走子。</div>
+                <div class="summary-item"><strong>方法：</strong>作者将规则违反分为三类：在空位落子、未夹住对方棋子、未轮流走子；使用线性探针区分合法与非法走子及不同违规类型，并提出基于连续走子激活步长的无监督违规检测器，还在稀疏自编码器潜空间中改进检测指标。</div>
+                <div class="summary-item"><strong>结论：</strong>线性探针能准确区分合法与非法走子并识别违规类型；基于激活步长的无监督检测器能以高于随机水平识别非法走子，稀疏自编码器潜空间可进一步提升检测效果。</div>
+                <div class="summary-item"><strong>创新点：</strong>从静态状态探测转向动态规则与规则违反检测，并提出基于激活步长及稀疏自编码器潜空间的无监督违规检测方法。</div>
+                <div class="summary-item"><strong>意义：</strong>有助于理解序列模型内部世界模型是否掌握动态规则，并推动基于激活的模型可解释性与规则一致性检测。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">世界模型 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2611.29715v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-11-22</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.29551v1" target="_blank">Inspect Before You Decide: Evidence-Guided Visual Search for Industrial Anomaly Detection</a>
+            </h4>
+            <p class="authors">Peng Chen, Chao Huang, Yangyang Liu et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有多模态大模型在工业异常检测中往往只能依赖全局观察，难以获取并验证细粒度视觉证据，导致细微异常识别不可靠。</div>
+                <div class="summary-item"><strong>方法：</strong>提出 EVAD 证据引导视觉搜索框架：先进行全局视觉评估定位潜在异常区域，再用蒙特卡洛树搜索引导语义细化与空间扩展两类操作，逐步采集、评估并整合视觉证据以支持异常判断。</div>
+                <div class="summary-item"><strong>结论：</strong>在多个工业异常检测任务上，EVAD 在大多数评估设置中达到 state-of-the-art，验证了主动证据探索对细粒度异常理解与推理的有效性。</div>
+                <div class="summary-item"><strong>创新点：</strong>将 MCTS 引导的主动视觉证据搜索引入 MLLM 工业异常检测，通过语义细化与空间扩展协同获取可验证的细粒度证据。</div>
+                <div class="summary-item"><strong>意义：</strong>为多模态大模型在工业质检等高风险场景中的可解释、证据驱动异常推理提供了新范式。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2611.29551v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-11-22</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.29489v1" target="_blank">CAR: Reducing Decoder Output Shift in Visual Token Pruning via Coverage Selection and Attention Reallocation</a>
+            </h4>
+            <p class="authors">Xixi Jiang, Pingcheng Dong, Chen Yang et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>多模态大模型（MLLMs）中的视觉 token 剪枝在激进裁剪率下会导致严重的性能退化，尤其在视觉定位（VG）任务上，现有方法几乎失效。</div>
+                <div class="summary-item"><strong>方法：</strong>作者从解码器输出偏移的角度将剪枝带来的误差闭式分解为“图像摘要误差”和“注意力分配误差”两项，并提出 CAR 框架：一方面用无标签探针挑选编码器头的显著性，选择既显著又非冗余的 token 以更好地覆盖全部视觉 token（降低摘要误差），另一方面通过闭式 logit bias 把被丢弃 token 的注意力重新分配给保留 token（降低分配误差）。</div>
+                <div class="summary-item"><strong>结论：</strong>在 Qwen2.5-VL-7B 上剪掉 90% 视觉 token 时，CAR 在 VQA 上保留 93.0% 的原始精度、在 VG 上保留 77.9%（现有最佳方法仅 26.5%）；仅 logit bias 一项即可让现有方法的 VG 精度提升最多 24 个点，并在多个 MLLM 的 VQA、VG 和视频理解任务上一致优于现有方法。</div>
+                <div class="summary-item"><strong>创新点：</strong>首次将剪枝导致的解码器输出偏移闭式拆解为摘要误差与分配误差，并据此分别设计覆盖式选择与基于闭式 logit bias 的注意力重分配。</div>
+                <div class="summary-item"><strong>意义：</strong>为多模态大模型的高效推理提供了可解释的误差分析框架和即插即用的剪枝方案，显著缓解了激进剪枝下视觉定位能力的崩塌问题，可推动 MLLM 在实际部署中的加速。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2611.29489v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="7">
+            <div class="card-header">
+                <span class="score medium">7/10</span>
+                
+                <span class="date">2026-11-22</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.29470v1" target="_blank">GraphSeer: Multimodal Knowledge Graph Relational Image Retrieval with MLLMs</a>
+            </h4>
+            <p class="authors">Linyu Li, Zhi Jin, Yuanpeng He et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>现有 MMKG 链接预测只能在已知实体 ID 之间推断关系，图像检索（CLIP 到 MLLM embedder）只找外观或描述相似的实体，二者都无法回答“新照片中的实体与图中哪个实体相关”这一问题；论文将其定义为知识图谱关系图像检索（KRIR）。</div>
+                <div class="summary-item"><strong>方法：</strong>GraphSeer 在单个多模态大模型内完成两步隐式推理：先将照片链接到图谱实体，读出最佳匹配实体的事实，再用模型“即将说出答案”位置的隐状态做检索；对图中未出现的新实体，用一个 listwise 验证器读取候选答案一端的事实与照片，在一次前向中对 top 候选重排序。</div>
+                <div class="summary-item"><strong>结论：</strong>在 YAGO、Wikidata 与真实场景 OVEN 照片构建的三个基准上，基于 Qwen3.5-27B 的 GraphSeer 对已知实体 MRR 相比同预算微调的 MLLM embedder 提升 24.2–70.0%；融合并验证 embedder 候选后，未见实体 MRR 提升 12.5–25.6%，已知实体上甚至超过给定真实实体 ID 的 KG 补全模型。</div>
+                <div class="summary-item"><strong>创新点：</strong>提出 KRIR 新任务与三个基准，并用“隐状态检索 + 候选端事实验证”把 MMKG 关系推理统一进一个 MLLM。</div>
+                <div class="summary-item"><strong>意义：</strong>为多模态知识图谱与多模态大模型的结合提供了新的评测范式和可解释的检索式推理路径。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2611.29470v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="6">
+            <div class="card-header">
+                <span class="score medium">6/10</span>
+                
+                <span class="date">2026-11-22</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.29783v1" target="_blank">Beyond Language Optimization: Enhancing Visual Representations for Radiology Report Generation</a>
+            </h4>
+            <p class="authors">Rui Zuo, Qinyue Tong, Ziqian Lu et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>胸部X光报告生成需要识别临床相关异常，但GRPO主要提升生成报告的语言/临床准确性，对异常识别所需的视觉表征改进有限。</div>
+                <div class="summary-item"><strong>方法：</strong>提出选择性区域视觉蒸馏框架：先用针对性监督训练关注困难解剖区域的区域感知教师模型，再通过区域特征替换验证教师特征是否有用，仅选择能提升学生模型性能的特征，并用空间门控残差适配器（SGRA）进行蒸馏以减少对原有视觉表征的干扰。</div>
+                <div class="summary-item"><strong>结论：</strong>在MIMIC-CXR和IU-Xray上，方法在不同多模态大模型骨干上提升了临床报告准确性和区域级异常识别，同时基本保持非目标发现上的性能。</div>
+                <div class="summary-item"><strong>创新点：</strong>核心创新是面向报告生成的选择性区域视觉蒸馏，通过特征效用验证和SGRA在增强困难异常视觉表征的同时抑制负迁移。</div>
+                <div class="summary-item"><strong>意义：</strong>该工作提示多模态医学生成任务中除语言优化外，还需显式增强视觉表征，对医学多模态大模型和报告生成研究有参考价值。</div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2611.29783v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+    <div id="contacts">
+    <div class="section-contacts">
+    <h2 class="contacts-title">联系人库 <span class="contacts-count">10 位作者</span></h2>
+    <h3 class="contacts-subtitle key-lab-subtitle">重点机构作者</h3>
+
+        <div class="contact-card key-lab">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2611.29662v1" target="_blank">[7分] Grounded in Contact: Reducing Floating and Interpenetration ...</a>
+                <span class="contact-org-badge">NVIDIA</span>
+            </div>
+            <div class="contact-list">
+                <div class="contact-person"><span class="role-badge">第一作者</span><strong>Siyeon Kim</strong> — University of Utah </div>
+                <div class="contact-person"><span class="role-badge">共同贡献作者</span><strong>Mohanraj Devendran Shanthi</strong> — University of Utah </div>
+                <div class="contact-person"><span class="role-badge">共同贡献作者</span><strong>Joseph C. Liechty</strong> — University of Utah </div>
+                <div class="contact-person"><strong>Tucker Hermans</strong> — University of Utah; NVIDIA Research </div>
+            </div>
+        </div>
+    <h3 class="contacts-subtitle">其他作者</h3>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2611.29773v1" target="_blank">[8分] S1Arena-MM: Which Multimodal Decisions Can Be Left to System...</a>
+                
+            </div>
+            <div class="contact-list">
+                <div class="contact-person"><span class="role-badge">第一作者（标记*）</span><strong>Lang Lin</strong> — The University of Texas at Austin </div>
+                <div class="contact-person"><span class="role-badge">共同第一作者（标记*）</span><strong>Tianyu Chen</strong> — The University of Texas at Austin </div>
+                <div class="contact-person"><span class="role-badge">共同第一作者（标记*）</span><strong>Yi Gu</strong> — The University of Texas at Austin </div>
+                <div class="contact-person"><span class="role-badge">共同第一作者（标记*）</span><strong>Yang Zhao</strong> — The University of Texas at Austin </div>
+                <div class="contact-person"><span class="role-badge">共同第一作者（标记*）</span><strong>Xinran Song</strong> — The University of Texas at Austin </div>
+            </div>
+            <div class="corresponding">通讯作者: Mingyuan Zhou</div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2611.29759v1" target="_blank">[8分] What Should World Models Plan Over? Learning Geometry-Aligne...</a>
+                
+            </div>
+            <div class="contact-list">
+                <div class="contact-person"><span class="role-badge">第一作者</span><strong>Renhao Zhang</strong> — University of Massachusetts <a href="mailto:renhaozhang@cs.umass.edu" class="email-link">renhaozhang@cs.umass.edu</a></div>
+                <div class="contact-person"><strong>Abhranil Chandra</strong> — University of Massachusetts <a href="mailto:abhranilchan@cs.umass.edu" class="email-link">abhranilchan@cs.umass.edu</a></div>
+                <div class="contact-person"><strong>Bruno Castro da Silva</strong> — University of Massachusetts <a href="mailto:bsilva@cs.umass.edu" class="email-link">bsilva@cs.umass.edu</a></div>
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2611.29749v1" target="_blank">[8分] CarlHOI: Counterfactual Predictive Imagination for Generaliz...</a>
+                
+            </div>
+            <div class="contact-list">
+                <div class="contact-person"><span class="role-badge">第一作者</span><strong>Wenjie Lin</strong> — Purdue University <a href="mailto:lin1790@purdue.edu" class="email-link">lin1790@purdue.edu</a></div>
+                <div class="contact-person"><span class="role-badge">通讯作者</span><strong>Jin Wei Kocsis</strong> — Purdue University <a href="mailto:kocsis0@purdue.edu" class="email-link">kocsis0@purdue.edu</a></div>
+            </div>
+            <div class="corresponding">通讯作者: Jin Wei Kocsis</div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2611.29609v1" target="_blank">[8分] JEPA-Shield: Safe Diffusion Planning with Latent World Model...</a>
+                
+            </div>
+            <div class="contact-list">
+                <div class="contact-person"><span class="role-badge">第一作者</span><strong>Taekyung Kim</strong>  </div>
+                <div class="contact-person"><strong>Ege Yuceel</strong>  </div>
+                <div class="contact-person"><strong>Steven Hong</strong>  </div>
+                <div class="contact-person"><strong>Georgios Fainekos</strong>  </div>
+                <div class="contact-person"><strong>Dimitra Panagou</strong>  </div>
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2611.29592v1" target="_blank">[8分] Rethinking Closed-Ended Medical VLM Evaluation: From Stable ...</a>
+                
+            </div>
+            <div class="contact-list">
+                <div class="contact-person"><span class="role-badge">共同第一作者</span><strong>Qi Wu</strong> — University of Science and Technology of China </div>
+                <div class="contact-person"><span class="role-badge">共同第一作者</span><strong>Xiaoyu Liu</strong> — Renmin University of China; Beijing Key Laboratory of Smart Healthcare and AI Driven Health Governance </div>
+                <div class="contact-person"><strong>Ao Wang</strong> — Renmin University of China; Beijing Key Laboratory of Smart Healthcare and AI Driven Health Governance </div>
+                <div class="contact-person"><strong>Rongsheng Wang</strong> — University of Science and Technology of China </div>
+                <div class="contact-person"><strong>Wenting Chen</strong> — Stanford University </div>
+            </div>
+            <div class="corresponding">通讯作者: Qingsong Yao</div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2611.29483v1" target="_blank">[8分] Representation Alignment Is Only as Good as the Teacher's Be...</a>
+                
+            </div>
+            <div class="contact-list">
+                <div class="contact-person"><span class="role-badge">第一作者</span><strong>Zhengfeiyang Zhang</strong> — The University of Tokyo </div>
+                <div class="contact-person"><strong>Haoyuan Chen</strong> — University of the Chinese Academy of Sciences </div>
+                <div class="contact-person"><strong>Hexin Wang</strong> — InfRec </div>
+                <div class="contact-person"><strong>Hanyu Zhou</strong> — National University of Singapore </div>
+                <div class="contact-person"><strong>Zhenglin Wan</strong> — National University of Singapore </div>
+            </div>
+            <div class="corresponding">通讯作者: Pengfei Zhou</div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2611.29460v1" target="_blank">[8分] Fill in the Blanks: Non-Autoregressive Schema-Parallel Key I...</a>
+                
+            </div>
+            <div class="contact-list">
+                <div class="contact-person"><span class="role-badge">第一作者</span><strong>Shaked Perek</strong> — IBM Research </div>
+                <div class="contact-person"><strong>Avihu Dekel</strong> — IBM Research </div>
+                <div class="contact-person"><strong>Ben Wiesel</strong> — IBM Research </div>
+                <div class="contact-person"><strong>Sivan Harary</strong> — IBM Research </div>
+                <div class="contact-person"><strong>Eli Schwartz</strong> — IBM Research </div>
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2611.29715v1" target="_blank">[7分] From States to Dynamics: Detecting Rule Violations in Othell...</a>
+                
+            </div>
+            <div class="contact-list">
+                <div class="contact-person"><span class="role-badge">第一作者</span><strong>David L. Cao</strong> — Harvard College, Harvard University, Cambridge, MA 02138 <a href="mailto:dcao@college.harvard.edu" class="email-link">dcao@college.harvard.edu</a></div>
+                <div class="contact-person"><strong>Sai Sumedh R. Hindupur</strong> — School of Engineering and Applied Sciences, Harvard University, Cambridge, MA 02138 <a href="mailto:sumedh.hindupur@gmail.com" class="email-link">sumedh.hindupur@gmail.com</a></div>
+                <div class="contact-person"><strong>Demba Ba</strong> — School of Engineering and Applied Sciences, Kempner Institute, Harvard University, Cambridge, MA 02138 <a href="mailto:deb884@g.harvard.edu" class="email-link">deb884@g.harvard.edu</a></div>
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-paper">
+                <a href="https://arxiv.org/abs/2611.29610v1" target="_blank">[7分] Dr. Grasp-RL: Diverse and Robust Dexterous Grasping via Rein...</a>
+                
+            </div>
+            <div class="contact-list">
+                <div class="contact-person"><span class="role-badge">第一作者</span><strong>Kunqi Xu</strong> — Tsinghua University - IEI Lab </div>
+                <div class="contact-person"><span class="role-badge">合著作者</span><strong>Xiaokang Sun</strong> — Tsinghua University - IEI Lab </div>
+                <div class="contact-person"><span class="role-badge">合著作者</span><strong>Xueyan Zou</strong> — Tsinghua University - IEI Lab </div>
+            </div>
+        </div>
+</div>
+
+    </div>
+
+    <div class="section-archive">
+        <div class="archive">
+            <a href="index.html" class="back-latest">← 返回最新日报</a>
+            <h2>历史归档</h2>
+            <a href="2026-11-24.html" class="archive-link">2026-11-24</a>
+<a href="2026-11-21.html" class="archive-link">2026-11-21</a>
+<a href="2026-11-20.html" class="archive-link">2026-11-20</a>
+<a href="2026-11-19.html" class="archive-link">2026-11-19</a>
+<a href="2026-11-18.html" class="archive-link">2026-11-18</a>
+<a href="2026-11-17.html" class="archive-link">2026-11-17</a>
+<a href="2026-11-15.html" class="archive-link">2026-11-15</a>
+<a href="2026-11-14.html" class="archive-link">2026-11-14</a>
+<a href="2026-11-13.html" class="archive-link">2026-11-13</a>
+<a href="2026-11-12.html" class="archive-link">2026-11-12</a>
+<a href="2026-11-10.html" class="archive-link">2026-11-10</a>
+<a href="2026-11-08.html" class="archive-link">2026-11-08</a>
+<a href="2026-11-07.html" class="archive-link">2026-11-07</a>
+<a href="2026-11-06.html" class="archive-link">2026-11-06</a>
+<a href="2026-11-05.html" class="archive-link">2026-11-05</a>
+<a href="2026-11-03.html" class="archive-link">2026-11-03</a>
+<a href="2026-11-01.html" class="archive-link">2026-11-01</a>
+<a href="2026-10-31.html" class="archive-link">2026-10-31</a>
+<a href="2026-10-30.html" class="archive-link">2026-10-30</a>
+<a href="2026-10-29.html" class="archive-link">2026-10-29</a>
+<a href="2026-10-28.html" class="archive-link">2026-10-28</a>
+<a href="2026-10-27.html" class="archive-link">2026-10-27</a>
+<a href="2026-10-26.html" class="archive-link">2026-10-26</a>
+<a href="2026-10-25.html" class="archive-link">2026-10-25</a>
+<a href="2026-10-24.html" class="archive-link">2026-10-24</a>
+<a href="2026-10-23.html" class="archive-link">2026-10-23</a>
+<a href="2026-10-22.html" class="archive-link">2026-10-22</a>
+<a href="2026-10-21.html" class="archive-link">2026-10-21</a>
+<a href="2026-10-20.html" class="archive-link">2026-10-20</a>
+<a href="2026-10-19.html" class="archive-link">2026-10-19</a>
+
+        </div>
+    </div>
+</body>
+</html>
