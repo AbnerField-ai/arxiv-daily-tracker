@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 论文日报 - 2026-11-27</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
+            background: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* ====== 页头 ====== */
+        .page-header {
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .page-header h1 {
+            font-size: 1.8em;
+            color: #1a1a2e;
+            margin-bottom: 6px;
+        }
+        .page-header .meta {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .stats {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+        .stat {
+            background: #f8f9fa;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.82em;
+            color: #555;
+        }
+
+        /* ====== 导航 ====== */
+        .nav-bar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 10px 20px;
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .nav-bar a {
+            text-decoration: none;
+            font-size: 0.85em;
+            padding: 5px 14px;
+            border-radius: 16px;
+            color: #555;
+            background: #f3f4f6;
+            transition: all 0.2s;
+        }
+        .nav-bar a:hover { background: #4a6cf7; color: white; }
+        .nav-bar a.nav-labs { background: #1e293b; color: #94a3b8; }
+        .nav-bar a.nav-labs:hover { background: #334155; color: white; }
+
+        /* ====== 板块4: 趋势总结 ====== */
+        .section-insight {
+            max-width: 900px;
+            margin: 24px auto;
+            padding: 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            color: white;
+        }
+        .insight-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .insight-header h2 {
+            font-size: 1.3em;
+        }
+        .insight-date {
+            opacity: 0.8;
+            font-size: 0.85em;
+        }
+        .insight-body {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .insight-item {
+            background: rgba(255,255,255,0.12);
+            border-radius: 10px;
+            padding: 14px 16px;
+        }
+        .insight-item.highlight {
+            background: rgba(255,255,255,0.22);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        .insight-label {
+            font-size: 0.78em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.8;
+            margin-bottom: 4px;
+        }
+        .insight-content {
+            font-size: 0.92em;
+            line-height: 1.5;
+        }
+        .overlap-tags {
+            margin-top: 8px;
+        }
+        .overlap-badge {
+            display: inline-block;
+            background: #fbbf24;
+            color: #1a1a2e;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 0.78em;
+            font-weight: 600;
+            margin-right: 6px;
+        }
+        .overlap-topic {
+            font-size: 0.82em;
+            opacity: 0.9;
+        }
+
+        /* ====== 板块3: 大厂动态 ====== */
+        .section-labs {
+            max-width: 900px;
+            margin: 24px auto;
+            padding: 24px;
+            background: #1e293b;
+            border-radius: 16px;
+            color: #e2e8f0;
+        }
+        .labs-title {
+            font-size: 1.3em;
+            color: white;
+            margin-bottom: 20px;
+        }
+        .labs-count {
+            font-size: 0.6em;
+            font-weight: normal;
+            color: #94a3b8;
+        }
+        .lab-group {
+            margin-bottom: 20px;
+        }
+        .lab-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #334155;
+        }
+        .lab-name {
+            font-size: 1.05em;
+            font-weight: 600;
+            color: #f1f5f9;
+        }
+        .lab-badge {
+            background: #3b82f6;
+            color: white;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 0.75em;
+        }
+        .lab-paper {
+            background: #293548;
+            border-radius: 10px;
+            padding: 14px 16px;
+            margin-bottom: 10px;
+        }
+        .lab-paper-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+        .lab-paper-topics {
+            font-size: 0.8em;
+            color: #94a3b8;
+        }
+        .lab-paper-title {
+            font-size: 0.95em;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        .lab-paper-title a {
+            color: #e2e8f0;
+            text-decoration: none;
+        }
+        .lab-paper-title a:hover {
+            color: #60a5fa;
+            text-decoration: underline;
+        }
+        .lab-paper-summary {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-size: 0.85em;
+            color: #94a3b8;
+            margin-bottom: 8px;
+        }
+        .lab-paper-summary strong {
+            color: #cbd5e1;
+        }
+        .lab-pdf-link {
+            color: #60a5fa;
+            text-decoration: none;
+            font-size: 0.82em;
+        }
+        .lab-pdf-link:hover { text-decoration: underline; }
+
+        /* ====== 板块1: 全部论文 ====== */
+        .section-papers {
+            max-width: 900px;
+            margin: 24px auto;
+            padding: 24px;
+            background: white;
+            border-radius: 16px;
+        }
+        .papers-title {
+            font-size: 1.3em;
+            color: #1a1a2e;
+            margin-bottom: 20px;
+        }
+        .topic-header {
+            font-size: 1.15em;
+            color: #1a1a2e;
+            margin: 24px 0 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .topic-header .count {
+            font-size: 0.7em;
+            color: #888;
+            font-weight: normal;
+        }
+        .paper-card {
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 14px;
+            border: 1px solid #e5e7eb;
+            transition: box-shadow 0.2s;
+        }
+        .paper-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+        .score {
+            font-weight: bold;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 0.82em;
+        }
+        .score.high { background: #d1fae5; color: #065f46; }
+        .score.medium { background: #fef3c7; color: #92400e; }
+        .score.low { background: #f3f4f6; color: #6b7280; }
+        .org-tag {
+            background: #ede9fe;
+            color: #6d28d9;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.75em;
+        }
+        .date { color: #9ca3af; font-size: 0.82em; margin-left: auto; }
+        .paper-title {
+            font-size: 0.98em;
+            margin-bottom: 4px;
+            line-height: 1.4;
+        }
+        .paper-title a {
+            color: #1e293b;
+            text-decoration: none;
+        }
+        .paper-title a:hover {
+            color: #4a6cf7;
+            text-decoration: underline;
+        }
+        .authors {
+            color: #6b7280;
+            font-size: 0.82em;
+            margin-bottom: 10px;
+        }
+        .summary {
+            background: white;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 1px solid #f1f5f9;
+        }
+        .summary-item {
+            margin-bottom: 4px;
+            font-size: 0.85em;
+            color: #4b5563;
+        }
+        .summary-item:last-child { margin-bottom: 0; }
+        .summary-item strong { color: #374151; }
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topics { color: #9ca3af; font-size: 0.78em; }
+        .pdf-link {
+            color: #4a6cf7;
+            text-decoration: none;
+            font-size: 0.82em;
+            font-weight: 500;
+        }
+        .pdf-link:hover { text-decoration: underline; }
+
+        /* ====== 板块2: 联系人库 ====== */
+        .section-contacts {
+            max-width: 900px;
+            margin: 24px auto;
+            padding: 24px;
+            background: white;
+            border-radius: 16px;
+        }
+        .contacts-title {
+            font-size: 1.3em;
+            color: #1a1a2e;
+            margin-bottom: 16px;
+        }
+        .contacts-count {
+            font-size: 0.6em;
+            font-weight: normal;
+            color: #888;
+        }
+        .contacts-subtitle {
+            font-size: 1em;
+            color: #555;
+            margin: 16px 0 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .key-lab-subtitle {
+            color: #ea580c;
+        }
+        .contact-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 12px 14px;
+            margin-bottom: 10px;
+            border: 1px solid #e5e7eb;
+        }
+        .contact-card.key-lab {
+            background: #fff7ed;
+            border-color: #fed7aa;
+        }
+        .contact-paper {
+            margin-bottom: 6px;
+        }
+        .contact-paper a {
+            color: #1e293b;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.88em;
+        }
+        .contact-paper a:hover { color: #4a6cf7; text-decoration: underline; }
+        .contact-org-badge {
+            display: inline-block;
+            background: #ea580c;
+            color: white;
+            padding: 1px 8px;
+            border-radius: 4px;
+            font-size: 0.72em;
+            margin-left: 6px;
+        }
+        .contact-org-badge.normal {
+            background: #6b7280;
+        }
+        .contact-list {
+            padding-left: 10px;
+            border-left: 3px solid #fed7aa;
+        }
+        .contact-card:not(.key-lab) .contact-list {
+            border-left-color: #e5e7eb;
+        }
+        .contact-person {
+            font-size: 0.84em;
+            margin-bottom: 3px;
+            color: #374151;
+        }
+        .email-link {
+            color: #ea580c;
+            text-decoration: none;
+            font-size: 0.84em;
+        }
+        .contact-card:not(.key-lab) .email-link {
+            color: #4a6cf7;
+        }
+        .email-link:hover { text-decoration: underline; }
+        .role-badge {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-size: 0.72em;
+            margin-right: 4px;
+        }
+        .corresponding {
+            font-size: 0.78em;
+            color: #9ca3af;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        /* ====== 底部归档 ====== */
+        .section-archive {
+            max-width: 900px;
+            margin: 24px auto;
+            padding: 20px 24px;
+            background: white;
+            border-radius: 16px;
+        }
+        .archive h2 { font-size: 1em; margin-bottom: 10px; color: #666; }
+        .back-latest {
+            display: inline-block;
+            margin-bottom: 12px;
+            padding: 6px 16px;
+            background: #4a6cf7;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.88em;
+            font-weight: 500;
+        }
+        .back-latest:hover { background: #3a5ce5; }
+        .archive-link {
+            display: inline-block;
+            margin: 4px 8px 4px 0;
+            padding: 4px 12px;
+            background: #f3f4f6;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #4a6cf7;
+            font-size: 0.82em;
+        }
+        .archive-link:hover { background: #e5e7eb; }
+
+        .empty-state {
+            text-align: center;
+            padding: 50px 20px;
+            color: #9ca3af;
+        }
+
+        @media (max-width: 640px) {
+            .section-insight, .section-labs, .section-papers, .section-contacts, .section-archive {
+                margin: 12px 8px;
+                padding: 16px;
+                border-radius: 12px;
+            }
+            .page-header h1 { font-size: 1.4em; }
+            .stats { gap: 8px; }
+            .nav-bar { gap: 6px; padding: 8px 12px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-header">
+        <h1>AI 论文日报</h1>
+        <p class="meta">2026-11-27 | 世界模型 / 多模态 / 大模型 / Agent / 具身智能</p>
+        <div class="stats">
+            <span class="stat">arXiv 抓取 100 篇</span>
+            <span class="stat">AI 筛选 20 篇</span>
+            <span class="stat">大厂论文 1 篇</span>
+            <span class="stat">联系人 0 位</span>
+        </div>
+    </div>
+
+    <nav class="nav-bar">
+        <a href="#insight">趋势总结</a>
+        <a href="#labs" class="nav-labs">大厂动态</a>
+        <a href="#papers">全部论文</a>
+        <a href="#contacts">联系人库</a>
+    </nav>
+
+    <div id="insight">
+    
+    <div class="section-insight">
+        <div class="insight-header">
+            <h2>今日趋势总结</h2>
+            <span class="insight-date">2026-11-27</span>
+        </div>
+        <div class="insight-body">
+            <div class="insight-item">
+                <div class="insight-label">研究热点</div>
+                <div class="insight-content">（今日趋势分析未能生成）</div>
+            </div>
+            <div class="insight-item highlight">
+                <div class="insight-label">大厂方向重合</div>
+                <div class="insight-content"></div>
+                
+            </div>
+            <div class="insight-item">
+                <div class="insight-label">值得关注</div>
+                <div class="insight-content"></div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <div id="labs">
+    <div class="section-labs">
+    <h2 class="labs-title">大厂动态 <span class="labs-count">1 篇来自重点机构</span></h2>
+
+        <div class="lab-group">
+            <div class="lab-header">
+                <span class="lab-name">Google</span>
+                <span class="lab-badge">1 篇</span>
+            </div>
+
+            <div class="lab-paper">
+                <div class="lab-paper-header">
+                    <span class="score low">5/10</span>
+                    <span class="lab-paper-topics">多模态 / 大模型</span>
+                </div>
+                <h4 class="lab-paper-title">
+                    <a href="https://arxiv.org/abs/2611.34862v1" target="_blank">BOP-Refer: Benchmark for Monocular 3D and 2D Object Grounding</a>
+                </h4>
+                <div class="lab-paper-summary">
+                    <span><strong>方法：</strong></span>
+                    <span><strong>创新：</strong></span>
+                </div>
+                <a href="https://arxiv.org/pdf/2611.34862v1" target="_blank" class="lab-pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="lab-group">
+            <div class="lab-header">
+                <span class="lab-name">Anthropic</span>
+                <span class="lab-badge">1 篇</span>
+            </div>
+
+            <div class="lab-paper">
+                <div class="lab-paper-header">
+                    <span class="score low">5/10</span>
+                    <span class="lab-paper-topics">多模态 / 大模型</span>
+                </div>
+                <h4 class="lab-paper-title">
+                    <a href="https://arxiv.org/abs/2611.34862v1" target="_blank">BOP-Refer: Benchmark for Monocular 3D and 2D Object Grounding</a>
+                </h4>
+                <div class="lab-paper-summary">
+                    <span><strong>方法：</strong></span>
+                    <span><strong>创新：</strong></span>
+                </div>
+                <a href="https://arxiv.org/pdf/2611.34862v1" target="_blank" class="lab-pdf-link">PDF 原文</a>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <div id="papers">
+    <div class="section-papers">
+        <h2 class="papers-title">全部精选论文</h2>
+        <h3 class="topic-header">世界模型 <span class="count">(4 篇)</span></h3>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                
+                <span class="date">2026-11-25</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.34830v1" target="_blank">Not all world models can doubt: how training objective and architecture shape epistemic uncertainty in JEPA and RSSM world models</a>
+            </h4>
+            <p class="authors">Simon Baur, Wojciech Samek, Jackie Ma</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>（摘要生成失败，请查看原文）</div>
+                <div class="summary-item"><strong>方法：</strong></div>
+                <div class="summary-item"><strong>结论：</strong></div>
+                <div class="summary-item"><strong>创新点：</strong></div>
+                <div class="summary-item"><strong>意义：</strong></div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">世界模型</span>
+                <a href="https://arxiv.org/pdf/2611.34830v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                
+                <span class="date">2026-11-25</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.34739v1" target="_blank">Was the Model Given the Right Action? Auditing and Repairing Action Interfaces in Navigation World Models</a>
+            </h4>
+            <p class="authors">Ajmain Istiak Apon, Md Mehedi Hasan, Sejuti Rahman</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>（摘要生成失败，请查看原文）</div>
+                <div class="summary-item"><strong>方法：</strong></div>
+                <div class="summary-item"><strong>结论：</strong></div>
+                <div class="summary-item"><strong>创新点：</strong></div>
+                <div class="summary-item"><strong>意义：</strong></div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">世界模型</span>
+                <a href="https://arxiv.org/pdf/2611.34739v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                
+                <span class="date">2026-11-25</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.34730v1" target="_blank">WorldInteract: Controllable Streaming Video Generation for Multi-Material Interactions</a>
+            </h4>
+            <p class="authors">Ahmed Hatem, Caoliwen Wang, Robert Hoang et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>（摘要生成失败，请查看原文）</div>
+                <div class="summary-item"><strong>方法：</strong></div>
+                <div class="summary-item"><strong>结论：</strong></div>
+                <div class="summary-item"><strong>创新点：</strong></div>
+                <div class="summary-item"><strong>意义：</strong></div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">世界模型</span>
+                <a href="https://arxiv.org/pdf/2611.34730v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                
+                <span class="date">2026-11-25</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.34693v1" target="_blank">ShowNow: Fine-Grained Speculative Streaming for Responsive World Models</a>
+            </h4>
+            <p class="authors">Yiren Song, Guian Fang, Mike Zheng Shou</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>（摘要生成失败，请查看原文）</div>
+                <div class="summary-item"><strong>方法：</strong></div>
+                <div class="summary-item"><strong>结论：</strong></div>
+                <div class="summary-item"><strong>创新点：</strong></div>
+                <div class="summary-item"><strong>意义：</strong></div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">世界模型</span>
+                <a href="https://arxiv.org/pdf/2611.34693v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+<h3 class="topic-header">多模态 <span class="count">(16 篇)</span></h3>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                
+                <span class="date">2026-11-25</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.34943v1" target="_blank">Tracking Any Point with Agentic Visual Reasoning</a>
+            </h4>
+            <p class="authors">Xuweiyi Chen, Jin Yao, Linzhan Mou et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>（摘要生成失败，请查看原文）</div>
+                <div class="summary-item"><strong>方法：</strong></div>
+                <div class="summary-item"><strong>结论：</strong></div>
+                <div class="summary-item"><strong>创新点：</strong></div>
+                <div class="summary-item"><strong>意义：</strong></div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型 / Agent</span>
+                <a href="https://arxiv.org/pdf/2611.34943v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                
+                <span class="date">2026-11-25</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.34935v1" target="_blank">Can image generation help visual reasoning? An empirical study</a>
+            </h4>
+            <p class="authors">Xueyang Yu, Yifan Jing, Taiming Lu et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>（摘要生成失败，请查看原文）</div>
+                <div class="summary-item"><strong>方法：</strong></div>
+                <div class="summary-item"><strong>结论：</strong></div>
+                <div class="summary-item"><strong>创新点：</strong></div>
+                <div class="summary-item"><strong>意义：</strong></div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2611.34935v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                
+                <span class="date">2026-11-25</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.34915v1" target="_blank">Memory Is Not Ground Truth: Revising Navigation Authority under Unreliable VLM Evidence for Persistent Semantic Navigation</a>
+            </h4>
+            <p class="authors">Sumukh Shrote, Shenbagaraj Kannapiran, Eric Eaton et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>（摘要生成失败，请查看原文）</div>
+                <div class="summary-item"><strong>方法：</strong></div>
+                <div class="summary-item"><strong>结论：</strong></div>
+                <div class="summary-item"><strong>创新点：</strong></div>
+                <div class="summary-item"><strong>意义：</strong></div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2611.34915v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                
+                <span class="date">2026-11-25</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.34914v1" target="_blank">Cairn: Object-Centric 3D Trajectory Priors for Steering Frozen VLAs</a>
+            </h4>
+            <p class="authors">Agelos Kratimenos, Kostas Daniilidis, Evangelos Chatzipantazis</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>（摘要生成失败，请查看原文）</div>
+                <div class="summary-item"><strong>方法：</strong></div>
+                <div class="summary-item"><strong>结论：</strong></div>
+                <div class="summary-item"><strong>创新点：</strong></div>
+                <div class="summary-item"><strong>意义：</strong></div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2611.34914v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                
+                <span class="date">2026-11-25</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.34903v1" target="_blank">ProbFaS: Probabilistic Video Frame Selection for MLLMs via Multi-Fidelity Calibration</a>
+            </h4>
+            <p class="authors">Tianru Zhang, Mayank Nautiyal, Hugo Eidmann et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>（摘要生成失败，请查看原文）</div>
+                <div class="summary-item"><strong>方法：</strong></div>
+                <div class="summary-item"><strong>结论：</strong></div>
+                <div class="summary-item"><strong>创新点：</strong></div>
+                <div class="summary-item"><strong>意义：</strong></div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2611.34903v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                
+                <span class="date">2026-11-25</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.34881v1" target="_blank">Stranger Things: When Objects Appear Without Their Typical Neighbors</a>
+            </h4>
+            <p class="authors">Siddhartha Gairola, Jiahao Xie, Anna Kukleva et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>（摘要生成失败，请查看原文）</div>
+                <div class="summary-item"><strong>方法：</strong></div>
+                <div class="summary-item"><strong>结论：</strong></div>
+                <div class="summary-item"><strong>创新点：</strong></div>
+                <div class="summary-item"><strong>意义：</strong></div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2611.34881v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                
+                <span class="date">2026-11-25</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.34877v1" target="_blank">Towards Closing the Performance Gap in Cross-Modal Place Recognition</a>
+            </h4>
+            <p class="authors">Ofer Idan, Dan Badur, Yoli Shavit</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>（摘要生成失败，请查看原文）</div>
+                <div class="summary-item"><strong>方法：</strong></div>
+                <div class="summary-item"><strong>结论：</strong></div>
+                <div class="summary-item"><strong>创新点：</strong></div>
+                <div class="summary-item"><strong>意义：</strong></div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2611.34877v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                
+                <span class="date">2026-11-25</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.34864v1" target="_blank">RePace: Reasoning about Demonstration Speedup for Faster Vision-Language-Action Policies</a>
+            </h4>
+            <p class="authors">Insup Lee, Hojin Jeon, Sunguk Shin et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>（摘要生成失败，请查看原文）</div>
+                <div class="summary-item"><strong>方法：</strong></div>
+                <div class="summary-item"><strong>结论：</strong></div>
+                <div class="summary-item"><strong>创新点：</strong></div>
+                <div class="summary-item"><strong>意义：</strong></div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2611.34864v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                <span class="org-tag">Anthropic / Google</span>
+                <span class="date">2026-11-25</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.34862v1" target="_blank">BOP-Refer: Benchmark for Monocular 3D and 2D Object Grounding</a>
+            </h4>
+            <p class="authors">Tomas Hodan, Vineet Bhat, Martin Sundermeyer et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>（摘要生成失败，请查看原文）</div>
+                <div class="summary-item"><strong>方法：</strong></div>
+                <div class="summary-item"><strong>结论：</strong></div>
+                <div class="summary-item"><strong>创新点：</strong></div>
+                <div class="summary-item"><strong>意义：</strong></div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2611.34862v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                
+                <span class="date">2026-11-25</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.34783v1" target="_blank">SceneDesigner3D: Agentic Evolutionary Search for Principled Rearrangement of 3D Indoor Scenes</a>
+            </h4>
+            <p class="authors">Chandan Yeshwanth, Angela Dai</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>（摘要生成失败，请查看原文）</div>
+                <div class="summary-item"><strong>方法：</strong></div>
+                <div class="summary-item"><strong>结论：</strong></div>
+                <div class="summary-item"><strong>创新点：</strong></div>
+                <div class="summary-item"><strong>意义：</strong></div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / Agent</span>
+                <a href="https://arxiv.org/pdf/2611.34783v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                
+                <span class="date">2026-11-25</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.34778v1" target="_blank">Toward Agentic Robotics: A Large-Scale Study of Harness Design for Robot-Use Agents</a>
+            </h4>
+            <p class="authors">Yuxiang Lai, Jike Zhong, Yu-Jhe Li et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>（摘要生成失败，请查看原文）</div>
+                <div class="summary-item"><strong>方法：</strong></div>
+                <div class="summary-item"><strong>结论：</strong></div>
+                <div class="summary-item"><strong>创新点：</strong></div>
+                <div class="summary-item"><strong>意义：</strong></div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / Agent</span>
+                <a href="https://arxiv.org/pdf/2611.34778v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                
+                <span class="date">2026-11-25</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.34750v1" target="_blank">SOLVE: Sparse, Ordered Keyposes Make LLM Agents Versatile and Efficient Robot Manipulator</a>
+            </h4>
+            <p class="authors">Xiang Li, Hongyu Zhou, Ya-Li Li et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>（摘要生成失败，请查看原文）</div>
+                <div class="summary-item"><strong>方法：</strong></div>
+                <div class="summary-item"><strong>结论：</strong></div>
+                <div class="summary-item"><strong>创新点：</strong></div>
+                <div class="summary-item"><strong>意义：</strong></div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型 / Agent</span>
+                <a href="https://arxiv.org/pdf/2611.34750v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                
+                <span class="date">2026-11-25</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.34745v1" target="_blank">How Well Do Vision-Language Scene Graphs Serve as Memory for Embodied Question Answering?</a>
+            </h4>
+            <p class="authors">Divyansh Pandey, Shubh Garg, Vedant Khandelwal et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>（摘要生成失败，请查看原文）</div>
+                <div class="summary-item"><strong>方法：</strong></div>
+                <div class="summary-item"><strong>结论：</strong></div>
+                <div class="summary-item"><strong>创新点：</strong></div>
+                <div class="summary-item"><strong>意义：</strong></div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2611.34745v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                
+                <span class="date">2026-11-25</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.34700v1" target="_blank">Seeing the Right Context: Grounded On-Policy Distillation for Remote Sensing</a>
+            </h4>
+            <p class="authors">Yichang Luo, Hourun Zhu, Shixiong Liu et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>（摘要生成失败，请查看原文）</div>
+                <div class="summary-item"><strong>方法：</strong></div>
+                <div class="summary-item"><strong>结论：</strong></div>
+                <div class="summary-item"><strong>创新点：</strong></div>
+                <div class="summary-item"><strong>意义：</strong></div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2611.34700v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                
+                <span class="date">2026-11-25</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.34698v1" target="_blank">A Failure-Driven Data Flywheel for Post-Training Vision-Language-Action Models</a>
+            </h4>
+            <p class="authors">Yuhao Luo, Zihao Sheng, Zilin Huang et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>（摘要生成失败，请查看原文）</div>
+                <div class="summary-item"><strong>方法：</strong></div>
+                <div class="summary-item"><strong>结论：</strong></div>
+                <div class="summary-item"><strong>创新点：</strong></div>
+                <div class="summary-item"><strong>意义：</strong></div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态</span>
+                <a href="https://arxiv.org/pdf/2611.34698v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                
+                <span class="date">2026-11-25</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.34690v1" target="_blank">PoVi: Agentic Poetry-to-Video Generation with Knowledge Grounding and Figurative Understanding</a>
+            </h4>
+            <p class="authors">Yuxia Zhu, Shiying Zhang, Lingzhuang Sun et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>（摘要生成失败，请查看原文）</div>
+                <div class="summary-item"><strong>方法：</strong></div>
+                <div class="summary-item"><strong>结论：</strong></div>
+                <div class="summary-item"><strong>创新点：</strong></div>
+                <div class="summary-item"><strong>意义：</strong></div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / Agent</span>
+                <a href="https://arxiv.org/pdf/2611.34690v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+<h3 class="topic-header">大模型 <span class="count">(6 篇)</span></h3>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                
+                <span class="date">2026-11-25</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.34943v1" target="_blank">Tracking Any Point with Agentic Visual Reasoning</a>
+            </h4>
+            <p class="authors">Xuweiyi Chen, Jin Yao, Linzhan Mou et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>（摘要生成失败，请查看原文）</div>
+                <div class="summary-item"><strong>方法：</strong></div>
+                <div class="summary-item"><strong>结论：</strong></div>
+                <div class="summary-item"><strong>创新点：</strong></div>
+                <div class="summary-item"><strong>意义：</strong></div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型 / Agent</span>
+                <a href="https://arxiv.org/pdf/2611.34943v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                
+                <span class="date">2026-11-25</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.34903v1" target="_blank">ProbFaS: Probabilistic Video Frame Selection for MLLMs via Multi-Fidelity Calibration</a>
+            </h4>
+            <p class="authors">Tianru Zhang, Mayank Nautiyal, Hugo Eidmann et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>（摘要生成失败，请查看原文）</div>
+                <div class="summary-item"><strong>方法：</strong></div>
+                <div class="summary-item"><strong>结论：</strong></div>
+                <div class="summary-item"><strong>创新点：</strong></div>
+                <div class="summary-item"><strong>意义：</strong></div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2611.34903v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                
+                <span class="date">2026-11-25</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.34881v1" target="_blank">Stranger Things: When Objects Appear Without Their Typical Neighbors</a>
+            </h4>
+            <p class="authors">Siddhartha Gairola, Jiahao Xie, Anna Kukleva et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>（摘要生成失败，请查看原文）</div>
+                <div class="summary-item"><strong>方法：</strong></div>
+                <div class="summary-item"><strong>结论：</strong></div>
+                <div class="summary-item"><strong>创新点：</strong></div>
+                <div class="summary-item"><strong>意义：</strong></div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2611.34881v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                <span class="org-tag">Anthropic / Google</span>
+                <span class="date">2026-11-25</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.34862v1" target="_blank">BOP-Refer: Benchmark for Monocular 3D and 2D Object Grounding</a>
+            </h4>
+            <p class="authors">Tomas Hodan, Vineet Bhat, Martin Sundermeyer et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>（摘要生成失败，请查看原文）</div>
+                <div class="summary-item"><strong>方法：</strong></div>
+                <div class="summary-item"><strong>结论：</strong></div>
+                <div class="summary-item"><strong>创新点：</strong></div>
+                <div class="summary-item"><strong>意义：</strong></div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2611.34862v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                
+                <span class="date">2026-11-25</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.34750v1" target="_blank">SOLVE: Sparse, Ordered Keyposes Make LLM Agents Versatile and Efficient Robot Manipulator</a>
+            </h4>
+            <p class="authors">Xiang Li, Hongyu Zhou, Ya-Li Li et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>（摘要生成失败，请查看原文）</div>
+                <div class="summary-item"><strong>方法：</strong></div>
+                <div class="summary-item"><strong>结论：</strong></div>
+                <div class="summary-item"><strong>创新点：</strong></div>
+                <div class="summary-item"><strong>意义：</strong></div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型 / Agent</span>
+                <a href="https://arxiv.org/pdf/2611.34750v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                
+                <span class="date">2026-11-25</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.34700v1" target="_blank">Seeing the Right Context: Grounded On-Policy Distillation for Remote Sensing</a>
+            </h4>
+            <p class="authors">Yichang Luo, Hourun Zhu, Shixiong Liu et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>（摘要生成失败，请查看原文）</div>
+                <div class="summary-item"><strong>方法：</strong></div>
+                <div class="summary-item"><strong>结论：</strong></div>
+                <div class="summary-item"><strong>创新点：</strong></div>
+                <div class="summary-item"><strong>意义：</strong></div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型</span>
+                <a href="https://arxiv.org/pdf/2611.34700v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+<h3 class="topic-header">Agent <span class="count">(5 篇)</span></h3>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                
+                <span class="date">2026-11-25</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.34943v1" target="_blank">Tracking Any Point with Agentic Visual Reasoning</a>
+            </h4>
+            <p class="authors">Xuweiyi Chen, Jin Yao, Linzhan Mou et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>（摘要生成失败，请查看原文）</div>
+                <div class="summary-item"><strong>方法：</strong></div>
+                <div class="summary-item"><strong>结论：</strong></div>
+                <div class="summary-item"><strong>创新点：</strong></div>
+                <div class="summary-item"><strong>意义：</strong></div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型 / Agent</span>
+                <a href="https://arxiv.org/pdf/2611.34943v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                
+                <span class="date">2026-11-25</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.34783v1" target="_blank">SceneDesigner3D: Agentic Evolutionary Search for Principled Rearrangement of 3D Indoor Scenes</a>
+            </h4>
+            <p class="authors">Chandan Yeshwanth, Angela Dai</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>（摘要生成失败，请查看原文）</div>
+                <div class="summary-item"><strong>方法：</strong></div>
+                <div class="summary-item"><strong>结论：</strong></div>
+                <div class="summary-item"><strong>创新点：</strong></div>
+                <div class="summary-item"><strong>意义：</strong></div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / Agent</span>
+                <a href="https://arxiv.org/pdf/2611.34783v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                
+                <span class="date">2026-11-25</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.34778v1" target="_blank">Toward Agentic Robotics: A Large-Scale Study of Harness Design for Robot-Use Agents</a>
+            </h4>
+            <p class="authors">Yuxiang Lai, Jike Zhong, Yu-Jhe Li et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>（摘要生成失败，请查看原文）</div>
+                <div class="summary-item"><strong>方法：</strong></div>
+                <div class="summary-item"><strong>结论：</strong></div>
+                <div class="summary-item"><strong>创新点：</strong></div>
+                <div class="summary-item"><strong>意义：</strong></div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / Agent</span>
+                <a href="https://arxiv.org/pdf/2611.34778v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                
+                <span class="date">2026-11-25</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.34750v1" target="_blank">SOLVE: Sparse, Ordered Keyposes Make LLM Agents Versatile and Efficient Robot Manipulator</a>
+            </h4>
+            <p class="authors">Xiang Li, Hongyu Zhou, Ya-Li Li et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>（摘要生成失败，请查看原文）</div>
+                <div class="summary-item"><strong>方法：</strong></div>
+                <div class="summary-item"><strong>结论：</strong></div>
+                <div class="summary-item"><strong>创新点：</strong></div>
+                <div class="summary-item"><strong>意义：</strong></div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / 大模型 / Agent</span>
+                <a href="https://arxiv.org/pdf/2611.34750v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+        <div class="paper-card" data-score="5">
+            <div class="card-header">
+                <span class="score low">5/10</span>
+                
+                <span class="date">2026-11-25</span>
+            </div>
+            <h4 class="paper-title">
+                <a href="https://arxiv.org/abs/2611.34690v1" target="_blank">PoVi: Agentic Poetry-to-Video Generation with Knowledge Grounding and Figurative Understanding</a>
+            </h4>
+            <p class="authors">Yuxia Zhu, Shiying Zhang, Lingzhuang Sun et al.</p>
+            <div class="summary">
+                <div class="summary-item"><strong>问题：</strong>（摘要生成失败，请查看原文）</div>
+                <div class="summary-item"><strong>方法：</strong></div>
+                <div class="summary-item"><strong>结论：</strong></div>
+                <div class="summary-item"><strong>创新点：</strong></div>
+                <div class="summary-item"><strong>意义：</strong></div>
+            </div>
+            <div class="card-footer">
+                <span class="topics">多模态 / Agent</span>
+                <a href="https://arxiv.org/pdf/2611.34690v1" target="_blank" class="pdf-link">PDF 原文</a>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+    <div id="contacts">
+    <div class="section-contacts"><p style="color:#9ca3af">今日暂无联系人信息</p></div>
+    </div>
+
+    <div class="section-archive">
+        <div class="archive">
+            <a href="index.html" class="back-latest">← 返回最新日报</a>
+            <h2>历史归档</h2>
+            <a href="2026-11-27.html" class="archive-link">2026-11-27</a>
+<a href="2026-11-26.html" class="archive-link">2026-11-26</a>
+<a href="2026-11-25.html" class="archive-link">2026-11-25</a>
+<a href="2026-11-24.html" class="archive-link">2026-11-24</a>
+<a href="2026-11-21.html" class="archive-link">2026-11-21</a>
+<a href="2026-11-20.html" class="archive-link">2026-11-20</a>
+<a href="2026-11-19.html" class="archive-link">2026-11-19</a>
+<a href="2026-11-18.html" class="archive-link">2026-11-18</a>
+<a href="2026-11-17.html" class="archive-link">2026-11-17</a>
+<a href="2026-11-15.html" class="archive-link">2026-11-15</a>
+<a href="2026-11-14.html" class="archive-link">2026-11-14</a>
+<a href="2026-11-13.html" class="archive-link">2026-11-13</a>
+<a href="2026-11-12.html" class="archive-link">2026-11-12</a>
+<a href="2026-11-10.html" class="archive-link">2026-11-10</a>
+<a href="2026-11-08.html" class="archive-link">2026-11-08</a>
+<a href="2026-11-07.html" class="archive-link">2026-11-07</a>
+<a href="2026-11-06.html" class="archive-link">2026-11-06</a>
+<a href="2026-11-05.html" class="archive-link">2026-11-05</a>
+<a href="2026-11-03.html" class="archive-link">2026-11-03</a>
+<a href="2026-11-01.html" class="archive-link">2026-11-01</a>
+<a href="2026-10-31.html" class="archive-link">2026-10-31</a>
+<a href="2026-10-30.html" class="archive-link">2026-10-30</a>
+<a href="2026-10-29.html" class="archive-link">2026-10-29</a>
+<a href="2026-10-28.html" class="archive-link">2026-10-28</a>
+<a href="2026-10-27.html" class="archive-link">2026-10-27</a>
+<a href="2026-10-26.html" class="archive-link">2026-10-26</a>
+<a href="2026-10-25.html" class="archive-link">2026-10-25</a>
+<a href="2026-10-24.html" class="archive-link">2026-10-24</a>
+<a href="2026-10-23.html" class="archive-link">2026-10-23</a>
+<a href="2026-10-22.html" class="archive-link">2026-10-22</a>
+
+        </div>
+    </div>
+</body>
+</html>
