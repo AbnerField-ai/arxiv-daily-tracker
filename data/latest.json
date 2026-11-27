@@ -1,672 +1,85 @@
 {
-  "date": "2026-11-26",
-  "generated_at": "2026-11-26T02:05:01.766843",
+  "date": "2026-11-27",
+  "generated_at": "2026-11-27T02:04:05.551062",
   "total_fetched": 100,
   "total_matched": 20,
   "papers": [
     {
-      "title": "VAPOR: Improving Multimodal Reasoning with Sparse Visual Updates",
-      "abstract": "Multimodal large language models (MLLMs) have made substantial progress in visual reasoning, but extended generation over large visual contexts remains computationally expensive. During autoregressive decoding, visual attention is recomputed for every generated token, even when consecutive tokens rely on similar visual evidence. We introduce VAPOR (Visual Attention Persistence with On-demand Refresh), a training-free framework that reduces this redundancy by reusing visual attention outputs across decoding steps and refreshing them when needed. VAPOR caches the visual attention output while continuing to update textual attention at every step, helping reduce visual grounding drift during extended reasoning. To decide when to reuse cached outputs, VAPOR estimates visual attention mass using a low-rank approximation. It also uses prefill-based attention consistency and cache age to make independent Persist and Refresh decisions for each attention head. VAPOR retains the full visual key-value (KV) cache, so all visual tokens remain available when new evidence is needed. Experiments on eight image and four video reasoning benchmarks across two MLLM families show that VAPOR improves accuracy over dense attention on nearly all benchmarks while achieving 1.11-1.21x decoding speedups. Compared with the strongest state-of-the-art acceleration baseline in each setting, VAPOR further improves accuracy by 0.35-2.15 percentage points while achieving comparable or lower decoding latency. Our code is available at https://github.com/Su-my/VAPOR.",
-      "url": "https://arxiv.org/abs/2611.33751v1",
-      "pdf": "https://arxiv.org/pdf/2611.33751v1",
+      "title": "Tracking Any Point with Agentic Visual Reasoning",
+      "abstract": "A general-purpose Vision-Language Model (VLM) has surpassed expert vision models in many domains such as object detection and video recognition. However, point correspondence is known to be challenging for VLMs since it goes beyond object-level recognition: it requires pixel-level localization of the same physical surface point across observations, even when appearance changes or the point disappears and later reappears. In this paper, we introduce AgenTAP, a VLM-based agent that directly predicts point coordinates and visibility and actively reasons over videos. Starting from its own estimate, the agent autonomously chooses what to inspect and uses the resulting evidence to verify point identity and refine its predictions. With GPT-6 Astra, it surpasses expert vision models in both point localization and visibility prediction, without correspondence-specific fine-tuning. We further use AgenTAP to re-identify physical points after disappearance and reconnect fragmented tracks, constructing EgoTAP-4D, a dataset of 3D point trajectories in long real-world egocentric videos. On sampled reappearing points, its predictions approach human agreement, and adding EgoTAP-4D to D4RT training improves average 3D tracking performance.",
+      "url": "https://arxiv.org/abs/2611.34943v1",
+      "pdf": "https://arxiv.org/pdf/2611.34943v1",
       "categories": [
         "cs.CV"
       ],
       "authors": [
-        "Mingyu Su",
-        "Wei Wu",
-        "Erle Zhu",
-        "Chengxing Xie",
-        "Deyao Hong"
+        "Xuweiyi Chen",
+        "Jin Yao",
+        "Linzhan Mou",
+        "Lei Gong",
+        "Di Liu"
       ],
       "all_authors": [
-        "Mingyu Su",
-        "Wei Wu",
-        "Erle Zhu",
-        "Chengxing Xie",
-        "Deyao Hong",
-        "Hongning Wang"
+        "Xuweiyi Chen",
+        "Jin Yao",
+        "Linzhan Mou",
+        "Lei Gong",
+        "Di Liu",
+        "Cheng Zhang",
+        "Ziqiao Ma",
+        "Sihan Xu",
+        "Adam W. Harley",
+        "Shengyi Qian",
+        "Zezhou Cheng"
       ],
       "affiliations": [
         {
-          "name": "Mingyu Su",
+          "name": "Xuweiyi Chen",
           "affiliations": []
         },
         {
-          "name": "Wei Wu",
+          "name": "Jin Yao",
           "affiliations": []
         },
         {
-          "name": "Erle Zhu",
+          "name": "Linzhan Mou",
           "affiliations": []
         },
         {
-          "name": "Chengxing Xie",
+          "name": "Lei Gong",
           "affiliations": []
         },
         {
-          "name": "Deyao Hong",
+          "name": "Di Liu",
           "affiliations": []
         },
         {
-          "name": "Hongning Wang",
+          "name": "Cheng Zhang",
+          "affiliations": []
+        },
+        {
+          "name": "Ziqiao Ma",
+          "affiliations": []
+        },
+        {
+          "name": "Sihan Xu",
+          "affiliations": []
+        },
+        {
+          "name": "Adam W. Harley",
+          "affiliations": []
+        },
+        {
+          "name": "Shengyi Qian",
+          "affiliations": []
+        },
+        {
+          "name": "Zezhou Cheng",
           "affiliations": []
         }
       ],
       "published": "2026-11-25",
       "matched_topics": [
-        "多模态",
-        "大模型"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "（摘要生成失败，请查看原文）",
-        "method": "",
-        "result": "",
-        "novelty": "",
-        "relevance": "",
-        "org": "",
-        "score": 5
-      },
-      "identified_orgs": []
-    },
-    {
-      "title": "WhatIf: Counterfactual World Models over Action-Grounded Causal Graphs for Robotic Manipulation",
-      "abstract": "World models predict what happens under an action, but choosing between actions requires comparing their outcomes in the same physical situation. Factual transitions alone determine action-wise marginal futures and average effects, but not individual effects or the probability that switching actions causes harm. We introduce WhatIf, a counterfactual world model for manipulation that couples candidate futures through shared latent physics and transition noise inferred from factual history. Each candidate action induces a sparse object-factor causal graph describing the physical pathways it activates. Rolling out these graphs under the shared situation anchors predictions to observed outcomes and confines action contrasts to the objects each action reaches. Shared type-conditioned functions support varying numbers of objects, while a round-trip loss enforces action-invariant abduction without counterfactual labels. We show that replacing an individual effect with its conditional mean incurs mean-squared error equal to its conditional variance, motivating comparisons between coupled futures. Building on these comparisons, Counterfactual Advantage Planning (CAP) ranks plans by their advantage over an incumbent within shared situations and constrains the probability of harm. Paired advantages reduce estimator variance by a factor of $1-ρ$, where $ρ$ is the correlation between branch outcomes, and cancel model errors shared by both branches. Each executed transition provides hindsight advantages to update the physics posterior, the next plan, and an amortized policy without a learned critic. We further establish when observational transitions identify interventional dynamics. Paired simulator interventions evaluate counterfactual accuracy, graph recovery, compositional generalization, and decision quality.",
-      "url": "https://arxiv.org/abs/2611.33745v1",
-      "pdf": "https://arxiv.org/pdf/2611.33745v1",
-      "categories": [
-        "cs.AI"
-      ],
-      "authors": [
-        "Xu Yang",
-        "Kailai Sun",
-        "Qianchuan Zhao"
-      ],
-      "all_authors": [
-        "Xu Yang",
-        "Kailai Sun",
-        "Qianchuan Zhao"
-      ],
-      "affiliations": [
-        {
-          "name": "Xu Yang",
-          "affiliations": []
-        },
-        {
-          "name": "Kailai Sun",
-          "affiliations": []
-        },
-        {
-          "name": "Qianchuan Zhao",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-11-25",
-      "matched_topics": [
-        "世界模型"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "（摘要生成失败，请查看原文）",
-        "method": "",
-        "result": "",
-        "novelty": "",
-        "relevance": "",
-        "org": "",
-        "score": 5
-      },
-      "identified_orgs": []
-    },
-    {
-      "title": "RegHarness: Regulating What Code-as-Policy Agents Keep from Steps to Skills",
-      "abstract": "Code-as-Policy agents generate, execute, and revise robot programs, but often lack explicit mechanisms to govern what persists across executions: which actions are retained within a trial and which code modifications carry over to subsequent runs. This leaves two critical aspects of agent behavior insufficiently controlled: step-level execution and cross-run adaptation. We present RegHarness, a two-level harness that governs both forms of persistence for the RATs agent team, without relying on a vision-language-action (VLA) policy or demonstrations. Within each trial, run-time governance evaluates each proposed step from a reset scene, replaying the committed steps, while a fixed-rule controller commits the step only when both RATs' verifier and a task-long LLM auditor approve it. Between runs, a coding agent uses logged failures to develop and test revisions to skills, primitives, and rules, which remain disabled by default until explicitly enabled by the authors. Using a single low-cost model across all run-time roles, RegHarness achieves an 87.8% success rate (158/180) on paired LIBERO-PRO trials, compared with 39.4% for RATs, and a 72.0% success rate on MolmoSpaces trials. A $2\\times2$ ablation study of RegHarness's two levels shows that its skill refinement alone increases RATs' successful trials from 71 to 135, whereas run-time governance alone achieves 105 and RATs' native stepwise reset-and-replay mode achieves only 46. These findings suggest that, for Code-as-Policy agents operating with low-cost models, task success depends not only on how generated programs are executed, but also on the quality of the reusable skills they invoke and how those skills evolve across runs.",
-      "url": "https://arxiv.org/abs/2611.33739v1",
-      "pdf": "https://arxiv.org/pdf/2611.33739v1",
-      "categories": [
-        "cs.RO"
-      ],
-      "authors": [
-        "Shengming Liu",
-        "Yunyi Gao",
-        "Xinyi Wang",
-        "Jianyong Sun",
-        "Shuai Wang"
-      ],
-      "all_authors": [
-        "Shengming Liu",
-        "Yunyi Gao",
-        "Xinyi Wang",
-        "Jianyong Sun",
-        "Shuai Wang",
-        "Yi Deng",
-        "Li Chenye",
-        "Mingcai Zhou",
-        "Sim Kuan Goh"
-      ],
-      "affiliations": [
-        {
-          "name": "Shengming Liu",
-          "affiliations": []
-        },
-        {
-          "name": "Yunyi Gao",
-          "affiliations": []
-        },
-        {
-          "name": "Xinyi Wang",
-          "affiliations": []
-        },
-        {
-          "name": "Jianyong Sun",
-          "affiliations": []
-        },
-        {
-          "name": "Shuai Wang",
-          "affiliations": []
-        },
-        {
-          "name": "Yi Deng",
-          "affiliations": []
-        },
-        {
-          "name": "Li Chenye",
-          "affiliations": []
-        },
-        {
-          "name": "Mingcai Zhou",
-          "affiliations": []
-        },
-        {
-          "name": "Sim Kuan Goh",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-11-25",
-      "matched_topics": [
-        "多模态",
-        "大模型"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "（摘要生成失败，请查看原文）",
-        "method": "",
-        "result": "",
-        "novelty": "",
-        "relevance": "",
-        "org": "",
-        "score": 5
-      },
-      "identified_orgs": []
-    },
-    {
-      "title": "DualCast: Dual-Image Conditioned Diffusion Transformers for Digital Human E-Commerce Video Generation",
-      "abstract": "Recent advances in world models for game interaction and control have increased the demand for large-scale gameplay videos paired with camera trajectories. However, capturing synchronized camera trajectories often requires game-specific pipelines, limiting scalability. We therefore propose GameWeaver, a unified diffusion framework that automatically produces paired video--camera data through three complementary tasks: camera pose estimation from observed video, video generation along a prescribed camera trajectory, and joint video--camera generation from a reference image and text. First, each tipxel stores the normalized 3D coordinates of a pixel ray's endpoint in a reference coordinate frame. The resulting three-channel tipxel fields and RGB frames share the pretrained video model's VAE. Next, a fully trainable dual-stream Transformer exchanges appearance and geometry features through bidirectional gated attention and conditions both streams on shared text features. Finally, deterministic fitting recovers camera intrinsics and normalized trajectories from generated tipxel fields. In our evaluation tasks, GameWeaver achieves a normalized translation MSE of 0.0029 for camera control; for joint generation, it scores 85.48 out of 100 on instruction adherence versus 64.71 for the best cascade on that metric, validating the feasibility of the proposed approach.",
-      "url": "https://arxiv.org/abs/2611.33734v1",
-      "pdf": "https://arxiv.org/pdf/2611.33734v1",
-      "categories": [
-        "cs.CV"
-      ],
-      "authors": [
-        "Lifan Jiang",
-        "Yifan Huang",
-        "Jixuan Zhang",
-        "Peifeng Wang",
-        "Yuying Ma"
-      ],
-      "all_authors": [
-        "Lifan Jiang",
-        "Yifan Huang",
-        "Jixuan Zhang",
-        "Peifeng Wang",
-        "Yuying Ma",
-        "Dehai Zhao",
-        "Deng Cai",
-        "Boxi Wu"
-      ],
-      "affiliations": [
-        {
-          "name": "Lifan Jiang",
-          "affiliations": []
-        },
-        {
-          "name": "Yifan Huang",
-          "affiliations": []
-        },
-        {
-          "name": "Jixuan Zhang",
-          "affiliations": []
-        },
-        {
-          "name": "Peifeng Wang",
-          "affiliations": []
-        },
-        {
-          "name": "Yuying Ma",
-          "affiliations": []
-        },
-        {
-          "name": "Dehai Zhao",
-          "affiliations": []
-        },
-        {
-          "name": "Deng Cai",
-          "affiliations": []
-        },
-        {
-          "name": "Boxi Wu",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-11-25",
-      "matched_topics": [
-        "世界模型"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "（摘要生成失败，请查看原文）",
-        "method": "",
-        "result": "",
-        "novelty": "",
-        "relevance": "",
-        "org": "",
-        "score": 5
-      },
-      "identified_orgs": []
-    },
-    {
-      "title": "PROVE: Predict-to-Specify and Observe-to-Verify for Human-Aligned Evaluation of Mobile Manipulation",
-      "abstract": "Judging open-world robot manipulation is hard because layouts, articulated fixtures, and valid goal configurations vary widely. On RoboCasa365, simulator predicates agree with human judgments on only 69.09\\% of rollouts, and a frontier VLM judge on 86.12\\%. We present \\textbf{PROVE} (Predict-to-Specify, Observe-to-Verify), which first specifies what success should look like and then checks the outcome. PROVE refines success conditions from the instruction, the initial scene, a target-object reference image, and a generated goal image. The goal image only sharpens the conditions and never serves as evidence. On 6,500 human-annotated rollouts over 65 atomic actions, PROVE reaches \\textbf{96.83\\%} agreement. Applied to open-source policies, it reports far lower success than native checks and changes their ranking. To reduce evaluation overhead in policy learning, we distill PROVE into \\textbf{PROVE-Lite}, a 4B evaluator that needs no reference images. In one forward pass, PROVE-Lite predicts the outcome and the terminal state of each task condition. It reaches \\textbf{91.20\\%} agreement while running about 38$\\times$ faster than PROVE. Mapped to a severity-aware reward, its diagnoses improve PPO post-training over both simulator and binary rewards.",
-      "url": "https://arxiv.org/abs/2611.33733v1",
-      "pdf": "https://arxiv.org/pdf/2611.33733v1",
-      "categories": [
-        "cs.RO"
-      ],
-      "authors": [
-        "Bowen Lyu",
-        "Yunan Liu",
-        "Liaoyuan Fan",
-        "Qinchuan Cheng",
-        "Jiafei Duan"
-      ],
-      "all_authors": [
-        "Bowen Lyu",
-        "Yunan Liu",
-        "Liaoyuan Fan",
-        "Qinchuan Cheng",
-        "Jiafei Duan",
-        "Cheston Tan",
-        "Shijie Li"
-      ],
-      "affiliations": [
-        {
-          "name": "Bowen Lyu",
-          "affiliations": []
-        },
-        {
-          "name": "Yunan Liu",
-          "affiliations": []
-        },
-        {
-          "name": "Liaoyuan Fan",
-          "affiliations": []
-        },
-        {
-          "name": "Qinchuan Cheng",
-          "affiliations": []
-        },
-        {
-          "name": "Jiafei Duan",
-          "affiliations": []
-        },
-        {
-          "name": "Cheston Tan",
-          "affiliations": []
-        },
-        {
-          "name": "Shijie Li",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-11-25",
-      "matched_topics": [
-        "多模态"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "（摘要生成失败，请查看原文）",
-        "method": "",
-        "result": "",
-        "novelty": "",
-        "relevance": "",
-        "org": "",
-        "score": 5
-      },
-      "identified_orgs": []
-    },
-    {
-      "title": "VTK-Bench: A Diagnostic Benchmark for Distinguishing Language Priors and Text Modal Bias in Visual Language Models",
-      "abstract": "Visual language models (VLMs) have demonstrated exceptional capabilities across various multimodal tasks, but they remain susceptible to hallucinations, undermining their reliability. Existing hallucination benchmarks primarily focus on identifying hallucinations and describing their manifestations, often neglecting their underlying causes. Specifically, multimodal hallucinations can stem from two distinct failure modes: text modality bias (TMB), reflecting an over-reliance on misleading text input; and language prior (LP), reflecting a reliance on previously learned knowledge. To differentiate these failure modes, we propose VTK-Bench, a benchmark that explicitly separates three information sources: visual information (V), textual information (T), and prior knowledge (K). By establishing mutually exclusive answers corresponding to V, T, and K, VTK-Bench enables fine-grained attribution analysis of model responses. Furthermore, we introduce discrete attribution and soft attribution metrics to characterize information source preferences. Extensive experiments on 11 representative open-source VLMs show that LP is more prevalent than TMB in most evaluated models. Notably, TMB decreases substantially with model scaling, whereas LP exhibits relatively limited improvement and remains the dominant failure mode. These findings highlight the importance of different information source preferences for a deeper understanding of multimodal hallucinations.",
-      "url": "https://arxiv.org/abs/2611.33725v1",
-      "pdf": "https://arxiv.org/pdf/2611.33725v1",
-      "categories": [
-        "cs.CV"
-      ],
-      "authors": [
-        "Yao Lu",
-        "Yuhang Zheng",
-        "Yaxin Gao",
-        "Zhe Tang",
-        "Zhaowei Zhu"
-      ],
-      "all_authors": [
-        "Yao Lu",
-        "Yuhang Zheng",
-        "Yaxin Gao",
-        "Zhe Tang",
-        "Zhaowei Zhu",
-        "Jiaheng Wei",
-        "Yunhao Wang",
-        "Shanqing Yu",
-        "Qi Xuan"
-      ],
-      "affiliations": [
-        {
-          "name": "Yao Lu",
-          "affiliations": []
-        },
-        {
-          "name": "Yuhang Zheng",
-          "affiliations": []
-        },
-        {
-          "name": "Yaxin Gao",
-          "affiliations": []
-        },
-        {
-          "name": "Zhe Tang",
-          "affiliations": []
-        },
-        {
-          "name": "Zhaowei Zhu",
-          "affiliations": []
-        },
-        {
-          "name": "Jiaheng Wei",
-          "affiliations": []
-        },
-        {
-          "name": "Yunhao Wang",
-          "affiliations": []
-        },
-        {
-          "name": "Shanqing Yu",
-          "affiliations": []
-        },
-        {
-          "name": "Qi Xuan",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-11-25",
-      "matched_topics": [
-        "多模态"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "（摘要生成失败，请查看原文）",
-        "method": "",
-        "result": "",
-        "novelty": "",
-        "relevance": "",
-        "org": "",
-        "score": 5
-      },
-      "identified_orgs": []
-    },
-    {
-      "title": "EVA: Evidence-seeking Visual Agent for Hallucination-Resistant Multimodal Reasoning",
-      "abstract": "Hallucinations in multimodal large language models (MLLMs) often arise from visual assumptions that go unchecked. Self-reflection, multi-agent debate, and counterfactual verification can reinforce erroneous conclusions when they rely on the same unverified visual assumptions. External visual tools can provide verifiable evidence, but models may select the wrong tools, supply incorrect parameters, or ignore or contradict the evidence they obtain. In this work, we propose EVA, an Evidence-seeking Visual Agent that reframes multimodal reasoning as an explicit process of evidence acquisition and verification. At the core of EVA is a unified evidence-grounded execution pipeline designed to address the above challenges through two tightly coupled mechanisms. First, we introduce Iterative Tool Replanning, which dynamically refines tool selection and parameters based on intermediate observations, improving the reliability of tool usage. Second, we develop Evidence Consistency Verification, an answer validation mechanism that improves alignment between the final prediction and the collected evidence, mitigating evidence--reasoning inconsistencies. In addition, to balance robustness and efficiency, EVA incorporates Selective Evidence Routing, an adaptive fast--slow reasoning strategy that determines when external evidence is necessary. Visually straightforward queries are handled via direct reasoning, while complex or high-risk cases trigger tool-based evidence acquisition. By jointly addressing how to reliably acquire evidence and how to use it consistently, EVA transforms multimodal reasoning from passive answer validation into explicit evidence-backed decision making. Experimental results demonstrate that EVA achieves significantly improved reasoning reliability over direct VLM inference and multi-agent methods, while maintaining efficiency through selective tool invocation.",
-      "url": "https://arxiv.org/abs/2611.33706v1",
-      "pdf": "https://arxiv.org/pdf/2611.33706v1",
-      "categories": [
-        "cs.AI"
-      ],
-      "authors": [
-        "Ting Lei",
-        "Yu Chen",
-        "Yang Liu"
-      ],
-      "all_authors": [
-        "Ting Lei",
-        "Yu Chen",
-        "Yang Liu"
-      ],
-      "affiliations": [
-        {
-          "name": "Ting Lei",
-          "affiliations": []
-        },
-        {
-          "name": "Yu Chen",
-          "affiliations": []
-        },
-        {
-          "name": "Yang Liu",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-11-25",
-      "matched_topics": [
-        "多模态",
-        "大模型"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "（摘要生成失败，请查看原文）",
-        "method": "",
-        "result": "",
-        "novelty": "",
-        "relevance": "",
-        "org": "",
-        "score": 5
-      },
-      "identified_orgs": []
-    },
-    {
-      "title": "GeoTex: Geometry-as-Texture Encoding and History-Grounded 4D Occupancy Forecasting",
-      "abstract": "4D occupancy forecasting models 3D scene evolution to support future prediction and scenario generation in autonomous-driving world models. Semantic occupancy abstracts image color and texture into discrete labels, leaving 3D voxel arrangements as the primary cues for distinguishing local shapes within each class. Existing methods borrow image-encoding frameworks to obtain compact latent representations through height channelization or plane factorization, but do not sufficiently model within-column height patterns and cross-column relations jointly before compression, weakening these geometric cues. Forecasting also underutilizes complementary history and struggles to retain reliable observation evidence. We therefore propose GeoTex, an occupancy world model combining geometry-as-texture encoding with history-grounded forecasting. GeoTex Representation jointly encodes within-column height patterns and cross-column relations into compact continuous latent representations and restores 3D structure through content-dependent height unfolding and geometric interaction. GeoTex Prediction retains initial evidence throughout rollout in fixed cross-observation relational memory and incorporates complementary recent history through target-referenced residual updates. After prediction training, decoder-only adaptation improves semantic decoding of predicted states. GeoTex improves average forecasting mIoU and IoU by 9.79% and 11.91% relative to GenieDrive while reducing parameters from 3.47M to 2.33M, with gains increasing at longer horizons. Code is included in the supplementary material.",
-      "url": "https://arxiv.org/abs/2611.33693v1",
-      "pdf": "https://arxiv.org/pdf/2611.33693v1",
-      "categories": [
-        "cs.CV"
-      ],
-      "authors": [
-        "Shijun Guo",
-        "Yaming Yang",
-        "Haoran Xu",
-        "Wei Zhao",
-        "Ziyu Guan"
-      ],
-      "all_authors": [
-        "Shijun Guo",
-        "Yaming Yang",
-        "Haoran Xu",
-        "Wei Zhao",
-        "Ziyu Guan",
-        "Cai Xu",
-        "Peixi Peng"
-      ],
-      "affiliations": [
-        {
-          "name": "Shijun Guo",
-          "affiliations": []
-        },
-        {
-          "name": "Yaming Yang",
-          "affiliations": []
-        },
-        {
-          "name": "Haoran Xu",
-          "affiliations": []
-        },
-        {
-          "name": "Wei Zhao",
-          "affiliations": []
-        },
-        {
-          "name": "Ziyu Guan",
-          "affiliations": []
-        },
-        {
-          "name": "Cai Xu",
-          "affiliations": []
-        },
-        {
-          "name": "Peixi Peng",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-11-25",
-      "matched_topics": [
-        "世界模型"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "（摘要生成失败，请查看原文）",
-        "method": "",
-        "result": "",
-        "novelty": "",
-        "relevance": "",
-        "org": "",
-        "score": 5
-      },
-      "identified_orgs": []
-    },
-    {
-      "title": "Read Before You Use: Improving Visual Memory Utilization in Vision-Language Models",
-      "abstract": "Multimodal memory enables long-horizon vision-language agents to preserve and retrieve past experiences. While prior research has focused on memory construction and retrieval, effectively using the provided memory remains a challenge for vision-language models (VLMs). We find that VLMs often fail to answer downstream questions even when sufficient multimodal evidence is provided. To investigate why VLMs struggle, we replace memory images with reference captions and observe substantial performance gains, suggesting difficulties in reading visual evidence directly. However, model-generated captions may omit critical information, limiting this approach in practice. These limitations motivate a closer examination of memory utilization, revealing failures in both evidence reading and downstream question answering. Building on this distinction, we propose \\textbf{MemRU}, a two-stage training framework that improves evidence reading through supervised fine-tuning (Read SFT) and downstream evidence utilization through Group Relative Policy Optimization (Use GRPO). Experimental results demonstrate that our 8B model generalizes across three unseen multimodal memory systems, outperforming Qwen3-VL-32B and approaching GPT-5-mini.",
-      "url": "https://arxiv.org/abs/2611.33687v1",
-      "pdf": "https://arxiv.org/pdf/2611.33687v1",
-      "categories": [
-        "cs.CV",
-        "cs.AI"
-      ],
-      "authors": [
-        "Junseok Kim",
-        "Kyungmin Min",
-        "Kyomin Jung"
-      ],
-      "all_authors": [
-        "Junseok Kim",
-        "Kyungmin Min",
-        "Kyomin Jung"
-      ],
-      "affiliations": [
-        {
-          "name": "Junseok Kim",
-          "affiliations": []
-        },
-        {
-          "name": "Kyungmin Min",
-          "affiliations": []
-        },
-        {
-          "name": "Kyomin Jung",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-11-25",
-      "matched_topics": [
-        "多模态",
-        "大模型"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "（摘要生成失败，请查看原文）",
-        "method": "",
-        "result": "",
-        "novelty": "",
-        "relevance": "",
-        "org": "",
-        "score": 5
-      },
-      "identified_orgs": [
-        "OpenAI"
-      ]
-    },
-    {
-      "title": "WorldUAV: Scaling UAV Data Synthesis via World Models",
-      "abstract": "UAV detection and tracking remain constrained by the scarcity of high-quality training data. Existing game-engine-based synthetic UAV data suffer from a substantial synthetic-to-real gap, while the high cost of manually collected real-world UAV data limits dataset scale. Therefore, we introduce WorldUAV, a high-quality UAV dataset constructed through an efficient framework powered by world models. Specifically, WorldUAV directly integrates UAVs into readily available real-world videos, naturally preserving realistic backgrounds, illumination, and scene dynamics. Leveraging the spatiotemporal priors of world models, it generates UAV videos with plausible motion, pose variations, and cross-frame consistency, effectively narrowing the gap between synthetic and real data. We further develop an agentic pipeline orchestrated by a multimodal large language model that acquires sources, plans UAV trajectories, invokes synthesis, and verifies generated videos, enabling fully automated dataset construction. WorldUAV comprises 6,878 UAV videos and 205,778 UAV images. Experiments show that WorldUAV significantly improves the performance of UAV detectors. Moreover, it substantially reduces dataset construction costs, requiring only 15 seconds and USD 0.0005 API cost per high-quality UAV image. Our work offers both a high-quality dataset and a scalable data generation paradigm for UAV detection and tracking.",
-      "url": "https://arxiv.org/abs/2611.33682v1",
-      "pdf": "https://arxiv.org/pdf/2611.33682v1",
-      "categories": [
-        "cs.CV"
-      ],
-      "authors": [
-        "Xuewen Liu",
-        "Mengjuan Chen",
-        "Jing Zhang",
-        "Mengzhe Shen",
-        "Zekun Xu"
-      ],
-      "all_authors": [
-        "Xuewen Liu",
-        "Mengjuan Chen",
-        "Jing Zhang",
-        "Mengzhe Shen",
-        "Zekun Xu",
-        "Zibo Chen",
-        "Zuoxiu Zhang",
-        "Yue Dong",
-        "Zhikai Li",
-        "Qingyi Gu"
-      ],
-      "affiliations": [
-        {
-          "name": "Xuewen Liu",
-          "affiliations": []
-        },
-        {
-          "name": "Mengjuan Chen",
-          "affiliations": []
-        },
-        {
-          "name": "Jing Zhang",
-          "affiliations": []
-        },
-        {
-          "name": "Mengzhe Shen",
-          "affiliations": []
-        },
-        {
-          "name": "Zekun Xu",
-          "affiliations": []
-        },
-        {
-          "name": "Zibo Chen",
-          "affiliations": []
-        },
-        {
-          "name": "Zuoxiu Zhang",
-          "affiliations": []
-        },
-        {
-          "name": "Yue Dong",
-          "affiliations": []
-        },
-        {
-          "name": "Zhikai Li",
-          "affiliations": []
-        },
-        {
-          "name": "Qingyi Gu",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-11-25",
-      "matched_topics": [
-        "世界模型",
         "多模态",
         "大模型",
         "Agent"
@@ -684,35 +97,63 @@
       "identified_orgs": []
     },
     {
-      "title": "Structure-Aware Multimodal Retrieval Under Data Scarcity, Privacy Constraints and Out-of-Domain Content",
-      "abstract": "Purpose: Figure retrieval from reference atlases in expert domains like forensic pathology, dentistry and geology must work without labels or training pairs, on content that often cannot leave local hardware, and on images outside the training data of image-text encoders. This work proposes a structure-aware pipeline that satisfies all three, retrieving figures through the page structure recovered by layout geometry and a local open-weight 8B VLM. Methods: A geometry-based pairing method is introduced, in which the model receives a schematic of the detected boxes and selects each picture's caption without access to pixels or text. Caption retrieval is evaluated on three private corpora (29 books, 10,421 figures, 218 queries) with blind human grading, against a lexical baseline, generated descriptions and five image-text encoders. Results: Geometric pairing was correct for 96%, 92% and 77% of pictures in the three domains, against 76%, 45% and 53% for the better of two document parsers. A hosted model given the schematic was equally accurate, while coordinates as text lost 22 points. Caption retrieval obtained an nDCG@5 of 0.85, 0.87 and 0.76, against 0.54, 0.51 and 0.27 for the best cross-modal encoder and 0.41, 0.28 and 0.30 for generated descriptions. Pairing errors carried over to retrieval. Conclusion: The proposed pipeline achieves accurate figure retrieval with small local models and no in-domain training, where general and biomedical image-text encoders fall far behind. Its geometry-only pairing is the most accurate of five methods and exposes no content, even to a hosted model. Code and prompts are released.",
-      "url": "https://arxiv.org/abs/2611.33649v1",
-      "pdf": "https://arxiv.org/pdf/2611.33649v1",
+      "title": "Can image generation help visual reasoning? An empirical study",
+      "abstract": "Language models think in words; then multimodal models might think in images. We test whether a generated helper improves the answer to a visual question. A model describes the helper it needs and then answers using the original and generated images together. Across 13 vision-language model and generator pairs, generation lowers mean accuracy by 3.7 percentage points, with declines on nine of ten tasks. Two unified models, BAGEL and Janus-Pro-7B, each lose accuracy on eight tasks. On VSTAR, adding a generated image to the same planning hint lowers accuracy by 10.47 points. Repeated image edits yield different outcomes across tasks. ChartQAPro and MathVista stay below their no-generation baselines, while ERQA gains three points after ten edits.",
+      "url": "https://arxiv.org/abs/2611.34935v1",
+      "pdf": "https://arxiv.org/pdf/2611.34935v1",
       "categories": [
-        "cs.IR",
+        "cs.LG",
+        "cs.CL",
         "cs.CV"
       ],
       "authors": [
-        "Argyrios Zafeiriou",
-        "Dionysios Koulouris",
-        "Ilias Maglogiannis"
+        "Xueyang Yu",
+        "Yifan Jing",
+        "Taiming Lu",
+        "Linrong Cai",
+        "Zhipeng Cai"
       ],
       "all_authors": [
-        "Argyrios Zafeiriou",
-        "Dionysios Koulouris",
-        "Ilias Maglogiannis"
+        "Xueyang Yu",
+        "Yifan Jing",
+        "Taiming Lu",
+        "Linrong Cai",
+        "Zhipeng Cai",
+        "Yunyang Xiong",
+        "Gabriel Sarch",
+        "Zhuang Liu"
       ],
       "affiliations": [
         {
-          "name": "Argyrios Zafeiriou",
+          "name": "Xueyang Yu",
           "affiliations": []
         },
         {
-          "name": "Dionysios Koulouris",
+          "name": "Yifan Jing",
           "affiliations": []
         },
         {
-          "name": "Ilias Maglogiannis",
+          "name": "Taiming Lu",
+          "affiliations": []
+        },
+        {
+          "name": "Linrong Cai",
+          "affiliations": []
+        },
+        {
+          "name": "Zhipeng Cai",
+          "affiliations": []
+        },
+        {
+          "name": "Yunyang Xiong",
+          "affiliations": []
+        },
+        {
+          "name": "Gabriel Sarch",
+          "affiliations": []
+        },
+        {
+          "name": "Zhuang Liu",
           "affiliations": []
         }
       ],
@@ -733,71 +174,149 @@
       "identified_orgs": []
     },
     {
-      "title": "CariesBench: A Hierarchical Multi-view Benchmark for Dental Caries Screening and Diagnostic Reasoning from 3D Intraoral Scans",
-      "abstract": "Dental caries assessment is a structured clinical process requiring lesion localization, identification of the affected tooth and surface, and severity grading rather than simple image-level recognition. 3D intraoral scans (IOS) preserve detailed dental geometry and surface morphology and support standardized rendering from complementary viewpoints, enabling fine-grained visual assessment while introducing a distinct need for anatomically grounded multi-view reasoning. Despite recent advances in multimodal large language models (MLLMs) and dental vision-language benchmarks, existing evaluations do not jointly assess hierarchical arch-to-tooth-to-surface reasoning, cross-view evidence integration, and surface-level caries assessment. To address this gap, we introduce CariesBench, a hierarchical benchmark constructed from 5,932 3D IOS, comprising 85,455 standardized multi-view renderings and 133,994 clinically grounded visual question answering instances with expert quality control. CariesBench comprises three complementary task families: Arch-level Clinical Screening (ACS), Tooth-level Diagnostic Reasoning (TDR), and Structured Clinical Decision-Making (SCD). Using the CariesBench training set, we further fine-tune Qwen3-VL-8B-Instruct to obtain IntraoralGPT. Extensive evaluation of 24 representative baseline MLLMs reveals a substantial benchmark-level performance disparity between arch-level screening and tooth-level diagnostic reasoning, with higher accuracy on ACS than on TDR. CariesBench-specific supervision substantially improves the Qwen3-VL-8B-Instruct baseline, increasing the 19-task macro-average clinical accuracy from 52.7% to 69.5% and TDR Overall from 34.4% to 44.7%.",
-      "url": "https://arxiv.org/abs/2611.33643v1",
-      "pdf": "https://arxiv.org/pdf/2611.33643v1",
+      "title": "Memory Is Not Ground Truth: Revising Navigation Authority under Unreliable VLM Evidence for Persistent Semantic Navigation",
+      "abstract": "Vision-language models (VLMs) enable robots to reason about semantic and spatio-temporal context, verify task-relevant objects, and guide sensing and navigation. Persistent memory can reduce redundant search for field robots, but when should a memory continue to guide behavior? Repeated misses may suggest that a memory is stale. Our experiments show why this evidence can remain ambiguous under VLM-based perception. Using a Boston Dynamics Spot with four fixed cameras and a persistent spatio-temporal visual memory, we measure negative-verification behavior across targets, viewpoints, language queries, and repeated revisits. False-negative rates vary substantially across objects, nearby revisits often reproduce the same detector outcome, and some matched target-present and target-removed experiments yield identical miss histories. This ambiguity persists under changed observation geometry, identity-preserving query reformulation, and conditioning on a previously verified target image. These findings raise two questions: is the object still there, and is this memory still useful for navigation? We introduce a dependence-aware, reversible memory-update mechanism that avoids double-counting correlated misses and stops using unsupported memories as direct navigation goals without claiming that the object is absent. Later positive evidence can restore a memory's use for navigation. One resident onboard VLM is shared across memory verification, semantic frontier reasoning, and in-motion perception. In three matched real-robot decision contexts, an episode-local baseline selected a stale memory as its navigation objective in every case, whereas our method selected semantic frontiers in all three. A complementary trial re-verified the target during motion and promoted fresh memory. These results support revising memory actionability rather than interpreting failed detection as object absence.",
+      "url": "https://arxiv.org/abs/2611.34915v1",
+      "pdf": "https://arxiv.org/pdf/2611.34915v1",
+      "categories": [
+        "cs.RO"
+      ],
+      "authors": [
+        "Sumukh Shrote",
+        "Shenbagaraj Kannapiran",
+        "Eric Eaton",
+        "Camillo Jose Taylor"
+      ],
+      "all_authors": [
+        "Sumukh Shrote",
+        "Shenbagaraj Kannapiran",
+        "Eric Eaton",
+        "Camillo Jose Taylor"
+      ],
+      "affiliations": [
+        {
+          "name": "Sumukh Shrote",
+          "affiliations": []
+        },
+        {
+          "name": "Shenbagaraj Kannapiran",
+          "affiliations": []
+        },
+        {
+          "name": "Eric Eaton",
+          "affiliations": []
+        },
+        {
+          "name": "Camillo Jose Taylor",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-25",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "（摘要生成失败，请查看原文）",
+        "method": "",
+        "result": "",
+        "novelty": "",
+        "relevance": "",
+        "org": "",
+        "score": 5
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "Cairn: Object-Centric 3D Trajectory Priors for Steering Frozen VLAs",
+      "abstract": "Vision-language-action models (VLAs) are capable low-level controllers, but they tie where objects go to the layouts they were trained on: when objects are moved or obstacles block the way, they carry them to the wrong place or into collisions. Fine-tuning on new layouts needs robot data for each one and erodes skills the model already has. We introduce Cairn, which keeps the VLA frozen and steers it at test time along learned 3D trajectories of the object in its gripper. A small prior reads point clouds of the scene and the held object, along with its pose when grasped and the instruction, and samples SE(3) trajectories up to its release that lead it around obstacles and turn it to fit through gaps. The prior and the VLA form the two levels of a hierarchical planner in which feedback runs both ways: the VLA's intended motion chooses and reshapes the trajectories, and the chosen one guides the VLA's denoising. Its predicted actions, mapped to the held object's poses through the grasp, are pulled toward the next waypoint, while the VLA's weights stay untouched. Across 1,941 held-out LIBERO scenes with displaced objects and obstacles, Cairn raises the success rate of a frozen π0.5 from 24.5% to 95.1%, above that of a π0.5 fine-tuned on our training layouts, without hurting standard LIBERO. On the third-party LIBERO-PRO benchmark, it raises success from 27.3% to 38.0%, and from 54.4% to 81.1% on the episodes it steers. On a real Franka, with a prior trained purely in simulation, it guides the frozen DROID π0.5 around an obstacle and to a placement at the limit of the arm's reach, where it otherwise fails. All code, models and data will be made public.",
+      "url": "https://arxiv.org/abs/2611.34914v1",
+      "pdf": "https://arxiv.org/pdf/2611.34914v1",
+      "categories": [
+        "cs.RO",
+        "cs.CV"
+      ],
+      "authors": [
+        "Agelos Kratimenos",
+        "Kostas Daniilidis",
+        "Evangelos Chatzipantazis"
+      ],
+      "all_authors": [
+        "Agelos Kratimenos",
+        "Kostas Daniilidis",
+        "Evangelos Chatzipantazis"
+      ],
+      "affiliations": [
+        {
+          "name": "Agelos Kratimenos",
+          "affiliations": []
+        },
+        {
+          "name": "Kostas Daniilidis",
+          "affiliations": []
+        },
+        {
+          "name": "Evangelos Chatzipantazis",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-25",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "（摘要生成失败，请查看原文）",
+        "method": "",
+        "result": "",
+        "novelty": "",
+        "relevance": "",
+        "org": "",
+        "score": 5
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "ProbFaS: Probabilistic Video Frame Selection for MLLMs via Multi-Fidelity Calibration",
+      "abstract": "Processing long videos with multimodal large language models (MLLMs) is prohibitively expensive, making informative frame selection essential for accurate video understanding. The default uniform sampling often misses task-relevant keyframes, while recent training-free selectors instead pick frames by how well each one matches the question under an image-text alignment (ITA) score. However, we show that ITA signals correspond poorly with the MLLM's true needs: their rankings correlate weakly with downstream accuracy and are even negatively correlated on over 40% of questions, whereas the MLLM's internal yes/no judgment yields a much stronger signal. We present ProbFaS, a training- and label-free probabilistic pipeline that fuses both signals for key frame selection. ProbFaS treats dense ITA scores as cheap, biased measurements and sparse MLLM judgments as accurate, costly ones, unifying them via co-kriging, a multi-fidelity Gaussian process, to calibrate relevance across all frames. A temporal determinantal point process then selects frames capturing relevance peaks while preserving temporal coverage. Across Video-MME, MLVU and LongVideoBench, ProbFaS is the most accurate among fourteen state-of-the-art training-free selectors and uniform sampling in 13 of 15 settings (8-128 frames), outperforming the strongest baseline by up to 3.1 percentage points. On MLVU and LongVideoBench, 32 ProbFaS frames match or surpass the top baseline at 128 frames and uniform sampling with up to 768 frames.",
+      "url": "https://arxiv.org/abs/2611.34903v1",
+      "pdf": "https://arxiv.org/pdf/2611.34903v1",
       "categories": [
         "cs.CV"
       ],
       "authors": [
-        "Xuefen Liu",
-        " Yanxiong",
-        "Xinquan Yang",
-        "Fangqian Zhang",
-        "Qinyi Lu"
+        "Tianru Zhang",
+        "Mayank Nautiyal",
+        "Hugo Eidmann",
+        "Prashant Singh",
+        "Ekta Vats"
       ],
       "all_authors": [
-        "Xuefen Liu",
-        " Yanxiong",
-        "Xinquan Yang",
-        "Fangqian Zhang",
-        "Qinyi Lu",
-        "Yuning Zhang",
-        "Xianxu Hou",
-        "Shinan Zhang",
-        "Wen Ma",
-        "Linlin Shen"
+        "Tianru Zhang",
+        "Mayank Nautiyal",
+        "Hugo Eidmann",
+        "Prashant Singh",
+        "Ekta Vats"
       ],
       "affiliations": [
         {
-          "name": "Xuefen Liu",
+          "name": "Tianru Zhang",
           "affiliations": []
         },
         {
-          "name": " Yanxiong",
+          "name": "Mayank Nautiyal",
           "affiliations": []
         },
         {
-          "name": "Xinquan Yang",
+          "name": "Hugo Eidmann",
           "affiliations": []
         },
         {
-          "name": "Fangqian Zhang",
+          "name": "Prashant Singh",
           "affiliations": []
         },
         {
-          "name": "Qinyi Lu",
-          "affiliations": []
-        },
-        {
-          "name": "Yuning Zhang",
-          "affiliations": []
-        },
-        {
-          "name": "Xianxu Hou",
-          "affiliations": []
-        },
-        {
-          "name": "Shinan Zhang",
-          "affiliations": []
-        },
-        {
-          "name": "Wen Ma",
-          "affiliations": []
-        },
-        {
-          "name": "Linlin Shen",
+          "name": "Ekta Vats",
           "affiliations": []
         }
       ],
@@ -819,87 +338,286 @@
       "identified_orgs": []
     },
     {
-      "title": "FreshVLA: Frequency-Regularized Time Scale Hierarchical Latent Actions for Vision-Language-Action Models",
-      "abstract": "Learning reusable latent actions from action-free videos offers an effective route to improving Vision-Language-Action (VLA) policies. However, reconstruction-oriented latent actions do not necessarily benefit policy learning: as they may encode task-irrelevant static appearance with scene identity, or entangle slowly varying task progress with fine-grained execution dynamics in limited discrete code. We propose FreshVLA, a VLA framework built on a frequency-guided, dynamics-sensitive learning paradigm for acquiring temporally hierarchical continuous latent actions. FreshVLA uses a high-pass prior to guide visual transition encoding toward dynamical regions, thereby reducing reliance on static appearance cues. It further organizes latent actions into coarse-grained task progress and fine-grained execution dynamics through cross-timescale sampling and frequency-domain regularization, enhancing their capacity to represent long-horizon behaviors. During policy training, we freeze the pretrained latent action encoder and transfer its representations to robot control through joint flow-matching of latent and robot actions. FreshVLA achieves 98.2% average success on LIBERO and 98.0% on LIBERO-Long, exceeding GR00T-N1.6 on the latter by 3.6%. It also reaches an average sequence length of 4.52 on CALVIN and strong overall success rate of 80.4% in the zero-shot LIBERO-PLUS evaluation. Furthermore, FreshVLA exhibits greater robustness to visual perturbations and a more distinct division of roles between two branches in modeling low- and high-frequency motion, respectively. In 35-step action regression, it achieves a 51.3-percentage-point higher relative error reduction than its hierarchical discrete counterpart. Real-world experiments demonstrate that FreshVLA improves the average success rate over $π_{0.5}$ by 7.5%. The FreshVLA project page is available at https://freshvla.github.io/.",
-      "url": "https://arxiv.org/abs/2611.33635v1",
-      "pdf": "https://arxiv.org/pdf/2611.33635v1",
+      "title": "Stranger Things: When Objects Appear Without Their Typical Neighbors",
+      "abstract": "Visual context is a powerful cue for object recognition: scenes inform what, where, and at what scale objects are likely to appear. Yet over-reliance on context becomes a failure mode when models predict objects based on their typical neighbors rather than the objects' own visual features, which we call typicality bias. While extensively studied in the pre-Transformer era, it has often been assumed that architectural and scale improvements would naturally solve it, and a systematic diagnostic across the modern vision stack remains absent. We provide such a diagnostic framework. We measure typicality bias via normalized pointwise mutual information (NPMI) over object pairs, and introduce STRANGE-Bench (Synthetic Typicality-RANked Grounded Evaluation Benchmark): a photorealistic, layout-controlled benchmark spanning 17 sub-tiers from typical to never-co-occurring object pairs. Across five model families (specialist detectors, open-vocabulary detectors, self-supervised, vision-language, and multimodal large language models) and three recognition tasks (supervised detection, open-vocabulary detection, and classification), the bias is prevalent: gaps of 5-11 p.p. persist when objects appear outside their typical company, and do not consistently shrink with scale. To mitigate it, we turn to data augmentation: existing augmentations are designed for visual diversity, not for breaking co-occurrence shortcuts, and sample from the very distribution that produces typicality bias. We propose Anchor-Atypicality Sampling (AAS), a simple sampling rule for paste-based augmentations that uses the NPMI signal to tilt the training-time co-occurrence distribution toward atypical partners. AAS reduces the typicality gap by up to 1.6 p.p. on natural-image COCO splits and 23.0 p.p. on synthetic STRANGE-Bench across three model families, without sacrificing overall performance.",
+      "url": "https://arxiv.org/abs/2611.34881v1",
+      "pdf": "https://arxiv.org/pdf/2611.34881v1",
       "categories": [
+        "cs.CV",
+        "cs.LG"
+      ],
+      "authors": [
+        "Siddhartha Gairola",
+        "Jiahao Xie",
+        "Anna Kukleva",
+        "Francesco Locatello",
+        "Bernt Schiele"
+      ],
+      "all_authors": [
+        "Siddhartha Gairola",
+        "Jiahao Xie",
+        "Anna Kukleva",
+        "Francesco Locatello",
+        "Bernt Schiele"
+      ],
+      "affiliations": [
+        {
+          "name": "Siddhartha Gairola",
+          "affiliations": []
+        },
+        {
+          "name": "Jiahao Xie",
+          "affiliations": []
+        },
+        {
+          "name": "Anna Kukleva",
+          "affiliations": []
+        },
+        {
+          "name": "Francesco Locatello",
+          "affiliations": []
+        },
+        {
+          "name": "Bernt Schiele",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-25",
+      "matched_topics": [
+        "多模态",
+        "大模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "（摘要生成失败，请查看原文）",
+        "method": "",
+        "result": "",
+        "novelty": "",
+        "relevance": "",
+        "org": "",
+        "score": 5
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "Towards Closing the Performance Gap in Cross-Modal Place Recognition",
+      "abstract": "Cross-modal place recognition (CMPR) matches natural language descriptions against databases of geo-tagged reference images, enabling localization without visual queries. Despite its potential for language-guided navigation, existing vision-language models lag far behind visual place recognition (VPR) baselines, even after task adaptation. Unlike general-purpose text-to-image retrieval, place recognition relies on subtle local cues to distinguish visually similar locations. We therefore hypothesize that a primary bottleneck in CMPR is capturing fine-grained correspondences between image regions and text details, which requires higher visual token granularity, strong text representation capacity, and local cross-modal matching. To address this challenge, we propose CrossPlace, a two-stage CMPR framework. Stage 1 performs global retrieval by pairing a jointly aligned DINOv2-B/14 visual backbone with a progressively fine-tuned BGE-Large text encoder, while Stage 2 refines top candidates using a lightweight token-level cross-attention reranker. Through systematic analysis, we isolate the drivers of retrieval accuracy and show that visual token density provides the largest performance improvement, while text encoder capacity and task fine-tuning offer complementary gains. To evaluate robustness under realistic conditions, we also extend CMPR evaluation to city-scale and severe weather and illumination settings. Across all existing and new benchmarks, CrossPlace achieves double-digit Recall@1 improvements over prior cross-modal methods, closes the gap to unimodal text retrieval, and narrows it to unimodal VPR. Code and benchmarks are available at https://github.com/oferidan1/CrossPlace",
+      "url": "https://arxiv.org/abs/2611.34877v1",
+      "pdf": "https://arxiv.org/pdf/2611.34877v1",
+      "categories": [
+        "cs.CV"
+      ],
+      "authors": [
+        "Ofer Idan",
+        "Dan Badur",
+        "Yoli Shavit"
+      ],
+      "all_authors": [
+        "Ofer Idan",
+        "Dan Badur",
+        "Yoli Shavit"
+      ],
+      "affiliations": [
+        {
+          "name": "Ofer Idan",
+          "affiliations": []
+        },
+        {
+          "name": "Dan Badur",
+          "affiliations": []
+        },
+        {
+          "name": "Yoli Shavit",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-25",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "（摘要生成失败，请查看原文）",
+        "method": "",
+        "result": "",
+        "novelty": "",
+        "relevance": "",
+        "org": "",
+        "score": 5
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "RePace: Reasoning about Demonstration Speedup for Faster Vision-Language-Action Policies",
+      "abstract": "Since vision-language-action (VLA) policies can inherit the slow pace of human demonstrations, accelerating these demonstrations before fine-tuning can lead to faster VLA policies without an additional speed-selection module at deployment. Several offline speedup methods have focused on identifying segments that require less precision and assigning predefined speedup factors to the segments. However, even within a single segment, a speedup factor suitable for steady motion may be too high when precise alignment is required. To this end, this paper presents RePace, an offline reasoning framework that determines how much to accelerate each part of a demonstration. For the same recorded movement, RePace measures how much each candidate speedup factor shortens the sequence and compares the resulting observation-action pairs used for training. Given the task instruction, a pretrained language model uses the visual context and original motion of successive windows to interpret these candidate retiming effects and select a speedup profile for the complete episode. Experimental results demonstrate that RePace outperforms the baselines in overall task execution efficiency on both LIBERO and RoboCasa-Kitchen. On all three tasks with a gripper-equipped Franka Research 3 arm, RePace matches or exceeds the acceleration baselines in success rate and completes successful trials faster.",
+      "url": "https://arxiv.org/abs/2611.34864v1",
+      "pdf": "https://arxiv.org/pdf/2611.34864v1",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "authors": [
+        "Insup Lee",
+        "Hojin Jeon",
+        "Sunguk Shin",
+        "Seoungbin Bae",
+        "Taekwan Kim"
+      ],
+      "all_authors": [
+        "Insup Lee",
+        "Hojin Jeon",
+        "Sunguk Shin",
+        "Seoungbin Bae",
+        "Taekwan Kim",
+        "Jinwoo Shin",
+        "Dongsu Han"
+      ],
+      "affiliations": [
+        {
+          "name": "Insup Lee",
+          "affiliations": []
+        },
+        {
+          "name": "Hojin Jeon",
+          "affiliations": []
+        },
+        {
+          "name": "Sunguk Shin",
+          "affiliations": []
+        },
+        {
+          "name": "Seoungbin Bae",
+          "affiliations": []
+        },
+        {
+          "name": "Taekwan Kim",
+          "affiliations": []
+        },
+        {
+          "name": "Jinwoo Shin",
+          "affiliations": []
+        },
+        {
+          "name": "Dongsu Han",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-25",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "（摘要生成失败，请查看原文）",
+        "method": "",
+        "result": "",
+        "novelty": "",
+        "relevance": "",
+        "org": "",
+        "score": 5
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "BOP-Refer: Benchmark for Monocular 3D and 2D Object Grounding",
+      "abstract": "We introduce BOP-Refer, the first benchmark for monocular 3D and 2D grounding of everyday and industrial objects sourced from 9 diverse BOP datasets. We pair images from these datasets with VLM-generated and human-verified referring expressions, and derive accurate ground-truth 3D and 2D bounding boxes of the referred objects from their 3D models and 6DoF pose annotations. Our systematic evaluation of 17 frontier VLMs across the major proprietary and open-weight families (Gemini, GPT, Claude, Qwen, Gemma) shows that the best model, Gemini 4 Carbon, reaches 72.6% AP_IoU2D in 2D but only 12.4% AP_IoU3D in 3D, despite the more lenient IoU thresholds in 3D. The predicted 3D boxes are usually centered on the target objects in the image but often off in depth by more than the object's size, suggesting that metric scale estimation, which needs reliable object size priors, is currently by far the main source of error.",
+      "url": "https://arxiv.org/abs/2611.34862v1",
+      "pdf": "https://arxiv.org/pdf/2611.34862v1",
+      "categories": [
+        "cs.CV",
+        "cs.AI",
         "cs.RO"
       ],
       "authors": [
-        "Jiaming Liang",
-        "Yifeng Zhan",
-        "Rongyi He",
-        "Mu Li",
-        "Jiaqi Fan"
+        "Tomas Hodan",
+        "Vineet Bhat",
+        "Martin Sundermeyer",
+        "Jonathan Tremblay",
+        "Yash Patel"
       ],
       "all_authors": [
-        "Jiaming Liang",
-        "Yifeng Zhan",
-        "Rongyi He",
-        "Mu Li",
-        "Jiaqi Fan",
-        "Zhiyuan Zhang",
-        "Qiwei Liang",
-        "Zhengjie Zhang",
-        "Boyang Cai",
-        "Ningyuan Zhang",
-        "Xingjian Jing",
-        "Qiang Nie"
+        "Tomas Hodan",
+        "Vineet Bhat",
+        "Martin Sundermeyer",
+        "Jonathan Tremblay",
+        "Yash Patel",
+        "Médéric Fourmy",
+        "Stephen Tyree",
+        "Junwen Huang",
+        "Varun Burde",
+        "Martin Cífka",
+        "Eric Brachmann",
+        "Vincent Lepetit",
+        "Stan Birchfield",
+        "Jiri Matas",
+        "Carsten Rother"
       ],
       "affiliations": [
         {
-          "name": "Jiaming Liang",
+          "name": "Tomas Hodan",
           "affiliations": []
         },
         {
-          "name": "Yifeng Zhan",
+          "name": "Vineet Bhat",
           "affiliations": []
         },
         {
-          "name": "Rongyi He",
+          "name": "Martin Sundermeyer",
           "affiliations": []
         },
         {
-          "name": "Mu Li",
+          "name": "Jonathan Tremblay",
           "affiliations": []
         },
         {
-          "name": "Jiaqi Fan",
+          "name": "Yash Patel",
           "affiliations": []
         },
         {
-          "name": "Zhiyuan Zhang",
+          "name": "Médéric Fourmy",
           "affiliations": []
         },
         {
-          "name": "Qiwei Liang",
+          "name": "Stephen Tyree",
           "affiliations": []
         },
         {
-          "name": "Zhengjie Zhang",
+          "name": "Junwen Huang",
           "affiliations": []
         },
         {
-          "name": "Boyang Cai",
+          "name": "Varun Burde",
           "affiliations": []
         },
         {
-          "name": "Ningyuan Zhang",
+          "name": "Martin Cífka",
           "affiliations": []
         },
         {
-          "name": "Xingjian Jing",
+          "name": "Eric Brachmann",
           "affiliations": []
         },
         {
-          "name": "Qiang Nie",
+          "name": "Vincent Lepetit",
+          "affiliations": []
+        },
+        {
+          "name": "Stan Birchfield",
+          "affiliations": []
+        },
+        {
+          "name": "Jiri Matas",
+          "affiliations": []
+        },
+        {
+          "name": "Carsten Rother",
           "affiliations": []
         }
       ],
       "published": "2026-11-25",
       "matched_topics": [
-        "多模态"
+        "多模态",
+        "大模型"
       ],
       "priority": 1,
       "ai_summary": {
@@ -911,211 +629,41 @@
         "org": "",
         "score": 5
       },
-      "identified_orgs": []
+      "identified_orgs": [
+        "Anthropic",
+        "Google"
+      ]
     },
     {
-      "title": "Greedy Decoding Hides Good Plans: Sample-and-Verify Planning for Vision-Language Driving Models",
-      "abstract": "Vision-language models (VLMs) are increasingly adopted for end-to-end driving planning, yet their performance is typically evaluated based on a single greedily decoded trajectory. However, greedy decoding may overlook better trajectories within the model's output distribution. Experiments on WOD-E2E and NAVSIM reveal a consistent performance gap between greedily decoded trajectories and the best sampled candidates, showing that planning errors can arise from trajectory selection, rather than trajectory generation alone. On WOD-E2E, when the ego vehicle should start moving, the model often assigns probability to different possible start times, causing greedy decoding to repeatedly favor waiting and produce a stationary plan even though moving trajectories are available. Motivated by these findings, we propose Sample-and-Verify (SaV), which keeps the VLM planner frozen and samples multiple candidate trajectories. A lightweight verifier is trained from ground-truth futures to estimate the relative quality of these candidates. It uses trajectory kinematics, candidate-set agreement and likelihood, and ego-motion features to select the final trajectory. On WOD-E2E, SaV reduces ADE and FDE by approximately 15% across three VLM planners on the validation set. Changes in RFS are smaller: two planners show slight decreases on val-456, while Alpamayo-1.5 improves from 7.74 to 7.81 RFS on the official test set as ADE@5s decreases by 11%. On NAVSIM, SaV reduces ADE@4s by 10-24% across three VLM planners, while PDMS changes are less consistent. These results show that trajectory selection can substantially improve displacement accuracy without additional planner training. The code is publicly available at https://github.com/hzxbzp/sample-and-verify.",
-      "url": "https://arxiv.org/abs/2611.33621v1",
-      "pdf": "https://arxiv.org/pdf/2611.33621v1",
+      "title": "Not all world models can doubt: how training objective and architecture shape epistemic uncertainty in JEPA and RSSM world models",
+      "abstract": "World models predict how an environment responds to actions, so that candidate actions can be evaluated before execution. Executed actions, or decisions, taken in this manner are only as reliable as the model's predictive capabilities, and predictions in turn are only reliable within the model's experience. Epistemic uncertainty (EU) is the signal that marks where that experience ends. In this work we offer an extensive empirical study on how training objectives and architectures shape epistemic uncertainty of world models. More precisely, we present a controlled comparison of post-hoc EU (last-layer Laplace and ensembles) between two dominant models of different paradigms: 1) LeWorldModel (LeWM): A joint-embedding predictive architecture (JEPA), which predicts the next embedding without a decoder, and 2) DreamerV3: A recurrent state-space model (RSSM), which reconstructs the observation from a recurrent latent state. In ten simulated visual-control environments, we follow a controlled state perturbation of the environment state through every stage of the models up to the final EU estimate. We find that the RSSM attenuates the state perturbation through two mechanisms before it reaches an estimator on the predictor feature. Its recurrent update averages over context, so a change in a single frame reaches the state at a fraction of its size and recovers only as the change persists. Its reconstruction objective weights an entity by the pixels it covers, so a small object can be lost due to the training objective. The JEPA has neither mechanism and passes the change through all stages to the uncertainty. We further show that this translates to gaps in five uncertainty related downstream tasks, from unfamiliar-state detection to uncertainty-penalised planning: the RSSM uncertainty misses deviations that its own posterior registers, whereas the JEPA uncertainty reports what its model sees.",
+      "url": "https://arxiv.org/abs/2611.34830v1",
+      "pdf": "https://arxiv.org/pdf/2611.34830v1",
       "categories": [
-        "cs.RO",
-        "cs.CV"
-      ],
-      "authors": [
-        "Zhipeng Bao",
-        "Wenjie Zhao",
-        "Yiping Li",
-        "Haohua Que",
-        "Qianwen Li"
-      ],
-      "all_authors": [
-        "Zhipeng Bao",
-        "Wenjie Zhao",
-        "Yiping Li",
-        "Haohua Que",
-        "Qianwen Li"
-      ],
-      "affiliations": [
-        {
-          "name": "Zhipeng Bao",
-          "affiliations": []
-        },
-        {
-          "name": "Wenjie Zhao",
-          "affiliations": []
-        },
-        {
-          "name": "Yiping Li",
-          "affiliations": []
-        },
-        {
-          "name": "Haohua Que",
-          "affiliations": []
-        },
-        {
-          "name": "Qianwen Li",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-11-25",
-      "matched_topics": [
-        "多模态"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "（摘要生成失败，请查看原文）",
-        "method": "",
-        "result": "",
-        "novelty": "",
-        "relevance": "",
-        "org": "",
-        "score": 5
-      },
-      "identified_orgs": []
-    },
-    {
-      "title": "Learning from Natural Images Untangles Number Sense",
-      "abstract": "Numerical cognition is a simple yet fundamental ability that remains challenging for modern vision-language models. Meanwhile, number sense is already present in numerically naïve animals, suggesting that it can emerge without explicit numerical learning. Deep neural networks provide a related observation, with numerosity-selective units appearing after training on unrelated natural-image tasks and even before any training. However, these findings leave unresolved whether visual learning contributes beyond the spontaneous emergence of numerical selectivity. Human development provides a clue, as children become better at making judgments in which numerosity and proportion conflict. Here, we introduce a geometric framework to trace how representations of these two quantities change across learning. Although untrained and pretrained networks exhibited similar unit-level numerosity selectivity and basic comparison performance, natural-image pretraining increased the angle between numerosity and proportion subspaces while reducing their overlap, supporting more robust readout under conflict. Direct manipulation of these geometric properties further demonstrated their functional contributions to decoding accuracy and functional independence. Importantly, conventional supervised pretraining was not essential for quantity separation, which also emerged through self-supervised learning without category labels and synthetic-image training without natural-image exposure. Together, our findings suggest that structured visual learning can refine spontaneously emerging number sense into robust and functionally independent quantity representations without explicit numerical training.",
-      "url": "https://arxiv.org/abs/2611.33615v1",
-      "pdf": "https://arxiv.org/pdf/2611.33615v1",
-      "categories": [
-        "cs.AI",
-        "cs.CG",
-        "cs.CV",
         "cs.LG",
-        "q-bio.NC"
+        "cs.AI"
       ],
       "authors": [
-        "Yechan Cho",
-        "Hyeonsu Lee",
-        "Emma Deneuville",
-        "Jaeson Jang"
+        "Simon Baur",
+        "Wojciech Samek",
+        "Jackie Ma"
       ],
       "all_authors": [
-        "Yechan Cho",
-        "Hyeonsu Lee",
-        "Emma Deneuville",
-        "Jaeson Jang"
+        "Simon Baur",
+        "Wojciech Samek",
+        "Jackie Ma"
       ],
       "affiliations": [
         {
-          "name": "Yechan Cho",
+          "name": "Simon Baur",
           "affiliations": []
         },
         {
-          "name": "Hyeonsu Lee",
+          "name": "Wojciech Samek",
           "affiliations": []
         },
         {
-          "name": "Emma Deneuville",
-          "affiliations": []
-        },
-        {
-          "name": "Jaeson Jang",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-11-25",
-      "matched_topics": [
-        "多模态"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "（摘要生成失败，请查看原文）",
-        "method": "",
-        "result": "",
-        "novelty": "",
-        "relevance": "",
-        "org": "",
-        "score": 5
-      },
-      "identified_orgs": []
-    },
-    {
-      "title": "Aligned Machine: A Benchmark for Evaluating Multimodal Embedding Similarity via Human Comparative Judgements",
-      "abstract": "Embedding models increasingly inform how people search, recommend, and retrieve information, yet we lack credible ways to test whether these similarity judgments reflect how humans understand meaning. Existing benchmarks typically rely on static, expert-labeled pairs with coarse Likert-style annotations, limiting scalability and making it difficult to obtain consistent, high-confidence annotations. We introduce Aligned Machine, an interactive, public-facing platform that transforms broad participation into a continuously growing Human-Aligned Similarity Benchmark (HASB) for evaluating semantic alignment in embedding-based systems. Participants complete a cognitively-natural, forced-choice task, comparing two pairs of items (text or images) and selecting which pair is more similar. This comparative design is accessible to non-experts, yields clean preference data, and supports robust aggregation. We report results from an initial deployment with 115 participants contributing 2,875 total labeled pairs and 872 unique pairs. Using HASB, we evaluated 12 widely used embedding models and found only partial alignment between embedding similarity and human judgments. Text-only models consistently achieve higher overall agreement than multimodal models, while multimodal performance varies systematically by task type: alignment is strongest for image-image comparisons, weaker for image-text comparisons, and lowest for text-text comparisons. Aligned Machine is designed to evolve over time as participation grows, supporting longitudinal analysis, domain-specific studies, bias detection, and measurement of concept drift across model versions. By combining accessible public participation with rigorous comparative evaluation, HASB provides a scalable and accountable framework for auditing semantic alignment in embedding models.",
-      "url": "https://arxiv.org/abs/2611.33594v1",
-      "pdf": "https://arxiv.org/pdf/2611.33594v1",
-      "categories": [
-        "cs.AI",
-        "cs.CL"
-      ],
-      "authors": [
-        "Jiechen Li",
-        "Hannah Groos",
-        "Brinnae Bent"
-      ],
-      "all_authors": [
-        "Jiechen Li",
-        "Hannah Groos",
-        "Brinnae Bent"
-      ],
-      "affiliations": [
-        {
-          "name": "Jiechen Li",
-          "affiliations": []
-        },
-        {
-          "name": "Hannah Groos",
-          "affiliations": []
-        },
-        {
-          "name": "Brinnae Bent",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-11-25",
-      "matched_topics": [
-        "多模态"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "（摘要生成失败，请查看原文）",
-        "method": "",
-        "result": "",
-        "novelty": "",
-        "relevance": "",
-        "org": "",
-        "score": 5
-      },
-      "identified_orgs": []
-    },
-    {
-      "title": "VivaWorld: Long-Horizon Video World Model With Compositional 3D Priors",
-      "abstract": "Long-horizon video generation is key to interactive world modeling, physical intelligence, and spatial reasoning, yet maintaining geometric consistency and accurate camera control remains challenging without 3D grounding. We introduce \\textbf{VivaWorld}, a framework for generating geometry- and view-consistent long videos from an image. We first construct a compositional hybrid 3D representation that combines reconstructed point clouds, which preserve observed scene geometry and appearance, with generated textured meshes, which provide complete object geometry across $360^\\circ$ novel views. We also introduce a connected-region filter removing inconsistent floating components for robust cross-view reconstruction and propose a hybrid camera embedding that combines global and object-anchored Plücker rays to capture both scene-level camera motion and camera-object relationships, and inject it together with the visual guidance into a video generation model via a control adapter. Extensive experiments show VivaWorld achieves state-of-the-art visual quality and camera control, while supporting controllable novel-view synthesis, long-horizon scene exploration, and physical AI. Project page is available at: https://research.nvidia.com/labs/sil/projects/vivaworld/",
-      "url": "https://arxiv.org/abs/2611.33591v1",
-      "pdf": "https://arxiv.org/pdf/2611.33591v1",
-      "categories": [
-        "cs.CV"
-      ],
-      "authors": [
-        "Ying Jiang",
-        "Donglai Xiang",
-        "Anita Hu",
-        "Masha Shugrina"
-      ],
-      "all_authors": [
-        "Ying Jiang",
-        "Donglai Xiang",
-        "Anita Hu",
-        "Masha Shugrina"
-      ],
-      "affiliations": [
-        {
-          "name": "Ying Jiang",
-          "affiliations": []
-        },
-        {
-          "name": "Donglai Xiang",
-          "affiliations": []
-        },
-        {
-          "name": "Anita Hu",
-          "affiliations": []
-        },
-        {
-          "name": "Masha Shugrina",
+          "name": "Jackie Ma",
           "affiliations": []
         }
       ],
@@ -1136,177 +684,700 @@
       "identified_orgs": []
     },
     {
-      "title": "EgoCARBS: Egocentric Video Meets Active Acoustics for Kitchen Action Understanding",
-      "abstract": "Egocentric video records what a person looks at, but often misses what their body does: the hands leave the frame, and arm motion goes unseen. An exocentric camera recovers this context, but it must be installed wherever the activity happens. Active acoustic sensing can recover it from the wearables themselves: a device's speaker emits inaudible chirps, and its microphone senses the motion of the hands, arms, and nearby objects from their echoes. Yet no public dataset pairs it with egocentric video. We present EgoCARBS, with two deliverables. The first is a multimodal dataset and benchmark: 15 participants cook unscripted meals in their own kitchens wearing camera glasses and an off-the-shelf smartwatch that both sense with active acoustics, synchronized with egocentric and exocentric video and the watch's audio and IMU, with 4,019 verb-noun action annotations in 11.4 hours. The second is a study of what the wearables add to egocentric video. On verb recognition, they add at least as much as an exocentric camera for participants seen in training, and even more for new participants, for whom the exocentric camera does not help. Active acoustics alone provides most of this gain, and helps most where the camera does not see the hands. Trimmed action recognition, detection, and anticipation remain open. We will release the data, our data collection and annotation tools, and pre-trained models.",
-      "url": "https://arxiv.org/abs/2611.33565v1",
-      "pdf": "https://arxiv.org/pdf/2611.33565v1",
-      "categories": [
-        "cs.CV",
-        "cs.HC"
-      ],
-      "authors": [
-        "Saif Mahmud",
-        "Vineet Parikh",
-        "Bharath Hariharan",
-        "Cheng Zhang"
-      ],
-      "all_authors": [
-        "Saif Mahmud",
-        "Vineet Parikh",
-        "Bharath Hariharan",
-        "Cheng Zhang"
-      ],
-      "affiliations": [
-        {
-          "name": "Saif Mahmud",
-          "affiliations": []
-        },
-        {
-          "name": "Vineet Parikh",
-          "affiliations": []
-        },
-        {
-          "name": "Bharath Hariharan",
-          "affiliations": []
-        },
-        {
-          "name": "Cheng Zhang",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-11-25",
-      "matched_topics": [
-        "多模态"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "（摘要生成失败，请查看原文）",
-        "method": "",
-        "result": "",
-        "novelty": "",
-        "relevance": "",
-        "org": "",
-        "score": 5
-      },
-      "identified_orgs": []
-    },
-    {
-      "title": "Skeptic: Grounding Failure Diagnosis for Robot Skill Discovery",
-      "abstract": "Robot agents discover reusable skills by revising programs from execution feedback and retaining experience for later tasks. This process can fail when an agent treats an unsuccessful program as evidence that the task is physically impossible, ending exploration with revision budget remaining. We study this failure in Qwen3.8-27B and examine two decisions that shape skill discovery: I) how execution failures are diagnosed, and II) which lessons enter the shared skill library. Failure diagnosis requires the agent to reconstruct physical action effects from multimodal traces, while independent reproduction of a proposed repair does not require adequate task performance from its source program. We introduce Skeptic, a training-free protocol that uses measured action outcomes to guide repair and measured task success to govern skill admission. A grounded event log reports action effects and object end states from depth images and proprioception, separating sensor observations from inferred diagnoses. Verified promotion adds a development-success requirement on the source program to the existing independent reproduction check. Across 60 audited tasks, the mean number of tasks with false impossibility judgments decreases from 19.5 to 8.5 per campaign. On 80 LIBERO-Pro tasks and seven Robosuite tasks, Skeptic improves held-out success by 14.9 and 11.7 percentage points, with frozen model weights and the same program-revision budget.",
-      "url": "https://arxiv.org/abs/2611.33560v1",
-      "pdf": "https://arxiv.org/pdf/2611.33560v1",
-      "categories": [
-        "cs.RO"
-      ],
-      "authors": [
-        "Wenfang Sun",
-        "Jianghao Deng",
-        "Wenzhe Yin",
-        "Yingjun Du",
-        "Cees G. M. Snoek"
-      ],
-      "all_authors": [
-        "Wenfang Sun",
-        "Jianghao Deng",
-        "Wenzhe Yin",
-        "Yingjun Du",
-        "Cees G. M. Snoek"
-      ],
-      "affiliations": [
-        {
-          "name": "Wenfang Sun",
-          "affiliations": []
-        },
-        {
-          "name": "Jianghao Deng",
-          "affiliations": []
-        },
-        {
-          "name": "Wenzhe Yin",
-          "affiliations": []
-        },
-        {
-          "name": "Yingjun Du",
-          "affiliations": []
-        },
-        {
-          "name": "Cees G. M. Snoek",
-          "affiliations": []
-        }
-      ],
-      "published": "2026-11-25",
-      "matched_topics": [
-        "多模态"
-      ],
-      "priority": 1,
-      "ai_summary": {
-        "problem": "（摘要生成失败，请查看原文）",
-        "method": "",
-        "result": "",
-        "novelty": "",
-        "relevance": "",
-        "org": "",
-        "score": 5
-      },
-      "identified_orgs": []
-    },
-    {
-      "title": "AVERT: Anomalous Value Erasure with Response Testing against Visual Prompt Injection",
-      "abstract": "Vision Language Models (VLMs) are vulnerable to visual prompt injection, in which an adversarially perturbed image forces the model to respond with the attacker's chosen content, such as malicious tool calls, website links, or advertisements, sometimes regardless of the user's question. Existing defenses, such as diffusion-based purification and image-token masking, mitigate these attacks at a substantial cost to the model's utility on benign inputs. To address this challenge, we propose AVERT, which removes adversarial feature directions only when the model's answer depends on them. Our key procedures involve identifying anomalous value subspaces and detecting answer dependence. To identify the anomalous value subspace, we compare the statistics of each input's attention-head outputs with those of clean images and extract the directions along which the input deviates the most. We then project out these directions to remove the injected content. Because the same directions also carry benign visual information, we apply the removal only to answers that depend on them, namely answers whose likelihood collapses once the directions are removed or that are as likely under unrelated questions as under the user's question. Against white-box attacks on four VLMs (Qwen2-VL, Qwen2.5-VL, LLaVA, InternVL2.5) and four injection benchmarks, AVERT lowers average attack success from 86-90% to at most 0.6% while retaining at least 96% of undefended utility averaged over thirteen benchmarks. Its defense-utility F-score ($F_{DU}$), the harmonic mean of attacks stopped and utility retained, is 98.0-99.1 and the highest among all compared defenses on every model.",
-      "url": "https://arxiv.org/abs/2611.33532v1",
-      "pdf": "https://arxiv.org/pdf/2611.33532v1",
+      "title": "SceneDesigner3D: Agentic Evolutionary Search for Principled Rearrangement of 3D Indoor Scenes",
+      "abstract": "Scene rearrangement is an essential task for 3D content creation applications, requiring generation of diverse, aesthetic and functional scene rearrangements. We present SceneDesigner3D, an agentic evolutionary search method for 3D indoor scene rearrangement that systematically explores the design space of 3D scenes and generates multiple solutions according to common interior design principles. Given an input scene and a text prompt, SceneDesigner3D represents the rearrangement as an editable program and evolves a population of candidate layouts. Starting from distinct design ideas, a VLM agent mutates the programs by refining promising candidates, exploring new rearrangement strategies or redesigning from scratch, while verifying the layouts for physical validity. Proposals are scored by a VLM judge for adherence to the input prompt and satisfaction of design principles such as balance, zoning and emphasis, as well as numerically computed principles such as circulation and clutter. An archive of top-performing, structurally varied candidates further increases diversity of rearrangements. Experiments on the SAGE-10k and SceneSmith datasets show that SceneDesigner3D improves prompt adherence and computed design principle scores over baselines by up to 5.1% and 15.2%, respectively. Code will be made publicly available.",
+      "url": "https://arxiv.org/abs/2611.34783v1",
+      "pdf": "https://arxiv.org/pdf/2611.34783v1",
       "categories": [
         "cs.CV"
       ],
       "authors": [
-        "Newt Hue-Nam K. Nguyen",
-        "Jui-Yu Ho",
-        "Wei-Han Chen",
-        "Pin-Yen Ting",
-        "Yangqiu Song"
+        "Chandan Yeshwanth",
+        "Angela Dai"
       ],
       "all_authors": [
-        "Newt Hue-Nam K. Nguyen",
-        "Jui-Yu Ho",
-        "Wei-Han Chen",
-        "Pin-Yen Ting",
-        "Yangqiu Song",
-        "Shang-Tse Chen",
-        "Jun-Cheng Chen"
+        "Chandan Yeshwanth",
+        "Angela Dai"
       ],
       "affiliations": [
         {
-          "name": "Newt Hue-Nam K. Nguyen",
+          "name": "Chandan Yeshwanth",
           "affiliations": []
         },
         {
-          "name": "Jui-Yu Ho",
-          "affiliations": []
-        },
-        {
-          "name": "Wei-Han Chen",
-          "affiliations": []
-        },
-        {
-          "name": "Pin-Yen Ting",
-          "affiliations": []
-        },
-        {
-          "name": "Yangqiu Song",
-          "affiliations": []
-        },
-        {
-          "name": "Shang-Tse Chen",
-          "affiliations": []
-        },
-        {
-          "name": "Jun-Cheng Chen",
+          "name": "Angela Dai",
           "affiliations": []
         }
       ],
-      "published": "2026-11-24",
+      "published": "2026-11-25",
+      "matched_topics": [
+        "多模态",
+        "Agent"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "（摘要生成失败，请查看原文）",
+        "method": "",
+        "result": "",
+        "novelty": "",
+        "relevance": "",
+        "org": "",
+        "score": 5
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "Toward Agentic Robotics: A Large-Scale Study of Harness Design for Robot-Use Agents",
+      "abstract": "Recent vision-language models (VLMs) can act as robot-use agents that understand diverse scenes and control robots through policy code and tools. However, they predict 3D gripper poses poorly even with extended reasoning, struggling with precise manipulation. Vision-language-action (VLA) and world-action (WAM) models are the opposite: they execute fast, smooth control on trained tasks, yet fail under domain shifts or when tasks require long-horizon memory and reasoning. Agentic robots therefore combine VLM reasoning and perception with precise VLA/WAM control through a policy harness. Yet harness design spans thousands of configurations, shifting success by tens of points with the same models. Moreover, testing even one design takes thousands of rollouts at high API and GPU cost, so prior works often commit to a single design chosen from few alternatives. To guide harness design, we evaluate over 470,000 rollouts across eight simulation benchmarks, six VLMs, and 15 VLA/WAM checkpoints. Seven controlled studies show effective harnesses must adapt to both VLM and VLA/WAM capabilities. Our findings specify what structure the VLM's policy code needs, where VLA manipulation needs help from tools and policy code, and when to involve the VLM at test time. The reference recipe X-Harness shows that these findings compose without weight updates, lifting base policies up to $+42.8$ points across memory, reasoning, and domain shifts.",
+      "url": "https://arxiv.org/abs/2611.34778v1",
+      "pdf": "https://arxiv.org/pdf/2611.34778v1",
+      "categories": [
+        "cs.RO"
+      ],
+      "authors": [
+        "Yuxiang Lai",
+        "Jike Zhong",
+        "Yu-Jhe Li",
+        "Lan Wang",
+        "Chengzhi Liu"
+      ],
+      "all_authors": [
+        "Yuxiang Lai",
+        "Jike Zhong",
+        "Yu-Jhe Li",
+        "Lan Wang",
+        "Chengzhi Liu",
+        "Youbao Tang",
+        "Ming Li",
+        "Xi Xiao",
+        "Xiaofeng Yang",
+        "Liang Zhao",
+        "Zheda Mai",
+        "Ruixi Fan"
+      ],
+      "affiliations": [
+        {
+          "name": "Yuxiang Lai",
+          "affiliations": []
+        },
+        {
+          "name": "Jike Zhong",
+          "affiliations": []
+        },
+        {
+          "name": "Yu-Jhe Li",
+          "affiliations": []
+        },
+        {
+          "name": "Lan Wang",
+          "affiliations": []
+        },
+        {
+          "name": "Chengzhi Liu",
+          "affiliations": []
+        },
+        {
+          "name": "Youbao Tang",
+          "affiliations": []
+        },
+        {
+          "name": "Ming Li",
+          "affiliations": []
+        },
+        {
+          "name": "Xi Xiao",
+          "affiliations": []
+        },
+        {
+          "name": "Xiaofeng Yang",
+          "affiliations": []
+        },
+        {
+          "name": "Liang Zhao",
+          "affiliations": []
+        },
+        {
+          "name": "Zheda Mai",
+          "affiliations": []
+        },
+        {
+          "name": "Ruixi Fan",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-25",
+      "matched_topics": [
+        "多模态",
+        "Agent"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "（摘要生成失败，请查看原文）",
+        "method": "",
+        "result": "",
+        "novelty": "",
+        "relevance": "",
+        "org": "",
+        "score": 5
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "SOLVE: Sparse, Ordered Keyposes Make LLM Agents Versatile and Efficient Robot Manipulator",
+      "abstract": "LLM agents have made remarkable progress in robot manipulation, yet they suffer from expensive inference, dense step-by-step control, and tool bottlenecks. We introduce SOLVE, a training-free, versatile and efficient agent policy: a multimodal LLM agent writes a sparse, ordered sequence of 6-DoF end-effector keyposes per call, observes the result, and writes the next, while a motion planner interpolates between them. The agent decides the number and spacing of keyposes for both fast long-range motion and fine-grained manipulation. This granularity matches the sparsity of teleoperated manipulation: most demonstrations in DROID can be compressed into a few keyposes instead of dense actions. SOLVE grounds keyposes with sparse depth queries answered by noisy sources, such as multi-view triangulation, stereo, or monocular depth, and copes with that noise itself. It also improves from execution feedback, reflecting on its own rollouts and distilling a few rules per task. SOLVE reaches state-of-the-art performance of 74.5% on RoboDojo and 84.5% on RoboLab, with only $1.7 per episode on average, 12x less than previous dense-control agent policies. On a real robot, the same agent achieves an 88% success rate (75 of 85 episodes) over 16 challenging zero-shot tasks. Our project page is at https://serenos.github.io/solve-website.",
+      "url": "https://arxiv.org/abs/2611.34750v1",
+      "pdf": "https://arxiv.org/pdf/2611.34750v1",
+      "categories": [
+        "cs.RO",
+        "cs.CV"
+      ],
+      "authors": [
+        "Xiang Li",
+        "Hongyu Zhou",
+        "Ya-Li Li",
+        "Tao Li",
+        "Rui Zhang"
+      ],
+      "all_authors": [
+        "Xiang Li",
+        "Hongyu Zhou",
+        "Ya-Li Li",
+        "Tao Li",
+        "Rui Zhang",
+        "Junjie Lai",
+        "Weihua Zhang",
+        "Shengjin Wang"
+      ],
+      "affiliations": [
+        {
+          "name": "Xiang Li",
+          "affiliations": []
+        },
+        {
+          "name": "Hongyu Zhou",
+          "affiliations": []
+        },
+        {
+          "name": "Ya-Li Li",
+          "affiliations": []
+        },
+        {
+          "name": "Tao Li",
+          "affiliations": []
+        },
+        {
+          "name": "Rui Zhang",
+          "affiliations": []
+        },
+        {
+          "name": "Junjie Lai",
+          "affiliations": []
+        },
+        {
+          "name": "Weihua Zhang",
+          "affiliations": []
+        },
+        {
+          "name": "Shengjin Wang",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-25",
+      "matched_topics": [
+        "多模态",
+        "大模型",
+        "Agent"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "（摘要生成失败，请查看原文）",
+        "method": "",
+        "result": "",
+        "novelty": "",
+        "relevance": "",
+        "org": "",
+        "score": 5
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "How Well Do Vision-Language Scene Graphs Serve as Memory for Embodied Question Answering?",
+      "abstract": "Embodied QA needs memory, but answer accuracy mixes retained evidence, reading errors and question priors. For a simulated multi-room scene-graph pipeline we define answerability: the fraction of questions a fixed rule-based reader answers correctly from the graph alone. The baseline recovers 24.1% of visible object types and its room labels flicker. Four targeted repairs double recall, raise answerability from 27.2% to 37.4%, and improve retrained QA from 71.4% to 75.9%, yet better object F1 can lower answerability. A question-type prior beats this reader on every predicted graph. In one real-video test, graph memory lowers accuracy. These exploratory findings favour scoring retained evidence alongside accuracy.",
+      "url": "https://arxiv.org/abs/2611.34745v1",
+      "pdf": "https://arxiv.org/pdf/2611.34745v1",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "authors": [
+        "Divyansh Pandey",
+        "Shubh Garg",
+        "Vedant Khandelwal",
+        "Niyati Rawal",
+        "Amit Sheth"
+      ],
+      "all_authors": [
+        "Divyansh Pandey",
+        "Shubh Garg",
+        "Vedant Khandelwal",
+        "Niyati Rawal",
+        "Amit Sheth"
+      ],
+      "affiliations": [
+        {
+          "name": "Divyansh Pandey",
+          "affiliations": []
+        },
+        {
+          "name": "Shubh Garg",
+          "affiliations": []
+        },
+        {
+          "name": "Vedant Khandelwal",
+          "affiliations": []
+        },
+        {
+          "name": "Niyati Rawal",
+          "affiliations": []
+        },
+        {
+          "name": "Amit Sheth",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-25",
       "matched_topics": [
         "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "（摘要生成失败，请查看原文）",
+        "method": "",
+        "result": "",
+        "novelty": "",
+        "relevance": "",
+        "org": "",
+        "score": 5
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "Was the Model Given the Right Action? Auditing and Repairing Action Interfaces in Navigation World Models",
+      "abstract": "World models are evaluated by predicting future observations from actions. These evaluations assume that actions are prepared the same way as during training, but an unchecked mismatch can make a model appear less accurate than it is. We audit this assumption in Navigation World Models (NWM) and find three interacting differences between its training and rollout code. Correcting the inputs, without retraining, reduces mean visual prediction error by 42%, measured with DreamSim on the RECON navigation dataset. The correction also changes the ranking of NWM checkpoints in an exploratory analysis and removes or reduces two alternative models' measured advantages. Correcting only the normalization offset instead increases error, showing why interacting mismatches must be checked together. To test whether sensitivity to input preparation extends beyond NWM, we deliberately introduce encoding errors into two alternative models; both become less accurate. We introduce ActRosetta, a tool that checks whether action encoding matches training, identifies supported causes of disagreement, and repairs inputs when sufficient information is available. Repair helps little where predictions barely respond to actions, the tool's diagnosis has limited coverage, and improved control remains unproven. For any action-conditioned world model, the lesson is the same: before reporting rollout error, verify that evaluation encodes actions exactly as training did.",
+      "url": "https://arxiv.org/abs/2611.34739v1",
+      "pdf": "https://arxiv.org/pdf/2611.34739v1",
+      "categories": [
+        "cs.CV",
+        "cs.LG",
+        "cs.RO"
+      ],
+      "authors": [
+        "Ajmain Istiak Apon",
+        "Md Mehedi Hasan",
+        "Sejuti Rahman"
+      ],
+      "all_authors": [
+        "Ajmain Istiak Apon",
+        "Md Mehedi Hasan",
+        "Sejuti Rahman"
+      ],
+      "affiliations": [
+        {
+          "name": "Ajmain Istiak Apon",
+          "affiliations": []
+        },
+        {
+          "name": "Md Mehedi Hasan",
+          "affiliations": []
+        },
+        {
+          "name": "Sejuti Rahman",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-25",
+      "matched_topics": [
+        "世界模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "（摘要生成失败，请查看原文）",
+        "method": "",
+        "result": "",
+        "novelty": "",
+        "relevance": "",
+        "org": "",
+        "score": 5
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "WorldInteract: Controllable Streaming Video Generation for Multi-Material Interactions",
+      "abstract": "Video world models aim to create interactive physical worlds that capture how diverse materials move and interact. Yet material-dependent dynamics remain underexplored in controllable video generation, limiting reliable control in scenes with different materials. We present WorldInteract, a streaming video generation framework that decomposes cross-material interaction into material-dependent behavior generation and contact response computation. External pushes and contact impulses are expressed through a shared velocity-increment interface, allowing material behaviors learned from interaction-free videos to be reused in interacting scenes. A physics controller predicts contacts and computes velocity increments from estimated masses and restitution coefficients, while a causal generator executes these increments using learned material behaviors. This separation enables cross-material interaction without supervised contact videos spanning diverse material pairings and contact configurations. We train the generator on 30k simulated interaction-free videos spanning 22 material classes and introduce Material-Aware RL, using verifiable physical rewards to refine material behavior and control execution. WorldInteract substantially outperforms state-of-the-art methods on Physics-IQ and delivers more reliable push control on real-world images.",
+      "url": "https://arxiv.org/abs/2611.34730v1",
+      "pdf": "https://arxiv.org/pdf/2611.34730v1",
+      "categories": [
+        "cs.CV"
+      ],
+      "authors": [
+        "Ahmed Hatem",
+        "Caoliwen Wang",
+        "Robert Hoang",
+        "Siyuan Chen",
+        "Spencer Szabados"
+      ],
+      "all_authors": [
+        "Ahmed Hatem",
+        "Caoliwen Wang",
+        "Robert Hoang",
+        "Siyuan Chen",
+        "Spencer Szabados",
+        "Zike Wu",
+        "Xiyang Tan",
+        "Shenyifan Lu",
+        "Rafael Bischof",
+        "Bernd Bickel",
+        "Renjie Liao",
+        "Peter Yichen Chen"
+      ],
+      "affiliations": [
+        {
+          "name": "Ahmed Hatem",
+          "affiliations": []
+        },
+        {
+          "name": "Caoliwen Wang",
+          "affiliations": []
+        },
+        {
+          "name": "Robert Hoang",
+          "affiliations": []
+        },
+        {
+          "name": "Siyuan Chen",
+          "affiliations": []
+        },
+        {
+          "name": "Spencer Szabados",
+          "affiliations": []
+        },
+        {
+          "name": "Zike Wu",
+          "affiliations": []
+        },
+        {
+          "name": "Xiyang Tan",
+          "affiliations": []
+        },
+        {
+          "name": "Shenyifan Lu",
+          "affiliations": []
+        },
+        {
+          "name": "Rafael Bischof",
+          "affiliations": []
+        },
+        {
+          "name": "Bernd Bickel",
+          "affiliations": []
+        },
+        {
+          "name": "Renjie Liao",
+          "affiliations": []
+        },
+        {
+          "name": "Peter Yichen Chen",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-25",
+      "matched_topics": [
+        "世界模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "（摘要生成失败，请查看原文）",
+        "method": "",
+        "result": "",
+        "novelty": "",
+        "relevance": "",
+        "org": "",
+        "score": 5
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "Seeing the Right Context: Grounded On-Policy Distillation for Remote Sensing",
+      "abstract": "Remote sensing scene understanding requires multimodal large language models (MLLMs) to interpret queried targets in relation to nearby objects and surrounding structures, which serve as spatial references or define the scope of an answer. However, standard answers and bounding boxes often leave these contextual relationships implicit. Thus, we construct GeoContext-5K to make them explicit in 5,394 training pairs for visual question answering (VQA), with spatial cues, visual facts, and supporting regions. GeOPD uses these annotations for on-policy distillation, guiding a frozen teacher with region marks on the full image and a visual fact while preserving surrounding spatial references. It prioritizes teacher corrections that agree with the shift in the student's next token distribution when evidence is restored. A complementary objective weights the contrast between the student's scores on the two views by how much masking lowers the teacher's log probability for the same sampled token. Experiments on five remote sensing VQA benchmarks show that GeOPD outperforms the evaluated open-source MLLMs and matched post-training baselines, improving over the 4B and 9B base models by 5.81 and 2.97 percentage points on average. The dataset and code will be publicly released at https://github.com/YeeCharm/GeOPD.",
+      "url": "https://arxiv.org/abs/2611.34700v1",
+      "pdf": "https://arxiv.org/pdf/2611.34700v1",
+      "categories": [
+        "cs.CV"
+      ],
+      "authors": [
+        "Yichang Luo",
+        "Hourun Zhu",
+        "Shixiong Liu",
+        "Kan Wei",
+        "Shi Liang"
+      ],
+      "all_authors": [
+        "Yichang Luo",
+        "Hourun Zhu",
+        "Shixiong Liu",
+        "Kan Wei",
+        "Shi Liang",
+        "Yidan Zhang",
+        "Lei Wang"
+      ],
+      "affiliations": [
+        {
+          "name": "Yichang Luo",
+          "affiliations": []
+        },
+        {
+          "name": "Hourun Zhu",
+          "affiliations": []
+        },
+        {
+          "name": "Shixiong Liu",
+          "affiliations": []
+        },
+        {
+          "name": "Kan Wei",
+          "affiliations": []
+        },
+        {
+          "name": "Shi Liang",
+          "affiliations": []
+        },
+        {
+          "name": "Yidan Zhang",
+          "affiliations": []
+        },
+        {
+          "name": "Lei Wang",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-25",
+      "matched_topics": [
+        "多模态",
+        "大模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "（摘要生成失败，请查看原文）",
+        "method": "",
+        "result": "",
+        "novelty": "",
+        "relevance": "",
+        "org": "",
+        "score": 5
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "A Failure-Driven Data Flywheel for Post-Training Vision-Language-Action Models",
+      "abstract": "Pretrained vision-language-action (VLA) models rarely satisfy all behavioral requirements of a new platform, and teams without a large deployed fleet lack the data to address the resulting failures. We propose a failure-driven data flywheel for post-training such models. It constructs target scenarios absent from the available data by inserting task-relevant entities into reconstructed real-world scenes, and evaluates the model against each behavioral requirement of the target task. Failure rates form a failure map across task conditions and difficulty levels, which is re-evaluated after each round and assigns larger data generation quotas to conditions where the model still fails. We instantiate the framework in autonomous driving for occluded-pedestrian emergence and yielding at stop-sign-controlled intersections, and evaluate it on two VLA models and one non-VLA planner in simulation and on a real vehicle. For occluded-pedestrian emergence, five rounds of post-training improve the critical-phase collision-free rate on the sealed test set from 0.261 to 0.579 for AutoVLA and from 0.390 to 0.765 for ReCogDrive, while the unnecessary braking rate in paired control scenarios never exceeds 0.013. On a full-scale vehicle without real-world training, post-trained ReCogDrive achieves 4 of 5 safe passages, versus 1 of 5 for the base model. Fine-grained evaluation reveals a pattern obscured by the collision-free rate alone: both VLA models learn anticipatory deceleration before reaching the occluding vehicle, while braking after pedestrian emergence remains limited. For stop-sign yielding, the stop-before-line rate rises from 0.100 to 0.897 for AutoVLA and from 0.000 to 0.667 for ReCogDrive. With sequential training from the pedestrian-capability models, it reaches 0.599 and 0.358, respectively, while the pedestrian collision-free rate decreases by at most 0.032.",
+      "url": "https://arxiv.org/abs/2611.34698v1",
+      "pdf": "https://arxiv.org/pdf/2611.34698v1",
+      "categories": [
+        "cs.AI"
+      ],
+      "authors": [
+        "Yuhao Luo",
+        "Zihao Sheng",
+        "Zilin Huang",
+        "Zhengyang Wan",
+        "Boyue Wang"
+      ],
+      "all_authors": [
+        "Yuhao Luo",
+        "Zihao Sheng",
+        "Zilin Huang",
+        "Zhengyang Wan",
+        "Boyue Wang",
+        "Ruolin Yang",
+        "Shuai Wang",
+        "Sikai Chen"
+      ],
+      "affiliations": [
+        {
+          "name": "Yuhao Luo",
+          "affiliations": []
+        },
+        {
+          "name": "Zihao Sheng",
+          "affiliations": []
+        },
+        {
+          "name": "Zilin Huang",
+          "affiliations": []
+        },
+        {
+          "name": "Zhengyang Wan",
+          "affiliations": []
+        },
+        {
+          "name": "Boyue Wang",
+          "affiliations": []
+        },
+        {
+          "name": "Ruolin Yang",
+          "affiliations": []
+        },
+        {
+          "name": "Shuai Wang",
+          "affiliations": []
+        },
+        {
+          "name": "Sikai Chen",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-25",
+      "matched_topics": [
+        "多模态"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "（摘要生成失败，请查看原文）",
+        "method": "",
+        "result": "",
+        "novelty": "",
+        "relevance": "",
+        "org": "",
+        "score": 5
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "ShowNow: Fine-Grained Speculative Streaming for Responsive World Models",
+      "abstract": "Interactive world models must generate video continuously while responding promptly to user actions. Real-time throughput alone leaves input latency unresolved: coarse generation blocks delay action updates, and generation after input adds work to the response path. We introduce ShowNow, a fine-grained speculative streaming framework that uses computation available during playback to prepare action-conditioned futures before input arrives. Single-latent commitment enables frequent decisions, while configurable preparation covers one to eight actions. We construct a matched multi-future dataset to train alternative continuations from a common state; shared-history tree execution and fused commitment make their preparation efficient. On a single H100, our 5B model sustains 480p generation at 16 fps with eight prepared futures. In ViZDoom, the complete ShowNow deployment reduces median input-to-display latency from 620 to 208 ms relative to the native-block SolarWM-FT deployment. Matched-policy experiments reduce restart empty ticks from 1.56% to 0.09% (94%) and improve on-time responses to action changes. These results establish complementary roles for fine-grained commitment and advance preparation, with measured trade-offs in visual fidelity and long-horizon consistency. ShowNow turns playback-time computation into responsive visual interaction. Project: https://github.com/showlab/ShowNow.",
+      "url": "https://arxiv.org/abs/2611.34693v1",
+      "pdf": "https://arxiv.org/pdf/2611.34693v1",
+      "categories": [
+        "cs.CV"
+      ],
+      "authors": [
+        "Yiren Song",
+        "Guian Fang",
+        "Mike Zheng Shou"
+      ],
+      "all_authors": [
+        "Yiren Song",
+        "Guian Fang",
+        "Mike Zheng Shou"
+      ],
+      "affiliations": [
+        {
+          "name": "Yiren Song",
+          "affiliations": []
+        },
+        {
+          "name": "Guian Fang",
+          "affiliations": []
+        },
+        {
+          "name": "Mike Zheng Shou",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-25",
+      "matched_topics": [
+        "世界模型"
+      ],
+      "priority": 1,
+      "ai_summary": {
+        "problem": "（摘要生成失败，请查看原文）",
+        "method": "",
+        "result": "",
+        "novelty": "",
+        "relevance": "",
+        "org": "",
+        "score": 5
+      },
+      "identified_orgs": []
+    },
+    {
+      "title": "PoVi: Agentic Poetry-to-Video Generation with Knowledge Grounding and Figurative Understanding",
+      "abstract": "Poetry-to-video generation requires more than translating text into visual scenes. Poetic language is highly compressed, often depends on historical and cultural knowledge, and frequently conveys meaning through metaphor, imagery, and other non-literal expressions. We introduce PoVi, a benchmark and agentic framework for grounded poetry-to-video generation, evaluating semantic grounding, discourse coherence, and audiovisual realization. PoVi reconstructs poem semantics into an evidence-bounded representation and progressively transforms them into narration, interpretation, character assets, and shot-level visual plans, followed by narration-aligned video generation. Across three planning backbones and four video generators, PoVi consistently improves over single-call generation, with the largest gains on implicit background knowledge and metaphorical relations. PoVi provides a testbed for studying knowledge-grounded, long-horizon multimodal generation beyond direct text-to-video synthesis.",
+      "url": "https://arxiv.org/abs/2611.34690v1",
+      "pdf": "https://arxiv.org/pdf/2611.34690v1",
+      "categories": [
+        "cs.CL"
+      ],
+      "authors": [
+        "Yuxia Zhu",
+        "Shiying Zhang",
+        "Lingzhuang Sun",
+        "Song Yang",
+        "Siheng Wu"
+      ],
+      "all_authors": [
+        "Yuxia Zhu",
+        "Shiying Zhang",
+        "Lingzhuang Sun",
+        "Song Yang",
+        "Siheng Wu",
+        "Xinglong Xu",
+        "Sizhe Qiu",
+        "Hao Liang",
+        "Cheng Tan",
+        "Asher Qin",
+        "Wentao Zhang"
+      ],
+      "affiliations": [
+        {
+          "name": "Yuxia Zhu",
+          "affiliations": []
+        },
+        {
+          "name": "Shiying Zhang",
+          "affiliations": []
+        },
+        {
+          "name": "Lingzhuang Sun",
+          "affiliations": []
+        },
+        {
+          "name": "Song Yang",
+          "affiliations": []
+        },
+        {
+          "name": "Siheng Wu",
+          "affiliations": []
+        },
+        {
+          "name": "Xinglong Xu",
+          "affiliations": []
+        },
+        {
+          "name": "Sizhe Qiu",
+          "affiliations": []
+        },
+        {
+          "name": "Hao Liang",
+          "affiliations": []
+        },
+        {
+          "name": "Cheng Tan",
+          "affiliations": []
+        },
+        {
+          "name": "Asher Qin",
+          "affiliations": []
+        },
+        {
+          "name": "Wentao Zhang",
+          "affiliations": []
+        }
+      ],
+      "published": "2026-11-25",
+      "matched_topics": [
+        "多模态",
+        "Agent"
       ],
       "priority": 1,
       "ai_summary": {
@@ -1323,35 +1394,98 @@
   ],
   "key_lab_papers": [
     {
-      "title": "Read Before You Use: Improving Visual Memory Utilization in Vision-Language Models",
-      "abstract": "Multimodal memory enables long-horizon vision-language agents to preserve and retrieve past experiences. While prior research has focused on memory construction and retrieval, effectively using the provided memory remains a challenge for vision-language models (VLMs). We find that VLMs often fail to answer downstream questions even when sufficient multimodal evidence is provided. To investigate why VLMs struggle, we replace memory images with reference captions and observe substantial performance gains, suggesting difficulties in reading visual evidence directly. However, model-generated captions may omit critical information, limiting this approach in practice. These limitations motivate a closer examination of memory utilization, revealing failures in both evidence reading and downstream question answering. Building on this distinction, we propose \\textbf{MemRU}, a two-stage training framework that improves evidence reading through supervised fine-tuning (Read SFT) and downstream evidence utilization through Group Relative Policy Optimization (Use GRPO). Experimental results demonstrate that our 8B model generalizes across three unseen multimodal memory systems, outperforming Qwen3-VL-32B and approaching GPT-5-mini.",
-      "url": "https://arxiv.org/abs/2611.33687v1",
-      "pdf": "https://arxiv.org/pdf/2611.33687v1",
+      "title": "BOP-Refer: Benchmark for Monocular 3D and 2D Object Grounding",
+      "abstract": "We introduce BOP-Refer, the first benchmark for monocular 3D and 2D grounding of everyday and industrial objects sourced from 9 diverse BOP datasets. We pair images from these datasets with VLM-generated and human-verified referring expressions, and derive accurate ground-truth 3D and 2D bounding boxes of the referred objects from their 3D models and 6DoF pose annotations. Our systematic evaluation of 17 frontier VLMs across the major proprietary and open-weight families (Gemini, GPT, Claude, Qwen, Gemma) shows that the best model, Gemini 4 Carbon, reaches 72.6% AP_IoU2D in 2D but only 12.4% AP_IoU3D in 3D, despite the more lenient IoU thresholds in 3D. The predicted 3D boxes are usually centered on the target objects in the image but often off in depth by more than the object's size, suggesting that metric scale estimation, which needs reliable object size priors, is currently by far the main source of error.",
+      "url": "https://arxiv.org/abs/2611.34862v1",
+      "pdf": "https://arxiv.org/pdf/2611.34862v1",
       "categories": [
         "cs.CV",
-        "cs.AI"
+        "cs.AI",
+        "cs.RO"
       ],
       "authors": [
-        "Junseok Kim",
-        "Kyungmin Min",
-        "Kyomin Jung"
+        "Tomas Hodan",
+        "Vineet Bhat",
+        "Martin Sundermeyer",
+        "Jonathan Tremblay",
+        "Yash Patel"
       ],
       "all_authors": [
-        "Junseok Kim",
-        "Kyungmin Min",
-        "Kyomin Jung"
+        "Tomas Hodan",
+        "Vineet Bhat",
+        "Martin Sundermeyer",
+        "Jonathan Tremblay",
+        "Yash Patel",
+        "Médéric Fourmy",
+        "Stephen Tyree",
+        "Junwen Huang",
+        "Varun Burde",
+        "Martin Cífka",
+        "Eric Brachmann",
+        "Vincent Lepetit",
+        "Stan Birchfield",
+        "Jiri Matas",
+        "Carsten Rother"
       ],
       "affiliations": [
         {
-          "name": "Junseok Kim",
+          "name": "Tomas Hodan",
           "affiliations": []
         },
         {
-          "name": "Kyungmin Min",
+          "name": "Vineet Bhat",
           "affiliations": []
         },
         {
-          "name": "Kyomin Jung",
+          "name": "Martin Sundermeyer",
+          "affiliations": []
+        },
+        {
+          "name": "Jonathan Tremblay",
+          "affiliations": []
+        },
+        {
+          "name": "Yash Patel",
+          "affiliations": []
+        },
+        {
+          "name": "Médéric Fourmy",
+          "affiliations": []
+        },
+        {
+          "name": "Stephen Tyree",
+          "affiliations": []
+        },
+        {
+          "name": "Junwen Huang",
+          "affiliations": []
+        },
+        {
+          "name": "Varun Burde",
+          "affiliations": []
+        },
+        {
+          "name": "Martin Cífka",
+          "affiliations": []
+        },
+        {
+          "name": "Eric Brachmann",
+          "affiliations": []
+        },
+        {
+          "name": "Vincent Lepetit",
+          "affiliations": []
+        },
+        {
+          "name": "Stan Birchfield",
+          "affiliations": []
+        },
+        {
+          "name": "Jiri Matas",
+          "affiliations": []
+        },
+        {
+          "name": "Carsten Rother",
           "affiliations": []
         }
       ],
@@ -1371,13 +1505,14 @@
         "score": 5
       },
       "identified_orgs": [
-        "OpenAI"
+        "Anthropic",
+        "Google"
       ]
     }
   ],
   "org_analysis": [
     {
-      "org": "OpenAI",
+      "org": "Anthropic",
       "count": 1,
       "topics": {
         "多模态": 1,
@@ -1385,8 +1520,23 @@
       },
       "papers": [
         {
-          "title": "Read Before You Use: Improving Visual Memory Utilization in Vision-Language Models",
-          "url": "https://arxiv.org/abs/2611.33687v1",
+          "title": "BOP-Refer: Benchmark for Monocular 3D and 2D Object Grounding",
+          "url": "https://arxiv.org/abs/2611.34862v1",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "org": "Google",
+      "count": 1,
+      "topics": {
+        "多模态": 1,
+        "大模型": 1
+      },
+      "papers": [
+        {
+          "title": "BOP-Refer: Benchmark for Monocular 3D and 2D Object Grounding",
+          "url": "https://arxiv.org/abs/2611.34862v1",
           "score": 5
         }
       ]
